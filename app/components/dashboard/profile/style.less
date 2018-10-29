@@ -1,0 +1,145 @@
+.main-profile {
+	width: 100%;
+	max-width: 1200px;
+	height: auto;
+	margin: 20px;
+
+	.profile__form-introduction {
+		margin: 10px;
+		.field-textarea-w {
+			width: 100%;
+
+			textarea {
+				width: 100%;
+				padding: 5px;
+				font-size: 17px;
+				min-height: 250px;
+			}
+		}
+	}
+
+	.profile__form-skills {
+		width: 100%;
+		.flex-row {
+			width: 100%;
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			
+			.flex-col:first-child {
+
+				border-right: 4px solid #398;
+			}
+
+			.flex-col {
+				display: flex;
+				flex-direction: row;
+				flex-grow: 1;
+				flex-wrap: wrap;
+				flex-basis: 400px;
+
+				.col-1 {
+					margin: 10px;
+					flex-grow: 1;
+					
+					input {
+						font-size: 17px;
+					}
+
+					input,
+					select,
+					button {
+						width: 100%;
+						margin: 5px 0;
+					}
+				}
+			}
+
+			.field-input-w {
+				width: 100%;
+				flex-grow: 1;
+				input[type^='Date'] {
+					width: 100%;
+					margin: 5px 0px 5px 10px;
+				}
+			}
+		}
+
+		.form-submit {
+			width: 100%;
+			height: auto;
+			margin: 10px;
+
+			button {
+				width: 100%;
+				padding: 10px;
+				color: #fff;
+				background: #0071BC;
+			}
+		}
+	}
+
+	
+
+	.profile__form-school {
+		width: 100%;
+		.flex-row {
+			width: 100%;
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			
+			.flex-col:first-child {
+
+				border-right: 4px solid #398;
+			}
+
+			.flex-col {
+				display: flex;
+				flex-direction: row;
+				flex-grow: 1;
+				flex-wrap: wrap;
+				flex-basis: 400px;
+
+				.col-1 {
+					margin: 10px;
+					flex-grow: 1;
+					width: auto;
+					
+					input {
+						margin: 5px 0;
+						font-size: 17px;
+					}
+
+					input,
+					select,
+					button {
+						width: 100%;
+					}
+				}
+			}
+
+			.field-input-w {
+				width: 100%;
+				flex-grow: 1;
+				input[type^='Date'] {
+					width: 100%;
+					margin: 5px 0;
+				}
+			}
+		}
+
+		.form-submit {
+			width: 100%;
+			height: auto;
+			margin: 10px;
+
+			button {
+				width: 100%;
+				padding: 10px;
+				color: #fff;
+				background: #0071BC;
+			}
+		}
+	}
+}

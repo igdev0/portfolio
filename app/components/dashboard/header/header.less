@@ -1,0 +1,47 @@
+@import '../fonts.less';
+@import '../colors.less';
+
+.dashboard__header {
+	padding: 10px 0;
+	margin: 0;
+	height: auto;
+	width: 100%;
+	background: @dashboard__header-background;
+	display: flex;
+	justify-content: flex-end;
+	align-items: flex-end;
+	.dashboard__header-header-nav-links {
+		display: block;
+		padding: 0;
+		flex-grow: 1;
+		position: relative;
+		right: 150px;
+				
+			li {
+				margin: 10px;
+				display: inline-block;
+				a {
+					font-family: @font__for-navigation__link;
+					color: @navigation-bar-link-color;
+					background: @navigation-bar-link-background;
+					padding: 10px 20px;
+					border-radius: 5px;
+					box-shadow: 0 0 10px 0 #222;
+					text-decoration: none;
+					transition: background .3s;
+
+					&:hover {
+						background: @navigation-bar-link-background__hover;
+						transition: background .3s;
+						color: @navigation-bar-link-color__hover;
+					}
+
+					&:focus {
+						background: @navigation-bar-link-background__focus;
+						transition: background .3s;
+						color: @navigation-bar-link-color__hover;
+				}
+			}
+		}
+	}
+}

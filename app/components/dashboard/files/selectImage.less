@@ -1,0 +1,96 @@
+.modal-open .modal {
+	overflow: hidden;
+}
+
+.select-image {
+	width: 100%;
+	height: auto;
+	padding: 0;
+	overflow-y: scroll;
+	resize: vertical;
+	background: #fff;
+	height: 600px;
+	.flex-row {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		align-items: center;
+
+		.flex-col {
+			flex-basis: 300px;
+			max-width: 400px;
+			padding: 10px;
+			img {
+				width: 100%;
+				height: auto;
+			}
+
+			label > input{ /* HIDE RADIO */
+			  visibility: hidden; /* Makes input not-clickable */
+			  position: absolute; /* Remove input from document flow */
+			}
+			label > input + img{ /* IMAGE STYLES */
+			  cursor:pointer;
+			  border:4px solid transparent;
+			}
+			label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
+			  border:4px solid #104b87;
+			  box-shadow: 0 0 10px 0 #f1f1f1;
+			}
+		}
+	}
+
+	.select-image__action {
+		width: 100%;
+		padding: 5px;
+		color: #333;
+		border-radius: 5px;
+		margin: 0 0 10px 0;
+		font-size: 17px;
+	}
+
+	.select-image__action.card {
+		max-width: 400px;
+	}
+	
+	.select-image__action.hero {
+		max-width: 960px;
+	}
+
+	.img {
+		overflow: hidden;
+		max-height: 300px;
+		width: 100%;
+		background: #fff;
+		
+		img {
+			box-shadow: 0 0 10px 0 #f1f1f1;
+		}
+
+		img.card {
+			max-width: 400px;
+			width: 100%;
+		}
+		
+		img.hero {
+			max-width: 960px;
+			width: 100%;
+		}
+	}
+	
+	
+
+	.error-messages {
+		display: block;
+
+		span {
+			width: 100%;
+			font-weight: bolder;
+			color: #222;
+			i {
+				color: red;
+				font-size: 18px;
+			}
+		}
+	}
+}
