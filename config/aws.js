@@ -8,13 +8,10 @@ const config = {
 	},
 
 	Credentials: new AWS.Credentials({
-		accessKeyId: 'AKIAIRGN5NG2B5SCJIBA',
-		secretAccessKey: '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',
-		sessionToken: null
+		// credentials ...
 	})
 
 };
-
 const s3bucket = new AWS.S3({
 	endpoint: config.Bucket.url,
 	Bucket: config.Bucket.name,
