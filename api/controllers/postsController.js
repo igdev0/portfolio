@@ -2,6 +2,8 @@ import Posts from '../models/posts';
 import Comments from '../models/comments';
 import jwt from 'jwt-simple';
 import config from '../../config';
+import {PassThrough} from 'stream';
+import fs from 'fs';
 
 const postsController = {
 
@@ -30,26 +32,41 @@ const postsController = {
 
 	create: (req, res) => {
 		const body = req.body;
-		const post = body.post;
-		Posts
-		.create({
-			category: body.category,
-			title: post.title,
-			description: post.description,
-			body: post.body,
-			comments: [],
-			images: post.images
+		const post = req.body.post;
 
-		}, function(err, data) {
+		const article = Buffer.from(post.body);
 
-			if(err) {
-				return res.status(400).json({"error": err});
-			}
+		const wstream = fs.createWriteStream(`${process.cwd()}/api/articles/${post.title}.md`);
 
-			res.status(200).json(data);
+		wstream.write(post.body);
 
-					
+		wstream.end(function() {
+			console.log('The file is written successfully');
+			createPost()
 		})
+
+		const createPost = () => {
+			Posts
+			.create({
+				category: body.category,
+				title: post.title,
+				description: post.description,
+				tags: post.tags,
+				body: `/api/articles/${post.title}.md`,
+				comments: [],
+				images: post.images
+
+			}, function(err, post_data) {
+
+				if(err) {
+					return res.status(400).json({"error": err});
+				}
+
+
+				res.status(200).json(post_data);
+						
+			})
+		}
 	},
 
 	get: (req, res) => {
@@ -63,7 +80,7 @@ const postsController = {
 		})
 		.populate({
 			path: 'images.card',
-			select: 'url alt'
+			select: 'path alt'
 		})
 
 		.exec(function(err, data) {
@@ -102,7 +119,7 @@ const postsController = {
 		})
 		.populate({
 			path: 'images.hero',
-			select: 'url alt'
+			select: 'path alt'
 		})
 		.exec((err, data) => {
 			if(err) {
@@ -130,31 +147,103 @@ const postsController = {
 		})
 
 		.exec((err, data) => {
+
 			if(err) {
 				return res.status(400).json(err);
 			}
+			const readStream = fs.createReadStream(`${process.cwd()}${data.body}`);
 
-			else {
-				res.status(200).json(data);
-			}
+			 
+			readStream.on('error', (error) => {
+				if(error) {
+				 	return res.status(400).json(error)
+				}
+			})
+
+			readStream.on('data', (file) => {
+
+				const article = file.toString();
+				data.body = article;
+				
+				return res.status(200).json(data);
+			})
 		}) 
 	},
 
 	update: (req, res) => {
 		const post_id = req.body.post_id;
-		delete req.body.post_id;
-		const updates = req.body.update;
-		Posts
+		const post_title = req.body.post_title;
+		let updates = req.body.update;
+
+		if(updates.body) {
+			const dir = `/api/articles/${post_title}.md`;
+			
+			fs.unlink(`${process.cwd()}${dir}`, (err) => {
+
+				if(err) throw err;
+
+				else {
+					const readStream = fs.createWriteStream(`${process.cwd()}${dir}`);
+
+					readStream.write(updates.body);
+					readStream.end();
+
+					Posts
+
+					.findByIdAndUpdate(post_id, {body: dir}, {new: true})
+				
+					.exec((err, data) => {
+
+						if(err) {
+							return res.status(400).json(err);
+						}
+
+						const readStream = fs.createReadStream(`${process.cwd()}${data.body}`);
+
+						readStream.on('error', (error) => {
+
+							if(error) throw error;
+						})
+
+						readStream.on('data', (file) => {
+							const article = file.toString();
+
+							data.body = article;
+
+
+							return res.status(200).json(data);
+						})
+					})
+				}
+			})
+		}
+
+		else {
+			Posts
 
 			.findByIdAndUpdate(post_id, updates, {new: true})
 
 			.exec((err, data) => {
 				if(err) {
-					return res.status(500).json(err);
+					return res.status(400).json(err);
 				}
+				const readStream = fs.createReadStream(`${process.cwd()}${data.body}`);
 
-				res.status(200).json(data);
+				readStream.on('error', (error) => {
+
+					if(error) throw error;
+				})
+
+				readStream.on('data', (file) => {
+					const article = file.toString();
+
+					data.body = article;
+
+
+					return res.status(200).json(data);
+				})
 			})
+		}
 
  	},
 
@@ -162,6 +251,7 @@ const postsController = {
 
 	delete: (req, res) => {
 		const post = req.query.post_id;
+
 		if(post) {
 			Posts
 			.findByIdAndDelete(post)
@@ -172,16 +262,9 @@ const postsController = {
 					return res.status(400).json({error: err});
 				}
 
-				Comments
+				fs.unlink(`${process.cwd()}${data.body}`, (err) => {
 
-				.remove({_id: {$in: data.comments}})
-
-				.exec((err, success) => {
-
-					if(err) {
-
-						return res.status(400).json({error: err});
-					}
+					if(err) throw err;
 
 					res.status(200).json(data);
 				})

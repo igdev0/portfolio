@@ -1,6 +1,18 @@
-import Busboy from 'busboy';
-import aws from '../../config/aws';
 import Files from '../models/files';
+import multer from 'multer';
+import path from 'path';
+import fs from 'fs';
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'api/uploads/')
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname)
+  }
+})
+
+const upload = multer({storage: storage}).single('file');
 
 const filesController = {
 
@@ -18,42 +30,33 @@ const filesController = {
 		})
 	},
 
-	create: (req, res) => {
+	getOne: (req,res) => {
+		const param = req.params.file;
 		
-		var busboy = new Busboy({ headers: req.headers });
-	    busboy.on('finish', function() {
-	      const file = req.files.file;
-	      aws.upload(req.body.folder, file)
+		res.sendFile(process.cwd() + '/api/uploads/' + param);
+	},
 
-	      .then(data => {
-	      	const file_to_save = {
-	      		name: file.name,
-	      		size: file.size,
-	      		url: data.Location,
-	      		folder: req.body.folder,
-	      		alt: req.body.alt,
-	      		key: `${req.body.folder}/${file.name}`
-	      	}
+	create: (req, res) => {
+		upload(req, res, function(err) {
+			const file = req.file;
+			if(err instanceof multer.MulterError) {
+				return res.status(500).json(err);
+			}
+		
+			Files.create({
+				path: file.path,
+				size: file.size,
+				name: file.filename,
+				alt: req.body.alt
+			}, (err, data)=> {
 
-	      	const save_file = new Files(file_to_save)
+				if(err) {
+					return res.status(400).json({error: err});
+				}
 
-	      	save_file.save((err, data) => {
-
-	      		if(err) {
-
-	      			return res.status(400).json(err);
-	      		}
-
-	      		res.status(200).json(data);
-	      	});
-	      })
-
-	      .catch(err => {
-	      	res.status(400).json(err.stack);
-	      })
-	    });
-
-	    return req.pipe(busboy);
+				res.status(200).json(data);
+			})
+		})
 	},
 
 	delete: (req, res) => {
@@ -62,19 +65,17 @@ const filesController = {
 			Files
 			.findByIdAndDelete(id)
 			.exec((err, data) => {
-				if(err) {return res.status(400).json(err)}
 
-				aws.delete(data.key)
-
-				.then((d) => {
-					res.status(200).json(data);
-				})
-
-				.catch(err => {
+				if(err) {
+					return	res.status(500).json(err);
+				}
+				fs.unlink(data.path, function(err) {
 
 					if(err) {
-						return res.status(403).json({err: err});
+						return res.status(400).json(err);
 					}
+					
+					res.status(200).json(data);
 				})
 			})
 		}

@@ -11,7 +11,7 @@ class SelectImage extends Component {
 		this.state = {
 			modalDisplay: false,
 			selectedImage: this.props.input.value._id,
-			selectedImageUrl: this.props.input.value.url,
+			selectedImageUrl: this.props.input.value.path,
 			selectUrl: this.props.selectUrl || false
 		}
 
@@ -23,7 +23,7 @@ class SelectImage extends Component {
 
 		if(this.state.selectUrl) {
 			this.setState({
-				selectedImage: !this.props.input.value.url ? this.props.files[0].url : this.props.input.value.url,
+				selectedImage: !this.props.input.value.path ? this.props.files[0].path : this.props.input.value.path,
 			})
 		}
 
@@ -36,7 +36,7 @@ class SelectImage extends Component {
 	}
 
 	onChange(e, file) {
-		this.setState({selectedImage: e.target.value, selectedImageUrl: file.url});
+		this.setState({selectedImage: e.target.value, selectedImageUrl: file.path});
 		const _id = e.target.value;
 		this.props.input.onChange(e);
 	}
@@ -46,10 +46,12 @@ class SelectImage extends Component {
 	}
 
  	render() {
-
 		return (
-			<div>
-			    <button type="button" onClick={this.hideModal} className="btn btn-primary">Select image</button>
+			<div className="select__image__container">
+			    <button type="button" onClick={this.hideModal} className="btn btn-primary">{this.props.label || "select image"}</button>
+				<div className="error-messages">
+					{this.props.meta.touched && (this.props.meta.error && <span><i className="fas fa-exclamation-circle"></i>{this.props.meta.error}</span>)}
+				</div>
 				<Modal bsSize="large" onHide={this.hideModal} show={this.state.modalDisplay}>
 				 <Modal.Header closeButton>
 				  <Modal.Title>Select image.</Modal.Title>
@@ -66,19 +68,15 @@ class SelectImage extends Component {
 					  		 	   defaultChecked={file._id === this.state.selectedImage} 
 					  		 	   name={`${file.name}_${key}`} 
 					  		 	   type="radio" {...this.props.input} 
-					  		 	   value={this.state.selectUrl ? file.url : file._id}
+					  		 	   value={this.state.selectUrl ? `${window.location.origin + '/' + file.path}` : file._id}
 					  		 	   onChange={(e) => {this.onChange(e, file)}} 
 					  		 	   />
-
-								   <img className={this.props["img-type"] === 'card' ? 'card' : 'hero'} src={file.url}/>
+								   <img className={this.props["img-type"] === 'card' ? 'card' : 'hero'} src={`${window.location.origin + '/' + file.path}`}/>
 								  </label>
 								</div>
 							)
 						})
 					  }
-					 </div>
-					 <div className="error-messages">
-					   {this.props.meta.touched && this.props.meta.error && <span><i className="fas fa-exclamation-circle"></i>{this.props.meta.error}</span>}
 					 </div>
 					</div>
 				 </Modal.Body>

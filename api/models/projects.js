@@ -1,38 +1,7 @@
 import mongoose from '../../config/mongodb';
+import images from './images';
 
 const Schema = mongoose.Schema;
-
-const ImagesSchema = new Schema({
-	hero: [
-		{
-			url: {
-				type: String,
-				required: true
-			},
-
-			alt: {
-				type: String,
-				required: true
-			}
-		}
-	],
-	card: [
-		{
-			url: {
-				type: String,
-				required: true
-			}
-		},
-
-		{
-			alt: {
-				type: String,
-				required: true
-			}
-		}
-	]
-})
-
 
 const Projects = {
 
@@ -45,18 +14,35 @@ const Projects = {
 		type: String,
 		required: true
 	},
-
-	skills: {
-		type: Array,
+	
+	link: {
+		type: String,
+		required: true
+	},
+	color: {
+		type: String,
 		required: true
 	},
 
-	images: ImagesSchema,
+	skills: [
+		{
+			type: Schema.Types.ObjectId,
+			ref: 'Skills'
+		}
+	],
+
+	images: images,
 	
-	created_on: {
+	started_at: {
 		type: Date,
 		default: Date.now
 	},
+
+	finished_at: {
+		type: Date,
+		default: null
+	},
+
 	created_at: {
 		type: Date,
 		default: Date.now

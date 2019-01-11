@@ -9,7 +9,7 @@ const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const serverConfig = {
 	name: 'server',
 	mode: sharedConfig.mode,
-	entry: ['webpack/hot/poll?1000', './server/index.js'],
+	entry: ['babel-polyfill', 'webpack/hot/poll?1000', './server/index.js'],
 	target: 'node',
 	externals: [nodeExternals({whitelist: ['webpack/hot/poll?1000']})],
 	output: {

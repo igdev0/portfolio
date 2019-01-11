@@ -1,12 +1,12 @@
 import React from 'react';
 import {reduxForm, Form, Field} from 'redux-form';
-
+import {connect} from 'react-redux';
 
 const ProfileIntroductionForm = (props) => {
 
 	return (
 		 <Form className="profile__form-introduction" onSubmit={props.handleSubmit(props.updateProfileIntroduction)}>
-		  <Field type="text" name="introduction" label="Introduction to yourself." component={TextareaComponent}/>
+		  <Field type="text" name="introduction" label="Introduction." component={TextareaComponent}/>
 		  <button type="submit" className="btn btn-success">Save</button>
 		 </Form>
 	)
@@ -32,5 +32,12 @@ const validate = (values) => {
 	return errors;
 }
 
+const mapStateToProps = ({profileIntroduction}) => {
+	return {
+		initialValues: profileIntroduction
+	}
+}
 
-export default reduxForm({form: 'profileIntroduction', validate})(ProfileIntroductionForm);
+const profileIntroduction = reduxForm({form: 'profileIntroduction', validate})(ProfileIntroductionForm);
+
+export default connect(mapStateToProps)(profileIntroduction); 

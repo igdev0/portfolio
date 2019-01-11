@@ -6,6 +6,8 @@ import skillsController from '../api/controllers/skillsController';
 import projectsController from '../api/controllers/projectsController';
 import profileController from '../api/controllers/profileController';
 import educationController from '../api/controllers/educationController';
+import overviewController from '../api/controllers/overviewController';
+import articleController from '../api/controllers/articleController';
 import expressSession from 'express-session';
 import expressJwt from 'express-jwt';
 import passport from './passport';
@@ -41,6 +43,7 @@ const initApiRoutes = (app) => {
 	app.post('/api/files', filesController.create);
 	app.delete('/api/files', filesController.delete);
 	app.get('/api/files', filesController.get);
+	app.get('/api/uploads/:file', filesController.getOne);
 	// ========================================
 
 	// Skills routes
@@ -76,12 +79,17 @@ const initApiRoutes = (app) => {
 	app.put('/api/profile', profileController.update);
 	// ===============================================
 
+	app.get('/api/overview', overviewController);
+
 	// Authentication routes
 	// // =====================
 	// app.use(connectFlash());
 	app.post('/user/auth/login', passport.authenticate('local', {session: false}), authenticationController.login);
 	app.post('/user/auth/singup', authenticationController.singup);
 	// ============================================================
+
+	app.post('/api/article', articleController.create);
+	app.get('/api/article', articleController.get);
 };
 
 export default initApiRoutes;

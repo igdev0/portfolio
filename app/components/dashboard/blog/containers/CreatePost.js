@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import CreatePost from '../CreatePost';
 
-import {createPost, deletePost, fetchCategories} from '../actions';
+import {createPost, deletePost} from '../actions';
 
 class CreatePostContainer extends Component {
 
@@ -41,8 +41,7 @@ const bindActionCreatorsToProps = (dispatch) => {
 
 	return bindActionCreators({
 		createPost,
-		deletePost,
-		fetchCategories: fetchCategories
+		deletePost
 	}, dispatch)
 }
 

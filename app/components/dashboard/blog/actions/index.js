@@ -3,62 +3,10 @@ import {CREATE_CATEGORY, DELETE_CATEGORY, UPDATE_CATEGORY, FETCH_CATEGORIES,
 		FETCH_CATEGORY, CREATE_COMMENT, UPDATE_COMMENT, DELETE_COMMENT} 
 from './types';
 
-import {FetchCategories, CreateCategory, UpdateCategory, DeleteCategory,
-		FetchPosts, FetchPostById, CreatePost, UpdatePost, DeletePost, FetchPostsByCategory,
+import {FetchPosts, FetchPostById, CreatePost, UpdatePost, DeletePost,
 		CreateComment, UpdateComment, DeleteComment} from '../api';
-
-export const fetchCategories = (id) => {
-	const criteria = {
-		_id: id
-	};
-	const payload = FetchCategories(criteria);
-
-	return {
-		type: FETCH_CATEGORIES,
-		payload: payload
-	};
-}
-
-export const createCategory = (category) => {
-
-	const payload = CreateCategory(category);
-
-	return {
-		type: CREATE_CATEGORY,
-		payload: payload
-	};
-}
-
-export const updateCategory = (category_id, update) => {
-	const payload = UpdateCategory(category_id, update);
-
-	return {
-		type: UPDATE_CATEGORY,
-		payload: payload
-	};
-}
-
-export const deleteCategory = (category_id) => {
-
-	const payload = DeleteCategory(category_id);
-
-	return {
-		type: DELETE_CATEGORY,
-		payload: payload
-	}
-}
-
 //  POSTS CRUD
 // =======================================
-
-export const fetchPostsByCategory = (category_id) => {
-	const payload = FetchPostsByCategory(category_id);
-
-	return {
-		type: FETCH_POSTS_BY_CATEGORY,
-		payload: payload
-	}
-}
 
 export const fetchPosts = (category_name) => {
 	const payload = FetchPosts(category_name);
@@ -68,12 +16,12 @@ export const fetchPosts = (category_name) => {
 		payload: payload
 	}
 }
-
+// const reader = new FileReader();
+// const file = reader.readAsText(action.payload.body.data)
 export const fetchPostById = (id) => {
 
 	if(id) {
 		const payload = FetchPostById(id);
-
 		return {
 			type: FETCH_POST_BY_ID,
 			payload: payload
@@ -90,8 +38,9 @@ export const createPost = (category_id, post) => {
 	}
 }
 
-export const updatePost = (post_id, update) => {
-	const payload = UpdatePost(post_id, update);
+export const updatePost = (post_id, post_title, update) => {
+	
+	const payload = UpdatePost(post_id, post_title, update);
 
 	return {
 		type: UPDATE_POST,

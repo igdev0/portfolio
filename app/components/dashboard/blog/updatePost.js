@@ -1,14 +1,14 @@
 import React from 'react';
 import './updatePost.less';
 import SelectImageContainer from '../files/containers/SelectImage';
-import {reduxForm, Form, Field} from 'redux-form';
+import {reduxForm, Form, Field, FieldArray} from 'redux-form';
 import ReactMarkdown from 'react-markdown';
 import parseHtml from 'react-markdown/plugins/html-parser';
 import CodeBlock from './codeblock';
 import {connect} from 'react-redux';
+import AddTagsField from './addTagsField';
 
 const UpdatePost = (props) => {
-
 	if(!props.initialValues) {
 		return (
 			<h1>Loading</h1>
@@ -20,22 +20,24 @@ const UpdatePost = (props) => {
 		if(props.formSucceeded) {
 			props.history.goBack();
 		}
+
 		return (
 			<section className="blog-update__post">
-			 <Form onSubmit={props.handleSubmit(props.handleFormSubmit)} className="blog-update__post-form">
+			 <form onSubmit={props.handleSubmit(props.handleFormSubmit)} className="blog-update__post-form">
 			  <label htmlFor="images.card">Card image:</label>
 			  <Field name="images.card" img-type="card" component={SelectImageContainer}/>
 			  <label htmlFor="images.hero">Hero image:</label>
 			  <Field name="images.hero" img-type="hero" component={SelectImageContainer}/>
 			  <Field name="title" label="A good title is a short title." component={InputFieldComponent}/>
 			  <Field name="description" label="Describe the purpose of this public post." component={TextareaFieldComponent}/>
+			  <FieldArray name="tags" label="Write a tag ..." component={AddTagsField}/>
 			  <label htmlFor="body">The body of this post.</label>
 			  <Field name="body" component={ComposeArticleField} label="This field is using gihub markdown."/>
 			  <div className="update-post__actions">
 			   <button type="submit" className="btn btn-success">Update post</button>
 			   <button type="button" className="btn btn-danger" onClick={() => {props.history.goBack()}}>Cancel</button>
 			  </div>
-			 </Form>
+			 </form>
 			</section>
 		)
 	}
@@ -129,8 +131,8 @@ const mapStateToProps = ({post}) => {
 	return {
 		initialValues: post
 	}
-}
+};
 
-const updatePost = reduxForm({form: 'updatePost', validate})(UpdatePost)
+const updatePost = reduxForm({form: 'update-post', validate})(UpdatePost);
 
 export default connect(mapStateToProps)(updatePost);

@@ -111,30 +111,50 @@ class Files extends Component {
 		}
 	}
 
+	bytesToSize(bytes) {
+	   var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+	   if (bytes == 0) return '0 Byte';
+	   var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
+	   return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i];
+	}
+
 	render() {
 			return (
 			<main className="files-main">
-			 <div className="flex-row">
-			  {
+			 <table className="files-table">
+			  <thead className="files-table_head">
+			   <tr className="files-table_head-row">
+			    <th className="files-table_head-col">
+			    File name
+			    </th>
+			    <th className="files-table_head-col">
+			    File url
+			    </th>
+			    <th className="files-table_head-col">
+			    File size
+			    </th>
+			    <th className="files-table_head-col">
+			  	 Upload date
+			    </th>
+			   </tr>
+			  </thead>
+			  <tbody className="files-table_body">
+			   {
 			  	this.props.files.map((file, key) => {
+
 			  		return (
-			  			<div key={key} className="flex-col">
-			  			 <img src={file.url} alt={file.alt}/>
-			  			 <div className="img-details">
-			  			  <ul>
-			  			  	<li><span><i className="fas fa-globe"></i></span><input type="text" readOnly defaultValue={file.url}/></li>
-			  			  	<li><span><i className="far fa-calendar-alt"></i></span><Moment format="DD/MM/YYYY">{file.created_at}</Moment></li>
-			  			  </ul>
-			  			 </div>
-			  			 <div className="actions">
-			  			  <button type="button" className="button action__copy">Copy</button>
-			  			  <button type="button" className="button action__delete" onClick={() => {this.props.deleteFile(file._id)}}>Delete</button>
-			  			 </div>
-			  			</div>
+			  			<tr key={key} className="files-table_body-row">
+			  			  <td className="files-table_body-col">{file.name}</td>
+			  			  <td className="files-table_body-col"><a className="btn btn-primary" href={`${window.location.origin + '/' + file.path}`}>view</a></td>
+			  			  <td className="files-table_body-col">{this.bytesToSize(file.size)}</td>
+			  			  <td className="files-table_body-col">{new Date(file.updated_at).toLocaleString()}</td>
+			  			  <td className="files-table_body-col"><button className="btn btn-danger" onClick={() => this.props.deleteFile(file._id)}>Delete</button></td>
+			  			</tr>
 			  		)
 			  	})
 			  }
-			 </div>
+			  </tbody>
+			 </table>
 			 <div className="files-upload">
 			   <Form onSubmit={this.props.handleSubmit(this.handleFormSubmit)} className="files-upload__form">
 			    <Field type="file" name="fileToUpload" submitSucceeded={this.props.submitSucceeded} component={SelectFile}/>

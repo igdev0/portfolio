@@ -26,7 +26,6 @@ export const CreateFile = (file, data) => {
 }
 
 export const DeleteFile = (id) => {
-	console.log(id);
 	const promise = axios.delete('/api/files', {
 		params: {
 			id: id

@@ -7,15 +7,30 @@ import posts from './posts';
 import comments from './comments';
 import files from './files';
 import post from './post';
+import schools from './schools';
+import skills from './skills';
+import projects from './projects';
+import overview from './overview';
+import initialData from './initialData';
+import profileIntroduction from './profileIntroduction';
+import profile from './profile';
+
 
 const rootReducer = combineReducers({
 	form: formReducer,
 	comments,
 	posts,
-	categories,
+	categories, 
 	loginStatus,
 	files,
-	post
+	post,
+	schools,
+	skills,
+	profileIntroduction,
+	initialData,
+	projects,
+	overview,
+	profile
 })
 
 export default rootReducer;

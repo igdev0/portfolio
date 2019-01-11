@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import UpdatePost from '../UpdatePost';
+import UpdatePost from '../updatePost';
 import diff from 'object-diff';
 import {deletePost, updatePost, fetchPostById} from '../actions';
 
@@ -19,9 +19,12 @@ class UpdatePostContainer extends Component {
 	}
 
 	handleFormSubmit(formProps) {
+		const post_title = this.props.post.title;
+
 		const difference = diff( this.props.post, formProps);
 
-		this.props.updatePost(this.props.post._id, difference);
+		this.props.updatePost(this.props.post._id, post_title, difference);
+		this.props.history.goBack();
 	}
 
 	render() {
@@ -34,20 +37,20 @@ class UpdatePostContainer extends Component {
 
 		else {
 
-		const newPost = this.props.post._id !== this.props.match.params.post ? false : true;
+		// const newPost = this.props.post._id !== this.props.match.params.post ? false : true;
 
-			if(!newPost) {
-				return (
-					<h1>Loading ...</h1>
-				)
-			}
+			// if(!newPost) {
+			// 	return (
+			// 		<h1>Loading ...</h1>
+			// 	)
+			// }
 
-			else {
+			// else {
 				return (
 					<UpdatePost {...this.props} handleFormSubmit={this.handleFormSubmit}/>
 				)
 			}
-		}
+		// }
 	}
 }
 

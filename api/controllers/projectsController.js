@@ -1,4 +1,6 @@
 import Projects from '../models/projects';
+import Skills from '../models/skills';
+import mongoose from 'mongoose';
 
 const projectsController = {
 
@@ -6,8 +8,10 @@ const projectsController = {
 
 		Projects
 
-		.find(req.params.query)
-
+		.find()
+		.populate('images.card')
+		.populate('images.hero')
+		.populate('skills')
 		.exec((err, data) => {
 
 			if(err) {
@@ -22,60 +26,151 @@ const projectsController = {
 	create: (req, res) => {
 		const body = req.body;
 		Projects
-
-		.create({
+		.findOneAndUpdate({_id:mongoose.Types.ObjectId()}, {
 			images: body.images,
 			title: body.title,
 			description: body.description,
 			skills: body.skills,
-			created_on: body.created_on
-		},(err, data) => {
+			started_at: body.started_at,
+			finished_at: body.finished_at,
+			link: body.link
+		}, {
+		    new: true,
+		    upsert: true,
+		    runValidators: true,
+		    setDefaultsOnInsert: true
+		})
+		.populate('images.card')
+		.populate('images.hero')
+		.populate('skills')
+		.exec((err, data) => {
 
 			if(err) {
 				return res.status(400).json(err);
 			}
 
-			res.status(200).json(data);
+			return res.status(200).json(data);
 		})
 
 		
 	},
 
 	update: (req, res) => {
-		const body = req.body;
-		const project_id = body.id;
+		const {id, updates, type} = req.body;
+		const types = {
+			DELETE_SKILL: "DELETE_SKILL",
+			ADD_SKILL: "ADD_SKILL"
+		};
 
-		Projects
+		switch(type) {
 
-		.findByIdAndUpdate(project_id, body, {new: true})
+			case types.ADD_SKILL:
 
-		.exec((err, data) => {
+				Projects
 
-			if(err) {
+				.findByIdAndUpdate(id, {
+					$push: {skills: {$in: updates}}
+				}, 
+				{
+					new: true
+				})
 
-				res.status(400).json(err);
-			}
+				.exec((err, data) => {
 
-			res.status(200).json(data);
-		})
+					if(err) {
+
+						res.status(400).json(err);
+					}
+
+					return res.status(200).json(data);
+			});
+
+			break;
+
+			case types.DELETE_SKILL:
+
+				Projects
+
+				.findByIdAndUpdate(id, {
+					$pull: {skills: updates}
+				}, 
+				{
+					new: true,
+					safe: true
+				})
+
+				.exec((err, data) => {
+
+					if(err) {
+
+						res.status(400).json(err);
+					}
+
+					return res.status(200).json(data);
+				})
+			break;
+
+			default:
+
+				Projects
+
+				.findByIdAndUpdate(id, updates, {new: true})
+
+				.exec((err, data) => {
+
+					if(err) {
+
+						res.status(400).json(err);
+					}
+
+					return res.status(200).json(data);
+				})
+		}
 	},
 
 	delete: (req, res) => {
-		const body = req.body;
-		const project_id = body.id;
+		const {query: {id}} = req;
 
 		Projects
 
-		.findByIdAndDelete(project_id)
+		.findByIdAndDelete(id)
 
 		.exec((err, data) => {
 
 			if(err) {
 
-				res.status(400).json(err);
+				return res.status(400).json(err);
 			}
 
-			res.status(200).json(data);
+			if(data.skills.length > 0) {
+
+				Skills
+
+				.updateMany({_id: {$in: data.skills}}, 
+					{
+						$pull: {projects: id}
+					},
+					{
+						new: true,
+						safe: true
+					}
+				)
+
+				.exec((skills_error, skills_data) => {
+
+					if(skills_error) {
+
+						return res.status(400).json({error: skills_error, message: "The skills couldn't be updated"})
+					}
+					else {
+						return res.status(200).json(data);
+					}
+				})
+			}
+
+			else {
+				return res.status(200).json(data);
+			}
 		})
 	}
 }

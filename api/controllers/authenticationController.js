@@ -18,9 +18,8 @@ const generateToken = (user) => {
 const authenticationController = {
 
 	login: (req, res) => {
-		console.log(req.user)
 		if(req.user) {
-			res.status(200).json({token: generateToken(req.user)});
+			return res.status(200).json({token: generateToken(req.user)});
 		}
 		res.status(403).json({message: 'The password is incorect'});
 	},

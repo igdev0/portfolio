@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import './viewPosts.less';
+import imageDeleted from './images/image-deleted-card.svg';
 
 const ViewPosts = (props) => {
 	const {match: {params: {category}}} = props;
@@ -16,7 +17,7 @@ const ViewPosts = (props) => {
 		  			 <div className="meta">
 		  			  <h2 className="meta-meta__title">{post.title}</h2>
   					  <p className="meta-meta__description">{post.description}</p>
-		  			  <img className="meta-meta__image" src={post.images.card.url} alt={post.images.card.alt}/>
+		  			  <img className="meta-meta__image" src={post.images.card ? `${window.location.origin}/${post.images.card.path}` : imageDeleted} alt={post.images.card ? post.images.card.alt : 'Image deleted'}/>
 		  			 </div>
 		  			 <div className="blog-post__actions">
 		  			  <Link to={`/dashboard/blog/update-post/${post._id}`} className="btn btn-success">Update</Link>

@@ -3,18 +3,34 @@ import Profile from '../models/profile';
 const profileController = {
 
 	get: (req, res) => {
-
 		Profile
-		.find()
+		
+		.findOne({
+			name: 'defaultProfile'
+		})
+		.populate({
+			path: 'skills',
+			populate: {
+				path: 'icon'
+			}
+		})
+
+		.populate({
+			path: 'education',
+			populate: {
+				path: 'logo'
+			}
+		})
 
 		.exec((err, data) => {
 
 			if(err) {
-				return	res.status(400).json(err);
+				return res.status(400).json(err);
 			}
 
-			res.status(200).json(data);
-
+			else {
+				res.status(200).json(data);
+			}
 		})
 	},
 
@@ -37,11 +53,10 @@ const profileController = {
 	},
 
 	update: (req, res) => {
-		const update = req.body;
-
+		const update = req.body.update;
 		Profile.findOneAndUpdate({
 			name: 'defaultProfile'
-		}, update, {new: true, upsert: true, safe: true})
+		}, update, {new: true, safe: true})
 
 		.exec((err, data) => {
 

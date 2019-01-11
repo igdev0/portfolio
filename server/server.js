@@ -13,13 +13,13 @@ import serverRenderer from './router';
 let app = express();
 
 app.set("PORT", process.env.PORT || 3000);
-app.use(busboy());
+// app.use(busboy());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
 	extended: false
 }))
 
-app.use(busboyBodyParser());
+// app.use(busboyBodyParser());
 app.use(passport.initialize());
 app.use(express.static(path.resolve(process.cwd(), 'dist')));
 initApiRoutes(app);

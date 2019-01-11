@@ -1,4 +1,4 @@
-import {LOGIN_SUCCESS, LOGIN_ERROR, LOGIN_REQUEST} from '../actions/types';
+import {LOGIN_SUCCESS, LOGIN_ERROR, LOGIN_REQUEST, LOG_OUT} from '../actions/types';
 
 const loginStatus = (state = {}, action) => {
 
@@ -13,6 +13,9 @@ const loginStatus = (state = {}, action) => {
 			return action.payload;
 		
 		case LOGIN_REQUEST:
+			return action.payload;
+
+		case LOG_OUT:
 			return action.payload;
 
 		default: 

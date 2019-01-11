@@ -1,5 +1,9 @@
 import mongoose from '../../config/mongodb';
 import images from './images';
+import md5 from 'md5'
+import crypto from 'crypto';
+
+const Types = mongoose.Types;
 
 const Schema = mongoose.Schema;
 
@@ -34,7 +38,8 @@ const Posts = new Schema({
 	description: {
 		type: String,
 		required: true,
-		unique: true
+		unique: true,
+		index: false
 	},
 
 	body: {
@@ -42,13 +47,17 @@ const Posts = new Schema({
 		required: true,
 		unique: true
 	},
-	
 	images: images,
 
 	category: {
 		type: String,
 		required: true,
 		default: 'general'
+	},
+
+	tags: {
+		type: Array,
+		required: true
 	},
 
 	comments: [{
@@ -69,8 +78,14 @@ const Posts = new Schema({
 	}
 })
 
-Posts.pre('update', function() {
+Posts.pre('save', function(next) {
+	console.log('Mongodb is creating a document ... ')
+	next();
+})
+
+Posts.pre('update', function(next) {
 	this.update({}, {$set: {updatedAt: new Date()}})
+	next();
 })
 
 export default mongoose.model('Posts', Posts);

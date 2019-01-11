@@ -3,7 +3,7 @@ import mongodb from '../../config/mongodb';
 const Schema = mongodb.Schema;
 
 const Files = {
-	url: {
+	path: {
 		type: String,
 		required: true
 	},
@@ -17,10 +17,6 @@ const Files = {
 	},
 	size: {
 		type: Number,
-		required: true
-	},
-	key: {
-		type: String,
 		required: true
 	},
 	created_at: {

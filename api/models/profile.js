@@ -28,6 +28,6 @@ const Profile = {
 
 const ProfileModel = new Schema(Profile);
 
-
+ProfileModel.plugin(require('mongoose-autopopulate'));
 
 export default mongoose.model('Profile', ProfileModel);

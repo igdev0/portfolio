@@ -6,8 +6,8 @@
 	margin: 0;
 	padding: 0;
 	font-family: sans-serif;
-	background: #f1f1f1;
-	height: 100%;
+	background: #fff;
+	height: 100vh;
 
 	.dashboard__content {
 		width: 100%;
@@ -22,37 +22,14 @@
 		.dashboard__content-left {
 			position: relative;
 			width: 300px;
-			min-width: 300px;
+			flex-grow: 0;
 			z-index: 1000;
 			height: 100%;
-			background: @aside__background_color;
+			background: #02A2F4;
+			display: flex;
+			align-items: center;
+
 			
-				.dashboard__content-nav-user {
-					display: flex;
-					flex-direction: row;
-					align-items: center;
-					justify-content: space-between;
-
-
-					.dashboard__content-nav-user__image {
-						max-height: 200px;
-						max-width: 200px;
-						clip-path: circle();
-						background: #fff;
-						overflow: hidden;
-						margin: 0 10px;
-						img {
-							height: 100%;
-							width: 100%;
-							transition: filter .2s;
-
-							&:hover {
-								filter: blur(3px);
-								transition: filter .2s;
-							}
-						}
-					}
-				}
 
 			.dashboard__content-left-aside__nav {
 				width: 100%;
@@ -64,17 +41,19 @@
 					display: block;
 					padding: 0;
 					width: 100%;
+					border-top: 2px solid #dbdbdb;
+					border-bottom: 2px solid #dbdbdb;
 
 					.dashboard__content-left-aside__nav-ul-li {
-						padding-left: 20px;
 						width: 100%;
 						border-bottom: 2px solid;
-						border-color: @aside__navigation-link__border_color;
+						border-color: #f1f1f1;
 						background: @aside__navigation-link__background_color;
 
 						a {
+							transition: padding .5s;
 							color: @aside__navigation-link__text_color;
-							padding: 10px 0;
+							padding: 10px;
 							display: block;
 							text-decoration: none;
 							user-drag: none; 
@@ -86,17 +65,24 @@
 						}
 
 						&:hover {
-							background: @aside__navigation-link__active__background_color;
+							background: #a9e0fc;
 						}
 
 						&:focus {
-							background: @aside__navigation-link__active__background_color;
+							background: #a9e0fc;
 						}
 
 						&:active {
-							background: @aside__navigation-link__active__background_color;
+							background: #a9e0fc;
 						}
-
+								
+						a.active {
+							background: #006BB3;
+							padding: 10px 20px;
+							color: #fff;
+							font-weight: bold;
+							transition: padding .5s;
+						}
 					}
 				}
 			}
@@ -107,12 +93,12 @@
 			flex-grow: 1;
 			position: relative;
 			box-sizing: border-box;
-			box-shadow: 0 0 60px 0 #222;
+			border: 2px solid #f1f1f1;
 			background: #fff;
-			overflow-y: scroll;
+			overflow-y: auto;
 			overflow-x: hidden;
 			border-radius: 5px;
-			height: 90vh;
+			height: 100%;
 
 			// &::-webkit-scrollbar {
 			// 	width: 1em;

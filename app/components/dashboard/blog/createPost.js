@@ -1,10 +1,11 @@
 import React from 'react';
 import './createPost.less';
 import SelectImageContainer from '../files/containers/SelectImage';
-import {reduxForm, Form, Field} from 'redux-form';
+import {reduxForm, Form, Field, FieldArray} from 'redux-form';
 import ReactMarkdown from 'react-markdown';
 import parseHtml from 'react-markdown/plugins/html-parser';
 import CodeBlock from './codeblock';
+import AddTagsField from './addTagsField';
 
 const htmlParser = parseHtml({
   isValidNode: node => node.type !== 'script',
@@ -12,6 +13,7 @@ const htmlParser = parseHtml({
 });
 
 const CreatePost = (props) => {
+	 
 	return (
 		<section className="blog-create__post">
 		 <Form onSubmit={props.handleSubmit(props.handleFormSubmit)} className="blog-create__post-form">
@@ -21,6 +23,7 @@ const CreatePost = (props) => {
 		  <Field name="images.hero" img-type="hero" component={SelectImageContainer}/>
 		  <Field name="title" label="A good title is a short title." component={InputFieldComponent}/>
 		  <Field name="description" label="Describe the purpose of this public post." component={TextareaFieldComponent}/>
+		  <FieldArray name="tags" label="Write a tag ..." component={AddTagsField}/>
 		  <label htmlFor="body">The body of this post.</label>
 		  <Field name="body" component={ComposeArticleField} label="This field is using gihub markdown."/>
 		  <div className="create-post__actions">
@@ -100,6 +103,12 @@ const validate = (values) => {
 
 		errors.images.hero = "The hero image is required";
 		errors.images.card = "The card image is required";
+	}
+
+	if(!values.tags) {
+		errors.tags = {
+			_error: "this field is required"
+		}
 	}
 
 	if(values.images) {

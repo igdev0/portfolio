@@ -24,19 +24,27 @@ const Education = {
 		type: String,
 		required: true
 	},
+	
+	description: {
+		type: String,
+		required: true
+	},
 
 	logo: {
-		type: String,
+		type: Schema.Types.ObjectId,
+		ref: 'Files',
 		required: true
 	},
 
 	experience: ExperienceSchema,
 
-	skills: {
-		type: Schema.Types.ObjectId,
-		required: true,
-		ref: 'Skills'
-	}
+	skills: [
+		{
+			type: Schema.Types.ObjectId,
+			ref: 'Skills',
+			default: []
+		}
+	]
 };
 const EducationModel = new Schema(Education);
 

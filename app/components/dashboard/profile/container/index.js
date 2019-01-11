@@ -2,57 +2,56 @@ import React, {Component} from 'react';
 import Profile from '../';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+import {fetchSchools, createSchool, updateSchool, deleteSchool,
+		createSkill, updateSkill, deleteSkill, fetchSkills,
+		loadInitialDataForSkill, loadInitialDataForSchool,
+		updateProfileIntroduction, fetchProfileIntroduction} from '../actions';
 
 class ProfileContainer extends Component {
 
 	constructor(props) {
 
 		super(props);
-
-		this.updateProfileIntroduction = this.updateProfileIntroduction.bind(this);
-		this.deleteSkill = this.deleteSkill.bind(this);
-		this.addSkill = this.addSkill.bind(this);
-		this.addSchool = this.addSchool.bind(this);
-		this.deleteSchool = this.deleteSchool.bind(this);
 	}
 
-	updateProfileIntroduction(formProps) {
-		console.log(formProps);
-	}
+	componentDidMount() {
 
-	deleteSkill(formProps) {
-		console.log(formProps);
-	}
-
-	addSkill(formProps) {
-		console.log(formProps);
-	}
-
-	addSchool(formProps) {
-		console.log(formProps);
-	}
-
-	deleteSchool(formProps) {
-		console.log(formProps);
+		this.props.fetchSchools();
+		this.props.fetchSkills();
+		this.props.fetchProfileIntroduction();
 	}
 
 	render() {
 
-		return (<Profile {...this.props} {...this}/>)
-	} 
+		return (<Profile {...this.props}/>)
+	}
 }
 
 const bindActionCreatorsToProps = (dispatch) => {
 
-	return bindActionCreators({}, dispatch);
+	return bindActionCreators({
+		fetchSkills,
+		fetchSchools,
+		updateSchool,
+		createSchool,
+		deleteSchool,
+		createSkill,
+		updateSkill,
+		deleteSkill,
+		loadInitialDataForSkill,
+		loadInitialDataForSchool,
+		updateProfileIntroduction,
+		fetchProfileIntroduction
+	}, dispatch);
 }
 
-const mapStateToProps = (state) => {
-
+const mapStateToProps = ({schools, skills, profileIntroduction}) => {
 	return {
-
+		schools,
+		skills,
+		profileIntroduction
 	}
 }
 
 
-export default connect(null, null)(ProfileContainer);
+export default connect(mapStateToProps, bindActionCreatorsToProps)(ProfileContainer);

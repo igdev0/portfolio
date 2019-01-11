@@ -23,22 +23,40 @@ const Skills = {
 		type: String,
 		required: true
 	},
-	icon: {
+	description: {
 		type: String,
 		required: true
+	},
+	icon: {
+		type: Schema.Types.ObjectId,
+		ref: 'Files',
+		required: true,
+		autopopulate: true
 	},
 
 	level: {
 		type: Number,
 		required: true
 	},
-
+	color: {
+		type: String,
+		required: true
+	},
+	
 	experience: ExperienceSchema,
+
+	projects: [
+		{
+			type: Schema.Types.ObjectId,
+			ref: 'Projects'
+		}
+	],
 
 	school: [
 		{
 			type: Schema.Types.ObjectId,
-			ref: 'Education'
+			ref: 'Education',
+			default: []
 		}
 	]
 };

@@ -13,6 +13,7 @@ export const createFile = (file, data) => {
 
 export const deleteFile = (id) => {
 	const payload = DeleteFile(id);
+	console.log(id)
 
 	return {
 		type: DELETE_FILE,

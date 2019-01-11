@@ -1,58 +1,5 @@
 import axios from 'axios';
 
-
-export const FetchCategories = (criteria) => {
-
-	const promise = axios.get('/api/categories', {
-		params: criteria
-	});
-
-	return promise;
-}
-
-export const CreateCategory = (category) => {
-
-	const promise = axios.post('/api/categories', {
-		title: category.title,
-		description: category.description,
-		images: category.images,
-		posts: []
-	})
-
-	return promise;
-}
-
-export const UpdateCategory = (category_id, update) => {
-	const promise = axios.put(`/api/categories`, {
-		category_id: category_id,
-		update
-	}) 
-
-	return promise;
-}
-
-export const DeleteCategory = (category_id) => {
-	const promise = axios.delete(`/api/categories`, {
-		params: {
-			category_id: category_id
-		}
-	})
-
-	return promise;
-}
-
-// ------------------ POSTS -------------
-
-export const FetchPostsByCategory = (category_id) => {
-	const promise = axios.get(`/api/categories`, {
-		params: {
-			_id: category_id
-		}
-	})
-
-	return promise;
-}
-
 export const FetchPosts = (category_name) => {
 	const promise = axios.get('/api/posts', {
 		params: {
@@ -77,9 +24,10 @@ export const CreatePost = (category_id, post) => {
 	return promise;
 }
 
-export const UpdatePost = (post_id, update) => {
+export const UpdatePost = (post_id, post_title, update) => {
 	const promise = axios.put(`/api/posts`, {
 		post_id: post_id,
+		post_title: post_title,
 		update
 	})
 

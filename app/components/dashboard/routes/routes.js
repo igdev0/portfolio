@@ -1,8 +1,8 @@
 import ProfileContainer from '../profile/container';
-import Overview from '../overview/overview';
+import ProfileOverviewContainer from '../overview/container';
 import BlogContainer from '../../../containers/dashboard/blog-container';
 import Messages from '../messages/messages';
-import Portfolio from '../portfolio/portfolio';
+import PortfolioContainer from '../portfolio/containers';
 import Skills from '../skills/skills';
 import Todo from '../todo/todo';
 import FilesContainer from '../files/containers/Files';
@@ -12,9 +12,16 @@ import FilesContainer from '../files/containers/Files';
 
 const Routes = [
 	{
+		path: '/dashboard',
+		component: ProfileOverviewContainer,
+		exact: true,
+		name: null,
+		as: 'C'
+	},
+	{
 		path: '/dashboard/overview',
-		component: Overview,
-		exact: false,
+		component: ProfileOverviewContainer,
+		exact: true,
 		name: 'Overview',
 		as: 'C'
 	},
@@ -23,7 +30,7 @@ const Routes = [
 		path: '/dashboard/profile',
 		component: ProfileContainer,
 		exact: false,
-		name: 'Profile',
+		name: "Profile",
 		as: 'C'
 	},
 
@@ -36,34 +43,10 @@ const Routes = [
 	},
 
 	{
-		path: '/dashboard/messages',
-		component: Messages,
-		exact: false,
-		name: 'Messages',
-		as: 'C'
-	},
-
-	{
 		path: '/dashboard/portfolio',
-		component: Portfolio,
+		component: PortfolioContainer,
 		exact: false,
 		name: 'Portfolio',
-		as: 'C'
-	},
-
-	{
-		path: '/dashboard/skills',
-		component: Skills,
-		exact: false,
-		name: 'Skills',
-		as: 'C'
-	},
-
-	{
-		path: '/dashboard/todo',
-		component: Todo,
-		exact: false,
-		name: 'Todos',
 		as: 'C'
 	},
 

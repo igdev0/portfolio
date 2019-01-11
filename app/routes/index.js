@@ -1,20 +1,36 @@
-import Home from '../components/home/home.js';
+import Client from '../components/client';
 import DashboardContainer from '../containers/dashboard/dashboard-container';
-import LoginContainer from '../containers/app/login-container.js';
+import LoginContainer from '../containers/login-container.js';
 
 const routes = [
 	{
 		path: "/",
 		exact: true,
-		component: Home,
-		as: 'C'
+		component: Client
 	},
 
 	{
 		path: "/home",
-		exact: true,
-		component: Home,
-		as: 'C'
+		exact: false,
+		component: Client
+	},
+
+	{
+		path: "/profile",
+		exact: false,
+		component: Client
+	},
+
+	{
+		path: '/blog',
+		component: Client,
+		exact: false
+	},
+
+	{
+		path: '/portfolio',
+		component: Client,
+		exact: false
 	},
 
 	{
