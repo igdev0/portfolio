@@ -22,26 +22,90 @@ const projectsController = {
 			res.status(200).json(data);
 		})
 	},
-	getOneById: (req, res) => {
+	getOneById: (req, res, next) => {
 		const {params: {project_id}} = req;
+		const {query: {next_project, previous_project}} = req;
+
 		
-		Projects
+		if(!next_project || !previous_project) {
+			Projects
 
-		.findById(project_id)
+			.findById(project_id)
 
-		.populate('images.card')
-		.populate('images.hero')
-		.populate('skills')
-		.exec((err, data) => {
+			.populate('images.card')
+			.populate('images.hero')
+			.populate('skills')
+			.exec((err, data) => {
 
-			if(err) {
+				if(err) {
 
-				return res.status(400).json({error: err});
-			}
+					return res.status(400).json({error: err});
+				}
 
-			res.status(200).json(data);
-		})
+				return res.status(200).json(data);
+			})
+		}
+		else {
+			next()
+		}
 	},
+	getSiblings: (req, res) => {
+		const {params: {project_id}} = req;
+		const {query: { next_project, previous_project}} = req;
+		console.log(project_id, next_project, previous_project)
+		if(next_project) {
+			Projects
+
+			.find({_id: {$gt: project_id}})
+			.sort({_id: 1})
+			.limit(1)
+			.populate({
+				path: 'images'
+			})
+			.populate({
+				path: 'skills'
+			})
+
+			.exec((err, data) => {
+
+				if(err) {
+					return res.status(400).json(err)
+				}
+
+				else {
+					return res.status(200).json(data)
+				};
+			})
+		}
+
+		if(previous_project) {
+			Projects
+
+			.find({_id: {$lt: project_id}})
+			.sort({_id: -1})
+			.limit(1)
+			.populate({
+				path: 'images'
+			})
+			.populate({
+				path: 'skills'
+			})
+
+			.exec((err, data) => {
+
+				if(err) {return res.status(400).json(err)}
+
+				else {
+					return res.status(200).json(data);
+				}
+			})
+		}
+
+		else {
+			return res.status(400).json({error: "Make sure next_project or previous_project is a boolean"})
+		}
+	},
+
 	create: (req, res) => {
 		const body = req.body;
 		Projects

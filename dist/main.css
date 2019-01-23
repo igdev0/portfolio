@@ -1250,28 +1250,31 @@ body {
 .main__project_view .main__project_view-header .main__project_view__header-details {
   margin: 0;
   padding: 0 10px;
-  width: auto;
   box-sizing: border-box;
+  flex-grow: 1;
+  flex-basis: 300px;
+  width: auto;
 }
 .main__project_view .main__project_view-header .main__project_view__header-details .title {
   display: block;
 }
 .main__project_view .main__project_view-header .main__project_view__header-details .title i {
-  padding: 0 10px;
+  padding: 0 5px 0 0;
 }
 .main__project_view .main__project_view-header .main__project_view__header-details .title h4 {
   display: inline;
 }
 .main__project_view .main__project_view-header .main__project_view__header-details .main__project_view__header__details-time {
-  margin: 0;
+  margin: 5px 0;
   padding: 0;
   font-size: 17px;
   width: 100%;
 }
 .main__project_view .main__project_view-header .main__project_view__header-details .main__project_view__header__details-time i {
-  padding: 0 5px;
+  padding: 0 5px 0 0;
 }
 .main__project_view .main__project_view-header .main__project_view__header-details .main__project_view__header__details-time span {
+  padding: 0 5px 0 0;
   font-family: 'Montserrat', sans-serif;
   font-size: inherit;
   color: #333;
@@ -1302,17 +1305,16 @@ body {
   padding: 0;
   height: auto;
   margin: 5px 0;
-  border-bottom: 2px solid #f1f1f1;
   display: block;
   flex-grow: 1;
 }
 .main__project_view .main__project_view-header .main__project_view__header-details .main__project_view__header__details-description p {
   color: #333;
   font-family: 'Montserrat', sans-serif;
-  font-size: 18px;
+  font-size: 17px;
 }
 .main__project_view .main__project_view-header .main__project_view__header-details .main__project_view__header__details-skills {
-  margin: 0;
+  margin: 10px 0;
   padding: 0;
 }
 .main__project_view .main__project_view-header .main__project_view__header-details .main__project_view__header__details-skills .main__project_view__header__details__skills {
@@ -1326,8 +1328,27 @@ body {
   margin: 5px;
   color: #fff;
   padding: 5px;
-  box-shadow: 0 0 5px 0 #000;
   border-radius: 5px;
+}
+.main__project_view .main__project_view-buttons {
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  margin: 5px 0;
+}
+.main__project_view .main__project_view-buttons a:first-child {
+  margin-right: 5px;
+  background: #333;
+}
+.main__project_view .main__project_view-buttons a {
+  flex-grow: 1;
+  text-align: center;
+  padding: 20px 0;
+  background: #222;
+  font-size: 18px;
+  color: #fff;
 }
 
 body {

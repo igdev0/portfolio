@@ -131,7 +131,7 @@ class Projects extends Component {
 						    })}
 						   </div>
 						   <div className="project-action">
-						    <Link to={`/portfolio/${_id}`}>Learn more</Link>
+						    <Link to={`/portfolio/${_id}?key=${key}`}>Learn more</Link>
 						   </div>
 						  </div>
 						</div>

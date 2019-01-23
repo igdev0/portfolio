@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import ProjectView from '../../components/projectView';
-import {fetchProject} from '../../actions';
+import {fetchProject, fetchNextProject, fetchPreviousProject} from '../../actions';
 
 class ProjectViewContainer extends Component {
 	constructor(props) {
@@ -40,7 +40,9 @@ const mapStateToProps = ({project}) => {
 const bindActionCreatorsToProps = (dispatch) => {
 
 	return bindActionCreators({
-		fetchProject
+		fetchProject,
+		fetchNextProject,
+		fetchPreviousProject
 	}, dispatch)
 }
 

@@ -1,4 +1,4 @@
-import {FETCH_PROJECT} from '../actions/types';
+import {FETCH_PROJECT, FETCH_NEXT_PROJECT, FETCH_PREVIOUS_PROJECT} from '../actions/types';
 
 const project = (state = null, action) => {
 
@@ -8,6 +8,13 @@ const project = (state = null, action) => {
 
 			return action.payload.data;
 
+		case FETCH_NEXT_PROJECT:
+			console.log(data)
+			return action.payload.data;
+
+		case FETCH_PREVIOUS_PROJECT:
+			return action.payload.data;
+			
 		default:
 
 			return state;

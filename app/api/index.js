@@ -47,6 +47,30 @@ export const FetchProject = (_id) => {
 	return promise;
 }
 
+export const FetchNextProject = (_id) => {
+	console.log(_id)
+	const promise = axios.get(`/api/projects/${_id}`, {
+		params: {
+			next_project: true,
+			previous_project: false
+		}
+	})
+
+	return {};
+}
+
+export const FetchPreviousProject = (_id) => {
+	console.log(_id)
+	const promise = axios.get(`/api/projects/${_id}`, {
+		params: {
+			next_project: false,
+			previous_project: true
+		}
+	})
+
+	return {};
+}
+
 export const FetchSkills = () => {
 
 	const promise = axios.get('/api/skills');

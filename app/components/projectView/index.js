@@ -1,5 +1,6 @@
 import React from 'react';
 import './style.less';
+import queryString from 'query-string';
 
 // This function takes as parameter ms and transforms in
 // y/m/d 
@@ -44,8 +45,14 @@ const calcExperience = (started_at, finished_at) => {
 	return transformMs(_finished_at - _started_at);
 }
 
-const ProjectView = ({project: {title, description, link, finished_at, started_at, images: {hero: {path, alt}}, skills}}) => {
+const ProjectView = ({
+	project: {_id, title, description, link, finished_at, started_at, images: {hero: {path, alt}}, skills},
+	location,
+	projects,
+	fetchNextProject,
+	fetchPreviousProject
 	
+	}) => {
 	return (
 		<main className="main__project_view">
 		 <header className="main__project_view-header">
@@ -56,17 +63,16 @@ const ProjectView = ({project: {title, description, link, finished_at, started_a
 		   <div className="main__project_view__header__details-title">
 		    <a href={link}><i className="fas fa-link"></i><h3>{title}</h3></a>
 		   </div>
-		   <div className="main__project_view__header__details-time">
-		    <div className="title"><i className="far fa-clock"></i> Time</div>
-		    <span>{calcExperience(started_at, finished_at)}</span>
-		   </div>
 		   <div className="main__project_view__header__details-description">
-		    <div className="title"><h4>Description.</h4></div>
 		    <p>{description}</p>
+		   </div>
+		   <div className="main__project_view__header__details-time">
+		    <div className="title"><i className="far fa-clock"></i>Time spent.</div>
+		    <span>{calcExperience(started_at, finished_at)}</span>
 		   </div>
 		   <div className="main__project_view__header__details-skills">
 		    <div className="title">
-		     <i className="fas fa-memory"></i><h4>Technologies.</h4>
+		     <i className="fas fa-memory"></i><h4>Technologies used.</h4>
 		    </div>
 		     <div className="main__project_view__header__details__skills">
 		     {
@@ -81,6 +87,10 @@ const ProjectView = ({project: {title, description, link, finished_at, started_a
 		   </div>
 		  </div>
 		 </header>
+		 <section className="main__project_view-buttons">
+		  <a href="#" onClick={() => {fetchPreviousProject(_id)}}>Previous</a>
+		  <a href="#" onClick={() => {fetchNextProject(_id)}}>Next</a>
+		 </section>
 		</main>
 	)
 }
