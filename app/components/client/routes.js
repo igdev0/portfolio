@@ -3,6 +3,7 @@ import AboutContainer from '../../containers/about';
 import BlogContainer from '../../containers/blog';
 import BlogPostContainer from '../../containers/blogPost';
 import ProjectsContainer from '../../containers/projects';
+import ProjectViewContainer from '../../containers/projectView';
 
 
 const routes = [
@@ -11,14 +12,6 @@ const routes = [
 		component: Home,
 		exact: true
 	},
-	{
-		path: '/home',
-		component: Home,
-		exact: true,
-		name: "Home",
-		fontAwesomeClass: "fas fa-home"
-	},
-
 	{
 		path: "/blog",
 		exact: true,
@@ -47,6 +40,13 @@ const routes = [
 		component: ProjectsContainer,
 		exact: true,
 		fontAwesomeClass: "fas fa-projects"
+	},
+
+	{
+		path: "/portfolio/:project_id",
+		component: ProjectViewContainer,
+		exact: true,
+		fontAwesomeClass: false
 	}
 ];
 

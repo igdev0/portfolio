@@ -41,6 +41,12 @@ export const FetchProjects = () => {
 	return promise;
 }
 
+export const FetchProject = (_id) => {
+	const promise = axios.get(`/api/projects/${_id}`);
+
+	return promise;
+}
+
 export const FetchSkills = () => {
 
 	const promise = axios.get('/api/skills');

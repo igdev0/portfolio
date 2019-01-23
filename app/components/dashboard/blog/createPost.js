@@ -1,16 +1,10 @@
 import React from 'react';
 import './createPost.less';
-import SelectImageContainer from '../files/containers/SelectImage';
+import SelectImageContainer from '../files/containers/selectImage';
 import {reduxForm, Form, Field, FieldArray} from 'redux-form';
-import ReactMarkdown from 'react-markdown';
-import parseHtml from 'react-markdown/plugins/html-parser';
+import Markdown from 'react-markdown';
 import CodeBlock from './codeblock';
 import AddTagsField from './addTagsField';
-
-const htmlParser = parseHtml({
-  isValidNode: node => node.type !== 'script',
-  processingInstructions: [/* ... */]
-});
 
 const CreatePost = (props) => {
 	 
@@ -67,7 +61,7 @@ const ComposeArticleField = (props) => {
 		  {touched && (error && <span><i className="fas fa-exclamation-circle"></i>{error}</span>)}
 		 </div>
 		 <div className="preview-post">
-		  {input.value.length ? <ReactMarkdown 
+		  {input.value.length ? <Markdown 
 		  className="result-pane"
 		  source={input.value} 
 		  escapeHtml={false}

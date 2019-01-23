@@ -1,13 +1,12 @@
- import React, {Component} from 'react';
-import ReactMarkdown from 'react-markdown';
-import parseHtml from 'react-markdown/plugins/html-parser';
+import React, {Component} from 'react';
 import CodeBlock from './codeblock';
 import Disqus from 'disqus-react';
 import './styles.less';
 
 import {Link} from 'react-router-dom';
+import Markdown from 'react-markdown';
 
-class BlogPost extends Component {
+class BlogPostView extends Component {
 
 	constructor(props) {
 		super(props);
@@ -48,7 +47,7 @@ class BlogPost extends Component {
 			  </div>
 			 </header>
 			 <article className="blog_post-content">
-			  <ReactMarkdown className="result-pane" source={post.body} escapeHtml={false} renderers={{code: CodeBlock}}
+			  <Markdown className="result-pane" source={post.body} escapeHtml={false} renderers={{code: CodeBlock}}
 			  />
 			 </article>
 	         <Disqus.DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
@@ -58,4 +57,4 @@ class BlogPost extends Component {
 	}
 }
 
-export default BlogPost;
+export default BlogPostView;

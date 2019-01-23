@@ -22,7 +22,26 @@ const projectsController = {
 			res.status(200).json(data);
 		})
 	},
+	getOneById: (req, res) => {
+		const {params: {project_id}} = req;
+		
+		Projects
 
+		.findById(project_id)
+
+		.populate('images.card')
+		.populate('images.hero')
+		.populate('skills')
+		.exec((err, data) => {
+
+			if(err) {
+
+				return res.status(400).json({error: err});
+			}
+
+			res.status(200).json(data);
+		})
+	},
 	create: (req, res) => {
 		const body = req.body;
 		Projects

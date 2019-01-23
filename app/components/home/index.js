@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import Slider from 'react-slick';
 
 import banner from './images/banner.png';
 import responsiveDesign from './images/responsive-design.png';

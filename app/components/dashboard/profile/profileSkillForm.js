@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {reduxForm, Form, Field, FieldArray} from 'redux-form';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import SelectImageContainer from '../files/containers/SelectImage';
+import SelectImageContainer from '../files/containers/selectImage';
 import diff from 'object-diff';
 import {LOAD_INITIAL_DATA__FOR__SKILL} from './actions/types';
 import './profileSkillForm.less';

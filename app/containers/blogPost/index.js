@@ -2,8 +2,7 @@ import React, {Component} from 'react';
 import {fetchPost} from '../../actions';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import BlogPost from '../../components/blogPost';
-
+import BlogPostView from '../../components/blogPost';
 class BlogPostContainer extends Component {
 	constructor(props) {
 		super(props);
@@ -20,7 +19,7 @@ class BlogPostContainer extends Component {
 		}
 
 		else {
-			return (<BlogPost {...this.props}/>)
+			return (<BlogPostView {...this.props}/>)
 		}
 	}
 }

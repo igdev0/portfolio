@@ -1,5 +1,5 @@
 import React from 'react';
-import SelectImageContainer from '../files/containers/SelectImage';
+import SelectImageContainer from '../files/containers/selectImage';
 import {reduxForm, Form, Field} from 'redux-form';
 import {LOAD_INITIAL_DATA__FOR__SCHOOL} from './actions/types';
 import {connect} from 'react-redux';

@@ -1,6 +1,6 @@
-import CreatePostContainer from '../containers/CreatePost';
-import UpdatePostContainer from '../containers/UpdatePost';
-import ViewPostsContainter from '../containers/ViewPosts';
+import CreatePostContainer from '../containers/createPost';
+import UpdatePostContainer from '../containers/updatePost';
+import ViewPostsContainter from '../containers/viewPosts';
 
 const routes = [
 	{

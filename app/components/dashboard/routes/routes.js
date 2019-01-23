@@ -1,11 +1,11 @@
 import ProfileContainer from '../profile/container';
 import ProfileOverviewContainer from '../overview/container';
-import BlogContainer from '../../../containers/dashboard/blog-container';
+import BlogDashboardContainer from '../../../containers/dashboard/blogDashboardContainer';
 import Messages from '../messages/messages';
 import PortfolioContainer from '../portfolio/containers';
 import Skills from '../skills/skills';
 import Todo from '../todo/todo';
-import FilesContainer from '../files/containers/Files';
+import FilesContainer from '../files/containers/files';
 
 // Aside dashboard routes.
 
@@ -36,7 +36,7 @@ const Routes = [
 
 	{
 		path: '/dashboard/blog',
-		component: BlogContainer,
+		component: BlogDashboardContainer,
 		exact: false,
 		name: 'Blog',
 		as: 'C'

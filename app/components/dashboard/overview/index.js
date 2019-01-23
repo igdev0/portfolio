@@ -4,7 +4,7 @@ import './profileOverview.less';
 
 const calcExperience = (milliseconds) => {
 	let seconds, days, hours, minutes, months;
-
+    
 	let sec = 0; let min = 0;
 	let hour = 0; let day = 0;
 	let year = 0; let month = 0;

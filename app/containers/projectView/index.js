@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+import ProjectView from '../../components/projectView';
 import {fetchProject} from '../../actions';
 
 class ProjectViewContainer extends Component {
@@ -9,11 +10,23 @@ class ProjectViewContainer extends Component {
 
 	}
 
+	componentDidMount() {
+		const {match: {params: {project_id}}} = this.props;
+		this.props.fetchProject(project_id);
+
+	}
+
 	render() {
 
-		return (
-			<h1>Hello world</h1>
-		)
+		if(!this.props.project) {
+			return (<h1>Loading ...</h1>)
+		}
+
+		else {
+			return (
+				<ProjectView {...this.props}/>
+			)
+		}
 	}
 }
 
@@ -26,7 +39,7 @@ const mapStateToProps = ({project}) => {
 
 const bindActionCreatorsToProps = (dispatch) => {
 
-	bindActionCreators({
+	return bindActionCreators({
 		fetchProject
 	}, dispatch)
 }

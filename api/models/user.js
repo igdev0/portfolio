@@ -1,5 +1,5 @@
 import mongodb from '../../config/mongodb';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 import jsonwebtoken from 'jwt-simple';
 import config from '../../config';
 const Schema = mongodb.Schema;

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './files.less';
-import file from '../blog/blog_post.svg';
+import file from '../blog/blog-p.svg';
 import {Form, Field, Fields, reduxForm} from 'redux-form';
 import images from './images.svg';
 import Moment from 'react-moment';

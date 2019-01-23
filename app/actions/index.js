@@ -1,8 +1,8 @@
 import {LOGIN_REQUEST, LOGIN_ERROR, LOG_OUT,
 		FETCH_PROFILE, FETCH_POSTS, FETCH_POST_BY_ID,
-		FETCH_PROJECTS, FETCH_SKILLS} from './types';
+		FETCH_PROJECTS, FETCH_SKILLS, FETCH_PROJECT} from './types';
 
-import {Login, FetchProfile, FetchPosts, FetchPost, FetchProjects, FetchSkills} from '../api';
+import {Login, FetchProfile, FetchPosts, FetchPost, FetchProjects, FetchProject, FetchSkills} from '../api';
 
 
 // Log in actions
@@ -71,6 +71,15 @@ export const fetchProjects = () => {
 
 	return {
 		type: FETCH_PROJECTS,
+		payload: payload
+	}
+}
+
+export const fetchProject = (_id) => {
+	const payload = FetchProject(_id);
+
+	return {
+		type: FETCH_PROJECT,
 		payload: payload
 	}
 }

@@ -22,3 +22,4 @@ export const FETCH_POST_BY_ID = "FETCH_POST_BY_ID";
 export const FETCH_PROJECTS = "FETCH_PROJECTS";
 
 export const FETCH_SKILLS = "FETCH_SKILLS";
+export const FETCH_PROJECT = "FETCH_PROJECT";

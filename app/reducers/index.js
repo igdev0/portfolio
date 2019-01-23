@@ -14,7 +14,7 @@ import overview from './overview';
 import initialData from './initialData';
 import profileIntroduction from './profileIntroduction';
 import profile from './profile';
-
+import project from './project';
 
 const rootReducer = combineReducers({
 	form: formReducer,
@@ -30,7 +30,8 @@ const rootReducer = combineReducers({
 	initialData,
 	projects,
 	overview,
-	profile
+	profile,
+	project
 })
 
 export default rootReducer;

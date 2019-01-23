@@ -40,7 +40,7 @@ class Aside extends Component {
 		  </div>
 		  <div className="app_main__sidebar-nav">
 		   <ul className="app_main__sidebar__nav">
-		    <li><Link to="/home"><i className="fas fa-home"></i><CSSTransition in={this.state.sidebar} timeout={100} classNames="linkName" unmountOnExit><span>Home</span></CSSTransition></Link></li>
+		    <li><Link to="/"><i className="fas fa-home"></i><CSSTransition in={this.state.sidebar} timeout={100} classNames="linkName" unmountOnExit><span>Home</span></CSSTransition></Link></li>
 		    <li><Link to="/profile"><i className="fas fa-user"></i><CSSTransition in={this.state.sidebar} timeout={100} classNames="linkName" unmountOnExit><span>About</span></CSSTransition></Link></li>
 		    <li><Link to="/blog"><i className="fab fa-blogger-b"></i><CSSTransition in={this.state.sidebar} timeout={100} classNames="linkName" unmountOnExit><span>Blog</span></CSSTransition></Link></li>
 		    <li><Link to="/portfolio"><i className="fas fa-project-diagram"></i><CSSTransition in={this.state.sidebar} timeout={100} classNames="linkName" unmountOnExit><span>Projects</span></CSSTransition></Link></li>

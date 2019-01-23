@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import UpdatePost from '../updatePost';
+import UpdatePostView from '../updatePostView';
 import diff from 'object-diff';
 import {deletePost, updatePost, fetchPostById} from '../actions';
 
@@ -47,7 +47,7 @@ class UpdatePostContainer extends Component {
 
 			// else {
 				return (
-					<UpdatePost {...this.props} handleFormSubmit={this.handleFormSubmit}/>
+					<UpdatePostView {...this.props} handleFormSubmit={this.handleFormSubmit}/>
 				)
 			}
 		// }

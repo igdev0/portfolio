@@ -4,7 +4,6 @@ import routes from './routes';
 import {Route, Router} from 'react-router-dom';
 import createBrowserHistory from 'history/createBrowserHistory';
 import './client.less';
-
 const Client = () => {
 
 	return (

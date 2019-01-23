@@ -1,6 +1,20 @@
 import React, {Component} from 'react';
 import user from './images/user.png';
+import {Panel, PanelGroup} from 'react-bootstrap';
 import './style.less';
+
+function hexToRgbA(hex, opacity){
+    var c;
+    if(/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)){
+        c= hex.substring(1).split('');
+        if(c.length== 3){
+            c= [c[0], c[0], c[1], c[1], c[2], c[2]];
+        }
+        c= '0x'+c.join('');
+        return 'rgba('+[(c>>16)&255, (c>>8)&255, c&255].join(',')+', ' + opacity + ')';
+    }
+    throw new Error('Bad Hex');
+}
 
 class About extends Component {
 	
@@ -9,12 +23,19 @@ class About extends Component {
 
 		this.state = {
 			selected_skill: 0,
-			selected_school: 0
+			selected_school: 0,
+			active_key: "0"
 		}
 
 		this.calcExperience = this.calcExperience.bind(this);
-	
+		this.togglePanel = this.togglePanel.bind(this);
 		this.LightenDarkenColor = this.LightenDarkenColor.bind(this);
+	}
+
+	togglePanel(key) {
+		this.setState({
+			active_key: key
+		})
 	}
 
 	transformMs(milliseconds) {
@@ -43,11 +64,7 @@ class About extends Component {
 			milliseconds -= one_day_in_ms * day;
 		}
 
-	    return {
-	    	day,
-	    	month,
-	    	year
-	    };
+	    return `${year} year(s), ${month} month(s), ${day} day(s)`;
 	}
 
 	LightenDarkenColor(col, amt) {
@@ -83,7 +100,7 @@ class About extends Component {
 	calcExperience(experience) {
 		const experience_from = new Date(experience.from).getTime(); //returns date in ms
 		const experience_to = new Date(experience.to); // returns date in ms
-	
+		
 		return this.transformMs(experience_to - experience_from);
 	}
 
@@ -100,30 +117,13 @@ class About extends Component {
 			 <section className="about__main-skills">
 			  <h1>Skills</h1>
 			  <div className="about__main__skills">
-			   <div className="about__main__skills-skill">
-			   	<div className="about__main__skills__skill-header">
-			   	  <div className="img-wrapper">
-			   	   <img src={`${window.location.origin}/${this.props.profile.skills[this.state.selected_skill].icon.path}`}/>
-			   	  </div>
-			   	  <div className="about__main__skills__skill__header-details">
-			   	   <p>Experience:
-			   	   <span>{this.calcExperience(this.props.profile.skills[this.state.selected_skill].experience).year} years,
-			   	   {this.calcExperience(this.props.profile.skills[this.state.selected_skill].experience).month} months,
-			   	   {this.calcExperience(this.props.profile.skills[this.state.selected_skill].experience).day} days</span>
-			   	  </p>
-			   	  <p>Name: <span>{this.props.profile.skills[this.state.selected_skill].name} </span></p>
-			   	  </div>
-			   	</div>
-			   	<div className="about__main__skills__skill-description">
-			   	 <p>{this.props.profile.skills[this.state.selected_skill].description}</p>
-			   	</div>
-			   </div>
+			   
 			   <div className="about__main__skills-all">
 			    {
 			    	this.props.profile.skills.map((skill, key) => {
 			    		return (
 			    			<div className="skill" key={key} onClick={() => {this.setState({selected_skill: key})}}>
-			    			 <div className="skill-level" style={{width: skill.level + '%', background: skill.color}}>
+			    			 <div className="skill-level" style={{width: skill.level + '%', background: key === this.state.selected_skill ? skill.color : hexToRgbA(skill.color, 0.5)}}>
 			    			  <div className="skill-icon">
 			    			   <img src={`${window.location.origin}/${skill.icon.path}`}/>
 			    			  </div>
@@ -133,34 +133,42 @@ class About extends Component {
 			    	})
 			    }		    
 			   </div>
+			   <div className="about__main__skills-skill">
+			   	<div className="about__main__skills__skill-header">
+			   	  <div className="img-wrapper">
+			   	   <img src={`${window.location.origin}/${this.props.profile.skills[this.state.selected_skill].icon.path}`}/>
+			   	  </div>
+			   	  <div className="about__main__skills__skill__header-details">
+			   	   <p>Experience:
+			   	   <span>{this.calcExperience(this.props.profile.skills[this.state.selected_skill].experience)}</span>
+			   	  </p>
+			   	  <p><span>{this.props.profile.skills[this.state.selected_skill].name} </span></p>
+			   	  </div>
+			   	</div>
+			   	<div className="about__main__skills__skill-description">
+			   	 <p>{this.props.profile.skills[this.state.selected_skill].description}</p>
+			   	</div>
+			   </div>
 			  </div>
 			 </section>
 			 <section className="about__main-education">
 			  <h1>Education</h1>
 			  
-			  <div className="about__main__education">
+			  <PanelGroup id="accordion-controlled-example" accordion defaultActiveKey="2"  onSelect={this.togglePanel}>
 			   {
-			  	this.props.profile.education.map(({name, logo, description, experience, color}, key) => {
+			   	this.props.profile.education.map((s, key) => {
 
-			  		return (
-			  			<div key={key} className="about__main__education-card">
-			  			  <div className="about__main__education__card-details">
-			  			   <span>Name: {name}</span>
-			  			   <span><i className="fas fa-hourglass-start"></i> Started on: {new Date(experience.from).toLocaleDateString()}</span>
-			  			   <span><i className="fas fa-hourglass-end"></i> Ended on: {new Date(experience.to).toLocaleDateString()}</span>
-			  			   <span><i className="far fa-clock"></i> Total time: {this.calcExperience(experience).year} year(s) {this.calcExperience(experience).month} month(s)</span>
-			  			  </div>
-			  			  <div className="about__main__education__card-img">
-			  			   <img src={`${window.location.origin}/${logo.path}`}/>
-			  			  </div>
-			  			  <div className="about__main__education__card-description">
-			  			   <p>{description}</p>
-			  			  </div>
-			  			</div>
-			  		)
-			  	})
+			   		return (
+			   			<Panel eventKey={key} key={key}>
+			   			 <Panel.Heading>
+			   			 	<Panel.Title toggle><img src={`${window.location.origin}/${s.logo.path}`} style={{height: '100%', width: '100px'}}/><h4 style={{marginLeft:"20px", display: "inline"}}>{this.calcExperience(s.experience)}</h4></Panel.Title>
+			   			 </Panel.Heading>
+			   			 <Panel.Body collapsible>{s.description}</Panel.Body>
+			   			</Panel>
+			   		)
+			   	})
 			   }
-			  </div>
+			  </PanelGroup>
 			 </section>
 			</main>
 		)

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Form, reduxForm, Field, FieldArray} from 'redux-form';
 import {connect} from 'react-redux';
-import SelectImageContainer from '../files/containers/SelectImage';
+import SelectImageContainer from '../files/containers/selectImage';
 import RenderMultiselect from '../profile/renderMultiselect';
 import diff from 'object-diff';
 import {LOAD_INITIAL_DATA, RESET_INITIAL_DATA} from './actions/types';

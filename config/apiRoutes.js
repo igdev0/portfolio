@@ -65,6 +65,7 @@ const initApiRoutes = (app) => {
 	// =====================
 
 	app.get('/api/projects', projectsController.get);
+	app.get('/api/projects/:project_id', projectsController.getOneById);
 	app.post('/api/projects', projectsController.create);
 	app.put('/api/projects', projectsController.update);
 	app.delete('/api/projects', projectsController.delete);

@@ -8,13 +8,7 @@ const routes = [
 		exact: true,
 		component: Client
 	},
-
-	{
-		path: "/home",
-		exact: false,
-		component: Client
-	},
-
+	
 	{
 		path: "/profile",
 		exact: false,
