@@ -15,15 +15,29 @@
 	background-image: url('./images/banner.png');
 	background-position: center;
 	background-size: cover;
+	
+	
 
 	.app_main__section__header-intro {
-		margin: 10px;
+		margin: 0px;
 		padding: 0;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
 		flex-basis: 700px;
+		@media only screen and (max-width: @sizes[large]) {
+			flex-basis: 500px;
+		}
+
+		@media only screen and (max-width: @sizes[medium]) {
+			flex-basis: 400px;
+		}
+
+		@media only screen and (max-width: @sizes[small]) {
+			flex-basis: auto;
+			padding: 10px;
+		}
 
 		.app_main__section__header__intro-title {
 			margin: 0;
@@ -224,11 +238,13 @@
 
 				@media only screen and (max-width: @sizes[medium]) {
 					padding: 15px 0;
+					font-size: 1em;
 				}
 
 				// mobile
 				@media only screen and (max-width: @sizes[small]) {
 					padding: 10px 0;
+					font-size: 1em;
 				}
 			
 				&:hover {

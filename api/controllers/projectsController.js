@@ -9,6 +9,7 @@ const projectsController = {
 		Projects
 
 		.find()
+		.sort({_id: 1})
 		.populate('images.card')
 		.populate('images.hero')
 		.populate('skills')
@@ -52,15 +53,14 @@ const projectsController = {
 	getSiblings: (req, res) => {
 		const {params: {project_id}} = req;
 		const {query: { next_project, previous_project}} = req;
-		console.log(project_id, next_project, previous_project)
-		if(next_project) {
+
+		if(next_project === "true") {
+			console.log('This statement is true "Next project"')
 			Projects
 
-			.find({_id: {$gt: project_id}})
-			.sort({_id: 1})
-			.limit(1)
+			.findOne({_id: {$gt: project_id}})
 			.populate({
-				path: 'images'
+				path: 'images.hero'
 			})
 			.populate({
 				path: 'skills'
@@ -78,14 +78,13 @@ const projectsController = {
 			})
 		}
 
-		if(previous_project) {
+		if(previous_project === "true") {
+			console.log('This statement is true "Prev project"')
 			Projects
 
-			.find({_id: {$lt: project_id}})
-			.sort({_id: -1})
-			.limit(1)
+			.findOne({_id: {$lt: project_id}})
 			.populate({
-				path: 'images'
+				path: 'images.hero'
 			})
 			.populate({
 				path: 'skills'
@@ -101,9 +100,9 @@ const projectsController = {
 			})
 		}
 
-		else {
-			return res.status(400).json({error: "Make sure next_project or previous_project is a boolean"})
-		}
+		// else {
+		// 	return res.status(400).json({error: "Make sure next_project or previous_project is a boolean"})
+		// }
 	},
 
 	create: (req, res) => {

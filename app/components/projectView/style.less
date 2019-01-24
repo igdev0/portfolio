@@ -22,6 +22,8 @@
 			height: 100%;
 			flex-grow: 2;
 			flex-basis: 600px;
+			height: 90vh;
+			overflow: hidden;
 
 			img {
 				width: 100%;
@@ -136,18 +138,42 @@
 		display: flex;
 		margin: 5px 0;
 
+		a {
+			i {
+				transition: all .3s ease-in-out;
+			}
+		}
+
 		a:first-child {
 			margin-right: 5px;
-			background: #333;
+			background: #3C2778;
+
+			&:hover {
+				background: #442c8c;
+
+				i {
+					transform: translateX(-20px);
+					transition: all .3s ease-in-out;
+				}
+			}
 		}
 
 		a {
 			flex-grow: 1;
 			text-align: center;
 			padding: 20px 0;
-			background: #222;
+			background: #76429C;
 			font-size: 18px;
 			color: #fff;
+		}
+
+		a:hover {
+			background: #834cad;
+
+			i {
+				transform: translateX(20px);
+				transition: all .3s ease-in-out;
+			}
 		}
 	}
 }

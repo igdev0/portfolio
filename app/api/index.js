@@ -56,7 +56,7 @@ export const FetchNextProject = (_id) => {
 		}
 	})
 
-	return {};
+	return promise;
 }
 
 export const FetchPreviousProject = (_id) => {
@@ -68,7 +68,7 @@ export const FetchPreviousProject = (_id) => {
 		}
 	})
 
-	return {};
+	return promise;
 }
 
 export const FetchSkills = () => {

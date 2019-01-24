@@ -37,7 +37,7 @@
 		left: 0;
 		top: 0;
 		width: if(@mobile, 100%, none);
-		flex-basis: if(@mobile, auto, 350px);
+		flex-basis: if(@mobile, auto, 250px);
 		transition: all .5s ease-in-out;
 	}
 
@@ -46,7 +46,7 @@
 		left: 0;
 		top: 0;
 		width: if(@mobile, 100%, none);
-		flex-basis: if(@mobile, 0px, 350px);
+		flex-basis: if(@mobile, 0px, 250px);
 		transition: all .5s ease-in-out;
 	}
 	
@@ -58,7 +58,7 @@
 		left: 0;
 		top: 0;
 		width: if(@mobile, 100%, none);
-		flex-basis: if(@mobile, 0, 350px);
+		flex-basis: if(@mobile, 0, 250px);
 		transition: all .5s ease-in-out;
 		z-index: 1000;
 	}
@@ -100,29 +100,38 @@
 	height: 100%;
 	z-index: 1000;
 	background: @aside__background__color;
+	min-width: 150px;
 	flex-grow: 0;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
+	box-shadow: 0 0 10px 0 #f1f1f1;
+
+	@media only screen and (max-width: @sizes[medium]) {
+		min-width: 100px;
+		transition: all .5s;
+	}
+
+	// mobile
+	@media only screen and (max-width: @sizes[small]) {
+		min-width: 75px;
+		transition: all .5s;
+	}
 	
 	.app_main__sidebar-header {
 		margin: 0;
 		padding: 0;
 		flex-grow: 0;
 		background: rgba(255, 255, 255, 0.1);
+		overflow: hidden;
+		z-index: 1000;
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
 
 		.app_main__sidebar__header-logo {
 			margin: 0;
-			padding: 0;
-			display: flex;
-			flex-direction: row;
-			justify-content: space-between;
 			padding: 10px;
-			p {
-				font-weight: bold;
-				font-family: sans-serif;
-				color: #fff;
-			}
+			background: #662D91;
 
 			span.toggle-button {
 				cursor: pointer;
@@ -135,21 +144,21 @@
 		}
 
 		.app_main__sidebar__header-img {
-			margin: 0;
-			padding: 10px;
+			max-width: 150px;
+			height: 150px;
+			padding: 5px;
+			overflow: hidden;
 			visibility: visible;
 			transition: all .5s;
+			display: flex;
+			align-items: center;
 			overflow: hidden;
-			text-align: center;
-			max-width: 150px;
-			margin-left: auto;
-			margin-right: auto;
-			width: 100%;
 			
 			img {
 				width: 100%;
 				height: auto;
 				clip-path: circle();
+				object-fit: cover;
 				background: #fff;
 			}	
 		}
@@ -158,14 +167,14 @@
 	.app_main__sidebar-nav {
 		margin: 0;
 		padding: 0;
-		flex-grow: 0;
+		flex-grow: 1;
+		display: flex;
+		align-items: center;
 
 		.app_main__sidebar__nav {
 			margin: 0;
 			padding: 0;
 			width: 100%;
-			flex-grow: 0;
-			align-self: center;
 
 			li {
 				width: 100%;
@@ -180,16 +189,20 @@
 					padding: 10px 20px;
 					color: #fff;
 					font-weight: bolder;
+					@media only screen and (max-width: @sizes[small]){
+						font-size: 1em;
+						padding: 7.5px 17.5px;
+					}
 					
 					// ======================================================
 
 					// Tablet
-					@media only screen and (max-width: @sizes[medium]) {
+					@media only screen and (max-width: @sizes[medium]){
 						padding: 5px 10px;
 					}
 
 					// mobile
-					@media only screen and (max-width: @sizes[small]) {
+					@media only screen and (max-width: @sizes[small])  {
 						padding: 2.5px 5px;
 					}
 					// ===================================================
@@ -197,6 +210,10 @@
 						padding: 5px;
 						font-size: 2em;
 						display: inline-block;
+
+						@media only screen and (max-width: @sizes[small]) {
+							font-size: 1.5em;
+						}
 					}
 
 					span {
@@ -218,11 +235,34 @@
 		}
 	}
 	
+	.app_main__sidebar-cv {
+		flex-grow: 1;
+		display: flex;
+		justify-content: center;
+
+		align-items: center;
+		padding: 0 10px;
+		@media only screen and (max-width: @sizes[small]) {
+			padding: 0;
+			margin: 5px 0;
+			font-size: 16px;
+		}
+
+		button {
+			white-space: normal;
+			@media only screen and (max-width: @sizes[small]) {
+				padding: 0;
+				margin: 0;
+				width: 100%;
+			}
+		}
+	}
+
 	.app_main__sidebar-social {
 		margin: 0;
 		padding: 0;
 		background: #3C2778;
-		flex-grow: 1;
+		flex-grow: 0;
 
 		ul {
 			padding: 0;

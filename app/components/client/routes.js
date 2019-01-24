@@ -4,6 +4,7 @@ import BlogContainer from '../../containers/blog';
 import BlogPostContainer from '../../containers/blogPost';
 import ProjectsContainer from '../../containers/projects';
 import ProjectViewContainer from '../../containers/projectView';
+import ContactContainer from '../../containers/contact';
 
 
 const routes = [
@@ -47,6 +48,13 @@ const routes = [
 		component: ProjectViewContainer,
 		exact: true,
 		fontAwesomeClass: false
+	},
+
+	{
+		path: '/contact',
+		exact: true,
+		component: ContactContainer,
+		as: 'C'
 	}
 ];
 

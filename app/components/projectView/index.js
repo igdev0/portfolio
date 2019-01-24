@@ -1,6 +1,7 @@
 import React from 'react';
 import './style.less';
 import queryString from 'query-string';
+import {Link} from 'react-router-dom';
 
 // This function takes as parameter ms and transforms in
 // y/m/d 
@@ -88,8 +89,8 @@ const ProjectView = ({
 		  </div>
 		 </header>
 		 <section className="main__project_view-buttons">
-		  <a href="#" onClick={() => {fetchPreviousProject(_id)}}>Previous</a>
-		  <a href="#" onClick={() => {fetchNextProject(_id)}}>Next</a>
+		  <Link to={`/portfolio/${_id}`} onClick={() => {fetchPreviousProject(_id)}}><i className="fas fa-arrow-left"></i></Link>
+		  <Link to={`/portfolio/${_id}`} onClick={() => {fetchNextProject(_id)}}><i className="fas fa-arrow-right"></i></Link>
 		 </section>
 		</main>
 	)

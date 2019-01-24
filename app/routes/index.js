@@ -39,6 +39,13 @@ const routes = [
 		exact: false,
 		component: LoginContainer,
 		as: 'C'
+	},
+
+	{
+		path: '/contact',
+		exact: false,
+		component: Client,
+		as: 'C'
 	}
 ]
 

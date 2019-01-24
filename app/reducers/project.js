@@ -9,11 +9,10 @@ const project = (state = null, action) => {
 			return action.payload.data;
 
 		case FETCH_NEXT_PROJECT:
-			console.log(data)
-			return action.payload.data;
+			return action.payload.data === null ? state : action.payload.data;
 
 		case FETCH_PREVIOUS_PROJECT:
-			return action.payload.data;
+			return action.payload.data === null ? state : action.payload.data;
 			
 		default:
 
