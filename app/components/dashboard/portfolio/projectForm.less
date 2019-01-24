@@ -1,0 +1,93 @@
+.project__form {
+	width: 100%;
+	height: auto;
+	margin: 0;
+	padding: 0;
+
+	.flex-row {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+
+		.flex-col {
+			flex-basis: 350px;
+			height: auto;
+			margin: 0;
+			padding: 0;
+			flex-grow: 1;
+			
+			.project__form-actions {
+				width: 100%;
+				height: auto;
+				margin: 10px 0;
+				padding: 10px 0;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+
+			.project-images {
+				position: relative;
+				display: flex;
+				margin: 0;
+				padding: 5px;
+				flex-direction: row;
+
+				.select__image__container {
+					flex-grow: 1;
+					padding: 5px;
+
+					button {
+						width: 100%;
+					}
+				}
+			}
+
+			.project-skills {
+				padding: 0 10px;
+				.fieldset__find__skill__and__actions {
+					width: 100%;
+				}
+			}
+
+			.input-wrapper {
+				width: 100%;
+				height: auto;
+				margin: 0;
+				padding: 5px;
+				box-sizing: border-box;
+
+				input,
+				textarea {
+					width: 100%;
+					height: auto;
+					margin: 0;
+					padding: 4px;
+					font-size: 17px;
+					border: 3px solid #dbdbdb;
+					border-radius: 4px;
+				}
+
+				textarea {
+					resize: vertical;
+					max-height: 250px;
+				}
+			}
+
+			.input-group {
+				display: flex;
+				flex-direction: row;
+				flex-wrap: nowrap;
+				margin: 1.5px 0;
+
+				.input-wrapper {
+					flex-grow: 1;
+					flex-basis: 170px;
+					input {
+						width: 100%;
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,93 @@
+
+.display__school-skills {
+		position: relative;
+		flex-basis: 100px;
+		display: block;
+		background: #f9f9f9;
+		border: 4px solid #f8f8f8;
+		
+		ul.skills__grid {
+			max-height: 300px;
+			height: 175px;
+			padding: 0;
+			margin: 0;
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			overflow-y: auto;
+			list-style-type: none;
+			
+			li.skills__grid-cell {
+				height: auto;
+				position: relative;
+				margin: 5px;
+				padding: 0;
+				list-style-type: none;
+
+				.skills__grid__cell-item {
+					margin: 0;
+					padding: 0;
+					background: #f1f1f1;
+					padding: 5px;
+					border-radius: 5px;
+					border: 2px solid #fff;
+					.skill-icon {
+						width: 100%;
+						height: auto;
+						text-align: center;
+						img {
+							max-height: 50px;
+							height: auto;
+						}
+					}
+					
+					.actions {
+						width: 100%;
+						height: auto;
+						margin: 0;
+						background: #f9f9f9;
+						border-top: 3px solid #333;
+						i {
+							font-size: 17px;
+							color: #fff;
+							padding: 2px 5px;
+						}
+						
+						i.fa-times-circle {
+							color: #fc4300;
+						}
+						
+						i.fa-edit {
+							color: #0071bb;
+						}
+					}
+				}
+			}
+		}
+
+		.school__skills-actions {
+			flex-grow: 0;
+			position: relative;
+			width: 100%;
+			display: flex;
+			flex-direction: row;
+			flex-wrap: nowrap;
+			border-top: 2px solid #f1f1f1;
+			
+			.school__skills__action-buttons {
+				
+				button {
+					margin: 10px 5px 0px 5px;
+				}
+			}
+			
+			.find__skill__form {
+				height: auto;
+				margin: 0;
+				padding: 0;
+				display: flex;
+				flex-direction: row;
+				
+			}
+		}
+	}
