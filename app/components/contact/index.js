@@ -2,18 +2,29 @@ import React from 'react';
 import {reduxForm, Form, Field} from 'redux-form';
 import {connect} from 'react-redux';
 import './styles.less';
+import header from './header.png';
 
 const Contact = (props) => {
 
 	return (
 		<main className="main__contact">
-		 <Form className="main__contact-form" onSubmit={props.handleSubmit(props.handleFormSubmit)}>
-		  <Field type="text" name="name" label="Your name" component={InputFieldComponent}/>
-		  <Field type="text" name="subject" label="Subject" component={InputFieldComponent}/>
-		  <Field type="email" name="email" label="email" component={InputFieldComponent}/>
-		  <Field type="text" name="body" label="Write ..." component={TextareaFieldComponent}/>
-		  <button type="submit" className="btn btn-primary">Send</button>
-		 </Form>
+		 <section className="main__contact-section">
+		  <div className="content">
+		  <h1>I'm glad you stop by, how can i help ? <i className="fas fa-smile-beam"></i></h1>
+		  <div className="main__contact-note">
+		   <p><i className="fas fa-info-circle"></i> I can only answer to phone calls friday. For any emergency please message me and i'll try my best to call you back later.</p>
+		  </div>
+		  <p className="contact-info"><i className="fas fa-envelope"></i> dorultanianos@gmail.com</p>
+		  <p className="contact-info"><i className="fas fa-mobile"></i> 07481290009</p>
+		  </div>
+		  <Form className="main__contact-form" onSubmit={props.handleSubmit(props.handleFormSubmit)}>
+		   <Field type="text" name="name" label="Your name" component={InputFieldComponent}/>
+		   <Field type="text" name="subject" label="Subject" component={InputFieldComponent}/>
+		   <Field type="email" name="email" label="email" component={InputFieldComponent}/>
+		   <Field type="text" name="body" label="Write ..." component={TextareaFieldComponent}/>
+		   <button type="submit" className="btn btn-primary">Send</button>
+		  </Form>
+		 </section>
 		</main>
 	)
 }
