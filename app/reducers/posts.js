@@ -1,4 +1,4 @@
-import {CREATE_POST, DELETE_POST, UPDATE_POST, FETCH_POSTS} from '../components/dashboard/blog/actions/types';
+import {CREATE_POST, DELETE_POST, UPDATE_POST, FETCH_POSTS} from '../actions/types';
 
 const posts = (state = [], action) => {
 

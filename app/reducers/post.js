@@ -1,4 +1,4 @@
-import {FETCH_POST_BY_ID, UPDATE_POST} from '../components/dashboard/blog/actions/types';
+import {FETCH_POST_BY_ID, UPDATE_POST} from '../actions/types';
 
 const post = (state = null, action) => {
 
@@ -11,8 +11,8 @@ const post = (state = null, action) => {
 		case UPDATE_POST:
 
 			return action.payload.data;
-		 
-		default: 
+
+		default:
 
 			return state;
 

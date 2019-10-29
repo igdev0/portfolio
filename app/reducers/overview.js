@@ -1,4 +1,4 @@
-import {FETCH_OVERVIEW} from '../components/dashboard/overview/actions/types';
+import {FETCH_OVERVIEW} from '../actions/types';
 
 const overview = (state = null, action) => {
 

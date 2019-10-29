@@ -1,4 +1,4 @@
-import {FETCH_PROJECTS, CREATE_PROJECT, DELETE_PROJECT, UPDATE_PROJECT} from '../components/dashboard/portfolio/actions/types';
+import {FETCH_PROJECTS, CREATE_PROJECT, DELETE_PROJECT, UPDATE_PROJECT} from '../actions/types';
 
 const projects = (state = null, action) => {
 
@@ -12,7 +12,7 @@ const projects = (state = null, action) => {
 			return state ? [...state, action.payload.data] : [action.payload.data];
 
 		case UPDATE_PROJECT:
-			
+
 			return state;
 
 		case DELETE_PROJECT:

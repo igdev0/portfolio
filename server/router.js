@@ -9,7 +9,7 @@ import {Provider} from 'react-redux';
 import {StaticRouter, Route} from 'react-router-dom';
 import {matchPath} from 'react-router-dom';
 
-import App from '../app/components/app';
+import App from '../app/components/appComponent';
 
 const renderHtml = (html, content, INIT_DATA) => {
 

@@ -4,21 +4,21 @@ const loginStatus = (state = {}, action) => {
 
 	switch(action.type) {
 
-		case LOGIN_SUCCESS: 
+		case LOGIN_SUCCESS:
 
 			return action.payload;
 
 		case LOGIN_ERROR:
 
 			return action.payload;
-		
+
 		case LOGIN_REQUEST:
 			return action.payload;
 
 		case LOG_OUT:
 			return action.payload;
 
-		default: 
+		default:
 
 			return state;
 	}

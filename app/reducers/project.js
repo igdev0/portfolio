@@ -13,7 +13,7 @@ const project = (state = null, action) => {
 
 		case FETCH_PREVIOUS_PROJECT:
 			return action.payload.data === null ? state : action.payload.data;
-			
+
 		default:
 
 			return state;

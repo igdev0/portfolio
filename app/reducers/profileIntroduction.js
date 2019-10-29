@@ -1,4 +1,4 @@
-import {FETCH_PROFILE_INTRODUCTION, UPDATE_PROFILE_INTRODUCTION} from '../components/dashboard/profile/actions/types';
+import {FETCH_PROFILE_INTRODUCTION, UPDATE_PROFILE_INTRODUCTION} from '../actions/types';
 
 const profileIntroduction = (state = null, action) => {
 	let introduction;
@@ -12,7 +12,7 @@ const profileIntroduction = (state = null, action) => {
 			introduction = action.payload.data.introduction;
 			return {introduction};
 
-		default: 
+		default:
 
 			return state;
 	}

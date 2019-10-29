@@ -1,8 +1,8 @@
-import {LOAD_INITIAL_DATA__FOR__SCHOOL, LOAD_INITIAL_DATA__FOR__SKILL} from '../components/dashboard/profile/actions/types';
-import {LOAD_INITIAL_DATA, RESET_INITIAL_DATA} from '../components/dashboard/portfolio/actions/types';
+import {LOAD_INITIAL_DATA__FOR__SCHOOL, LOAD_INITIAL_DATA__FOR__SKILL} from '../actions/types';
+import {LOAD_INITIAL_DATA, RESET_INITIAL_DATA} from '../actions/types';
 
 const initialData = (state = {}, action) => {
-        
+
 	switch(action.type) {
 
 		case LOAD_INITIAL_DATA__FOR__SKILL:
@@ -19,10 +19,10 @@ const initialData = (state = {}, action) => {
 
 			return action.payload || {};
 
-		default: 
+		default:
 
 			return state;
 	}
-} 
+}
 
 export default initialData;

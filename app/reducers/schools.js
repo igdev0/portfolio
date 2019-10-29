@@ -1,5 +1,5 @@
 import {FETCH_SCHOOLS, CREATE_SCHOOL, UPDATE_SCHOOL, DELETE_SCHOOL,
-		CREATE_SKILL, UPDATE_SKILL, DELETE_SKILL, UPDATE_SCHOOL_SKILLS} from '../components/dashboard/profile/actions/types';
+		CREATE_SKILL, UPDATE_SKILL, DELETE_SKILL, UPDATE_SCHOOL_SKILLS} from '../actions/types';
 
 const schools = (state = null, action) => {
 
@@ -22,7 +22,7 @@ const schools = (state = null, action) => {
 
 			return [...state];
 
-		case UPDATE_SCHOOL_SKILLS: 
+		case UPDATE_SCHOOL_SKILLS:
 			state.forEach((item, idx) => {
 				if(item._id === action.payload.data._id) {
 					state.splice(idx, 1, action.payload.data);
@@ -33,7 +33,7 @@ const schools = (state = null, action) => {
 
 		case DELETE_SCHOOL:
 			state = state !== null ? state.filter(item => {return item._id !== action.payload.data._id}) : null;
-	
+
 			return [...state];
 
 		case CREATE_SKILL:
@@ -46,7 +46,7 @@ const schools = (state = null, action) => {
 
 			return [...state];
 
-		case DELETE_SKILL: 
+		case DELETE_SKILL:
 			const __state = state;
 			state.forEach((item, idx)=> {
 
@@ -55,7 +55,7 @@ const schools = (state = null, action) => {
 				}
 			})
 			return [...state];
-		default: 
+		default:
 
 			return state;
 	}

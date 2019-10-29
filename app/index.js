@@ -2,35 +2,54 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import {Router, Route} from 'react-router-dom';
 import {Provider} from 'react-redux';
-
+import Aside from './components/asideComponent';
 import reduxPromise from 'redux-promise';
 import thunk from 'redux-thunk';
 import {Store} from 'react-redux';
 import {createStore, applyMiddleware} from 'redux';
-import createBrowserHistory from 'history/createBrowserHistory';
 import rootReducer from './reducers';
 
-import App from './components/app';
+import App from './components/appComponent';
 import routes from './routes';
-
+const history = require('history').createBrowserHistory;
 const initState = window.__INIT_STATE__;
 delete window.__INIT_STATE__;
-
-const history = createBrowserHistory();
 const store = createStore(rootReducer, initState, applyMiddleware(reduxPromise, thunk));
 
 ReactDOM.hydrate(
 <Provider store={store}>
- <Router history={history}>
+ <Router history={history()}>
   <App>
    {
-  	routes.map(({path, exact, component}, key) => {
-  		return (
-  		 <Route key={key} path={path} exact={exact} component={component}/>
-  		)
+  	routes.map(({path, exact, component, routes}, key) => {
+      const C = component;
+      if(!path.includes('/dashboard')) {
+        return (
+          <Route key={key} path={path} exact={exact} render={(props) => {
+            return (
+              <main className="app_main">
+               <Aside/>
+               <section className="app_main__section">
+                <C {...props}/>
+              </section>
+            </main>
+          )
+          }}/>
+        )
+      }
+
+  		else {
+        return (
+    		 <Route key={key} path={path} exact={exact} render={(props) => {
+
+             return <C {...props} routes={routes}/>
+           }
+         }
+          />
+    		)
+      }
   	})
    }
   </App>
- </Router>	
+ </Router>
 </Provider>, document.getElementById('root'));
-

@@ -1,9 +1,9 @@
-import {CREATE_CATEGORY, 
-		DELETE_CATEGORY, 
-		UPDATE_CATEGORY, 
+import {CREATE_CATEGORY,
+		DELETE_CATEGORY,
+		UPDATE_CATEGORY,
 		FETCH_CATEGORIES,
 		FETCH_CATEGORY,
-		DELETE_POST} from '../components/dashboard/blog/actions/types';
+		DELETE_POST} from '../actions/types';
 
 const categories = (state = [], action) => {
 
@@ -16,11 +16,11 @@ const categories = (state = [], action) => {
 		case UPDATE_CATEGORY:
 			return [action.payload.data];
 
-		case DELETE_CATEGORY: 
+		case DELETE_CATEGORY:
 			const id = action.payload.data._id;
 			return state.filter((c) => c._id !== id);
 
-		case FETCH_CATEGORIES: 
+		case FETCH_CATEGORIES:
 
 			return action.payload.data;
 

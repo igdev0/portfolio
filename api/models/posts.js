@@ -34,12 +34,10 @@ const Posts = new Schema({
 		required: true,
 		unique: true
 	},
-	
+
 	description: {
 		type: String,
-		required: true,
-		unique: true,
-		index: false
+		required: true
 	},
 
 	body: {

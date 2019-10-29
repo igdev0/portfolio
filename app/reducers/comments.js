@@ -1,4 +1,4 @@
-import {CREATE_COMMENT, UPDATE_COMMENT, DELETE_COMMENT} from '../components/dashboard/blog/actions/types';
+import {CREATE_COMMENT, UPDATE_COMMENT, DELETE_COMMENT} from '../actions/types';
 
 
 const comments = (state = null, action) => {
