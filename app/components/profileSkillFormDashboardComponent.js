@@ -82,9 +82,6 @@ const ProfileSkillForm  = (props) =>{
 			  			  }
 			  			 </td>
 			  			 <td className="profile__skills__table__body__row-data">
-			  			  <img src={`${window.location.origin}/${skill.icon.path}`}/>
-			  			 </td>
-			  			 <td className="profile__skills__table__body__row-data">
 			  			  {new Date(skill.experience.from).toDateString()} / {new Date(skill.experience.to).toDateString()}
 			  			 </td>
 			  			 <td className="profile__skills__table__body__row-data">

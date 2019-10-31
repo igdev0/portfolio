@@ -11,11 +11,11 @@ class ProfileOverviewContainer extends Component {
 	}
 
 	componentDidMount() {
-
 		this.props.fetchOverview();
 	}
 
 	render() {
+		console.log(this.props.overview)
 		if(this.props.overview) {
 			return (<ProfileOverview {...this.props}/>)
 		}

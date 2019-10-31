@@ -18,7 +18,7 @@ import ContactContainer from '../containers/contactContainer';
 import UpdatePostContainer from '../containers/updatePostDashboardContainer';
 import ViewPostsContainter from '../containers/viewPostsDashboardContainer';
 import CreatePostContainer from '../containers/createPostDashboardContainer';
-
+import PortfolioProjectContainer from '../containers/portfolioProjectContainer';
 
 const routes = [
 	{
@@ -112,9 +112,19 @@ const routes = [
 			{
 				path: '/dashboard/portfolio',
 				component: PortfolioContainer,
-				exact: false,
+				exact: true,
 				name: 'Portfolio',
 				as: 'C'
+			},
+			{
+				path: '/dashboard/portfolio/add',
+				component: PortfolioProjectContainer,
+				exact: true
+			},
+			{
+				path: '/dashboard/portfolio/edit/:id',
+				component: PortfolioProjectContainer,
+				exact: true
 			},
 
 			{

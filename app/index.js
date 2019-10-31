@@ -15,11 +15,12 @@ const history = require('history').createBrowserHistory;
 const initState = window.__INIT_STATE__;
 delete window.__INIT_STATE__;
 const store = createStore(rootReducer, initState, applyMiddleware(reduxPromise, thunk));
-
-ReactDOM.hydrate(
+// Fix server slide matching element.
+const render = module.hot ? ReactDOM.render : ReactDOM.hydrate;
+render(
 <Provider store={store}>
  <Router history={history()}>
-  <App>
+  <App >
    {
   	routes.map(({path, exact, component, routes}, key) => {
       const C = component;

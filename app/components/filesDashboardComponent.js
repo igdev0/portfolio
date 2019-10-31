@@ -121,48 +121,50 @@ class Files extends Component {
 	render() {
 			return (
 			<main className="files-main">
-			 <table className="files-table">
-			  <thead className="files-table_head">
-			   <tr className="files-table_head-row">
-			    <th className="files-table_head-col">
-			    File name
-			    </th>
-			    <th className="files-table_head-col">
-			    File url
-			    </th>
-			    <th className="files-table_head-col">
-			    File size
-			    </th>
-			    <th className="files-table_head-col">
-			  	 Upload date
-			    </th>
-			   </tr>
-			  </thead>
-			  <tbody className="files-table_body">
-			   {
-			  	this.props.files.map((file, key) => {
+			 {
+				 this.props.children !== undefined ?
+				 this.props.children :
+				 <table className="files-table">
+				  <thead className="files-table_head">
+				   <tr className="files-table_head-row">
+				    <th className="files-table_head-col">
+				    File name
+				    </th>
+				    <th className="files-table_head-col">
+				    File url
+				    </th>
+				    <th className="files-table_head-col">
+				    File size
+				    </th>
+				    <th className="files-table_head-col">
+				  	 Upload date
+				    </th>
+				   </tr>
+				  </thead>
+				  <tbody className="files-table_body">
+				   {
+				  	this.props.files.map((file, key) => {
 
-			  		return (
-			  			<tr key={key} className="files-table_body-row">
-			  			  <td className="files-table_body-col">{file.name}</td>
-			  			  <td className="files-table_body-col"><a className="btn btn-primary" href={`${window.location.origin + '/' + file.path}`}>view</a></td>
-			  			  <td className="files-table_body-col">{this.bytesToSize(file.size)}</td>
-			  			  <td className="files-table_body-col">{new Date(file.updated_at).toLocaleString()}</td>
-			  			  <td className="files-table_body-col"><button className="btn btn-danger" onClick={() => this.props.deleteFile(file._id)}>Delete</button></td>
-			  			</tr>
-			  		)
-			  	})
-			  }
-			  </tbody>
-			 </table>
+				  		return (
+				  			<tr key={key} className="files-table_body-row">
+				  			  <td className="files-table_body-col">{file.name}</td>
+				  			  <td className="files-table_body-col"><a className="btn btn-primary" href={`${window.location.origin + '/' + file.path}`}>view</a></td>
+				  			  <td className="files-table_body-col">{this.bytesToSize(file.size)}</td>
+				  			  <td className="files-table_body-col">{new Date(file.updated_at).toLocaleString()}</td>
+				  			  <td className="files-table_body-col"><button className="btn btn-danger" onClick={() => this.props.deleteFile(file._id)}>Delete</button></td>
+				  			</tr>
+				  		)
+				  	})
+				  }
+				  </tbody>
+				 </table>
+			 }
 			 <div className="files-upload">
 			   <Form onSubmit={this.props.handleSubmit(this.handleFormSubmit)} className="files-upload__form">
 			    <Field type="file" name="fileToUpload" submitSucceeded={this.props.submitSucceeded} component={SelectFile}/>
 			    <fieldset className="field__img__alt">
 				    <label htmlFor="alt">Image alt:</label>
 				    <Field type="text" name="alt" label="File alt." component={FileMetaInput} placeholder="Image alt ..."/>
-			    	<label htmlFor="folder">Folder:</label>
-			    	<Field type="text" name="folder" label="Bucket's folder ..." component={FileMetaInput}/>
 			    </fieldset>
 			    <div className="submit-button-w">
 			     <button type="submit">Submit</button>
@@ -185,9 +187,6 @@ const validate = (values) => {
 		errors.alt = 'Image alt is required.';
 	}
 
-	if(!values.folder) {
-		errors.folder = "Aws's folder is required.";
-	}
 	return errors;
 }
 

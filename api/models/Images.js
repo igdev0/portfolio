@@ -11,7 +11,7 @@ const Images = new Schema({
 	hero: {
 		type: Schema.Types.ObjectId,
 		ref: 'Files',
-		required: true
+		required: false
 	}
 })
 

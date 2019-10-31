@@ -20,7 +20,6 @@ class SelectImage extends Component {
 	}
 
 	componentDidMount() {
-
 		if(this.state.selectUrl) {
 			this.setState({
 				selectedImage: !this.props.input.value.path ? this.props.files[0].path : this.props.input.value.path,
@@ -30,7 +29,7 @@ class SelectImage extends Component {
 		if(!this.state.selectUrl) {
 
 			this.setState({
-				selectedImage: !this.props.input.value._id ? this.props.files[0]._id : this.props.input.value._id,
+				selectedImage: !this.props.meta.initial ? this.props.files[0]._id : this.props.meta.initial,
 			})
 		}
 	}
@@ -52,7 +51,7 @@ class SelectImage extends Component {
 				<div className="error-messages">
 					{this.props.meta.touched && (this.props.meta.error && <span><i className="fas fa-exclamation-circle"></i>{this.props.meta.error}</span>)}
 				</div>
-				<Modal bsSize="large" onHide={this.hideModal} show={this.state.modalDisplay}>
+				<Modal onHide={this.hideModal} show={this.state.modalDisplay}>
 				 <Modal.Header closeButton>
 				  <Modal.Title>Select image.</Modal.Title>
 				 </Modal.Header>
@@ -65,7 +64,7 @@ class SelectImage extends Component {
 								<div key={key} className="flex-col">
 								  <label>
 					  		 	   <input
-					  		 	   defaultChecked={file._id === this.state.selectedImage}
+					  		 	   defaultChecked={file._id === this.props.meta.initial}
 					  		 	   name={`${file.name}_${key}`}
 					  		 	   type="radio" {...this.props.input}
 					  		 	   value={this.state.selectUrl ? `${window.location.origin + '/' + file.path}` : file._id}

@@ -52,16 +52,16 @@ const ProfileOverview = (props) => {
 		<main className="dashboard__overview">
 		 <div className="flex-row">
 		  <div className="flex-col count">
-		    <h2>Total posts: <span>{props.overview[0].blog_posts_overview[0].count}</span></h2>
+		    <h2>Total posts: <span>{props.overview[0].blog_posts_overview.length > 0 && props.overview[0].blog_posts_overview[0].count}</span></h2>
 		  </div>
 		  <div className="flex-col count">
-		    <h2>Total projects: <span>{props.overview[1].projects_overview[0].count}</span></h2>
+		    <h2>Total projects: <span>{props.overview[1].projects_overview.length > 0 && props.overview[1].projects_overview[0].count}</span></h2>
 		  </div>
 		  <div className="flex-col count">
-		    <h2>Total skills: <span>{props.overview[2].skills_overview[0].count}</span></h2>
+		    <h2>Total skills: <span>{props.overview[2].skills_overview.length > 0 && props.overview[2].skills_overview[0].count}</span></h2>
 		  </div>
 		  <div className="flex-col count">
-		    <h2>Total courses: <span>{props.overview[3].education_overview[0].count}</span></h2>
+		    <h2>Total courses: <span>{props.overview[3].education_overview > 0 && props.overview[3].education_overview[0].count}</span></h2>
 		  </div>
 		 </div>
 		 <div className="total_experience">
@@ -69,10 +69,10 @@ const ProfileOverview = (props) => {
 		 </div>
 		 <div className="flex-row">
 		  <div className="flex-col chart">
-		   <Doughnut data={props.overview[2].skills_overview[0].chart_config} height={450} options={chart_options}/>
+		   <Doughnut data={props.overview[2].skills_overview.length > 0 && props.overview[2].skills_overview[0].chart_config} height={450} options={chart_options}/>
 		  </div>
 		  <div className="flex-col chart">
-		   <Doughnut data={props.overview[1].projects_overview[0].chart_config} height={450} options={chart_options}/>
+		   <Doughnut data={props.overview[1].projects_overview.length > 0 && props.overview[1].projects_overview[0].chart_config} height={450} options={chart_options}/>
 		  </div>
 		 </div>
 		</main>

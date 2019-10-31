@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import user from '../images/user.png';
-import {Panel, PanelGroup} from 'react-bootstrap';
 import './aboutComponent.less';
 
 function hexToRgbA(hex, opacity){
@@ -28,14 +27,7 @@ class About extends Component {
 		}
 
 		this.calcExperience = this.calcExperience.bind(this);
-		this.togglePanel = this.togglePanel.bind(this);
 		this.LightenDarkenColor = this.LightenDarkenColor.bind(this);
-	}
-
-	togglePanel(key) {
-		this.setState({
-			active_key: key
-		})
 	}
 
 	transformMs(milliseconds) {
@@ -153,22 +145,6 @@ class About extends Component {
 			 </section>
 			 <section className="about__main-education">
 			  <h1>Education</h1>
-
-			  <PanelGroup id="accordion-controlled-example" accordion defaultActiveKey="2"  onSelect={this.togglePanel}>
-			   {
-			   	this.props.profile.education.map((s, key) => {
-
-			   		return (
-			   			<Panel eventKey={key} key={key}>
-			   			 <Panel.Heading>
-			   			 	<Panel.Title toggle><img src={`${window.location.origin}/${s.logo.path}`} style={{height: '100%', width: '100px'}}/><h4 style={{marginLeft:"20px", display: "inline"}}>{this.calcExperience(s.experience)}</h4></Panel.Title>
-			   			 </Panel.Heading>
-			   			 <Panel.Body collapsible>{s.description}</Panel.Body>
-			   			</Panel>
-			   		)
-			   	})
-			   }
-			  </PanelGroup>
 			 </section>
 			</main>
 		)

@@ -16,9 +16,26 @@ class FilesContainer extends Component {
 
 	render() {
 
-		return (
-			<Files {...this.props}/>
-		)
+		if(this.props.files === null) {
+			return (
+				<Files {...this.props}>
+					<h1>Loading ...</h1>
+				</Files>
+			)
+		}
+
+		else if(this.props.files.length === 0) {
+			return (
+				<Files {...this.props}>
+					<h1>No files found.</h1>
+				</Files>
+			)
+		}
+		else {
+			return (
+				<Files {...this.props}/>
+			)
+		}
 	}
 }
 

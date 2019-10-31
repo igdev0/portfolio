@@ -17,22 +17,20 @@ const upload = multer({storage: storage}).single('file');
 const filesController = {
 
 	get: (req, res) => {
-		
+
 		Files
 		.find((err, data) => {
-
 			if(err) {
 
 				return res.status(404).json(err);
 			}
-
 			res.status(200).json(data);
 		})
 	},
 
 	getOne: (req,res) => {
 		const param = req.params.file;
-		
+
 		res.sendFile(process.cwd() + '/api/uploads/' + param);
 	},
 
@@ -42,7 +40,7 @@ const filesController = {
 			if(err instanceof multer.MulterError) {
 				return res.status(500).json(err);
 			}
-		
+
 			Files.create({
 				path: file.path,
 				size: file.size,
@@ -65,7 +63,7 @@ const filesController = {
 			Files
 			.findByIdAndDelete(id)
 			.exec((err, data) => {
-
+        console.log(data)
 				if(err) {
 					return	res.status(500).json(err);
 				}
@@ -74,7 +72,7 @@ const filesController = {
 					if(err) {
 						return res.status(400).json(err);
 					}
-					
+
 					res.status(200).json(data);
 				})
 			})

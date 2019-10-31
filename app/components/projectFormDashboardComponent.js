@@ -20,31 +20,25 @@ const ProjectForm = (props) => {
 				props.createProject(data);
 			}
 		})}>
-		 <div className="flex-row">
-		  <div className="flex-col">
-		   <div className="project-images">
-		    <Field type="select" name="images.card" img-type="card" label="select image card" component={SelectImageContainer}/>
-		    <Field type="select" name="images.hero" img-type="hero" label="select image hero" component={SelectImageContainer}/>
-		   </div>
-		   <div className="project-skills">
-		    <FieldArray name="skills" all_skills={props.skills} school_skills={[]} displaySubmitButton={false} label="Find skill ..." component={RenderMultiselect}/>
-		    <Field type="text" name="link" component={InputTextComponent} label="The link to the project"/>
-		    <Field type="text" name="color" component={InputTextComponent} label="Representational color for this project"/>
-		   </div>
-		   <div className="project__form-actions">
-		    <button type="submit" className="btn btn-success">{props.initialized ? "Save" : "Create"}</button>
-		    <button type="button" className="btn btn-primary">Reset</button>
-		   </div>
-		  </div>
-		  <div className="flex-col">
+	   <div className="project-images">
+	    <Field type="select" name="images.card" img-type="card" label="select image card" component={SelectImageContainer}/>
+	    <Field type="select" name="images.hero" img-type="hero" label="select image hero" component={SelectImageContainer}/>
+	   </div>
+	   <div className="project-skills">
+	    <FieldArray name="skills" all_skills={props.skills} school_skills={[]} displaySubmitButton={false} label="Find skill ..." component={RenderMultiselect}/>
+	    <Field type="text" name="link" component={InputTextComponent} label="The link to the project"/>
+	    <Field type="text" name="color" component={InputTextComponent} label="Representational color for this project"/>
+	   </div>
 		   <Field type="text" name="title" label="Project title" component={InputTextComponent}/>
 		   <Field type="text" name="description" label="Description ..." component={TextareaComponent}/>
 		   <div className="input-group">
 		    <Field type="date" name="started_at" component={InputTextComponent}/>
 		    <Field type="date" name="finished_at" component={InputTextComponent}/>
 		   </div>
-		  </div>
-		 </div>
+		   <div className="project__form-actions">
+		    <button type="submit" className="btn btn-success">{props.initialized ? "Save" : "Create"}</button>
+		    <button type="button" className="btn btn-primary">Reset</button>
+		   </div>
 		</Form>
 	)
 }

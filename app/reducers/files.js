@@ -1,6 +1,6 @@
 import {CREATE_FILE, DELETE_FILE, FETCH_FILES} from '../actions/types';
 
-const files = (state = [], action) => {
+const files = (state = null, action) => {
 
 	switch(action.type) {
 
@@ -13,6 +13,7 @@ const files = (state = [], action) => {
 			return state.filter((f) => f._id !== id);
 
 		case FETCH_FILES:
+		
 			return action.payload.data;
 
 		default:

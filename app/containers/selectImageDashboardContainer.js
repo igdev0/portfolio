@@ -15,17 +15,21 @@ class SelectImageContainer extends Component {
 	}
 
 	render() {
-
-		if (this.props.files.length > 0) {
+		if (this.props.files === null) {
 
 			 return (
-			 	<SelectImage {...this.props}/>
+				 <h2>Loading ...</h2>
 			 )
+		}
+		else if(this.props.files.length === 0) {
+			return (
+				<h2>No files found.</h2>
+			)
 		}
 		else {
 
 			return (
-				<h2>Loading ...</h2>
+			 <SelectImage {...this.props}/>
 			)
 		}
 	}

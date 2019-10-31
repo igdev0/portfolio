@@ -295,26 +295,39 @@ const padNumbers = (number) => {
 	return (number < 10 ? '0' : '') + number;
 }
 
-export const loadInitialData = (data) => {
-	let {started_at} = data;
-	let {finished_at} = data;
-	started_at = new Date(started_at);
-	finished_at = new Date(finished_at);
+export const loadInitialData = (id) => {
 
-	data.for = "PROJECT_FORM";
-	started_at = `${started_at.getFullYear()}-${padNumbers(started_at.getMonth() + 1)}-${padNumbers(started_at.getDate())}`;
-	finished_at = `${finished_at.getFullYear()}-${padNumbers(finished_at.getMonth() + 1)}-${padNumbers(finished_at.getDate())}`;
+ return (dispatch) => {
+	FetchProject(id)
 
-	data.started_at = started_at;
-	data.finished_at = finished_at;
+	.then((res) => {
+		const {data} = res;
+		let {started_at} = data;
+		let {finished_at} = data;
+		started_at = new Date(started_at);
+		finished_at = new Date(finished_at);
 
-	return (dispatch) => {
+		data.for = "PROJECT_FORM";
+		started_at = `${started_at.getFullYear()}-${padNumbers(started_at.getMonth() + 1)}-${padNumbers(started_at.getDate())}`;
+		finished_at = `${finished_at.getFullYear()}-${padNumbers(finished_at.getMonth() + 1)}-${padNumbers(finished_at.getDate())}`;
 
-		dispatch({
-			type: LOAD_INITIAL_DATA,
-			payload: data
-		})
+		data.started_at = started_at;
+		data.finished_at = finished_at;
+		data.images = {
+			card: data.images.card._id,
+			hero: data.images.hero._id
+		}
+			dispatch({
+				type: LOAD_INITIAL_DATA,
+				payload: data
+			})
+	})
+
+	.catch(err => {
+		console.log(err)
+	})
 	}
+
 }
 
 export const resetInitialData = () => {

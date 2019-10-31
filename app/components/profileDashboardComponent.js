@@ -57,12 +57,13 @@ class Profile extends Component {
 		      <div className="flex-row">
 		       {
 		       	this.props.schools ? this.props.schools.map((school, key) => {
+							console.log(school)
 		       		return (
 		       		  <div key={key} className="flex-col">
 				        <div className="display__school">
 				          <div className="display__school-details">
 				          <div className="display__school__details-logo">
-				           <img src={`${window.location.origin}/${school.logo.path}`}/>
+				           {school.logo && <img src={`${window.location.origin}/${school.logo.path}`}/>}
 				          </div>
 				          <div className="display__school__details-experience">
 				           <span><i className="fas fa-hourglass-start"></i>{new Date(school.experience.from).toDateString()}</span>
@@ -117,7 +118,7 @@ const SkillsGrid = (props) => {
 						<li key={key} className="skills__grid-cell">
 							<div className="skills__grid__cell-item">
 							 <div className="skill-icon">
-							   <img src={`${window.location.origin}/${skill.icon.path}`}/>
+							   {skill.icon && <img src={`${window.location.origin}/${skill.icon.path}`}/>}
 							 </div>
 							 <div className="actions">
 							   <i className="fas fa-times-circle" onClick={() => props.updateSchool(props.school._id, "REMOVE_SKILLS", skill._id)}></i><i className="far fa-edit"></i>
