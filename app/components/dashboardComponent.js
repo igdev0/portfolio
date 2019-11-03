@@ -18,6 +18,9 @@ class Dashboard extends Component {
 
 			 <section className="dashboard__content">
 			  <aside className="dashboard__content-left">
+					<div className="dashboard__content__left-header">
+						<h2>Portfolio</h2>
+					</div>
 			  	<nav className="dashboard__content-left-aside__nav">
 			  	 <ul className="dashboard__content-left-aside__nav-ul">
 			  	  {

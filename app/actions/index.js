@@ -314,8 +314,7 @@ export const loadInitialData = (id) => {
 		data.started_at = started_at;
 		data.finished_at = finished_at;
 		data.images = {
-			card: data.images.card._id,
-			hero: data.images.hero._id
+			card: data.images.card._id
 		}
 			dispatch({
 				type: LOAD_INITIAL_DATA,

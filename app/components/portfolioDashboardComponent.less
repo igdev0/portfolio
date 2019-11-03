@@ -4,10 +4,19 @@
  	margin: 0;
  	padding: 0;
 
+  .actions {
+    width: 100%;
+    background: #dbdbdb;
+    text-align: center;
+    padding: 5px;
+  }
+  .projects-header {
+    border: 2px solid #f1f1f1;
+  }
   .projects-view {
     margin: 0;
     padding: 0;
-
+    box-shadow: 0 0 20px 0 #222;
     .projects__view-head {
       margin: 0;
       padding: 0;
@@ -16,7 +25,6 @@
 
         th {
           padding: 5px;
-          border-bottom: 1px solid #222;
         }
       }
     }
@@ -26,15 +34,19 @@
       padding: 0;
 
       tr {
-        margin: 0;
+        margin: 5px 0;
         padding: 0;
 
         td {
           min-width: 200px;
           min-height: 100px;
           max-width: 300px;
+          padding: 5px;
+          border: 1px solid #f1f1f1;
         }
-
+        &:nth-child(odd) {
+          background: #f9f9f9;
+        }
         td.title {
           font-weight: bold;
           text-align: center;

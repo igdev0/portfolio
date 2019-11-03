@@ -5,9 +5,15 @@ import {Link} from 'react-router-dom';
 import './portfolioDashboardComponent.less';
 
 const Portfolio = (props) => {
-
 	return (
 		<main className="portfolio-main">
+		 <div className="projects-header">
+			 <h3>Projects.</h3>
+			 <form onSubmit={(e) => {props.onSearchSubmit(e)}}>
+				 <input type="text" name="search_project_filter" onChange={(e) => {props.onSearchInputChange(e)}} placeholder="Search projects ..."/>
+				 <button type="submit">Search</button>
+		 </form>
+		 </div>
 		 <table className="projects-view">
 			 <thead className="projects__view-head">
 				 <tr >
@@ -38,8 +44,8 @@ const Portfolio = (props) => {
 								 <td><a href={project.link}>{project.link}</a></td>
 								 <td>{project.start_at}</td>
 								 <td>
-									 <button type="button" className="button button-danger">Delete</button>
-									 <Link to={'/dashboard/portfolio/edit/' + project._id}>Edit</Link>
+									 <button type="button" className="btn btn-danger">Delete</button>
+									 <Link className="btn btn-primary" to={'/dashboard/portfolio/edit/' + project._id}>Edit</Link>
 								 </td>
 							 </tr>
 						 )
@@ -48,6 +54,9 @@ const Portfolio = (props) => {
 				 }
 			 </tbody>
 		 </table>
+		 <div className="actions">
+			 <Link to="/dashboard/portfolio/add" className="btn btn-success">Add new project</Link>
+		 </div>
 		</main>
 	)
 }
