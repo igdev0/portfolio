@@ -5,9 +5,7 @@ import ProfileContainer from '../containers/profileDashboardContainer';
 import ProfileOverviewContainer from '../containers/overviewDashboardContainer';
 import BlogDashboardContainer from '../containers/blogDashboardContainer';
 import PortfolioContainer from '../containers/portfolioDashboardContainer';
-import Skills from '../components/skillsDashboardComponent';
 import FilesContainer from '../containers/filesDashboardContainer';
-import Home from '../components/homeComponent';
 
 import AboutContainer from '../containers/aboutContainer';
 import BlogContainer from '../containers/blogContainer';
@@ -15,29 +13,25 @@ import BlogPostContainer from '../containers/blogPostContainer';
 import ProjectsContainer from '../containers/projectsContainer';
 import ProjectViewContainer from '../containers/projectViewContainer';
 import ContactContainer from '../containers/contactContainer';
-import UpdatePostContainer from '../containers/updatePostDashboardContainer';
-import ViewPostsContainter from '../containers/viewPostsDashboardContainer';
-import CreatePostContainer from '../containers/createPostDashboardContainer';
+import BlogPostDashboardContainer from '../containers/blogPostDashboardContainer';
 import PortfolioProjectContainer from '../containers/portfolioProjectContainer';
+import UserProfileContainer from '../containers/userProfileContainer';
 
 const routes = [
 	{
 		path: "/",
 		exact: true,
-		component: Home,
+		component: AboutContainer,
 	},
-	{
-		path: '/home',
-		exact: true,
-		component: Home
-	},
+
 	{
 		path: '/login',
 		exact: true,
 		component: LoginContainer
 	},
+
 	{
-		path: "/blog",
+		path: "/posts",
 		exact: true,
 		component: BlogContainer,
 		name: "Blog",
@@ -45,22 +39,22 @@ const routes = [
 	},
 
 	{
-		path: '/blog/:post_id',
+		path: '/posts/:slug',
 		component: BlogPostContainer,
 		exact: true,
 		name: false
 	},
 
 	{
-		path: '/profile',
+		path: '/about',
 		component: AboutContainer,
 		exact: true,
-		name: "Profile",
+		name: "About",
 		fontAwesomeClass: "fas fa-user"
 	},
 
 	{
-		path: '/portfolio',
+		path: '/projects',
 		component: ProjectsContainer,
 		exact: true,
 		fontAwesomeClass: "fas fa-projects"
@@ -100,15 +94,29 @@ const routes = [
 				name: "Profile",
 				as: 'C'
 			},
-
+			{
+				path: '/dashboard/settings',
+				component: UserProfileContainer,
+				exact: true
+			},
 			{
 				path: '/dashboard/blog',
 				component: BlogDashboardContainer,
-				exact: false,
+				exact: true,
 				name: 'Blog',
 				as: 'C'
 			},
 
+			{
+				path: '/dashboard/blog/create',
+				component: BlogPostDashboardContainer,
+				exact: true
+			},
+			{
+				path: '/dashboard/blog/update/:slug',
+				component: BlogPostDashboardContainer,
+				exact: false
+			},
 			{
 				path: '/dashboard/portfolio',
 				component: PortfolioContainer,
@@ -133,23 +141,6 @@ const routes = [
 				exact: false,
 				name: 'Upload files',
 				as: "C"
-			},
-			{
-				path: '/dashboard/blog',
-				component: ViewPostsContainter,
-				exact: true
-			},
-
-			{
-				path: '/dashboard/blog/create-post',
-				component: CreatePostContainer,
-				exact: true
-			},
-
-			{
-				path: '/dashboard/blog/update-post/:post',
-				component: UpdatePostContainer,
-				exact: true
 			}
 		]
 	}

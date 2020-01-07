@@ -1,16 +1,15 @@
 import mongoose from 'mongoose';
-import mongooseGridfs from 'mongoose-gridfs';
+// import mongooseGridfs from 'mongoose-gridfs';
 
-const config = {
-	DB_PASSWORD: 'programer16', // db password,
-	DB_USERNAME: 'dorultan'// db username
-}
+// const config = {
+// 	DB_PASSWORD: 'programer16', // db password,
+// 	DB_USERNAME: 'dorultan'// db username
+// }
 
-mongoose.connect(`mongodb://${config.DB_USERNAME}:${config.DB_PASSWORD}@ds263137.mlab.com:63137/dorultanblog`, {autoIndex: false})
+const connection = mongoose.connect(`mongodb://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}/${process.env.DB_NAME}`, {autoIndex: false})
 
 .then((mongo, options) => {
 
-	console.log('The mongodb is connected');
 })
 
 .catch(err => {

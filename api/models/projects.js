@@ -14,8 +14,12 @@ const Projects = {
 		type: String,
 		required: true
 	},
-	
+
 	link: {
+		type: String,
+		required: true
+	},
+	github_url: {
 		type: String,
 		required: true
 	},
@@ -32,7 +36,7 @@ const Projects = {
 	],
 
 	images: images,
-	
+
 	started_at: {
 		type: Date,
 		default: Date.now

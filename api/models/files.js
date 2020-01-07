@@ -3,7 +3,7 @@ import mongodb from '../../config/mongodb';
 const Schema = mongodb.Schema;
 
 const Files = {
-	path: {
+	url: {
 		type: String,
 		required: true
 	},

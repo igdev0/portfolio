@@ -1,57 +1,90 @@
 import React, {Component} from 'react';
 import CodeBlock from './codeblockComponent';
-import Disqus from 'disqus-react';
 import './blogPostComponent.less';
 
 import {Link} from 'react-router-dom';
 import Markdown from 'react-markdown';
+import {formatDate} from '../utilities';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
 class BlogPostView extends Component {
 
 	constructor(props) {
 		super(props);
+		this.state = {
+			nextPost: null,
+			previousPost: null
+		}
 
+		this.findNextAndPrevPosts = this.findNextAndPrevPosts.bind(this);
+
+	}
+	componentDidMount() {
+		this.findNextAndPrevPosts();
+
+	}
+	findNextAndPrevPosts() {
+		const {match: {params: {slug}}} = this.props;
+		const idx = this.props.posts.findIndex((obj) => obj.slug === slug);
+
+		const nextPostIdx = idx + 1;
+		const previousPostIdx = idx - 1;
+
+		if(nextPostIdx !== this.props.posts.length) {
+			this.setState({
+				nextPost: this.props.posts[nextPostIdx]
+			})
+		}
+
+		if(previousPostIdx !== -1) {
+			this.setState({
+				previousPost: this.props.posts[previousPostIdx]
+			})
+		}
+
+	}
+
+	isPrevDisabled() {
+
+		return this.state.previousPost === null;
+	}
+
+	isNextDisabled() {
+		return this.state.nextPost === null;
 	}
 
 	render() {
 		const {post, match: {params}} = this.props;
-		const header_banner_url = `${window.location.origin + '/'}${post.images.hero.path}`.replace('\\', '/').replace('\\', '/');
-		const disqusShortname= "dorultanianos";
-		const disqusConfig = {
-			url: `http://localhost:3000/blog/${post.post_id}`,
-			identifier: `/blog/${post.post_id}`,
-			title: post.title
-		};
 
 		return (
 			<main className="blog_post">
 			 <header className="blog_post-header">
-			  <div className="blog_post__header">
-			   <div className="blog_post__header-date">
-			    <span>Posted on {new Date(post.createdAt).toLocaleDateString()} by <Link to="/profile">Dorultan Ianos</Link></span>
-			   </div>
-			   <div className="blog_post__header-title">
-			    <h1>{post.title}</h1>
-			   </div>
-			   <div className="blog_post__header-description">
-			    <p>{post.description}</p>
-			   </div>
-			   <div className="blog_post__header-share">
-			    <h3>Share on</h3>
-			    <ul>
-		   	     <li><a href="#"><i className="fab fa-facebook-f "></i></a></li>
-		   	     <li><a href="#"><i className="fab fa-twitter"></i></a></li>
-		   	     <li><a href="#"><i className="fab fa-linkedin"></i></a></li>
-		   	    </ul>
-			   </div>
-			  </div>
+				<div className="blog_post__header-info">
+	 		    <h2 className="blog_post-title">{post.title}</h2>
+	 		    <span className="blog_post-date">Posted on {formatDate(post.createdAt)}</span>
+				</div>
 			 </header>
 			 <article className="blog_post-content">
 			  <Markdown className="result-pane" source={post.body} escapeHtml={false} renderers={{code: CodeBlock}}
 			  />
 			 </article>
-	         <Disqus.DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
-
+			 <footer className="blog_post-footer">
+				 <div className="post-tags">
+					 <span>Tags: </span>
+					 {
+						 this.props.post.tags.map((tag, key) => {
+							 return (
+								 <span className="post-tag" key={key}>{tag}</span>
+							 )
+						 })
+					 }
+				 </div>
+				 <div className="actions">
+					 <Link to={`/posts/${this.isPrevDisabled() ? null : this.state.previousPost._id}`} onClick={(e) => {this.isPrevDisabled() && e.preventDefault()}} className={`btn ${this.isPrevDisabled() ? 'btn-light' : 'btn-primary'}`}><FontAwesomeIcon icon={faChevronLeft}/> Previous</Link>
+					 <Link to={`/posts/${this.isNextDisabled() ? null : this.state.nextPost._id}`} onClick={(e) => { this.isNextDisabled() && e.preventDefault()}} className={`btn ${this.isNextDisabled() ? 'btn-light' : 'btn-primary'}`}>Next <FontAwesomeIcon icon={faChevronRight}/></Link>
+				 </div>
+			 </footer>
 			</main>
 		)
 	}

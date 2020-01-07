@@ -5,13 +5,36 @@
  	padding: 0;
 
   .actions {
-    width: 100%;
-    background: #dbdbdb;
-    text-align: center;
-    padding: 5px;
   }
   .projects-header {
-    border: 2px solid #f1f1f1;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px 0;
+
+    .projects__header-search {
+      padding: 0;
+      input {
+        margin-left: 20px;
+        padding: 5px;
+        font-family: sans-serif;
+        margin: 0 5px;
+        border: 1px solid #dbdbdb;
+        border-radius: 5px;
+      }
+
+      button {
+        padding: 0;
+        margin: 0;
+        display: inline-block;
+        background: none;
+        cursor: pointer;
+        border: none;
+
+      }
+    }
   }
   .projects-view {
     margin: 0;
@@ -36,13 +59,15 @@
       tr {
         margin: 5px 0;
         padding: 0;
+        transition: all .3s;
 
         td {
           min-width: 200px;
           min-height: 100px;
           max-width: 300px;
           padding: 5px;
-          border: 1px solid #f1f1f1;
+          border-top: 1px solid #f1f1f1;
+          border-bottom: 1px solid #f1f1f1;
         }
         &:nth-child(odd) {
           background: #f9f9f9;
@@ -51,6 +76,12 @@
           font-weight: bold;
           text-align: center;
         }
+      }
+
+      tr:hover {
+        background: #f1f1f1;
+        transition: all .3s;
+        cursor: default;
       }
     }
   }

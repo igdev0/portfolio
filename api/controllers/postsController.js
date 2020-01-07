@@ -3,71 +3,20 @@ import Comments from '../models/comments';
 import jwt from 'jwt-simple';
 import config from '../../config';
 import {PassThrough} from 'stream';
-import fs from 'fs';
+import slug from 'slug';
+//
+// import fs from 'fs';
+import aws, {S3} from 'aws-sdk';
+
+aws.config.update({
+  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+  region: 'eu-west-2'
+})
+
+const s3 = new S3();
 
 const postsController = {
-
-	// This method handles the endpoint (GET)/api/posts
-
-	// EXPECTATIONS:
-	// i don't expect nothing from params yet.
-	// 
-	// RESPONSE:
-	// 
-	// it will send all the posts into an array.
-	// The create function handles the endpoint (POST)/api/posts
-	// When a post is created, i must update the category containing
-	// this post.
-
-	// EXPECTATIONS:
-	// 
-	// req.body.category_id -> the _id of the category containing this post.
-	// req.body.title -> the title of the post
-	// req.body.body -> the body of the post
-	// req.body.comments -> empty array since this is a new post.
-
-	// RESPONSE:
-	// 
-	// The response will contain the actual post created.
-
-	create: (req, res) => {
-		const body = req.body;
-		const post = req.body.post;
-
-		const article = Buffer.from(post.body);
-
-		const wstream = fs.createWriteStream(`${process.cwd()}/api/articles/${post.title}.md`);
-
-		wstream.write(post.body);
-
-		wstream.end(function() {
-			console.log('The file is written successfully');
-			createPost()
-		})
-
-		const createPost = () => {
-			Posts
-			.create({
-				category: body.category,
-				title: post.title,
-				description: post.description,
-				tags: post.tags,
-				body: `/api/articles/${post.title}.md`,
-				comments: [],
-				images: post.images
-
-			}, function(err, post_data) {
-
-				if(err) {
-					return res.status(400).json({"error": err});
-				}
-
-
-				res.status(200).json(post_data);
-						
-			})
-		}
-	},
 
 	get: (req, res) => {
 		const user = req.user;
@@ -87,167 +36,181 @@ const postsController = {
 			if(err ) {
 				return res.send(err);
 			}
-
-			else {
-
-				res.send(data);
-			}
+      console.log(data);
+			res.status(200).json(data);
 		})
 	},
 
+
+	// This method handles the endpoint (GET)/api/posts
+
+	// EXPECTATIONS:
+	// i don't expect nothing from params yet.
+	//
+	// RESPONSE:
+	//
+	// it will send all the posts into an array.
+	// The create function handles the endpoint (POST)/api/posts
+	// When a post is created, i must update the category containing
+	// this post.
+
+	// EXPECTATIONS:
+	//
+	// req.body.category_id -> the _id of the category containing this post.
+	// req.body.title -> the title of the post
+	// req.body.body -> the body of the post
+	// req.body.comments -> empty array since this is a new post.
+
+	// RESPONSE:
+	//
+	// The response will contain the actual post created.
+
+	create: (req, res) => {
+		const post = req.body.post;
+		const postName = slug(post.title) + '.md';
+
+		// const article = Buffer.from(post.body);
+
+		// const wstream = fs.createWriteStream(`${process.cwd()}/api/articles/${post.title}.md`);
+		//
+		// wstream.write(post.body);
+		//
+		// wstream.end(function() {
+		// 	createPost()
+		// })
+		s3.putObject({
+			Body: post.body,
+			Bucket: "dorultan-portfolio-articles",
+			Key: slug(post.title) + '.md',
+			ACL: 'public-read'
+		}, function(err, data) {
+
+			if(err) {
+				return res.status(403).json(err);
+			}
+
+
+			Posts
+			.create({
+				title: post.title,
+				description: post.description,
+				tags: post.tags,
+				body: postName,
+				comments: [],
+				images: post.images,
+				slug: slug(post.title)
+
+			}, function(err, post_data) {
+
+				if(err) {
+					return res.status(400).json({"error": err});
+				}
+
+
+				res.status(200).json(post_data);
+
+			})
+		})
+		// return res.status(200).json({message: 'In testing'})
+	},
 	// The getOnePost function will handle the endpoint (GET)/api/posts/:post_title
 	// The query will populate the comments of the post.
-	// 
-	// EXPECTATIONS: 
-	// 
+	//
+	// EXPECTATIONS:
+	//
 	// The GET request must have a param called post_title.
-	// 
+	//
 	// RESPONSE:
 	// The response of this req, will contain the post and the populated comments
 	// it will also contain informations about the category e.g: name, description
-	// 
-	// 
+	//
+	//
 
 	getOne: (req, res) => {
-		const post_title = req.params.post_title;
+		const slug = req.params.slug;
 		Posts
 
-		.findOne({title: post_title})
+		.findOne({slug: slug})
 
 		.populate({
 			path: "comments"
 		})
-		.populate({
-			path: 'images.hero',
-			select: 'path alt'
-		})
-		.exec((err, data) => {
-			if(err) {
-				return res.status(400).json({"error": err});
-			}
-
-			res.status(200).json(data);
-		
-		})
-	},
-
-	getById: (req, res) => {
-		const id = req.params.post_id;
-		
-		Posts.findById(id)
-
-		.populate('commnets')
 
 		.populate({
 			path: 'images.card'
 		})
 
-		.populate({
-			path: 'images.hero'
-		})
-
-		.exec((err, data) => {
-
+		.exec((err, post_data) => {
+			let post = {};
 			if(err) {
-				return res.status(400).json(err);
+				return res.status(400).json({"error": err});
 			}
-			const readStream = fs.createReadStream(`${process.cwd()}${data.body}`);
 
-			 
-			readStream.on('error', (error) => {
-				if(error) {
-				 	return res.status(400).json(error)
+			s3.getObject({
+				Key: post_data.body,
+				Bucket: 'dorultan-portfolio-articles'
+			}, function(err, data) {
+
+				if(err) {
+					return res.status(404).json(err);
 				}
-			})
 
-			readStream.on('data', (file) => {
+				post = post_data;
+				post.body = data.Body;
 
-				const article = file.toString();
-				data.body = article;
-				
-				return res.status(200).json(data);
+				return res.status(200).json(post);
 			})
-		}) 
+		})
 	},
 
 	update: (req, res) => {
-		const post_id = req.body.post_id;
-		const post_title = req.body.post_title;
+		const slug = req.body.slug;
 		let updates = req.body.update;
 
 		if(updates.body) {
-			const dir = `/api/articles/${post_title}.md`;
-			
-			fs.unlink(`${process.cwd()}${dir}`, (err) => {
 
-				if(err) throw err;
+      s3.putObject({
+        Key: slug + '.md',
+        Bucket: 'dorultan-portfolio-articles',
+        Body: updates.body
+      }, (err, data) => {
+        if(err) {
+          res.status(400).json(err);
+        }
 
-				else {
-					const readStream = fs.createWriteStream(`${process.cwd()}${dir}`);
-
-					readStream.write(updates.body);
-					readStream.end();
-
-					Posts
-
-					.findByIdAndUpdate(post_id, {body: dir}, {new: true})
-				
-					.exec((err, data) => {
-
-						if(err) {
-							return res.status(400).json(err);
-						}
-
-						const readStream = fs.createReadStream(`${process.cwd()}${data.body}`);
-
-						readStream.on('error', (error) => {
-
-							if(error) throw error;
-						})
-
-						readStream.on('data', (file) => {
-							const article = file.toString();
-
-							data.body = article;
-
-
-							return res.status(200).json(data);
-						})
-					})
-				}
-			})
+        res.status(200).json({message: 'success'});
+      })
 		}
 
 		else {
 			Posts
 
-			.findByIdAndUpdate(post_id, updates, {new: true})
+			.findOneAndUpdate({slug: slug}, updates, {new: true})
 
-			.exec((err, data) => {
+			.exec((err, post_data) => {
+				let post = {};
+
 				if(err) {
 					return res.status(400).json(err);
 				}
-				const readStream = fs.createReadStream(`${process.cwd()}${data.body}`);
 
-				readStream.on('error', (error) => {
-
-					if(error) throw error;
-				})
-
-				readStream.on('data', (file) => {
-					const article = file.toString();
-
-					data.body = article;
-
-
-					return res.status(200).json(data);
+				s3.getObject({
+					Key: post_data.body,
+					Bucket: 'dorultan-portfolio-articles'
+				}, function(err, data) {
+					if(err) {
+						return res.status(404).json(err);
+					}
+					post = post_data;
+					post.body = data.Body;
+					return res.status(200).json(post);
 				})
 			})
 		}
 
  	},
 
-	// When 
+	// When
 
 	delete: (req, res) => {
 		const post = req.query.post_id;
@@ -262,12 +225,16 @@ const postsController = {
 					return res.status(400).json({error: err});
 				}
 
-				fs.unlink(`${process.cwd()}${data.body}`, (err) => {
+			  s3.deleteObject({
+          Key: data.body,
+          Bucket: 'dorultan-portfolio-articles'
+        }, (err, _data) => {
+          if(err) {
+            res.status(404).json(err);
+          }
 
-					if(err) throw err;
-
-					res.status(200).json(data);
-				})
+          return res.status(200).json(data);
+        })
 			})
 		}
 	}

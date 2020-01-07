@@ -6,7 +6,8 @@ const skills = (state = null, action) => {
 	switch(action.type) {
 
 		case FETCH_SKILLS:
-			return action.payload.data;
+
+			return action.payload.data === undefined ? state : action.payload.data;
 
 		case CREATE_SKILL:
 

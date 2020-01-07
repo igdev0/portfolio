@@ -12,7 +12,10 @@ import {
 	FETCH_SCHOOLS, UPDATE_SCHOOL, DELETE_SCHOOL, CREATE_SCHOOL,
 	CREATE_SKILL, UPDATE_SKILL, DELETE_SKILL, UPDATE_SCHOOL_SKILLS,
 	LOAD_INITIAL_DATA__FOR__SKILL, LOAD_INITIAL_DATA__FOR__SCHOOL,
-	FETCH_PROFILE_INTRODUCTION, UPDATE_PROFILE_INTRODUCTION
+	FETCH_PROFILE_INTRODUCTION, UPDATE_PROFILE_INTRODUCTION,
+	LOAD_INITIAL_DATA_FOR_POST, UPDATE_USERNAME, UPDATE_USER_EMAIL,
+	UPDATE_USER_PASSWORD, UPDATE_USER_AVATAR, UPDATE_USER_SOCIAL,
+	GET_USER_DATA
 
 } from './types';
 
@@ -23,8 +26,110 @@ import {
 	CreateFile, DeleteFile, FetchFiles, FetchOverview, UpdateProject,
 	DeleteProject, CreateProject, FetchSchools, CreateSchool, UpdateSchool,
 	DeleteSchool, CreateSkill, UpdateSkill, DeleteSkill,
-	UpdateProfileIntroduction, FetchProfileIntroduction
+	UpdateProfileIntroduction, FetchProfileIntroduction, UpdateUsername,
+	UpdateUserSocial, UpdateUserPassword, UpdateUserAvatar, UpdateUserEmail, GetUser
 } from '../api';
+
+export const updateUsername = (id, username) => {
+
+	return (dispatch) => {
+		UpdateUsername(id, username)
+
+		.then(({data}) => {
+			window.localStorage.setItem('token', data.token);
+		  let token = data.token;
+		  const tokens = token.split('.');
+		  const userInfoDecoded = window.atob(tokens[1]);
+		  const userInfoJson = JSON.parse(userInfoDecoded);
+			dispatch({
+				type: 'UPDATE_USERNAME',
+				payload: userInfoJson
+			})
+		})
+	}
+}
+
+export const getUserData = () => {
+	  let token = window.localStorage.getItem('token');
+	  const tokens = token.split('.');
+	  const userInfoDecoded = window.atob(tokens[1]);
+	  const userInfoJson = JSON.parse(userInfoDecoded);
+
+		return {
+			type: "GET_USER_DATA",
+			payload: userInfoJson.user
+		}
+}
+export const getUser = () => {
+
+	return (dispatch) => {
+
+		GetUser()
+
+		.then((res) => {
+			dispatch({
+				type: "GET_USER_DATA",
+				payload: res.data.user
+			})
+		})
+	}
+}
+export const updateUserPassword = (id, password) => {
+	const payload = UpdateUserPassword(id, password);
+
+	return {
+		type: UPDATE_USER_PASSWORD,
+		payload: payload
+	}
+}
+
+export const updateUserSocial = (id, social) => {
+
+	return (dispatch) => {
+		UpdateUserSocial(id, social)
+
+		.then(({data}) => {
+
+			window.localStorage.setItem('token', data.token);
+		  let token = window.localStorage.getItem('token');
+		  const tokens = token.split('.');
+		  const userInfoDecoded = window.atob(tokens[1]);
+		  const userInfoJson = JSON.parse(userInfoDecoded);
+
+			dispatch({
+				type: 'UPDATE_USER_SOCIAL',
+				payload: userInfoJson.user
+			})
+		})
+	}
+}
+
+export const updateUserEmail = (id, email) => {
+	return (dispatch) => {
+		UpdateUserEmail(id, email)
+
+		.then(({data}) => {
+
+			window.localStorage.setItem('token', data.token);
+		  let token = window.localStorage.getItem('token');
+		  const tokens = token.split('.');
+		  const userInfoDecoded = window.atob(tokens[1]);
+		  const userInfoJson = JSON.parse(userInfoDecoded);
+			dispatch({
+				type: 'UPDATE_USER_EMAIL',
+				payload: userInfoJson
+			})
+		})
+	}
+}
+
+export const updateUserAvatar = (id, avatar) => {
+	const payload = UpdateUserAvatar(id, avatar);
+	return {
+		type: UPDATE_USER_AVATAR,
+		payload: payload
+	}
+}
 
 export const fetchProjects = () => {
 	const payload = FetchProjects();
@@ -295,6 +400,24 @@ const padNumbers = (number) => {
 	return (number < 10 ? '0' : '') + number;
 }
 
+export const loadInitialDataForPost = (slug) => {
+
+		return (dispatch) => {
+
+			FetchPost(slug)
+
+			.then(({data}) => {
+				data.for = "BLOG_POST";
+				data.images.card = data.images.card._id;
+
+				dispatch({
+					type: LOAD_INITIAL_DATA_FOR_POST,
+					payload: data
+				})
+			})
+		}
+}
+
 export const loadInitialData = (id) => {
 
  return (dispatch) => {
@@ -368,8 +491,8 @@ export const fetchPostById = (id) => {
 	}
 }
 
-export const createPost = (category_id, post) => {
-	const payload = CreatePost(category_id, post);
+export const createPost = (post) => {
+	const payload = CreatePost(post);
 
 	return {
 		type: CREATE_POST,
@@ -377,9 +500,9 @@ export const createPost = (category_id, post) => {
 	}
 }
 
-export const updatePost = (post_id, post_title, update) => {
+export const updatePost = (slug, update) => {
 
-	const payload = UpdatePost(post_id, post_title, update);
+	const payload = UpdatePost(slug, update);
 
 	return {
 		type: UPDATE_POST,
@@ -476,9 +599,9 @@ export const fetchPosts = (category_name) => {
 	}
 }
 
-export const fetchPost = (_id) => {
+export const fetchPost = (slug) => {
 
-	const payload = FetchPost(_id);
+	const payload = FetchPost(slug);
 
 	return {
 		type: FETCH_POST_BY_ID,

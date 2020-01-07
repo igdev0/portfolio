@@ -20,6 +20,7 @@ const renderHtml = (html, content, INIT_DATA) => {
 			<title>${content}</title>
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
 			<link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.6/cropper.css"/>
 			<link href="https://fonts.googleapis.com/css?family=Montserrat|Open+Sans|PT+Sans" rel="stylesheet">
 			<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 				<link

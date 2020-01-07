@@ -1,5 +1,6 @@
 const config = {
-	secret: 'somethingSecret'
+	secret: 'somethingSecret',
+	sessionSecret: 'sessionSecret'
 };
 
 export default config;

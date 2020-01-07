@@ -3,6 +3,8 @@ import {reduxForm, Form, Field} from 'redux-form';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import {Link} from 'react-router-dom';
 import Disqus from 'disqus-react';
+import {formatDate} from '../utilities';
+
 import './blogComponent.less';
 
 
@@ -12,11 +14,13 @@ class Blog extends Component {
 
 		this.state = {
 			filtered_posts: [],
-			tags: []
+			tags: [],
+			selected_tags: []
 		}
 
-		this.filterPosts = this.filterPosts.bind(this);
 		this.filterPostsByTagName = this.filterPostsByTagName.bind(this);
+		this.addTag = this.addTag.bind(this);
+		this.deleteTag = this.deleteTag.bind(this);
 	}
 
 	componentDidMount() {
@@ -38,92 +42,99 @@ class Blog extends Component {
 		this.setState({
 			tags: clean_array_of_tags
 		})
+
 	}
 
-	filterPosts({letter}) {
-		letter = letter !== undefined ? letter.toLowerCase() : '';
-		this.setState(prevState => ({
-			filtered_posts: this.props.posts.filter(post => post.title.toLowerCase().includes(letter || '') || post.tags.includes(letter))
-		}))
-
-		this.props.reset()
+	filterPostsByTagName(tags) {
+		// if(tag) {
+		// 	this.setState({
+		// 		filtered_posts: this.props.posts.filter(post => post.tags.includes(tag)),
+		// 		selected_tags: [...this.state.selected_tags, tag]
+		// 	})
+		// }
 	}
 
-	filterPostsByTagName(tag) {
-		if(tag) {
+	deleteTag(tag) {
+		this.setState({
+			selected_tags: this.state.selected_tags.filter(item => item !== tag)
+		})
+	}
+
+	componentDidUpdate(prevProps, prevState) {
+
+		const posts = this.props.posts.filter(({tags}) => {
+			for(var i = 0; i < this.state.selected_tags.length; i++) {
+				if(!tags.includes(this.state.selected_tags[i])) {
+					return false;
+				}
+			}
+			return true;
+		})
+
+		if(prevState.selected_tags !== this.state.selected_tags) {
 			this.setState({
-				filtered_posts: this.props.posts.filter(post => post.tags.includes(tag))
+				filtered_posts: posts
 			})
 		}
+	}
+
+	addTag(tag) {
+		// Check if selected_tags includes the tag.
+		if(!this.state.selected_tags.includes(tag)) {
+			this.setState({
+				selected_tags: [...this.state.selected_tags, tag]
+			})
+
+			return false;
+		}
+
+		this.deleteTag(tag);
 	}
 
 	render() {
 		return (
 			<main className="main__blog">
 			 <header className="main__blog-header">
-			  <Form className="main__blog__header-search_form" onSubmit={this.props.handleSubmit(this.filterPosts)}>
-			   <Field type="text" name="letter" label="Search ..." component={FieldTextComponent}/>
-			   <button type="submit"><i className="fas fa-search fa-2x"></i></button>
-			  </Form>
 			  <div className="main__blog__header-tags">
+					<span>Select tags: </span>
 			  	{
 			  		this.state.tags.map((tag, key) => {
 
-			  			return <span key={key} className="tag" onClick={() => {this.filterPostsByTagName(tag)}}>{tag}</span>
+			  			return <span key={key} className={`post-tag ${this.state.selected_tags.includes(tag) && 'active' }`} onClick={() => {this.addTag(tag)}}>{tag}</span>
 			  		})
 			  	}
 			  </div>
 			 </header>
-			 <section className="main__blog-content">
-			  <section className="main__blog__content-posts">
-			    <TransitionGroup className="main__blog__content__posts">
-			    {
-		   		 this.state.filtered_posts.map(({_id, title, description, images: {card}, createdAt, tags}, key) => {
-				   return (
-				   	<CSSTransition key={key} in={this.state.filtered_posts[key].title === title} timeout={300} classNames={'blog-post'} >
-				   	<div className="main__blog__content__posts-post">
-				   	 <div className="main__blog__content__posts__post__details-title">
-				   	    <span className="post-date"><i className="far fa-calendar-check"></i>{new Date(createdAt).toLocaleDateString()}</span>
-				   	   <Link to={`/blog/${_id}`}><h2>{title}</h2></Link>
-				   	 </div>
-				   	 <div className="main__blog__content__posts__post-img">
-				   	  <Link to={`/blog/${_id}`}><img src={`${window.location.origin}/${card.path}`} alt={card.alt}/></Link>
-				   	 </div>
-				   	 <div className="main__blog__content__posts__post-details">
-				   	  <div className="main__blog__content__posts__post__details-tags">
-				   	   {
-				   	   	tags.map((tag, key) => {
-				   	   		return (
-				   	   			<span key={key} onClick={() => this.filterPostsByTagName(tag)} className="tag">{tag}</span>
-				   	   		)
-				   	   	})
-				   	   }
-				   	  </div>
-				   	  <div className="main__blog__content__posts__post__details-description">
-				   	   <p>{description}</p>
-				   	  </div>
-				   	  <div className="main__blog__content__posts__post__details-share">
-				   	   <Disqus.CommentCount
-				   	   shortname={"dorultanianos"}
-				   	   config={{
-							url: `http://localhost:3000/blog/${_id}`,
-							identifier: `/blog/${_id}`,
-							title: title
-						}}></Disqus.CommentCount>
-				   	   <ul>
-				   	    <li><a href="#"><i className="fab fa-facebook-f "></i></a></li>
-				   	    <li><a href="#"><i className="fab fa-twitter"></i></a></li>
-				   	    <li><a href="#"><i className="fab fa-linkedin"></i></a></li>
-				   	   </ul>
-				   	  </div>
-				   	</div>
-				   </div>
-				   </CSSTransition>
-				   )
-		   		  })
-			   	 }
-			   	 </TransitionGroup>
-			  </section>
+			 <section className="main__blog-posts">
+				{
+					this.state.filtered_posts ?
+					this.state.filtered_posts.map((post, key) => {
+
+						return (
+							<Link key={key} to={`/posts/${post.slug}`}>
+								<div className="post">
+								 <div className="post-title">
+									 <h2>{post.title}</h2>
+								 </div>
+								 <div className="post-date">
+									 {formatDate(post.createdAt)}
+								 </div>
+								 <div className="post-description">
+									 <p>{post.description}...<span className="read-more">Read more</span></p>
+								 </div>
+								 <div className="post-tags">
+									 {
+										 post.tags.map((name, key) => {
+											 return <span key={key} className="post-tag">{name}</span>
+										 })
+									 }
+								 </div>
+								</div>
+							</Link>
+						)
+					})
+					: null
+				}
 			 </section>
 			</main>
 		)

@@ -12,6 +12,7 @@ import './previewProjectDashboardComponent.less';
 class ProjectPreview extends Component {
 	constructor(props) {
 		super(props);
+
 		this.state = {
 			project_form: null,
 			preview_image: null
@@ -36,7 +37,7 @@ class ProjectPreview extends Component {
 				return a._id === id;
 		})
 
-		return `${window.origin}/${obj.path}`;
+		return obj.url;
 	}
 	componentWillUnmount(a) {
 		this.props.resetInitialData();
@@ -200,6 +201,7 @@ const ProjectForm = (props) => {
 		   <div className="project-skills">
 		    <FieldArray name="skills" all_skills={props.skills} school_skills={[]} displaySubmitButton={false} label="Find skill ..." component={RenderMultiselect}/>
 		    <Field type="text" name="link" component={InputTextComponent} label="The link to the project"/>
+		    <Field type="text" name="github_url" component={InputTextComponent} label="Github url"/>
 		    <Field type="text" name="color" component={InputTextComponent} label="Representational color for this project"/>
 		   </div>
 			   <Field type="text" name="title" label="Project title" component={InputTextComponent}/>
@@ -222,6 +224,7 @@ const InputTextComponent = ({
 	input,
 	type,
 	label,
+	disabled,
 	meta: {
 		error,
 		touched,
@@ -276,6 +279,9 @@ const validate = (values) => {
 		errors.description = messages.required;
 	}
 
+	if(!values.link) {
+		errors.link = messages.required;
+	}
 	if(!values.link) {
 		errors.link = messages.required;
 	}
@@ -342,6 +348,8 @@ const onSubmitSuccess = (results, dispatch, props) => {
 		// reset form if the form succeded.
 		props.reset();
 	}
+
+	props.history.goBack();
 }
 
 const projectForm = reduxForm({form: 'project_form', validate, onSubmitSuccess, enableReinitialize: true})(ProjectForm);

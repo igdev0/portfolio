@@ -5,6 +5,7 @@ const StartServerPlugin = require('start-server-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
+const DotEnvPlugin = require('dotenv-webpack');
 
 const serverConfig = {
 	name: 'server',
@@ -29,11 +30,19 @@ const serverConfig = {
 	plugins: [
 		new webpack.EvalSourceMapDevToolPlugin(),
 		new CleanWebpackPlugin('./dist'),
+		new DotEnvPlugin(),
 		new StartServerPlugin('server.js'),
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.DefinePlugin({
             "process.env": {
-                "BUILD_TARGET": JSON.stringify('server')
+                "BUILD_TARGET": JSON.stringify('server'),
+								"DB_USERNAME": JSON.stringify(process.env.DB_USERNAME),
+								"DB_PASSWORD": JSON.stringify(process.env.DB_PASSWORD),
+								"DB_HOST": JSON.stringify(process.env.DB_HOST),
+								"DB_NAME": JSON.stringify(process.env.DB_NAME),
+								"AWS_ACCESS_KEY_ID": JSON.stringify(process.env.AWS_ACCESS_KEY_ID),
+								"AWS_SECRET_ACCESS_KEY": JSON.stringify(process.env.AWS_SECRET_ACCESS_KEY),
+								"AWS_BUCKET": JSON.stringify(process.env.AWS_BUCKET)
             }
         }),
         new webpack.NoEmitOnErrorsPlugin(),

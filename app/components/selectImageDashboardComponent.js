@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import croperjs from 'cropperjs'
 import card from '../images/image-deleted-card.svg';
 import hero from '../images/image-deleted-hero.svg';
 import {Modal} from 'react-bootstrap';
@@ -47,7 +47,7 @@ class SelectImage extends Component {
  	render() {
 		return (
 			<div className="select__image__container">
-			    <button type="button" onClick={this.hideModal} className="btn btn-primary">{this.props.label || "select image"}</button>
+			  <button type="button" onClick={this.hideModal} className="btn btn-primary">{this.props.label || "select image"}</button>
 				<div className="error-messages">
 					{this.props.meta.touched && (this.props.meta.error && <span><i className="fas fa-exclamation-circle"></i>{this.props.meta.error}</span>)}
 				</div>
@@ -67,10 +67,10 @@ class SelectImage extends Component {
 					  		 	   defaultChecked={file._id === this.props.meta.initial}
 					  		 	   name={`${file.name}_${key}`}
 					  		 	   type="radio" {...this.props.input}
-					  		 	   value={this.state.selectUrl ? `${window.location.origin + '/' + file.path}` : file._id}
+					  		 	   value={this.state.selectUrl ? `${file.url}` : file._id}
 					  		 	   onChange={(e) => {this.onChange(e, file)}}
 					  		 	   />
-								   <img className={this.props["img-type"] === 'card' ? 'card' : 'hero'} src={`${window.location.origin + '/' + file.path}`}/>
+									 <img className={this.props["img-type"] === 'card' ? 'card' : 'hero'} src={`${file.url}`}/>
 								  </label>
 								</div>
 							)

@@ -1,0 +1,81 @@
+input[type="file"] {
+  display: none;
+}
+
+.settings {
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+
+
+  .avatar-input-field {
+    flex-grow: 1;
+    margin: 20px 0;
+
+    .default_preview_img {
+      width: 120px;
+      height: 120px;
+      border-radius: 100%;
+      background: #f1f1f1;
+      box-shadow: 0 0 10px 0 #222;
+      cursor: pointer;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      margin: 0;
+      padding: 0;
+      cursor: pointer;
+      filter: drop-shadow(0 0 10px #222);
+    }
+
+    .preview__img {
+      max-width: 120px;
+      max-height: 120px;
+
+    }
+    .cropper__wrapper {
+      max-width: 120px;
+      margin: 0;
+      padding: 0;
+
+      .cropper__wrapper-img {
+        max-width: inherit;
+        max-height: 120px;
+
+      }
+    }
+  }
+
+  .settings-info {
+    flex-grow: 0;
+    flex-basis: 400px;
+    margin: 10px;
+    padding: 10px;
+
+    .settings__info__username,
+    .settings__info__social,
+    .settings__info__email,
+    .settings__info__password {
+      margin: 10px;
+
+      input {
+        max-width: 300px;
+        display: block;
+        width: 100%;
+        height: auto;
+        border: 2px solid #dbdbdb;
+        box-shadow: none;
+        padding: 5px;
+        margin: 5px 0;
+        border-radius: 5px;
+      }
+    }
+  }
+}

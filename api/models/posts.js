@@ -47,12 +47,6 @@ const Posts = new Schema({
 	},
 	images: images,
 
-	category: {
-		type: String,
-		required: true,
-		default: 'general'
-	},
-
 	tags: {
 		type: Array,
 		required: true
@@ -64,7 +58,11 @@ const Posts = new Schema({
 	}],
 
 	likes: LikesSchema,
-
+	slug: {
+		type: String,
+		required: true,
+		unique: true
+	},
 	updatedAt: {
 		type: Date,
 		default: new Date()

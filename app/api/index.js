@@ -1,6 +1,67 @@
 import axios from 'axios';
 
-const API_ROOT = '/api/projects';
+const privateRequest = () => {
+	let token = window.localStorage.getItem('token');
+	if(token) {
+		const instance = axios.create({
+			headers: {
+				'Authorization': `bearer ${token}`
+			}
+		})
+
+		return instance;
+	}
+	else {
+		throw 'it looks like you`re trying to access a method that is not available.';
+	}
+}
+
+export const UpdateUsername = (id, username) => {
+	const axios = privateRequest();
+	const promise = axios.put('/user/username', {id, username});
+	return promise;
+}
+
+export const UpdateUserAvatar = (id, avatar) => {
+	const formData = new FormData();
+	formData.append('file', avatar);
+	formData.append('user_id', id);
+
+	const config = {
+		headers: {
+			'Content-Type': 'multipart/form-data'
+		}
+	};
+
+	const promise = axios.post('/user/avatar', formData, config);
+
+	return promise;
+}
+
+export const GetUser = async () => {
+
+	try {
+		return await	axios.get('/user');
+	}
+	catch(e) {
+		throw e;
+	}
+}
+
+export const UpdateUserSocial = (id, update) => {
+	const promise = axios.put('/user/social', {id, update});
+	return promise;
+}
+
+export const UpdateUserPassword = (id, {current_password, new_password}) => {
+	const promise = axios.put('/user/password', {id, current_password, new_password});
+	return promise;
+}
+
+export const UpdateUserEmail = (id, email) => {
+	const promise = axios.put('/user/email', {id, email});
+	return promise;
+}
 
 export const FetchSchools = () => {
 	const promise = axios.get(`/api/education`);
@@ -87,13 +148,13 @@ export const UpdateProfileIntroduction = (update) => {
 }
 
 export const FetchProjects = () => {
-	const payload = axios.get(API_ROOT);
+	const payload = axios.get('/api/projects');
 
 	return payload;
 }
 
 export const UpdateProject = (id, updates, type) => {
-	const payload = axios.put(API_ROOT, {
+	const payload = axios.put('/api/projects', {
 		id: id,
 		updates: updates,
 		type: type
@@ -103,7 +164,7 @@ export const UpdateProject = (id, updates, type) => {
 }
 
 export const DeleteProject = (id) => {
-	const payload = axios.delete(API_ROOT, {
+	const payload = axios.delete('/api/projects', {
 		params: {
 			id: id
 		}
@@ -113,7 +174,7 @@ export const DeleteProject = (id) => {
 }
 
 export const CreateProject = (project) => {
-	const payload = axios.post(API_ROOT, project);
+	const payload = axios.post('/api/projects', project);
 
 	return payload;
 }
@@ -133,19 +194,17 @@ export const FetchPostById = (id) => {
 	return promise;
 }
 
-export const CreatePost = (category_id, post) => {
+export const CreatePost = (post) => {
 	const promise = axios.post('/api/posts', {
-		category: category_id,
 		post
 	})
 
 	return promise;
 }
 
-export const UpdatePost = (post_id, post_title, update) => {
+export const UpdatePost = (slug, update) => {
 	const promise = axios.put(`/api/posts`, {
-		post_id: post_id,
-		post_title: post_title,
+		slug: slug,
 		update
 	})
 
@@ -172,6 +231,7 @@ export const FetchFiles = (params) => {
 
 export const CreateFile = (file, data) => {
 	const formData = new FormData();
+
 	formData.append('file', file);
 	formData.append('folder', data.folder);
 	formData.append('alt', data.alt);
@@ -250,8 +310,8 @@ export const FetchProfile = () => {
 	return promise;
 }
 
-export const FetchPost = (_id) => {
-	const promise = axios.get(`/api/posts/${_id}`);
+export const FetchPost = (slug) => {
+	const promise = axios.get(`/api/posts/${slug}`);
 
 	return promise;
 }

@@ -15,12 +15,13 @@ import initialData from './initialData';
 import profileIntroduction from './profileIntroduction';
 import profile from './profile';
 import project from './project';
+import user from './user';
 
 const rootReducer = combineReducers({
 	form: formReducer,
 	comments,
 	posts,
-	categories, 
+	categories,
 	loginStatus,
 	files,
 	post,
@@ -31,7 +32,8 @@ const rootReducer = combineReducers({
 	projects,
 	overview,
 	profile,
-	project
+	project,
+	user
 })
 
 export default rootReducer;

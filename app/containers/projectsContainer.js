@@ -16,8 +16,7 @@ class ProjectsContainer extends Component {
 	}
 
 	render() {
-
-		if(this.props.projects && this.props.skills) {
+		if(this.props.projects && this.props.projects.length && this.props.skills && this.props.skills.length) {
 			return (
 				<Projects {...this.props}/>
 			)

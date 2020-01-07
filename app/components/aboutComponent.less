@@ -1,19 +1,118 @@
+@import '../styles/sizes.less';
+
 .about__main {
 	width: 100%;
-	height: 100%; 
 	padding: 0;
 	margin: 0;
-	
+	background: #f9f9f9;
+	height: auto;
+
+	.icon-left {
+		flex-grow: 1;
+		position: relative;
+		color: #e46b77;
+		height: auto;
+		background: #f1f1f1;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		width: 20px;
+		margin: 0 20px;
+		border-radius: 10px;
+		border: .5px solid #fff;
+
+		svg {
+			height: 40px;
+			width: 40px;
+			margin: 5px 0;
+			padding: 5px;
+			border-radius: 100%;
+			font-size: 35px;
+			background: #fff;
+			box-shadow: 0 5px 5px 0 #999;
+		}
+	}
+
 	.about__main-bio,
 	.about__main-skills,
-	.about__main-education {
+	.about__main-education,
+	.about__main-interest,
+	.about__main-achievements {
 		width: 100%;
-		height: auto;
+		max-width: 980px;
+		padding: 10px;
 		margin: 0;
-		padding: 0 20px;
-		border-left: 5px solid #662D91;
-		background: #fff;
-	}  
+		display: flex;
+		justify-content: center;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		align-items: stretch;
+
+
+		@media @medium {
+			padding: 0;
+		}
+
+		@media @small {
+			padding: 0;
+		}
+
+		h3 {
+			text-transform: uppercase;
+			@media @extra-large {
+				font-size: 1.5rem !important;
+			}
+			@media @large {
+				font-size: 1.5rem !important;
+			}
+
+			@media @medium {
+				font-size: 1.5rem !important;
+			}
+
+			@media @small {
+				font-size: 1.2rem !important;
+			}
+
+		}
+
+		p {
+
+			@media @extra-large {
+				font-size: 1rem !important;
+			}
+			@media @large {
+				font-size: 1rem !important;
+			}
+
+			@media @medium {
+				font-size: .8rem !important;
+			}
+
+			@media @small {
+				font-size: .8rem !important;
+			}
+		}
+
+		h5 {
+
+			@media @extra-large {
+				font-size: 1.5rem !important;
+			}
+			@media @large {
+				font-size: 1.2rem !important;
+			}
+
+			@media @medium {
+				font-size: 1.1rem !important;
+			}
+
+			@media @small {
+				font-size: 1.1rem !important;
+			}
+		}
+	}
 
 	.about__main-bio {
 
@@ -23,195 +122,61 @@
 
 			p {
 				font-family: sans-serif;
-				font-size: 18px;
+				font-size: 1rem;
 			}
 		}
 	}
 
 	.about__main-skills {
 
+		h3 {
+			text-transform: uppercase;
+		}
 		.about__main__skills {
 			width: 100%;
-			display: flex;
-			flex-direction: row;
-			flex-wrap: wrap;
-
-			.about__main__skills-skill {
-				flex-grow: 0;
-				margin: 0 10px;
-				
-				.about__main__skills__skill-header {
-					margin: 0;
-					padding: 0;
-					display: flex;
+			margin: 0;
+			padding: 0;
+			height: auto;
+			.skills {
+					width: 100%;
+					height: auto;
+					display: inline-flex;
 					flex-direction: row;
-					align-items: center;
-					border-bottom: 4px solid #edd9fc;
-					.img-wrapper {
-						width: 100px;
-						height: 100px;
-						display: flex;
-						align-items: center;
-						justify-content: center;
-						background: #fff;
-						overflow: hidden;
-						clip-path: circle();
+					flex-wrap: wrap;
 
-						img {
-							width: 75%;
-							height: auto;
-						}
-					}
-
-					.about__main__skills__skill__header-details {
-						display: flex;
-						flex-direction: column;
-						p {
-
-							span {
-								padding: 5px;
-								margin: 5px;
-								background: #fff;
-								color: #222;
-								font-family: sans-serif;
-								border-radius: 5px;
-							}
-						}
-					}
-				}
-
-				.about__main__skills__skill-description {
-					margin: 0;
-					padding: 0;
-					max-width: 500px;
-
-					p {
-						font-family: sans-serif;
-						font-size: 17px;
+					.skill {
+						// flex-grow: 1;
+						margin: 5px;
 						padding: 5px;
-						background: #fff;
-						border-radius: 0 0 5px 5px;
+						color: #fff;
+						border-radius: 2.5px;
+						cursor: default;
+						align-self: flex-start;
 					}
-				}
 			}
 
-			.about__main__skills-all {
-				flex-grow: 1;
-				display: flex;
-				align-items: center;
-				flex-wrap: wrap;
-				justify-content: flex-start;
-				
-				.skill {
-					width: 100%;
-					cursor: pointer;
-					margin: 5px 0;
-					background: #fff;
-					border-radius: 5px;
-					overflow: hidden;
-					z-index: 1000;
+		}
 
-					.skill-level {
-						height: 40px;
-						display: flex;
-						align-items: center;
-						z-index: -1;
-					
-						.skill-icon {
-							margin: 0 5px;
-							width: 30px;
-							height: 30px;
-							overflow: hidden;
-							clip-path: circle();
-							background: #f1f1f1;
-							display: flex;
-							align-items: center;
-							justify-content: center;
+	}
 
-							img {
-								width: 70%;
-								height: auto;
-								z-index: 100;
-							}
-						}
-					}
-				}
+	.about__main-achievements {
+
+		.about__main-achievement {
+			margin: 0;
+
+			h5 {
+				border-bottom: 4px solid #dc3545b3;
+				padding: 2.5px;
+				display: inline;
+			}
+
+			p {
+				margin-top: 10px;
 			}
 		}
 	}
 
-	.about__main-education {
-		
-		.about__main__education {
-			display: flex;
-			flex-direction: row;
-			flex-wrap: wrap;
-			
-			.about__main__education-card {
-				flex-grow: 1;
-				align-self: flex-start;
-				margin: 10px;
-				padding: 0;
-				max-width: 350px;
-				background: #fff;
-				border-radius: 5px;
-				box-shadow: 0 0 10px 0 #f1f1f1;
-				display: flex;
-				flex-direction: column;
-				
-				.about__main__education__card-details {
-					margin: 0;
-					padding: 0;
-					width: 100%;
-					height: auto;
-					display: flex;
-					flex-direction: column;
-					flex-wrap: wrap;
-						
-					span {
-						padding: 5px;
-						margin: 5px;
-						font-family: sans-serif;
-						font-size: 17px;
-						border-radius: 5px;
-						background: #9255c1;
-						color: #fff;
-					}
-				}
+	.about__main-interest {
 
-				.about__main__education__card-img {
-					margin: 0;
-					padding: 0;
-					width: 100%;
-					padding: 5px;
-					height: 150px;
-					display: flex;
-					align-items: center;
-					justify-content: center;
-					overflow: hidden;
-					img {
-						max-width: 100%;
-						width: auto;
-						height: 100%;
-					}
-				}
-
-				.about__main__education__card-description {
-					margin: 0;
-					padding: 0;
-					width: 100%;
-					height: auto;
-					padding: 5px;
-
-					p {
-						font-family: sans-serif;
-						font-size: 17px;
-						background: #f9f9f9;
-						color: #333;
-						padding: 5px;
-					}
-				}
-			}
-		}
 	}
 }

@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import Header from './headerDashboardComponent';
-import {Route, Router, Link} from 'react-router-dom';
+import {Route, Router, Link, Switch} from 'react-router-dom';
 import PrivateRoute from './privateRouteComponent';
 
 import './dashboardComponent.less';
@@ -39,14 +39,15 @@ class Dashboard extends Component {
 			  </aside>
 			  <section className="dashboard__content-right">
 			    <Header {...this.props}></Header>
-
-			  	 {
-			  	 	this.props.routes.map(({path, component, exact}, key) => {
-			  	 		return (
-			  	 			<Route key={key} exact={exact} path={path} component={component}/>
-			  	 		)
-			  	 	})
-			  	 }
+			  	 <Switch>
+						 {
+				  	 	this.props.routes.map(({path, component, exact}, key) => {
+				  	 		return (
+				  	 			<Route key={key} exact={exact} path={path} component={component}/>
+				  	 		)
+				  	 	})
+				  	 }
+					 </Switch>
 			  </section>
 			 </section>
 			</main>

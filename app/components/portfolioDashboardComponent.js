@@ -1,17 +1,21 @@
 import React from 'react';
 import ProjectForm from './projectFormDashboardComponent';
 import {Link} from 'react-router-dom';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import './portfolioDashboardComponent.less';
 
 const Portfolio = (props) => {
+	const projects = !props.displayedResults.length ? props.projects : props.displayedResults;
 	return (
 		<main className="portfolio-main">
 		 <div className="projects-header">
 			 <h3>Projects.</h3>
-			 <form onSubmit={(e) => {props.onSearchSubmit(e)}}>
+			 <div className="actions">
+				<Link to="/dashboard/portfolio/add" className="btn btn-success">Add new project</Link>
+			 </div>
+			 <form className="projects__header-search" onSubmit={(e) => {props.onSearchSubmit(e)}}>
 				 <input type="text" name="search_project_filter" onChange={(e) => {props.onSearchInputChange(e)}} placeholder="Search projects ..."/>
-				 <button type="submit">Search</button>
 		 </form>
 		 </div>
 		 <table className="projects-view">
@@ -36,27 +40,23 @@ const Portfolio = (props) => {
 			 </thead>
 			 <tbody className="projects__view-body">
 				 {
-					 props.projects ? props.projects.map((project, key) => {
+					 projects.map((project, key) => {
 						 return (
 							 <tr key={key}>
 								 <td className="title">{project.title}</td>
 								 <td>{project.description}</td>
-								 <td><a href={project.link}>{project.link}</a></td>
+								 <td><a href={project.link} target="_blank">{project.link}</a></td>
 								 <td>{project.start_at}</td>
 								 <td>
-									 <button type="button" className="btn btn-danger">Delete</button>
+									 <button type="button" className="btn btn-danger" onClick={() => {props.deleteProject(project._id)}}>Delete</button>
 									 <Link className="btn btn-primary" to={'/dashboard/portfolio/edit/' + project._id}>Edit</Link>
 								 </td>
 							 </tr>
 						 )
 					 })
-					 : null
 				 }
 			 </tbody>
 		 </table>
-		 <div className="actions">
-			 <Link to="/dashboard/portfolio/add" className="btn btn-success">Add new project</Link>
-		 </div>
 		</main>
 	)
 }

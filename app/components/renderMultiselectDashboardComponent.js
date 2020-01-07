@@ -58,10 +58,6 @@ class RenderMultiselect extends Component {
 			   <input type="text" placeholder={this.props.label} value={this.state.inputVal} onChange={this.handleInputChange}/>
 			   {(this.props.meta.submitFailed && this.props.meta.invalid) && this.props.meta.error && (<span>{this.props.meta.error}</span>)}
 			  </div>
-			  <div className="find__skill__form-buttons">
-			     {this.props.displaySubmitButton && <button type="submit" className="btn btn btn-success btn-sm"><i className="fas fa-plus-circle"></i></button>}
-				 <button type="button" className="btn btn-danger btn-sm" onClick={() => this.props.toggleFindSchoolForm()}><i className="fas fa-ban"></i></button>
-			  </div>
 			 </div>
 
 			 <ul className="fieldset__skills__results-list">

@@ -57,7 +57,6 @@ class Profile extends Component {
 		      <div className="flex-row">
 		       {
 		       	this.props.schools ? this.props.schools.map((school, key) => {
-							console.log(school)
 		       		return (
 		       		  <div key={key} className="flex-col">
 				        <div className="display__school">
@@ -117,8 +116,8 @@ const SkillsGrid = (props) => {
 				    return (
 						<li key={key} className="skills__grid-cell">
 							<div className="skills__grid__cell-item">
-							 <div className="skill-icon">
-							   {skill.icon && <img src={`${window.location.origin}/${skill.icon.path}`}/>}
+							 <div className="skill-name">
+							   <span>{skill.name}</span>
 							 </div>
 							 <div className="actions">
 							   <i className="fas fa-times-circle" onClick={() => props.updateSchool(props.school._id, "REMOVE_SKILLS", skill._id)}></i><i className="far fa-edit"></i>

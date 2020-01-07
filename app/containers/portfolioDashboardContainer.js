@@ -1,18 +1,20 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-
+import {Link} from 'react-router-dom';
 import {fetchProjects, createProject, deleteProject, updateProject,
 		loadInitialData, resetInitialData, fetchSkills} from '../actions';
 
 import Portfolio from '../components/portfolioDashboardComponent';
+import NotFoundComponent from '../components/notFoundComponent';
+import LoadingComponent from '../components/loadingComponent';
 
 class PortfolioContainer extends Component {
 
 	constructor(props) {
 		super(props);
 		this.state = {
-			searchTerm: null,
+			searchTerm: '',
 			displayedResults: this.props.projects || []
 		}
 
@@ -26,40 +28,44 @@ class PortfolioContainer extends Component {
 
 	onSearchInputChange(e) {
 		this.setState({
-			searchTerm: e.currentTarget.value
-		})
-		this.searchFilter();
-	}
-
-	searchFilter() {
-		let projects;
-		if(this.state.searchTerm === '' || this.state.searchTerm === null) {
-			this.setState({displayedResults: this.props.projects})
-		}
-		else {
-			 projects = this.props.projects.filter((item) => {
-				// Check if the search term is in the name prop.
-				return item.title.toLowerCase().includes(this.state.searchTerm.toLowerCase());
+			searchTerm: e.currentTarget.value,
+			displayedResults: this.props.projects.filter((item) => {
+			// Check if the search term is in the name prop.
+				return item.title.toLowerCase().includes(e.currentTarget.value.toLowerCase());
 			})
-		}
-
-		this.setState({displayedResults: projects})
+		})
 	}
 
 	componentDidMount() {
 		this.props.fetchProjects();
+
 		this.props.fetchSkills();
 	}
 
 	render() {
 
-		return (
-			<Portfolio {...this.props} displayedResults={this.state.displayedResults} onSearchSubmit={this.onSearchSubmit} onSearchInputChange={this.onSearchInputChange}/>
-		)
+		if(this.props.projects === null) {
+			return (
+				<NotFoundComponent name="projects">
+					<Link className="btn btn-success" to="/dashboard/portfolio/add">Add projects</Link>
+				</NotFoundComponent>
+			)
+		}
+		else if(!this.props.projects.length) {
+			return (
+				<LoadingComponent/>
+			)
+		}
+		else {
+			return (
+				<Portfolio {...this.props} displayedResults={this.state.displayedResults} onSearchSubmit={this.onSearchSubmit} onSearchInputChange={this.onSearchInputChange}/>
+			)
+		}
 	}
 }
 
 const mapStateToProps = ({projects, skills, initialData}) => {
+	console.log(initialData)
 	return {
 		projects,
 		skills,

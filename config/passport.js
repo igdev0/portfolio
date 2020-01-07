@@ -36,19 +36,29 @@ const LocalStrategy = new passportLocal.Strategy(local_opts, (req, attendantUser
 		// Use that method to compare the password and base on that
 		// we'll find out if the password is correct.
 		user.comparePassword(AttendantPassword, (err, isMatch) => {
-			
+
 			if(err) {
 				return done(err);
 			}
 
 			if(!isMatch) {
-				console.log("The password don't match");
-				console.log(req)
 				return done(null, false);
 			}
 
 			if(isMatch) {
-				return done(null, user);
+				let _user = {
+					_id: user._id,
+					username: user.username,
+					avatar_url: user.avatar_url,
+					github_url: user.github_url,
+					facebook_url: user.facebook_url,
+					linkedin_url: user.linkedin_url,
+					email: user.email,
+					updatedAt: user.updatedAt,
+					createdAt: user.createdAt
+				}
+
+				return done(null, _user);
 			}
 		})
 	})
@@ -58,13 +68,10 @@ const LocalStrategy = new passportLocal.Strategy(local_opts, (req, attendantUser
 // ============================================================
 const jwt_opts = {
 	secretOrKey: config.secret,
-	jwtFromRequest: passportJwt.ExtractJwt.fromHeader('authorization')
+	jwtFromRequest: passportJwt.ExtractJwt.fromAuthHeaderAsBearerToken('authorization')
 };
-
 const JwtStrategy = new passportJwt.Strategy(jwt_opts, (payload, done) => {
-
-	User.findById({id: payload.sub}, (err, data) => {
-
+	User.findById(payload.user._id, (err, data) => {
 		if(err) {
 			return done(err);
 		}
@@ -76,6 +83,7 @@ const JwtStrategy = new passportJwt.Strategy(jwt_opts, (payload, done) => {
 		if(data) {
 			done(null, data);
 		}
+
 	})
 })
 // Gitub strategy:
@@ -100,6 +108,14 @@ const GithubStrategy = new passportGithub.Strategy({
 		return done(null, user);
 	})
 });
+
+// passport.serializeUser(function(user, done) {
+//   done(null, user);
+// });
+//
+// passport.deserializeUser(function(user, done) {
+//   done(null, user);
+// });
 
 passport.use(GithubStrategy);
 passport.use(LocalStrategy);

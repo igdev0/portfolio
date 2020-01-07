@@ -8,8 +8,10 @@ import profileController from '../api/controllers/profileController';
 import educationController from '../api/controllers/educationController';
 import overviewController from '../api/controllers/overviewController';
 import articleController from '../api/controllers/articleController';
+import userController from '../api/controllers/userController';
 import expressSession from 'express-session';
 import expressJwt from 'express-jwt';
+import jsonwebtoken from 'jsonwebtoken';
 import passport from './passport';
 import config from './';
 import connectFlash from 'connect-flash';
@@ -23,8 +25,7 @@ const initApiRoutes = (app) => {
 	// =================
 
 	app.get('/api/posts', postsController.get);
-	// app.get('/api/posts/:post_title', postsController.getOne);
-	app.get('/api/posts/:post_id', postsController.getById);
+	app.get('/api/posts/:slug', postsController.getOne);
 	app.post('/api/posts', postsController.create);
 	app.put('/api/posts', postsController.update);
 	app.delete('/api/posts', postsController.delete);
@@ -43,7 +44,6 @@ const initApiRoutes = (app) => {
 	app.post('/api/files', filesController.create);
 	app.delete('/api/files', filesController.delete);
 	app.get('/api/files', filesController.get);
-	app.get('/api/uploads/:file', filesController.getOne);
 	// ========================================
 
 	// Skills routes
@@ -72,7 +72,7 @@ const initApiRoutes = (app) => {
 	// ===============================================
 
 
-	// Profile routes 
+	// Profile routes
 	// =====================
 
 	app.get('/api/profile', profileController.get);
@@ -81,13 +81,48 @@ const initApiRoutes = (app) => {
 	// ===============================================
 
 	app.get('/api/overview', overviewController);
-
 	// Authentication routes
 	// // =====================
 	// app.use(connectFlash());
+	const checkForToken = (req, res, next) => {
+		const token = req.headers['authorization'];
+		if(token) {
+			req.token = token;
+
+			return next();
+		}
+
+		res.status(403).json({message: "You must have a token in order to make requests to this endpoint."})
+	}
+
+	const verifyToken = (req, res, next) => {
+		let token = req.token;
+
+		if(token) {
+			token = token.replace('bearer ', '');
+			jsonwebtoken.verify(token, config.secret, (err, decoded) => {
+				if(err) {
+
+					return res.status(403).json({message: "Invalid token."})
+				}
+				req.user = decoded.user;
+				return next();
+			})
+
+		}
+	}
+
+	app.get('/user', userController.getUser)
 	app.post('/user/auth/login', passport.authenticate('local', {session: false}), authenticationController.login);
 	app.post('/user/auth/singup', authenticationController.singup);
 	// ============================================================
+
+
+	app.post('/user/avatar', userController.updateUserAvatar)
+	app.put('/user/password', userController.updateUserPassword)
+	app.put('/user/username', userController.updateUsername)
+	app.put('/user/social', userController.updateUserSocial)
+	app.put('/user/email', userController.updateUserEmail)
 
 	app.post('/api/article', articleController.create);
 	app.get('/api/article', articleController.get);

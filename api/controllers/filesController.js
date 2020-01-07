@@ -1,14 +1,23 @@
 import Files from '../models/files';
 import multer from 'multer';
 import path from 'path';
-import fs from 'fs';
+import multerS3 from 'multer-s3';
+import aws, {S3} from 'aws-sdk';
 
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, 'api/uploads/')
-  },
-  filename: function (req, file, cb) {
-    cb(null, file.originalname)
+const s3 = new S3();
+aws.config.update({
+  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+  region: 'eu-west-2'
+})
+
+const storage = multerS3({
+  s3: s3,
+  bucket: process.env.AWS_BUCKET,
+  acl: 'public-read',
+  contentDisposition: 'inline',
+  key: function(req, file, cb) {
+    cb(null, file.originalname);
   }
 })
 
@@ -20,32 +29,28 @@ const filesController = {
 
 		Files
 		.find((err, data) => {
+
 			if(err) {
 
 				return res.status(404).json(err);
 			}
+
 			res.status(200).json(data);
 		})
-	},
-
-	getOne: (req,res) => {
-		const param = req.params.file;
-
-		res.sendFile(process.cwd() + '/api/uploads/' + param);
 	},
 
 	create: (req, res) => {
 		upload(req, res, function(err) {
 			const file = req.file;
+
 			if(err instanceof multer.MulterError) {
 				return res.status(500).json(err);
 			}
-
+      console.log(file)
 			Files.create({
-				path: file.path,
+				url: file.location,
 				size: file.size,
-				name: file.filename,
-				alt: req.body.alt
+				name: file.originalname
 			}, (err, data)=> {
 
 				if(err) {
@@ -63,18 +68,21 @@ const filesController = {
 			Files
 			.findByIdAndDelete(id)
 			.exec((err, data) => {
-        console.log(data)
 				if(err) {
 					return	res.status(500).json(err);
 				}
-				fs.unlink(data.path, function(err) {
+        s3.deleteObject({
+          Key: data.name,
+          Bucket: process.env.AWS_BUCKET
+        }, (err, success) => {
 
-					if(err) {
-						return res.status(400).json(err);
-					}
+          if(err) {
+            return res.status(500).json(err);
+          }
 
-					res.status(200).json(data);
-				})
+          res.status(200).json(data);
+        })
+
 			})
 		}
 

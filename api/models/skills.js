@@ -1,5 +1,5 @@
 import mongoose from '../../config/mongodb';
-const Schema = mongoose.Schema;	
+const Schema = mongoose.Schema;
 
 
 const Experience = {
@@ -18,7 +18,7 @@ const ExperienceSchema = new Schema(Experience);
 
 const Skills = {
 	// Skills
-	// e.g. 
+	// e.g.
 	name: {
 		type: String,
 		required: true
@@ -26,12 +26,6 @@ const Skills = {
 	description: {
 		type: String,
 		required: true
-	},
-	icon: {
-		type: Schema.Types.ObjectId,
-		ref: 'Files',
-		required: true,
-		autopopulate: true
 	},
 
 	level: {
@@ -42,7 +36,7 @@ const Skills = {
 		type: String,
 		required: true
 	},
-	
+
 	experience: ExperienceSchema,
 
 	projects: [

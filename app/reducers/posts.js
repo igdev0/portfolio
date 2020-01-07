@@ -9,8 +9,9 @@ const posts = (state = [], action) => {
 			return [...state, action.payload.data];
 
 		case FETCH_POSTS:
-			return action.payload.data;
 
+			return !action.payload.data.length ? null : action.payload.data;
+			
 
 		case DELETE_POST:
 			const post_id = action.payload.data._id;

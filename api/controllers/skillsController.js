@@ -10,7 +10,6 @@ const skillsController = {
 		// const {params: {query}} = req;
 
 		Skills.find()
-		.populate('icon')
 		.populate('school')
 		.exec(function(err, data) {
 			if(err) {
@@ -29,7 +28,6 @@ const skillsController = {
 			name: body.name,
 			description: body.description,
 			level: body.level,
-			icon: body.icon,
 			experience: body.experience,
 			color: body.color
 
@@ -39,7 +37,6 @@ const skillsController = {
 		    runValidators: true,
 		    setDefaultsOnInsert: true
 		})
-		.populate('icon')
 		.populate({
 			path: 'school',
 			select: 'name'
@@ -52,7 +49,7 @@ const skillsController = {
 
 			Profile.findOneAndUpdate({
 				name: 'defaultProfile'
-			}, 
+			},
 			{
 				$push: {skills: data._id}
 			},
@@ -78,7 +75,6 @@ const skillsController = {
 		const skill_id = req.body.id;
 		Skills
 		.findByIdAndUpdate(skill_id, req.body.update, {new: true})
-		.populate('icon')
 		.populate({
 			path: 'school',
 			select: 'name'
@@ -99,8 +95,6 @@ const skillsController = {
 
 		Skills
 		.findByIdAndDelete(id)
-
-		.populate('icon')
 		.populate('school')
 
 		.exec(function(err, data) {
@@ -111,7 +105,7 @@ const skillsController = {
 
 			Profile.findOneAndUpdate({
 				name: 'defaultProfile'
-			}, 
+			},
 			{
 				$pull: {skills: id}
 			},
@@ -128,7 +122,7 @@ const skillsController = {
 
 				if(data.school.length > 0) {
 					Education
-					.updateMany({_id: {$in: data.school}}, 
+					.updateMany({_id: {$in: data.school}},
 					{
 						$pull: {skills: id}
 					},
@@ -141,12 +135,12 @@ const skillsController = {
 
 							return res.status(400).json(education_error);
 						}
-				
+
 						if(data.projects.length > 0) {
 
 							Projects
 
-							.updateMany({_id: {$in: data.projects}}, 
+							.updateMany({_id: {$in: data.projects}},
 							{
 								$pull: {skills: id}
 							},
@@ -168,7 +162,7 @@ const skillsController = {
 						else {
 							return res.status(200).json(data);
 						}
-						
+
 					})
 				}
 
@@ -177,7 +171,7 @@ const skillsController = {
 					return res.status(200).json(data);
 				}
 			})
-		
+
 		})
 	}
 }

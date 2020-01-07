@@ -2,12 +2,12 @@ import React, {Component} from 'react';
 import {reduxForm, Form, Field, FieldArray} from 'redux-form';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import SelectImageContainer from '../containers/selectImageDashboardContainer';
 import diff from 'object-diff';
 import {LOAD_INITIAL_DATA__FOR__SKILL} from '../actions/types';
 import './profileSkillFormDashboardComponent.less';
 
-const ProfileSkillForm  = (props) =>{
+const ProfileSkillForm  = (props) => {
+	
 	return (
 		<section className="profile__skills">
 		 <div className="flex-row">
@@ -28,7 +28,6 @@ const ProfileSkillForm  = (props) =>{
 				    </div>
 				    <div className="flex-cell">
 					 <Field type="text" name="name" component={InputFieldComponent} label="enter skill name"/>
-					 <Field type="select" name="icon" component={SelectImageContainer}/>
 				    </div>
 				    <div className="flex-cell">
 					 <Field type="text" name="description" component={TextareaComponent} label="Description ..."/>
@@ -36,7 +35,7 @@ const ProfileSkillForm  = (props) =>{
 				    <div className="flex-cell">
 					 <Field type="slider" name="level" component={InputFieldComponent} min="0" max="100" label="Skill level"/>
 					 <Field type="text" name="color" component={InputFieldComponent} label="A representational color"/>
-				    </div>
+				     </div>
 				    <div className="flex-cell">
 					 <Field type="date" name="experience.from" component={InputFieldComponent} label="enter skill name"/>
 					 <Field type="date" name="experience.to" component={InputFieldComponent} label="enter skill name"/>
@@ -154,10 +153,6 @@ const validate = (values) => {
 
 	if(!values.description) {
 		errors.name = error_messages.required;
-	}
-
-	if(!values.icon) {
-		errors.icon = error_messages.required
 	}
 
 	if(!values.color) {

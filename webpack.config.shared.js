@@ -8,7 +8,6 @@ const sharedConfig = {
 		path: path.resolve(__dirname, 'dist'),
 		publicPath: '/'
 	},
-
 	module: {
 		rules: [
 			{
@@ -20,7 +19,7 @@ const sharedConfig = {
 			},
 
 			{
-				test: /\.less$/,
+				test: /\.(less|css)$/,
 				exclude: '/node_modules/',
 				use: [
 					MiniCssExtractPlugin.loader,

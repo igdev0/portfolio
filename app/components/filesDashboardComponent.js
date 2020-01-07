@@ -12,15 +12,14 @@ class SelectFile extends Component {
 			previewUrl: images,
 			_selectFile: React.createRef()
 		}
+
 		this.selectFile = this.selectFile.bind(this);
 		this.onChange = this.onChange.bind(this);
-
 	}
 
 	componentDidUpdate() {
 
 		if(this.props.submitSucceeded) {
-
 			this.setPreview(images);
 		}
 	}
@@ -38,10 +37,13 @@ class SelectFile extends Component {
 		reader.onloadend = () => {
 
 			this.setPreview(reader.result);
-		}
-		reader.readAsDataURL(file);
 
-		this.props.input.onChange(e);
+		}
+		if(file) {
+			reader.readAsDataURL(file);
+
+			this.props.input.onChange(e);
+		}
 	}
 
 	selectFile() {
@@ -49,10 +51,11 @@ class SelectFile extends Component {
 	}
 
 	render() {
+
 		return (
 
 			<div className="select-file">
-			    <div className="select-file__ref"><a href="#" onClick={this.selectFile}> <img src={this.state.previewUrl}/></a></div>
+			  <div className="select-file__ref"><a href="#" onClick={this.selectFile}> <img src={this.state.previewUrl}/></a></div>
 				<input
 				type="file"
 				accept=".jpg, .png, .jpeg"
@@ -61,9 +64,11 @@ class SelectFile extends Component {
 				onFocus={this.props.input.onFocus}
 				defaultValue={this.props.input.value}
 				/>
+
 				{this.props.meta.touched &&
-		        ((this.props.meta.error && <span><i className="fas fa-exclamation-circle"></i>{this.props.meta.error}</span>) ||
-		          (this.props.meta.warning && <span>{this.props.meta.warning}</span>))}
+		    ((this.props.meta.error && <span><i className="fas fa-exclamation-circle"></i>{this.props.meta.error}</span>) ||
+		    (this.props.meta.warning && <span>{this.props.meta.warning}</span>))}
+
 			</div>
 		)
 	}
@@ -80,8 +85,8 @@ const FileMetaInput = ({
 		<div>
 		 <input {...input} type={type} placeholder={label} />
 		      {touched &&
-		        ((error && <span><i className="fas fa-exclamation-circle"></i>{error}</span>) ||
-		        (warning && <span>{warning}</span>))}
+		      ((error && <span><i className="fas fa-exclamation-circle"></i>{error}</span>) ||
+		      (warning && <span>{warning}</span>))}
 		</div>
 	)
 }
@@ -148,7 +153,7 @@ class Files extends Component {
 				  		return (
 				  			<tr key={key} className="files-table_body-row">
 				  			  <td className="files-table_body-col">{file.name}</td>
-				  			  <td className="files-table_body-col"><a className="btn btn-primary" href={`${window.location.origin + '/' + file.path}`}>view</a></td>
+				  			  <td className="files-table_body-col"><a className="btn btn-primary" href={file.url}>view</a></td>
 				  			  <td className="files-table_body-col">{this.bytesToSize(file.size)}</td>
 				  			  <td className="files-table_body-col">{new Date(file.updated_at).toLocaleString()}</td>
 				  			  <td className="files-table_body-col"><button className="btn btn-danger" onClick={() => this.props.deleteFile(file._id)}>Delete</button></td>
@@ -162,10 +167,6 @@ class Files extends Component {
 			 <div className="files-upload">
 			   <Form onSubmit={this.props.handleSubmit(this.handleFormSubmit)} className="files-upload__form">
 			    <Field type="file" name="fileToUpload" submitSucceeded={this.props.submitSucceeded} component={SelectFile}/>
-			    <fieldset className="field__img__alt">
-				    <label htmlFor="alt">Image alt:</label>
-				    <Field type="text" name="alt" label="File alt." component={FileMetaInput} placeholder="Image alt ..."/>
-			    </fieldset>
 			    <div className="submit-button-w">
 			     <button type="submit">Submit</button>
 			    </div>

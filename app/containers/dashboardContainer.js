@@ -1,14 +1,16 @@
 import React,{Component} from 'react';
 import {connect} from 'react-redux';
 import Dashboard from '../components/dashboardComponent';
-import {logout} from '../actions';
+import {logout, getUserData} from '../actions';
 import {bindActionCreators} from 'redux';
 
 class DashboardContainer extends Component {
 	constructor(props) {
 		super(props);
 	}
-
+	componentDidMount() {
+		this.props.getUserData();
+	}
 	render() {
 
 		return (
@@ -17,12 +19,18 @@ class DashboardContainer extends Component {
 		)
 	}
 }
+const mapStatetoProps = ({user}) => {
 
+	return {
+		user
+	}
+}
 const bindActionCreatorsToProps = (dispatch) => {
 
 	return bindActionCreators({
-		logout
+		logout,
+		getUserData
 	}, dispatch)
 }
 
-export default connect(null, bindActionCreatorsToProps)(DashboardContainer);
+export default connect(mapStatetoProps, bindActionCreatorsToProps)(DashboardContainer);

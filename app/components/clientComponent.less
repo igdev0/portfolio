@@ -1,10 +1,13 @@
+@import '../styles/sizes.less';
 body {
 	font-family: sans-serif;
 }
+// Sidebar transition
+// ===================
 
 .app_main {
 	width: 100%;
-	height: 100vh;
+	height: 100%;
 	margin: 0;
 	padding: 0;
 	display: flex;
@@ -13,8 +16,30 @@ body {
 
 	.app_main__section {
 		margin: 0;
-		padding: 10px;
+		padding: 0;
 		flex-grow: 1;
-		overflow: auto;
+		height: 100%;
+		background: #f9f9f9;
 	}
 }
+
+
+	.app_main {
+		flex-direction: row;
+		height: auto;
+
+		@media @extra-large {
+			flex-direction: row;
+		}
+		@media @large {
+			flex-direction: row;
+		}
+
+		@media @medium {
+			flex-direction: column;
+			height: auto;
+		}
+		@media @small {
+			flex-direction: column;
+		}
+	}

@@ -11,7 +11,6 @@ const projectsController = {
 		.find()
 		.sort({_id: 1})
 		.populate('images.card')
-		.populate('images.hero')
 		.populate('skills')
 		.exec((err, data) => {
 
@@ -23,11 +22,12 @@ const projectsController = {
 			res.status(200).json(data);
 		})
 	},
+
 	getOneById: (req, res, next) => {
 		const {params: {project_id}} = req;
 		const {query: {next_project, previous_project}} = req;
 
-		
+
 		if(!next_project || !previous_project) {
 			Projects
 
@@ -46,16 +46,17 @@ const projectsController = {
 				return res.status(200).json(data);
 			})
 		}
+
 		else {
 			next()
 		}
 	},
+
 	getSiblings: (req, res) => {
 		const {params: {project_id}} = req;
 		const {query: { next_project, previous_project}} = req;
 
 		if(next_project === "true") {
-			console.log('This statement is true "Next project"')
 			Projects
 
 			.findOne({_id: {$gt: project_id}})
@@ -115,7 +116,8 @@ const projectsController = {
 			skills: body.skills,
 			started_at: body.started_at,
 			finished_at: body.finished_at,
-			link: body.link
+			link: body.link,
+			github_url: body.github_url
 		}, {
 		    new: true,
 		    upsert: true,
@@ -134,7 +136,7 @@ const projectsController = {
 			return res.status(200).json(data);
 		})
 
-		
+
 	},
 
 	update: (req, res) => {
@@ -152,7 +154,7 @@ const projectsController = {
 
 				.findByIdAndUpdate(id, {
 					$push: {skills: {$in: updates}}
-				}, 
+				},
 				{
 					new: true
 				})
@@ -175,7 +177,7 @@ const projectsController = {
 
 				.findByIdAndUpdate(id, {
 					$pull: {skills: updates}
-				}, 
+				},
 				{
 					new: true,
 					safe: true
@@ -218,7 +220,8 @@ const projectsController = {
 		.findByIdAndDelete(id)
 
 		.exec((err, data) => {
-
+			console.log(`Here is an error, ${err}`)
+			console.log(`Here is the data retreived ${data}`)
 			if(err) {
 
 				return res.status(400).json(err);
@@ -228,7 +231,7 @@ const projectsController = {
 
 				Skills
 
-				.updateMany({_id: {$in: data.skills}}, 
+				.updateMany({_id: {$in: data.skills}},
 					{
 						$pull: {projects: id}
 					},

@@ -9,15 +9,22 @@ const User = {
 		required: true,
 		unique: true
 	},
-	
-	githubId: {
+	github_url: {
 		type: String,
 		required: false
 	},
-	
-	avatar_url: {
+	facebook_url: {
 		type: String,
 		required: false
+	},
+	linkedin_url: {
+		type: String,
+		required: false
+	},
+	avatar_url: {
+		type: String,
+		required: false,
+		default: "api/uploads/avatar.jpg"
 	},
 
 	email: {
@@ -33,14 +40,14 @@ const User = {
 
 	password: {
 		type: String,
-		required: false
+		required: true
 	},
 
 	createdAt: {
 		type: Date,
 		default: new Date()
 	},
-	
+
 	updatedAt: {
 		type: Date,
 		default: new Date()
@@ -76,6 +83,7 @@ UserSchema.pre('save', function(save) {
 
 UserSchema.pre('update', function() {
 	this.update({}, {$set: {updatedAt: new Date()}});
+
 })
 
 // Compare password
