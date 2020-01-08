@@ -4,8 +4,6 @@ const sharedConfig = require('./webpack.config.shared');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 
-console.log(path.resolve(process.cwd(), 'app', 'images/'), '==================================================== Here is the path');
-
 const clientConfig = {
 
 	name: 'client',
