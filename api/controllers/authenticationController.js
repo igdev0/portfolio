@@ -3,7 +3,6 @@ import passport from '../../config/passport';
 import jsonwebtoken from 'jwt-simple';
 import config from '../../config';
 
-console.log('something')
 const generateToken = (user) => {
 	const timestamp = new Date().getTime();
 	delete user.password;
