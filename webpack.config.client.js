@@ -21,12 +21,6 @@ const clientConfig = {
 	    aggregateTimeout: 300,
 	    poll: 1000
 	},
-
-	resolve: {
-		alias: {
-			Images: path.resolve(process.cwd(), './app/images/')
-		}
-	},
 	module: {
 		rules: sharedConfig.module.rules
 	},
