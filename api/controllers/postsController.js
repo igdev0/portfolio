@@ -8,6 +8,7 @@ import slug from 'slug';
 // import fs from 'fs';
 import aws, {S3} from 'aws-sdk';
 
+console.log(process.env);
 aws.config.update({
   accessKeyId: process.env.AWS_ACCESS_KEY_ID,
   secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,

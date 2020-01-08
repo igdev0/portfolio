@@ -28,10 +28,6 @@ const clientConfig = {
 			name: 'main.css',
 			chunkFilename: '[id].css'
 		}),
-		new webpack.DefinePlugin({
-			isServer: 'false',
-			"process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV)
-		}),
 		...sharedConfig.plugins
 	]
 };
