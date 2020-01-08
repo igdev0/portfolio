@@ -11,6 +11,7 @@ const privateRequest = () => {
 
 		return instance;
 	}
+	
 	else {
 		throw 'it looks like you`re trying to access a method that is not available.';
 	}
