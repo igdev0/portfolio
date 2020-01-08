@@ -1,6 +1,7 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
+require('core-js')
 
 const sharedConfig = {
 	mode: process.env.NODE_ENV || 'development',

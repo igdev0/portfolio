@@ -8,7 +8,7 @@ const clientConfig = {
 
 	name: 'client',
 	mode: sharedConfig.mode,
-	entry: ['babel-polyfill', './app/index.js'],
+	entry: ['./app/index.js'],
 	output: {
 		path: sharedConfig.path,
 		filename: 'bundle.js',
