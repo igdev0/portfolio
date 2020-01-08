@@ -12,7 +12,7 @@ const sharedConfig = {
 		rules: [
 			{
 				test: /\.js$/,
-				exclude: '/node_modules/',
+				exclude: /node_modules/,
 				use: {
 					loader: 'babel-loader',
 					query: {compact: false}
@@ -21,7 +21,7 @@ const sharedConfig = {
 
 			{
 				test: /\.(less|css)$/,
-				exclude: '/node_modules/',
+				exclude: /node_modules/,
 				use: [
 					MiniCssExtractPlugin.loader,
 					'css-loader',
