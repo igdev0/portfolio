@@ -52,5 +52,4 @@ const serverConfig = {
 		...sharedConfig.plugins
 	]
 };
-console.log(process.env);
 module.exports = serverConfig;

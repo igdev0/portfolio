@@ -2,6 +2,8 @@
   "name": "portfolio",
   "version": "1.0.0",
   "description": "My personal portfolio",
+  "engines" : { "node" : ">=10.16.3" },
+  "engineStrict" : true,
   "main": "app.js",
   "scripts": {
     "start": "rm -rf ./.build && npm-run-all --parallel start:server start:client",
