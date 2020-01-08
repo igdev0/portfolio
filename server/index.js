@@ -7,6 +7,7 @@ let currentApp = app;
 server.listen(app.get('PORT') || 3000, function() {
 	console.log('the app is on port: ' + app.get('PORT'));
 })
+console.log(process.env)
 
 if (module.hot) {
  module.hot.accept('./server', () => {

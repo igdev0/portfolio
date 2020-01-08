@@ -18,7 +18,7 @@ const serverConfig = {
 		filename: 'server.js',
 		publicPath: sharedConfig.publicPath
 	},
-	watch: true,
+	watch: process.env.NODE_ENV === 'production' ? false : true,
 	watchOptions: {
 	    aggregateTimeout: 300,
 	    poll: 1000
@@ -43,7 +43,8 @@ const serverConfig = {
 								"AWS_ACCESS_KEY_ID": JSON.stringify(process.env.AWS_ACCESS_KEY_ID),
 								"AWS_SECRET_ACCESS_KEY": JSON.stringify(process.env.AWS_SECRET_ACCESS_KEY),
 								"AWS_BUCKET": JSON.stringify(process.env.AWS_BUCKET),
-								"PORT": JSON.stringify(process.env.PORT) || 3000
+								"PORT": JSON.stringify(process.env.PORT) || 3000,
+								"NODE_ENV": JSON.stringify(process.env.NODE_ENV)
             }
         }),
         new webpack.NoEmitOnErrorsPlugin(),

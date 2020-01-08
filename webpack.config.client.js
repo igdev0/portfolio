@@ -16,7 +16,7 @@ const clientConfig = {
 		filename: 'bundle.js',
 		publicPath: sharedConfig.publicPath
 	},
-	watch: true,
+	watch: process.env.NODE_ENV === 'production' ? false : true,
 	watchOptions: {
 	    aggregateTimeout: 300,
 	    poll: 1000
@@ -32,9 +32,6 @@ const clientConfig = {
 	},
 
 	plugins: [
-		new webpack.DefinePlugin({
-			isServer: 'false'
-		}),
 		new MiniCssExtractPlugin({
 			name: 'main.css',
 			chunkFilename: '[id].css'
