@@ -7,11 +7,9 @@ import {LOAD_INITIAL_DATA__FOR__SKILL} from '../actions/types';
 import './profileSkillFormDashboardComponent.less';
 
 const ProfileSkillForm  = (props) => {
-	
+
 	return (
 		<section className="profile__skills">
-		 <div className="flex-row">
-		  <div className="flex-col">
 			<div className="profile__skill__form">
 				<form className="profile__skill__form" onSubmit={props.handleSubmit((data) => {
 
@@ -23,7 +21,7 @@ const ProfileSkillForm  = (props) => {
 						props.createSkill(data);
 					}
 				})}>
-				    <div className="flex-cell">
+				    <div className="flex-cell title">
 				     <h3>Add a new skill</h3>
 				    </div>
 				    <div className="flex-cell">
@@ -46,14 +44,11 @@ const ProfileSkillForm  = (props) => {
 				    </div>
 				</form>
 			</div>
-		  </div>
 		  <div className="flex-col">
 			<table className="profile__skills__table">
 			 <thead className="profile__skills__table-head">
 			  <tr className="profile__skills__table__head-row">
 			   <th className="profile__skills__table__head__row-th">Skill name</th>
-			   <th className="profile__skills__table__head__row-th">School</th>
-			   <th className="profile__skills__table__head__row-th">icon</th>
 			   <th className="profile__skills__table__head__row-th">Experience</th>
 			   <th className="profile__skills__table__head__row-th">Level</th>
 			  </tr>
@@ -67,18 +62,6 @@ const ProfileSkillForm  = (props) => {
 			  			<tr className="profile__skills__table__body-row" key={key}>
 			  			 <td className="profile__skills__table__body__row-data">
 			  			  <span>{skill.name}</span>
-			  			 </td>
-			  			 <td className="profile__skills__table__body__row-data">
-			  			  {
-			  			  	skill.school.length > 0 ?
-			  			  	skill.school.map((school, key) => {
-
-			  			  		return (
-			  			  			<span key={key} className="skill__school__name">{school.name}</span>
-			  			  		)
-			  			  	})
-			  			  	: <span>No school provided</span>
-			  			  }
 			  			 </td>
 			  			 <td className="profile__skills__table__body__row-data">
 			  			  {new Date(skill.experience.from).toDateString()} / {new Date(skill.experience.to).toDateString()}
@@ -98,7 +81,6 @@ const ProfileSkillForm  = (props) => {
 			 </tbody>
 			</table>
 		  </div>
-		 </div>
 		</section>
 	)
 }
@@ -196,7 +178,7 @@ const validate = (values) => {
 const mapStateToProps = ({initialData}) => {
 
 	return {
-		initialValues: initialData.for === LOAD_INITIAL_DATA__FOR__SKILL ? initialData : null
+		initialValues: initialData && initialData.for === LOAD_INITIAL_DATA__FOR__SKILL ? initialData : null
 	}
 }
 
@@ -205,7 +187,7 @@ const onSubmitSuccess = (result, dispatch, props) => {
 	if(props.initialized) {
 		dispatch({
 			type: LOAD_INITIAL_DATA__FOR__SKILL,
-			payload: {}
+			payload: null
 		});
 	}
 	else {

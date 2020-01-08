@@ -40,4 +40,4 @@ const mapStateToProps = ({profileIntroduction}) => {
 
 const profileIntroduction = reduxForm({form: 'profileIntroduction', validate})(ProfileIntroductionForm);
 
-export default connect(mapStateToProps)(profileIntroduction); 
+export default connect(mapStateToProps)(profileIntroduction);

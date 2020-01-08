@@ -1,7 +1,7 @@
 import {LOAD_INITIAL_DATA__FOR__SCHOOL, LOAD_INITIAL_DATA__FOR__SKILL} from '../actions/types';
 import {LOAD_INITIAL_DATA, RESET_INITIAL_DATA, LOAD_INITIAL_DATA_FOR_POST} from '../actions/types';
 
-const initialData = (state = {}, action) => {
+const initialData = (state = null, action) => {
 
 	switch(action.type) {
 
@@ -21,12 +21,13 @@ const initialData = (state = {}, action) => {
 
 		case RESET_INITIAL_DATA:
 
-			return action.payload || {};
+			return action.payload;
 
 		default:
 
 			return state;
 	}
+	return state;
 }
 
 export default initialData;

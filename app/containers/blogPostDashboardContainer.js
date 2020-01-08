@@ -3,7 +3,8 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import BlogPostDashboardComponent from '../components/blogPostDashboardComponent';
 
-import {createPost, deletePost, fetchFiles, updatePost, loadInitialDataForPost} from '../actions';
+import {RESET_INITIAL_DATA} from '../actions/types';
+import {createPost, deletePost, fetchFiles, updatePost, loadInitialDataForPost, resetInitialData} from '../actions';
 
 class BlogPostDashboardContainer extends Component {
 
@@ -12,12 +13,15 @@ class BlogPostDashboardContainer extends Component {
 
 		this.handleFormSubmit = this.handleFormSubmit.bind(this);
 	}
-
+	componentWillUnmount() {
+		if(this.props.initialData) {
+			this.props.resetInitialData();
+		}
+	}
 	componentDidMount() {
 		if(this.props.match.params.slug) {
       this.props.loadInitialDataForPost(this.props.match.params.slug)
     }
-
 		this.props.fetchFiles();
 	}
 
@@ -27,10 +31,16 @@ class BlogPostDashboardContainer extends Component {
 	}
 
 	render() {
-
-		return (
-				<BlogPostDashboardComponent {...this.props} handleFormSubmit={this.handleFormSubmit}/>
-		)
+		if(this.props.match.params.slug && !this.props.initialData) {
+			return (
+				<h1>Loading initial data ...</h1>
+			)
+		}
+		else {
+			return (
+					<BlogPostDashboardComponent {...this.props} handleFormSubmit={this.handleFormSubmit}/>
+			)
+		}
 	}
 }
 
@@ -50,6 +60,7 @@ const bindActionCreatorsToProps = (dispatch) => {
 		deletePost,
 		updatePost,
 		fetchFiles,
+		resetInitialData,
 		loadInitialDataForPost
 	}, dispatch)
 }

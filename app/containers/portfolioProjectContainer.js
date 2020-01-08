@@ -10,9 +10,19 @@ class PortfolioProjectContainer extends Component {
   constructor(props) {
     super(props);
 	}
+	componentWillUnmount() {
 
+		if(this.props.initialData) {
+			this.props.resetInitialData();
+		}
+	}
   componentDidMount() {
-    this.props.fetchSkills()
+    this.props.fetchSkills();
+
+		if(!this.props.files) {
+			this.props.fetchFiles();
+		}
+
     if(this.props.match.params.id) {
       this.props.loadInitialData(this.props.match.params.id)
     }
@@ -20,9 +30,21 @@ class PortfolioProjectContainer extends Component {
 
 
   render() {
-    return (
-      <ProjectForm {...this.props}  />
-    )
+		if(this.props.match.params.id && !this.props.initialData) {
+			return (
+				<h1>Loading initial data</h1>
+			)
+		}
+		if(!this.props.files) {
+			return (
+				<h1>Loading files</h1>
+			)
+		}
+		else {
+			return (
+	      <ProjectForm {...this.props}  />
+	    )
+		}
   }
 }
 

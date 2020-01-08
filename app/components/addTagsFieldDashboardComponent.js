@@ -15,7 +15,6 @@ class AddTagsField extends Component {
 	}
 
 	componentDidMount() {
-
 		this.setState({
 			tags: this.props.fields.getAll() || []
 		})

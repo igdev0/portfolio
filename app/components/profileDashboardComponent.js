@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {Form,reduxForm, Field, FieldArray} from 'redux-form';
 import ProfileIntroductionForm from './profileIntroductionFormDashboardComponent';
-import ProfileSchoolForm from './profileSchoolFormDashboardComponent';
 import ProfileSkillForm from './profileSkillFormDashboardComponent';
 import FindSkillsForm from './findSkillsFormDashboardComponent';
 
@@ -53,53 +52,6 @@ class Profile extends Component {
 			<main className="main-profile">
 			 <ProfileIntroductionForm {...this.props}/>
 			 <ProfileSkillForm {...this.props}/>
-		     <section className="profile__school__grid">
-		      <div className="flex-row">
-		       {
-		       	this.props.schools ? this.props.schools.map((school, key) => {
-		       		return (
-		       		  <div key={key} className="flex-col">
-				        <div className="display__school">
-				          <div className="display__school-details">
-				          <div className="display__school__details-logo">
-				           {school.logo && <img src={`${window.location.origin}/${school.logo.path}`}/>}
-				          </div>
-				          <div className="display__school__details-experience">
-				           <span><i className="fas fa-hourglass-start"></i>{new Date(school.experience.from).toDateString()}</span>
-				           <span><i className="fas fa-hourglass-end"></i>{new Date(school.experience.to).toDateString()}</span>
-				          </div>
-				          <div className="display__school-actions">
-				           <button type="button" className="btn btn-primary" onClick={() => this.props.loadInitialDataForSchool(school)}>Edit</button>
-				           <button type="button" className="btn btn-danger" onClick={() => {this.props.deleteSchool(school._id)}}>delete</button>
-				          </div>
-				         </div>
-				         <div className="display__school-skills">
-				          <SkillsGrid {...this.props} school={school} addSkillToSchool={this.addSkillToSchool}/>
-				          <div className="school__skills-actions">
-				           {
-				           	this.state.find_skills_for === school._id ?
-				           	<FindSkillsForm {...this.props} toggleFindSchoolForm={this.toggleFindSchoolForm} school={school}/>
-				           	: <div className="school__skills__action-buttons">
-					            <button type="button"
-					            		onClick={() => this.toggleFindSchoolForm(school._id)}
-					            		className="btn btn-primary"
-					            >Add new skill
-
-					            </button>
-					           </div>
-				           }
-				          </div>
-				         </div>
-				        </div>
-				      </div>
-		       		)
-		       	}) : null
-		       }
-		       <div className="flex-col">
-			    <ProfileSchoolForm {...this.props}/>
-		       </div>
-		      </div>
-		     </section>
 			</main>
 		)
 	}

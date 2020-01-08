@@ -12,6 +12,7 @@ import diff from 'object-diff';
 import {RESET_INITIAL_DATA} from '../actions/types';
 
 const PreviewBlogContent = ({blog_post}) => {
+
 	return (
 		<article className="markdown-body">
 			{
@@ -32,7 +33,8 @@ const BlogPostDashboardComponent = (props) => {
 
 						 if(props.initialized) {
 							 const updates = diff(props.initialValues, data);
-							 props.updatePost(props.initialData.slug, updates);
+							 // props.updatePost(props.initialData.slug, updates);
+							 console.log(data)
 						 }
 						 else {
 							 props.createPost(data);
@@ -154,9 +156,8 @@ const onSubmitSuccess = (results, dispatch, props) => {
 }
 
 const mapStatetoProps = ({initialData}) => {
-
 	return {
-		initialValues: initialData.for === "BLOG_POST" ? initialData : null
+		initialValues: initialData !== null && initialData.for === "BLOG_POST" ? initialData : null
 	}
 }
 

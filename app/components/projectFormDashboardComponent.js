@@ -39,10 +39,6 @@ class ProjectPreview extends Component {
 
 		return obj.url;
 	}
-	componentWillUnmount(a) {
-		this.props.resetInitialData();
-
-	}
 	shouldComponentUpdate(nextProps, prevState) {
 		const {project_form} = nextProps;
 		// Update state if the values is null;
@@ -328,7 +324,7 @@ const validate = (values) => {
 
 const mapStatetoProps = ({initialData}) => {
 	return {
-		initialValues: initialData.for === "PROJECT_FORM" ? initialData : null
+		initialValues: initialData !== null && initialData.for === "PROJECT_FORM" ? initialData : null
 	}
 }
 

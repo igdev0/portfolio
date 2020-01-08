@@ -4,19 +4,6 @@
 	margin: 0;
 	padding: 0;
 
-	.flex-row {
-		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
-
-		.flex-col:first-child {
-			flex-grow: 0;
-		}
-
-		.flex-col {
-			flex-grow: 2;
-			flex-basis: 500px;
-
 			.profile__skill__form {
 				width: 100%;
 				height: auto;
@@ -25,6 +12,13 @@
 				display: flex;
 				flex-direction: column;
 
+				.flex-cell.title {
+					text-align: center;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					padding: 10px 0;
+				}
 				.flex-cell {
 					display: flex;
 					flex-direction: row;
@@ -116,6 +110,4 @@
 					}
 				}
 			}
-		}
-	}
 }

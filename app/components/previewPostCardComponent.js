@@ -14,7 +14,6 @@ class PreviewPostCardComponent extends Component {
 	extractImageSrcFromArray(id) {
 		// This is a method which will extract
 		// image source from array of files.
-    console.log(this.state.blog_post)
 		let obj = this.props.files.find((a) => {
 
 				return a._id === id;
