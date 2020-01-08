@@ -43,7 +43,7 @@ const serverConfig = {
 								"AWS_ACCESS_KEY_ID": JSON.stringify(process.env.AWS_ACCESS_KEY_ID),
 								"AWS_SECRET_ACCESS_KEY": JSON.stringify(process.env.AWS_SECRET_ACCESS_KEY),
 								"AWS_BUCKET": JSON.stringify(process.env.AWS_BUCKET),
-								"PORT": JSON.stringify(process.env.PORT)
+								"PORT": JSON.stringify(process.env.PORT) || 3000
             }
         }),
         new webpack.NoEmitOnErrorsPlugin(),

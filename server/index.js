@@ -4,7 +4,7 @@ import app from './server';
 const server = http.createServer(app);
 let currentApp = app;
 
-server.listen(process.env.PORT || 8080, function() {
+server.listen(app.get('PORT') || 3000, function() {
 	console.log('the app is on port: ' + app.get('PORT'));
 })
 
