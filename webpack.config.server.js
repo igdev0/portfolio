@@ -49,7 +49,6 @@ const serverConfig = {
 	  //     }
 	  // }),
 	  new webpack.NoEmitOnErrorsPlugin(),
-		new ProgressBarPlugin(),
 		...sharedConfig.plugins
 	]
 };
