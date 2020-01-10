@@ -6,33 +6,33 @@ import user from '../images/user.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faSortDown} from '@fortawesome/free-solid-svg-icons';
 import './headerDashboardComponent.less';
+// 
+// class Customtoggle extends React.Component {
+//
+// 	constructor(props) {
+// 		super(props);
+//
+// 		this.handleClick = this.handleClick.bind(this);
+//
+// 	}
+//
+// 	handleClick(e) {
+//
+// 		this.props.onClick(e);
+// 	}
+//
+// 	render() {
+// 		return (
+// 				<FontAwesomeIcon icon={faSortDown} size="lg" onClick={this.handleClick}/>
+// 		)
+// 	}
+// }
 
-class Customtoggle extends React.Component {
-
-	constructor(props) {
-		super(props);
-
-		this.handleClick = this.handleClick.bind(this);
-
-	}
-
-	handleClick(e) {
-
-		this.props.onClick(e);
-	}
-
-	render() {
-		return (
-				<FontAwesomeIcon icon={faSortDown} size="lg" onClick={this.handleClick}/>
-		)
-	}
-}
-
-// const Customtoggle = React.forwardRef((props, ref) => {
-// 	return (
-// 				<FontAwesomeIcon icon={faSortDown} size="lg" onClick={props.onClick}/>
-// 	)
-// })
+const Customtoggle = React.forwardRef((props, ref) => {
+	return (
+				<FontAwesomeIcon icon={faSortDown} size="lg" onClick={props.onClick}/>
+	)
+})
 
 const Header = (props) => {
 	if(props.user) {

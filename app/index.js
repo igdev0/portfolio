@@ -10,7 +10,8 @@ import {createStore, applyMiddleware} from 'redux';
 import rootReducer from './reducers';
 import App from './components/appComponent';
 import routes from './routes';
-import { loadableReady } from '@loadable/component'
+import { loadableReady } from '@loadable/component';
+
 const history = require('history').createBrowserHistory;
 const initState = window.__INIT_STATE__;
 delete window.__INIT_STATE__;
@@ -45,7 +46,6 @@ const Root = () => {
       		else {
             return (
         		 <Route key={key} path={path} exact={exact} render={(props) => {
-                 console.log(props)
                  return <C {...props} routes={routes}/>
                }
              }

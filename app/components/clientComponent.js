@@ -1,7 +1,6 @@
 import React from 'react';
 import Aside from './asideComponent';
 import {Route, Router} from 'react-router-dom';
-import './clientComponent.less';
 
 const Client = (props) => {
 	return (

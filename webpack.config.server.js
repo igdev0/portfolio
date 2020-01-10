@@ -16,7 +16,7 @@ const serverConfig = {
 	output: {
 		path: sharedConfig.path,
 		filename: 'server.js',
-		publicPath: sharedConfig.publicPath
+		publicPath: sharedConfig.output.publicPath || '/'
 	},
 	watch: process.env.NODE_ENV === 'production' ? false : true,
 	watchOptions: {

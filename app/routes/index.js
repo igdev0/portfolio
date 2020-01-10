@@ -1,24 +1,5 @@
 import React from 'react';
-import Client from '../components/clientComponent.js';
 import loadable from '@loadable/component'
-// import '../components/clientComponent.less';
-
-// import DashboardContainer from '../containers/dashboardContainer';
-// import LoginContainer from '../containers/loginContainer.js';
-// import ProfileContainer from '../containers/profileDashboardContainer';
-// import ProfileOverviewContainer from '../containers/overviewDashboardContainer';
-// import BlogDashboardContainer from '../containers/blogDashboardContainer';
-// import PortfolioContainer from '../containers/portfolioDashboardContainer';
-// import FilesContainer from '../containers/filesDashboardContainer';
-//
-// import AboutContainer from '../containers/aboutContainer';
-// import BlogContainer from '../containers/blogContainer';
-// import BlogPostContainer from '../containers/blogPostContainer';
-// import ProjectsContainer from '../containers/projectsContainer';
-// import ProjectViewContainer from '../containers/projectViewContainer';
-// import BlogPostDashboardContainer from '../containers/blogPostDashboardContainer';
-// import PortfolioProjectContainer from '../containers/portfolioProjectContainer';
-// import UserProfileContainer from '../containers/userProfileContainer';
 
 const DashboardContainer = loadable(() => import('../containers/dashboardContainer'));
 const LoginContainer = loadable(() => import('../containers/loginContainer.js'));
