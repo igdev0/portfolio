@@ -28,6 +28,12 @@ class Customtoggle extends React.Component {
 	}
 }
 
+// const Customtoggle = React.forwardRef((props, ref) => {
+// 	return (
+// 				<FontAwesomeIcon icon={faSortDown} size="lg" onClick={props.onClick}/>
+// 	)
+// })
+
 const Header = (props) => {
 	if(props.user) {
 		return (

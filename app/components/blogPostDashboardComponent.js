@@ -33,8 +33,7 @@ const BlogPostDashboardComponent = (props) => {
 
 						 if(props.initialized) {
 							 const updates = diff(props.initialValues, data);
-							 // props.updatePost(props.initialData.slug, updates);
-							 console.log(data)
+							 props.updatePost(props.initialData.slug, updates);
 						 }
 						 else {
 							 props.createPost(data);

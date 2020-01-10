@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const sharedConfig = require('./webpack.config.shared');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-
+const LoadablePlugin = require('@loadable/webpack-plugin');
 
 const clientConfig = {
 
@@ -24,10 +24,14 @@ const clientConfig = {
 	},
 
 	plugins: [
+		new webpack.DefinePlugin({
+			isServer: 'false'
+		}),
 		new MiniCssExtractPlugin({
 			name: 'main.css',
 			chunkFilename: '[id].css'
 		}),
+			new LoadablePlugin(),
 		...sharedConfig.plugins
 	]
 };

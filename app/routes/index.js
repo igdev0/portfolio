@@ -1,22 +1,41 @@
-import Client from '../components/clientComponent';
-import DashboardContainer from '../containers/dashboardContainer';
-import LoginContainer from '../containers/loginContainer.js';
-import ProfileContainer from '../containers/profileDashboardContainer';
-import ProfileOverviewContainer from '../containers/overviewDashboardContainer';
-import BlogDashboardContainer from '../containers/blogDashboardContainer';
-import PortfolioContainer from '../containers/portfolioDashboardContainer';
-import FilesContainer from '../containers/filesDashboardContainer';
+import React from 'react';
+import Client from '../components/clientComponent.js';
+import loadable from '@loadable/component'
+// import '../components/clientComponent.less';
 
-import AboutContainer from '../containers/aboutContainer';
-import BlogContainer from '../containers/blogContainer';
-import BlogPostContainer from '../containers/blogPostContainer';
-import ProjectsContainer from '../containers/projectsContainer';
-import ProjectViewContainer from '../containers/projectViewContainer';
-import ContactContainer from '../containers/contactContainer';
-import BlogPostDashboardContainer from '../containers/blogPostDashboardContainer';
-import PortfolioProjectContainer from '../containers/portfolioProjectContainer';
-import UserProfileContainer from '../containers/userProfileContainer';
+// import DashboardContainer from '../containers/dashboardContainer';
+// import LoginContainer from '../containers/loginContainer.js';
+// import ProfileContainer from '../containers/profileDashboardContainer';
+// import ProfileOverviewContainer from '../containers/overviewDashboardContainer';
+// import BlogDashboardContainer from '../containers/blogDashboardContainer';
+// import PortfolioContainer from '../containers/portfolioDashboardContainer';
+// import FilesContainer from '../containers/filesDashboardContainer';
+//
+// import AboutContainer from '../containers/aboutContainer';
+// import BlogContainer from '../containers/blogContainer';
+// import BlogPostContainer from '../containers/blogPostContainer';
+// import ProjectsContainer from '../containers/projectsContainer';
+// import ProjectViewContainer from '../containers/projectViewContainer';
+// import BlogPostDashboardContainer from '../containers/blogPostDashboardContainer';
+// import PortfolioProjectContainer from '../containers/portfolioProjectContainer';
+// import UserProfileContainer from '../containers/userProfileContainer';
 
+const DashboardContainer = loadable(() => import('../containers/dashboardContainer'));
+const LoginContainer = loadable(() => import('../containers/loginContainer.js'));
+const ProfileContainer = loadable(() => import('../containers/profileDashboardContainer'));
+const ProfileOverviewContainer = loadable(() => import('../containers/overviewDashboardContainer'));
+const BlogDashboardContainer = loadable(() => import('../containers/blogDashboardContainer'));
+const PortfolioContainer = loadable(() => import('../containers/portfolioDashboardContainer'));
+const FilesContainer = loadable(() => import('../containers/filesDashboardContainer'));
+const AboutContainer = loadable(() => import('../containers/aboutContainer'));
+const BlogContainer = loadable(() => import('../containers/blogContainer'));
+const BlogPostContainer = loadable(() => import('../containers/blogPostContainer'));
+const ProjectsContainer = loadable(() => import('../containers/projectsContainer'));
+const ProjectViewContainer = loadable(() => import('../containers/projectViewContainer'));
+
+const BlogPostDashboardContainer = loadable(() => import('../containers/blogPostDashboardContainer'));
+const PortfolioProjectContainer = loadable(() => import('../containers/portfolioProjectContainer'));
+const UserProfileContainer = loadable(() => import('../containers/userProfileContainer'));
 const routes = [
 	{
 		path: "/",
@@ -66,14 +85,6 @@ const routes = [
 		exact: true,
 		fontAwesomeClass: false
 	},
-
-	{
-		path: '/contact',
-		exact: true,
-		component: ContactContainer,
-		as: 'C'
-	},
-
 	{
 		path: "/dashboard",
 		exact: false,

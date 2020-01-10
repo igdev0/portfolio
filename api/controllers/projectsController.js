@@ -80,7 +80,6 @@ const projectsController = {
 		}
 
 		if(previous_project === "true") {
-			console.log('This statement is true "Prev project"')
 			Projects
 
 			.findOne({_id: {$lt: project_id}})
@@ -220,8 +219,6 @@ const projectsController = {
 		.findByIdAndDelete(id)
 
 		.exec((err, data) => {
-			console.log(`Here is an error, ${err}`)
-			console.log(`Here is the data retreived ${data}`)
 			if(err) {
 
 				return res.status(400).json(err);
