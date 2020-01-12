@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import './clientComponent.less';
 
 class App extends Component {
 	constructor(props) {

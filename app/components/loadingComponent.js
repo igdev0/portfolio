@@ -4,7 +4,9 @@ import './loadingComponent.less'
 const LoadingComponent = (props) => {
 
   return (
-    <div className="loader">Loading...</div>
+    <div className="loading">
+     <div className="lds-ellipsis"><div></div><div></div><div></div></div>
+    </div>
   )
 }
 

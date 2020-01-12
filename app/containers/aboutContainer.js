@@ -14,14 +14,13 @@ class AboutContainer extends Component {
 	componentDidMount() {
 
 		this.props.fetchProfile()
+		
 	}
 
 	render() {
 
 		if(!this.props.profile) {
-			return (
-				<h1>Loading ...</h1>
-			)
+			return null;
 		}
 
 		else {
