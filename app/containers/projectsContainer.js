@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {fetchProjects, fetchSkills} from '../actions';
 import Projects from '../components/projectsComponent';
+import LoadingRoller from '../components/loadingRoller'
 
 class ProjectsContainer extends Component {
 	constructor(props) {
@@ -24,7 +25,7 @@ class ProjectsContainer extends Component {
 
 		else {
 			return (
-				<h1>Hello world, the projects are loading ...</h1>
+				<LoadingRoller/>
 			)
 		}
 	}

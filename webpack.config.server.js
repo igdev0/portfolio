@@ -1,4 +1,3 @@
-
 const webpack = require('webpack');
 const sharedConfig = require('./webpack.config.shared');
 const nodeExternals = require('webpack-node-externals');

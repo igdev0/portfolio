@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {fetchProfile} from '../actions';
 import About from '../components/aboutComponent';
+import LoadingRoller from '../components/loadingRoller';
 
 class AboutContainer extends Component {
 
@@ -14,13 +15,13 @@ class AboutContainer extends Component {
 	componentDidMount() {
 
 		this.props.fetchProfile()
-		
+
 	}
 
 	render() {
 
 		if(!this.props.profile) {
-			return null;
+			return <LoadingRoller/>;
 		}
 
 		else {

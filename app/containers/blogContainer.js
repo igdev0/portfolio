@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {fetchPosts} from '../actions';
 import Blog from '../components/blogComponent';
+import LoadingRoller from '../components/loadingRoller';
 
 class BlogContainer extends Component {
 	constructor(props) {
@@ -18,7 +19,7 @@ class BlogContainer extends Component {
 
 		if(!this.props.posts.length) {
 			return (
-				<h1>Loading posts ...</h1>
+				<LoadingRoller/>
 			)
 		}
 

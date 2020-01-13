@@ -9,7 +9,7 @@ const projectsController = {
 		Projects
 
 		.find()
-		.sort({_id: 1})
+		.sort({order: 1})
 		.populate('images.card')
 		.populate('skills')
 		.exec((err, data) => {

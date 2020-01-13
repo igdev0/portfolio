@@ -62,16 +62,20 @@
         transition: all .3s;
 
         td {
-          min-width: 200px;
-          min-height: 100px;
           max-width: 300px;
           padding: 5px;
           border-top: 1px solid #f1f1f1;
           border-bottom: 1px solid #f1f1f1;
+
+          div {
+            max-height: 130px;
+            overflow-y: auto;
+          }
         }
         &:nth-child(odd) {
           background: #f9f9f9;
         }
+
         td.title {
           font-weight: bold;
           text-align: center;

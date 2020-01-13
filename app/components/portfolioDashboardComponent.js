@@ -43,10 +43,10 @@ const Portfolio = (props) => {
 					 projects.map((project, key) => {
 						 return (
 							 <tr key={key}>
-								 <td className="title">{project.title}</td>
-								 <td>{project.description}</td>
-								 <td><a href={project.link} target="_blank">{project.link}</a></td>
-								 <td>{project.start_at}</td>
+								 <td className="title"><div>{project.title}</div></td>
+								 <td><div>{project.description}</div></td>
+								 <td><div><a href={project.link} target="_blank">{project.link}</a></div></td>
+								 <td><div>{project.start_at}</div></td>
 								 <td>
 									 <button type="button" className="btn btn-danger" onClick={() => {props.deleteProject(project._id)}}>Delete</button>
 									 <Link className="btn btn-primary" to={'/dashboard/portfolio/edit/' + project._id}>Edit</Link>

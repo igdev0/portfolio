@@ -6,7 +6,7 @@ import user from '../images/user.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faSortDown} from '@fortawesome/free-solid-svg-icons';
 import './headerDashboardComponent.less';
-// 
+//
 // class Customtoggle extends React.Component {
 //
 // 	constructor(props) {
@@ -29,12 +29,14 @@ import './headerDashboardComponent.less';
 // }
 
 const Customtoggle = React.forwardRef((props, ref) => {
+
 	return (
 				<FontAwesomeIcon icon={faSortDown} size="lg" onClick={props.onClick}/>
 	)
 })
 
 const Header = (props) => {
+	console.log(props.user)
 	if(props.user) {
 		return (
 			<header className="dashboard__header">

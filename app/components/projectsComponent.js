@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {reduxForm, Form, Field} from 'redux-form';
 import {Link} from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faGlobe, faFilter} from '@fortawesome/free-solid-svg-icons';
+import {faGlobe, faFilter, faTimes} from '@fortawesome/free-solid-svg-icons';
 import {faGithub } from '@fortawesome/free-brands-svg-icons';
 
 import './projectsComponent.less';
@@ -117,7 +117,12 @@ class Projects extends Component {
 							 this.props.skills.map(({name, color}, key) => {
 
 								 return (
-									 <span className="skill-tag" onClick={() => {this.selectSkill(name)}} style={{background: color}} key={key}>{name}</span>
+									 <span className="skill-tag" onClick={() => {this.selectSkill(name)}} style={{background: color}} key={key}>
+										 <span className="skill-name">{name}</span>
+										 {
+											 this.state.selected_skills.includes(name) && <span className="x-button"><FontAwesomeIcon icon={faTimes}/></span>
+										 }
+									 </span>
 								 )
 
 							 })
@@ -133,7 +138,7 @@ class Projects extends Component {
 							return (
 								<div key={key} className="main__projects__grid-column">
 									{
-										items.map(({_id, description, images, skills}, key) => {
+										items.map(({_id, description, images, skills, github_url, link, }, key) => {
 
 				  			  		return (
 				 								<div key={key} className="project">
@@ -152,8 +157,8 @@ class Projects extends Component {
 				 		 						    })}
 				 		 						   </div>
 				 		 						   <div className="project-action">
-														<a className="github" href="#"><FontAwesomeIcon icon={faGithub}/></a>
-														<a className="web" href="#"><FontAwesomeIcon icon={faGlobe}/></a>
+														<a target="_blank" className="github" href={github_url}><FontAwesomeIcon icon={faGithub}/></a>
+														<a target="_blank" className="web" href={link}><FontAwesomeIcon icon={faGlobe}/></a>
 				 		 						   </div>
 				 		 						  </div>
 				 								</div>
