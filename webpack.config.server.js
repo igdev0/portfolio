@@ -6,6 +6,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const DotEnvPlugin = require('dotenv-webpack');
+const TerserPlugin = require('terser-webpack-plugin');
 
 const serverConfig = {
 name: 'server',
@@ -23,7 +24,14 @@ watchOptions: {
     aggregateTimeout: 300,
     poll: 1000
 },
-
+optimization: {
+  minimize: process.env.NODE_ENV === 'production',
+  minimizer: [
+    new TerserPlugin({
+      test: /\.js(\?.*)?$/i,
+    })
+  ],
+},
 module: {
   rules: sharedConfig.module.rules
 },

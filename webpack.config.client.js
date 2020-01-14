@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const sharedConfig = require('./webpack.config.shared');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const LoadablePlugin = require('@loadable/webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 const clientConfig = {
 
@@ -22,7 +23,14 @@ const clientConfig = {
 	module: {
 		rules: sharedConfig.module.rules
 	},
-
+	optimization: {
+	  minimize: process.env.NODE_ENV === 'production',
+	  minimizer: [
+	    new TerserPlugin({
+	      test: /\.js(\?.*)?$/i,
+	    })
+	  ],
+	},
 	plugins: [
 		new webpack.DefinePlugin({
 			isServer: 'false'
