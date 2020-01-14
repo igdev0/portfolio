@@ -46,7 +46,8 @@ const sharedConfig = {
 	plugins: [
 		new MiniCssExtractPlugin({
 			name: 'main.css',
-			chunkFilename: '[id].css'
+			chunkFilename: '[id].css',
+			ignoreOrder: false
 		}),
     new webpack.HotModuleReplacementPlugin()
 

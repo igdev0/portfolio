@@ -4,6 +4,7 @@ const sharedConfig = require('./webpack.config.shared');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const LoadablePlugin = require('@loadable/webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 const clientConfig = {
 
@@ -28,16 +29,18 @@ const clientConfig = {
 	  minimizer: [
 	    new TerserPlugin({
 	      test: /\.js(\?.*)?$/i,
-	    })
+	    }),
+			new OptimizeCssAssetsPlugin({})
 	  ],
+		splitChunks: {
+        cacheGroups: {
+          default: false
+          }
+      }
 	},
 	plugins: [
 		new webpack.DefinePlugin({
 			isServer: 'false'
-		}),
-		new MiniCssExtractPlugin({
-			name: 'main.css',
-			chunkFilename: '[id].css'
 		}),
 			new LoadablePlugin(),
 		...sharedConfig.plugins

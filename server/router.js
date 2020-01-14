@@ -30,7 +30,7 @@ const renderHtml = (html, content, INIT_DATA, extractor) => {
 	/>
 			<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
   			<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/atom-one-dark.min.css">
-				${extractor.getStyleTags()}
+				<link rel="stylesheet" href="/main.css"/>
 		</head>
 		<body>
 		<div id="root">${html}</div>
