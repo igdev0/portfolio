@@ -12,7 +12,6 @@ const AboutContainer = loadable(() => import('../containers/aboutContainer'));
 const BlogContainer = loadable(() => import('../containers/blogContainer'));
 const BlogPostContainer = loadable(() => import('../containers/blogPostContainer'));
 const ProjectsContainer = loadable(() => import('../containers/projectsContainer'));
-const ProjectViewContainer = loadable(() => import('../containers/projectViewContainer'));
 
 const BlogPostDashboardContainer = loadable(() => import('../containers/blogPostDashboardContainer'));
 const PortfolioProjectContainer = loadable(() => import('../containers/portfolioProjectContainer'));
@@ -58,13 +57,6 @@ const routes = [
 		component: ProjectsContainer,
 		exact: true,
 		fontAwesomeClass: "fas fa-projects"
-	},
-
-	{
-		path: "/portfolio/:project_id",
-		component: ProjectViewContainer,
-		exact: true,
-		fontAwesomeClass: false
 	},
 	{
 		path: "/dashboard",

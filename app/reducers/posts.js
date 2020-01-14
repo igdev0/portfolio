@@ -1,6 +1,6 @@
 import {CREATE_POST, DELETE_POST, UPDATE_POST, FETCH_POSTS} from '../actions/types';
 
-const posts = (state = [], action) => {
+const posts = (state = null, action) => {
 
 	switch(action.type) {
 
@@ -10,8 +10,8 @@ const posts = (state = [], action) => {
 
 		case FETCH_POSTS:
 
-			return !action.payload.data.length ? null : action.payload.data;
-			
+			return action.payload.data;
+
 
 		case DELETE_POST:
 			const post_id = action.payload.data._id;
@@ -21,6 +21,8 @@ const posts = (state = [], action) => {
 
 			return state;
 	}
+
+	return state;
 }
 
 export default posts;

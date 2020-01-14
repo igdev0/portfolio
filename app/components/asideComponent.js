@@ -42,9 +42,9 @@ class Aside extends Component {
 				<aside className={`app_main__sidebar`}>
 					<div className="app_main__sidebar-social">
 					 <ul>
-							<li><Link to="/"><FontAwesomeIcon size="lg" icon={faFacebook}/></Link></li>
-							<li><Link to="/"><FontAwesomeIcon size="lg" icon={faLinkedin}/></Link></li>
-							<li><Link to="/"><FontAwesomeIcon size="lg" icon={faGithub}/></Link></li>
+							<li><a target="_blank" href="https://www.facebook.com/ianosdorultan"><FontAwesomeIcon icon={faFacebook}/></a></li>
+							<li><a target="_blank" href="https://www.linkedin.com/in/ianos-dorultan-364235143/"><FontAwesomeIcon icon={faLinkedin}/></a></li>
+							<li><a target="_blank" href="https://github.com/dorultan"><FontAwesomeIcon icon={faGithub}/></a></li>
 					 </ul>
 					</div>
 				  <div className="app_main__sidebar-header">
@@ -57,9 +57,9 @@ class Aside extends Component {
 						 <p><FontAwesomeIcon size="lg" icon={faMapMarkerAlt}/>London</p>
 		 			  <div className="app_main__sidebar__header__content-social">
 		 				 <ul>
-		  			   	<li><Link size="sm"  to="/"><FontAwesomeIcon size="lg" icon={faFacebook}/></Link></li>
-	 		  			  <li><Link size="sm"  to="/"><FontAwesomeIcon size="lg" icon={faLinkedin}/></Link></li>
-		 		  			<li><Link size="sm"  to="/"><FontAwesomeIcon size="lg" icon={faGithub}/></Link></li>
+								<li><a target="_blank" href="https://www.facebook.com/ianosdorultan"><FontAwesomeIcon size="lg" icon={faFacebook}/></a></li>
+								<li><a target="_blank" href="https://www.linkedin.com/in/ianos-dorultan-364235143/"><FontAwesomeIcon size="lg" icon={faLinkedin}/></a></li>
+								<li><a target="_blank" href="https://github.com/dorultan"><FontAwesomeIcon size="lg" icon={faGithub}/></a></li>
 		  			 </ul>
 		 			  </div>
 					 </div>

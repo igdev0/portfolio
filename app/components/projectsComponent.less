@@ -54,6 +54,11 @@
 		margin: 20px 0;
 		padding: 0 10px;
 
+		@media @project_grid_small{
+			// max-width: calc(100% - 1rem);
+			padding: 0px !important;
+		}
+
 		.project-skills {
 			margin: 0;
 			padding: 0;
@@ -115,11 +120,16 @@
 
 
 			.project {
-				margin: 0;
 				padding: 0;
 				width: 100%;
 				margin: 10px;
 				box-shadow: 0 5px 5px 0 #c2c2c2;
+
+
+				@media @project_grid_small{
+					// max-width: calc(100% - 1rem);
+					margin: 0px !important;
+				}
 
 				.project-image {
 					width: 100%;
