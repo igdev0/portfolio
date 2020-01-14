@@ -16,8 +16,10 @@ const renderHtml = (html, content, INIT_DATA, extractor) => {
 	 <!DOCTYPE html>
 	 <html>
 		<head>
-			<title>${content}</title>
+			<title>Dorultan ianos - Portfolio</title>
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<meta property="og:image" content="https://dorultan-portfolio.s3.eu-west-2.amazonaws.com/portfolio-card.jpg"/>
+			<meta property="og:description" content="A self-taught front end developer based in london."/>
 			<link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
 			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.6/cropper.css"/>
 			<link href="https://fonts.googleapis.com/css?family=Montserrat|Open+Sans|PT+Sans" rel="stylesheet">
