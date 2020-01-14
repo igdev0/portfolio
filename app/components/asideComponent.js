@@ -53,7 +53,7 @@ class Aside extends Component {
 				   </div>
 					 <div className="app_main__sidebar__header-content">
 						 <h2>Dorultan Ianos</h2>
-						 <p>I'm a passionated front end developer, javascript entuziast.</p>
+						 <p>I'm a self-taught front-end developer and javascript entuziast.</p>
 						 <p><FontAwesomeIcon size="lg" icon={faMapMarkerAlt}/>London</p>
 		 			  <div className="app_main__sidebar__header__content-social">
 		 				 <ul>
