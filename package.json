@@ -39,6 +39,7 @@
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "busboy-body-parser": "^0.3.2",
+    "cache-loader": "^4.1.0",
     "chart.js": "^2.7.3",
     "clean-webpack-plugin": "^0.1.19",
     "connect-busboy": "0.0.2",
