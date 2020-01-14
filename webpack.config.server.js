@@ -42,21 +42,21 @@ plugins: [
   new StartServerPlugin('server.js'),
   new webpack.optimize.OccurrenceOrderPlugin(),
   new DotEnvPlugin(),
-  new webpack.DefinePlugin({
-      "process.env": {
-          "BUILD_TARGET": JSON.stringify('server'),
-          "DB_USERNAME": JSON.stringify(process.env.DB_USERNAME),
-          "DB_PASSWORD": JSON.stringify(process.env.DB_PASSWORD),
-          "DB_HOST": JSON.stringify(process.env.DB_HOST),
-          "DB_NAME": JSON.stringify(process.env.DB_NAME),
-          "AWS_ACCESS_KEY_ID": JSON.stringify(process.env.AWS_ACCESS_KEY_ID),
-          "AWS_SECRET_ACCESS_KEY": JSON.stringify(process.env.AWS_SECRET_ACCESS_KEY),
-          "AWS_BUCKET": JSON.stringify(process.env.AWS_BUCKET),
-          "PORT": JSON.stringify(process.env.PORT) || 3000,
-          "NODE_ENV": JSON.stringify(process.env.NODE_ENV),
-          "NODE_OPTIONS": JSON.stringify(process.env.NODE_OPTIONS)
-      }
-  }),
+  // new webpack.DefinePlugin({
+  //     "process.env": {
+  //         "BUILD_TARGET": JSON.stringify('server'),
+  //         "DB_USERNAME": JSON.stringify(process.env.DB_USERNAME),
+  //         "DB_PASSWORD": JSON.stringify(process.env.DB_PASSWORD),
+  //         "DB_HOST": JSON.stringify(process.env.DB_HOST),
+  //         "DB_NAME": JSON.stringify(process.env.DB_NAME),
+  //         "AWS_ACCESS_KEY_ID": JSON.stringify(process.env.AWS_ACCESS_KEY_ID),
+  //         "AWS_SECRET_ACCESS_KEY": JSON.stringify(process.env.AWS_SECRET_ACCESS_KEY),
+  //         "AWS_BUCKET": JSON.stringify(process.env.AWS_BUCKET),
+  //         "PORT": JSON.stringify(process.env.PORT) || 3000,
+  //         "NODE_ENV": JSON.stringify(process.env.NODE_ENV),
+  //         "NODE_OPTIONS": JSON.stringify(process.env.NODE_OPTIONS)
+  //     }
+  // }),
 
   new webpack.NoEmitOnErrorsPlugin(),
   ...sharedConfig.plugins
