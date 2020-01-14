@@ -7,14 +7,12 @@ import projectsController from '../api/controllers/projectsController';
 import profileController from '../api/controllers/profileController';
 import educationController from '../api/controllers/educationController';
 import overviewController from '../api/controllers/overviewController';
-import articleController from '../api/controllers/articleController';
 import userController from '../api/controllers/userController';
 import expressSession from 'express-session';
 import expressJwt from 'express-jwt';
 import jsonwebtoken from 'jsonwebtoken';
 import passport from './passport';
 import config from './';
-import connectFlash from 'connect-flash';
 
 const initApiRoutes = (app) => {
 	// app.use('/api/', expressJwt({secret: config.secret}));
@@ -83,7 +81,6 @@ const initApiRoutes = (app) => {
 	app.get('/api/overview', overviewController);
 	// Authentication routes
 	// // =====================
-	// app.use(connectFlash());
 	const checkForToken = (req, res, next) => {
 		const token = req.headers['authorization'];
 		if(token) {
@@ -123,9 +120,6 @@ const initApiRoutes = (app) => {
 	app.put('/user/username', userController.updateUsername)
 	app.put('/user/social', userController.updateUserSocial)
 	app.put('/user/email', userController.updateUserEmail)
-
-	app.post('/api/article', articleController.create);
-	app.get('/api/article', articleController.get);
 };
 
 export default initApiRoutes;

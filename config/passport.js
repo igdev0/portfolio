@@ -1,13 +1,9 @@
 import User from '../api/models/user';
 import passport from 'passport';
 import passportLocal from 'passport-local';
-import passportGithub from 'passport-github';
 import passportJwt from 'passport-jwt';
 import config from './index';
 // Passport local strategy:
-
-const github_client_id = '61449a4e2cadd4fa92d7';
-const github_client_secret = '6a776aacd1f9f23a95fbe9d5cf41e74714d5894f';
 
 // Local strategy
 // ===================================================================================
@@ -86,28 +82,6 @@ const JwtStrategy = new passportJwt.Strategy(jwt_opts, (payload, done) => {
 
 	})
 })
-// Gitub strategy:
-// ========================================================================
-const GithubStrategy = new passportGithub.Strategy({
-	clientID: '61449a4e2cadd4fa92d7',
-	clientSecret: '6a776aacd1f9f23a95fbe9d5cf41e74714d5894f',
-	callBackURL: 'http://localhost:3000/auth/github/callback'
-}, (accessToken, refreshToken, profile, done) => {
-
-	User.findOrCreate({
-		githubId: profile.id,
-		username: profile.name,
-		email: profile.email,
-		avatar_url: profile.avatar_url
-	}, (err, user) => {
-
-		if(err) {
-			return done(err);
-		}
-
-		return done(null, user);
-	})
-});
 
 // passport.serializeUser(function(user, done) {
 //   done(null, user);
@@ -117,7 +91,6 @@ const GithubStrategy = new passportGithub.Strategy({
 //   done(null, user);
 // });
 
-passport.use(GithubStrategy);
 passport.use(LocalStrategy);
 passport.use(JwtStrategy);
 
