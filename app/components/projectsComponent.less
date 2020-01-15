@@ -55,7 +55,6 @@
 		padding: 0 10px;
 
 		@media @project_grid_small{
-			// max-width: calc(100% - 1rem);
 			padding: 0px !important;
 		}
 
@@ -122,13 +121,13 @@
 			.project {
 				padding: 0;
 				width: 100%;
-				margin: 10px;
+				margin: 0px;
 				box-shadow: 0 5px 5px 0 #c2c2c2;
 
 
-				@media @project_grid_small{
+				@media @project_grid_medium{
 					// max-width: calc(100% - 1rem);
-					margin: 0px !important;
+					margin: 10px !important;
 				}
 
 				.project-image {
@@ -137,7 +136,7 @@
 					display: flex;
 					align-items: center;
 					justify-content: center;
-					max-height: 150px;
+					max-height: 160px;
 					overflow: hidden;
 					img {
 						width: 100%;
