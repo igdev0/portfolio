@@ -1,1 +1,2 @@
-web: yarn start
+web: yarn start:server
+client: yarn start:server
