@@ -12,9 +12,10 @@ const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const serverConfig = {
 name: 'server',
 mode: sharedConfig.mode,
-entry: ['webpack/hot/poll?1000', './server/index.js'],
+entry: ['./server/index.js'],
 target: 'node',
-externals: [nodeExternals({whitelist: ['webpack/hot/poll?1000']})],
+externals: [nodeExternals()],
+// externals: [nodeExternals({whitelist: ['webpack/hot/poll?1000']})],
 output: {
   path: sharedConfig.path,
   filename: 'server.js',
@@ -30,9 +31,20 @@ optimization: {
   minimizer: [
     new TerserPlugin({
       test: /\.js(\?.*)?$/i,
+      cache: true
     }),
     new OptimizeCssAssetsPlugin({})
   ],
+  splitChunks: {
+    cacheGroups: {
+      styles: {
+        name: 'main',
+        test: /\.css$/,
+        chunks: 'all',
+        enforce: true,
+      },
+    },
+  }
 },
 module: {
   rules: sharedConfig.module.rules
@@ -43,28 +55,28 @@ plugins: [
   new CleanWebpackPlugin('./dist'),
   new StartServerPlugin('server.js'),
   new webpack.optimize.OccurrenceOrderPlugin(),
-  // new webpack.DefinePlugin({
-  //     "process.env": {
-  //         "BUILD_TARGET": JSON.stringify('server'),
-  //         "DB_USERNAME": JSON.stringify(process.env.DB_USERNAME),
-  //         "DB_PASSWORD": JSON.stringify(process.env.DB_PASSWORD),
-  //         "DB_HOST": JSON.stringify(process.env.DB_HOST),
-  //         "DB_NAME": JSON.stringify(process.env.DB_NAME),
-  //         "AWS_ACCESS_KEY_ID": JSON.stringify(process.env.AWS_ACCESS_KEY_ID),
-  //         "AWS_SECRET_ACCESS_KEY": JSON.stringify(process.env.AWS_SECRET_ACCESS_KEY),
-  //         "AWS_BUCKET": JSON.stringify(process.env.AWS_BUCKET),
-  //         "PORT": JSON.stringify(process.env.PORT) || 3000,
-  //         "NODE_ENV": JSON.stringify(process.env.NODE_ENV),
-  //         "NODE_OPTIONS": JSON.stringify(process.env.NODE_OPTIONS)
-  //     }
-  // }),
+  new webpack.DefinePlugin({
+      "process.env": {
+          "BUILD_TARGET": JSON.stringify('server'),
+          "DB_USERNAME": JSON.stringify(process.env.DB_USERNAME),
+          "DB_PASSWORD": JSON.stringify(process.env.DB_PASSWORD),
+          "DB_HOST": JSON.stringify(process.env.DB_HOST),
+          "DB_NAME": JSON.stringify(process.env.DB_NAME),
+          "AWS_ACCESS_KEY_ID": JSON.stringify(process.env.AWS_ACCESS_KEY_ID),
+          "AWS_SECRET_ACCESS_KEY": JSON.stringify(process.env.AWS_SECRET_ACCESS_KEY),
+          "AWS_BUCKET": JSON.stringify(process.env.AWS_BUCKET),
+          "PORT": JSON.stringify(process.env.PORT) || 3000,
+          "NODE_ENV": JSON.stringify(process.env.NODE_ENV),
+          "NODE_OPTIONS": JSON.stringify(process.env.NODE_OPTIONS)
+      }
+  }),
 
   new webpack.NoEmitOnErrorsPlugin(),
   ...sharedConfig.plugins
 ]
 };
-
-if(process.env.NODE_ENV !== 'production') {
+console.log(process.env.NODE_OPTIONS)
+// if(process.env.NODE_ENV !== 'production') {
   serverConfig.plugins.unshift(new DotEnvPlugin());
-}
+// }
 module.exports = serverConfig;

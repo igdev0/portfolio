@@ -29,14 +29,20 @@ const clientConfig = {
 	  minimizer: [
 	    new TerserPlugin({
 	      test: /\.js(\?.*)?$/i,
+				cache: true
 	    }),
 			new OptimizeCssAssetsPlugin({})
 	  ],
 		splitChunks: {
-        cacheGroups: {
-          default: false
-          }
-      }
+      cacheGroups: {
+        styles: {
+          name: 'main',
+          test: /\.css$/,
+          chunks: 'all',
+          enforce: true,
+        },
+      },
+    }
 	},
 	plugins: [
 		new webpack.DefinePlugin({

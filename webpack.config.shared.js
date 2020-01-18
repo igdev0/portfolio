@@ -48,8 +48,8 @@ const sharedConfig = {
 			name: 'main.css',
 			chunkFilename: '[id].css',
 			ignoreOrder: false
-		}),
-    new webpack.HotModuleReplacementPlugin()
+		})
+    // new webpack.HotModuleReplacementPlugin()
 
 	]
 }
