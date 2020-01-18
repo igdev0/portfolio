@@ -54,4 +54,8 @@ const sharedConfig = {
 	]
 }
 
+if(process.env.NODE_ENV !== 'production') {
+	sharedConfig.plugins.push(new webpack.HotModuleReplacementPlugin());
+}
+
 module.exports = sharedConfig;

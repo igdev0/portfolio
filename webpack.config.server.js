@@ -55,6 +55,14 @@ plugins: [
   new CleanWebpackPlugin('./dist'),
   new StartServerPlugin('server.js'),
   new webpack.optimize.OccurrenceOrderPlugin(),
+  new webpack.NoEmitOnErrorsPlugin(),
+  ...sharedConfig.plugins
+]
+};
+
+if(process.env.NODE_ENV !== 'production') {
+  serverConfig.plugins.unshift(new DotEnvPlugin());
+  serverConfig.plugins.push(
   new webpack.DefinePlugin({
       "process.env": {
           "BUILD_TARGET": JSON.stringify('server'),
@@ -69,14 +77,10 @@ plugins: [
           "NODE_ENV": JSON.stringify(process.env.NODE_ENV),
           "NODE_OPTIONS": JSON.stringify(process.env.NODE_OPTIONS)
       }
-  }),
+  }))
 
-  new webpack.NoEmitOnErrorsPlugin(),
-  ...sharedConfig.plugins
-]
-};
-console.log(process.env.NODE_OPTIONS)
-// if(process.env.NODE_ENV !== 'production') {
-  serverConfig.plugins.unshift(new DotEnvPlugin());
-// }
+  serverConfig.externals = [nodeExternals({whitelist: ['webpack/hot/poll?1000']})];
+  serverConfig.entry.unshift('webpack/hot/poll?1000');
+
+}
 module.exports = serverConfig;
