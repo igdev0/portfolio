@@ -8,7 +8,7 @@
   "engineStrict": true,
   "main": "app.js",
   "scripts": {
-    "start": "rm -rf ./.build && npm-run-all --parallel start:server start:client",
+    "start": "rm -rf ./.build && npm-run-all --parallel start:client start:server",
     "start:server": "rm -rf ./dist && webpack --config webpack.config.server.js",
     "start:client": "rm -rf ./dist && webpack --config webpack.config.client.js"
   },
