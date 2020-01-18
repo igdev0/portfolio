@@ -47,7 +47,9 @@ optimization: {
   }
 },
 module: {
-  rules: sharedConfig.module.rules
+  rules: [
+    ...sharedConfig.module.rules
+  ]
 },
 
 plugins: [

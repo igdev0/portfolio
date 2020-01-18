@@ -22,7 +22,9 @@ const clientConfig = {
 	    poll: 1000
 	},
 	module: {
-		rules: sharedConfig.module.rules
+		rules: [
+			...sharedConfig.module.rules
+		]
 	},
 	optimization: {
 	  minimize: process.env.NODE_ENV === 'production',
