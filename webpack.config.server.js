@@ -36,14 +36,25 @@ optimization: {
     new OptimizeCssAssetsPlugin({})
   ],
   splitChunks: {
+    chunks: 'async',
+    minSize: 30000,
+    maxSize: 0,
+    minChunks: 1,
+    maxAsyncRequests: 6,
+    maxInitialRequests: 4,
+    automaticNameDelimiter: '~',
+    automaticNameMaxLength: 30,
     cacheGroups: {
-      styles: {
-        name: 'main',
-        test: /\.css$/,
-        chunks: 'all',
-        enforce: true,
-      },
-    },
+        defaultVendors: {
+          test: /[\\/]node_modules[\\/]/,
+          priority: -10
+        },
+        default: {
+          minChunks: 2,
+          priority: -20,
+          reuseExistingChunk: true
+        }
+      }
   }
 },
 module: {
@@ -53,7 +64,6 @@ module: {
 },
 
 plugins: [
-  new webpack.EvalSourceMapDevToolPlugin(),
   new CleanWebpackPlugin('./dist'),
   new StartServerPlugin('server.js'),
   new webpack.optimize.OccurrenceOrderPlugin(),
@@ -63,6 +73,7 @@ plugins: [
 };
 
 if(process.env.NODE_ENV !== 'production') {
+  serverConfig.plugins.unshift(new webpack.EvalSourceMapDevToolPlugin())
   serverConfig.plugins.unshift(new DotEnvPlugin());
   serverConfig.plugins.push(
   new webpack.DefinePlugin({
