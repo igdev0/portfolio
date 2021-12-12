@@ -1,13 +1,6 @@
 {
-  "presets": [
-    [
-      "@babel/preset-env",
-      {
-        "useBuiltIns": "usage",
-				"corejs": 3
-      }
-    ],
-		"@babel/preset-react"
-  ],
-  "plugins": ["@loadable/babel-plugin"]
+  "presets": ["next/babel"],
+  "plugins": [
+    ["styled-components", { "minify": true, "ssr": true, "displayName": false }]
+  ]
 }
