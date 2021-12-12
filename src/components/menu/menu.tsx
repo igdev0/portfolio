@@ -1,4 +1,4 @@
-import {MenuWrapper, AvatarWrapper, MenuLinks} from "./style";
+import {AvatarWrapper, MenuLinks, MenuWrapper} from "./style";
 import MenuLink from "./menu-link";
 import ThemeToggle from "../theme-toggle/theme-toggle";
 import {Spacer} from "../../styles/helpers";

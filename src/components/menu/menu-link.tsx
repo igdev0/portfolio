@@ -4,7 +4,7 @@ import {useRouter} from "next/router";
 import {MenuLinkWrapper} from "./style";
 
 export interface MenuLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
-    children: ReactElement;
+    children: ReactElement | string;
 }
 
 export default function MenuLink({children, href, ...props}: MenuLinkProps) {
