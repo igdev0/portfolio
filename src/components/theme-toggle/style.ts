@@ -28,7 +28,7 @@ export const SwitchUIWrapper = styled.div`
     overflow: hidden;
     cursor: pointer;
     padding: ${SPACING};
-    background-color: ${lighten(0.9,vars.colors.black)};
+    background-color: ${lighten(0.8,vars.colors.black)};
     display: inline-block;
 
     &--disabled {
