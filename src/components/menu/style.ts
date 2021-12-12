@@ -26,15 +26,15 @@ export const MenuWrapper = styled.div`
   &:before {
     top: 0;
     right: 0;
-    border-top: 1em solid ${(props) => props.theme.main === 'dark' ? lighten(.5, vars.colors.black) : lighten(.2, vars.colors.black)};
-    border-right: 1em solid ${(props) => props.theme.main === 'dark' ? lighten(.5, vars.colors.black) : lighten(.2, vars.colors.black)};
+    border-top: 1em solid ${(props) => props.theme.main === 'dark' ? lighten(.1, vars.colors.black) : vars.colors.white};
+    border-right: 1em solid ${(props) => props.theme.main === 'dark' ? lighten(.1, vars.colors.black) : vars.colors.white};
   }
 
   &:after {
     bottom: 0;
     left: 0;
-    border-bottom: 1em solid ${(props) => props.theme.main === 'dark' ? lighten(.5, vars.colors.black) : lighten(.2, vars.colors.black)};
-    border-left: 1em solid ${(props) => props.theme.main === 'dark' ? lighten(.5, vars.colors.black) : lighten(.2, vars.colors.black)};
+    border-bottom: 1em solid ${(props) => props.theme.main === 'dark' ? lighten(.1, vars.colors.black) : vars.colors.white};
+    border-left: 1em solid ${(props) => props.theme.main === 'dark' ? lighten(.1, vars.colors.black) : vars.colors.white};
   }
 `;
 
@@ -48,6 +48,7 @@ export const AvatarWrapper = styled.div`
   border-radius: 50%;
   overflow: hidden;
   margin: 0 auto;
+  border: .25em solid ${vars.colors.green};
 `
 
 export const MenuLinks = styled.div`
@@ -83,6 +84,37 @@ export const MenuLinkWrapper = styled.a<MenuLinkWrapperProps>`
   &:hover {
     &:after {
       width: 70%;
+    }
+  }
+`
+
+export const SocialsWrapper = styled.div`
+  margin: 0;
+  padding: 0;
+  height: auto;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  
+  a {
+    &:first-child {
+      svg {
+        width: 2em !important;
+        height: 2em !important;
+      }
+    }
+    svg {
+      width: 3em !important;
+      height: 3em !important;
+      path {
+        fill: ${(props) => props.theme.main === 'dark' ? vars.colors.white : vars.colors.black};
+      }
     }
   }
 `
