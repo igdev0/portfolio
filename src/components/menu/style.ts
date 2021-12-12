@@ -1,9 +1,8 @@
 import styled from "styled-components";
 import vars from "../../styles/vars";
-import {AppThemeType} from "../../state/app";
 import {lighten} from "polished";
 
-export const MenuWrapper = styled.div<AppThemeType>`
+export const MenuWrapper = styled.div`
   margin: 0;
   padding: 1em;
   height: 100%;
