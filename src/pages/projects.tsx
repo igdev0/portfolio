@@ -14,7 +14,7 @@ interface ProjectsPageDataProps {
 export default function Projects({projects}:ProjectsPageDataProps) {
     console.log(projects)
     return (
-        <Page meta={META} pageContentTitle={`Projects`}>
+        <Page meta={META} pageContentTitle={`Spare time snacks 👾`}>
 
         </Page>
     );
