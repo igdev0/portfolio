@@ -11,6 +11,7 @@ export const MenuWrapper = styled.div<MenuWrapperProps>`
   padding: 2em;
   height: 100%;
   position: fixed;
+  z-index: 1000;
   top: 0;
   max-width: 15em;
   background-color: ${(props) => props.theme.main === 'dark' ? vars.colors.black : lighten(.9, vars.colors.black)};
