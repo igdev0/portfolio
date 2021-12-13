@@ -1,5 +1,5 @@
 import {SkillDataProps} from "../../queries/types";
-import {ContentWrapper, SkillsWrapper, SkillWrapper} from "../../styles/helpers";
+import {AboutSectionTitle, SkillsWrapper, SkillWrapper} from "../../styles/helpers";
 import {AboutIntroWrapper} from "./style";
 
 interface AboutIntroProps {
@@ -10,13 +10,20 @@ interface AboutIntroProps {
 export default function AboutIntro({intro, skills}: AboutIntroProps) {
 
     return (
-        <AboutIntroWrapper>
-            <ContentWrapper dangerouslySetInnerHTML={{__html: intro}}/>
-            <SkillsWrapper>
-                {
-                    skills.map((item, index) => (<SkillWrapper $backgroundColor={item.background_color} $textColor={item.text_color} key={index}>{item.name}</SkillWrapper>))
-                }
-            </SkillsWrapper>
-        </AboutIntroWrapper>
+        <>
+            <AboutSectionTitle>
+                Hello there I’m ...
+            </AboutSectionTitle>
+            <AboutIntroWrapper>
+                <p dangerouslySetInnerHTML={{__html: intro}}/>
+                <SkillsWrapper>
+                    {
+                        skills.map((item, index) => (
+                            <SkillWrapper $backgroundColor={item.background_color} $textColor={item.text_color}
+                                          key={index}>{item.name}</SkillWrapper>))
+                    }
+                </SkillsWrapper>
+            </AboutIntroWrapper>
+        </>
     )
 }

@@ -49,8 +49,8 @@ export const PageContentTitle = styled.h1`
 `
 export const SkillsWrapper = styled.div`
   gap: .5em;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, 14rem);
+  display: inline-flex;
+  flex-wrap: wrap;
 `
 
 interface SkillWrapperProps {
@@ -69,9 +69,8 @@ export const SkillWrapper = styled.div<SkillWrapperProps>`
   color: ${({$textColor}) => $textColor??vars.colors.white};
 `;
 
-export const ContentWrapper = styled.div`
-  p {
-    font-size: 1rem;
-    color: ${({theme}) => theme.main === 'light' ? vars.colors.black : vars.colors.white};
-  }
+export const AboutSectionTitle = styled.h2`
+  font-size: 1.8rem;
+  color: ${({theme}) => theme.main === 'light' ? vars.colors.black : vars.colors.white};
+  font-weight: 600;
 `
