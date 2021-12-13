@@ -1,5 +1,5 @@
 import {SkillDataProps} from "../../queries/types";
-import {AboutSectionTitle, SkillsWrapper, SkillWrapper} from "../../styles/helpers";
+import {AboutSectionTitle, SkillsWrapper, SkillWrapper, Spacer} from "../../styles/helpers";
 import {AboutIntroWrapper} from "./style";
 
 interface AboutIntroProps {
@@ -12,8 +12,9 @@ export default function AboutIntro({intro, skills}: AboutIntroProps) {
     return (
         <>
             <AboutSectionTitle>
-                Hello there I’m ...
+                In detail ...
             </AboutSectionTitle>
+            <Spacer top={2}/>
             <AboutIntroWrapper>
                 <p dangerouslySetInnerHTML={{__html: intro}}/>
                 <SkillsWrapper>
@@ -24,6 +25,7 @@ export default function AboutIntro({intro, skills}: AboutIntroProps) {
                     }
                 </SkillsWrapper>
             </AboutIntroWrapper>
+            <Spacer top={4}/>
         </>
     )
 }
