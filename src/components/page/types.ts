@@ -9,4 +9,5 @@ export interface MetaProps {
 export interface PageProps {
   children: JSX.Element[] | JSX.Element;
   meta: MetaProps;
+  pageContentTitle: string;
 }

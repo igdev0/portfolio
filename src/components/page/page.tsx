@@ -5,8 +5,9 @@ import {PageContentWrapper, PageWrapper} from "./styles";
 import Menu from "../menu/menu";
 import {ThemeProvider} from "styled-components";
 import {useAppState} from "../../state/app";
+import {PageContentTitle} from "../../styles/helpers";
 
-export default function Page({children, meta}: PageProps) {
+export default function Page({children, meta, pageContentTitle}: PageProps) {
     const {theme} = useAppState();
     return (
         <>
@@ -45,6 +46,7 @@ export default function Page({children, meta}: PageProps) {
                 <PageWrapper>
                     <Menu/>
                     <PageContentWrapper>
+                        <PageContentTitle dangerouslySetInnerHTML={{__html: pageContentTitle}}/>
                         {children}
                     </PageContentWrapper>
                 </PageWrapper>
