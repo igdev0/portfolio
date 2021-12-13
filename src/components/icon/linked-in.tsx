@@ -4,9 +4,6 @@ const LinkedIn = (props: SVGProps<SVGSVGElement>) => (
     <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 112.196 112.196"
-        style={{
-            enableBackground: "new 0 0 112.196 112.196",
-        }}
         xmlSpace="preserve"
         {...props}
     >

@@ -1,12 +1,11 @@
 import React from "react";
 import Head from "next/head";
 import {PageProps} from "./types";
-import {PageWrapper} from "./styles";
+import {PageContentWrapper, PageWrapper} from "./styles";
 import Menu from "../menu/menu";
 import {ThemeProvider} from "styled-components";
 import {useAppState} from "../../state/app";
 
-const NEXT_PUBLIC_GOOGLE_API_KEY = process?.env?.NEXT_PUBLIC_GOOGLE_API_KEY;
 export default function Page({children, meta}: PageProps) {
     const {theme} = useAppState();
     return (
@@ -45,7 +44,9 @@ export default function Page({children, meta}: PageProps) {
             <ThemeProvider theme={{main: theme}}>
                 <PageWrapper>
                     <Menu/>
-                    {children}
+                    <PageContentWrapper>
+                        {children}
+                    </PageContentWrapper>
                 </PageWrapper>
             </ThemeProvider>
         </>
