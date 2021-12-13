@@ -3,6 +3,7 @@ import {NextRequest} from "next/server";
 import FetchAbout from "../queries/fetch-about";
 import {AboutDataProps, SkillDataProps} from "../queries/types";
 import FetchSkills from "../queries/fetch-skills";
+import AboutIntro from "../components/about-intro/about-intro";
 
 const META = {
   title: "Dorultan Ianos | about",
@@ -13,10 +14,10 @@ interface HomePageData {
     skillsTechnologies: SkillDataProps[]
 }
 
-export default function Home({skillsTechnologies}:HomePageData) {
+export default function Home({skillsTechnologies, aboutMe}:HomePageData) {
     return (
         <Page meta={META} pageContentTitle={`About me`}>
-
+            <AboutIntro intro={aboutMe.introduction} skills={skillsTechnologies}/>
         </Page>
     );
 }

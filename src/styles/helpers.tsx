@@ -47,3 +47,31 @@ export const PageContentTitle = styled.h1`
     color: ${vars.colors.green}
   }
 `
+export const SkillsWrapper = styled.div`
+  gap: .5em;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 14rem);
+`
+
+interface SkillWrapperProps {
+  $backgroundColor?: string;
+  $textColor?: string;
+}
+
+export const SkillWrapper = styled.div<SkillWrapperProps>`
+  margin: .5em;
+  padding: .5em 1em;
+  height: auto;
+  text-align: center;
+  border-radius: .25em;
+  user-select: none;
+  background-color: ${({$backgroundColor}) => $backgroundColor??vars.colors.black};
+  color: ${({$textColor}) => $textColor??vars.colors.white};
+`;
+
+export const ContentWrapper = styled.div`
+  p {
+    font-size: 1rem;
+    color: ${({theme}) => theme.main === 'light' ? vars.colors.black : vars.colors.white};
+  }
+`

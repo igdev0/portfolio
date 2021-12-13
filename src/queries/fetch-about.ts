@@ -4,6 +4,7 @@ import apolloClient from "../utils/apolo-client";
 const query = gql`
     query About {
         aboutMe {
+            introduction
             avatar {
                 url
                 alternativeText,
