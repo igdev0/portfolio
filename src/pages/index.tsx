@@ -5,7 +5,7 @@ const META = {
 }
 export default function Home() {
     return (
-        <Page meta={META} pageContentTitle={`About my self`}>
+        <Page meta={META} pageContentTitle={`About me`}>
 
         </Page>
     );
