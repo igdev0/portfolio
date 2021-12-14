@@ -25,6 +25,10 @@ export default function Project({data, onItemResize}: ProjectProps) {
         }
     }, [ref, onItemResize])
 
+    async function f() {
+        return "hellow";
+    }
+
     useEffect(() => {
         handleResize();
         window.addEventListener("resize", handleResize);
