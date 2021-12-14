@@ -7,9 +7,16 @@ const query = gql`
             name
             repo_link
             ui_link
+            description
+            image {
+                url
+                alternativeText
+                width
+                height
+            }
             skills_technologies {
-                name,
-                text_color,
+                name
+                text_color
                 background_color
             }
         }

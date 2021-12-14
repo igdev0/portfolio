@@ -59,7 +59,7 @@ interface SkillWrapperProps {
 }
 
 export const SkillWrapper = styled.div<SkillWrapperProps>`
-  margin: .5em;
+  margin: 0;
   padding: .5em 1em;
   height: auto;
   text-align: center;
@@ -67,6 +67,7 @@ export const SkillWrapper = styled.div<SkillWrapperProps>`
   user-select: none;
   background-color: ${({$backgroundColor}) => $backgroundColor??vars.colors.black};
   color: ${({$textColor}) => $textColor??vars.colors.white};
+  font-size: .8rem;
 `;
 
 export const AboutSectionTitle = styled.h2`

@@ -1,6 +1,8 @@
 export interface ImageDataProps {
     url: string;
     alternativeText: string;
+    width: number;
+    height: number;
 }
 export interface ComponentHistoryDataProps {
     id: number;
@@ -31,6 +33,7 @@ export interface SkillDataProps {
 }
 
 export interface ProjectDataProps {
+    name: string;
     id: number;
     description: string;
     image: ImageDataProps;
