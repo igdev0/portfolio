@@ -50,7 +50,7 @@ export const ProjectNameWrapper = styled.h3`
   height: auto;
   font-size: 1.4rem;
   font-weight: 600;
-  color: ${({theme}) => theme.main === 'light' ? vars.colors.black : vars.colors.white};
+  color: ${({theme}) => theme.main === 'light' ? vars.colors.black : vars.colors.wheat};
 `
 
 export const ProjectContentWrapper = styled.div`
@@ -67,7 +67,7 @@ export const ProjectCollectionWrapper = styled.div`
   grid-gap: 1em;
   @media screen and (min-width: 500px) {
     grid-auto-rows: 2em;
-    grid-template-columns: repeat(auto-fill, minmax(10em, 14em));
+    grid-template-columns: repeat(auto-fill, minmax(14em, 18em));
   }
 `
 
@@ -75,7 +75,6 @@ export const ProjectButtonsWrapper = styled.div`
   display: grid;
   margin-top: 1em;
   grid-template-columns: 1fr 1fr;
-  //position: absolute;
   width: 100%;
 `
 
