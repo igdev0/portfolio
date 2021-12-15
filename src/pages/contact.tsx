@@ -1,13 +1,16 @@
+import {lighten} from "polished";
+import { GoogleReCaptchaProvider, GoogleReCaptcha} from 'react-google-recaptcha-v3';
 import Page from "../components/page/page";
 import styled from "styled-components";
 import {useCallback, useState} from "react";
 import contact from "../validation/contact";
 import vars from "../styles/vars";
-import {lighten} from "polished";
 
 const META = {
     title: "Dorultan Ianos | contact",
 }
+
+const CAPTCHA_V3_SITE_KEY = process?.env?.NEXT_PUBLIC_CAPTCHA_V3_SITE_KEY;
 
 const InputGroupWrapper = styled.div`
   margin: 1em 0;
@@ -66,7 +69,8 @@ const ErrorMessage = styled.div`
 export default function Contact() {
     const [data, setData] = useState(JSON.parse(JSON.stringify(INITIAL_DATA)));
     const [errors, setErrors] = useState({});
-    const handleSubmit = useCallback((e) => {
+    const [token, setToken] = useState<string | null>(null);
+    const handleSubmit = useCallback(async (e) => {
         e.preventDefault();
         const errors = contact.validate(data);
         if (errors.length) {
@@ -75,7 +79,19 @@ export default function Contact() {
             }, {})
             setErrors(formatted)
         }
+        try {
+            await fetch("/api/contact", {
+                method: "POST",
+                body: JSON.stringify(data),
+            })
+        } catch (e) {
+            console.error(e);
+        }
     }, [data]);
+
+    const handleCaptchaVerify = useCallback((v:string) => {
+        setToken(v)
+    }, [setToken])
 
     const handleInputChange = useCallback(({target: {value, name}}) => {
         setData(v => {
@@ -87,20 +103,30 @@ export default function Contact() {
     }, [])
     return (
         <Page meta={META} pageContentTitle={`Contact me`}>
-
-            <Form onSubmit={handleSubmit}>
-                <InputGroupWrapper>
-                    <label htmlFor="email">📧 Email</label>
-                    <input type="text" value={data.email} placeholder="joe@domain.com" name="email" {...{onChange: handleInputChange}}/>
-                    {errors.email && <ErrorMessage>{errors.email}</ErrorMessage>}
-                </InputGroupWrapper>
-                <InputGroupWrapper>
-                    <label htmlFor="email">💬 Message:</label>
-                    <textarea value={data.message} name="message" placeholder="Type your message here ... 👀" {...{onChange: handleInputChange}}/>
-                    {errors.message && <ErrorMessage>{errors.message}</ErrorMessage>}
-                </InputGroupWrapper>
-                <Button type="submit">Submit</Button>
-            </Form>
+            <GoogleReCaptchaProvider
+                reCaptchaKey={CAPTCHA_V3_SITE_KEY}
+                scriptProps={{
+                    async: false,
+                    defer: false,
+                    appendTo: 'head',
+                    nonce: undefined
+                }}
+            >
+                <Form onSubmit={handleSubmit}>
+                    <InputGroupWrapper>
+                        <label htmlFor="email">📧 Email</label>
+                        <input type="text" value={data.email} placeholder="joe@domain.com" name="email" {...{onChange: handleInputChange}}/>
+                        {errors.email && <ErrorMessage>{errors.email}</ErrorMessage>}
+                    </InputGroupWrapper>
+                    <InputGroupWrapper>
+                        <label htmlFor="email">💬 Message:</label>
+                        <textarea value={data.message} name="message" placeholder="Type your message here ... 👀" {...{onChange: handleInputChange}}/>
+                        {errors.message && <ErrorMessage>{errors.message}</ErrorMessage>}
+                    </InputGroupWrapper>
+                    <GoogleReCaptcha onVerify={handleCaptchaVerify}>Verify</GoogleReCaptcha>
+                    {token && <Button type="submit">Submit</Button>}
+                </Form>
+            </GoogleReCaptchaProvider>
         </Page>
     );
 }
