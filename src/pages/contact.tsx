@@ -1,6 +1,6 @@
 import ConfettiGenerator from "confetti-js";
 import {lighten} from "polished";
-import { GoogleReCaptchaProvider, GoogleReCaptcha} from 'react-google-recaptcha-v3';
+import {GoogleReCaptcha, GoogleReCaptchaProvider} from 'react-google-recaptcha-v3';
 import Page from "../components/page/page";
 import styled from "styled-components";
 import {useCallback, useRef, useState} from "react";
@@ -12,7 +12,7 @@ const META = {
 }
 
 const CAPTCHA_V3_SITE_KEY = process?.env?.NEXT_PUBLIC_CAPTCHA_V3_SITE_KEY;
-const SUCCESS_MESSAGE = "<strong>Success</strong> is the perfect word that matches with your action! 🎊"
+const SUCCESS_MESSAGE = "<strong>Success</strong> is the perfect word that matches with your action! 🎊";
 const ConfettiWrapper = styled.canvas`
   position: absolute;
   left: 0;
@@ -28,16 +28,17 @@ const InputGroupWrapper = styled.div`
   border-radius: 5px;
   display: flex;
   flex-direction: column;
+
   label {
     margin-bottom: 1em;
     color: ${({theme}) => theme.main === 'light' ? vars.colors.black : vars.colors.white};
   }
-  
+
   textarea {
     min-height: 10em;
     max-width: 100%;
   }
-  
+
   textarea,
   input {
     border: none;
@@ -77,7 +78,7 @@ const SuccessMessage = styled.div`
   text-align: center;
   font-size: .8rem;
   font-weight: 400;
-  
+
   strong {
     border-bottom: 2px solid deepskyblue;
   }
@@ -128,9 +129,9 @@ export default function Contact() {
                 method: "POST",
                 body: JSON.stringify(data),
             })
-            if(!response.ok) {
+            if (!response.ok) {
                 const {error} = await response.json();
-                setErrors({server: error??""});
+                setErrors({server: error ?? ""});
             } else {
                 setData(JSON.parse(JSON.stringify(INITIAL_DATA)));
                 setErrors(INITIAL_DATA);
@@ -140,7 +141,7 @@ export default function Contact() {
         }
     }, [data, handleConfetti]);
 
-    const handleCaptchaVerify = useCallback((v:string) => {
+    const handleCaptchaVerify = useCallback((v: string) => {
         setToken(v)
     }, [setToken])
 
@@ -168,12 +169,14 @@ export default function Contact() {
                 <Form onSubmit={handleSubmit}>
                     <InputGroupWrapper>
                         <label htmlFor="email">📧 Email</label>
-                        <input type="text" value={data.email} placeholder="joe@domain.com" name="email" {...{onChange: handleInputChange}}/>
+                        <input type="text" value={data.email} placeholder="joe@domain.com"
+                               name="email" {...{onChange: handleInputChange}}/>
                         {!!errors.email && <ErrorMessage>{errors.email}</ErrorMessage>}
                     </InputGroupWrapper>
                     <InputGroupWrapper>
                         <label htmlFor="email">💬 Message:</label>
-                        <textarea value={data.message} name="message" placeholder="Type your message here ... 👀" {...{onChange: handleInputChange}}/>
+                        <textarea value={data.message} name="message"
+                                  placeholder="Type your message here ... 👀" {...{onChange: handleInputChange}}/>
                         {!!errors.message && <ErrorMessage>{errors.message}</ErrorMessage>}
                     </InputGroupWrapper>
                     {!!errors.server && <ErrorMessage>Server says: {errors.server}</ErrorMessage>}
