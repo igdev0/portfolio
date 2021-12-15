@@ -2,16 +2,25 @@ import styled from "styled-components";
 import vars from "../../styles/vars";
 import {lighten} from "polished";
 
-export const MenuWrapper = styled.div`
+interface MenuWrapperProps {
+    menuVisible: boolean
+}
+export const MenuWrapper = styled.div<MenuWrapperProps>`
+  font-size: calc(15px + .3vw);
   margin: 0;
   padding: 2em;
   height: 100%;
-  position: sticky;
+  position: fixed;
+  z-index: 1000;
   top: 0;
   max-width: 15em;
-  transition: background-color ease-in-out .3s;
   background-color: ${(props) => props.theme.main === 'dark' ? vars.colors.black : lighten(.9, vars.colors.black)};
-
+  transition: all ease-in-out .3s;
+  transform: ${({menuVisible}) => menuVisible ? "translateX(0%)" : "translateX(-100%)"};
+  @media screen and (min-width: 450px) {
+    transform: translateX(0);
+    position: sticky;
+  }
   &:before,
   &:after {
     position: absolute;
@@ -118,3 +127,21 @@ export const SocialsWrapper = styled.div`
     }
   }
 `
+export const MobileToggleWrapper = styled.div`
+  margin: 0;
+  padding: .5em;
+  overflow: hidden;
+  max-width: 3em;
+  position: absolute;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  svg {
+    path {
+      fill: ${(props) => props.theme.main === 'dark' ? vars.colors.white : vars.colors.black};
+    }
+  }
+  @media screen and (min-width: 450px) {
+    display: none;
+  }
+`;

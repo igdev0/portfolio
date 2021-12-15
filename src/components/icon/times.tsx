@@ -1,29 +1,14 @@
-import * as React from "react"
+import { SVGProps } from "react"
 
-function Times(props: React.SVGProps<SVGSVGElement>) {
-  return (
+const Times = (props: SVGProps<SVGSVGElement>) => (
     <svg
-      id="prefix__Layer_1"
-      data-name="Layer 1"
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 39.39 39.47"
-      {...props}
+        data-name="Layer 1"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 50.2 50.2"
+        {...props}
     >
-      <defs>
-        <style>{".prefix__cls-1{fill:#b7272d}"}</style>
-      </defs>
-      <path
-        className="prefix__cls-1"
-        transform="rotate(45 1387.249 -3165.273)"
-        d="M2648.52 49.83h47.67v7.89h-47.67z"
-      />
-      <path
-        className="prefix__cls-1"
-        transform="rotate(135 1353.033 -512.5)"
-        d="M2648.42 49.99h47.71v7.89h-47.71z"
-      />
+      <path style={{pointerEvents: "none"}} d="M30.75 25.1 50.2 44.55l-5.65 5.65L25.1 30.75 5.65 50.2 0 44.55 19.45 25.1 0 5.65 5.65 0 25.1 19.45 44.55 0l5.65 5.65L30.75 25.1z" />
     </svg>
-  )
-}
+)
 
 export default Times
