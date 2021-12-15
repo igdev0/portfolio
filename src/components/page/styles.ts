@@ -20,4 +20,6 @@ export const PageContentWrapper = styled.section`
   flex: 1;
   padding: 1em 2em;
   margin-top: 1em;
+  position: relative;
+  overflow: hidden;
 `

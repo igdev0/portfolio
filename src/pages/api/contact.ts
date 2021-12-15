@@ -6,7 +6,7 @@ export default async function contact(req: NextApiRequest, res: NextApiResponse)
     const data = JSON.parse(req.body);
     const errors = contactValidation.validate(data);
     if(errors.length) {
-        return res.status(400).json(errors);
+        return res.status(400).json(JSON.stringify({error: `${errors}`}));
     }
     try {
         await sendMail({subject: "Portfolio contact form.", message: data.message, email: data.email, apiKey: process?.env?.NEXT_PUBLIC_SENDGRID_API_KEY})
