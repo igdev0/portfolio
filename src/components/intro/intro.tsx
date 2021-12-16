@@ -4,6 +4,8 @@ import {useCallback, useEffect, useState} from "react";
 import Task from "./task";
 import Coding from "./coding";
 import {TOTAL_ANIMATION_DURATION} from "./const";
+import {useRouter} from "next/router";
+import {useSpring} from "react-spring";
 
 const INITIAL_STATE = {
     sheetAnimationComplete: false,
@@ -33,8 +35,11 @@ function generateString(length: number) {
 const INTRO_TITLE_TEXT = "I'M A DIGITAL DEVELOPER &#128640;";
 
 export default function Intro() {
+    const [shouldAnimate, setShouldAnimate] = useState(false);
     const [state, setState] = useState<IntroStateProps>(JSON.parse(JSON.stringify(INITIAL_STATE)));
     const [title, setTitle] = useState("");
+    const router = useRouter();
+    const [springStyles, springApi] = useSpring(() => ({opacity: typeof window !== "undefined" && router.query?.animation_disabled !== "true" && router.pathname === "/" ? 1 : 0}));
     const handleSheetAnimationComplete = useCallback(() => {
         setState((v) => ({...v, sheetAnimationComplete: true}));
     }, [setState]);
@@ -57,13 +62,28 @@ export default function Intro() {
     }, [setTitle])
     useEffect(() => {
         setTitle(`<span>${generateString(INTRO_TITLE_TEXT.length)}</span>`);
-        // handleTaskMarkedAsComplete();
-    }, [setTitle])
+    }, [setTitle]);
+
+    useEffect(() => {
+        if(title === "<span>I'M A DIGITAL DEVELOPER &#128640  </span>" && typeof  window !== "undefined") {
+            (async () => {
+                await router.push("/?animation_disabled=true");
+                springApi.start({opacity: 0});
+            })()
+        }
+    }, [title, springApi, router])
+
+    useEffect(() => {
+        const canAnimate = !router.query?.animation_disabled && router.pathname === "/";
+        setShouldAnimate(canAnimate);
+        !canAnimate && springApi.start({opacity: 0});
+    }, [router, springApi])
+
     return (
-        <Wrapper>
-            <IntroTitle dangerouslySetInnerHTML={{__html: title}}/>
+        <Wrapper style={springStyles}>
+            {shouldAnimate && <IntroTitle dangerouslySetInnerHTML={{__html: title}}/>}
             <AnimationContainer>
-                <Sheet canAnimate={true} onAnimationComplete={handleSheetAnimationComplete}/>
+                <Sheet canAnimate={shouldAnimate} onAnimationComplete={handleSheetAnimationComplete}/>
                 <Task allocatedDuration={TOTAL_ANIMATION_DURATION * .25}
                       onTaskMarkedAsComplete={handleTaskMarkedAsComplete} taskComplete={state.codingAnimationComplete}
                       sheetAnimationComplete={state.sheetAnimationComplete}

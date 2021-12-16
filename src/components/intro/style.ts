@@ -1,14 +1,17 @@
 import styled from "styled-components";
 import {animated} from "react-spring";
+import vars from "../../styles/vars";
+import {lighten} from "polished";
 
-export const Wrapper = styled.div`
+export const Wrapper = styled(animated.div)`
   position: fixed;
   padding: 1em;
   width: 100%;
+  z-index: 100000;
   height: 100%;
   left: 0;
   top: 0;
-  background-color: black;
+  background-color: ${({theme}) => theme.main === "dark" ? lighten(.2, vars.colors.black) : vars.colors.white};
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -16,6 +19,7 @@ export const Wrapper = styled.div`
   transform-style: preserve-3d;
   transform: perspective(500px);
   flex-wrap: wrap;
+  pointer-events: none;
 `
 
 export const SheetSvg = styled(animated.svg)`
@@ -42,7 +46,7 @@ export const IntroTitleWrapper = styled.div`
 
 export const IntroTitle = styled.h1`
   font-size: 3rem;
-  color: white;
+  color: ${({theme}) => theme.main === "dark" ? vars.colors.white : vars.colors.black};
   width: 100%;
   height: fit-content;
   font-weight: 600;
@@ -76,8 +80,5 @@ export const AnimationContainer = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   margin-bottom: 10rem;
-  
-  @media screen and (min-width: 700px) {
-  }
 
 `;

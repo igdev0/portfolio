@@ -11,9 +11,6 @@ import Intro from "../intro/intro";
 export default function Page({children, meta, pageContentTitle}: PageProps) {
     const {theme} = useAppState();
     return (
-        <Intro/>
-    )
-    return (
         <>
             <Head>
                 <link rel="icon" href="/favicon.ico"/>
@@ -47,6 +44,7 @@ export default function Page({children, meta, pageContentTitle}: PageProps) {
                 <meta property="twitter:description" content={meta.description}/>
             </Head>
             <ThemeProvider theme={{main: theme}}>
+                <Intro />
                 <PageWrapper>
                     <Menu/>
                     <PageContentWrapper>
