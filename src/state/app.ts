@@ -8,6 +8,7 @@ export interface AppStateType {
     setTheme: (theme: Theme) => void;
 }
 
+// @ts-ignore
 export const useAppState = create<AppStateType>((set, get) => {
     return {
         theme: typeof window !== "undefined" ? window.localStorage.getItem('theme')??"dark" : "light",
