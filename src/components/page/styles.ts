@@ -21,5 +21,4 @@ export const PageContentWrapper = styled.section`
   padding: 1em 2em;
   margin-top: 1em;
   position: relative;
-  overflow: hidden;
 `

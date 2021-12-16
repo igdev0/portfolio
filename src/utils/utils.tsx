@@ -18,8 +18,9 @@ export function responsiveUnit({ min, max, prop, }: ResponsiveUnitProps) {
 
 export function delay(ms:number = 1000) {
   return new Promise((resolve:any) => {
-    setTimeout(() => {
+    const time = setTimeout(() => {
       resolve && resolve();
+      clearTimeout(time);
     }, ms)
   })
 }

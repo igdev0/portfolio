@@ -6,9 +6,13 @@ import Menu from "../menu/menu";
 import {ThemeProvider} from "styled-components";
 import {useAppState} from "../../state/app";
 import {PageContentTitle} from "../../styles/helpers";
+import Intro from "../intro/intro";
 
 export default function Page({children, meta, pageContentTitle}: PageProps) {
     const {theme} = useAppState();
+    return (
+        <Intro/>
+    )
     return (
         <>
             <Head>
