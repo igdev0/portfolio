@@ -27,7 +27,13 @@ export const ExpandableButton = styled.div`
   font-weight: bold;
   text-align: center;
   margin-left: 3.5em;
+  span {
+    margin-right: 3.5em;
+  }
   @media screen and (min-width: 500px) {
     ${responsiveUnit({min: 20, max: 100, prop: "margin-left"})};
+    span {
+      ${responsiveUnit({min: 20, max: 100, prop: "margin-right"})};
+    }
   }
 `

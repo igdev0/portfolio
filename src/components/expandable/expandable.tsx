@@ -47,7 +47,9 @@ export default function Expandable({maxHeight = 500, children}:ExpandableProps) 
             {
                 fullHeight !== null && (
                     <ExpandableButton onClick={toggleViewInFull}>
+                        <span>
                         {!viewInFull ? "View more" : "View less"}
+                        </span>
                     </ExpandableButton>
                 )
             }
