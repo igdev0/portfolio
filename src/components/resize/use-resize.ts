@@ -3,7 +3,7 @@ import ResizeContext from "./context";
 
 export default function useResize() {
 	const {entries, ref: apiRef} = useContext(ResizeContext);
-	const element = useRef<HTMLElement>(null);
+	const element = useRef<HTMLElement | SVGGElement>(null);
 	const [boundaries, setBoundaries] = useState<ClientRect | null>(null);
 
 	const observe = useCallback(

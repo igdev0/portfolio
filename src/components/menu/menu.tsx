@@ -24,7 +24,7 @@ export default function Menu() {
                 </AvatarWrapper>
                 <Spacer top={2}/>
                 <MenuLinks>
-                    <MenuLink href="/">
+                    <MenuLink href="/?animation_disabled=true">
                         ABOUT
                     </MenuLink>
                     <MenuLink href="/projects">
