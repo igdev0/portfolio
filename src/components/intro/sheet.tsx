@@ -28,6 +28,7 @@ function Sheet({onAnimationComplete, canAnimate}: SheetProps) {
         canAnimate && runSteps()
     }, [canAnimate, runSteps])
     return (
+        // @ts-ignore
         <WithAnimatedSvg visible={canAnimate} id="Sheet" viewBox="0 0 245.8623 347.2516">
             <defs>
                 <style>{".cls-3{fill:#232323}"}</style>

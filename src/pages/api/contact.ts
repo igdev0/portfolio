@@ -9,8 +9,8 @@ export default async function contact(req: NextApiRequest, res: NextApiResponse)
         return res.status(400).json(JSON.stringify({error: `${errors}`}));
     }
     try {
-        await sendMail({subject: "Portfolio contact form.", message: data.message, email: data.email, apiKey: process?.env?.NEXT_PUBLIC_SENDGRID_API_KEY})
-    } catch (e) {
+        await sendMail({subject: "Portfolio contact form.", message: data.message, email: data.email, apiKey: process?.env?.NEXT_PUBLIC_SENDGRID_API_KEY??""})
+    } catch (e:any) {
         return res.status(400).json({errors: [{message: "server error", type: e?.response?.server?? "Error while trying to send email."}]})
     }
 

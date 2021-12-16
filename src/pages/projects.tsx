@@ -1,5 +1,4 @@
 import Page from "../components/page/page";
-import {NextRequest} from "next/server";
 import FetchProjects from "../queries/fetch-projects";
 import {ProjectDataProps} from "../queries/types";
 import ProjectCollection from "../components/projects-collection/project-collection";
@@ -21,7 +20,7 @@ export default function Projects({projects}: ProjectsPageDataProps) {
 }
 
 
-export async function getStaticProps(context: NextRequest) {
+export async function getStaticProps() {
     try {
         const {data: {projects}} = await FetchProjects();
         return {

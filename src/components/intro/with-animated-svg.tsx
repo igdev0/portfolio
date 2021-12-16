@@ -21,9 +21,10 @@ export default function WithAnimatedSvg({type, visible, ...props}: WithAnimatedS
     }, [type]);
     useEffect(() => {
         visible && springApi.start({opacity: 1});
-    }, [visible])
+    }, [visible, springApi])
 
     return (
+        // @ts-ignore
         <Component style={styles} {...props}>
             {props.children}
         </Component>

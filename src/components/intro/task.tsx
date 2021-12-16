@@ -96,6 +96,7 @@ function Task({
         })()
     }, [taskComplete, taskCompleteSpringApi, onTaskMarkedAsComplete])
     return (
+        // @ts-ignore
         <WithAnimatedSvg visible={sheetAnimationComplete} viewBox="0 0 266 85">
             <defs>
                 <style>{".cls-42{fill:#f1f1f1}"}</style>

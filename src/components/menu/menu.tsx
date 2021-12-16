@@ -38,10 +38,10 @@ export default function Menu() {
                     </MenuLink>
                 </MenuLinks>
                 <SocialsWrapper>
-                    <a href="https://www.linkedin.com/in/ianos-dorultan-364235143/" target="_blank">
+                    <a href="https://www.linkedin.com/in/ianos-dorultan-364235143/" target="_blank" rel="noreferrer">
                         <LinkedIn/>
                     </a>
-                    <a href="https://github.com/dorultan" target="_blank">
+                    <a href="https://github.com/dorultan" target="_blank" rel="noreferrer">
                         <Github/>
                     </a>
                 </SocialsWrapper>

@@ -1,3 +1,4 @@
+// @ts-ignore
 import ConfettiGenerator from "confetti-js";
 import {lighten} from "polished";
 import {GoogleReCaptcha, GoogleReCaptchaProvider} from 'react-google-recaptcha-v3';
@@ -119,8 +120,10 @@ export default function Contact() {
 
         if (errors.length) {
             const formatted = errors.reduce((a, b,) => {
+                // @ts-ignore
                 return {...a, [b.path]: b?.message ?? "Error."};
             }, {})
+            // @ts-ignore
             return setErrors(formatted);
         }
         handleConfetti()
@@ -131,6 +134,7 @@ export default function Contact() {
             })
             if (!response.ok) {
                 const {error} = await response.json();
+                // @ts-ignore
                 setErrors({server: error ?? ""});
             } else {
                 setData(JSON.parse(JSON.stringify(INITIAL_DATA)));
@@ -180,6 +184,7 @@ export default function Contact() {
                         {!!errors.message && <ErrorMessage>{errors.message}</ErrorMessage>}
                     </InputGroupWrapper>
                     {!!errors.server && <ErrorMessage>Server says: {errors.server}</ErrorMessage>}
+                    {/*@ts-ignore*/}
                     <GoogleReCaptcha onVerify={handleCaptchaVerify}>Verify</GoogleReCaptcha>
                     {token && <Button type="submit">Submit</Button>}
                     {success && <SuccessMessage dangerouslySetInnerHTML={{__html: SUCCESS_MESSAGE}}/>}

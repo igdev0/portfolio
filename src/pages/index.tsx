@@ -1,11 +1,9 @@
 import Page from "../components/page/page";
-import {NextRequest} from "next/server";
 import FetchAbout from "../queries/fetch-about";
 import {AboutDataProps, SkillDataProps} from "../queries/types";
 import FetchSkills from "../queries/fetch-skills";
 import AboutIntro from "../components/about-intro/about-intro";
 import HistoryUi from "../components/history-ui/history-ui";
-import {Spacer} from "../styles/helpers";
 
 const META = {
   title: "Dorultan Ianos | about",
@@ -27,7 +25,7 @@ export default function Home({skillsTechnologies, aboutMe}:HomePageData) {
     );
 }
 
-export async function getStaticProps(context: NextRequest) {
+export async function getStaticProps() {
     const {data: {aboutMe}} = await FetchAbout();
     const {data: {skillsTechnologies}} = await FetchSkills();
     return {

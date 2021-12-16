@@ -28,8 +28,10 @@ export default function useResize() {
 	useEffect(() => {
 		const elem = element.current;
 		const api = apiRef?.current;
+		// @ts-ignore
 		api && elem && observe(elem);
 		return () => {
+			// @ts-ignore
 			api && elem && unobserve(elem);
 		};
 	}, [element, apiRef, observe, unobserve]);

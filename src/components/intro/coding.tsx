@@ -265,6 +265,8 @@ function Coding({onAnimationComplete, taskAnimationComplete, allocatedDuration}:
         taskAnimationComplete && startFirstAnimation();
     }, [startFirstAnimation, taskAnimationComplete])
     return (
+
+        // @ts-ignore
         <WithAnimatedSvg visible={taskAnimationComplete} viewBox="0 0 436 353.5945">
             <defs>
                 <style>
