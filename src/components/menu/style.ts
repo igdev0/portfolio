@@ -136,6 +136,7 @@ export const MobileToggleWrapper = styled.div`
   right: 0;
   height: 100%;
   width: 100%;
+  z-index: 1000000;
   svg {
     path {
       fill: ${(props) => props.theme.main === 'dark' ? vars.colors.white : vars.colors.black};

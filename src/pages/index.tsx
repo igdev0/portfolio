@@ -5,6 +5,7 @@ import {AboutDataProps, SkillDataProps} from "../queries/types";
 import FetchSkills from "../queries/fetch-skills";
 import AboutIntro from "../components/about-intro/about-intro";
 import HistoryUi from "../components/history-ui/history-ui";
+import {Spacer} from "../styles/helpers";
 
 const META = {
   title: "Dorultan Ianos | about",
@@ -21,6 +22,7 @@ export default function Home({skillsTechnologies, aboutMe}:HomePageData) {
             <AboutIntro intro={aboutMe.introduction} skills={skillsTechnologies}/>
             <HistoryUi title={aboutMe.work_experience_title} data={aboutMe.work_experience}/>
             <HistoryUi title={aboutMe.education_title} data={aboutMe.education}/>
+            <div style={{height: ".5em"}}/>
         </Page>
     );
 }
