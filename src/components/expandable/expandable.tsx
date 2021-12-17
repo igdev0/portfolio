@@ -1,21 +1,21 @@
 import {ExpandableWrapper, ExpandableButton} from "./style";
 import {useSpring} from "react-spring";
-import {ReactChild, useCallback, useEffect, useLayoutEffect, useRef, useState} from "react";
+import {ReactChild, useCallback, useEffect, useLayoutEffect, useRef, useState, memo, useMemo} from "react";
 
 interface ExpandableProps {
     maxHeight: number;
     children: ReactChild
 }
 
+
 export default function Expandable({maxHeight = 500, children}:ExpandableProps) {
     const [springStyles, springAPI] = useSpring(() => ({height: maxHeight}));
     const [fullHeight, setFullHeight] = useState<number | null>(null);
     const [viewInFull, setViewInFull] = useState(false);
     const ref = useRef<HTMLDivElement>(null);
-
     const toggleViewInFull = useCallback(({viewInFullValue = null}) => {
         setViewInFull(v => (viewInFullValue !== null ? viewInFullValue : !v));
-    }, [setViewInFull])
+    }, [setViewInFull]);
 
     const handleElementResize = useCallback(() => {
         if(ref.current) {
