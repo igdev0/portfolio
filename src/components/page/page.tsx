@@ -42,6 +42,7 @@ export default function Page({children, meta, pageContentTitle}: PageProps) {
                 <meta property="twitter:image" content={meta.image}/>
                 <meta property="twitter:title" content={meta.title}/>
                 <meta property="twitter:description" content={meta.description}/>
+                <link rel='stylesheet' type='text/css' href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap"/>
             </Head>
             <ThemeProvider theme={{main: theme}}>
                 <Intro />
