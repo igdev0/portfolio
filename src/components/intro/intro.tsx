@@ -1,6 +1,6 @@
 import Sheet from "./sheet";
 import {AnimationContainer, IntroTitle, Wrapper} from "./style";
-import {useCallback, useEffect, useState} from "react";
+import {useCallback, useEffect, useLayoutEffect, useState} from "react";
 import Task from "./task";
 import Coding from "./coding";
 import {TOTAL_ANIMATION_DURATION} from "./const";
@@ -74,11 +74,11 @@ export default function Intro() {
         }
     }, [title, springApi, router])
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         const canAnimate = !router.query?.animation_disabled && router.pathname === "/";
         setShouldAnimate(canAnimate);
         !canAnimate && springApi.start({opacity: 0});
-    }, [router, springApi])
+    }, [router, springApi]);
 
     return (
         <Wrapper style={springStyles}>

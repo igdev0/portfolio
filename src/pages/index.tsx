@@ -4,6 +4,7 @@ import {AboutDataProps, SkillDataProps} from "../queries/types";
 import FetchSkills from "../queries/fetch-skills";
 import AboutIntro from "../components/about-intro/about-intro";
 import HistoryUi from "../components/history-ui/history-ui";
+import {useState} from "react";
 
 const META = {
   title: "Dorultan Ianos | about",
@@ -14,7 +15,22 @@ interface HomePageData {
     skillsTechnologies: SkillDataProps[]
 }
 
+function reducer() {
+    return "current state value";
+}
+
+const INITIAL_VALUE = {
+    loading: true
+}
+
+interface ReducerProps {
+    loading: boolean;
+    data: object
+}
+
 export default function Home({skillsTechnologies, aboutMe}:HomePageData) {
+    const [state, setState] = useState(reducer);
+    console.log(state)
     return (
         <Page meta={META} pageContentTitle={`Digital developer 🚀`}>
             <AboutIntro intro={aboutMe.introduction} skills={skillsTechnologies}/>
