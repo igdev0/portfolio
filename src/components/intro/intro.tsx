@@ -67,6 +67,7 @@ export default function Intro() {
     useEffect(() => {
         if(title === "<span>I'M A DIGITAL DEVELOPER &#128640  </span>" && typeof  window !== "undefined") {
             (async () => {
+                setTitle(null);
                 await router.push("/?animation_disabled=true");
                 springApi.start({opacity: 0});
             })()
