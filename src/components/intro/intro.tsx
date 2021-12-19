@@ -61,18 +61,22 @@ export default function Intro() {
         }
     }, [setTitle])
     useEffect(() => {
+        (async () => {
+            state.codingAnimationComplete && await router.push("/?animation_disabled=true");
+        })()
+    }, [state.codingAnimationComplete, router])
+    useEffect(() => {
         setTitle(`<span>${generateString(INTRO_TITLE_TEXT.length)}</span>`);
     }, [setTitle]);
 
-    useEffect(() => {
-        if(title === "<span>I'M A DIGITAL DEVELOPER &#128640  </span>" && typeof  window !== "undefined") {
-            (async () => {
-                await router.push("/?animation_disabled=true");
-                setTitle("");
-                springApi.start({opacity: 0});
-            })()
-        }
-    }, [title, springApi, router])
+    // useEffect(() => {
+    //     if(title === "<span>I'M A DIGITAL DEVELOPER &#128640  </span>" && typeof  window !== "undefined") {
+    //         (async () => {
+    //             setTitle("");
+    //             springApi.start({opacity: 0});
+    //         })()
+    //     }
+    // }, [title, springApi, router])
 
     useLayoutEffect(() => {
         const canAnimate = !router.query?.animation_disabled && router.pathname === "/";
@@ -82,7 +86,7 @@ export default function Intro() {
 
     return (
         <Wrapper style={springStyles}>
-            {shouldAnimate && <IntroTitle dangerouslySetInnerHTML={{__html: title}}/>}
+            {/*{shouldAnimate && <IntroTitle dangerouslySetInnerHTML={{__html: title}}/>}*/}
             <AnimationContainer>
                 <Sheet canAnimate={shouldAnimate} onAnimationComplete={handleSheetAnimationComplete}/>
                 <Task allocatedDuration={TOTAL_ANIMATION_DURATION * .25}
