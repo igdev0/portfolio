@@ -92,7 +92,7 @@ function Task({
         (async () => {
             taskCompleteSpringApi.start({opacity: 1});
             await delay(500);
-            onTaskMarkedAsComplete();
+            onTaskMarkedAsComplete && onTaskMarkedAsComplete();
         })()
     }, [taskComplete, taskCompleteSpringApi, onTaskMarkedAsComplete])
 
