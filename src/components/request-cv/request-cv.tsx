@@ -6,7 +6,7 @@ import requestCv from "../../validation/request-cv";
 import CloseOverlay from "../overlay/close-overlay";
 import {Content} from "../overlay/style";
 import {GoogleReCaptcha, GoogleReCaptchaProvider} from "react-google-recaptcha-v3";
-import {Button, CheckboxGroup, ErrorMessage, Spacer} from "../../styles/helpers";
+import {Button, CheckboxGroup, ErrorMessage, Spacer, SuccessMessage} from "../../styles/helpers";
 
 const INITIAL_DATA = {
     privacy_accepted: false,
@@ -60,12 +60,13 @@ export default function RequestCv() {
                 method: "POST",
                 body: JSON.stringify(data),
             })
+            const {error, success, message} = await response.json();
             if (!response.ok) {
-                const {error} = await response.json();
                 // @ts-ignore
                 setErrors(error);
             } else {
                 setData(JSON.parse(JSON.stringify(INITIAL_DATA)));
+                success && setSuccessMessage(message)
                 setErrors(JSON.parse(JSON.stringify(ERRORS_INITIAL_DATA)));
             }
         } catch (e) {
@@ -116,6 +117,7 @@ export default function RequestCv() {
                         <Button onSubmit={handleSubmit}>
                             Submit
                         </Button>
+                        {successMessage && <SuccessMessage>{successMessage}</SuccessMessage>}
                         {errors.server && <ErrorMessage>{errors.server}</ErrorMessage>}
                         <GoogleReCaptcha onVerify={handleCaptchaVerify}>Verify</GoogleReCaptcha>
                     </form>

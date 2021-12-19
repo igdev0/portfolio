@@ -207,6 +207,7 @@ export const CheckboxGroup = styled.div`
     top: 0;
     left: 0;
     height: 25px;
+    pointer-events: none;
     width: 25px;
     background-color: ${vars.colors.black};
     &:after {

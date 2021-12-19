@@ -64,6 +64,7 @@ export default async function cvRequest(req: NextApiRequest, res: NextApiRespons
             })
             await sendMail({
                 to: email,
+                from: "noreply@dorultanianos.dev",
                 template: "cv-request.html",
                 message: "",
                 email,

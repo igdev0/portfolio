@@ -29,6 +29,6 @@ export default function sendMail({
         subject,
         from,
         to,
-        html: html.replace("{{email}}", email).replace("{{message}}", message).replaceAll("{{cv_link}}", cv_link ?? "")
+        html: html.replace("{{email}}", email).replace("{{message}}", message).replace("{{cv_link}}", cv_link ?? "")
     })
 }
