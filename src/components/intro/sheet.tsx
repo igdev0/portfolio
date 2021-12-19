@@ -11,17 +11,17 @@ interface SheetProps extends SVGProps<SVGSVGElement>{
 function Sheet({onAnimationComplete, canAnimate}: SheetProps) {
     const [magnifierSpringStyles, magnifierSpringApi] = useSpring(() => ({x: 0, y: 0}));
     const runSteps = useCallback(async () => {
-        await delay(500);
+        await delay(300);
         magnifierSpringApi.start({x: 69, y: 0});
-        await delay(500);
+        await delay(300);
         magnifierSpringApi.start({x: -10, y: 70});
-        await delay(500);
+        await delay(300);
         magnifierSpringApi.start({x: 69, y: 70});
-        await delay(500);
+        await delay(300);
         magnifierSpringApi.start({x: -10, y: 180});
-        await delay(500);
+        await delay(300);
         magnifierSpringApi.start({x: 69, y: 180});
-        await delay(500);
+        await delay(300);
         onAnimationComplete();
     }, [magnifierSpringApi, onAnimationComplete])
     useEffect(() => {

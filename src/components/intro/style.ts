@@ -11,7 +11,7 @@ export const Wrapper = styled(animated.div)`
   height: 100%;
   left: 0;
   top: 0;
-  background-color: ${({theme}) => theme.main === "dark" ? lighten(.2, vars.colors.black) : vars.colors.white};
+  background-color: ${({theme}) => theme.main === "dark" ? vars.colors.black : vars.colors.white};
   display: flex;
   flex-direction: column;
   justify-content: center;

@@ -7,7 +7,7 @@ interface TaskProps extends SVGProps<SVGSVGElement> {
     onAnimationComplete: () => void;
     taskComplete: boolean;
     sheetAnimationComplete: boolean;
-    onTaskMarkedAsComplete: () => void;
+    onTaskMarkedAsComplete?: () => void;
     allocatedDuration: number;
 };
 
@@ -95,6 +95,8 @@ function Task({
             onTaskMarkedAsComplete();
         })()
     }, [taskComplete, taskCompleteSpringApi, onTaskMarkedAsComplete])
+
+    // if(shh)
     return (
         // @ts-ignore
         <WithAnimatedSvg visible={sheetAnimationComplete} viewBox="0 0 266 85">
