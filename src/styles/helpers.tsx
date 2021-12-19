@@ -141,6 +141,7 @@ export const Button = styled.button`
   background-color: ${vars.colors.wheat};
   border-radius: 5px;
   margin-left: auto;
+  color: ${vars.colors.black};
   margin-right: auto;
   display: block;
   text-transform: uppercase;
