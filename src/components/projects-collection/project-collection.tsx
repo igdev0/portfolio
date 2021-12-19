@@ -16,6 +16,7 @@ const NoProjectsFoundYet = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  color: ${({theme}) => theme.main === 'light' ? vars.colors.black : vars.colors.white};
 
   h1 {
     font-size: 1.5rem;

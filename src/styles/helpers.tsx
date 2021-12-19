@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import vars from "./vars";
+import {lighten} from "polished";
 
 
 export const ContainerWrapper = styled.div`
@@ -169,7 +170,9 @@ export const SuccessMessage = styled.div`
 export const CheckboxGroup = styled.div`
   position: relative;
   display: inline-block;
-
+  
+  color: ${({theme}) => theme.main === 'light' ? vars.colors.black : vars.colors.white};
+  
   input {
     position: absolute;
     pointer-events: all;
@@ -209,7 +212,7 @@ export const CheckboxGroup = styled.div`
     height: 25px;
     pointer-events: none;
     width: 25px;
-    background-color: ${vars.colors.black};
+    background-color: ${({theme}) => theme.main === 'light' ? lighten(.5, vars.colors.black) : vars.colors.black};
     &:after {
       position: absolute;
       left: 0;
