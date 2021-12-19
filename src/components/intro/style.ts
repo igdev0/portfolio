@@ -73,12 +73,12 @@ export const IntroTitle = styled.h1`
 
 export const AnimationContainer = styled.div`
   padding: 0;
-  max-width: 60rem;
+  max-width: clamp(20rem, 40rem, 60rem);
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-bottom: 10rem;
 
 `;
