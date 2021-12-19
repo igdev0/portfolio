@@ -1,6 +1,7 @@
 import {ExpandableWrapper, ExpandableButton} from "./style";
 import {useSpring} from "react-spring";
 import {ReactChild, useCallback, useEffect, useLayoutEffect, useRef, useState, memo, useMemo} from "react";
+import {Button} from "../../styles/helpers";
 
 interface ExpandableProps {
     maxHeight: number;
@@ -45,9 +46,9 @@ export default function Expandable({maxHeight = 500, children}:ExpandableProps) 
             {
                 fullHeight !== null && (
                     <ExpandableButton ref={buttonRef} onClick={toggleViewInFull}>
-                        <span>
+                        <Button>
                         {!viewInFull ? "View more" : "View less"}
-                        </span>
+                        </Button>
                     </ExpandableButton>
                 )
             }

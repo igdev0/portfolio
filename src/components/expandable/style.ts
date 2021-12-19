@@ -28,6 +28,7 @@ export const ExpandableButton = styled.div`
     display: inline-block;
     padding: .5em 1em;
     border-radius: .5em;
+    color: ${vars.colors.black};
     background-color: ${vars.colors.wheat};
   }
   
