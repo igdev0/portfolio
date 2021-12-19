@@ -2,10 +2,28 @@ import {ProjectCollectionWrapper} from "./style";
 import {ProjectDataProps} from "../../queries/types";
 import Project from "./project";
 import {useCallback, useRef} from "react";
+import styled from "styled-components";
+import vars from "../../styles/vars";
 
 interface ProjectCollectionProps {
     projects: ProjectDataProps[],
 }
+
+const NoProjectsFoundYet = styled.div`
+  width: 100%;
+  height: 100%;
+  border: 4px solid ${vars.colors.wheat};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding: 1em;
+  }
+
+`
 
 export default function ProjectCollection({projects}: ProjectCollectionProps) {
     const grid = useRef<HTMLElement>(null);
@@ -26,16 +44,25 @@ export default function ProjectCollection({projects}: ProjectCollectionProps) {
 
 
     return (
-        // @ts-ignore
-        <ProjectCollectionWrapper ref={grid}>
+        <>
             {
-                projects.map((item, index) => {
-                    return (
-                        // @ts-ignore
-                        <Project onItemResize={handleResize} key={index} data={item}/>
-                    )
-                })
+                projects.length === 0 && (
+                    <NoProjectsFoundYet>
+                        <h1>Is not you, is me. This section is in work in progress. 😳</h1>
+                    </NoProjectsFoundYet>
+                )
             }
-        </ProjectCollectionWrapper>
+            {/*@ts-ignore*/}
+            <ProjectCollectionWrapper ref={grid}>
+                {
+                    projects.map((item, index) => {
+                        return (
+                            // @ts-ignore
+                            <Project onItemResize={handleResize} key={index} data={item}/>
+                        )
+                    })
+                }
+            </ProjectCollectionWrapper>
+        </>
     )
 }
