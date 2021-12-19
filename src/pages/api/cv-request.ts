@@ -87,10 +87,9 @@ export default async function cvRequest(req: NextApiRequest, res: NextApiRespons
             })
             return res.status(200).json({message: "Success, please check your inbox.", success: true});
         } catch (e) {
-            console.error(e)
             return res.status(500).json({error: {server: "There was a server error while trying to send you the email, please contact me directly at dorultanianos@gmail.com."}, success: false});
         }
-    } catch (e) {
+    } catch (e:any) {
         if (e.graphQLErrors[0].message === "Duplicate entry") {
             return res.status(500).json({error: {email: "You've already requested my CV, please contact me for more details"}, success: false});
         }

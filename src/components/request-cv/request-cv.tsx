@@ -5,7 +5,7 @@ import {useCallback, useState} from "react";
 import requestCv from "../../validation/request-cv";
 import CloseOverlay from "../overlay/close-overlay";
 import {Content} from "../overlay/style";
-import {GoogleReCaptcha, GoogleReCaptchaProvider} from "react-google-recaptcha-v3";
+import {GoogleReCaptcha, GoogleReCaptchaProvider, IGoogleRecaptchaProps} from "react-google-recaptcha-v3";
 import {Button, CheckboxGroup, ErrorMessage, Spacer, SuccessMessage} from "../../styles/helpers";
 
 const INITIAL_DATA = {
@@ -77,7 +77,7 @@ export default function RequestCv() {
 
     }, [data]);
 
-    const handleCaptchaVerify = useCallback((v: string) => {
+    const handleCaptchaVerify = useCallback((v:string) => {
         setToken(v)
     }, [setToken])
 
@@ -108,9 +108,13 @@ export default function RequestCv() {
                         {errors.email && <ErrorMessage>{errors.email}</ErrorMessage>}
                         <Spacer top={1}/>
                         <CheckboxGroup>
-                            <input type="checkbox" checked={data.privacy_accepted} name="privacy_accepted" onChange={handleInputChange}/>
+                            <input type="checkbox" checked={data.privacy_accepted} name="privacy_accepted"
+                                   onChange={handleInputChange}/>
                             <span className="checkbox"/>
-                            <p> By ticking this box, you acknowledge & accept my <a href="/privacy-policy" target="_blank">privacy & policy</a>.</p>
+                            <p> By ticking this box, you acknowledge & accept my
+
+                                {/*@ts-ignore*/}
+                                <a href="/privacy-policy" target="_blank"> privacy & policy</a>.</p>
                             {errors.privacy_accepted && <ErrorMessage>{errors.privacy_accepted}</ErrorMessage>}
                         </CheckboxGroup>
                         <Spacer top={1}/>
@@ -119,7 +123,7 @@ export default function RequestCv() {
                         </Button>
                         {successMessage && <SuccessMessage>{successMessage}</SuccessMessage>}
                         {errors.server && <ErrorMessage>{errors.server}</ErrorMessage>}
-                        <GoogleReCaptcha onVerify={handleCaptchaVerify}>Verify</GoogleReCaptcha>
+                        <GoogleReCaptcha onVerify={handleCaptchaVerify}/>
                     </form>
                 </GoogleReCaptchaProvider>
             </RequestCvWrapper>

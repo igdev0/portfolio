@@ -8,7 +8,7 @@ interface OverlayStateProps {
 const useOverlayState = create<OverlayStateProps>((set) => {
     return {
         currentVisible: null,
-        setCurrentVisible(id: number) {
+        setCurrentVisible(id: number | null) {
             set((prev) => ({...prev, currentVisible: id}))
         }
     }
