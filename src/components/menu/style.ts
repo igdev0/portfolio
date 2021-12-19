@@ -67,7 +67,6 @@ export const MenuLinks = styled.div`
   padding: 0;
   display: inline-flex;
   flex-direction: column;
-  margin: 0 auto;
 `;
 
 interface MenuLinkWrapperProps {
@@ -76,7 +75,7 @@ interface MenuLinkWrapperProps {
 
 export const MenuLinkWrapper = styled.a<MenuLinkWrapperProps>`
   margin: 0;
-  padding: .5rem 0;
+  padding: clamp(.5rem, .75rem, 1rem) 0;
   position: relative;
   width: fit-content;
   text-transform: uppercase;
