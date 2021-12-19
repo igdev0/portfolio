@@ -4,7 +4,9 @@ const API_ENDPOINT = `${process.env.NEXT_PUBLIC_CMS_URL}/graphql`;
 
 const apolloClient = new ApolloClient({
     uri: API_ENDPOINT,
-    cache: new InMemoryCache(),
+    cache: new InMemoryCache({
+        resultCaching: false
+    }),
     defaultOptions: {
         watchQuery: {
             fetchPolicy: "no-cache",

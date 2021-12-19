@@ -53,7 +53,7 @@ const Form = styled.form`
   width: 100%;
   background-color: ${({theme}) => theme.main === 'light' ? lighten(.95, vars.colors.black) : vars.colors.black};
   border-radius: 10px;
-  padding-bottom: 1em;
+  padding-bottom: 2em;
 `;
 
 const Button = styled.button`

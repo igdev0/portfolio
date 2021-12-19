@@ -6,27 +6,34 @@ export const WorkExperienceWrapper = styled.div`
   margin: 0;
   padding: 1.5em 0;
   width: 100%;
-  display: flex;
+  display: inline-block;
   
   
   .work-experience-date {
-    width: 1.5em;
-    display: flex;
-    flex: .030;
-    flex-direction: column;
+    flex-basis: auto;
+    display: inline-flex;
+    align-items: center;
+    flex-direction: row;
     justify-content: space-between;
+    gap: .5em;
     color: ${vars.colors.green};
+    
+    &__separator {
+      width: 4rem;
+      height: 5px;
+      display: inline-block;
+      background-color: ${vars.colors.wheat};
+    }
   }
   
   .work-experience-bar {
-    width: 2em;
-    margin: 0 1em;
-    flex: .020;
-    background-color: ${lighten(.5, vars.colors.black)};
+    width: 2rem;
+    flex-basis: auto;
+    background-color: ${vars.colors.wheat};
   }
   
   .work-experience-content {
-    flex: .95;
+    flex-basis: auto;
     color: ${({theme}) => theme.main === 'light' ? vars.colors.black : vars.colors.white};
   }
 `

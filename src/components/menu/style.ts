@@ -6,7 +6,7 @@ interface MenuWrapperProps {
     menuVisible: boolean
 }
 export const MenuWrapper = styled.div<MenuWrapperProps>`
-  font-size: calc(15px + .3vw);
+  font-size: clamp(15px, calc(14px + .4vw), 20px);
   margin: 0;
   padding: 2em;
   height: 100%;
@@ -73,7 +73,7 @@ interface MenuLinkWrapperProps {
 
 export const MenuLinkWrapper = styled.a<MenuLinkWrapperProps>`
   margin: 0;
-  padding: 1em 0;
+  padding: 1rem 0;
   position: relative;
   width: fit-content;
   text-transform: uppercase;
@@ -128,7 +128,7 @@ export const SocialsWrapper = styled.div`
   }
 `
 export const MobileToggleWrapper = styled.div`
-  margin: 0;
+  margin: 1em;
   padding: .5em;
   overflow: hidden;
   max-width: 3em;
@@ -145,4 +145,13 @@ export const MobileToggleWrapper = styled.div`
   @media screen and (min-width: 450px) {
     display: none;
   }
+`;
+
+export const RequestCVButton = styled.button`
+  display: inline-block;
+  padding: .5em 1em;
+  border-radius: .5em;
+  height: auto;
+  margin: 1em 0;
+  background-color: ${vars.colors.wheat};
 `;

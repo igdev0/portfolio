@@ -12,6 +12,7 @@ export default function Expandable({maxHeight = 500, children}:ExpandableProps) 
     const [springStyles, springAPI] = useSpring(() => ({height: maxHeight}));
     const [fullHeight, setFullHeight] = useState<number | null>(null);
     const [viewInFull, setViewInFull] = useState(false);
+    const buttonRef = useRef<HTMLDivElement>(null);
     const ref = useRef<HTMLDivElement>(null);
     const toggleViewInFull = useCallback(({viewInFullValue = null}) => {
         setViewInFull(v => (viewInFullValue !== null ? viewInFullValue : !v));
@@ -21,10 +22,11 @@ export default function Expandable({maxHeight = 500, children}:ExpandableProps) 
         if(ref.current) {
             const y = ref.current.scrollHeight;
             const reset = y > maxHeight;
+
             reset && setFullHeight(y);
             reset && toggleViewInFull({viewInFullValue: false});
         }
-    }, [ref, maxHeight, toggleViewInFull])
+    }, [ref, maxHeight, buttonRef, toggleViewInFull])
 
     useLayoutEffect(() => {
         handleElementResize();
@@ -42,7 +44,7 @@ export default function Expandable({maxHeight = 500, children}:ExpandableProps) 
             {children}
             {
                 fullHeight !== null && (
-                    <ExpandableButton onClick={toggleViewInFull}>
+                    <ExpandableButton ref={buttonRef} onClick={toggleViewInFull}>
                         <span>
                         {!viewInFull ? "View more" : "View less"}
                         </span>

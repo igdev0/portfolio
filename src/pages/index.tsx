@@ -37,12 +37,24 @@ export default function Home({skillsTechnologies, aboutMe}: HomePageData) {
 }
 
 export async function getStaticProps() {
-    const {data: {aboutMe}} = await FetchAbout();
-    const {data: {skillsTechnologies}} = await FetchSkills();
-    return {
-        props: {
-            aboutMe,
-            skillsTechnologies,
+    try {
+        const {data: {aboutMe}} = await FetchAbout();
+        const {data: {skillsTechnologies}} = await FetchSkills();
+
+        return {
+            props: {
+                aboutMe,
+                skillsTechnologies,
+            }
+        }
+
+    } catch (e) {
+        console.log(e.networkError)
+        return {
+            props: {
+                aboutMe: {},
+                skillsTechnologies: [],
+            }
         }
     }
 }

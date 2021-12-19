@@ -1,4 +1,4 @@
-import {AvatarWrapper, MenuLinks, MenuWrapper, MobileToggleWrapper, SocialsWrapper} from "./style";
+import {AvatarWrapper, MenuLinks, MenuWrapper, MobileToggleWrapper, SocialsWrapper, RequestCVButton} from "./style";
 import MenuLink from "./menu-link";
 import ThemeToggle from "../theme-toggle/theme-toggle";
 import {Spacer} from "../../styles/helpers";
@@ -7,7 +7,6 @@ import LinkedIn from "../icon/linked-in";
 import {useState} from "react";
 import Times from "../icon/times";
 import Burger from "../icon/burger";
-
 
 export default function Menu() {
     const [mobileVisible, setMobileVisible] = useState(false);
@@ -33,9 +32,9 @@ export default function Menu() {
                     <MenuLink href="/contact">
                         CONTACT
                     </MenuLink>
-                    <MenuLink href="/faq">
-                        FAQ
-                    </MenuLink>
+                    <RequestCVButton>
+                        REQUEST CV
+                    </RequestCVButton>
                 </MenuLinks>
                 <SocialsWrapper>
                     <a href="https://www.linkedin.com/in/ianos-dorultan-364235143/" target="_blank" rel="noreferrer">

@@ -1,15 +1,14 @@
 import {animated} from "react-spring";
 import styled from "styled-components";
 import vars from "../../styles/vars";
-import {responsiveUnit} from "../../utils/utils";
 
 export const ExpandableWrapper = styled(animated.div)`
-  margin: 0;
-  padding: 0;
+  margin: 0 -1em;
+  padding: 0 1em;
   will-change: max-height;
   overflow: hidden;
   position: relative;
-  padding-bottom: 1em;
+  padding-bottom: 4em;
 `;
 
 export const ExpandableButton = styled.div`
@@ -21,19 +20,15 @@ export const ExpandableButton = styled.div`
   cursor: pointer;
   height: auto;
   padding: 1em;
-  background: linear-gradient(${({theme}) => theme.main === 'light' ? "rgba(255,255,255,.9)" : "rgba(0,0,0, .2)"}, ${({theme}) => theme.main === 'light' ? "rgba(255,255,255,.9)" : "rgba(0,0,0)"});
-  color: ${({theme}) => theme.main === 'light' ? vars.colors.black : vars.colors.white};
+  background: linear-gradient(transparent, ${({theme}) => theme.main === 'light' ? "rgba(255,255,255,1)" : "rgba(0,0,0)"});
   z-index: 100;
   font-weight: bold;
   text-align: center;
-  margin-left: 3.5em;
   span {
-    margin-right: 3.5em;
+    display: inline-block;
+    padding: .5em 1em;
+    border-radius: .5em;
+    background-color: ${vars.colors.wheat};
   }
-  @media screen and (min-width: 500px) {
-    ${responsiveUnit({min: 20, max: 100, prop: "margin-left"})};
-    span {
-      ${responsiveUnit({min: 20, max: 100, prop: "margin-right"})};
-    }
-  }
+  
 `

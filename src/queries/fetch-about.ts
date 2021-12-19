@@ -14,12 +14,20 @@ const query = gql`
                 content
                 started
                 ended
+                place
+                location
+                type
+                short_description
             }
             education_title
             education {
                 content
                 started
                 ended
+                place
+                location
+                type
+                short_description
             }
         }
     }

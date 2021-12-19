@@ -29,7 +29,7 @@ export const Spacer = styled.div<SpacerProps>`
 
 export const PageContentTitle = styled.h1`
   margin-bottom: 2em;
-  font-size: 2.5rem;
+  font-size: 2rem;
   display: inline-block;
   position: relative;
   color: ${({theme}) => theme.main === 'light' ? vars.colors.black : vars.colors.white};
@@ -74,4 +74,34 @@ export const AboutSectionTitle = styled.h2`
   font-size: 1.8rem;
   color: ${({theme}) => theme.main === 'light' ? vars.colors.black : vars.colors.white};
   font-weight: 600;
+`
+
+
+export const MetaInfoWrapper = styled.div`
+  margin: 0;
+  padding: 1em 1em 0 1em;
+  height: auto;
+  border: 2px solid ${vars.colors.wheat};
+  //border-top: 2px solid ${vars.colors.wheat};
+  color: ${({theme}) => theme.main === 'light' ? vars.colors.black : vars.colors.white};
+  span {
+    display: block;
+    margin: .5em 0;
+  }
+`
+export const WorkExperienceDescription = styled.div`
+  margin: 0;
+  color: ${({theme}) => theme.main === 'light' ? vars.colors.black : vars.colors.white};
+  padding: 1em 0;
+  ul {
+    padding-left: 1em;
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+  ul li {
+    list-style-type: disc;
+  }
+  strong {
+    font-weight: 600;
+  }
 `

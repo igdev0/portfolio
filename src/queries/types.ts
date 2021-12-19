@@ -7,8 +7,12 @@ export interface ImageDataProps {
 export interface ComponentHistoryDataProps {
     id: number;
     content: string;
+    type: string;
+    short_description: string;
+    place: string;
     started: string;
     ended: string;
+    location: string;
 }
 
 export interface AboutDataProps {
