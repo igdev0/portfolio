@@ -50,21 +50,24 @@ export const MenuWrapper = styled.div<MenuWrapperProps>`
 export const AvatarWrapper = styled.div`
   display: flex;
   justify-content: center;
-  max-height: 10em;
-  max-width: 10em;
+  max-height: clamp(100px, calc(20px + 10vw), 200px);
+  max-width: clamp(100px, calc(20px + 10vw), 200px);
   height: 100%;
   width: 100%;
   border-radius: 50%;
   overflow: hidden;
   margin: 0 auto;
   border: .25em solid ${vars.colors.green};
+  img {
+    object-fit: cover;
+  }
 `
 
 export const MenuLinks = styled.div`
-  margin: 0;
   padding: 0;
   display: inline-flex;
   flex-direction: column;
+  margin: 0 auto;
 `;
 
 interface MenuLinkWrapperProps {
@@ -73,7 +76,7 @@ interface MenuLinkWrapperProps {
 
 export const MenuLinkWrapper = styled.a<MenuLinkWrapperProps>`
   margin: 0;
-  padding: 1rem 0;
+  padding: .5rem 0;
   position: relative;
   width: fit-content;
   text-transform: uppercase;
