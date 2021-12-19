@@ -7,6 +7,7 @@ import {ThemeProvider} from "styled-components";
 import {useAppState} from "../../state/app";
 import {PageContentTitle} from "../../styles/helpers";
 import Intro from "../intro/intro";
+import RequestCv from "../request-cv/request-cv";
 
 export default function Page({children, meta, pageContentTitle}: PageProps) {
     const {theme} = useAppState();
@@ -51,7 +52,9 @@ export default function Page({children, meta, pageContentTitle}: PageProps) {
                     <PageContentWrapper>
                         <PageContentTitle dangerouslySetInnerHTML={{__html: pageContentTitle}}/>
                         {children}
+                        <div style={{height: "2em"}}/>
                     </PageContentWrapper>
+                    <RequestCv/>
                 </PageWrapper>
             </ThemeProvider>
         </>

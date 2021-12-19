@@ -4,12 +4,18 @@ import ThemeToggle from "../theme-toggle/theme-toggle";
 import {Spacer} from "../../styles/helpers";
 import Github from "../icon/github";
 import LinkedIn from "../icon/linked-in";
-import {useState} from "react";
+import {useCallback, useState} from "react";
 import Times from "../icon/times";
 import Burger from "../icon/burger";
+import useOverlayState from "../overlay/state";
+import {REQUEST_CV_ID} from "../../constants";
 
 export default function Menu() {
     const [mobileVisible, setMobileVisible] = useState(false);
+    const {setCurrentVisible} = useOverlayState();
+    const handleRequestButton = useCallback(() => {
+        setCurrentVisible(REQUEST_CV_ID);
+    }, [setCurrentVisible])
     return (
         <>
             <MobileToggleWrapper>
@@ -32,7 +38,7 @@ export default function Menu() {
                     <MenuLink href="/contact">
                         CONTACT
                     </MenuLink>
-                    <RequestCVButton>
+                    <RequestCVButton onClick={handleRequestButton}>
                         REQUEST CV
                     </RequestCVButton>
                 </MenuLinks>

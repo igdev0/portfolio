@@ -49,7 +49,6 @@ export async function getStaticProps() {
         }
 
     } catch (e) {
-        console.log(e.networkError)
         return {
             props: {
                 aboutMe: {},

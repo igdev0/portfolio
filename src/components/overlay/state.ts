@@ -2,7 +2,7 @@ import create from 'zustand';
 
 interface OverlayStateProps {
     currentVisible: number | null;
-    setCurrentVisible: (id: number) => void;
+    setCurrentVisible: (id: number | null) => void;
 }
 
 const useOverlayState = create<OverlayStateProps>((set) => {

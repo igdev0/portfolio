@@ -105,3 +105,23 @@ export const WorkExperienceDescription = styled.div`
     font-weight: 600;
   }
 `
+
+export const ContentWrapper = styled.div`
+  margin: 0;
+  padding: 0;
+  color: ${({theme}) => theme.main === 'light' ? vars.colors.black : vars.colors.white};
+  ul li {
+    list-style-type: unset;
+  }
+  h2 {
+    font-size: 1.2rem;
+  }
+  p {
+    font-size: 1rem;
+  }
+  
+  a {
+    text-decoration: underline;
+    text-decoration-color: ${vars.colors.green};
+  }
+`
