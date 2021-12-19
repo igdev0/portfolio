@@ -89,7 +89,7 @@ export default function RequestCv() {
             <RequestCvWrapper>
                 <CloseOverlay/>
                 <Content>
-                    Thank you for your interest, fill in the form below to receive the CV on your email.
+                    Thank you for your interest, please fill the email field below & submit to receive the CV downloadable link.
                     This process is automated and you will only be able to submit this once per email.
                 </Content>
                 <GoogleReCaptchaProvider
