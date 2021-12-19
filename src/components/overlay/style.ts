@@ -32,14 +32,14 @@ export const CloseOverlayWrapper = styled.div`
   font-size: 1.2rem;
   line-height: .8;
   cursor: pointer;
+  color: ${({theme}) => theme.main === "light" ? vars.colors.black : vars.colors.white};
 `
 
 export const Content = styled.div`
   margin: 0;
   padding: 0;
-  
+  color: ${({theme}) => theme.main === "light" ? vars.colors.black : vars.colors.white};
   h2 {
-    color: ${vars.colors.black};
     font-size: 1.4rem;
   }
 `

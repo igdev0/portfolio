@@ -1,10 +1,10 @@
 import {OverlayWrapper} from "./style";
-import {ReactChildren, useCallback, useEffect} from "react";
+import {ReactElement, useCallback, useEffect} from "react";
 import useOverlayState from "./state";
 
 interface OverlayProps {
     id: number
-    children: ReactChildren
+    children: ReactElement[] | any
 }
 
 export default function Overlay({id, children}: OverlayProps) {

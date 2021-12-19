@@ -3,6 +3,7 @@ import ConfettiGenerator from "confetti-js";
 import {lighten} from "polished";
 import {GoogleReCaptcha, GoogleReCaptchaProvider} from 'react-google-recaptcha-v3';
 import Page from "../components/page/page";
+import {Button, ErrorMessage, SuccessMessage} from "../styles/helpers";
 import styled from "styled-components";
 import {useCallback, useRef, useState} from "react";
 import contact from "../validation/contact";
@@ -56,35 +57,6 @@ const Form = styled.form`
   padding-bottom: 2em;
 `;
 
-const Button = styled.button`
-  padding: 1em 2em;
-  background-color: ${vars.colors.green};
-  border: none;
-  border-radius: 5px;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-`
-
-const ErrorMessage = styled.div`
-  margin-top: 1em;
-  padding: 0;
-  color: red;
-  font-size: .8rem;
-`;
-const SuccessMessage = styled.div`
-  margin-top: 1em;
-  padding: 0;
-  color: deepskyblue;
-  text-align: center;
-  font-size: .8rem;
-  font-weight: 400;
-
-  strong {
-    border-bottom: 2px solid deepskyblue;
-  }
-`;
-
 interface DataType {
     email: string,
     message: string,
@@ -103,6 +75,7 @@ export default function Contact() {
     const confettiRef = useRef<HTMLCanvasElement>(null);
     const [token, setToken] = useState<string | null>(null);
     const [success, setSuccess] = useState(false);
+
     const handleConfetti = useCallback(() => {
         const instance = new ConfettiGenerator({target: confettiRef.current});
         instance.render();
