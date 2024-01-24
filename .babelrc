@@ -1,6 +1,0 @@
-{
-  "presets": ["next/babel"],
-  "plugins": [
-    ["styled-components", { "minify": true, "ssr": true, "displayName": false }]
-  ]
-}
