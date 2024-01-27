@@ -1,0 +1,182 @@
+{
+  "personal_info": {
+    "name": "Ianos-Gyorgy Dorultan",
+    "address": "139 Calea Floresti, Cluj-Napoca, Cluj, 400516, Romania",
+    "phone": "+40746613636",
+    "email": "dorultanianos@gmail.com",
+    "github": "https://github.com/dorultan",
+    "website": "https://dorultanianos.dev"
+  },
+  "skills": {
+    "general": "Software engineer proficient in front-end development, fascinated by blockchain and smart contracts.",
+    "languages": [
+      "Romanian (native)",
+      "English (fluent)"
+    ],
+    "technical_skills": {
+      "Front-end": {
+        "HTML5": "#FF5733",
+        "Javascript": "#F0DB4F",
+        "Typescript": "#3178C6",
+        "React": "#61DAFB",
+        "NextJS": "#000000",
+        "Vite": "#646CFF",
+        "CRA": "#09D3AC",
+        "Storybook": "#FF4785",
+        "Zustand": "#9C27B0",
+        "Redux": "#764ABC",
+        "GraphQL": "#E10098",
+        "React Query": "#FF4154",
+        "Bootstrap": "#7952B3",
+        "Tailwind": "#38B2AC",
+        "CSS": "#264DE4",
+        "Less/SCSS": "#1B2B34",
+        "Styled-Components": "#DB7093",
+        "Linaria": "#00C7B7",
+        "Socket IO": "#010101",
+        "SQL JS": "#F29111",
+        "Framer Motion": "#F05B4E",
+        "React Spring": "#8BC34A",
+        "Web APIs": "#029BE5"
+      },
+      "Compilers": {
+        "SWC": "#BB92AC",
+        "Webpack": "#8DD6F9",
+        "Rollup": "#EC4A3F"
+      },
+      "Testing": {
+        "Jest": "#C21325",
+        "Mocha": "#8D6748"
+      },
+      "Code Quality": {
+        "Eslint": "#4B32C3",
+        "Prettier": "#F7B93E"
+      },
+      "Native": {
+        "React Native": "#764ABC",
+        "Expo": "#000020"
+      },
+      "Versioning": {
+        "Git": "#F05032",
+        "Semantic-Release": "#333333"
+      },
+      "Rest API Tools": {
+        "Postman": "#FF6C37",
+        "Swagger": "#85EA2D"
+      },
+      "Smart Contract": {
+        "Solidity": "#363636"
+      },
+      "Blockchain": {
+        "Ethereum": "#3C3C3D"
+      },
+      "Code Hosting": {
+        "Github": "#181717",
+        "Bitbucket": "#0052CC"
+      },
+      "Project Management": {
+        "Jira": "#0052CC",
+        "Trello": "#0079BF"
+      },
+      "Backend": {
+        "NodeJS": "#339933",
+        "NestJS": "#E0234E",
+        "NextJS": "#000000",
+        "Express": "#000000",
+        "Typescript": "#3178C6",
+        "OpenID Connect": "#F7931E",
+        "Keycloak": "#DA532C",
+        "SocketIO": "#010101",
+        "Typeorm": "#E83524",
+        "MySQL": "#4479A1",
+        "MongoDB": "#47A248",
+        "Strapi CMS": "#8E75FF"
+      },
+      "IDEs": {
+        "Webstorm": "#00C4B6",
+        "Atom": "#66595C",
+        "Visual Studio": "#5C2D91"
+      },
+      "Design Tools": {
+        "Figma": "#F24E1E",
+        "Adobe Illustrator": "#FF9A00",
+        "Adobe Photoshop": "#31A8FF",
+        "Sketch": "#F7B500"
+      },
+      "Containerization Platform": {
+        "Docker": "#2496ED"
+      },
+      "CI/CD": {
+        "Github Actions": "#2088FF",
+        "Bitbucket Pipelines": "#0052CC"
+      },
+      "Operating Systems": {
+        "MacOS": "#000000",
+        "Windows": "#0078D6",
+        "Linux": "#FCC624"
+      }
+    }
+  },
+  "experience": [
+    {
+      "company": "Input Output",
+      "position": "Software Engineer (front-end)",
+      "duration": "March 2022 - PRESENT",
+      "location": "Remote",
+      "description": "As a software engineer within the Atala team, I developed and led  all of our web-based projects. Some of the responsibilities that I have are; designing and implementing features in collaboration with the team, breaking down work and helping prioritizing, and reviewing code from other engineers.\n",
+      "accomplishments": [
+        "Developed and led web-based projects in the Atala team.",
+        "Collaborated in designing and implementing features.",
+        "Developed SSI web dApp platform and internal component UI library using modern technology.",
+        "Maintained Atala’s main website and SSI docs website.",
+        "Developed multiple prototypes and supported the wallet SDK team."
+      ]
+    },
+    {
+      "company": "Finer vision",
+      "position": "Digital developer",
+      "duration": "February 2020 - February 2022",
+      "location": "London",
+      "description": "As a digital developer, I successfully managed diverse web and native projects, both small and large, including legacy updates, delivering tailored solutions for brands like Sainsbury's and HSBC. Alongside this, I supported my team by troubleshooting, sharing knowledge, and adapting to new technologies efficiently.",
+      "accomplishments": [
+        "Managed web and native projects for brands like Sainsbury's and HSBC.",
+        "Developed responsive web projects and mobile applications.",
+        "Updated legacy projects and crafted reusable React UI Components.",
+        "Automated content integration using Google APIs.",
+        "Collaborated in an agile/kanban team."
+      ]
+    },
+    {
+      "company": "Freelancer",
+      "position": "Web developer",
+      "duration": "March 2017 - January 2020",
+      "location": "London",
+      "description": "As a freelancer, I've navigated the rewarding challenge of working solely with individuals. This journey involved actively seeking projects, connecting with new clients, and transforming their unique ideas into custom websites, all while enjoying the fulfillment and financial rewards of my craft.",
+      "accomplishments": [
+        "Worked with individuals on bespoke web solutions.",
+        "Performed cross-browser tests and troubleshooting.",
+        "Designed responsive web applications."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Udemy",
+      "duration": "January 2017 - January 2018",
+      "location": "Online",
+      "focus": "Udemy, an online learning site, has been great for learning new web development skills. I learned how to build modern websites, develop big Node applications for the web, create RESTful APIs, and understand authorization. I got better by watching expert tutorials and practicing a lot."
+    },
+    {
+      "institution": "Pluralsight",
+      "duration": "February 2017 - January 2017",
+      "location": "Online",
+      "focus": "Pluralsight, an online learning site, really helped me improve. It made my design skills better and helped me understand JavaScript more deeply. I learned a lot about advanced JavaScript topics like closures, prototype inheritance, maps, scope, the event loop, and the 'this' context. I got better by watching experts and practicing regularly.\n"
+    },
+    {
+      "institution": "Codecademy",
+      "duration": "January 2016 - January 2017",
+      "location": "Online",
+      "focus": "Codecademy, an online interactive site, was where I started learning web development. I learned the basics of HTML, CSS, JavaScript, and jQuery there. I got better by doing different coding exercises, reading, and practicing regularly."
+    }
+  ]
+}

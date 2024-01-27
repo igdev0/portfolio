@@ -1,9 +1,10 @@
 import styled from 'styled-components';
-import {AppRightCTAStyled} from '../app.styled.ts';
+import {AppRightCTAStyled} from './app.styled.ts';
 import {motion} from 'framer-motion';
+import {colors} from '../vars';
 
+const MAX_WIDTH = 1800;
 export const NavbarStyled = styled(motion.nav)`
-  margin: 0;
   padding: 0;
   display: flex;
   position: sticky;
@@ -11,12 +12,14 @@ export const NavbarStyled = styled(motion.nav)`
   z-index: 100000;
   flex-direction: row;
   gap: 1rem;
+  max-width: ${MAX_WIDTH}px;
+  margin: 0 auto;
 
   ${AppRightCTAStyled} {
     flex: 1;
-    border-radius: 8px;
     background: white;
     font-family: 'JetBrains Mono', monospace;
+    border-radius: 0;
 
     &:after {
       position: absolute;
@@ -24,14 +27,8 @@ export const NavbarStyled = styled(motion.nav)`
       left: 0;
       bottom: 0;
       width: 100%;
-      height: 1rem;
-      background-image: radial-gradient(at 40% 20%, hsla(28, 100%, 74%, 1) 0px, transparent 50%),
-      radial-gradient(at 80% 0%, hsla(189, 100%, 56%, 1) 0px, transparent 50%),
-      radial-gradient(at 0% 50%, hsla(355, 100%, 93%, 1) 0px, transparent 50%),
-      radial-gradient(at 80% 100%, hsla(242, 100%, 70%, 1) 0px, transparent 50%),
-      radial-gradient(at 80% 50%, hsla(340, 100%, 76%, 1) 0px, transparent 50%),
-      radial-gradient(at 0% 100%, hsla(22, 100%, 77%, 1) 0px, transparent 50%),
-      radial-gradient(at 0% 0%, hsla(343, 100%, 76%, 1) 0px, transparent 50%);
+      height: .5rem;
+      background: ${colors.purple};
     }
   }
 `;

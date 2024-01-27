@@ -1,12 +1,13 @@
-import {GridColumStyled, GridStyled, GridStyledContainer} from './components/grid.styled.ts';
+import {GridColumStyled, GridStyled, GridStyledContainer} from './grid.styled.ts';
 import {AppLeftSideStyled, AppRightCTAStyled, AppRightSideStyled, AppRootStyled, MeshGradient} from './app.styled.ts';
 import ExperienceSection from './experience.tsx';
-import {SectionStyled} from './components/section.styled.ts';
+import {SectionStyled} from './section.styled.ts';
 import EducationSection from './education.tsx';
 import {MouseEventHandler, useCallback, useRef, useState} from 'react';
 import {useScroll, useTransform} from 'framer-motion';
-import {SECTIONS} from './const/content.ts';
-import Navbar from './components/navbar.tsx';
+import {SECTIONS} from '../vars/content.ts';
+import Navbar from './navbar.tsx';
+import TechStackScreen from './tech-stack.tsx';
 
 const COLUMNS_COUT = 500;
 
@@ -54,6 +55,7 @@ function App() {
             }
           </AppRightSideStyled>
         </SectionStyled>
+        <TechStackScreen/>
         <ExperienceSection/>
         <EducationSection/>
       </AppRootStyled>

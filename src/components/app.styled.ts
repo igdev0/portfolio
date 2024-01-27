@@ -5,11 +5,13 @@ export const AppRootStyled = styled.div`
   width: 100%;
   position: absolute;
   height: 100%;
+  scroll-behavior: smooth;
   overflow: auto;
   scroll-snap-type: both mandatory;
   scroll-snap-stop: always;
   left: 0;
   top: 0;
+  right: 0;
 `;
 
 export const AppLeftSideStyled = styled.div`
