@@ -1,7 +1,7 @@
-import {AppLeftSideStyled, AppRightSideStyled} from './app.styled.ts';
-import {SectionStyled} from './section.styled.ts';
-import content from '../content.ts';
-import {ExperienceBarStyled, ExperienceContentStyled, ExperienceStyled} from './experience.styled.ts';
+import {AppLeftSideStyled, AppRightSideStyled} from '../app/app.styled.ts';
+import {SectionStyled} from '../dri/section.styled.ts';
+import content from '../../content.ts';
+import {ExperienceBarStyled, ExperienceContentStyled, ExperienceStyled} from '../experience/experience.styled.ts';
 
 export default function EducationSection() {
   return (

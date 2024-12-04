@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import {AppRightCTAStyled} from './app.styled.ts';
+import {AppRightCTAStyled} from '../app/app.styled.ts';
 import {motion} from 'framer-motion';
-import {colors} from '../vars';
+import {colors} from '../../vars';
 
 const MAX_WIDTH = 1800;
 export const NavbarStyled = styled(motion.nav)`
@@ -31,4 +31,11 @@ export const NavbarStyled = styled(motion.nav)`
       background: ${colors.purple};
     }
   }
+`;
+
+export const NavbarItemStyled = styled.a`
+  padding: 1rem;
+  border-radius: 36px;
+  overflow: hidden;
+  position: relative;
 `;

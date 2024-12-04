@@ -10,7 +10,7 @@ export const SectionStyled = styled.section`
   bottom: 0;
   top: 0;
   display: grid;
-  grid-template-columns: .7fr 1fr;
+  grid-template-columns: .5fr 1fr;
   max-width: 1800px;
   margin: 0 auto;
 `;

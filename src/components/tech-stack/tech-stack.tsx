@@ -1,6 +1,6 @@
-import {AppLeftSideStyled, AppRightSideStyled} from './app.styled.ts';
-import {SectionStyled} from './section.styled.ts';
-import content from '../content.ts';
+import {AppLeftSideStyled, AppRightSideStyled} from '../app/app.styled.ts';
+import {SectionStyled} from '../dri/section.styled.ts';
+import content from '../../content.ts';
 import {TechItemStyled, TechStackGroupStyled} from './tech-stack.styled.ts';
 
 export default function TechStackScreen() {
@@ -20,7 +20,6 @@ export default function TechStackScreen() {
               Object.keys(content.skills.technical_skills).map((techGroup, key) => {
                 const techGroupContent = content.skills.technical_skills[techGroup as keyof object];
 
-                // console.log(techGroup);
                 return (
                     <TechStackGroupStyled key={`tech-group-${key}`}>
                       <h4>{techGroup}</h4>
