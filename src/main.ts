@@ -5,7 +5,6 @@ export const MainCSS = createGlobalStyle`
     font-family: 'Open Sans', sans-serif;
     line-height: 1.5;
     font-weight: 400;
-    /*color-scheme: light dark;*/
     font-size: 16px;
     font-synthesis: none;
     text-rendering: optimizeLegibility;
