@@ -13,7 +13,8 @@
     "framer-motion": "^11.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "styled-components": "^6.1.8"
+    "styled-components": "^6.1.8",
+    "tailwind": "^4.0.0"
   },
   "devDependencies": {
     "@types/fabric": "^5.3.6",
