@@ -1,4 +1,5 @@
 .navbar {
-    margin: 0;
-    padding: 0;
+    padding: .5rem .5rem;
+    max-width: var(--container-max-size);
+    margin: 0 auto;
 }
