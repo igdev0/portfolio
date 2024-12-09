@@ -1,6 +1,6 @@
 import type {Metadata} from "next";
 import {Klee_One, Kode_Mono} from "next/font/google";
-import "./globals.css";
+import "./globals.scss";
 
 export const metadata: Metadata = {
   title: "Create Next App",
