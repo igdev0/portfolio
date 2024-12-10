@@ -1,0 +1,11 @@
+.theme__button {
+  margin: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-left: 1px solid var(--foreground);
+  padding-left: .8rem;
+}
