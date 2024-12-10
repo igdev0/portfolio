@@ -2,15 +2,15 @@
   --background: #ffffff;
   --foreground: #171717;
 
+  --social-icon-stroke-color: #000;
+
   // sizes
   --container-max-size: 1250px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+[data-theme='dark'] {
+  --background: #171717;
+  --foreground: #ffffff;
 }
 
 html,
@@ -36,10 +36,4 @@ body {
 a {
   color: inherit;
   text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
 }
