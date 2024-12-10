@@ -1,6 +1,7 @@
 import type {Metadata} from "next";
 import {Klee_One, Kode_Mono} from "next/font/google";
 import "./globals.scss";
+import {ThemeProvider} from 'next-themes';
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -15,10 +16,13 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
-    <html lang="en">
+    <html suppressHydrationWarning lang="en">
       <body className={`${klee.className} ${kode.className}`}>
+      <ThemeProvider>
         {children}
+      </ThemeProvider>
       </body>
     </html>
   );
