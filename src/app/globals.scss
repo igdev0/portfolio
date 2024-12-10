@@ -2,6 +2,8 @@
   --background: #ffffff;
   --foreground: #171717;
 
+  --menu-background: #ededed;
+
   --social-icon-stroke-color: #000;
 
   // sizes
@@ -11,6 +13,7 @@
 [data-theme='dark'] {
   --background: #171717;
   --foreground: #ffffff;
+  --menu-background: #111;
 }
 
 html,
