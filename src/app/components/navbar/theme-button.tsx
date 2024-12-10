@@ -10,8 +10,7 @@ export default function ThemeButton() {
     const nextTheme = theme === "dark" ? "light": "dark";
     setTheme(nextTheme);
   }
-
-
+  
   return (
       <button className={styles.theme__button} onClick={handleClick}>
         {theme === "light" ?  <Moon/> :<Sun/>}
