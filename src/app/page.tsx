@@ -1,11 +1,26 @@
 "use client";
 import styles from "./page.module.scss";
 import Navbar from '@/app/components/navbar/navbar';
+import Button from '@/app/components/button/button';
 
 export default function Home() {
   return (
         <div className={styles.page}>
           <Navbar/>
+          <div className={styles.container}>
+            <header className={styles.home__header}>
+              <img src="/images/avatar.png" alt="avatar" width={200} height={200}/>
+              <h1>
+                I am Ianos,<br/>
+                A software developer,<br/>
+                passionated about web3
+              </h1>
+              <div className={styles.home__header__buttons}>
+              <Button asLink={true} href="/about-me" variant="outlined">Who I am</Button>
+              <Button asLink={true} href="/about-me" variant="filled">Get in touch</Button>
+              </div>
+            </header>
+          </div>
         </div>
   );
 }
