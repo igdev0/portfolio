@@ -17,12 +17,15 @@
 
   --font-size-lg: 4rem;
 
+  --shadow-color: #dbdbdb;
+
 }
 
 [data-theme='dark'] {
   --background: #171717;
   --foreground: #ffffff;
   --menu-background: #111;
+  --shadow-color: #000;
 }
 
 html,
