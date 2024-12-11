@@ -2,6 +2,7 @@ import type {Metadata} from "next";
 import {Klee_One, Kode_Mono} from "next/font/google";
 import "./globals.scss";
 import {ThemeProvider} from 'next-themes';
+import Globe from '@/app/components/globe/globe';
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -21,7 +22,9 @@ export default function RootLayout({
     <html suppressHydrationWarning lang="en">
       <body className={`${klee.className} ${kode.className}`}>
       <ThemeProvider>
+        <Globe>
         {children}
+        </Globe>
       </ThemeProvider>
       </body>
     </html>
