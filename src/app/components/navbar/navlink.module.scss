@@ -1,0 +1,19 @@
+.navlink {
+  position: relative;
+  font-size: 4rem;
+
+  &:after {
+    content: "";
+    position: absolute;
+    width: 80%;
+    height: 5px;
+    left: 0;
+    bottom: 0;
+  }
+
+  &__active {
+    &:after {
+      background: linear-gradient( to right, var(--color-pink) 70%, var(--color-green) 10%);
+    }
+  }
+}

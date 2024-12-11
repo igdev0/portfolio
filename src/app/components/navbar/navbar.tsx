@@ -7,6 +7,7 @@ import config from '@/app/config';
 import Menu from '@/app/components/navbar/menu';
 import {useState} from 'react';
 
+
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const handleBurgerChange = (value: boolean) => {

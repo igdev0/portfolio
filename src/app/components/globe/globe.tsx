@@ -30,11 +30,11 @@ export default function Globe(props: PropsWithChildren) {
     }
   })
   return (
-      <>
+      <div className={styles.wrapper}>
         <div className={styles.globe__wrapper}>
           {props.children}
         </div>
         <div ref={globeRef} className={styles.globe}/>
-      </>
+      </div>
   )
 }
