@@ -1,10 +1,11 @@
 import styles from './menu.module.scss';
 import Navlink from '@/app/components/navbar/navlink';
+import Avatar from '@/app/components/avatar/avatar';
 
 export default function Menu({open}: {open: boolean}) {
   return (
       <div className={styles.menu} style={{transform: `translateX(${open ? 0 : -100}%)`}}>
-        <img src="/images/avatar.png" alt="Avatar" width={200} height={200}/>
+        <Avatar/>
         <Navlink href="/">
           Root
         </Navlink>
