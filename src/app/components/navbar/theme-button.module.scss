@@ -8,4 +8,9 @@
   align-items: center;
   border-left: 1px solid var(--foreground);
   padding-left: .8rem;
+
+
+    path {
+      stroke: var(--foreground);
+    }
 }

@@ -1,30 +1,25 @@
 .navbar {
-    padding: .5rem .5rem;
-    max-width: var(--container-max-size);
-    margin: 0 auto;
+  padding: .5rem .5rem;
+  max-width: var(--container-max-size);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+
+  &__socialbox {
+    margin: 0;
+    padding: 0;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
+    gap: 1rem;
+    align-items: center;
 
-    &__socialbox {
-        margin: 0;
-        padding: 0;
-        display: flex;
-        justify-content: flex-end;
-        gap: 1rem;
-        align-items: center;
-        svg {
-            height: 1.5rem;
-            &:not(:last-child) {
-                path {
-                    fill: var(--foreground);
-                }
-            }
-            &:last-child {
-
-                path {
-                    stroke: var(--foreground);
-                }
-            }
-        }
+    svg {
+      height: 1.5rem;
     }
+    a {
+        path {
+          fill: var(--foreground);
+        }
+      }
+  }
 }
