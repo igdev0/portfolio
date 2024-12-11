@@ -2,6 +2,7 @@
 import styles from "./page.module.scss";
 import Navbar from '@/app/components/navbar/navbar';
 import Button from '@/app/components/button/button';
+import Avatar from '@/app/components/avatar/avatar';
 
 export default function Home() {
   return (
@@ -9,7 +10,7 @@ export default function Home() {
           <Navbar/>
           <div className={styles.container}>
             <header className={styles.home__header}>
-              <img src="/images/avatar.png" alt="avatar" width={200} height={200}/>
+              <Avatar/>
               <h1>
                 I am Ianos,<br/>
                 A software developer,<br/>
