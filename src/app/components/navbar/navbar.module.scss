@@ -7,18 +7,34 @@
   z-index: 2;
   justify-content: space-between;
 
+  &__social__separator {
+    margin: 0 .3rem;
+    padding: 0;
+    height: 100%;
+    width: 1px;
+    background-color: var(--foreground);
+    filter: brightness(50%);
+  }
+
   &__socialbox {
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: flex-end;
-    gap: 1rem;
+    gap: .25rem;
     align-items: center;
 
     svg {
       height: 1.5rem;
     }
     a {
+      background-color: var(--background);
+      border-radius: 3px;
+      width: 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      aspect-ratio: 1;
         path {
           fill: var(--foreground);
         }

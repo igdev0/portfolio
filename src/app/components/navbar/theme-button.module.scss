@@ -1,14 +1,14 @@
 .theme__button {
   margin: 0;
   border: 0;
-  background: none;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-left: 1px solid var(--foreground);
-  padding-left: .8rem;
-
+  width: 2rem;
+  aspect-ratio: 1;
+  border-radius: 3px;
+  background-color: var(--background);
 
     path {
       stroke: var(--foreground);

@@ -28,6 +28,7 @@ export default function Navbar() {
             <a href={config.linkedinUrl} target="_blank" rel="noopener">
               <LinkedIn/>
             </a>
+            <div className={styles.navbar__social__separator}/>
             <ThemeButton/>
           </div>
         </div>
