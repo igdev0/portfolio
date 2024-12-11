@@ -5,12 +5,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 2rem;
+  width: 40px;
   aspect-ratio: 1;
   border-radius: 3px;
   background-color: var(--background);
   box-shadow: 0 6px 10px 0 transparent;
-  //transition: box-shadow ease-in-out 300ms;
+
     path {
       stroke: var(--foreground);
     }
