@@ -5,19 +5,43 @@ import {Github, LinkedIn, Mail} from '@/app/components/navbar/icons';
 import ThemeButton from '@/app/components/navbar/theme-button';
 import config from '@/app/config';
 import Menu from '@/app/components/navbar/menu';
-import {useState} from 'react';
+import {useContext, useEffect, useRef, useState} from 'react';
+import {AppContext} from '@/app/context';
 
 
 export default function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const handleBurgerChange = (value: boolean) => {
-    setMenuOpen(value);
+  const burgerRef = useRef<HTMLLabelElement>(null);
+  const {menuOpen, toggleMenu} = useContext(AppContext);
+  const [offset, setOffset] = useState(0);
+  const handleBurgerChange = () => {
+    toggleMenu()
   }
+
+  const handleOffsetCalc = () => {
+    if(burgerRef.current) {
+      setOffset(burgerRef.current.offsetLeft + burgerRef.current.clientWidth);
+    }
+  }
+
+  useEffect(() => {
+    if(burgerRef.current) {
+      window.addEventListener("resize" , () => {
+        handleOffsetCalc();
+      })
+
+      handleOffsetCalc()
+    }
+
+    return () => {
+      window.removeEventListener("resize", () =>{});
+    }
+  }, [])
+
   return (
       <>
-        <Menu open={menuOpen}/>
+        <Menu open={menuOpen} offset={offset}/>
         <div className={styles.navbar}>
-          <Burger onChange={handleBurgerChange}/>
+          <Burger onChange={handleBurgerChange} ref={burgerRef}/>
           <div className={styles.navbar__socialbox}>
             <a href={`mailto:${config.email}`} rel="noreferrer">
               <Mail/>

@@ -3,6 +3,7 @@ import {Klee_One, Kode_Mono} from "next/font/google";
 import "./globals.scss";
 import {ThemeProvider} from 'next-themes';
 import Globe from '@/app/components/globe/globe';
+import AppContextProvider from '@/app/context';
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -11,6 +12,11 @@ export const metadata: Metadata = {
 
 const klee = Klee_One({weight: ["600", "400"], subsets: ["latin", "cyrillic"]});
 const kode = Kode_Mono({weight: ["600", "400"], subsets: ['latin', 'latin-ext']});
+
+function Blur() {
+
+}
+
 
 export default function RootLayout({
   children,
@@ -21,11 +27,13 @@ export default function RootLayout({
   return (
     <html suppressHydrationWarning lang="en">
       <body className={`${klee.className} ${kode.className}`}>
-      <ThemeProvider>
-        <Globe>
-        {children}
-        </Globe>
-      </ThemeProvider>
+      <AppContextProvider>
+        <ThemeProvider>
+          <Globe>
+            {children}
+          </Globe>
+        </ThemeProvider>
+      </AppContextProvider>
       </body>
     </html>
   );

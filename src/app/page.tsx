@@ -1,11 +1,13 @@
 "use client";
 import styles from "./page.module.scss";
-import Navbar from '@/app/components/navbar/navbar';
 import Button from '@/app/components/button/button';
 import Avatar from '@/app/components/avatar/avatar';
+import Navbar from '@/app/components/navbar/navbar';
 
 export default function Home() {
   return (
+      <>
+        {/*<div className={`${styles.backdrop} ${styles.backdrop__active}`} style={{pointerEvents: "none"}}/>*/}
         <div className={styles.page}>
           <Navbar/>
           <div className={styles.container}>
@@ -17,11 +19,12 @@ export default function Home() {
                 passionated about web3
               </h1>
               <div className={styles.home__header__buttons}>
-              <Button asLink={true} href="/about-me" variant="outlined">Who I am</Button>
-              <Button asLink={true} href="/about-me" variant="filled">Get in touch</Button>
+                <Button asLink={true} href="/about-me" variant="outlined">Who I am</Button>
+                <Button asLink={true} href="/about-me" variant="filled">Get in touch</Button>
               </div>
             </header>
           </div>
         </div>
+      </>
   );
 }

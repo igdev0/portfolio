@@ -36,3 +36,22 @@
     }
   }
 }
+
+
+.backdrop {
+  position: fixed;
+  width: 72%;
+  margin-left: auto;
+  height: 100%;
+  right: 0;
+  top: 0;
+  backdrop-filter: blur(50px);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 10;
+
+  &__active {
+    pointer-events: all;
+    opacity: 1;
+  }
+}

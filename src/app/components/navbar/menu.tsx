@@ -2,9 +2,9 @@ import styles from './menu.module.scss';
 import Navlink from '@/app/components/navbar/navlink';
 import Avatar from '@/app/components/avatar/avatar';
 
-export default function Menu({open}: {open: boolean}) {
+export default function Menu({open, offset}: {open: boolean, offset: number}) {
   return (
-      <div className={styles.menu} style={{transform: `translateX(${open ? 0 : -100}%)`}}>
+      <div className={styles.menu} style={{transform: `translateX(${open ? 0 : -100}%)`, width: offset + 100, minWidth: 400}}>
         <Avatar/>
         <Navlink href="/">
           Root

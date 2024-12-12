@@ -1,16 +1,19 @@
 "use client";
 import styles from './burger.module.scss';
-import {ChangeEvent} from 'react';
+import {ChangeEvent, ForwardedRef, forwardRef} from 'react';
 
 interface Props {
   onChange: (changed: boolean) => void
 }
-export default function Burger(props: Props) {
+
+
+
+function Burger(props: Props, ref: ForwardedRef<HTMLLabelElement>) {
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     props.onChange(event.currentTarget.checked)
   }
   return (
-      <label htmlFor="check" className={styles.burger}>
+      <label htmlFor="check" className={styles.burger} ref={ref}>
         <input className={styles.burger__trigger} type="checkbox" id="check" onChange={handleChange}/>
         <span className={styles.burger__slice}></span>
         <span className={styles.burger__slice}></span>
@@ -18,3 +21,5 @@ export default function Burger(props: Props) {
       </label>
   )
 }
+
+export default forwardRef(Burger);
