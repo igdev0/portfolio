@@ -1,6 +1,5 @@
 import type {Metadata} from "next";
 import {Klee_One, Kode_Mono} from "next/font/google";
-import "./globals.scss";
 import {ThemeProvider} from 'next-themes';
 import Globe from '@/app/components/globe/globe';
 import AppContextProvider from '@/app/context';
