@@ -13,10 +13,6 @@ export const metadata: Metadata = {
 const klee = Klee_One({weight: ["600", "400"], subsets: ["latin", "cyrillic"]});
 const kode = Kode_Mono({weight: ["600", "400"], subsets: ['latin', 'latin-ext']});
 
-function Blur() {
-
-}
-
 
 export default function RootLayout({
   children,
