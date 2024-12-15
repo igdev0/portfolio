@@ -41,6 +41,15 @@
       &__selected {
         background-color: var(--foreground);
         color: var(--background);
+        position: relative;
+        &:before {
+          content: "x";
+          position: absolute;
+          top: .1rem;
+          right: .1rem;
+          line-height: .5;
+          font-size: 12px;
+        }
       }
     }
   }
