@@ -5,10 +5,11 @@ import {PropsWithChildren, useEffect, useRef} from 'react';
 export default function Globe(props: PropsWithChildren) {
   const globeRef = useRef<HTMLDivElement>(null);
   const handleMouseMove = (event: MouseEvent) => {
-    if(globeRef.current) {
-      const x = event.clientX - globeRef.current.clientWidth / 2;
-      const y = event.clientY - globeRef.current.clientHeight / 2  - window.innerHeight;
+    if (globeRef.current) {
+      const x = event.clientX - (globeRef.current.clientWidth / 2);
+      const y = event.clientY - (globeRef.current.clientHeight / 2);
 
+      // globeRef.current.style.transform = `translate(${x}px, ${y}px)`
       globeRef.current.animate(
           {
             transform: `translate(${x}px, ${y}px)`,
@@ -18,17 +19,18 @@ export default function Globe(props: PropsWithChildren) {
             duration: 10000,
             delay: 100
           }
-          )
+      );
+     
     }
-  }
+  };
 
   useEffect(() => {
-    window.addEventListener("mousemove", handleMouseMove)
+    window.addEventListener("mousemove", handleMouseMove);
 
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove)
-    }
-  })
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  });
   return (
       <div className={styles.wrapper}>
         <div className={styles.globe__wrapper}>
@@ -36,5 +38,5 @@ export default function Globe(props: PropsWithChildren) {
         </div>
         <div ref={globeRef} className={styles.globe}/>
       </div>
-  )
+  );
 }
