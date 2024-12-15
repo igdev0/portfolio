@@ -1,8 +1,5 @@
 import type {Metadata} from "next";
 import {Klee_One, Kode_Mono} from "next/font/google";
-import {ThemeProvider} from 'next-themes';
-import Globe from '@/app/components/globe/globe';
-import AppContextProvider from '@/app/context';
 
 export const metadata: Metadata = {
   title: "Dorultan Ianos | About",
@@ -20,16 +17,8 @@ export default function RootLayout({
 }>) {
 
   return (
-      <html suppressHydrationWarning lang="en">
-      <body className={`${klee.className} ${kode.className}`}>
-      <AppContextProvider>
-        <ThemeProvider>
-          <Globe>
+          <>
             {children}
-          </Globe>
-        </ThemeProvider>
-      </AppContextProvider>
-      </body>
-      </html>
+          </>
   );
 }
