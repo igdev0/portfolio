@@ -1,5 +1,6 @@
 "use client";
 import styles from "./styles.module.scss";
+import TechnicalSkills from '@/app/about-me/technical-skills';
 
 export default function About() {
   return (
@@ -51,6 +52,8 @@ export default function About() {
           <p>
             Let’s build something amazing together! 🚀
           </p>
+          <h3>My technical skills</h3>
+          <TechnicalSkills/>
         </div>
       </div>
   );
