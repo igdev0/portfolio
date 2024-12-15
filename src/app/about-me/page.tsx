@@ -7,7 +7,6 @@ export default function About() {
       <div className={styles.page}>
         <div className="container">
           <h1 className="section__title">About me</h1><br/><br/>
-          <h3 className="section__title">Long story short ...</h3>
           <p>
             My name is Ianos, and I’m from Cluj-Napoca, Romania. After graduating high school in 2014, I embarked on an
             exciting journey, moving to London in 2015. Driven by a passion for technology, I began teaching myself web
