@@ -4,6 +4,7 @@ import "./globals.scss";
 import {ThemeProvider} from 'next-themes';
 import Globe from '@/app/components/globe/globe';
 import AppContextProvider from '@/app/context';
+import Navbar from '@/app/components/navbar/navbar';
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -26,7 +27,10 @@ export default function RootLayout({
       <AppContextProvider>
         <ThemeProvider>
           <Globe>
-            {children}
+            <div className="page">
+              <Navbar/>
+              {children}
+            </div>
           </Globe>
         </ThemeProvider>
       </AppContextProvider>

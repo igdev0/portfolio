@@ -1,11 +1,4 @@
 .page {
-  position: relative;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  background-image: linear-gradient(var(--background) .05em,transparent .05em),linear-gradient(90deg,var(--background) .05em,transparent .05em);
-  background-size: 1.5em 1.5em;
 }
 
 .container {

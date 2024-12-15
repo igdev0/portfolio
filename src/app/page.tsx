@@ -2,12 +2,10 @@
 import styles from "./page.module.scss";
 import Button from '@/app/components/button/button';
 import Avatar from '@/app/components/avatar/avatar';
-import Navbar from '@/app/components/navbar/navbar';
 
 export default function Home() {
   return (
         <div className={styles.page}>
-          <Navbar/>
           <div className={styles.container}>
             <header className={styles.home__header}>
               <Avatar/>
