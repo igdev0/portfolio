@@ -39,16 +39,20 @@ export default function TechnicalSkills() {
 
   return (
       <div className={styles.technical__skills}>
-        <input type="text" value={inputValue} onChange={handleInputChance} placeholder="Find a skill ..." className={styles.technical__skills__input}/>
+        <input type="text" value={inputValue} onChange={handleInputChance} placeholder=" 🔍  Find a skill ..."
+               className={styles.technical__skills__input}/>
+        <h4>Tags:</h4>
         <div className={styles.technical__skills__categories}>
           {tags.map((item, index) => (<div key={index}
                                            className={`${styles.technical__skills__categories__category} ${selectedTags.includes(item) ? styles.technical__skills__categories__category__selected : ""}`}
                                            onClick={handleSelectTag(item)}>{item}</div>))}
         </div>
+        <h4>Skills ({filteredSkills.length}):</h4>
         <div className={styles.technical__skills__skills__grid}>
           {
             config.skills.map((item, index) => (
-                <div key={index} className={`${styles.technical__skills__skills__grid__cell} ${!filteredSkills.find(filteredItem => filteredItem.name === item.name) ? styles.technical__skills__skills__grid__cell__hidden : ""}`}>
+                <div key={index}
+                     className={`${styles.technical__skills__skills__grid__cell} ${!filteredSkills.find(filteredItem => filteredItem.name === item.name) ? styles.technical__skills__skills__grid__cell__hidden : ""}`}>
                   {item.name}
                 </div>
             ))

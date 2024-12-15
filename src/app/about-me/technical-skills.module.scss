@@ -34,13 +34,13 @@
     &__category {
       cursor: pointer;
       padding: .5rem;
-      border-radius: 5px;
+      border-radius: 50px;
       background-color: var(--background);
       border: 1px solid var(--foreground);
 
       &__selected {
-        background-color: var(--foreground);
-        color: var(--background);
+        color: var(--color-green);
+        border-color: var(--color-pink);
         position: relative;
         &:before {
           content: "x";
