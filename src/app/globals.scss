@@ -32,7 +32,7 @@
 html,
 body {
   max-width: 100vw;
-  font-size: clamp(15px, 2vw, 20px);
+  font-size: clamp(16px, 2vw, 20px);
 }
 
 body {
@@ -57,10 +57,19 @@ a {
 
 .page {
   position: relative;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   width: 100%;
   background-image: linear-gradient(var(--background) .05em,transparent .05em),linear-gradient(90deg,var(--background) .05em,transparent .05em);
   background-size: 1.5em 1.5em;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: var(--container-max-size);
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  padding: 0 1rem;
 }

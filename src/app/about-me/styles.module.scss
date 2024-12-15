@@ -1,2 +1,42 @@
 .page {
+
+  h1 {
+    position: relative;
+    display: inline-block;
+    font-size: 4rem;
+    &:after {
+      content: "";
+      position: absolute;
+      width: 80%;
+      height: 5px;
+      left: 0;
+      bottom: 0;
+      background: linear-gradient(to right, var(--color-pink) 70%, var(--color-green) 10%);
+    }
+  }
+  &__section__title {
+    position: relative;
+    display: inline-block;
+
+    &:after {
+      content: "";
+      position: absolute;
+      background-color: var(--foreground);
+      height: 2px;
+      width: 70%;
+      bottom: 0;
+      display: block;
+    }
+  }
+
+
+  p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  h3 {
+    font-size: 2rem;
+    margin-bottom: .5rem;
+  }
 }

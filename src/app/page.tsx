@@ -6,7 +6,7 @@ import Avatar from '@/app/components/avatar/avatar';
 export default function Home() {
   return (
         <div className={styles.page}>
-          <div className={styles.container}>
+          <div className="container">
             <header className={styles.home__header}>
               <Avatar/>
               <h1>
