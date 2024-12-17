@@ -33,6 +33,31 @@ const data: WorkEntityProps[] = [{
     <li>Maintained the legacy browser wallet extension.</li>
 </ul>
   `
+}, {
+  role: "Full-Stack Developer",
+  place: "Finervision, London",
+  from: "February 2020",
+  until: "February 2022",
+  description: "Contributed to a range of native and web projects, transforming designs into pixel-perfect, responsive, and functional code solutions for clients such as Sainsbury’s and HSBC. Developed RESTful APIs and maintained legacy projects.",
+  details: `
+<h4>Accomplishments:</h4>
+<ul>
+    <li>Developed several responsive mobile native and web apps with</li>
+    React, React Native and Expo.
+    <li>Crafted reusable React UI Components to boost productivity.</li>
+    <li>Resolved legacy data migration issues and improved app</li>
+    performance through investigation and optimization.
+    <li>Automated content integration into various native/mobile apps</li>
+    using Google APIs.
+    <li>Efficiently identified and resolved bugs to maintain high-quality</li>
+    standards.
+    <li>Ensured the timely delivery of web and native projects with a focus</li>
+    on code quality standards.
+    <li>Set up a virtual machine equipped with the necessary software for</li>
+    web services.
+    <li>Collaborated effectively as part of an agile/kanban team.</li>
+</ul>
+  `
 }]
 
 function WorkEntity({role, place, from, until, details, description}: WorkEntityProps) {
