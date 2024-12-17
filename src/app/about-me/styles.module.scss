@@ -35,12 +35,25 @@
     margin-bottom: 1.5rem;
   }
 
-  h3 {
-    font-size: 2rem;
+  h4 {
     margin-bottom: .5rem;
   }
 
-  h4 {
-    margin-bottom: .5rem;
+  h2 {
+    margin-bottom: 2rem;
+    padding-bottom: .5rem;
+    margin-top: 3rem;
+    display: inline-block;
+    position: relative;
+
+    &:after {
+      content: "";
+      position: absolute;
+      width: 80%;
+      height: 5px;
+      left: 0;
+      bottom: 0;
+      background: linear-gradient(to right, var(--color-pink) 70%, var(--color-green) 10%);
+    }
   }
 }

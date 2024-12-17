@@ -1,0 +1,42 @@
+.workHistory {
+  margin-top: 4rem;
+  padding: 0;
+
+  &__entity {
+    margin: 0;
+    padding: 0;
+
+    &__meta {
+        margin: 0 0 1rem 0;
+      li {
+        list-style-type: none;
+        display: flex;
+        align-items: center;
+        margin-bottom: .5rem;
+        font-weight: 600;
+        svg {
+          margin-right: .5rem;
+        }
+      }
+    }
+
+
+    svg {
+      width: 1.5rem;
+
+      path {
+        fill: var(--foreground);
+      }
+    }
+
+    &__details {
+      margin: 0;
+      padding: 0;
+
+
+      ul {
+        padding-left: 1rem;
+      }
+    }
+  }
+}
