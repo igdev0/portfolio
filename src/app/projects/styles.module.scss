@@ -1,0 +1,25 @@
+.projectsPage {
+
+  &__container {
+    max-width: var(--container-max-size);
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  h1 {
+    position: relative;
+    display: inline-block;
+    font-size: 4rem;
+    margin-top: 2rem;
+    &:after {
+      content: "";
+      position: absolute;
+      width: 80%;
+      height: 5px;
+      left: 0;
+      bottom: 0;
+      background: linear-gradient(to right, var(--color-pink) 70%, var(--color-green) 10%);
+    }
+  }
+
+}
