@@ -71,6 +71,22 @@
         p {
           font-size: 16px;
         }
+        &__tags {
+          display: flex;
+          gap: .5rem;
+          flex-wrap: wrap;
+          //margin-top: 1rem;
+          margin-bottom: .5rem;
+          padding: 0 .5rem;
+          &__tag {
+            font-size: 12px;
+            padding: .5rem;
+            border-radius: 3px;
+            color: var(--color-pink);
+            background-color: var(--background);
+            box-shadow: 0 5px 5px 0 var(--shadow-color);
+          }
+        }
 
         &__buttons {
           display: flex;
