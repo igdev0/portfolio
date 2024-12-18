@@ -4,8 +4,9 @@ import {Github} from '@/app/components/navbar/icons';
 interface ProjectEntityType {
   title: string,
   bio: string,
-  githubURL: string,
+  githubURL?: string,
   colors: string[],
+  websiteURL?: string,
 }
 
 const data: ProjectEntityType[] = [
@@ -85,7 +86,7 @@ const data: ProjectEntityType[] = [
       "#c2c2da",
       "#dcb64f",
     ],
-    githubURL: "https://github.com/igdev0/codify-idea",
+    websiteURL: "https://codifyidea.com",
     title: "Codify idea",
     bio: "A single page website developed based on the provided designs for one of my clients."
   },
@@ -95,17 +96,7 @@ const data: ProjectEntityType[] = [
       "#dcb64f",
       "#0077ff",
     ],
-    githubURL: "https://github.com/igdev0/pro-scan",
-    title: "PRO Scan solutions",
-    bio: "A medium sized website multilingual developed based on the designs provided for one of my clients in the early 2022."
-  },
-  {
-    colors: [
-      "#c2c2da",
-      "#dcb64f",
-      "#0077ff",
-    ],
-    githubURL: "https://github.com/igdev0/pro-scan",
+    websiteURL: "https://pro-scan-solutions.ro",
     title: "PRO Scan solutions",
     bio: "A medium sized website multilingual developed based on the designs provided for one of my clients in the early 2022."
   }
@@ -124,9 +115,25 @@ function ProjectCardEntity(props: ProjectEntityType) {
           <h2>{props.title}</h2>
           <p>{props.bio}</p>
         </div>
-        <a className={styles.projectsPage__grid__entity__body__button} href={props.githubURL} target="_blank" rel="noopener">
-          View on github <Github/>
-        </a>
+        <div className={styles.projectsPage__grid__entity__body__buttons}>
+          {
+            props.websiteURL && (
+
+                  <a className={styles.projectsPage__grid__entity__body__button} href={props.websiteURL} target="_blank"
+                     rel="noopener">
+                    Visit website 🌐
+                  </a>
+              )
+          }
+          {
+            props.githubURL && (
+                  <a className={styles.projectsPage__grid__entity__body__button} href={props.githubURL} target="_blank"
+                     rel="noopener">
+                    View on github <Github/>
+                  </a>
+              )
+          }
+        </div>
       </div>
   )
 }
@@ -135,7 +142,7 @@ export default function Page() {
   return (
       <div className={styles.projectsPage}>
         <div className={styles.projectsPage__container}>
-          <h1>Projects</h1>
+        <h1>Projects</h1>
           <div className={styles.projectsPage__grid}>
             {
               data.map((item, index) => (<ProjectCardEntity  {...item} key={index}/>))

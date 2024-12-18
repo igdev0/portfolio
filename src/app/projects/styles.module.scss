@@ -72,8 +72,16 @@
           font-size: 16px;
         }
 
-        &__button {
+        &__buttons {
           display: flex;
+          justify-content: flex-end;
+          gap: .5rem;
+        }
+
+        &__button {
+          flex: 1;
+          display: flex;
+          cursor: pointer;
           justify-content: flex-end;
           padding: .5rem 1rem;
           border-top: 1px solid #737373;
