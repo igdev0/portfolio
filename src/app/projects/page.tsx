@@ -87,7 +87,17 @@ const data: ProjectEntityType[] = [
     ],
     githubURL: "https://github.com/igdev0/codify-idea",
     title: "Codify idea",
-    bio: "A single page website developed for one of my clients."
+    bio: "A single page website developed based on the provided designs for one of my clients."
+  },
+  {
+    colors: [
+      "#5656dc",
+      "#c2c2da",
+      "#dcb64f",
+    ],
+    githubURL: "https://github.com/igdev0/pro-scan",
+    title: "PRO Scan solutions",
+    bio: "A medium sized website multilingual developed based on the designs provided for one of my clients in the early 2022."
   }
 ]
 
