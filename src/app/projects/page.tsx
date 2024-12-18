@@ -91,9 +91,9 @@ const data: ProjectEntityType[] = [
   },
   {
     colors: [
-      "#5656dc",
       "#c2c2da",
       "#dcb64f",
+      "#0077ff",
     ],
     githubURL: "https://github.com/igdev0/pro-scan",
     title: "PRO Scan solutions",
