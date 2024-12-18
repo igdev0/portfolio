@@ -98,6 +98,16 @@ const data: ProjectEntityType[] = [
     githubURL: "https://github.com/igdev0/pro-scan",
     title: "PRO Scan solutions",
     bio: "A medium sized website multilingual developed based on the designs provided for one of my clients in the early 2022."
+  },
+  {
+    colors: [
+      "#c2c2da",
+      "#dcb64f",
+      "#0077ff",
+    ],
+    githubURL: "https://github.com/igdev0/pro-scan",
+    title: "PRO Scan solutions",
+    bio: "A medium sized website multilingual developed based on the designs provided for one of my clients in the early 2022."
   }
 ]
 
