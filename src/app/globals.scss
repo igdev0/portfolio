@@ -60,13 +60,22 @@ a {
 
 
 .page {
-  position: relative;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   width: 100%;
   background-image: linear-gradient(var(--background) .05em,transparent .05em),linear-gradient(90deg,var(--background) .05em,transparent .05em);
   background-size: 1.5em 1.5em;
+}
+
+.page__container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 10;
+  overflow: auto;
 }
 
 .container {

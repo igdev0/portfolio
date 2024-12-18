@@ -28,8 +28,10 @@ export default function RootLayout({
         <ThemeProvider>
           <Globe>
             <div className="page">
+              <div className="page__container">
               <Navbar/>
               {children}
+              </div>
             </div>
           </Globe>
         </ThemeProvider>
