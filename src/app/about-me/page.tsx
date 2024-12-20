@@ -2,7 +2,6 @@
 import styles from "./styles.module.scss";
 import TechnicalSkills from '@/app/about-me/technical-skills';
 import WorkHistory from '@/app/about-me/work-history';
-import Link from 'next/link';
 
 export default function About() {
   return (
@@ -70,27 +69,6 @@ export default function About() {
               <h2>My technical skills</h2>
               <TechnicalSkills/>
               <WorkHistory/>
-            </div>
-            <div className={styles.page__sidebar}>
-              <ul>
-                <li>
-                  <Link href="/#introduction">Introduction</Link>
-                  <ul>
-                    <li><Link href="/#when-and-how-i-started">When and how I got started.</Link></li>
-                    <li><Link href="/#what-is-next">What is next ...</Link></li>
-                  </ul>
-                </li>
-                <li>
-                  Skills I use
-                </li>
-                <li>
-                  <Link href="/#work-history">Work history</Link>
-                  <ul>
-                    <li><Link href="/#at-iohk">At IOHK</Link></li>
-                    <li><Link href="/#at-finervision">At Finervision</Link></li>
-                  </ul>
-                </li>
-              </ul>
             </div>
           </div>
         </div>

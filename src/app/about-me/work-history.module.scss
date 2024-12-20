@@ -5,6 +5,16 @@
   flex-direction: column;
   gap: 2rem;
 
+  &__header {
+    display: flex;
+    width: 100%;
+
+    button {
+      background: none;
+      border: none;
+    }
+  }
+
   &__entity {
     border-left: 3px solid var(--color-green);
     padding-left: 1rem;
