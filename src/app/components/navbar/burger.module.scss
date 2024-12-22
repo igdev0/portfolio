@@ -5,6 +5,10 @@
   width:50px;
   cursor:pointer;
 
+  @media screen and (min-width: 600px) {
+    display: none;
+  }
+
   &__slice {
     background: var(--foreground);
     border-radius:10px;

@@ -1,14 +1,21 @@
 .navlink {
   position: relative;
   font-size: 4rem;
+  @media screen and (min-width: 600px) {
+    font-size: 1.2rem;
+  }
 
   &:after {
     content: "";
     position: absolute;
     width: 80%;
-    height: 5px;
     left: 0;
-    bottom: 0;
+    height: 5px;
+
+    @media screen and (min-width: 600px) {
+      bottom: .2rem;
+      height: 2px;
+    }
   }
 
   &__active {

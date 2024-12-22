@@ -7,6 +7,7 @@ import config from '@/app/config';
 import Menu from '@/app/components/navbar/menu';
 import {useContext, useEffect, useRef, useState} from 'react';
 import {AppContext} from '@/app/context';
+import Navlink from '@/app/components/navbar/navlink';
 
 
 export default function Navbar() {
@@ -41,6 +42,23 @@ export default function Navbar() {
       <>
         <Menu open={menuOpen} offset={offset}/>
         <div className={styles.navbar}>
+          <div className={styles.navbar__links}>
+            <Navlink href="/">
+              Root
+            </Navlink>
+            <Navlink href="/about-me">
+              About me
+            </Navlink>
+            <Navlink href="/projects">
+              Projects
+            </Navlink>
+            <Navlink href="/contact">
+              Contact
+            </Navlink>
+            <Navlink href="/blog">
+              Blog
+            </Navlink>
+          </div>
           <Burger onChange={handleBurgerChange} ref={burgerRef}/>
           <div className={styles.navbar__socialbox}>
             <a href={`mailto:${config.email}`} rel="noreferrer">
