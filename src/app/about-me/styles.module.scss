@@ -30,7 +30,9 @@
   h1 {
     position: relative;
     display: inline-block;
-    font-size: 4rem;
+    font-size: 3rem;
+    margin-top: 4rem;
+    margin-bottom: 2rem;
     &:after {
       content: "";
       position: absolute;

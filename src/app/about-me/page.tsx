@@ -66,7 +66,7 @@ export default function About() {
               <p>
                 Let’s build something amazing together! 🚀
               </p>
-              <h2>My technical skills</h2>
+              <h1>Technical skills</h1>
               <TechnicalSkills/>
               <WorkHistory/>
             </div>

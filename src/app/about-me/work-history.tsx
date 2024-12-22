@@ -76,13 +76,15 @@ function WorkEntity({role, place, from, until, details, description}: WorkEntity
 
 export default function WorkHistory() {
   return (
-      <div className={styles.workHistory}>
-        <h2>Work History</h2>
-        {
-          data.map((entity, index) => (
-              <WorkEntity {...entity} key={index}/>
-          ))
-        }
-      </div>
+      <>
+        <h1>Work History</h1>
+        <div className={styles.workHistory}>
+          {
+            data.map((entity, index) => (
+                <WorkEntity {...entity} key={index}/>
+            ))
+          }
+        </div>
+      </>
   );
 }
