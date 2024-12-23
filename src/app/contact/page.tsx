@@ -27,9 +27,19 @@ export default function Contact() {
 
   const [data, setData] = useState<ContactForm>(JSON.parse(JSON.stringify(ContactFormDefaultValue)));
   const [errors, setErrors] = useState<ContactFormErrorType>(JSON.parse(JSON.stringify(ContactFormErrors)));
-  const handleSubmit = () => {
+  const handleSubmit = (event:FormEvent) => {
+    event.preventDefault();
+
+    if(!data.email.length) {
+      setErrors(prevState => ({...prevState, email: "Please enter your email"}))
+    } else {
+      setErrors(prevState => ({...prevState, email: null}))
+    }
+
     if(!data.message.length) {
       setErrors(prevState => ({...prevState, message: "Please type a message before submitting"}))
+    } else {
+      setErrors(prevState => ({...prevState, message: null}))
     }
   }
 
