@@ -1,5 +1,7 @@
+"use client";
 import styles from './page.module.scss';
 import {FormEvent, useState} from 'react';
+import Button from '@/app/components/button/button';
 
 interface ContactForm {
   email: string,
@@ -39,6 +41,8 @@ export default function Contact() {
   return (
       <div className={styles.contact}>
         <div className={styles.contact__container}>
+          <h1>Contact me</h1>
+          <p>Use this form to send me a message, I will try to reach out as soon as I can, otherwise reach out on socials</p>
           <form onSubmit={handleSubmit} className={styles.contact__form}>
             <fieldset className={styles.contact__form__field}>
               <label htmlFor="email">Email</label>
@@ -48,9 +52,10 @@ export default function Contact() {
             </fieldset>
             <fieldset className={styles.contact__form__field}>
               <label htmlFor="message">Message</label>
-              <textarea value={data.message} name="message" maxLength={150} onChange={handleInputChange}/>
+              <textarea value={data.message} name="message" placeholder="Type a message ..." maxLength={150} onChange={handleInputChange}/>
               {errors.message && <div className={styles.contact__form__field__error}>{errors.message}</div>}
             </fieldset>
+            <Button asLink={false} variant="filled">Submit</Button>
           </form>
         </div>
       </div>
