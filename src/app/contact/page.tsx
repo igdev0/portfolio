@@ -24,7 +24,7 @@ type ContactFormErrorType = {
 }
 
 export default function Contact() {
-
+  const [apiError, setApiError] = useState<string | null>(null);
   const [data, setData] = useState<ContactForm>(JSON.parse(JSON.stringify(ContactFormDefaultValue)));
   const [errors, setErrors] = useState<ContactFormErrorType>(JSON.parse(JSON.stringify(ContactFormErrors)));
   const handleSubmit = async (event: FormEvent) => {
@@ -41,10 +41,20 @@ export default function Contact() {
     } else {
       setErrors(prevState => ({...prevState, message: null}));
     }
-    await fetch("/api/contact", {
+    const res = await fetch("/api/contact", {
       method: "POST",
       body: JSON.stringify(data)
     })
+
+    const body: {error?: string, message?:string} = await res.json();
+
+    if(res.status === 200) {
+      setData({message: "", email: ""});
+      setApiError(null)
+    } else {
+      setApiError(body?.error??null);
+    }
+
   };
 
   const handleInputChange = (event: FormEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -71,6 +81,10 @@ export default function Contact() {
                         onChange={handleInputChange}/>
               {errors.message && <div className={styles.contact__form__field__error}>{errors.message}</div>}
             </fieldset>
+            {apiError && <>
+                <div className={styles.contact__form__field__error}>{apiError}</div>
+                <br/>
+            </>}
             <Button asLink={false} variant="filled">Submit</Button>
           </form>
         </div>
