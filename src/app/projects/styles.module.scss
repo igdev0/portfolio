@@ -79,10 +79,11 @@
           padding: 0 .5rem;
           &__tag {
             font-size: 12px;
-            padding: .5rem;
+            padding: .25rem;
             border-radius: 3px;
             color: var(--color-pink);
             background-color: var(--background);
+            //border: 1px solid var(--shadow-color);
             box-shadow: 0 5px 5px 0 var(--shadow-color);
           }
         }
