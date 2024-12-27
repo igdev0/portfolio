@@ -15,8 +15,8 @@ export default function About() {
                 an
                 exciting journey, moving to London in 2015. Driven by a passion for technology, I began teaching myself
                 web
-                programming in 2016 through platforms like Codecademy, Udemy, Pluralsight, FreeCodeCamp, and resources
-                like
+                programming in 2016 through platforms like Codecademy, Udemy, Pluralsight, FreeCodeCamp, and other resources
+                such as
                 the Mozilla Developer Network and W3Schools.
               </p>
               <p>
@@ -29,7 +29,7 @@ export default function About() {
                 developer. Over the next two years, I honed my skills, contributed to meaningful projects, and grew
                 tremendously. Later, I transitioned into a B2B role with a large corporation, where I continued to
                 thrive
-                and make an impact.
+                and make an impact within the web3 world.
               </p>
               <p>
                 In early 2024, I made the deliberate decision to take a well-deserved break to recharge, reconnect with
@@ -62,9 +62,6 @@ export default function About() {
                 new
                 projects, or continuing my journey of self-improvement, I’m excited about the possibilities on the
                 horizon.
-              </p>
-              <p>
-                Let’s build something amazing together! 🚀
               </p>
               <h1>Technical skills</h1>
               <TechnicalSkills/>
