@@ -12,7 +12,7 @@ export default function Home() {
               <h1>
                 I am Ianos,<br/>
                 A software developer,<br/>
-                passionated about web3
+                Passionated about web3
               </h1>
               <div className={styles.home__header__buttons}>
                 <Button asLink={true} href="/about-me" variant="outlined">Who I am</Button>
