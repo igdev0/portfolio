@@ -3,8 +3,10 @@
   padding: 0;
   border-radius: 50%;
   aspect-ratio: 1;
-  width: 200px;
+  width: 10rem;
   img {
+    width: 100%;
+    height: auto;
     border-radius: 50%;
     box-shadow: 0 10px 12px 0 var(--shadow-color);
   }
