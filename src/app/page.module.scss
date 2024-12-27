@@ -8,7 +8,7 @@
     margin-bottom: 2rem;
   }
   h1 {
-    font-size: var(--font-size-lg);
+    font-size: clamp(1.8rem, 5vw, 4rem);
   }
 
   &__buttons {
