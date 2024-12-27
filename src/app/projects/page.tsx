@@ -66,7 +66,7 @@ const data: ProjectEntityType[] = [
     githubURL: "https://github.com/igdev0/minigrep",
     title: "Minigrep",
     bio: "A light version of grep tool.",
-    tags: [TAGS.cli],
+    tags: [TAGS.cli, TAGS.rust],
   },
   {
     colors: [
@@ -77,7 +77,7 @@ const data: ProjectEntityType[] = [
     githubURL: "https://github.com/igdev0/bitcoin-block-value-calculator",
     title: "Bitcoin block value calculator",
     bio: "A CLI app that calculates the total BTC spent in a block by hash or height.",
-    tags: [TAGS.cli],
+    tags: [TAGS.cli, TAGS.rust],
   },
   {
     colors: [
@@ -88,7 +88,7 @@ const data: ProjectEntityType[] = [
     githubURL: "https://github.com/igdev0/bitcoin-address-generator",
     title: "Bitcoin address generator",
     bio: "P2PKH address generator",
-    tags: [TAGS.cli],
+    tags: [TAGS.cli, TAGS.rust],
   },
   {
     colors: [
