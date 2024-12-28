@@ -3,6 +3,7 @@ import styles from './page.module.scss';
 import {FormEvent, useState} from 'react';
 import Button from '@/app/components/button/button';
 import config from '@/app/config';
+import {ReCaptchaProvider} from 'next-recaptcha-v3';
 
 interface ContactForm {
   email: string,
@@ -64,6 +65,7 @@ export default function Contact() {
   };
 
   return (
+      <ReCaptchaProvider reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_KEY??""}>
       <div className={styles.contact}>
         <div className={styles.contact__container}>
           <h1>Contact me</h1>
@@ -89,5 +91,6 @@ export default function Contact() {
           </form>
         </div>
       </div>
+      </ReCaptchaProvider>
   );
 }
