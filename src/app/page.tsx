@@ -16,7 +16,7 @@ export default function Home() {
               </h1>
               <div className={styles.home__header__buttons}>
                 <Button asLink={true} href="/about-me" variant="outlined">Who I am</Button>
-                <Button asLink={true} href="/about-me" variant="filled">Get in touch</Button>
+                <Button asLink={true} href="/contact" variant="filled">Get in touch</Button>
               </div>
             </header>
           </div>
