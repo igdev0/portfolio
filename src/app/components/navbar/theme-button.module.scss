@@ -10,6 +10,10 @@
   border-radius: 3px;
   background-color: var(--background);
   box-shadow: 0 6px 10px 0 transparent;
+  transition: filter ease-in-out 300ms;
+  &:hover {
+    filter: brightness(85%);
+  }
 
     path {
       stroke: var(--foreground);
