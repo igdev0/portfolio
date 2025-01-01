@@ -4,10 +4,10 @@ import Burger from '@/app/components/navbar/burger';
 import {Github, LinkedIn, Mail} from '@/app/components/navbar/icons';
 import ThemeButton from '@/app/components/navbar/theme-button';
 import config from '@/app/config';
-import Menu from '@/app/components/navbar/menu';
 import {useContext, useEffect, useRef, useState} from 'react';
 import {AppContext} from '@/app/context';
 import Navlink from '@/app/components/navbar/navlink';
+import Menu from '@/app/components/navbar/menu';
 
 
 export default function Navbar() {

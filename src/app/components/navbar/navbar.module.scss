@@ -3,9 +3,12 @@
   max-width: var(--container-max-size);
   margin: 0 auto;
   display: flex;
-  width: 100%;
   z-index: 2;
   justify-content: space-between;
+  position: fixed;
+  width: 100%;
+  left: 0;
+  right: 0;
 
   &__links {
 
