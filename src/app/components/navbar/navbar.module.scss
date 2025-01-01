@@ -38,6 +38,7 @@
 
     svg {
       height: 30px;
+
     }
     a {
       background-color: var(--background);
@@ -47,6 +48,12 @@
       justify-content: center;
       align-items: center;
       aspect-ratio: 1;
+      transition: filter ease-in-out 300ms;
+
+      &:hover {
+        filter: brightness(85%);
+      }
+
         path {
           fill: var(--foreground);
         }
