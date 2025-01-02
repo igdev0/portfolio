@@ -32,7 +32,7 @@ export default function RootLayout({
     </head>
     <body className={`${klee.className} ${kode.className}`}>
     <AppContextProvider>
-      <ThemeProvider>
+      <ThemeProvider defaultTheme="dark">
         <Navbar/>
         <Globe>
           <div className="page">
