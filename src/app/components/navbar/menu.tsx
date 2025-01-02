@@ -18,9 +18,6 @@ export default function Menu({open, offset}: {open: boolean, offset: number}) {
         <Navlink href="/contact">
           Contact
         </Navlink>
-        <Navlink href="/blog">
-          Blog
-        </Navlink>
       </div>
   )
 }

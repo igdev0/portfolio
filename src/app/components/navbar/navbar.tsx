@@ -55,9 +55,6 @@ export default function Navbar() {
             <Navlink href="/contact">
               Contact
             </Navlink>
-            <Navlink href="/blog">
-              Blog
-            </Navlink>
           </div>
           <Burger onChange={handleBurgerChange} ref={burgerRef}/>
           <div className={styles.navbar__socialbox}>
