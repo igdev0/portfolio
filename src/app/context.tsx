@@ -3,7 +3,7 @@ import React, {PropsWithChildren, useCallback, useState} from 'react';
 
 export interface AppContextType {
   menuOpen: boolean,
-  toggleMenu: () => void,
+  toggleMenu: (value?:boolean) => void,
 }
 
 export const AppContext = React.createContext<AppContextType>({menuOpen: false, toggleMenu: () => {}});
@@ -12,8 +12,8 @@ export const AppContext = React.createContext<AppContextType>({menuOpen: false, 
 export default function AppContextProvider(props:PropsWithChildren) {
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
 
-  const toggleMenu = useCallback(() => {
-    setMenuOpen(v => !v);
+  const toggleMenu = useCallback((value?: boolean) => {
+    setMenuOpen(v => value !== undefined ? value : !v);
   }, [ setMenuOpen])
 
   return (

@@ -8,15 +8,18 @@ import {useContext, useEffect, useRef, useState} from 'react';
 import {AppContext} from '@/app/context';
 import Navlink from '@/app/components/navbar/navlink';
 import Menu from '@/app/components/navbar/menu';
+import {usePathname} from 'next/navigation';
 
 
 export default function Navbar() {
   const burgerRef = useRef<HTMLLabelElement>(null);
+  const pathname = usePathname();
   const {menuOpen, toggleMenu} = useContext(AppContext);
   const [offset, setOffset] = useState(0);
   const handleBurgerChange = () => {
     toggleMenu()
   }
+
 
   const handleOffsetCalc = () => {
     if(burgerRef.current) {
@@ -37,6 +40,10 @@ export default function Navbar() {
       window.removeEventListener("resize", () =>{});
     }
   }, [])
+
+  useEffect(() => {
+    toggleMenu(false);
+  }, [pathname, toggleMenu]);
 
   return (
       <>
