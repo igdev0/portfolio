@@ -32,7 +32,7 @@ export default function RootLayout({
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
     <body className={`${klee.className} ${kode.className}`}>
-    <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID??"not set"}/>
+    {process.env.NODE_ENV === "production" && <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID ?? "not set"}/>}
       <AppContextProvider>
         <ThemeProvider defaultTheme="dark">
           <Navbar/>
