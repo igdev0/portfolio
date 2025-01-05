@@ -5,6 +5,7 @@ import {ThemeProvider} from 'next-themes';
 import Globe from '@/app/components/globe/globe';
 import AppContextProvider from '@/app/context';
 import Navbar from '@/app/components/navbar/navbar';
+import {GoogleAnalytics} from '@next/third-parties/google';
 
 export const metadata: Metadata = {
   title: "IGDev's portfolio",
@@ -31,17 +32,18 @@ export default function RootLayout({
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
     <body className={`${klee.className} ${kode.className}`}>
-    <AppContextProvider>
-      <ThemeProvider defaultTheme="dark">
-        <Navbar/>
-        <Globe>
-          <div className="page">
-            {children}
-          </div>
-        </Globe>
-      </ThemeProvider>
+    <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID??"not set"}/>
+      <AppContextProvider>
+        <ThemeProvider defaultTheme="dark">
+          <Navbar/>
+          <Globe>
+            <div className="page">
+              {children}
+            </div>
+          </Globe>
+        </ThemeProvider>
       </AppContextProvider>
-      </body>
+    </body>
     </html>
   );
 }
