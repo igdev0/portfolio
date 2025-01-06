@@ -9,7 +9,7 @@ import {GoogleAnalytics} from '@next/third-parties/google';
 
 export const metadata: Metadata = {
   title: "IGDev's portfolio",
-  description: "My personal portfolio website",
+  description: "Dorultan Ianos's personal portfolio",
 };
 
 const klee = Klee_One({weight: ["600", "400"], subsets: ["latin", "cyrillic"]});
