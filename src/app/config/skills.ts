@@ -261,17 +261,17 @@ export default [
   },
   {
     "name": "Webstorm",
-    "tags": ["ides"],
+    "tags": ["IDEs"],
     "color": "#00C4B6"
   },
   {
     "name": "Atom",
-    "tags": ["ides"],
+    "tags": ["IDEs"],
     "color": "#66595C"
   },
   {
     "name": "Visual Studio",
-    "tags": ["ides"],
+    "tags": ["IDEs"],
     "color": "#5C2D91"
   },
   {
