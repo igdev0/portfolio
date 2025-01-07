@@ -7,7 +7,6 @@ export default function TechnicalSkills() {
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const filteredSkills = useMemo(() => {
     return config.skills.filter(item => {
-      // console.log(selectedTags)
       const someTags = selectedTags.length === 0 ? true : selectedTags.some(selectedTag => item.tags.includes(selectedTag));
 
       return item.name.includes(inputValue) && someTags
