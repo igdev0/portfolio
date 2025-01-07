@@ -38,7 +38,7 @@ export default function TechnicalSkills() {
 
   return (
       <div className={styles.technical__skills}>
-        <input type="text" value={inputValue} onChange={handleInputChance} placeholder=" 🔍  Find a skill ..."
+        <input type="text" value={inputValue} onChange={handleInputChance} placeholder="🔍 Find a skill ..."
                className={styles.technical__skills__input}/>
         <h4>Tags:</h4>
         <div className={styles.technical__skills__categories}>
