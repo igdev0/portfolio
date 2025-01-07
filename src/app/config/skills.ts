@@ -185,9 +185,9 @@ export default [
     "color": "#363636"
   },
   {
-    "name": "Ethereum",
-    "tags": ["blockchain"],
-    "color": "#3C3C3D"
+    "name": "Solana native program",
+    "tags": ["smart contract"],
+    "color": "#363636"
   },
   {
     "name": "Github",
