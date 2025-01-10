@@ -25,5 +25,6 @@
   right: 0;
   bottom: 0;
   pointer-events: none;
+  will-change: transform;
   transform: translate(100px, 100px);
 }
