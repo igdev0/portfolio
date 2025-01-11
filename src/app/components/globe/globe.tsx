@@ -9,7 +9,6 @@ export default function Globe(props: PropsWithChildren) {
       const x = event.clientX - (globeRef.current.clientWidth / 2);
       const y = event.clientY - (globeRef.current.clientHeight / 2);
 
-      // globeRef.current.style.transform = `translate(${x}px, ${y}px)`
       globeRef.current.animate(
           {
             transform: `translate(${x}px, ${y}px)`,
@@ -20,7 +19,7 @@ export default function Globe(props: PropsWithChildren) {
             delay: 100
           }
       );
-     
+
     }
   };
 
