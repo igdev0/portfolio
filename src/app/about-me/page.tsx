@@ -45,10 +45,7 @@ export default function About() {
               <p>
                 As I step into the next phase of my journey, I’m eager to embrace new challenges and opportunities that
                 push
-                me to grow both personally and professionally. My focus is on deepening my expertise in software
-                development, particularly in cutting-edge fields like blockchain technology, decentralized applications,
-                and
-                innovative web solutions.
+                me to grow both personally and professionally. My focus is on advancing my expertise in software development, particularly in decentralized applications.
               </p>
               <p>
                 I’m also passionate about contributing to impactful projects that make a difference, whether it’s
