@@ -1,0 +1,51 @@
+.expandable {
+  margin: 0;
+  padding-bottom: 6rem;
+  max-height: 14.8rem;
+  overflow: hidden;
+  position: relative;
+  transition: max-height ease-in-out 300ms;
+  will-change: max-height;
+
+  &__button__container {
+    height: 8rem;
+    backdrop-filter: blur(10px);
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    background: linear-gradient(transparent, var(--background) 50%);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+
+    &__buttonOpened {
+      svg {
+        transform: rotate(180deg);
+      }
+    }
+
+    button {
+      margin-bottom: 1rem;
+      padding: .5rem;
+      font-size: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: .5rem;
+      background: var(--background);
+      border: 1px solid var(--foreground);
+      border-radius: 5px;
+      cursor: pointer;
+
+      svg {
+        width: 1rem;
+        transition: transform ease-in-out 300ms;
+        will-change: transform;
+
+        path {
+          fill: var(--foreground);
+        }
+      }
+    }
+  }
+}
