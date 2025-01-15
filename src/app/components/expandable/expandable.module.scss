@@ -9,11 +9,10 @@
 
   &__button__container {
     height: 8rem;
-    backdrop-filter: blur(10px);
     width: 100%;
     position: absolute;
     bottom: 0;
-    background: linear-gradient(transparent, var(--background) 50%);
+    background: linear-gradient(transparent, var(--background));
     display: flex;
     justify-content: center;
     align-items: flex-end;
