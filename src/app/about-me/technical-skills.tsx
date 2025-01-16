@@ -38,10 +38,9 @@ export default function TechnicalSkills() {
 
   return (
       <div className={styles.technical__skills}>
-        <input type="text" value={inputValue} onChange={handleInputChance} placeholder="🔍 Find a skill ..."
-               className={styles.technical__skills__input}/>
-        <h4>Tags:</h4>
         <div className={styles.technical__skills__categories}>
+          <input type="text" value={inputValue} onChange={handleInputChance} placeholder="🔍 Find a skill ..."
+                 className={styles.technical__skills__input}/>
           {tags.map((item, index) => (<div key={index}
                                            className={`${styles.technical__skills__categories__category} ${selectedTags.includes(item) ? styles.technical__skills__categories__category__selected : ""}`}
                                            onClick={handleSelectTag(item)}>{item}</div>))}

@@ -1,327 +1,266 @@
 export default [
   {
     "name": "HTML5",
-    "tags": ["front-end"],
-    "color": "#FF5733"
+    "tags": ["Frontend"]
   },
   {
     "name": "Javascript",
-    "tags": ["front-end"],
-    "color": "#F0DB4F"
+    "tags": ["Frontend"]
+  },
+  {
+    "name": "Rust",
+    "tags": ["Backend"]
   },
   {
     "name": "Typescript",
-    "tags": ["front-end"],
-    "color": "#3178C6"
+    "tags": ["Frontend", "Backend"]
   },
   {
     "name": "React",
-    "tags": ["front-end"],
-    "color": "#61DAFB"
+    "tags": ["Frontend"]
   },
   {
     "name": "NextJS",
-    "tags": ["front-end"],
-    "color": "#000000"
+    "tags": ["Frontend"]
   },
   {
     "name": "Vite",
-    "tags": ["front-end"],
-    "color": "#646CFF"
-  },
-  {
-    "name": "CRA",
-    "tags": ["front-end"],
-    "color": "#09D3AC"
+    "tags": ["Code tools"]
   },
   {
     "name": "Storybook",
-    "tags": ["front-end"],
-    "color": "#FF4785"
+    "tags": ["Testing"]
   },
   {
     "name": "Zustand",
-    "tags": ["front-end"],
-    "color": "#9C27B0"
+    "tags": ["Frontend"]
   },
   {
     "name": "Redux",
-    "tags": ["front-end"],
-    "color": "#764ABC"
+    "tags": ["Frontend"]
   },
   {
     "name": "GraphQL",
-    "tags": ["front-end"],
-    "color": "#E10098"
+    "tags": ["Frontend", "Backend"]
   },
   {
     "name": "React Query",
-    "tags": ["front-end"],
-    "color": "#FF4154"
+    "tags": ["Frontend"]
   },
   {
-    "name": "Bootstrap",
-    "tags": ["front-end"],
-    "color": "#7952B3"
+    "name": "Axios",
+    "tags": ["Frontend"]
   },
   {
     "name": "Tailwind",
-    "tags": ["front-end"],
-    "color": "#38B2AC"
+    "tags": ["Frontend"]
   },
   {
     "name": "CSS",
-    "tags": ["front-end"],
-    "color": "#264DE4"
+    "tags": ["Frontend"]
   },
   {
     "name": "Less/SCSS",
-    "tags": ["front-end"],
-    "color": "#1B2B34"
+    "tags": ["Frontend"]
   },
   {
     "name": "Styled-Components",
-    "tags": ["front-end"],
-    "color": "#DB7093"
-  },
-  {
-    "name": "Linaria",
-    "tags": ["front-end"],
-    "color": "#00C7B7"
-  },
-  {
-    "name": "Socket IO",
-    "tags": ["front-end"],
-    "color": "#010101"
+    "tags": ["Frontend"]
   },
   {
     "name": "SQL JS",
-    "tags": ["front-end"],
-    "color": "#F29111"
+    "tags": ["Frontend"]
   },
   {
     "name": "Framer Motion",
-    "tags": ["front-end"],
-    "color": "#F05B4E"
+    "tags": ["Frontend"]
   },
   {
     "name": "React Spring",
-    "tags": ["front-end"],
-    "color": "#8BC34A"
+    "tags": ["Frontend"]
   },
   {
     "name": "Web APIs",
-    "tags": ["front-end"],
-    "color": "#029BE5"
+    "tags": ["Frontend"]
   },
   {
     "name": "SWC",
-    "tags": ["compilers"],
-    "color": "#BB92AC"
+    "tags": ["Code tools"]
   },
   {
     "name": "Webpack",
-    "tags": ["compilers"],
-    "color": "#8DD6F9"
+    "tags": ["Code tools"]
   },
   {
     "name": "Rollup",
-    "tags": ["compilers"],
-    "color": "#EC4A3F"
+    "tags": ["Code tools"]
   },
   {
     "name": "Jest",
-    "tags": ["testing"],
-    "color": "#C21325"
+    "tags": ["Testing"]
   },
   {
     "name": "Mocha",
-    "tags": ["testing"],
-    "color": "#8D6748"
+    "tags": ["Testing"]
   },
   {
     "name": "Eslint",
-    "tags": ["code quality"],
-    "color": "#4B32C3"
+    "tags": ["Code tools"]
   },
   {
     "name": "Prettier",
-    "tags": ["code quality"],
-    "color": "#F7B93E"
+    "tags": ["Code tools"]
   },
   {
     "name": "React Native",
-    "tags": ["native"],
-    "color": "#764ABC"
+    "tags": ["Mobile"]
   },
   {
     "name": "Expo",
-    "tags": ["native"],
-    "color": "#000020"
+    "tags": ["Mobile"]
   },
   {
     "name": "Git",
-    "tags": ["versioning"],
-    "color": "#F05032"
+    "tags": ["Versioning"]
   },
   {
     "name": "Semantic-Release",
-    "tags": ["versioning"],
-    "color": "#333333"
+    "tags": ["Code tools"]
   },
   {
     "name": "Postman",
-    "tags": ["rest api tools"],
-    "color": "#FF6C37"
+    "tags": ["Testing"]
   },
   {
     "name": "Swagger",
-    "tags": ["rest api tools"],
-    "color": "#85EA2D"
+    "tags": ["Testing"]
   },
   {
     "name": "Solidity",
-    "tags": ["smart contract"],
-    "color": "#363636"
+    "tags": ["Web3"]
   },
   {
     "name": "Solana native program",
-    "tags": ["smart contract"],
-    "color": "#363636"
+    "tags": ["Web3"]
   },
   {
     "name": "Github",
-    "tags": ["code hosting"],
-    "color": "#181717"
+    "tags": ["Versioning"]
   },
   {
     "name": "Bitbucket",
-    "tags": ["code hosting"],
-    "color": "#0052CC"
+    "tags": ["Versioning"]
+  },
+  {
+    name: "AWS S3",
+    tags: ["Hosting"]
+  },
+  {
+    name: "AWS SES",
+    tags: ["Cloud services"]
+  },
+  {
+    name: "AWS EC3",
+    tags: ["Hosting"]
+  },
+  {
+    name: "Digital Ocean VMs",
+    tags: ["Hosting"]
+  },
+  {
+    name: "Google analytics",
+    tags: ["Cloud services"]
+  },
+  {
+    name: "Google APIs",
+    tags: ["Cloud services"]
   },
   {
     "name": "Jira",
-    "tags": ["project management"],
-    "color": "#0052CC"
+    "tags": ["Management tools"]
   },
   {
     "name": "Trello",
-    "tags": ["project management"],
-    "color": "#0079BF"
+    "tags": ["Management tools"]
   },
   {
     "name": "NodeJS",
-    "tags": ["backend"],
-    "color": "#339933"
+    "tags": ["Backend"]
   },
   {
     "name": "NestJS",
-    "tags": ["backend"],
-    "color": "#E0234E"
+    "tags": ["Backend"]
   },
   {
     "name": "Express",
-    "tags": ["backend"],
-    "color": "#000000"
+    "tags": ["Backend"]
   },
   {
     "name": "OpenID Connect",
-    "tags": ["backend"],
-    "color": "#F7931E"
+    "tags": ["Backend"]
   },
   {
     "name": "Keycloak",
-    "tags": ["backend"],
-    "color": "#DA532C"
+    "tags": ["Backend"]
   },
   {
     "name": "SocketIO",
-    "tags": ["backend"],
-    "color": "#010101"
+    "tags": ["Backend"]
   },
   {
     "name": "Typeorm",
-    "tags": ["backend"],
-    "color": "#E83524"
+    "tags": ["Backend"]
   },
   {
     "name": "MySQL",
-    "tags": ["backend"],
-    "color": "#4479A1"
+    "tags": ["Backend"]
   },
   {
     "name": "MongoDB",
-    "tags": ["backend"],
-    "color": "#47A248"
+    "tags": ["Backend"]
   },
   {
     "name": "Strapi CMS",
-    "tags": ["backend"],
-    "color": "#8E75FF"
+    "tags": ["Backend"]
   },
   {
     "name": "Webstorm",
-    "tags": ["IDEs"],
-    "color": "#00C4B6"
+    "tags": ["Code tools"]
   },
   {
     "name": "Atom",
-    "tags": ["IDEs"],
-    "color": "#66595C"
+    "tags": ["Code tools"]
   },
   {
     "name": "Visual Studio",
-    "tags": ["IDEs"],
-    "color": "#5C2D91"
+    "tags": ["Code tools"]
   },
   {
     "name": "Figma",
-    "tags": ["design tools"],
-    "color": "#F24E1E"
+    "tags": ["Code tools"]
   },
   {
     "name": "Adobe Illustrator",
-    "tags": ["design tools"],
-    "color": "#FF9A00"
+    "tags": ["Code tools"]
   },
   {
     "name": "Adobe Photoshop",
-    "tags": ["design tools"],
-    "color": "#31A8FF"
+    "tags": ["Code tools"]
   },
   {
     "name": "Sketch",
-    "tags": ["design tools"],
-    "color": "#F7B500"
+    "tags": ["Code tools"]
   },
   {
     "name": "Docker",
-    "tags": ["containerization platform"],
-    "color": "#2496ED"
+    "tags": ["Code tools"],
   },
   {
     "name": "Github Actions",
-    "tags": ["ci/cd"],
-    "color": "#2088FF"
+    "tags": ["Code tools"],
   },
   {
     "name": "Bitbucket Pipelines",
-    "tags": ["ci/cd"],
-    "color": "#0052CC"
-  },
-  {
-    "name": "MacOS",
-    "tags": ["operating systems"],
-    "color": "#000000"
-  },
-  {
-    "name": "Windows",
-    "tags": ["operating systems"],
-    "color": "#0078D6"
-  },
-  {
-    "name": "Linux",
-    "tags": ["operating systems"],
-    "color": "#FCC624"
+    "tags": ["Code tools"],
   }
-]
+];

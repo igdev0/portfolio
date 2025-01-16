@@ -8,12 +8,12 @@
     border: 1px solid var(--foreground);
     border-radius: 5px;
     padding: .5rem 1rem;
-    max-width: 25rem;
+    max-width: 20rem;
     width: 100%;
-    margin-bottom: 1rem;
     color: var(--foreground);
     background-color: var(--background);
     font-size: 1rem;
+
 
     &:focus {
       outline: var(--color-pink);
@@ -28,19 +28,21 @@
   &__categories {
     display: flex;
     flex-wrap: wrap;
-    gap: .5rem;
+    gap: 1rem;
     margin-bottom: 2rem;
 
     &__category {
       cursor: pointer;
-      padding: .5rem;
-      border-radius: 50px;
+      padding: .4rem;
+      border-radius: 5px;
       background-color: var(--background);
-      border: 1px solid var(--foreground);
+      background: var(--background);
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
       &__selected {
         color: var(--color-green);
-        border-color: var(--color-pink);
         position: relative;
         &:before {
           content: "x";
