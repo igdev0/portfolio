@@ -1,5 +1,6 @@
 import styles from './work-history.module.scss';
 import {Briefcase, Building, Calendar} from '@/app/components/navbar/icons';
+import Expandable from '@/app/components/expandable/expandable';
 
 interface WorkEntityProps {
   role: string,
@@ -68,8 +69,10 @@ function WorkEntity({role, place, from, until, details, description}: WorkEntity
           <li><Building/>{place}</li>
           <li><Calendar/>{from} - {until}</li>
         </ul>
-        <p>{description}</p>
-        <div className={styles.workHistory__entity__details} dangerouslySetInnerHTML={{__html: details}}/>
+        <Expandable>
+          <p>{description}</p>
+          <div className={styles.workHistory__entity__details} dangerouslySetInnerHTML={{__html: details}}/>
+        </Expandable>
       </div>
   );
 }
