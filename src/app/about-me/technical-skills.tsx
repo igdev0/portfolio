@@ -50,7 +50,7 @@ export default function TechnicalSkills() {
           {
             config.skills.map((item, index) => (
                 <div key={index}
-                     className={`${styles.technical__skills__skills__grid__cell} ${!filteredSkills.find(filteredItem => filteredItem.name === item.name) ? styles.technical__skills__skills__grid__cell__hidden : ""}`}>
+                     className={`${styles.technical__skills__skills__grid__cell} ${!filteredSkills.find(filteredItem => filteredItem.name === item.name) ? styles.technical__skills__skills__grid__cell__hidden : selectedTags.length === 0 ? "" : styles.technical__skills__skills__grid__cell__visible}`}>
                   {item.name}
                 </div>
             ))

@@ -72,6 +72,9 @@
         opacity: .8;
         filter: blur(5px);
       }
+      &__visible {
+        background-color: var(--color-pink);
+      }
     }
 
   }
