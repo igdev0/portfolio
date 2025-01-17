@@ -6,7 +6,6 @@ import Expandable from '@/app/components/expandable/expandable';
 
 export default function About() {
   return (
-      <>
         <div className={styles.page}>
           <div className={styles.page__container}>
             <div>
@@ -82,7 +81,5 @@ export default function About() {
             </div>
           </div>
         </div>
-      </>
-
   );
 }
