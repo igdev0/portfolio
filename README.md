@@ -1,3 +1,3 @@
 # Portfolio
 
-This repository contains the code for my personal portfolio.
+This repo contains the code for my personal portfolio.
