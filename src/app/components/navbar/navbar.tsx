@@ -10,37 +10,36 @@ import Navlink from '@/app/components/navbar/navlink';
 import Menu from '@/app/components/navbar/menu';
 import {usePathname} from 'next/navigation';
 
-
 export default function Navbar() {
   const burgerRef = useRef<HTMLLabelElement>(null);
-  const navbarRef =useRef<HTMLDivElement>(null);
+  const navbarRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
   const {menuOpen, toggleMenu} = useContext(AppContext);
   const [offset, setOffset] = useState(0);
   const handleBurgerChange = () => {
-    toggleMenu()
-  }
-
+    toggleMenu();
+  };
 
   const handleOffsetCalc = () => {
-    if(burgerRef.current) {
+    if (burgerRef.current) {
       setOffset(burgerRef.current.offsetLeft + burgerRef.current.clientWidth);
     }
-  }
+  };
 
   useEffect(() => {
-    if(burgerRef.current) {
-      window.addEventListener("resize" , () => {
+    if (burgerRef.current) {
+      window.addEventListener("resize", () => {
         handleOffsetCalc();
-      })
+      });
 
-      handleOffsetCalc()
+      handleOffsetCalc();
     }
 
     return () => {
-      window.removeEventListener("resize", () =>{});
-    }
-  }, [])
+      window.removeEventListener("resize", () => {
+      });
+    };
+  }, []);
 
   useEffect(() => {
     toggleMenu(false);
@@ -49,7 +48,7 @@ export default function Navbar() {
   useEffect(() => {
     let previousScroll = 0;
     window.addEventListener("scroll", () => {
-      if(!navbarRef.current) {
+      if (!navbarRef.current) {
         return;
       }
       if (previousScroll < window.scrollY) {
@@ -60,11 +59,11 @@ export default function Navbar() {
         navbarRef.current.style.transform = "translateY(0)";
       }
 
-      if(window.scrollY < navbarRef.current.clientHeight) {
+      if (window.scrollY < navbarRef.current.clientHeight) {
         navbarRef.current.style.background = "transparent";
       }
-      previousScroll = window.scrollY
-    })
+      previousScroll = window.scrollY;
+    });
   }, [navbarRef]);
 
   return (
@@ -103,5 +102,5 @@ export default function Navbar() {
           </div>
         </div>
       </>
-  )
+  );
 }
