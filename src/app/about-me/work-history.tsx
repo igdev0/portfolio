@@ -16,22 +16,21 @@ const data: WorkEntityProps[] = [{
   place: "Input Output, Remote",
   from: "March 2022",
   until: "April 2024",
-  description: "As a member of the Atala team at IOHK, I served as the Technology Owner within an agile scrum team. My primary responsibilities included designing and implementing new features for the SSI web platform, focusing on enhancing its functionality and user experience.",
+  description: "As part of an agile scrum team, I worked as a front-end software engineer on ideating,\n" +
+      "designing and developing a DevOps tool, a sandbox tool for issuing and verifying\n" +
+      "verifiable credentials, and a browser wallet.",
   details: `
-<h4>Accomplishments:</h4>
+<h4>Key responsibilities and contributions:</h4>
 <ul>
-    <li>Led the front-end development of the web tools.</li>
-    <li>Contributed to the development of the backend for the agent</li>
-    provisoning tool.
-    <li>Contributed to the development of the PRISM SSI agent</li>
-    provisioning tool (from idea to real thing).
-    <li>Developed a react component library for the designs given.</li>
-    <li>Supported UI/UX designer to create desings for the web products.</li>
-    <li>Supported the wallet SDK team to achieve the PI objectives.</li>
-    <li>Supported the design and architecture of the wallet SDK.</li>
-    <li>Maintained Atala’s main website and developed our docs website</li>
-    using Docusaurus.
-    <li>Maintained the legacy browser wallet extension.</li>
+  <li>Led the front-end development of the web tools;</li>
+  <li>Reviewed code contributions from team mates, ensuring code quality;</li>
+  <li>Contributed to each step in the process of development, from ideating to real-thing agent infrastructure provisioning tool;</li>
+  <li>Developed a reusable react component library for the designs given;</li>
+  <li>Worked closely with the UI designer to develop the best UI/UX possible;</li>
+  <li>Contributed to the wallet SDK;</li>
+  <li>Developed and maintained the atala PRISM main website;</li>
+  <li>Contributed to the development of PRISM agent documentation website;</li>
+  <li>Maintained the legacy browser wallet extension;</li>
 </ul>
   `
 }, {
@@ -39,27 +38,23 @@ const data: WorkEntityProps[] = [{
   place: "Finervision, London",
   from: "February 2020",
   until: "February 2022",
-  description: "Contributed to a range of native and web projects, transforming designs into pixel-perfect, responsive, and functional code solutions for clients such as Sainsbury’s and HSBC. Developed RESTful APIs and maintained legacy projects.",
+  description: "As part of a small agile team of full-stack developers, I worked on several small to medium sized web projects and medium sized native apps for different clients such as Sainsbury's, HSBC, Teva and other.",
   details: `
-<h4>Accomplishments:</h4>
+<h4>Key responsibilities and contributions:</h4>
 <ul>
-    <li>Developed several responsive mobile native and web apps with</li>
-    React, React Native and Expo.
-    <li>Crafted reusable React UI Components to boost productivity.</li>
-    <li>Resolved legacy data migration issues and improved app</li>
-    performance through investigation and optimization.
-    <li>Automated content integration into various native/mobile apps</li>
-    using Google APIs.
-    <li>Efficiently identified and resolved bugs to maintain high-quality</li>
-    standards.
-    <li>Ensured the timely delivery of web and native projects with a focus</li>
-    on code quality standards.
-    <li>Set up a virtual machine equipped with the necessary software for</li>
-    web services.
-    <li>Collaborated effectively as part of an agile/kanban team.</li>
+    <li>Contributed to a few native apps using React native and Expo;</li>
+    <li>Collaborated with some clients directly, to ease the development process and help the team;</li>
+    <li>Contributed to resolving complex app data migration issues;</li>
+    <li>Transformed designs into pixel-perfect responsive and functional code;</li>
+    <li>Automated content integration into apps using Google APIs;</li>
+    <li>Delivered timely ahead of project deadline most of the time;</li>
+    <li>Supported team mates fixing bugs & helping them meet the deadline;</li>
+    <li>Equipped virtual machines with the necessary software for web services;</li>
+    <li>Maintained legacy projects and fixed bunch of bugs;</li>
+    <li>Developed numerous bespoke designed emails;</li>
 </ul>
   `
-}]
+}];
 
 function WorkEntity({role, place, from, until, details, description}: WorkEntityProps) {
   return (
