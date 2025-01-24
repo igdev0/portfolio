@@ -62,7 +62,7 @@ export default function Navbar() {
       if (window.scrollY < navbarRef.current.clientHeight) {
         navbarRef.current.style.background = "transparent";
       }
-      previousScroll = window.scrollY;
+      previousScroll = window.scrollY < 0 ? 0 : window.scrollY;
     });
   }, [navbarRef]);
 
