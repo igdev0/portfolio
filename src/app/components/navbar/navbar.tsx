@@ -4,7 +4,7 @@ import Burger from '@/app/components/navbar/burger';
 import {Github, LinkedIn, Mail} from '@/app/components/navbar/icons';
 import ThemeButton from '@/app/components/navbar/theme-button';
 import config from '@/app/config';
-import {useContext, useEffect, useRef, useState} from 'react';
+import {useCallback, useContext, useEffect, useRef, useState} from 'react';
 import {AppContext} from '@/app/context';
 import Navlink from '@/app/components/navbar/navlink';
 import Menu from '@/app/components/navbar/menu';
@@ -13,6 +13,7 @@ import {usePathname} from 'next/navigation';
 export default function Navbar() {
   const burgerRef = useRef<HTMLLabelElement>(null);
   const navbarRef = useRef<HTMLDivElement>(null);
+  const [previousScroll, setPreviousScroll] = useState<number>(0);
   const pathname = usePathname();
   const {menuOpen, toggleMenu} = useContext(AppContext);
   const [offset, setOffset] = useState(0);
@@ -25,6 +26,26 @@ export default function Navbar() {
       setOffset(burgerRef.current.offsetLeft + burgerRef.current.clientWidth);
     }
   };
+
+
+  const scrollEventListener = useCallback(() => {
+    if (!navbarRef.current || menuOpen) {
+      return;
+    }
+
+    if (previousScroll < window.scrollY) {
+      navbarRef.current.style.background = "transparent";
+      navbarRef.current.style.transform = "translateY(-100%)";
+    } else {
+      navbarRef.current.style.background = "var(--background)";
+      navbarRef.current.style.transform = "translateY(0)";
+    }
+
+    if (window.scrollY < navbarRef.current.clientHeight) {
+      navbarRef.current.style.background = "transparent";
+    }
+    setPreviousScroll(window.scrollY < 0 ? 0 : window.scrollY)
+  }, [navbarRef, setPreviousScroll, previousScroll, menuOpen])
 
   useEffect(() => {
     if (burgerRef.current) {
@@ -46,25 +67,12 @@ export default function Navbar() {
   }, [pathname, toggleMenu]);
 
   useEffect(() => {
-    let previousScroll = 0;
-    window.addEventListener("scroll", () => {
-      if (!navbarRef.current) {
-        return;
-      }
-      if (previousScroll < window.scrollY) {
-        navbarRef.current.style.background = "transparent";
-        navbarRef.current.style.transform = "translateY(-100%)";
-      } else {
-        navbarRef.current.style.background = "var(--background)";
-        navbarRef.current.style.transform = "translateY(0)";
-      }
+    window.addEventListener("scroll", scrollEventListener);
 
-      if (window.scrollY < navbarRef.current.clientHeight) {
-        navbarRef.current.style.background = "transparent";
-      }
-      previousScroll = window.scrollY < 0 ? 0 : window.scrollY;
-    });
-  }, [navbarRef]);
+    return () => {
+      window.removeEventListener("scroll", scrollEventListener)
+    }
+  }, [navbarRef, scrollEventListener]);
 
   return (
       <>
