@@ -1,6 +1,8 @@
 import styles from './menu.module.scss';
 import Navlink from '@/app/components/navbar/navlink';
 import Avatar from '@/app/components/avatar/avatar';
+import Button from '@/app/components/button/button';
+import config from '@/app/config';
 
 export default function Menu({open, offset}: {open: boolean, offset: number}) {
   return (
@@ -18,6 +20,8 @@ export default function Menu({open, offset}: {open: boolean, offset: number}) {
         <Navlink href="/contact">
           Contact
         </Navlink>
+        <br/>
+        <Button variant="resume" asLink={true} href={config.resume} external={true}>Download Resume</Button>
       </div>
   )
 }

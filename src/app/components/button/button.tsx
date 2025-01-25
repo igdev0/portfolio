@@ -5,7 +5,8 @@ import styles from './button.module.scss';
 interface ButtonProps extends PropsWithChildren {
   asLink?: boolean,
   href?: string,
-  variant?: "outlined" | "filled"
+  external?:boolean,
+  variant?: "outlined" | "filled" | "resume"
   onClick?: MouseEventHandler<HTMLButtonElement>,
 }
 
@@ -17,6 +18,8 @@ export default function Button(props: ButtonProps) {
         return styles.button__filled;
       case "outlined":
         return styles.button__outlined;
+      case "resume":
+        return styles.button__resume;
       default:
         return styles.button__filled;
     }
@@ -25,7 +28,7 @@ export default function Button(props: ButtonProps) {
 
   if(props.asLink) {
     return (
-        <Link href={props.href??""} className={`${styles.button} ${variant}`}>
+        <Link href={props.href??""} className={`${styles.button} ${variant}`} target={props.external ? "_blank" : "_self"}>
           {props.children}
         </Link>
     )

@@ -6,6 +6,7 @@ const config = {
   email: "dorultanianos@gmail.com",
   x: "https://x.com/IonutDorultan",
   skills,
+  resume: "/resume/igdev-resume.pdf"
 };
 
 export default config;

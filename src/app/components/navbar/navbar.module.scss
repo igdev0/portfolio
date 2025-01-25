@@ -42,6 +42,26 @@
     gap: .25rem;
     align-items: center;
 
+    a:first-child {
+      background: var(--background);
+      color: var(--foreground);
+      padding: .5rem .8rem;
+      width: auto;
+      aspect-ratio: unset;
+      transition: all ease-in-out 300ms;
+      box-shadow: 0 5px 0 0 var(--color-green), 0 10px 10px 0 var(--shadow-color);
+      margin-right: 1rem;
+      cursor: pointer;
+      display: none;
+      &:hover {
+        box-shadow: 0 5px 0 0 var(--background), 0 10px 10px 0 var(--shadow-color);
+      }
+
+      @media screen and (min-width: 600px){
+        display: block;
+      }
+    }
+
     svg {
       height: 30px;
 

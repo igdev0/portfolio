@@ -9,6 +9,7 @@ import {AppContext} from '@/app/context';
 import Navlink from '@/app/components/navbar/navlink';
 import Menu from '@/app/components/navbar/menu';
 import {usePathname} from 'next/navigation';
+import Button from '@/app/components/button/button';
 
 export default function Navbar() {
   const burgerRef = useRef<HTMLLabelElement>(null);
@@ -95,6 +96,9 @@ export default function Navbar() {
             </div>
             <Burger onChange={handleBurgerChange} ref={burgerRef}/>
             <div className={styles.navbar__socialbox}>
+              <Button variant="resume" asLink={true} href={config.resume} external={true}>
+                Download Resume
+              </Button>
               <a href={`mailto:${config.email}`} rel="noreferrer">
                 <Mail/>
               </a>

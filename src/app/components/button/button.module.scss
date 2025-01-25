@@ -31,4 +31,22 @@
 
   }
 
+
+  &__resume {
+    position: relative;
+    border: none;
+    z-index: 1;
+    color: var(--foreground);
+    transition: all ease-in-out 250ms;
+    background: var(--background);
+    box-shadow: 0 5px 0 0 var(--color-green), 0 10px 10px 0 var(--shadow-color);;
+
+    &:hover {
+      transform: translateY(5px);
+      filter: brightness(90%);
+      box-shadow: 0 5px 0 0 var(--background), 0 10px 10px 0 var(--shadow-color);
+    }
+
+  }
+
 }
