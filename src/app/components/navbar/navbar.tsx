@@ -94,7 +94,7 @@ export default function Navbar() {
                 Contact
               </Navlink>
             </div>
-            <Burger onChange={handleBurgerChange} ref={burgerRef}/>
+            <Burger onChange={handleBurgerChange} ref={burgerRef} checked={menuOpen}/>
             <div className={styles.navbar__socialbox}>
               <Button variant="resume" asLink={true} href={config.resume} external={true}>
                 Download Resume
