@@ -32,7 +32,7 @@ const data: ProjectEntityType[] = [
     ],
     githubURL: "https://github.com/igdev0/luckySOL",
     title: "Lucky SOL",
-    bio: "A lottery game built on solana blockchain, the project is built as a demo for a good friend of mine.",
+    bio: "A lottery game built on solana blockchain.",
     tags: [TAGS.frontend, TAGS.backend, TAGS.rust, TAGS.web3, TAGS.typescript],
   },
   {
