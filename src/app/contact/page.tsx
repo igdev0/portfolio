@@ -69,7 +69,7 @@ export default function Contact() {
       <div className={styles.contact}>
         <div className={styles.contact__container}>
           <h1>Contact me</h1>
-          <p>Use this form to send me a message, I will try to reach out as soon as I can, otherwise reach out on <a href={config.linkedinUrl} target="_blank" rel="noopener">Linkedin</a> or <a href={config.x} target="_blank" rel="noopener">x (former twitter)</a> </p>
+          <p>Use this form to send me a message, I will try to reach out as soon as I can, otherwise reach out on <a href={config.linkedinUrl} target="_blank" rel="noopener">Linkedin</a> or <a href={config.x} target="_blank" rel="noopener">x (former twitter)</a>. </p>
           <form onSubmit={handleSubmit} className={styles.contact__form}>
             <fieldset className={styles.contact__form__field}>
               <label htmlFor="email">Email</label>
