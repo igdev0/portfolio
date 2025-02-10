@@ -1,10 +1,10 @@
 "use client";
 import styles from './globe.module.scss';
-import {PropsWithChildren, useEffect, useRef} from 'react';
+import {PropsWithChildren, useCallback, useEffect, useRef} from 'react';
 
 export default function Globe(props: PropsWithChildren) {
   const globeRef = useRef<HTMLDivElement>(null);
-  const handleMouseMove = (event: MouseEvent) => {
+  const handleMouseMove = useCallback((event: MouseEvent) => {
     if (globeRef.current) {
       const x = event.clientX - (globeRef.current.clientWidth / 2);
       const y = event.clientY - (globeRef.current.clientHeight / 2);
@@ -21,7 +21,7 @@ export default function Globe(props: PropsWithChildren) {
       );
 
     }
-  };
+  }, [globeRef]);
 
   useEffect(() => {
     window.addEventListener("mousemove", handleMouseMove);
