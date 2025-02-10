@@ -28,6 +28,7 @@ type ContactFormErrorType = {
 export default function Contact() {
   const [apiError, setApiError] = useState<string | null>(null);
   const [data, setData] = useState<ContactForm>(JSON.parse(JSON.stringify(ContactFormDefaultValue)));
+  const [successMsg, setSuccessMsg] = useState<string | null>();
   const [errors, setErrors] = useState<ContactFormErrorType>(JSON.parse(JSON.stringify(ContactFormErrors)));
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
@@ -53,8 +54,10 @@ export default function Contact() {
     if(res.status === 200) {
       setData({message: "", email: ""});
       setApiError(null)
+      setSuccessMsg("I have received your message, shortly I will come back to you. ");
     } else {
       setApiError(body?.error??null);
+      setSuccessMsg(null);
     }
 
   };
@@ -87,6 +90,7 @@ export default function Contact() {
                 <div className={styles.contact__form__field__error}>{apiError}</div>
                 <br/>
             </>}
+            {successMsg && <p className={styles.contact__form__success}>{successMsg}</p>}
             <Button asLink={false} variant="filled">Submit</Button>
           </form>
         </div>
