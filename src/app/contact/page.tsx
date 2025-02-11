@@ -86,10 +86,7 @@ export default function Contact() {
                         onChange={handleInputChange}/>
               {errors.message && <div className={styles.contact__form__field__error}>{errors.message}</div>}
             </fieldset>
-            {apiError && <>
-                <div className={styles.contact__form__field__error}>{apiError}</div>
-                <br/>
-            </>}
+            {apiError && <p className={styles.contact__form__error}>{apiError}</p>}
             {successMsg && <p className={styles.contact__form__success}>{successMsg}</p>}
             <Button asLink={false} variant="filled">Submit</Button>
           </form>

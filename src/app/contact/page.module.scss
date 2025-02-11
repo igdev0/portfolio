@@ -47,6 +47,15 @@
       border-radius: 5px;
     }
 
+
+    &__error {
+      font-weight: bold;
+      color: var(--color-pink);
+      background: var(--background);
+      padding: .5rem;
+      border-radius: 5px;
+    }
+
     button {
       cursor: pointer;
     }
