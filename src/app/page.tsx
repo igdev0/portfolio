@@ -10,7 +10,7 @@ export default function Home() {
             <header className={styles.home__header}>
               <Avatar/>
               <h1>
-                I am Ianos,<br/> A software developer Passionated about web3.
+                I am Ianos, a software developer that transforms coffee into code.
               </h1>
               <div className={styles.home__header__buttons}>
                 <Button asLink={true} href="/about-me" variant="outlined">Who I am</Button>
