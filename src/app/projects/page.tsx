@@ -26,6 +26,28 @@ const TAGS = {
 const data: ProjectEntityType[] = [
   {
     colors: [
+      "#dcb64f",
+      "#ff2c2b",
+      "#b648e1",
+    ],
+    githubURL: "https://github.com/igdev0/simple-nft-indexer",
+    title: "ERC-20 Indexer",
+    bio: "A app that allows you to Index all of NFTs minted on the Ethereum blockchain using Alchemy's Enhanced APIs",
+    tags: [TAGS.frontend, TAGS.web3, TAGS.typescript],
+  },
+  {
+    colors: [
+      "#e17648",
+      "#00fd08",
+      "#b648e1",
+    ],
+    githubURL: "https://github.com/igdev0/simple-erc20-indexer",
+    title: "ERC-20 Indexer",
+    bio: "A app that allows you to Index all of an address's ERC-20 token balances using Alchemy's Enhanced APIs",
+    tags: [TAGS.frontend, TAGS.web3, TAGS.typescript],
+  },
+  {
+    colors: [
       "#fd006b",
         "#00fd08",
         "#b648e1",
