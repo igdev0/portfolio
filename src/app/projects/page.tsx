@@ -31,7 +31,7 @@ const data: ProjectEntityType[] = [
       "#b648e1",
     ],
     githubURL: "https://github.com/igdev0/simple-nft-indexer",
-    title: "ERC-20 Indexer",
+    title: "NFT Indexer",
     bio: "A app that allows you to Index all of NFTs minted on the Ethereum blockchain using Alchemy's Enhanced APIs",
     tags: [TAGS.frontend, TAGS.web3, TAGS.typescript],
   },
