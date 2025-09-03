@@ -26,6 +26,17 @@ const TAGS = {
 const data: ProjectEntityType[] = [
   {
     colors: [
+      "#ff2c2b",
+      "#dcb64f",
+      "#0077ff",
+    ],
+    githubURL: "https://github.com/igdev0/bee-funded",
+    title: "Bee funded",
+    bio: "In short, this project is a platform enables users to create donation pools that supporters can either subscribe to for recurring contributions or fund through one-time donations using ERC-20 or native tokens.",
+    tags: [TAGS.frontend, TAGS.web3, TAGS.typescript],
+  },
+  {
+    colors: [
       "#dcb64f",
       "#ff2c2b",
       "#b648e1",
