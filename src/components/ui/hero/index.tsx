@@ -5,9 +5,10 @@ import Button from '@/components/ui/button';
 const titleCls = clsx("text-white text-5xl lg:text-7xl leading-15 lg:leading-20");
 export default function Hero() {
   return (
-      <div className="relative max-w-[1100] mx-auto gap-4">
-        <div className="flex flex-col justify-center items-center mt-60">
-          <div className="w-full text-center mb-4">
+      <div
+          className="relative max-w-[1100] mx-auto gap-4 rounded-2xl mt-40 lg:mt-60 bg-gray-900 flex w-full justify-center items-center">
+        <div className="flex flex-col justify-center items-center">
+          <div className="w-full text-center mb-10">
             <h1 className={titleCls}>I'm a software Developer</h1>
             <TextType
                 text={["Building Workflows", "Creating AI Agents", "Designing Splendid UIs"]}

@@ -5,16 +5,20 @@
         @apply w-full relative z-10;
         @apply flex justify-between mt-5;
     }
+
     .menu__links {
-        @apply flex justify-between gap-4;
+        @apply flex justify-between gap-6 items-center;
     }
+
     .menu__brand {
         @apply text-white;
+
         span {
             @apply text-indigo-500 px-1 font-bold;
         }
     }
+
     .menu__item {
-        @apply text-white;
+        @apply text-white hover:text-indigo-500 transition-all;
     }
 }
