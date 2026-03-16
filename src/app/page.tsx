@@ -1,8 +1,8 @@
 
-export default function Home() {
+export default function LandingPage() {
   return (
-        <div>
-          <h1>Hello</h1>
-        </div>
+      <main>
+        <h1>I'm IGDev</h1>
+      </main>
   );
 }
