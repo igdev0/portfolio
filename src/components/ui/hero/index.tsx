@@ -7,7 +7,7 @@ import Button from '@/components/ui/button';
 const titleCls = clsx("text-white text-7xl leading-20");
 export default function Hero({children}: PropsWithChildren) {
   return (
-      <main className="h-full w-full">
+      <main className="h-full w-full overflow-auto">
         <div className="h-screen w-full absolute top-0 left-0 bg-gray-900">
           <Galaxy/>
         </div>
@@ -15,7 +15,7 @@ export default function Hero({children}: PropsWithChildren) {
           {children}
           <div className="flex flex-col justify-center items-center mt-60">
             <div className="w-full text-center mb-4">
-              <h1 className={titleCls}>I'm a Full-Stack Developer</h1>
+              <h1 className={titleCls}>I'm a software Developer</h1>
               <TextType
                   text={["Building Workflows", "Creating AI Agents", "Designing Splendid UIs"]}
                   typingSpeed={75}
@@ -28,7 +28,7 @@ export default function Hero({children}: PropsWithChildren) {
               />
             </div>
             <div className="flex gap-4">
-              <Button>View Work</Button>
+              <Button variant="outline">View Work</Button>
               <Button>Lets chat</Button>
             </div>
           </div>

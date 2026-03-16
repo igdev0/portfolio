@@ -2,7 +2,7 @@
 
 @layer components {
     .menu {
-        @apply w-full ;
+        @apply w-full relative z-10;
         @apply flex justify-between mt-5;
     }
     .menu__links {
