@@ -2,9 +2,15 @@
 
 @layer components {
     .menu {
-        @apply flex gap-4 justify-center;
+        @apply w-full ;
+        @apply flex justify-between mt-5;
     }
-
+    .menu__links {
+        @apply flex justify-between gap-4;
+    }
+    .menu__brand {
+        @apply text-white;
+    }
     .menu__item {
         @apply text-white;
     }
