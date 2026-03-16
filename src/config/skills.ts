@@ -1,4 +1,4 @@
-export default [
+export const skills = [
   {
     "name": "HTML5",
     "tags": ["Frontend"]

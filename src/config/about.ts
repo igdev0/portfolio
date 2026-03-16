@@ -1,17 +1,5 @@
-"use client";
-import styles from "./styles.module.scss";
-import TechnicalSkills from '@/app/about-me/technical-skills';
-import WorkHistory from '@/app/about-me/work-history';
-import Expandable from '@/app/components/expandable/expandable';
+export const about = `
 
-export default function About() {
-  return (
-        <div className={styles.page}>
-          <div className={styles.page__container}>
-            <div>
-              <h1 className="section__title">About me</h1><br/><br/>
-                <div className={styles.page__intro}>
-                  <Expandable>
                   <p>
                     My name is Ianos, and I’m from Cluj-Napoca, Romania. After graduating high school in 2014, I
                     embarked
@@ -48,7 +36,7 @@ export default function About() {
                     and
                     professionally.
                   </p>
-                  <h3 className="section__title">
+                  <h3 class="section__title">
                     What is next...
                   </h3>
                   <p>
@@ -73,13 +61,4 @@ export default function About() {
                     projects, or continuing my journey of self-improvement, I’m excited about the possibilities on the
                     horizon.
                   </p>
-                  </Expandable>
-                </div>
-              <h1>Technical skills</h1>
-              <TechnicalSkills/>
-              <WorkHistory/>
-            </div>
-          </div>
-        </div>
-  );
-}
+`

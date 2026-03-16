@@ -1,8 +1,5 @@
-import styles from './work-history.module.scss';
-import {Briefcase, Building, Calendar} from '@/app/components/navbar/icons';
-import Expandable from '@/app/components/expandable/expandable';
 
-interface WorkEntityProps {
+interface ExperienceEntity {
   role: string,
   place: string,
   from: string,
@@ -11,7 +8,7 @@ interface WorkEntityProps {
   details: string
 }
 
-const data: WorkEntityProps[] = [{
+export const experience: ExperienceEntity[] = [{
   role: "Software engineer (front-end)",
   place: "Input Output, Remote",
   from: "March 2022",
@@ -55,34 +52,3 @@ const data: WorkEntityProps[] = [{
 </ul>
   `
 }];
-
-function WorkEntity({role, place, from, until, details, description}: WorkEntityProps) {
-  return (
-      <div className={styles.workHistory__entity}>
-        <ul className={styles.workHistory__entity__meta}>
-          <li><Briefcase/>{role}</li>
-          <li><Building/>{place}</li>
-          <li><Calendar/>{from} - {until}</li>
-        </ul>
-        <Expandable>
-          <p>{description}</p>
-          <div className={styles.workHistory__entity__details} dangerouslySetInnerHTML={{__html: details}}/>
-        </Expandable>
-      </div>
-  );
-}
-
-export default function WorkHistory() {
-  return (
-      <>
-        <h1>Work History</h1>
-        <div className={styles.workHistory}>
-          {
-            data.map((entity, index) => (
-                <WorkEntity {...entity} key={index}/>
-            ))
-          }
-        </div>
-      </>
-  );
-}

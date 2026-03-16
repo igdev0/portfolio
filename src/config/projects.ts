@@ -1,7 +1,15 @@
-import styles from './styles.module.scss';
-import {Github} from '@/app/components/navbar/icons';
+export const TAGS = {
+  fullStack: "Full-Stack",
+  backend: "Backend",
+  frontend: "Frontend",
+  web3: "Web3",
+  javascript: "javascript",
+  typescript: "typescript",
+  rust: "rust",
+  cli: "CLI"
+};
 
-interface ProjectEntityType {
+export interface ProjectEntityType {
   title: string,
   bio: string,
   githubURL?: string,
@@ -10,20 +18,7 @@ interface ProjectEntityType {
   tags: string[]
 }
 
-
-
-const TAGS = {
-      fullStack: "Full-Stack",
-      backend: "Backend",
-      frontend: "Frontend",
-      web3: "Web3",
-      javascript: "javascript",
-      typescript: "typescript",
-      rust: "rust",
-      cli: "CLI"
-};
-
-const data: ProjectEntityType[] = [
+export const projects: ProjectEntityType[] = [
   {
     colors: [
       "#ff2c2b",
@@ -60,8 +55,8 @@ const data: ProjectEntityType[] = [
   {
     colors: [
       "#fd006b",
-        "#00fd08",
-        "#b648e1",
+      "#00fd08",
+      "#b648e1",
     ],
     githubURL: "https://github.com/igdev0/luckySOL",
     title: "Lucky SOL",
@@ -156,65 +151,4 @@ const data: ProjectEntityType[] = [
     bio: "A medium sized website multilingual developed based on the designs provided for one of my clients in the early 2022.",
     tags: [TAGS.fullStack, TAGS.typescript]
   }
-]
-
-
-function ProjectCardEntity(props: ProjectEntityType) {
-  return (
-      <div className={styles.projectsPage__grid__entity}>
-        <div className={styles.projectsPage__grid__entity__header} style={{
-          background: `radial-gradient(circle at 30% 20%, ${props.colors.at(0)}, transparent 50%),
-          radial-gradient(circle at 70% 70%, ${props.colors.at(1)}, transparent 50%),
-          radial-gradient(circle at 35% 40%, ${props.colors.at(2)}, transparent 60%)`
-        }}>
-        </div>
-        <div className={styles.projectsPage__grid__entity__body}>
-          <h2>{props.title}</h2>
-          <p>{props.bio}</p>
-        </div>
-        <div>
-
-          <div className={styles.projectsPage__grid__entity__body__tags}>
-            {
-              props.tags.map((tag, index) => <span key={index}
-                                                   className={styles.projectsPage__grid__entity__body__tags__tag}>{tag}</span>)
-            }
-          </div>
-          <div className={styles.projectsPage__grid__entity__body__buttons}>
-            {
-                props.websiteURL && (
-
-                    <a className={styles.projectsPage__grid__entity__body__button} href={props.websiteURL} target="_blank"
-                       rel="noopener">
-                      Visit website 🌐
-                    </a>
-                )
-            }
-            {
-                props.githubURL && (
-                    <a className={styles.projectsPage__grid__entity__body__button} href={props.githubURL} target="_blank"
-                       rel="noopener">
-                      View on github <Github/>
-                    </a>
-                )
-            }
-          </div>
-        </div>
-      </div>
-  )
-}
-
-export default function Page() {
-  return (
-      <div className={styles.projectsPage}>
-        <div className={styles.projectsPage__container}>
-          <h1>Projects</h1>
-          <div className={styles.projectsPage__grid}>
-            {
-              data.map((item, index) => (<ProjectCardEntity  {...item} key={index}/>))
-            }
-          </div>
-        </div>
-      </div>
-  )
-}
+];
