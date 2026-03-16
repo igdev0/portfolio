@@ -10,6 +10,9 @@
     }
     .menu__brand {
         @apply text-white;
+        span {
+            @apply text-indigo-500 px-1 font-bold;
+        }
     }
     .menu__item {
         @apply text-white;

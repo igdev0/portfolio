@@ -2,14 +2,15 @@
 import Link from 'next/dist/client/link';
 import "./index.css";
 
+const brand=  "<span><</span>IGDev<span>/></span>";
 export default function Menu() {
   return (
       <nav className="menu">
-        <Link className="menu__brand" href="#">IGDev</Link>
+        <Link draggable={false} className="menu__brand" href="#" dangerouslySetInnerHTML={{__html: brand}}/>
         <div className="menu__links">
-          <Link className="menu__item" href="/#about">Top</Link>
-          <Link className="menu__item" href="/#about">About</Link>
-          <Link className="menu__item" href="/">Contact</Link>
+          <Link draggable={false} className="menu__item" href="/#about">Top</Link>
+          <Link draggable={false} className="menu__item" href="/#about">About</Link>
+          <Link draggable={false} className="menu__item" href="/">Contact</Link>
         </div>
       </nav>
   );

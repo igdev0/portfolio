@@ -29,9 +29,7 @@ export default function RootLayout({
       </head>
       <body className={`${lexend.className}`}>
       {process.env.NODE_ENV === "production" && <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID ?? "not set"}/>}
-      <div className="page">
-        {children}
-      </div>
+      {children}
       </body>
       </html>
   );
