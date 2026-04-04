@@ -5,6 +5,7 @@
 [data-theme="dark"] {
     --foreground: var(--color-white);
     --background: var(--color-gray-800);
+    --bg-secondary: var(--color-indigo-400);
     --grid: var(--color-gray-600);
 }
 
@@ -17,10 +18,11 @@
 @theme {
     --spacing: 4px;
     --color-primary: var(--color-indigo-600);
-    --color-secondary: var(--color-indigo-300);
+    --color-secondary: var(--color-indigo-200);
     --color-tertiary: var(--color-indigo-100);
     --foreground: var(--color-gray-900);
     --background: var(--color-white);
+    --bg-secondary: var(--color-indigo-100);
     --grid: var(--color-gray-200);
     --link: var(--color-white);
     --link-hover: var(--color-gray-600);
