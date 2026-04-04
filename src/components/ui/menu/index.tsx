@@ -6,6 +6,7 @@ import Icon from '@/components/ui/icon';
 import menu from '@/config/content/menu';
 import clsx from 'clsx';
 import {useState} from 'react';
+import IconButton from '@/components/ui/icon-button';
 
 export default function Menu() {
   const {theme, setTheme} = useTheme();
@@ -27,17 +28,12 @@ export default function Menu() {
                   </Link>
               ))
             }
-            <button className="menu__item cursor-pointer w-6"
-                    onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
-              <Icon type="sun"/>
-            </button>
+            <IconButton type="sun" onClick={() => setTheme(theme === 'dark' ? "light" : "dark")}/>
             <button className="menu__toggle  cursor-pointer menu__toggle w-6" onClick={() => setMenuOpen(true)}><Icon
                 type="menu"/></button>
           </div>
           <div className={clsx('menu__drawer', menuOpen ? 'open' : 'close')}>
-            <button className="menu__toggle cursor-pointer menu__toggle w-6 mb-4" onClick={() => setMenuOpen(false)}>
-              <Icon
-                  type="menu"/></button>
+            <IconButton type="menu" onClick={() => setMenuOpen(false)}/>
             {
               Object.entries(menu.navigation).filter(item => item[0] !== 'github').map(([menuItemKey, entry]) => (
                   <Link draggable={false} key={menuItemKey}

@@ -3,7 +3,7 @@ import {ComponentType, SVGProps} from 'react';
 
 export type IconTypes = "github" | "sun" | "menu";
 
-interface IconProps {
+export interface IconProps {
   type: IconTypes;
 }
 
