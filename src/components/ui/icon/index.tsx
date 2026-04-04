@@ -1,7 +1,7 @@
 import {SunIcon} from '@heroicons/react/24/outline';
 import {ComponentType, SVGProps} from 'react';
 
-type IconTypes = "github" | "sun";
+export type IconTypes = "github" | "sun";
 
 interface IconProps {
   type: IconTypes;

@@ -3,21 +3,24 @@ import Link from 'next/dist/client/link';
 import "./index.css";
 import {useTheme} from 'next-themes';
 import Icon from '@/components/ui/icon';
-
-const brand = "<span><</span>IGDev<span>/></span>";
+import menu from '@/config/content/menu';
 
 export default function Menu() {
   const {theme, setTheme} = useTheme();
   return (
       <nav className="menu">
-        <Link draggable={false} className="menu__brand" href="#" dangerouslySetInnerHTML={{__html: brand}}/>
+        <Link draggable={false} className="menu__brand" href="#" dangerouslySetInnerHTML={{__html: menu.brand.html}}/>
         <div className="menu__links">
-          <Link draggable={false} className="menu__item" href="/#about">Root</Link>
-          <Link draggable={false} className="menu__item" href="/#about">About</Link>
-          <Link draggable={false} className="menu__item" href="/">Contact</Link>
-          <Link draggable={false} className="menu__item" href="https://github.com/igdev0" target="_blank">
-            <Icon type="github"/>
-          </Link>
+          {
+            Object.entries(menu.navigation).map(([menuItemKey, entry]) => (
+                <Link draggable={false} key={menuItemKey} className="menu__item" href={entry.href}>
+                      {
+                          entry.icon && <Icon type={entry.icon}/>
+                      }
+                        {entry.text}
+                </Link>
+            ))
+          }
           <button className="menu__item cursor-pointer w-6"
                   onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
             <Icon type="sun"/>
