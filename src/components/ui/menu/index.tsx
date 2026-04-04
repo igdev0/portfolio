@@ -2,10 +2,12 @@
 import Link from 'next/dist/client/link';
 import "./index.css";
 import {useTheme} from 'next-themes';
+import Icon from '@/components/ui/icon';
 
 const brand = "<span><</span>IGDev<span>/></span>";
+
 export default function Menu() {
-  const {setTheme} = useTheme();
+  const {theme, setTheme} = useTheme();
   return (
       <nav className="menu">
         <Link draggable={false} className="menu__brand" href="#" dangerouslySetInnerHTML={{__html: brand}}/>
@@ -13,8 +15,13 @@ export default function Menu() {
           <Link draggable={false} className="menu__item" href="/#about">Root</Link>
           <Link draggable={false} className="menu__item" href="/#about">About</Link>
           <Link draggable={false} className="menu__item" href="/">Contact</Link>
-          <Link draggable={false} className="menu__item" href="https://github.com/igdev0" target="_blank"><img
-              src="/icons/github-brands-solid-full.svg" alt="github" width={30} height={30}/></Link>
+          <Link draggable={false} className="menu__item" href="https://github.com/igdev0" target="_blank">
+            <Icon type="github"/>
+          </Link>
+          <button className="menu__item cursor-pointer w-6"
+                  onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
+            <Icon type="sun"/>
+          </button>
         </div>
       </nav>
   );

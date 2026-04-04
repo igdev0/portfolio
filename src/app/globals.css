@@ -20,6 +20,6 @@ body {
     --color-primary: var(--color-indigo-600);
     --color-secondary: var(--color-indigo-300);
     --color-tertiary: var(--color-indigo-100);
-
+    --foreground: var(--color-gray-900);
     --background: var(--color-white);
 }
