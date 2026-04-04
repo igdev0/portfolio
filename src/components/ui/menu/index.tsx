@@ -11,8 +11,8 @@ export default function Menu() {
   const {theme, setTheme} = useTheme();
   const [menuOpen, setMenuOpen] = useState(false);
   return (
-      <nav className="w-full border-y border-gray-200 sticky top-0 px-6">
-        <div className="max-w-275 lg:mx-auto px-6 border-x border-gray-200 menu">
+      <nav className="w-full border-y border-(--grid) sticky top-0 px-6">
+        <div className="max-w-275 lg:mx-auto px-6 border-x border-(--grid) menu">
           <Link draggable={false} className={clsx('menu__brand')} href={menu.brand.href}
                 dangerouslySetInnerHTML={{__html: menu.brand.html}}/>
           <div className="menu__desktop-nav">
