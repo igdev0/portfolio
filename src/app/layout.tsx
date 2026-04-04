@@ -3,6 +3,7 @@ import type {ReactNode} from 'react';
 import "./globals.css";
 import {Lexend} from "next/font/google";
 import {GoogleAnalytics} from '@next/third-parties/google';
+import {ThemeProvider} from 'next-themes';
 
 export const metadata: Metadata = {
   title: "IGDev's portfolio",
@@ -29,7 +30,9 @@ export default function RootLayout({
       </head>
       <body className={`${lexend.className}`}>
       {process.env.NODE_ENV === "production" && <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID ?? "not set"}/>}
-      {children}
+      <ThemeProvider>
+        {children}
+      </ThemeProvider>
       </body>
       </html>
   );
