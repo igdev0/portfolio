@@ -6,8 +6,9 @@ export default function LandingPage() {
   const {scrollYProgress} = useScroll();
 
   return (
-      <div className="max-w-275 mx-auto">
+      <div>
         <Menu/>
+        <div style={{width: "100%", height: "5000px"}}/>
       </div>
   );
 }

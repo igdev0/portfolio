@@ -16,7 +16,6 @@ body {
     color: var(--foreground);
 }
 
-
 @theme {
     --spacing: 4px;
     --color-primary: var(--color-indigo-600);

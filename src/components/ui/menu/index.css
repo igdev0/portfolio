@@ -3,17 +3,45 @@
 @layer components {
     .menu {
         @apply w-full relative z-10;
-        @apply flex justify-between mt-5;
+        @apply flex justify-between py-4;
     }
 
-    .menu__navigation {
-        @apply flex justify-between gap-6 items-center;
+    .menu__desktop-nav {
+        @apply flex justify-between gap-2 sm:gap-6 items-center;
+    }
+
+    .menu__toggle {
+        @media screen and (min-width: 600px) {
+            display: none;
+        }
+    }
+
+    .menu__drawer {
+        @apply fixed p-4 py-4 transform translate-x-0 right-0 transition-all;
+        @apply bg-white top-0 z-10 border border-gray-200 flex flex-col items-end;
+
+        &.open {
+
+            @media screen and (min-width: 600px) {
+                @apply translate-x-full;
+            }
+        }
+
+        &.close {
+            @apply translate-x-full;
+        }
     }
 
     .menu__brand {
-
         span {
             @apply text-indigo-500 px-1 font-bold;
+        }
+    }
+
+    .menu__item.internal {
+        display: none;
+        @media screen and (min-width: 600px) {
+            display: flex;
         }
     }
 
