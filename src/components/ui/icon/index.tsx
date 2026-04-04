@@ -1,7 +1,7 @@
-import {SunIcon} from '@heroicons/react/24/outline';
+import {Bars3Icon, SunIcon} from '@heroicons/react/24/outline';
 import {ComponentType, SVGProps} from 'react';
 
-export type IconTypes = "github" | "sun";
+export type IconTypes = "github" | "sun" | "menu";
 
 interface IconProps {
   type: IconTypes;
@@ -27,6 +27,7 @@ export function Github(props: SVGProps<SVGSVGElement>) {
 const iconsMap: Record<IconTypes, ComponentType<SVGProps<SVGSVGElement>>> = {
   sun: SunIcon,
   github: Github,
+  menu: Bars3Icon,
 };
 
 export default function Icon({ type }: IconProps) {
