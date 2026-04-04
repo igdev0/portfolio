@@ -8,10 +8,6 @@ interface NavigationItem {
   icon?: IconTypes;
 }
 
-interface Menu {
-
-}
-
 const menu = {
   brand: {
     html: brand,
