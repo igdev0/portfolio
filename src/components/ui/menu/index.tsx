@@ -35,8 +35,9 @@ export default function Menu() {
                 type="menu"/></button>
           </div>
           <div className={clsx('menu__drawer', menuOpen ? 'open' : 'close')}>
-            <button className="menu__toggle cursor-pointer menu__toggle w-6 mb-4" onClick={() => setMenuOpen(false)}><Icon
-                type="menu"/></button>
+            <button className="menu__toggle cursor-pointer menu__toggle w-6 mb-4" onClick={() => setMenuOpen(false)}>
+              <Icon
+                  type="menu"/></button>
             {
               Object.entries(menu.navigation).filter(item => item[0] !== 'github').map(([menuItemKey, entry]) => (
                   <Link draggable={false} key={menuItemKey}
