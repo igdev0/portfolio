@@ -1,0 +1,68 @@
+@import "tailwindcss";
+@import "../../../globals.css";
+
+@layer components {
+    .nav {
+        @apply w-full border-y border-(--semigrid) sticky top-0 px-6 z-10 bg-(--bg-default);
+
+        .nav__layout {
+            @apply max-w-275 lg:mx-auto px-6 border-x border-(--semigrid);
+            @apply w-full relative z-10;
+            @apply flex justify-between py-4;
+        }
+
+        .nav__brand {
+            span {
+                @apply text-accent-500 px-1 font-bold;
+            }
+        }
+
+        .nav__list {
+            @apply flex justify-between gap-2 sm:gap-6 items-center;
+
+            .nav__link {
+                &:before {
+                    content: '#';
+                    @apply relative right-1 opacity-0 transition-all;
+                }
+
+                &:hover {
+                    &:before {
+                        @apply text-accent-500 opacity-100;
+                    }
+                }
+            }
+
+            .nav__link.internal {
+                display: none;
+                @media screen and (min-width: 600px) {
+                    display: flex;
+                }
+            }
+
+        }
+    }
+
+    .menu__toggle {
+        @media screen and (min-width: 600px) {
+            display: none;
+        }
+    }
+
+    .menu__drawer {
+        @apply fixed p-4 py-4 transform translate-x-0 right-0 transition-all;
+        @apply bg-(--background) top-0 z-10 border border-(--semigrid) flex flex-col items-end;
+
+        &.open {
+
+            @media screen and (min-width: 600px) {
+                @apply translate-x-full;
+            }
+        }
+
+        &.close {
+            @apply translate-x-full;
+        }
+    }
+
+}

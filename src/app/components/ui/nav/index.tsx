@@ -7,27 +7,26 @@ import menu from '@/config/content/menu';
 import clsx from 'clsx';
 import {useState} from 'react';
 import IconButton from '@/app/components/ui/icon-button';
+import IconLink from '@/app/components/ui/icon-link';
 
-export default function Menu() {
+export default function Nav() {
   const {theme, setTheme} = useTheme();
   const [menuOpen, setMenuOpen] = useState(false);
   return (
-      <nav className="w-full border-y border-(--semigrid) sticky top-0 px-6 z-10 bg-(--bg-default)">
-        <div className="max-w-275 lg:mx-auto px-6 border-x border-(--semigrid) menu">
-          <Link draggable={false} className={clsx('menu__brand')} href={menu.brand.href}
+      <nav className="nav">
+        <div className="nav__layout">
+          <Link draggable={false} className="nav__link nav__brand" href={menu.brand.href}
                 dangerouslySetInnerHTML={{__html: menu.brand.html}}/>
-          <div className="menu__desktop-nav">
+          <div className="nav__list">
             {
-              Object.entries(menu.navigation).map(([menuItemKey, entry]) => (
-                  <Link draggable={false} key={menuItemKey} className={clsx(`menu__item`, entry.text && "internal")}
+              Object.entries(menu.navigation.list).map(([menuItemKey, entry]) => (
+                  <Link draggable={false} key={menuItemKey} className="nav__link"
                         href={entry.href}>
-                    {
-                        entry.icon && <Icon type={entry.icon}/>
-                    }
                     {entry.text}
                   </Link>
               ))
             }
+            <IconLink icon="github" href={menu.navigation.social.github.href}/>
             <IconButton type="sun" onClick={() => setTheme(theme === 'dark' ? "light" : "dark")}/>
             <button className="menu__toggle  cursor-pointer menu__toggle w-6" onClick={() => setMenuOpen(true)}><Icon
                 type="menu"/></button>
@@ -35,13 +34,10 @@ export default function Menu() {
           <div className={clsx('menu__drawer', menuOpen ? 'open' : 'close')}>
             <IconButton type="menu" onClick={() => setMenuOpen(false)}/>
             {
-              Object.entries(menu.navigation).filter(item => item[0] !== 'github').map(([menuItemKey, entry]) => (
+              Object.entries(menu.navigation.list).map(([menuItemKey, entry]) => (
                   <Link draggable={false} key={menuItemKey}
                         className={clsx(`menu__drawer-item`, entry.text && "internal", "py-1", "flex justify-end")}
                         href={entry.href}>
-                    {
-                        entry.icon && <Icon type={entry.icon}/>
-                    }
                     {entry.text}
                   </Link>
               ))

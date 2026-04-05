@@ -1,12 +1,4 @@
-import {IconTypes} from '@/app/components/ui/icon';
-
 const brand = "<span><</span>IGDev<span>/></span>";
-
-interface NavigationItem {
-  text?: string;
-  href: string;
-  icon?: IconTypes;
-}
 
 const menu = {
   brand: {
@@ -14,23 +6,27 @@ const menu = {
     href: "#",
   },
   navigation: {
-    profile: {
-      text: "Profile",
-      href: "#profile",
+    list: {
+      profile: {
+        text: "Profile",
+        href: "#profile",
+      },
+      expertise: {
+        text: "Expertise",
+        href: "#expertise",
+      },
+      letsBuild: {
+        text: "Lets Build",
+        href: "#letsBuild",
+      },
     },
-    expertise: {
-      text: "Expertise",
-      href: "#expertise",
+    social: {
+      github: {
+        icon: "github",
+        href: "https://github.com/igdev0"
+      }
     },
-    letsBuild: {
-      text: "Lets Build",
-      href: "#letsBuild",
-    },
-    github: {
-      icon: "github",
-      href: "https://github.com/igdev0"
-    }
-  } as Record<string, NavigationItem>
+  }
 } as const;
 
 export default menu;
