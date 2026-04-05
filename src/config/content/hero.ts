@@ -6,7 +6,7 @@ const hero = {
     text: "DEV Expert"
   },
   statement: {
-    text: `Pasionated engineer with a keen eye for<br/> technology of tomorrow.`
+    text: `Pasionated engineer with a keen eye for technology of tomorrow.`
   },
   cta: {
     first: {

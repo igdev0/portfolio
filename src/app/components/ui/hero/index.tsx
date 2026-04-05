@@ -15,7 +15,7 @@ export default function Hero() {
           <div className="hero__column">
             <div className="mb-2" dangerouslySetInnerHTML={{__html: hero.tag.html}}/>
             <h1 className="text-5xl font-bold mb-6">{hero.title.text}</h1>
-            <Statement className="mb-6">
+            <Statement className="mb-6 text-left max-w-96">
               <span dangerouslySetInnerHTML={{__html: hero.statement.text}}/>
             </Statement>
             <div className="flex gap-4">
