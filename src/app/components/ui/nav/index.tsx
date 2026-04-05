@@ -5,8 +5,8 @@ import {useTheme} from 'next-themes';
 import menu from '@/config/content/menu';
 import clsx from 'clsx';
 import {useState} from 'react';
-import IconButton from '@/app/components/ui/icon-button';
-import IconLink from '@/app/components/ui/icon-link';
+import IconButton from '@/app/components/lib/icon-button';
+import IconLink from '@/app/components/lib/icon-link';
 
 export default function Nav() {
   const {theme, setTheme} = useTheme();

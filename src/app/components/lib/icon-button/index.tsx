@@ -1,4 +1,4 @@
-import Icon, {IconProps} from '@/app/components/ui/icon';
+import Icon, {IconProps} from '@/app/components/lib/icon';
 import {JSX} from 'react';
 import clsx from 'clsx';
 import "./index.css";

@@ -1,5 +1,5 @@
 import Link from 'next/dist/client/link';
-import Icon, {IconTypes} from '@/app/components/ui/icon';
+import Icon, {IconTypes} from '@/app/components/lib/icon';
 import "../icon-button/index.css";
 import clsx from 'clsx';
 

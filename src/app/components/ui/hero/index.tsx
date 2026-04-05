@@ -1,7 +1,7 @@
 import hero from '@/config/content/hero';
-import LinkButton from '@/app/components/ui/link-button';
+import LinkButton from '@/app/components/lib/link-button';
 import clsx from 'clsx';
-import Statement from '@/app/components/ui/statement';
+import Statement from '@/app/components/lib/statement';
 import {Image} from 'next/dist/client/image-component';
 import "./index.css";
 
