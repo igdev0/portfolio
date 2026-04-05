@@ -1,0 +1,20 @@
+@import "../../../globals.css";
+
+@layer components {
+    .hero {
+        @apply flex flex-col px-6;
+
+        .hero__layout {
+            @apply max-w-275 border-x border-(--semigrid) mx-auto gap-4 w-full px-9 pt-30 grid sm:grid-cols-2 items-center sm:justify-between;
+
+            .hero__column:first-child {
+                @apply sm:order-1;
+            }
+
+            .hero__column:nth-child(2) {
+                @apply flex items-center self-end sm:w-full justify-normal w-max sm:justify-end sm:order-2 relative sm:max-w-[400] ml-auto md:mr-17 z-0;
+            }
+
+        }
+    }
+}
