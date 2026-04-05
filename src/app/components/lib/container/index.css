@@ -1,0 +1,10 @@
+@import "../../../globals.css";
+
+@layer components  {
+    .container {
+        /*w-275*/
+        &.default {
+            @apply border-x border-(--semigrid) mx-auto gap-4 px-9;
+        }
+    }
+}

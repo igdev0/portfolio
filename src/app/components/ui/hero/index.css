@@ -2,10 +2,10 @@
 
 @layer components {
     .hero {
-        @apply flex flex-col px-6;
+        @apply flex flex-col;
 
         .hero__layout {
-            @apply max-w-275 border-x border-(--semigrid) mx-auto gap-4 w-full px-9 pt-30 grid sm:grid-cols-2 items-center sm:justify-between;
+            @apply pt-30 grid xl:grid-cols-2 items-center sm:justify-between;
 
             .hero__column:not(.hero__column--image) {
                 @apply sm:order-1;

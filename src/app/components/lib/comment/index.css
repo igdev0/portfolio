@@ -5,7 +5,7 @@
 }
 
 @theme {
-    --color-comment: var(--color-gray-300);
+    --color-comment: var(--color-gray-500);
 }
 
 @layer components {

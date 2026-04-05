@@ -7,13 +7,14 @@ import clsx from 'clsx';
 import {useState} from 'react';
 import IconButton from '@/app/components/lib/icon-button';
 import IconLink from '@/app/components/lib/icon-link';
+import Container from '@/app/components/lib/container';
 
 export default function Nav() {
   const {theme, setTheme} = useTheme();
   const [menuOpen, setMenuOpen] = useState(false);
   return (
       <nav className="nav">
-        <div className="nav__layout">
+        <Container className="nav__layout">
           <Link draggable={false} className="nav__link nav__brand" href={menu.brand.href}
                 dangerouslySetInnerHTML={{__html: menu.brand.html}}/>
           <div className="nav__list">
@@ -43,7 +44,7 @@ export default function Nav() {
               ))
             }
           </div>
-        </div>
+        </Container>
       </nav>
   );
 }

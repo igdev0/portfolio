@@ -1,12 +1,10 @@
-@import "tailwindcss";
 @import "../../../globals.css";
 
 @layer components {
     .nav {
-        @apply w-full border-y border-(--semigrid) sticky top-0 px-6 z-10 bg-(--bg-default);
+        @apply w-full border-y border-(--semigrid) sticky top-0 z-10 bg-(--bg-default);
 
         .nav__layout {
-            @apply max-w-275 lg:mx-auto px-6 border-x border-(--semigrid);
             @apply w-full relative z-10;
             @apply flex justify-between py-4 items-center;
         }
@@ -33,22 +31,23 @@
 
         .nav__link.internal {
             @apply hidden;
-            @apply sm:flex;
+            @apply xl:flex;
         }
 
         .nav__list {
             @apply hidden;
-            @apply sm:flex justify-between gap-2 sm:gap-6 items-center self-center ml-auto mr-4;
+            @apply xl:flex justify-between gap-2 xl:gap-6 items-center self-center ml-auto mr-4;
 
         }
 
         .nav__buttons {
-            @apply grid grid-cols-3 sm:grid-cols-2 gap-2;
+            @apply grid grid-cols-3 xl:grid-cols-2 gap-2;
         }
     }
 
     .nav__drawer-toggler {
-        @apply sm:hidden!; /**Fix this thing, perhaps remove from link-button css the "flex" prop*/
+        @apply xl:hidden!;
+        /**Fix this thing, perhaps remove from link-button css the "flex" prop*/
     }
 
     .nav__drawer {
@@ -56,7 +55,7 @@
         @apply bg-(--bg-default) top-0 z-10 border border-(--semigrid) flex flex-col items-end;
 
         &.open {
-            @apply md:translate-x-full;
+            @apply xl:translate-x-full;
         }
 
         &.close {

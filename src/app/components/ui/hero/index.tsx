@@ -4,14 +4,14 @@ import clsx from 'clsx';
 import Statement from '@/app/components/lib/statement';
 import {Image} from 'next/dist/client/image-component';
 import "./index.css";
+import Container from '@/app/components/lib/container';
 
 const corners = clsx(`absolute h-1/9 w-1/9 m-4 border-r-12 border-b-12 border-(--bg-surface)`);
 
 export default function Hero() {
   return (
       <header className="hero">
-        <div
-            className="hero__layout">
+        <Container className="hero__layout">
           <div className="hero__column">
             <div className="mb-2" dangerouslySetInnerHTML={{__html: hero.tag.html}}/>
             <h1 className="text-5xl font-bold mb-6">{hero.title.text}</h1>
@@ -39,7 +39,7 @@ export default function Hero() {
             <div className={clsx(corners, 'right-0 bottom-0')}/>
             <div className={clsx(corners, '-rotate-90 right-0 top-3')}/>
           </div>
-        </div>
+        </Container>
       </header>
   );
 }
