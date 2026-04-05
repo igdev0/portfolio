@@ -1,4 +1,4 @@
-const brand = "<span><</span>IGDev<span>/></span>";
+const brand = "<span><</span><strong>IGDev</strong><span>/></span>";
 
 const menu = {
   brand: {
