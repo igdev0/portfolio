@@ -2,7 +2,7 @@
 
 @layer components {
     .button {
-        @apply px-4 py-2 cursor-pointer transition-all;
+        @apply inline-flex px-3 py-2 font-bold rounded-md items-center;
 
         &.button--default {
             @apply bg-zinc-800 text-white;

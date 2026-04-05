@@ -1,5 +1,6 @@
 import Link from 'next/dist/client/link';
 import {PropsWithChildren} from 'react';
+import "../button/index.css";
 import clsx from 'clsx';
 
 type Variant = "solid" | "outline" | "default";
@@ -9,19 +10,15 @@ export default function LinkButton({href, children, className, variant = "defaul
   className?: string,
   variant?: Variant
 }) {
-  let variantCls = 'inline-flex px-3 py-2 font-bold rounded-md items-center ';
-  switch (variant) {
-    case 'solid':
-      variantCls += clsx('bg-accent-500');
-      break;
-    case 'outline':
-      variantCls += clsx('border-2');
-      break;
-    default:
-      variantCls += clsx('');
-      break;
+  let variantCls = 'button';
+
+  if (variant) {
+    variantCls += clsx(` button--${variant}`);
   }
-  className && (variantCls += className);
+
+  if (className) {
+    variantCls += " " + className;
+  }
 
   return (
       <Link
