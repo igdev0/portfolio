@@ -11,7 +11,7 @@ const hero = {
   cta: {
     first: {
       href: "#about",
-      text: "about"
+      text: "About me"
     },
     second: {
       text: "Lets Chat",
