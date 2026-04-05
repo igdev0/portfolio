@@ -5,7 +5,7 @@
         @apply inline-flex px-3 py-2 font-bold rounded-md items-center;
 
         &.button--default {
-            @apply bg-zinc-800 text-white;
+            @apply bg-default-900 text-default;
         }
 
         &.button--outline {

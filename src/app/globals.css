@@ -25,6 +25,11 @@
     --color-accent-500: var(--color-indigo-500);
     --color-accent-600: var(--color-indigo-600);
 
+    --color-default: var(--color-white);
+    --color-default-50: var(--color-gray-50);
+    --color-default-300: var(--color-gray-300);
+    --color-default-900: var(--color-gray-900);
+
     --fg-default: var(--color-gray-900);
     --bg-default: var(--color-white);
     --bg-surface: var(--color-indigo-100);
