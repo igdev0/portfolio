@@ -5,7 +5,7 @@ import Statement from '@/app/components/ui/statement';
 import {Image} from 'next/dist/client/image-component';
 import "./index.css";
 
-const corners = clsx(`absolute h-1/7 w-1/7 m-4 border-r-12 border-b-12 border-(--bg-surface)`);
+const corners = clsx(`absolute h-1/9 w-1/9 m-4 border-r-12 border-b-12 border-(--bg-surface)`);
 
 export default function Hero() {
   return (
