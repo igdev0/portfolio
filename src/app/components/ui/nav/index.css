@@ -35,10 +35,8 @@
             }
 
             .nav__link.internal {
-                display: none;
-                @media screen and (min-width: 600px) {
-                    display: flex;
-                }
+                @apply hidden;
+                @apply sm:flex;
             }
         }
 
