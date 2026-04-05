@@ -2,7 +2,6 @@
 import Link from 'next/dist/client/link';
 import "./index.css";
 import {useTheme} from 'next-themes';
-import Icon from '@/app/components/ui/icon';
 import menu from '@/config/content/menu';
 import clsx from 'clsx';
 import {useState} from 'react';
@@ -26,17 +25,18 @@ export default function Nav() {
                   </Link>
               ))
             }
+          </div>
+          <div className="nav__buttons">
             <IconLink icon="github" href={menu.navigation.social.github.href}/>
             <IconButton type="sun" onClick={() => setTheme(theme === 'dark' ? "light" : "dark")}/>
-            <button className="menu__toggle  cursor-pointer menu__toggle w-6" onClick={() => setMenuOpen(true)}><Icon
-                type="menu"/></button>
+            <IconButton className="nav__drawer-toggler" type="menu" onClick={() => setMenuOpen(true)}></IconButton>
           </div>
-          <div className={clsx('menu__drawer', menuOpen ? 'open' : 'close')}>
+          <div className={clsx('nav__drawer', menuOpen ? 'open' : 'close')}>
             <IconButton type="menu" onClick={() => setMenuOpen(false)}/>
             {
               Object.entries(menu.navigation.list).map(([menuItemKey, entry]) => (
                   <Link draggable={false} key={menuItemKey}
-                        className={clsx(`menu__drawer-item`, entry.text && "internal", "py-1", "flex justify-end")}
+                        className={clsx(`nav__drawer-link`, entry.text && "internal", "py-1", "flex justify-end")}
                         href={entry.href}>
                     {entry.text}
                   </Link>

@@ -18,7 +18,10 @@
         }
 
         .nav__list {
-            @apply flex justify-between gap-2 sm:gap-6 items-center;
+            display: none;
+            @media screen and (min-width: 600px) {
+                @apply flex justify-between gap-2 sm:gap-6 items-center self-end ml-auto mr-4;
+            }
 
             .nav__link {
                 &:before {
@@ -39,19 +42,23 @@
                     display: flex;
                 }
             }
+        }
 
+        .nav__buttons {
+            @apply grid grid-cols-3 gap-2;
         }
     }
 
-    .menu__toggle {
+    .nav__drawer-toggler {
+
         @media screen and (min-width: 600px) {
             display: none;
         }
     }
 
-    .menu__drawer {
+    .nav__drawer {
         @apply fixed p-4 py-4 transform translate-x-0 right-0 transition-all;
-        @apply bg-(--background) top-0 z-10 border border-(--semigrid) flex flex-col items-end;
+        @apply bg-(--bg-default) top-0 z-10 border border-(--semigrid) flex flex-col items-end;
 
         &.open {
 

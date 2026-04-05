@@ -16,7 +16,7 @@ export default function IconButton({onClick, type, size = "small", className}: I
     cls += clsx(` icon-button--${size}`);
   }
 
-  cls += className ?? "";
+  cls += " " + className ?? "";
 
   return (
       <button className={cls} onClick={onClick}>
