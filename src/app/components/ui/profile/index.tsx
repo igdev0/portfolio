@@ -6,7 +6,7 @@ export default function Profile() {
       <section className="profile">
         <Container>
           <Comment>
-            Profile
+            // Profile
           </Comment>
         </Container>
       </section>

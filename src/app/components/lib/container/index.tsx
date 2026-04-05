@@ -25,8 +25,10 @@ export default function Container({children, className, name = 'default', varian
 
 
   return (
-      <div className={cls}>
-        {children}
+      <div className="px-8">
+        <div className={cls}>
+          {children}
+        </div>
       </div>
   );
 }
