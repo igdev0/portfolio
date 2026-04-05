@@ -27,7 +27,7 @@ export default function Hero() {
             </div>
           </div>
           <div
-              className="hero__column">
+              className="hero__column hero__column--image">
 
             <Image draggable={false} src={hero.card.image.src} width={354} height={393}
                    alt={hero.card.image.alt}/>
