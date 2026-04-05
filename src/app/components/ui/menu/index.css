@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "../../../globals.css";
 
 @layer components {
     .menu {
@@ -18,7 +19,7 @@
 
     .menu__drawer {
         @apply fixed p-4 py-4 transform translate-x-0 right-0 transition-all;
-        @apply bg-(--background) top-0 z-10 border border-(--grid) flex flex-col items-end;
+        @apply bg-(--background) top-0 z-10 border border-(--semigrid) flex flex-col items-end;
 
         &.open {
 
@@ -34,12 +35,11 @@
 
     .menu__brand {
         span {
-            @apply text-indigo-500 px-1 font-bold;
+            @apply text-accent-500 px-1 font-bold;
         }
     }
 
     .menu__item.internal {
-        @apply dark:text-blue-600;
         display: none;
         @media screen and (min-width: 600px) {
             display: flex;
@@ -57,7 +57,7 @@
     .menu__item:hover,
     .menu__brand:hover {
         &:before {
-            @apply text-indigo-500 opacity-100;
+            @apply text-accent-500 opacity-100;
         }
     }
 }

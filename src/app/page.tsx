@@ -1,6 +1,6 @@
 "use client";
-import Menu from '@/components/ui/menu';
-import Hero from '@/components/ui/hero';
+import Menu from '@/app/components/ui/menu';
+import Hero from '@/app/components/ui/hero';
 
 export default function LandingPage() {
 

@@ -3,27 +3,37 @@
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 [data-theme="dark"] {
-    --foreground: var(--color-white);
-    --background: var(--color-gray-800);
-    --bg-secondary: var(--color-indigo-400);
-    --grid: var(--color-gray-600);
+    --fg-default: var(--color-white);
+    --bg-default: var(--color-gray-900);
+    --bg-surface: var(--color-accent-300);
+
+    --semigrid: var(--color-gray-600);
+    --statement: var(--color-accent-300);
+
+    --button-solid: var(--color-accent-600);
 }
 
 @layer base {
     body {
-        @apply dark:bg-gray-800 bg-white dark:text-gray-100 text-gray-900;
+        @apply bg-(--bg-default) text-(--fg-default);
     }
 }
 
 @theme {
-    --spacing: 4px;
-    --color-primary: var(--color-indigo-600);
-    --color-secondary: var(--color-indigo-200);
-    --color-tertiary: var(--color-indigo-100);
-    --foreground: var(--color-gray-900);
-    --background: var(--color-white);
-    --bg-secondary: var(--color-indigo-100);
-    --grid: var(--color-gray-200);
+    --color-accent-50: var(--color-indigo-50);
+    --color-accent-300: var(--color-indigo-300);
+    --color-accent-500: var(--color-indigo-500);
+    --color-accent-600: var(--color-indigo-600);
+
+    --fg-default: var(--color-gray-900);
+    --bg-default: var(--color-white);
+    --bg-surface: var(--color-indigo-100);
+
+    --semigrid: var(--color-gray-200);
     --link: var(--color-white);
     --link-hover: var(--color-gray-600);
+
+    --button-solid: var(--color-accent-500);
+
+    --statement: var(--color-accent-300);
 }

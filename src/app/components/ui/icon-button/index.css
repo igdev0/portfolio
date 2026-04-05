@@ -1,0 +1,14 @@
+@import "../../../globals.css";
+
+@layer components {
+
+    .icon-button {
+        @apply cursor-pointer;
+
+        &.icon-button--solid {}
+
+        &.icon-button--small {
+            @apply w-6;
+        }
+    }
+}

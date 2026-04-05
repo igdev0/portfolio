@@ -1,4 +1,4 @@
-import {IconTypes} from '@/components/ui/icon';
+import {IconTypes} from '@/app/components/ui/icon';
 
 const brand = "<span><</span>IGDev<span>/></span>";
 

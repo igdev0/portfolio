@@ -1,6 +1,7 @@
-import Icon, {IconProps} from '@/components/ui/icon';
+import Icon, {IconProps} from '@/app/components/ui/icon';
 import {JSX} from 'react';
 import clsx from 'clsx';
+import "./index.css";
 
 interface IconButtonProps extends IconProps {
   className?: string;
@@ -9,9 +10,16 @@ interface IconButtonProps extends IconProps {
 }
 
 export default function IconButton({onClick, type, size = "small", className}: IconButtonProps): JSX.Element {
-  const iconButtonClass = size === 'small' ? 'w-6' : undefined;
+  let cls = clsx('icon-button');
+
+  if (size) {
+    cls += clsx(` icon-button--${size}`);
+  }
+
+  cls += className ?? "";
+
   return (
-      <button className={clsx(iconButtonClass, 'cursor-pointer', className)} onClick={onClick}>
+      <button className={cls} onClick={onClick}>
         <Icon type={type}/>
       </button>
   );

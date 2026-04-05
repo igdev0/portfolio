@@ -2,20 +2,23 @@ import Link from 'next/dist/client/link';
 import {PropsWithChildren} from 'react';
 import clsx from 'clsx';
 
-type Variant = "primary" | "secondary" | "default";
+type Variant = "solid" | "outline" | "default";
 
 export default function LinkButton({href, children, className, variant = "default"}: PropsWithChildren & {
   href: string,
   className?: string,
   variant?: Variant
 }) {
-  let variantCls = 'inline-block px-3 py-2 font-bold rounded-md border-2 ';
+  let variantCls = 'inline-flex px-3 py-2 font-bold rounded-md items-center ';
   switch (variant) {
-    case 'primary':
-      variantCls += clsx('bg-(--bg-secondary) border-2 border-primary');
+    case 'solid':
+      variantCls += clsx('bg-accent-500');
+      break;
+    case 'outline':
+      variantCls += clsx('border-2');
       break;
     default:
-      variantCls += clsx('border-2');
+      variantCls += clsx('');
       break;
   }
   className && (variantCls += className);

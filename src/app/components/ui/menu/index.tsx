@@ -2,18 +2,18 @@
 import Link from 'next/dist/client/link';
 import "./index.css";
 import {useTheme} from 'next-themes';
-import Icon from '@/components/ui/icon';
+import Icon from '@/app/components/ui/icon';
 import menu from '@/config/content/menu';
 import clsx from 'clsx';
 import {useState} from 'react';
-import IconButton from '@/components/ui/icon-button';
+import IconButton from '@/app/components/ui/icon-button';
 
 export default function Menu() {
   const {theme, setTheme} = useTheme();
   const [menuOpen, setMenuOpen] = useState(false);
   return (
-      <nav className="w-full border-y border-(--grid) sticky top-0 px-6 z-10 bg-(--background)">
-        <div className="max-w-275 lg:mx-auto px-6 border-x border-(--grid) menu">
+      <nav className="w-full border-y border-(--semigrid) sticky top-0 px-6 z-10 bg-(--bg-default)">
+        <div className="max-w-275 lg:mx-auto px-6 border-x border-(--semigrid) menu">
           <Link draggable={false} className={clsx('menu__brand')} href={menu.brand.href}
                 dangerouslySetInnerHTML={{__html: menu.brand.html}}/>
           <div className="menu__desktop-nav">
