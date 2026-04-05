@@ -3,12 +3,12 @@ import Container from '@/app/components/lib/container';
 
 export default function Profile() {
   return (
-      <section className="profile">
-        <Container>
+      <Container>
+        <section className="profile pt-40">
           <Comment>
             // Profile
           </Comment>
-        </Container>
-      </section>
+        </section>
+      </Container>
   );
 }
