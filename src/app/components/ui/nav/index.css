@@ -17,27 +17,28 @@
             }
         }
 
+        .nav__link {
+            &:before {
+                content: '#';
+                @apply relative right-1 opacity-0 transition-all;
+            }
+
+            &:hover {
+                &:before {
+                    @apply text-accent-500 opacity-100;
+                }
+            }
+        }
+
+        .nav__link.internal {
+            @apply hidden;
+            @apply sm:flex;
+        }
+
         .nav__list {
             @apply hidden;
             @apply sm:flex justify-between gap-2 sm:gap-6 items-center self-center ml-auto mr-4;
 
-            .nav__link {
-                &:before {
-                    content: '#';
-                    @apply relative right-1 opacity-0 transition-all;
-                }
-
-                &:hover {
-                    &:before {
-                        @apply text-accent-500 opacity-100;
-                    }
-                }
-            }
-
-            .nav__link.internal {
-                @apply hidden;
-                @apply sm:flex;
-            }
         }
 
         .nav__buttons {
