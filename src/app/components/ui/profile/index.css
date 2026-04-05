@@ -2,6 +2,6 @@
 
 @layer base {
     .profile {
-        @apply w-full;
+        @apply w-full px-6;
     }
 }
