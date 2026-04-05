@@ -13,7 +13,7 @@
         }
 
         &.button--solid {
-            @apply bg-accent-500 text-white;
+            @apply bg-accent-400 text-white;
             @apply hover:bg-accent-500/90 text-white;
         }
     }

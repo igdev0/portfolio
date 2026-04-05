@@ -23,6 +23,7 @@
 @theme {
     --color-accent-50: var(--color-indigo-50);
     --color-accent-300: var(--color-indigo-300);
+    --color-accent-400: var(--color-indigo-400);
     --color-accent-500: var(--color-indigo-500);
     --color-accent-600: var(--color-indigo-600);
 
