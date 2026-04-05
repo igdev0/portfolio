@@ -5,7 +5,8 @@ import Statement from '@/app/components/ui/statement';
 import {Image} from 'next/dist/client/image-component';
 import "./index.css";
 
-const corners = clsx(`h-10 w-10 m-4 border-r-12 border-b-12 border-(--bg-surface)`);
+const corners = clsx(`absolute h-1/7 w-1/7 m-4 border-r-12 border-b-12 border-(--bg-surface)`);
+
 export default function Hero() {
   return (
       <header className="hero">
@@ -31,12 +32,12 @@ export default function Hero() {
 
             <Image draggable={false} src={hero.card.image.src} width={354} height={393}
                    alt={hero.card.image.alt}/>
-            <div className="bg-(--bg-surface) w-60 h-60 absolute -z-1 top-0 left-0 right-0 bottom-0 m-auto"/>
-            <div className={clsx(corners, 'rotate-180 absolute top-3 left-0')}/>
+            <div className="bg-(--bg-surface) w-3/5 h-3/5 absolute -z-1 top-0 left-0 right-0 bottom-0 m-auto"/>
+            <div className={clsx(corners, 'rotate-180 top-3 left-0')}/>
             <div
-                className={clsx(corners, 'rotate-90 absolute left-0 bottom-0')}/>
-            <div className={clsx(corners, 'absolute right-0 bottom-0')}/>
-            <div className={clsx(corners, '-rotate-90 absolute right-0 top-3')}/>
+                className={clsx(corners, 'rotate-90 left-0 bottom-0')}/>
+            <div className={clsx(corners, 'right-0 bottom-0')}/>
+            <div className={clsx(corners, '-rotate-90 right-0 top-3')}/>
           </div>
         </div>
       </header>

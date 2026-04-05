@@ -12,7 +12,11 @@
             }
 
             .hero__column.hero__column--image {
-                @apply flex items-center self-end sm:w-full justify-normal w-max sm:justify-end sm:order-2 relative sm:max-w-[400] ml-auto md:mr-17 z-0;
+                @apply flex items-center self-end sm:w-full justify-normal w-max sm:justify-center sm:order-2 relative sm:max-w-[400] ml-auto md:mr-17 z-0 aspect-square;
+                img {
+                    object-fit: cover;
+                    width: 100%;
+                }
             }
 
         }
