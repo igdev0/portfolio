@@ -3,8 +3,9 @@
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 [data-theme="dark"] {
-    --fg-default: var(--color-white);
-    --bg-default: var(--color-gray-900);
+    --fg-default: var(--color-default);
+    --bg-default: var(--color-default-900);
+
     --bg-surface: var(--color-accent-300);
 
     --semigrid: var(--color-gray-600);
@@ -30,7 +31,7 @@
     --color-default-300: var(--color-gray-300);
     --color-default-900: var(--color-gray-900);
 
-    --fg-default: var(--color-gray-900);
+    --fg-default: var(--color-default-900);
     --bg-default: var(--color-white);
     --bg-surface: var(--color-indigo-100);
 
@@ -40,5 +41,4 @@
 
     --button-solid: var(--color-accent-500);
 
-    --statement: var(--color-accent-300);
 }
