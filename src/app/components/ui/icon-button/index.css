@@ -3,13 +3,14 @@
 @layer components {
 
     .icon-button {
+        @apply flex justify-center items-center;
         @apply cursor-pointer;
 
         &.icon-button--solid {
         }
 
         &.icon-button--small {
-            @apply w-6;
+            @apply w-8 h-8 p-1;
         }
     }
 }

@@ -8,7 +8,7 @@
         .nav__layout {
             @apply max-w-275 lg:mx-auto px-6 border-x border-(--semigrid);
             @apply w-full relative z-10;
-            @apply flex justify-between py-4;
+            @apply flex justify-between py-4 items-center;
         }
 
         .nav__brand {
@@ -18,10 +18,8 @@
         }
 
         .nav__list {
-            display: none;
-            @media screen and (min-width: 600px) {
-                @apply flex justify-between gap-2 sm:gap-6 items-center self-end ml-auto mr-4;
-            }
+            @apply hidden;
+            @apply sm:flex justify-between gap-2 sm:gap-6 items-center self-center ml-auto mr-4;
 
             .nav__link {
                 &:before {
@@ -45,15 +43,12 @@
         }
 
         .nav__buttons {
-            @apply grid grid-cols-3 gap-2;
+            @apply grid grid-cols-3 sm:grid-cols-2 gap-2;
         }
     }
 
     .nav__drawer-toggler {
-
-        @media screen and (min-width: 600px) {
-            display: none;
-        }
+        @apply sm:hidden!; /**Fix this thing, perhaps remove from link-button css the "flex" prop*/
     }
 
     .nav__drawer {
@@ -61,10 +56,7 @@
         @apply bg-(--bg-default) top-0 z-10 border border-(--semigrid) flex flex-col items-end;
 
         &.open {
-
-            @media screen and (min-width: 600px) {
-                @apply translate-x-full;
-            }
+            @apply md:translate-x-full;
         }
 
         &.close {
