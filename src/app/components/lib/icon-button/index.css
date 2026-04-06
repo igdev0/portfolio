@@ -5,8 +5,9 @@
     .icon-button {
         @apply flex justify-center items-center transition-all;
         @apply cursor-pointer;
+        @apply text-(--fg-default);
         &:hover {
-            @apply opacity-80;
+            @apply text-(--fg-default)/80;
         }
 
         &.icon-button--solid {
