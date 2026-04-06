@@ -12,6 +12,9 @@
 }
 
 @layer base {
+    * {
+        @apply transition-all;
+    }
     body {
         @apply bg-(--bg-default) text-(--fg-default);
     }

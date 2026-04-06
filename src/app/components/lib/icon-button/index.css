@@ -3,8 +3,11 @@
 @layer components {
 
     .icon-button {
-        @apply flex justify-center items-center;
+        @apply flex justify-center items-center transition-all;
         @apply cursor-pointer;
+        &:hover {
+            @apply opacity-80;
+        }
 
         &.icon-button--solid {
         }
