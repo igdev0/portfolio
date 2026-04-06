@@ -2,7 +2,12 @@
 
 @layer components {
     .nav {
-        @apply w-full border-y border-(--semigrid) sticky top-0 z-10 bg-(--bg-default);
+        @apply w-full border-y border-(--semigrid) sticky top-0 z-10;
+        &:before {
+            content: '';
+            @apply absolute top-0 left-0 right-0 bottom-0 bg-(--bg-default)/70 backdrop-blur-2xl;
+        }
+
 
         .nav__layout {
             @apply w-full relative z-10;

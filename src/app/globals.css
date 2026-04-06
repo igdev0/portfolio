@@ -5,12 +5,9 @@
 [data-theme="dark"] {
     --fg-default: var(--color-default);
     --bg-default: var(--color-default-900);
-
     --bg-surface: var(--color-accent-300);
-
-    --semigrid: var(--color-gray-600);
+    --semigrid: var(--color-gray-800);
     --statement: var(--color-accent-300);
-
     --button-solid: var(--color-accent-600);
 }
 
