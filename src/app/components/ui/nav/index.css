@@ -22,12 +22,15 @@
         }
 
         .nav__link {
+            @apply text-(--fg-default);
+
             &:before {
                 content: '#';
                 @apply relative right-1 opacity-0 transition-all;
             }
 
             &:hover {
+                @apply text-(--fg-default)/80;
                 &:before {
                     @apply text-accent-500 opacity-100;
                 }
