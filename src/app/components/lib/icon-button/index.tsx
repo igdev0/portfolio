@@ -1,26 +1,31 @@
-import Icon, {IconProps} from '@/app/components/lib/icon';
+import Icon, {IconTypes} from '@/app/components/lib/icon';
 import {JSX} from 'react';
-import clsx from 'clsx';
 import "./index.css";
+import {cva, VariantProps} from 'class-variance-authority';
+import clsx from 'clsx';
 
-interface IconButtonProps extends IconProps {
-  className?: string;
+const iconButtonVariants = cva('icon-button', {
+  variants: {
+    size: {
+      sm: 'sm'
+    }
+  },
+  defaultVariants: {
+    size: 'sm'
+  }
+});
+
+interface IconButtonProps extends VariantProps<typeof iconButtonVariants> {
   onClick?: () => void;
-  size?: "small";
+  className?: string;
+  icon: IconTypes;
 }
 
-export default function IconButton({onClick, type, size = "small", className}: IconButtonProps): JSX.Element {
-  let cls = clsx('icon-button');
-
-  if (size) {
-    cls += clsx(` icon-button--${size}`);
-  }
-
-  cls += " " + (className ?? "");
+export default function IconButton({onClick, icon, className, ...props}: IconButtonProps): JSX.Element {
 
   return (
-      <button className={cls} onClick={onClick}>
-        <Icon type={type}/>
+      <button className={clsx(iconButtonVariants(props), className)} onClick={onClick}>
+        <Icon type={icon}/>
       </button>
   );
 }

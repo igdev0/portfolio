@@ -10,10 +10,7 @@
             @apply text-(--fg-default)/80;
         }
 
-        &.icon-button--solid {
-        }
-
-        &.icon-button--small {
+        &.icon-button--sm {
             @apply w-8 h-8 p-1;
         }
     }
