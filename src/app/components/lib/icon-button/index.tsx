@@ -1,5 +1,4 @@
 import Icon, {IconTypes} from '@/app/components/lib/icon';
-import {JSX} from 'react';
 import "./index.css";
 import {cva, VariantProps} from 'class-variance-authority';
 import clsx from 'clsx';
@@ -21,7 +20,7 @@ interface IconButtonProps extends VariantProps<typeof iconButtonVariants> {
   icon: IconTypes;
 }
 
-export default function IconButton({onClick, icon, className, ...props}: IconButtonProps): JSX.Element {
+export default function IconButton({onClick, icon, className, ...props}: IconButtonProps) {
 
   return (
       <button className={clsx(iconButtonVariants(props), className)} onClick={onClick}>
