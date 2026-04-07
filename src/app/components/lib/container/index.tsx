@@ -18,11 +18,12 @@ export interface ContainerProps extends PropsWithChildren, VariantProps<typeof c
   className?: string;
 }
 
-export default function Container({children, className, name = 'default', ...props}: ContainerProps) {
 
+export default function Container(props: ContainerProps) {
+  const {children, className, name = 'default', ...variants} = props;
   return (
       <div className="px-8">
-        <div className={`@container/${name} ${containerVariants(props)}` + ` ${className}`}>
+        <div className={`@container/${name} ${containerVariants(variants)}` + ` ${className}`}>
           {children}
         </div>
       </div>

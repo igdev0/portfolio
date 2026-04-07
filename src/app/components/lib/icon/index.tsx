@@ -31,7 +31,8 @@ const iconsMap: Record<IconNames, ComponentType<SVGProps<SVGSVGElement>>> = {
   menu: Bars3Icon,
 };
 
-export default function Icon({name}: IconProps) {
+export default function Icon(props: IconProps) {
+  const {name} = props;
   const Element = iconsMap[name];
 
   return (

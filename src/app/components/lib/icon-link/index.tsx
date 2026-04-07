@@ -1,23 +1,18 @@
 import Link from 'next/dist/client/link';
 import Icon, {IconNames} from '@/app/components/lib/icon';
 import "../icon-button/index.css";
-import clsx from 'clsx';
+import {AppLinkProps} from '@/app/components/lib/link';
+import {VariantProps} from 'class-variance-authority';
+import {iconButtonVariants} from '@/app/components/lib/icon-button';
 
-export interface IconLinkProps {
+export interface IconLinkProps extends AppLinkProps, VariantProps<typeof iconButtonVariants> {
   icon: IconNames;
-  href: string;
-  className?: string;
 }
 
 export default function IconLink(props: IconLinkProps) {
-  let cls = clsx("icon-button");
-
-  if (props.className) {
-    cls += " " + (props.className ?? "");
-  }
-
+  const {className = '', icon, ...variants} = props;
   return (
-      <Link className={cls} href={props.href}>
+      <Link className={`${iconButtonVariants(variants)} ${className}`} href={props.href}>
         <Icon name={props.icon}/>
       </Link>
   );

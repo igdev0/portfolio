@@ -3,7 +3,7 @@ import "./index.css";
 import {cva, VariantProps} from 'class-variance-authority';
 import clsx from 'clsx';
 
-const iconButtonVariants = cva('icon-button', {
+export const iconButtonVariants = cva('icon-button', {
   variants: {
     size: {
       sm: 'sm'
@@ -14,16 +14,16 @@ const iconButtonVariants = cva('icon-button', {
   }
 });
 
-interface IconButtonProps extends VariantProps<typeof iconButtonVariants> {
+export interface IconButtonProps extends VariantProps<typeof iconButtonVariants> {
   onClick?: () => void;
   className?: string;
   icon: IconNames;
 }
 
-export default function IconButton({onClick, icon, className, ...props}: IconButtonProps) {
-
+export default function IconButton(props: IconButtonProps) {
+  const {onClick, icon, className, ...variants} = props;
   return (
-      <button className={clsx(iconButtonVariants(props), className)} onClick={onClick}>
+      <button className={clsx(iconButtonVariants(variants), className)} onClick={onClick}>
         <Icon name={icon}/>
       </button>
   );
