@@ -2,11 +2,11 @@ import {PropsWithChildren} from 'react';
 import "./index.css";
 import {cva, VariantProps} from 'class-variance-authority';
 
-const buttonVariants = cva('button', {
+export const buttonVariants = cva('button', {
   variants: {
     variant: {
-      solid: 'solid',
-      outline: 'outline',
+      solid: 'button--solid',
+      outline: 'button--outline',
     }
   },
   defaultVariants: {
@@ -15,11 +15,12 @@ const buttonVariants = cva('button', {
 });
 
 interface ButtonProps extends PropsWithChildren, VariantProps<typeof buttonVariants> {
+  className?: string;
 }
 
-export default function Button(props: ButtonProps) {
+export default function Button({className, ...props}: ButtonProps) {
   return (
-      <button className={buttonVariants(props)}>
+      <button className={`${className} ${buttonVariants(props)}`}>
         {props.children}
       </button>
   );

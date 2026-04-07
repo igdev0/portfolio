@@ -1,30 +1,17 @@
-import Link from 'next/dist/client/link';
-import {PropsWithChildren} from 'react';
 import "../button/index.css";
-import clsx from 'clsx';
+import AppLink, {AppLinkProps} from '@/app/components/lib/link';
+import {buttonVariants} from '@/app/components/lib/button';
+import {VariantProps} from 'class-variance-authority';
 
-type Variant = "solid" | "outline" | "default";
+interface LinkButtonProps extends AppLinkProps, VariantProps<typeof buttonVariants> {
+}
 
-export default function LinkButton({href, children, className, variant = "default"}: PropsWithChildren & {
-  href: string,
-  className?: string,
-  variant?: Variant
-}) {
-  let variantCls = 'button';
-
-  if (variant) {
-    variantCls += clsx(` button--${variant}`);
-  }
-
-  if (className) {
-    variantCls += " " + className;
-  }
-
+export default function LinkButton({href, children, className, ...props}: LinkButtonProps) {
   return (
-      <Link
-          className={variantCls}
+      <AppLink
+          className={`${buttonVariants(props)} ${className}`}
           href={href}>
         {children}
-      </Link>
+      </AppLink>
   );
 }

@@ -10,7 +10,7 @@ export default function Profile() {
             // Profile
           </Comment>
           <Title size="4xl" weight="bold">
-            Hello
+            About
           </Title>
         </section>
       </Container>

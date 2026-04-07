@@ -18,6 +18,8 @@
     body {
         @apply bg-(--bg-default) text-(--fg-default);
     }
+
+    .example {}
 }
 
 @theme {
