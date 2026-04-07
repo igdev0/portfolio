@@ -1,24 +1,31 @@
 import {PropsWithChildren} from 'react';
 import "./index.css";
-import clsx from 'clsx';
+import {cva, VariantProps} from 'class-variance-authority';
 
-interface TitleProps extends PropsWithChildren {
-  size?: "5xl" | "4xl";
-  weight?: "normal" | "bold" | "semibold";
-  as?: "h1" | "h2";
+export const titleVariants = cva(['text'], {
+  variants: {
+    size: {
+      '4xl': "text-4xl",
+      '5xl': "text-5xl",
+    },
+    weight: {
+      bold: 'font-bold',
+      semibold: 'font-semibold',
+    }
+  },
+  defaultVariants: {
+    size: '5xl',
+    weight: "semibold"
+  }
+});
+
+interface TitleProps extends PropsWithChildren, VariantProps<typeof titleVariants> {
 }
 
-export default function Title({size = '5xl', weight = 'semibold', children}: TitleProps) {
-  let cls = clsx("title");
-  if(size) {
-    cls += clsx(` title--size-${size}`);
-  }
 
-  if(weight) {
-    cls += clsx(` title--weight-${weight}`);
-  }
+export default function Title(props: TitleProps) {
 
   return (
-      <h1 className={cls}>{children}</h1>
+      <h1 className={titleVariants(props)}>{props.children}</h1>
   );
 }
