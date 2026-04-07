@@ -11,8 +11,9 @@ export interface AppLinkProps extends PropsWithChildren, VariantProps<typeof lin
   href: string;
 }
 
-export default function AppLink({className, children, href, ...props}: AppLinkProps) {
+export default function AppLink(props: AppLinkProps) {
+  const {className, children, href, ...variants} = props;
   return (
-      <Link href={href} className={`${linkVariants(props)} ${className}`}>{children}</Link>
+      <Link href={href} className={`${linkVariants(variants)} ${className}`}>{children}</Link>
   );
 }
