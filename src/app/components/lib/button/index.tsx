@@ -20,7 +20,7 @@ interface ButtonProps extends PropsWithChildren, VariantProps<typeof buttonVaria
 
 export default function Button({className, ...props}: ButtonProps) {
   return (
-      <button className={`${className} ${buttonVariants(props)}`}>
+      <button className={`${buttonVariants(props)} ${className}`}>
         {props.children}
       </button>
   );
