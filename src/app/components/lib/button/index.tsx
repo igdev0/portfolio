@@ -14,8 +14,9 @@ export const buttonVariants = cva('button', {
   }
 });
 
-interface ButtonProps extends PropsWithChildren, VariantProps<typeof buttonVariants> {
+export interface ButtonProps extends PropsWithChildren, VariantProps<typeof buttonVariants> {
   className?: string;
+  onClick?: () => void;
 }
 
 export default function Button(props: ButtonProps) {
