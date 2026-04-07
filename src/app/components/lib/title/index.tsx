@@ -21,12 +21,13 @@ export const titleVariants = cva(['text'], {
 });
 
 interface TitleProps extends PropsWithChildren, VariantProps<typeof titleVariants> {
+  className?: string;
 }
 
 
 export default function Title(props: TitleProps) {
-
+  const {className, children, ...variants} = props;
   return (
-      <h1 className={titleVariants(props)}>{props.children}</h1>
+      <h1 className={`${titleVariants(variants)} ${className}`}>{children}</h1>
   );
 }
