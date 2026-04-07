@@ -1,32 +1,30 @@
-import clsx from 'clsx';
 import {PropsWithChildren} from 'react';
 import "./index.css";
+import {cva, VariantProps} from 'class-variance-authority';
 
-interface ContainerProps extends PropsWithChildren {
+
+const containerVariants = cva('container', {
+  variants: {
+    variant: {
+      bordered: "border-x border-(--semigrid) mx-auto px-9"
+    }
+  },
+  defaultVariants: {
+    variant: "bordered"
+  }
+});
+
+export interface ContainerProps extends PropsWithChildren, VariantProps<typeof containerVariants> {
   name?: string;
   className?: string;
-  variant?: "default";
 }
 
-export default function Container({children, className, name = 'default', variant = 'default'}: ContainerProps) {
-  let cls = clsx("container");
-
-  if (name) {
-    cls += clsx(` @container/${name}`);
-  }
-
-  if (variant) {
-    cls += ` ${variant}`;
-  }
-
-  if (className) {
-    cls += ` ${className}`;
-  }
+export default function Container({children, className, name = 'default', ...props}: ContainerProps) {
 
 
   return (
       <div className="px-8">
-        <div className={cls}>
+        <div className={`@container/${name} ${containerVariants(props)}` + ` ${className}`}>
           {children}
         </div>
       </div>

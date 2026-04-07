@@ -2,7 +2,7 @@
 
 @layer components {
     .container {
-        &.default {
+        &.bordered {
             @apply border-x border-(--semigrid) mx-auto px-9;
         }
     }
