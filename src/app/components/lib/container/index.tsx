@@ -2,7 +2,6 @@ import {PropsWithChildren} from 'react';
 import "./index.css";
 import {cva, VariantProps} from 'class-variance-authority';
 
-
 const containerVariants = cva('container', {
   variants: {
     variant: {
@@ -20,7 +19,6 @@ export interface ContainerProps extends PropsWithChildren, VariantProps<typeof c
 }
 
 export default function Container({children, className, name = 'default', ...props}: ContainerProps) {
-
 
   return (
       <div className="px-8">
