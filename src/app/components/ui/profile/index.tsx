@@ -9,7 +9,7 @@ export default function Profile() {
           <Comment>
             // Profile
           </Comment>
-          <Title>
+          <Title size="4xl" weight="bold">
             Hello
           </Title>
         </section>

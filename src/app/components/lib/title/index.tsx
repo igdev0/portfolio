@@ -9,6 +9,7 @@ export const titleVariants = cva(['text'], {
       '5xl': "text-5xl",
     },
     weight: {
+      normal: 'font-normal',
       bold: 'font-bold',
       semibold: 'font-semibold',
     }
