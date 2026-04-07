@@ -1,15 +1,26 @@
 import {PropsWithChildren} from 'react';
 import "./index.css";
-import clsx from 'clsx';
+import {cva, VariantProps} from 'class-variance-authority';
 
-interface ButtonProps extends PropsWithChildren {
-  variant?: 'primary' | 'default' | 'outline';
+const buttonVariants = cva('button', {
+  variants: {
+    variant: {
+      solid: 'solid',
+      outline: 'outline',
+    }
+  },
+  defaultVariants: {
+    variant: "solid"
+  }
+});
+
+interface ButtonProps extends PropsWithChildren, VariantProps<typeof buttonVariants> {
 }
 
-export default function Button({variant = "primary", children}: ButtonProps) {
+export default function Button(props: ButtonProps) {
   return (
-      <button className={clsx(`button button--${variant}`)}>
-        {children}
+      <button className={buttonVariants(props)}>
+        {props.children}
       </button>
   );
 }
