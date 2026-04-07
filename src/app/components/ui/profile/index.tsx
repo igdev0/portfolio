@@ -1,5 +1,6 @@
 import Comment from '@/app/components/lib/comment';
 import Container from '@/app/components/lib/container';
+import Title from '@/app/components/lib/title';
 
 export default function Profile() {
   return (
@@ -8,6 +9,9 @@ export default function Profile() {
           <Comment>
             // Profile
           </Comment>
+          <Title>
+            Hello
+          </Title>
         </section>
       </Container>
   );

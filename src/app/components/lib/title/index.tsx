@@ -1,12 +1,24 @@
 import {PropsWithChildren} from 'react';
+import "./index.css";
+import clsx from 'clsx';
 
 interface TitleProps extends PropsWithChildren {
-  size?: "";
-  as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+  size?: "5xl" | "4xl";
+  weight?: "normal" | "bold" | "semibold";
+  as?: "h1" | "h2";
 }
 
-export default function Title(props: TitleProps) {
+export default function Title({size = '5xl', weight = 'semibold', children}: TitleProps) {
+  let cls = clsx("title");
+  if(size) {
+    cls += clsx(` title--size-${size}`);
+  }
+
+  if(weight) {
+    cls += clsx(` title--weight-${weight}`);
+  }
+
   return (
-      <h1 className="text-3xl">{props.children}</h1>
+      <h1 className={cls}>{children}</h1>
   );
 }
