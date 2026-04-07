@@ -1,17 +1,21 @@
 import {PropsWithChildren} from 'react';
-import clsx from 'clsx';
 import "./index.css";
+import {cva} from 'class-variance-authority';
 
 interface Props extends PropsWithChildren {
   className?: string;
 }
 
+export const statementVariants = cva('statement', {
+  variants: {}
+});
+
 export default function Statement(props: Props) {
-  let boxCls = clsx('statement', props.className);
+  const {className = '', children, ...variants} = props;
   return (
-      <div className={boxCls}>
+      <div className={`${statementVariants(variants)} ${className}`}>
         <p>
-          {props.children}
+          {children}
         </p>
       </div>
   );

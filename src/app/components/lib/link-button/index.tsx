@@ -6,10 +6,11 @@ import {VariantProps} from 'class-variance-authority';
 interface LinkButtonProps extends AppLinkProps, VariantProps<typeof buttonVariants> {
 }
 
-export default function LinkButton({href, children, className, ...props}: LinkButtonProps) {
+export default function LinkButton(props: LinkButtonProps) {
+  const {href, children, className = '', ...variants} = props;
   return (
       <AppLink
-          className={`${buttonVariants(props)} ${className}`}
+          className={`${buttonVariants(variants)} ${className}`}
           href={href}>
         {children}
       </AppLink>
