@@ -1,10 +1,10 @@
 import Link from 'next/dist/client/link';
-import Icon, {IconTypes} from '@/app/components/lib/icon';
+import Icon, {IconNames} from '@/app/components/lib/icon';
 import "../icon-button/index.css";
 import clsx from 'clsx';
 
 export interface IconLinkProps {
-  icon: IconTypes;
+  icon: IconNames;
   href: string;
   className?: string;
 }
@@ -18,7 +18,7 @@ export default function IconLink(props: IconLinkProps) {
 
   return (
       <Link className={cls} href={props.href}>
-        <Icon type={props.icon}/>
+        <Icon name={props.icon}/>
       </Link>
   );
 }
