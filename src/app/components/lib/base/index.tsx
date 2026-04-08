@@ -1,19 +1,20 @@
-import {PropsWithChildren} from 'react';
-import {cva, VariantProps} from 'class-variance-authority';
+import {type} from 'arktype';
+import {ForwardedRef} from 'react';
 
-export const baseVariants = cva('base', {
-  variants: {}
+export const baseProps = type({
+  className: 'string',
+  as: "'div'|'p'|'button'",
+  'children?': 'string|string[]',
 });
 
-export interface BaseProps extends PropsWithChildren, VariantProps<typeof baseVariants> {
-  className?: string;
-}
+export type BaseProps = typeof baseProps.infer;
 
-export default function Base(props: BaseProps) {
-  const {children, className = '', ...variants} = props;
+export default function Base(props: BaseProps, ref: ForwardedRef<any>) {
+  const {children, className = '', as: Element = 'div'} = props;
+
   return (
-      <div className={`${baseVariants(variants)} ${className}`}>
+      <Element ref={ref} className={className}>
         {children}
-      </div>
+      </Element>
   );
 }
