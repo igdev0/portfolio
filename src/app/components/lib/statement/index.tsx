@@ -14,9 +14,7 @@ export default function Statement(props: Props) {
   const {className = '', children, ...variants} = props;
   return (
       <div className={`${statementVariants(variants)} ${className}`}>
-        <p>
-          {children}
-        </p>
+        {children}
       </div>
   );
 }
