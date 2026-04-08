@@ -5,7 +5,8 @@ import Statement from '@/app/components/lib/statement';
 import {Image} from 'next/dist/client/image-component';
 import "./index.css";
 import Container from '@/app/components/lib/container';
-import Title from '@/app/components/lib/title';
+import Base from '@/app/components/lib/box';
+import AppText from '@/app/components/lib/text';
 
 const corners = clsx(`absolute h-1/9 w-1/9 m-4 border-r-12 border-b-12 border-(--bg-surface)`);
 
@@ -14,13 +15,13 @@ export default function Hero() {
       <header className="hero">
         <Container className="hero__layout">
           <div className="hero__column">
-            <div className="mb-2" dangerouslySetInnerHTML={{__html: hero.tag.html}}/>
-            <Title size="5xl"
-                   weight="bold"
-                   className="mb-6">{hero.title.text}
-            </Title>
-            <Statement className="mb-6 text-left max-w-96">
-              <span dangerouslySetInnerHTML={{__html: hero.statement.text}}/>
+            <Base className="mb-2" html={hero.tag.html}/>
+            <AppText size="5xl"
+                     weight="bold"
+                     className="mb-6">{hero.title.text}
+            </AppText>
+            <Statement>
+              <Base className="mb-6 text-left max-w-96" as="span" html={hero.statement.text}/>
             </Statement>
             <div className="flex gap-4">
               <LinkButton variant="outline" href="#about">

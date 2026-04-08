@@ -1,6 +1,6 @@
 import Comment from '@/app/components/lib/comment';
 import Container from '@/app/components/lib/container';
-import Title from '@/app/components/lib/title';
+import AppText from '@/app/components/lib/text';
 
 export default function Profile() {
   return (
@@ -9,9 +9,9 @@ export default function Profile() {
           <Comment>
             // Profile
           </Comment>
-          <Title size="4xl" weight="bold">
+          <AppText size="4xl" weight="bold">
             About
-          </Title>
+          </AppText>
         </section>
       </Container>
   );
