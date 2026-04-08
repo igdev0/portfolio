@@ -1,6 +1,7 @@
 import {PropsWithChildren} from 'react';
 import "./index.css";
 import {cva, VariantProps} from 'class-variance-authority';
+import Base from '@/app/components/lib/base';
 
 export const titleVariants = cva(['text'], {
   variants: {
@@ -28,6 +29,6 @@ interface TitleProps extends PropsWithChildren, VariantProps<typeof titleVariant
 export default function Title(props: TitleProps) {
   const {className, children, ...variants} = props;
   return (
-      <h1 className={`${titleVariants(variants)} ${className}`}>{children}</h1>
+      <Base as="h1" className={`${titleVariants(variants)} ${className}`}>{children}</Base>
   );
 }

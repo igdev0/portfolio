@@ -1,15 +1,15 @@
 import {type} from 'arktype';
-import {ForwardedRef} from 'react';
+import {ForwardedRef, PropsWithChildren} from 'react';
 
 export const baseProps = type({
   className: 'string',
-  as: "'div'|'p'|'button'",
-  'children?': 'string|string[]',
+  as: "'div'|'p'|'button'|'h1'|'h2'|'h3'|'h4'",
 });
 
-export type BaseProps = typeof baseProps.infer;
+export type BaseProps = typeof baseProps.infer & PropsWithChildren;
 
-export default function Base(props: BaseProps, ref: ForwardedRef<any>) {
+
+export default function Base(props: BaseProps, ref?: ForwardedRef<any>) {
   const {children, className = '', as: Element = 'div'} = props;
 
   return (
