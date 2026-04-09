@@ -2,7 +2,7 @@
 @import "../../../globals.css";
 @layer components {
     .button {
-        @apply inline-flex px-3 py-2 font-bold rounded-md items-center;
+        @apply inline-flex px-4 py-2 font-bold rounded-md items-center;
 
         &.button--default {
             @apply bg-default-900 text-default;
