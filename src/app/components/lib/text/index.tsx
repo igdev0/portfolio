@@ -6,6 +6,7 @@ export const textVariants = cva(['text'], {
   variants: {
     size: {
       'p': "text-sm",
+      '3xl': "text-3xl",
       '4xl': "text-4xl",
       '5xl': "text-5xl",
     },

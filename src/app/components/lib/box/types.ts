@@ -7,7 +7,7 @@ const widthArbitrary = type('string & /^\\[.+\\]$/');    // [300px]
 const widthVar = type('string & /^\\(.+\\)$/');          // (--my-var)
 const widthNumber = type("'0'|'1'|'2'|'3'|'4'|'5'|'6'|'8'|'10'|'12'|'16'|'20'|'24'|'32'|'40'|'48'|'56'|'64'|'72'|'80'|'96'");
 
-export const SemanticTags = type("'div'|'p'|'button'|'h1'|'h2'|'h3'|'h4'|'span'|'header' | 'section'|'html'");
+export const SemanticTags = type("'div'|'p'|'button'|'h1'|'h2'|'h3'|'h4'|'span'|'header' | 'section'|'html'|'statement'");
 export const elementBoundaries = type.scope({
   'className?': 'string',
   'as?': SemanticTags,
