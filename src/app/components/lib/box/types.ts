@@ -48,7 +48,6 @@ export const boxBoundaries = type.scope({
 });
 
 export const BoxProps = type({
-  ...boxBoundaries.export(),
   ...elementBoundaries.export(),
 });
 

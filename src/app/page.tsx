@@ -12,7 +12,7 @@ export default function LandingPage() {
         <Nav/>
         <Hero/>
         <Profile/>
-        <Box w="sm">
+        <Box>
 
         </Box>
         <div style={{width: "100%", height: "5000px"}}/>

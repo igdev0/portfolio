@@ -1,9 +1,10 @@
-import {PropsWithChildren} from 'react';
 import "./index.css";
 import {cva} from 'class-variance-authority';
+import Html from '@/app/components/lib/html';
 
-interface Props extends PropsWithChildren {
+interface Props {
   className?: string;
+  children: string;
 }
 
 export const statementVariants = cva('statement', {
@@ -13,8 +14,8 @@ export const statementVariants = cva('statement', {
 export default function Statement(props: Props) {
   const {className = '', children, ...variants} = props;
   return (
-      <div className={`${statementVariants(variants)} ${className}`}>
+      <Html className={`${statementVariants(variants)} ${className}`}>
         {children}
-      </div>
+      </Html>
   );
 }

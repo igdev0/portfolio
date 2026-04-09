@@ -22,10 +22,8 @@ export default function Hero() {
                      weight="bold"
                      className="mb-6">{hero.title.text}
             </AppText>
-            <Statement>
-              <Html as="p" className="mb-6 text-left max-w-96">
+            <Statement className="mb-6 max-w-96">
                 {hero.statement.text}
-              </Html>
             </Statement>
             <div className="flex gap-4">
               <LinkButton variant="outline" href="#about">
