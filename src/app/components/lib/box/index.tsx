@@ -14,10 +14,12 @@ export default function Box(props: BoxProps & PropsWithChildren) {
   if(components[as as keyof typeof components]) {
     Component = components[as as keyof typeof components];
 
+    // @ts-ignore
     return <Component className={className}>{children}</Component>;
   }
 
   return (
+      // @ts-ignore
       <Component as={props.as} className={className}>
         {children}
       </Component>
