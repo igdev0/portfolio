@@ -2,7 +2,7 @@
 @import "../../../globals.css";
 @layer components {
     .button {
-        @apply inline-flex px-4 py-2 font-bold rounded-md items-center;
+        @apply inline-flex px-4 py-2 font-bold rounded-md items-center gap-3 cursor-pointer;
 
         &.button--default {
             @apply bg-default-900 text-default;
@@ -13,8 +13,23 @@
         }
 
         &.button--solid {
-            @apply bg-accent-400 text-white;
-            @apply hover:bg-accent-500/90 text-white;
+            @apply bg-accent-400 text-white ;
+            &:not(:disabled) {
+                @apply hover:bg-accent-500/90;
+            }
+        }
+
+        &.button--secondary {
+            @apply bg-accent-50  border-2;
+            @apply text-accent-500 border-accent-400;
+
+            &:not(:disabled) {
+                @apply hover:bg-accent-100/90 hover:text-accent-500/90 hover:border-accent-400/90;
+            }
+        }
+
+        &:disabled {
+            @apply opacity-50 cursor-not-allowed;
         }
     }
 }

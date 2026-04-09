@@ -6,6 +6,7 @@ import Box from '@/app/components/lib/box';
 import {profile} from '@/config/content/profile';
 import Html from '@/app/components/lib/html';
 import Statement from '@/app/components/lib/statement';
+import Button from '@/app/components/lib/button';
 
 export default function Profile() {
   return (
@@ -30,7 +31,9 @@ export default function Profile() {
           </Statement>
         </root.div>
         <Box.div>
-
+          <Button icon="github" variant="secondary" disabled={false}>
+            PRO Languages
+          </Button>
         </Box.div>
       </Container>
   );
