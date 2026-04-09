@@ -9,10 +9,10 @@ export default function Profile() {
   return (
       <Container>
         <Box as="section" className="profile pt-40">
-          <Comment>
+          <Comment className="mb-3">
             {profile.tag.value}
           </Comment>
-          <AppText className="mt-4" size="4xl" weight="bold">
+          <AppText className="mb-6" size="4xl" weight="bold">
             {profile.title.value}
           </AppText>
           <Html className="mt-4">

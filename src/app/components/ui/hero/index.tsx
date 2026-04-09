@@ -6,8 +6,8 @@ import {Image} from 'next/dist/client/image-component';
 import "./index.css";
 import Container from '@/app/components/lib/container';
 import AppText from '@/app/components/lib/text';
-import Html from '@/app/components/lib/html';
 import Box from '@/app/components/lib/box';
+import Comment from '@/app/components/lib/comment';
 
 const corners = clsx(`absolute h-1/9 w-1/9 m-4 border-r-12 border-b-12 border-(--bg-surface)`);
 
@@ -16,15 +16,15 @@ export default function Hero() {
       <Box className="hero" as="header">
         <Container className="hero__layout">
           <Box className="hero__column">
-            <Html className="comment mb-3">
+            <Comment as="html" className="comment mb-3">
               {hero.tag.value}
-            </Html>
+            </Comment>
             <AppText size="5xl"
                      weight="bold"
                      className="mb-6">{hero.title.value}
             </AppText>
             <Statement className="mb-6 max-w-96">
-                {hero.statement.value}
+              {hero.statement.value}
             </Statement>
             <Box className="flex gap-4">
               <LinkButton variant="outline" href="#about">

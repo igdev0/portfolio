@@ -1,12 +1,25 @@
-import {ForwardedRef, PropsWithChildren} from 'react';
-import {type BoxProps} from '@/app/components/lib/box/types';
+import {PropsWithChildren} from 'react';
+import {type BoxProps, SemanticTags} from '@/app/components/lib/box/types';
+import Html from '@/app/components/lib/html';
 
-export default function Box(props: BoxProps & PropsWithChildren, ref?: ForwardedRef<any>) {
-  const {children, className = '', as: Element = 'div'} = props;
+const components = {
+  html: Html,
+} as const;
+
+export default function Box(props: BoxProps & PropsWithChildren) {
+  const {children, className = '', as = 'div'} = props;
+
+  let Component: typeof Html | typeof SemanticTags.infer = as;
+
+  if(components[as as keyof typeof components]) {
+    Component = components[as as keyof typeof components];
+
+    return <Component className={className}>{children}</Component>;
+  }
 
   return (
-      <Element ref={ref} className={className}>
+      <Component as={props.as} className={className}>
         {children}
-      </Element>
+      </Component>
   );
 }

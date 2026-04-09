@@ -1,11 +1,16 @@
 import {PropsWithChildren} from 'react';
 import "./index.css";
 import Box from '@/app/components/lib/box';
+import {BoxProps} from '@/app/components/lib/box/types';
 
-export default function Comment(props: PropsWithChildren) {
+export type CommentProps = BoxProps & PropsWithChildren;
+
+export default function Comment(props: CommentProps) {
+  const {children, className = ''} = props;
+
   return (
-      <Box as="span" className="comment">
-        {props.children}
+      <Box as={props.as} className={`comment ${className}`}>
+        {children}
       </Box>
-  )
+  );
 }

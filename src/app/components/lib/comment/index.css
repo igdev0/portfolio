@@ -10,6 +10,6 @@
 
 @layer components {
     .comment {
-        @apply text-comment text-sm;
+        @apply text-comment text-sm inline-block;
     }
 }
