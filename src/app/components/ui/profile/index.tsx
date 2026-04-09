@@ -13,7 +13,7 @@ export default function Profile() {
           <Comment className="mb-4">
             {profile.tag.value}
           </Comment>
-          <AppText as="h2" className="mb-6" size="4xl" weight="bold">
+          <AppText as="h2" className="mb-10" size="4xl" weight="bold">
             {profile.title.value}
           </AppText>
           <Html className="text-(--fg-story)">
