@@ -15,7 +15,7 @@ export default function Profile() {
           <AppText className="mb-6" size="4xl" weight="bold">
             {profile.title.value}
           </AppText>
-          <Html className="mt-4">
+          <Html className="mt-4 text-(--fg-story)">
             {profile.bio.value}
           </Html>
         </Box>
