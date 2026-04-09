@@ -4,7 +4,7 @@
 
 [data-theme="dark"] {
     --fg-default: var(--color-default);
-    --fg-story: var(--color-default);
+    --fg-story: var(--color-default-300);
     --bg-default: var(--color-default-900);
     --bg-surface: var(--color-accent-300);
     --semigrid: var(--color-gray-800);
