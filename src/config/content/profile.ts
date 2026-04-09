@@ -6,7 +6,24 @@ export const stack = {
   statement: {
     type: 'statement',
     value: 'I’m always learning something new.'
-  }
+  },
+  tech: {
+    type: 'transition',
+    default: 'PRO Languages',
+    target: {
+      'PRO Languages': [
+        {
+          type: 'tag',
+        }
+      ]
+    },
+    controllers: [
+      {
+        to: 'PRO Languages',
+        icon: 'code',
+      }
+    ]
+  },
 } as const;
 
 export const profile = {
