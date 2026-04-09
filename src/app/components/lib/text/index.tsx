@@ -1,10 +1,11 @@
-import {PropsWithChildren} from 'react';
 import {cva, VariantProps} from 'class-variance-authority';
 import Box from '@/app/components/lib/box';
+import {BoxProps} from '@/app/components/lib/box/types';
 
 export const textVariants = cva(['text'], {
   variants: {
     size: {
+      'p': "text-sm",
       '4xl': "text-4xl",
       '5xl': "text-5xl",
     },
@@ -16,18 +17,15 @@ export const textVariants = cva(['text'], {
   },
   defaultVariants: {
     size: '5xl',
-    weight: "semibold"
+    weight: "normal"
   }
 });
 
-interface TextProps extends PropsWithChildren, VariantProps<typeof textVariants> {
-  className?: string;
-}
-
+type TextProps = BoxProps & VariantProps<typeof textVariants>;
 
 export default function AppText(props: TextProps) {
-  const {className, children, ...variants} = props;
+  const {className, children, as = 'p', ...variants} = props;
   return (
-      <Box as="h1" className={`${textVariants(variants)} ${className}`}>{children}</Box>
+      <Box as={props.as} className={`${textVariants(variants)} ${className}`}>{children}</Box>
   );
 }

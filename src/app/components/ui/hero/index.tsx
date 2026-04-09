@@ -16,15 +16,15 @@ export default function Hero() {
       <Box className="hero" as="header">
         <Container className="hero__layout">
           <Box className="hero__column">
-            <Html className="mb-3 relative">
-              {hero.tag.html}
+            <Html className="comment mb-3">
+              {hero.tag.value}
             </Html>
             <AppText size="5xl"
                      weight="bold"
-                     className="mb-6">{hero.title.text}
+                     className="mb-6">{hero.title.value}
             </AppText>
             <Statement className="mb-6 max-w-96">
-                {hero.statement.text}
+                {hero.statement.value}
             </Statement>
             <Box className="flex gap-4">
               <LinkButton variant="outline" href="#about">
