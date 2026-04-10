@@ -36,6 +36,8 @@
     --color-default: var(--color-white);
     --color-default-50: var(--color-gray-50);
     --color-default-300: var(--color-gray-300);
+    --color-default-400: var(--color-gray-400);
+    --color-default-500: var(--color-gray-500);
     --color-default-600: var(--color-gray-600);
     --color-default-700: var(--color-gray-700);
     --color-default-800: var(--color-gray-800);

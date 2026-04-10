@@ -24,9 +24,9 @@ export interface ButtonProps extends PropsWithChildren, VariantProps<typeof butt
 }
 
 export default function Button(props: ButtonProps) {
-  const {className, children, icon, disabled, ...variants} = props;
+  const {className, children, icon, disabled, onClick, ...variants} = props;
   return (
-      <button className={`${buttonVariants(variants)} ${className}`} disabled={disabled ?? false}>
+      <button className={`${buttonVariants(variants)} ${className}`} disabled={disabled ?? false} onClick={onClick}>
         {icon && <Icon name={icon}/>}
         {children}
       </button>
