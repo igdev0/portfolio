@@ -6,7 +6,10 @@
 
             .tech-stack__card__header {
                 @apply flex justify-start gap-3 items-center pb-4;
-                @apply dark:text-accent-400 text-accent-400;
+
+                svg {
+                    @apply dark:text-accent-500 text-accent-500;
+                }
             }
 
             .tech-stack__card__body {
@@ -17,7 +20,7 @@
 
                     &:before {
                         content: ' ';
-                        @apply size-2 bg-accent-400 mr-2;
+                        @apply size-2 bg-accent-500 mr-2;
                     }
                 }
             }

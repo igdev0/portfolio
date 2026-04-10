@@ -5,7 +5,7 @@ import Box from '@/app/components/lib/box';
 import {profile} from '@/config/content/profile';
 import Html from '@/app/components/lib/html';
 import Statement from '@/app/components/lib/statement';
-import TechStack from '@/app/components/lib/tech-stack';
+import TechStack from '@/app/components/ui/tech-stack';
 
 
 export default function Profile() {
