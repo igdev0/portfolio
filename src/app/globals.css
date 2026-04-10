@@ -11,7 +11,7 @@
     --semigrid: var(--color-gray-700);
     --statement: var(--color-accent-300);
     --button-solid: var(--color-accent-600);
-    --bg-surface-2: var(--color-indigo-900);
+    --bg-surface-2: var(--color-indigo-950);
 }
 
 @layer base {

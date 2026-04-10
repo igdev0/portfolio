@@ -21,7 +21,7 @@ export interface ExperienceProps {
 
 function Tag(props: PropsWithChildren) {
   return (
-      <div className="px-2 py-1 rounded-sm border  border-default-500 bg-(--bg-surface-2)">
+      <div className="px-2 py-1 rounded-sm border  border-default-500 dark:border-default-700 bg-(--bg-surface-2)">
         {props.children}
       </div>
   );
