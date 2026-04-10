@@ -1,7 +1,6 @@
 "use client";
 import Comment from '@/app/components/lib/comment';
 import Container from '@/app/components/lib/container';
-import AppText from '@/app/components/lib/text';
 import Box from '@/app/components/lib/box';
 import {profile} from '@/config/content/profile';
 import Html from '@/app/components/lib/html';
@@ -54,17 +53,17 @@ export default function Profile() {
           <Comment className="mb-4">
             {profile.tag.value}
           </Comment>
-          <AppText as="h2" className="mb-10" size="4xl" weight="bold">
+          <h2 className="text-4xl font-bold mb-10">
             {profile.title.value}
-          </AppText>
+          </h2>
           <Html className="text-(--fg-story)">
             {profile.bio.value}
           </Html>
         </Box>
         <Box as="div" className="mt-20">
-          <Box className="text-3xl font-bold" as="h3">
+          <h3 className="text-3xl font-bold">
             {profile.stack.title.value}
-          </Box>
+          </h3>
           <Statement>
             {profile.stack.statement.value}
           </Statement>

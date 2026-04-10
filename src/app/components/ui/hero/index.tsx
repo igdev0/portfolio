@@ -6,7 +6,6 @@ import Statement from '@/app/components/lib/statement';
 import {Image} from 'next/dist/client/image-component';
 import "./index.css";
 import Container from '@/app/components/lib/container';
-import AppText from '@/app/components/lib/text';
 import Box from '@/app/components/lib/box';
 import Comment from '@/app/components/lib/comment';
 
@@ -21,10 +20,9 @@ export default function Hero() {
             <Comment className="comment mb-3">
               {hero.tag.value}
             </Comment>
-            <AppText size="5xl"
-                     weight="bold"
-                     className="mb-6">{hero.title.value}
-            </AppText>
+            <h1
+                className="text-5xl mb-6 font-bold">{hero.title.value}
+            </h1>
             <Statement className="mb-6 max-w-96">
               {hero.statement.value}
             </Statement>

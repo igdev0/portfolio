@@ -13,7 +13,7 @@ export type BoxProps<T extends ElementType, P = {}> = P & {
         ? {}
         : { ref?: React.Ref<RefFromElement<T>> });
 
-function Box<T extends ElementType = "div">(
+function Box<T extends ElementType>(
     props: BoxProps<T>
 ) {
   const { as, children, ...rest } = props;
