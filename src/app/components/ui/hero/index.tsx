@@ -8,6 +8,7 @@ import Container from '@/app/components/lib/container';
 import AppText from '@/app/components/lib/text';
 import Box from '@/app/components/lib/box';
 import Comment from '@/app/components/lib/comment';
+import Html from '@/app/components/lib/html';
 
 const corners = clsx(`absolute h-1/9 w-1/9 m-4 border-r-12 border-b-12 border-(--bg-surface)`);
 
@@ -16,7 +17,7 @@ export default function Hero() {
       <Box className="hero" as="header">
         <Container className="hero__layout">
           <Box className="hero__column">
-            <Comment as="html" className="comment mb-3">
+            <Comment as={Html} className="comment mb-3">
               {hero.tag.value}
             </Comment>
             <AppText size="5xl"

@@ -1,6 +1,7 @@
 import {cva, VariantProps} from 'class-variance-authority';
 import Box from '@/app/components/lib/box';
 import {BoxProps} from '@/app/components/lib/box/types';
+import {PropsWithChildren} from 'react';
 
 export const textVariants = cva(['text'], {
   variants: {
@@ -24,9 +25,9 @@ export const textVariants = cva(['text'], {
 
 type TextProps = BoxProps & VariantProps<typeof textVariants>;
 
-export default function AppText(props: TextProps) {
+export default function AppText(props: TextProps & PropsWithChildren) {
   const {className, children, as = 'p', ...variants} = props;
   return (
-      <Box as={props.as} className={`${textVariants(variants)} ${className}`}>{children}</Box>
+      <Box as={as} className={`${textVariants(variants)} ${className}`}>{children}</Box>
   );
 }

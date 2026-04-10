@@ -1,16 +1,15 @@
-import {PropsWithChildren} from 'react';
+import {ElementType, PropsWithChildren} from 'react';
 import "./index.css";
-import Root from '@/app/components/lib/box';
-import {BoxProps} from '@/app/components/lib/box/types';
+import Box, {BoxProps} from '@/app/components/lib/box';
 
-export type CommentProps = BoxProps & PropsWithChildren;
+export type CommentProps<T extends ElementType = 'div'> = BoxProps<T> & PropsWithChildren;
 
-export default function Comment(props: CommentProps) {
-  const {children, className = ''} = props;
+export default function Comment<T extends ElementType = 'div'>(props: CommentProps<T>) {
+  const {children, className = '', ...rest} = props;
 
   return (
-      <Root as={props.as} className={`comment ${className}`}>
+      <Box as={props.as} className={`comment ${className}`} {...rest}>
         {children}
-      </Root>
+      </Box>
   );
 }
