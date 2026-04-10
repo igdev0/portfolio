@@ -118,6 +118,7 @@ const contents = {
     }
   ] as ExperienceProps[]
 };
+
 export default function Expertise() {
   return (
       <Container className="pt-40">
@@ -127,7 +128,7 @@ export default function Expertise() {
           I got more than 5 years of experience.
         </Statement>
         <div className="relative my-6">
-          <div className="border-l-3 border-(--bg-default) border-dashed h-full absolute left-0 translate-x-2.5 -z-1"/>
+          <div className="border-l-2 border-(--semigrid) border-dashed h-full absolute left-0 translate-x-2.5 -z-1"/>
           {
             contents.experiences.map((experience, index) => (
                 <Experience key={index + 1} {...experience}/>

@@ -13,7 +13,7 @@ export default function LandingPage() {
         <Hero/>
         <Profile/>
         <Expertise/>
-        <div style={{width: "100%", height: "5000px"}}/>
+        {/*<div style={{width: "100%", height: "5000px"}}/>*/}
       </Fragment>
   );
 }

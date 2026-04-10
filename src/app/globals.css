@@ -8,7 +8,7 @@
     --bg-default: var(--color-default-900);
     --bg-default-800: var(--color-default-800);
     --bg-surface: var(--color-accent-300);
-    --semigrid: var(--color-gray-800);
+    --semigrid: var(--color-gray-700);
     --statement: var(--color-accent-300);
     --button-solid: var(--color-accent-600);
     --bg-surface-2: var(--color-indigo-900);
