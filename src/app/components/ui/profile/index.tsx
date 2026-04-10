@@ -12,7 +12,7 @@ export default function Profile() {
 
   return (
       <Container>
-        <Box as="div" className="profile pt-40 ">
+        <Box as="div" className="profile pt-40">
           <Comment className="mb-4">
             {profile.tag.value}
           </Comment>

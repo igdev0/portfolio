@@ -21,7 +21,7 @@ export interface ExperienceProps {
 
 function Tag(props: PropsWithChildren) {
   return (
-      <div className="px-2 py-1 rounded-sm border border-default-500 bg-default">
+      <div className="px-2 py-1 rounded-sm border  border-default-500 bg-(--bg-surface-2)">
         {props.children}
       </div>
   );
@@ -127,7 +127,7 @@ export default function Expertise() {
           I got more than 5 years of experience.
         </Statement>
         <div className="relative my-6">
-          <div className="border-l-3 border-gray-200 border-dashed h-full absolute left-0 translate-x-2.5 -z-1"/>
+          <div className="border-l-3 border-(--bg-default) border-dashed h-full absolute left-0 translate-x-2.5 -z-1"/>
           {
             contents.experiences.map((experience, index) => (
                 <Experience key={index + 1} {...experience}/>

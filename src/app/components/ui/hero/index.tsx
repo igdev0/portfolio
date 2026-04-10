@@ -37,7 +37,11 @@ export default function Hero() {
           </Box>
           <Box
               className="hero__column hero__column--image">
-            <Image draggable={false} src={hero.card.image.src} loading="eager" width={354} height={393}
+            <Image draggable={false}
+                   src={hero.card.image.src}
+                   loading="eager"
+                   width={354}
+                   height={393}
                    alt={hero.card.image.alt}/>
             <Box className="bg-(--bg-surface) w-3/5 h-3/5 absolute -z-1 top-0 left-0 right-0 bottom-0 m-auto"/>
             <Box className={clsx(corners, 'rotate-180 top-3 left-0')}/>
