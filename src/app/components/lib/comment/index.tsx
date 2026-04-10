@@ -1,15 +1,20 @@
-import {ElementType, PropsWithChildren} from 'react';
+import {Ref} from 'react';
 import "./index.css";
-import Box, {BoxProps} from '@/app/components/lib/box';
+import Html from '@/app/components/lib/html';
+import clsx from 'clsx';
 
-export type CommentProps<T extends ElementType = 'div'> = BoxProps<T> & PropsWithChildren;
+export type CommentProps = {
+  className?: string;
+  ref?: Ref<HTMLDivElement>;
+  children?: string;
+};
 
-export default function Comment<T extends ElementType = 'div'>(props: CommentProps<T>) {
-  const {children, className = '', ...rest} = props;
+export default function Comment(props: CommentProps) {
+  const {children, className = '', ref} = props;
 
   return (
-      <Box as={props.as} className={`comment ${className}`} {...rest}>
+      <Html className={clsx(`comment ${className}`)} ref={ref}>
         {children}
-      </Box>
+      </Html>
   );
 }
