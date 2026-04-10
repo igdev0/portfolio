@@ -31,6 +31,11 @@ const stack = {
   "DevOps": [
     'Docker',
     'Github Actions',
+  ],
+  "Tools": [
+    'Figma',
+    'Adobe Illustrator',
+    'Photoshop'
   ]
 } as const;
 
@@ -46,7 +51,7 @@ export default function TechStack() {
 
   return (
       <div className="tech-stack">
-        <Box className="grid grid-cols-3 gap-3">
+        <Box className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
           {
             Object.keys(stack).map((key, index) => {
               return (
