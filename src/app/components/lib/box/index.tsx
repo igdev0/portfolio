@@ -1,22 +1,13 @@
-import {type BoxProps, SemanticTags} from '@/app/components/lib/box/types';
-import Html from '@/app/components/lib/html';
+import {type BoxProps} from '@/app/components/lib/box/types';
 import {components} from '@/app/components/lib/box/map';
+import {PropsWithChildren} from 'react';
 
-function Box(props: BoxProps) {
+function Box(props: BoxProps & PropsWithChildren) {
   const {children, className = '', as = 'div'} = props;
-
-  let Component: typeof Html | typeof SemanticTags.infer = as;
-
-  if (components[as as keyof typeof components]) {
-    Component = components[as as keyof typeof components];
-
-    // @ts-ignore
-    return <Component className={className}>{children}</Component>;
-  }
+  const Component = components[as];
 
   return (
-      // @ts-ignore
-      <Component as={props.as} className={className}>
+      <Component className={className}>
         {children}
       </Component>
   );

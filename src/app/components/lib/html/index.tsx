@@ -1,9 +1,13 @@
 import {BoxProps} from '@/app/components/lib/box/types';
+import {PropsWithChildren} from 'react';
 
 
-export default function Html(props: Omit<BoxProps, 'children'> & { children: string }) {
-  const {children, as: Element = 'div', className} = props;
+export default function Html(props: Omit<BoxProps, "as"> & PropsWithChildren) {
+  const {children, className} = props;
+  if(typeof children !== "string") {
+    throw new Error("Expected string as children, instead got JSX Element ");
+  }
   return (
-      <Element className={className} dangerouslySetInnerHTML={{__html: children}}/>
+      <div className={className} dangerouslySetInnerHTML={{__html: children as string}}/>
   );
 }
