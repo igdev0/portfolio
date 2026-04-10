@@ -41,17 +41,11 @@ const stack = {
 
 type StackKey = keyof typeof stack;
 
-type RelationPath = {
-  x1: number;
-  y1: number;
-  x2: number;
-  y2: number;
-}
 export default function TechStack() {
 
   return (
       <div className="tech-stack">
-        <Box className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
+        <Box className="grid sm:grid-cols-2 md:grid-cols-4 gap-3">
           {
             Object.keys(stack).map((key, index) => {
               return (
