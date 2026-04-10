@@ -1,0 +1,27 @@
+@import "../../../globals.css";
+@layer components {
+    .tech-stack {
+        .tech-stack__card {
+            @apply border dark:border-default-700 border-default-300 rounded-md p-3;
+
+            .tech-stack__card__header {
+                @apply flex justify-start gap-3 items-center pb-4;
+                @apply dark:text-accent-400 text-accent-400;
+            }
+
+            .tech-stack__card__body {
+                @apply relative;
+
+                .tech-stack__card__body__skill {
+                    @apply flex justify-start items-center ml-9;
+
+                    &:before {
+                        content: ' ';
+                        @apply size-2 bg-accent-400 mr-2;
+                    }
+                }
+            }
+        }
+
+    }
+}
