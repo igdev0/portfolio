@@ -99,6 +99,22 @@ const contents = {
         }
       ],
 
+    },
+    {
+      title: "[Freelancer]",
+      tags: ["Freelancer", "Part-Time", "Remote", "December 2017 → February 2020"],
+      responsibilities: ['Led the front-end development of the web tools.', 'Led the front-end development of the web tools.', 'Led the front-end development of the web tools.'],
+      links: [
+        {
+          href: "",
+          text: "STAR App",
+        },
+        {
+          href: "",
+          text: "Teva MS App",
+        }
+      ],
+
     }
   ] as ExperienceProps[]
 };

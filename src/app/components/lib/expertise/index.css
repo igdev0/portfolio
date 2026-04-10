@@ -2,7 +2,7 @@
 
 @layer components {
     .experience {
-        @apply w-full h-full flex gap-6 mt-12;
+        @apply w-full h-full flex gap-3 md:gap-6 mt-12;
     }
 
     .timeline {
