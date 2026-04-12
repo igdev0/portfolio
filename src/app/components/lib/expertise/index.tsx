@@ -27,6 +27,11 @@ function Tag(props: PropsWithChildren) {
   );
 }
 
+/**
+ * Migrate from tailwind to vanilla extract
+ * @param props
+ * @constructor
+ */
 function Experience(props: ExperienceProps) {
   return (
       <div className="experience">
@@ -54,7 +59,7 @@ function Experience(props: ExperienceProps) {
           <div className="flex flex-wrap gap-3">
             {
               props.links.map((link, index) => (
-                  <LinkButton href={link.href} variant="secondary" icon="github">
+                  <LinkButton key={index} href={link.href} variant="secondary" icon="github">
                     {link.text}
                   </LinkButton>
               ))
