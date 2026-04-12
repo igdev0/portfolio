@@ -59,7 +59,10 @@ function Experience(props: ExperienceProps) {
           <div className="flex flex-wrap gap-3">
             {
               props.links.map((link, index) => (
-                  <LinkButton key={index} href={link.href} variant="secondary" icon="github">
+                  <LinkButton key={index}
+                              href={link.href}
+                              variant="secondary"
+                              icon="github">
                     {link.text}
                   </LinkButton>
               ))
