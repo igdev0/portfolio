@@ -1,6 +1,10 @@
-import type { Core } from '@strapi/strapi';
+import type {Core} from '@strapi/strapi';
 
-const config = ({ env }: Core.Config.Shared.ConfigParams): Core.Config.Admin => ({
+const config = ({env}: Core.Config.Shared.ConfigParams): Core.Config.Admin => ({
+  preview: {
+    enabled: true,
+    config: undefined
+  },
   auth: {
     secret: env('ADMIN_JWT_SECRET'),
   },
