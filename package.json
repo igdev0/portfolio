@@ -1,17 +1,15 @@
 {
   "name": "portfolio",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
   "author": {
     "name": "IGDev"
   },
-  "scripts": {
-    "dev": "concurrently -n DB,CMS,WEB -c yellow,blue,green \"bun run dev:db\" \"bun run dev:cms\" \"bun run dev:web\"",
-    "dev:db": "sh -c 'docker inspect -f {{.State.Running}} db >/dev/null 2>&1 || docker compose up -d db'",
-    "dev:cms": "wait-on tcp:5432 && cd cms && bun run develop",
-    "dev:web": "cd frontend && bun run dev"
-  },
+  "scripts": {},
   "dependencies": {},
   "devDependencies": {
-    "concurrently": "^9.2.1",
-    "wait-on": "^9.0.5"
+    "concurrently": "^9.2.1"
   }
 }
