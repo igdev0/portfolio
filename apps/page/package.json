@@ -12,10 +12,12 @@
   "dependencies": {
     "@sinclair/typebox": "^0.34.49",
     "@vanilla-extract/css": "^1.20.1",
+    "@vanilla-extract/recipes": "^0.5.7",
     "@vanilla-extract/sprinkles": "^1.6.5",
     "clsx": "^2.1.1",
     "react": "^19.2.4",
-    "react-dom": "^19.2.4"
+    "react-dom": "^19.2.4",
+    "typebox": "^1.1.23"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.4",
