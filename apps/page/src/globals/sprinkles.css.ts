@@ -1,4 +1,5 @@
 import {createSprinkles, defineProperties} from '@vanilla-extract/sprinkles';
+import colorsCss from './colors.css.ts';
 
 const space = {
   none: 0,
@@ -8,7 +9,7 @@ const space = {
   // etc.
 };
 
-const responsiveProperties = defineProperties({
+export const responsiveProperties = defineProperties({
   conditions: {
     mobile: {},
     tablet: {'@media': 'screen and (min-width: 768px)'},
@@ -50,15 +51,15 @@ const responsiveProperties = defineProperties({
     placeItems: ['justifyContent', 'alignItems']
   }
 });
+
 /**
  * Comments:
-  I will eventually need:
+ I will eventually need:
  •	surface (base card / container)
  •	surface-raised (modals, dropdowns)
  •	surface-sunken (inputs, code blocks)
  •	surface-hover
  */
-const colors = {};
 
 const colorProperties = defineProperties({
   conditions: {
@@ -67,9 +68,8 @@ const colorProperties = defineProperties({
   },
   defaultCondition: 'lightMode',
   properties: {
-    color: colors,
-    background: colors
-    // etc.
+    color: colorsCss,
+    backgroundColor: colorsCss
   }
 });
 
@@ -81,3 +81,4 @@ export const sprinkles = createSprinkles(
 
 // It's a good idea to export the Sprinkles type too
 export type Sprinkles = Parameters<typeof sprinkles>[0];
+
