@@ -1,4 +1,6 @@
-const colors = {
+import {createGlobalTheme} from '@vanilla-extract/css';
+
+const colorTokens = {
   'red-50': 'oklch(97.1% 0.013 17.38)',
   'red-100': 'oklch(93.6% 0.032 17.717)',
   'red-200': 'oklch(88.5% 0.062 18.334)',
@@ -313,4 +315,7 @@ const colors = {
   'white': 'white',
   'black': 'black',
 };
+
+const colors = createGlobalTheme(':root', colorTokens);
+
 export default colors;
