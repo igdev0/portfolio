@@ -1,9 +1,11 @@
-import Box from './components/box';
+import {main} from './style.css.ts';
+import {Box} from './app.css.ts';
+
 
 function App() {
   return (
-      <div>
-        <Box as="button" bgc="amber-400">Hello</Box>
+      <div className={main}>
+        <Box/>
       </div>
   );
 }
