@@ -1,11 +1,11 @@
 import {addFunctionSerializer} from '@vanilla-extract/css/functionSerializer';
-import {type CSSProperties, style} from '@vanilla-extract/css';
+import {type ComplexStyleRule, style} from '@vanilla-extract/css';
 import {runtimeStyledBox} from './runtime';
 import type {ElementType} from 'react';
 
-export function styled<T extends ElementType = 'div'>(elementType: T, styles: CSSProperties) {
+export function styled<T extends ElementType = 'div'>(elementType: T, styles: ComplexStyleRule) {
   const className = style(styles);
-  const args = [elementType as string, className]
+  const args = [elementType as string, className];
   // First we call our runtime function at build time
   const Component = runtimeStyledBox<T>(elementType, [className]);
 

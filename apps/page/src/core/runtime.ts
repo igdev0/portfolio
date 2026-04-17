@@ -1,9 +1,10 @@
 import {type ComponentPropsWithoutRef, createElement, type ElementType} from 'react';
 import {type PolymorphicForwardedRef, type PolymorphicProps} from '@axa-ch/react-polymorphic-types';
+import {type CssUtils, cssUtils} from './utils.css.ts';
 
 export type BoxOwnProps<T extends ElementType> = ComponentPropsWithoutRef<T> & {
   ref?: PolymorphicForwardedRef<T>;
-};
+} & CssUtils;
 
 export type BoxProps<T extends ElementType> = PolymorphicProps<
     BoxOwnProps<T>,
@@ -15,12 +16,23 @@ export function runtimeStyledBox<T extends ElementType>(elementType: T, classNam
 
   return function Component(props: BoxProps<T>) {
     const {as = elementType, ref, children, ...rest} = props;
+    const attrs = {};
+    const utils = {};
+
+    console.log(cssUtils.properties)
+    for (const key of Object.keys(rest)) {
+      if (cssUtils.properties.has(key as keyof object)) {
+        Object.assign(utils, {[key]: rest[key]});
+      } else {
+        Object.assign(attrs, {[key]: rest[key]});
+      }
+    }
     return createElement(
         as,
         {
-          ...rest,
+          ...attrs,
           ref,
-          className
+          className: [cssUtils(utils), className].join(" ")
         },
         children,
     );
