@@ -1,19 +1,15 @@
 import {main} from './style.css.ts';
-import {Box} from './app.css.ts';
 import {useRef} from 'react';
+import {Button} from './app.css.ts';
 
 
 function App() {
   const ref = useRef<HTMLButtonElement>(null);
   return (
       <div className={main}>
-        <Box color="white"
-             ref={ref}
-             backgroundColor="indigo-500"
-             px="large"
-             paddingY="small">
-          Hello
-        </Box>
+        <Button backgroundColor="red-500">
+          Hello world
+        </Button>
       </div>
   );
 }

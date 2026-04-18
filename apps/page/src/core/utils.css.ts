@@ -12,12 +12,12 @@ const space = {
 const responsiveProperties = defineProperties({
   conditions: {
     mobile: {},
-    tablet: { '@media': 'screen and (min-width: 768px)' },
-    desktop: { '@media': 'screen and (min-width: 1024px)' }
+    tablet: {'@media': 'screen and (min-width: 768px)'},
+    desktop: {'@media': 'screen and (min-width: 1024px)'}
   },
   defaultCondition: 'mobile',
   properties: {
-    display: ['none', 'flex', 'block', 'inline'],
+    display: ['none', 'flex', 'block', 'grid', 'inline'],
     flexDirection: ['row', 'column'],
     justifyContent: [
       'stretch',
@@ -46,6 +46,7 @@ const responsiveProperties = defineProperties({
       'paddingRight'
     ],
     px: ['paddingLeft', 'paddingRight'],
+    py: ['paddingTop', 'paddingBottom'],
     paddingX: ['paddingLeft', 'paddingRight'],
     paddingY: ['paddingTop', 'paddingBottom'],
     placeItems: ['justifyContent', 'alignItems'],
@@ -55,7 +56,7 @@ const responsiveProperties = defineProperties({
 const colorProperties = defineProperties({
   conditions: {
     lightMode: {},
-    darkMode: { '@media': '(prefers-color-scheme: dark)' }
+    darkMode: {'@media': '(prefers-color-scheme: dark)'}
   },
   defaultCondition: 'lightMode',
   properties: {
@@ -65,10 +66,13 @@ const colorProperties = defineProperties({
   }
 });
 
+
+
 export const cssUtils = createSprinkles(
     responsiveProperties,
     colorProperties
 );
+
 
 // It's a good idea to export the Sprinkles type too
 export type CssUtils = Parameters<typeof cssUtils>[0];

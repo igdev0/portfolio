@@ -11,10 +11,22 @@ export type BoxProps<T extends ElementType> = PolymorphicProps<
     T
 >;
 
+export type StyledComponent<T extends ElementType> = <
+    C extends ElementType = T
+>(
+    props: BoxProps<C>
+) => ReturnType<typeof createElement>;
+
+export interface Display<T extends ElementType> {
+  flex?: StyledComponent<T>,
+  grid?: StyledComponent<T>,
+  block?: StyledComponent<T>,
+  inline?: StyledComponent<T>,
+}
 
 export function runtimeStyledBox<T extends ElementType>(elementType: T, className: string[]) {
 
-  return function Component<C extends ElementType = T>(props: Omit<BoxProps<C>, "className" | "style">) {
+  function StyledComponent<C extends ElementType = T>(props: BoxProps<C>) {
     const {as = elementType, ref, children, ...rest} = props;
     const attrs = {};
     const utils = {};
@@ -26,15 +38,35 @@ export function runtimeStyledBox<T extends ElementType>(elementType: T, classNam
         Object.assign(attrs, {[key]: rest[key as keyof object]});
       }
     }
+
     return createElement(
         as,
         {
           ...attrs,
           ref,
-          className: [cssUtils(utils), className].join(" ")
+          className: [className, cssUtils(utils)].join(" ")
         },
         children,
     );
 
+  }
+
+  StyledComponent.flex = function flex<T extends ElementType>(props: BoxProps<T>) {
+    return StyledComponent({display: "flex", ...props});
   };
+
+  StyledComponent.grid = function grid<T extends ElementType>(props: BoxProps<T>) {
+    return StyledComponent({display: "grid", ...props});
+  };
+
+  StyledComponent.block = function block<T extends ElementType>(props: BoxProps<T>) {
+    return StyledComponent({display: "block", ...props});
+  };
+
+  StyledComponent.inline = function inline<T extends ElementType>(props: BoxProps<T>) {
+    return StyledComponent({display: "inline", ...props});
+  };
+
+  return StyledComponent as StyledComponent<T> & Display<T>;
+
 }
