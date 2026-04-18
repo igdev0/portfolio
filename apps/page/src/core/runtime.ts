@@ -14,16 +14,16 @@ export type BoxProps<T extends ElementType> = PolymorphicProps<
 
 export function runtimeStyledBox<T extends ElementType>(elementType: T, className: string[]) {
 
-  return function Component<C extends ElementType = T>(props: BoxProps<C>) {
+  return function Component<C extends ElementType = T>(props: Omit<BoxProps<C>, "className" | "style">) {
     const {as = elementType, ref, children, ...rest} = props;
     const attrs = {};
     const utils = {};
 
     for (const key of Object.keys(rest)) {
       if (cssUtils.properties.has(key as keyof object)) {
-        Object.assign(utils, {[key]: rest[key]});
+        Object.assign(utils, {[key]: rest[key as keyof object]});
       } else {
-        Object.assign(attrs, {[key]: rest[key]});
+        Object.assign(attrs, {[key]: rest[key as keyof object]});
       }
     }
     return createElement(
