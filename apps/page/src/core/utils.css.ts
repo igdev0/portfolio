@@ -1,10 +1,11 @@
 import {createSprinkles, defineProperties} from '@vanilla-extract/sprinkles';
+import colors from '../globals/colors.css.ts';
 
 const space = {
   none: 0,
-  small: '4px',
-  medium: '8px',
-  large: '16px'
+  small: '1rem',
+  medium: '2rem',
+  large: '3rem'
   // etc.
 };
 
@@ -36,7 +37,6 @@ const responsiveProperties = defineProperties({
     paddingBottom: space,
     paddingLeft: space,
     paddingRight: space
-    // etc.
   },
   shorthands: {
     padding: [
@@ -45,21 +45,12 @@ const responsiveProperties = defineProperties({
       'paddingLeft',
       'paddingRight'
     ],
+    px: ['paddingLeft', 'paddingRight'],
     paddingX: ['paddingLeft', 'paddingRight'],
     paddingY: ['paddingTop', 'paddingBottom'],
-    placeItems: ['justifyContent', 'alignItems']
+    placeItems: ['justifyContent', 'alignItems'],
   }
 });
-
-const colors = {
-  'blue-50': '#eff6ff',
-  'blue-100': '#dbeafe',
-  'blue-200': '#bfdbfe',
-  'gray-700': '#374151',
-  'gray-800': '#1f2937',
-  'gray-900': '#111827'
-  // etc.
-};
 
 const colorProperties = defineProperties({
   conditions: {

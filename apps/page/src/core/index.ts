@@ -6,6 +6,7 @@ import type {ElementType} from 'react';
 export function styled<T extends ElementType = 'div'>(elementType: T, styles: ComplexStyleRule) {
   const className = style(styles);
   const args = [elementType as string, className];
+
   // First we call our runtime function at build time
   const Component = runtimeStyledBox<T>(elementType, [className]);
 
