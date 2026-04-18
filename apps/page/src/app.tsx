@@ -1,13 +1,11 @@
 import {main} from './style.css.ts';
-import {useRef} from 'react';
 import {Button} from './app.css.ts';
 
 
 function App() {
-  const ref = useRef<HTMLButtonElement>(null);
   return (
       <div className={main}>
-        <Button backgroundColor="red-500">
+        <Button backgroundColor={{lightMode: "pink-500", darkMode: "blue-500"}}>
           Hello world
         </Button>
       </div>

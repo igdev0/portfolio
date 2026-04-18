@@ -1,5 +1,6 @@
 import {createSprinkles, defineProperties} from '@vanilla-extract/sprinkles';
 import colors from '../globals/colors.css.ts';
+import {componentsL} from './layers.css.ts';
 
 const space = {
   none: 0,
@@ -38,6 +39,7 @@ const responsiveProperties = defineProperties({
     paddingLeft: space,
     paddingRight: space
   },
+  '@layer': componentsL,
   shorthands: {
     padding: [
       'paddingTop',
@@ -63,9 +65,9 @@ const colorProperties = defineProperties({
     color: colors,
     backgroundColor: colors
     // etc.
-  }
+  },
+  '@layer': componentsL,
 });
-
 
 
 export const cssUtils = createSprinkles(

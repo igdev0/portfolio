@@ -1,5 +1,4 @@
 import {layer} from '@vanilla-extract/css';
 
-export const utilsL = layer("utils");
-export const resetL = layer("reset");
-export const componentsL = layer({parent: utilsL}, "components");
+export const componentsL = layer("components");
+export const baseL = layer({parent: componentsL},"base");
