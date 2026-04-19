@@ -1,4 +1,5 @@
 import {createSprinkles, defineProperties} from '@vanilla-extract/sprinkles';
+import "../global/reset.css.ts";
 import {utilitiesLayer} from '../global/layers.css.ts';
 import {colors} from '../global/colors.css.ts';
 import {spaces} from '../global/spaces.css.ts';
@@ -15,6 +16,10 @@ const responsiveProperties = defineProperties({
     display: ['none', 'flex', 'block', 'grid', 'inline'],
     flexDirection: ['row', 'column'],
     gap: spaces,
+    gridTemplateColumns: {
+      "1": "1fr",
+      "2": "1fr 1fr",
+    },
 
     justifyContent: [
       'stretch',
@@ -52,6 +57,8 @@ const responsiveProperties = defineProperties({
       'paddingRight'
     ],
     placeItems: ['justifyContent', 'alignItems'],
+
+    p: ['padding'],
     px: ['paddingLeft', 'paddingRight'],
     py: ['paddingTop', 'paddingBottom'],
     pl: ['paddingLeft'],
@@ -61,6 +68,7 @@ const responsiveProperties = defineProperties({
     paddingX: ['paddingLeft', 'paddingRight'],
     paddingY: ['paddingTop', 'paddingBottom'],
 
+    m: ['margin'],
     marginX: ['marginRight', 'marginRight'],
     marginY: ['marginTop', 'marginBottom'],
     mx: ['marginLeft', 'marginRight'],

@@ -1,30 +1,22 @@
 import './styles/global/index.css';
-import {Box, Layout} from './app.css';
-import {useState} from 'react';
-import type {Colors} from './styles/global/colors.css';
+import {Box} from './app.css';
 
 
 function App() {
-  const [color, setColor] = useState<Colors>("blue-400");
   return (
-      <Layout.flex>
-        <Box as="button" onClick={() => setColor("red-300")}>Click</Box>
-        <Layout>
-          <Box.flex
-              alignItems="center"
-              backgroundColor={color}
-              py="sm"
-              px="lg">
-            Hello world
-          </Box.flex>
-          <Box>
-            Hello world
-          </Box>
-          <Box>
-            Hello world
-          </Box>
-        </Layout>
-      </Layout.flex>
+      <Box.grid
+          gridTemplateColumns={{mobile: "2"}}
+          alignItems="center"
+          gap="sm"
+          py="sm"
+          px="lg">
+        <Box backgroundColor="blue-400" p="sm">
+          Test 1
+        </Box>
+        <Box>
+          Test 2
+        </Box>
+      </Box.grid>
   );
 }
 

@@ -7,8 +7,6 @@ import {styled} from './core';
  * 3. Flex, Grid, Block are display domains available as Component.display
  */
 
-export const Layout = styled("div", {
-
-});
+export const Layout = styled("div", {});
 
 export const Box = styled("div", {});
