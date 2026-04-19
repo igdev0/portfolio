@@ -1,5 +1,5 @@
 import {styled} from './core';
-import {colors} from './config/global.css.ts';
+import {colors} from './styles/global/theme.css.ts';
 
 /**
  * Styles Power Distribution:

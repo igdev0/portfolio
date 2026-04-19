@@ -1,6 +1,6 @@
 import {type ComponentPropsWithoutRef, createElement, type ElementType} from 'react';
 import {type PolymorphicForwardedRef, type PolymorphicProps} from '@axa-ch/react-polymorphic-types';
-import {type CssUtils, cssUtils} from '../config/utils.css.ts';
+import {type CssUtils, cssUtils} from '../styles/utils.css.ts';
 
 export type BoxOwnProps<T extends ElementType> = ComponentPropsWithoutRef<T> & {
   ref?: PolymorphicForwardedRef<T>;

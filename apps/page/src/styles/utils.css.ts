@@ -1,13 +1,12 @@
 import {createSprinkles, defineProperties} from '@vanilla-extract/sprinkles';
-import {utilitiesLayer} from '../config/layers.css.ts';
-import {colors} from './global.css.ts';
+import {utilitiesLayer} from './global/layers.css.ts';
+import {colors} from './global/theme.css.ts';
 
 const space = {
   none: 0,
   small: '.5rem',
   medium: '1rem',
   large: '2rem'
-  // etc.
 };
 
 const responsiveProperties = defineProperties({

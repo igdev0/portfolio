@@ -1,5 +1,5 @@
 import {Box, Layout} from './app.css.ts';
-import "./config/global.css.ts";
+import "./styles/global/theme.css.ts";
 
 function App() {
   return (
