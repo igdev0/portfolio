@@ -1,6 +1,6 @@
 import {createSprinkles, defineProperties} from '@vanilla-extract/sprinkles';
 import {utilitiesLayer} from './global/layers.css.ts';
-import {colors} from './global/theme.css.ts';
+import {colors} from './global/colors.css.ts';
 
 const space = {
   none: 0,
@@ -10,6 +10,7 @@ const space = {
 };
 
 const responsiveProperties = defineProperties({
+  '@layer': utilitiesLayer,
   conditions: {
     mobile: {},
     tablet: {'@media': 'screen and (min-width: 768px)'},
@@ -42,7 +43,6 @@ const responsiveProperties = defineProperties({
     paddingLeft: space,
     paddingRight: space
   },
-  '@layer': utilitiesLayer,
   shorthands: {
     padding: [
       'paddingTop',

@@ -18,10 +18,10 @@ export type StyledComponent<T extends ElementType> = <
 ) => ReturnType<typeof createElement>;
 
 export interface Display<T extends ElementType> {
-  flex?: StyledComponent<T>,
-  grid?: StyledComponent<T>,
-  block?: StyledComponent<T>,
-  inline?: StyledComponent<T>,
+  flex: StyledComponent<T>,
+  grid: StyledComponent<T>,
+  block: StyledComponent<T>,
+  inline: StyledComponent<T>,
 }
 
 export function runtimeStyledBox<T extends ElementType>(elementType: T, className: string[]) {

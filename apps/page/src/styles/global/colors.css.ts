@@ -1,4 +1,7 @@
-export const colorsTokens = {
+import {createGlobalTheme} from '@vanilla-extract/css';
+import {utilitiesLayer} from './layers.css.ts';
+
+export const colorTokens = {
   'red-50': 'oklch(97.1% 0.013 17.38)',
   'red-100': 'oklch(93.6% 0.032 17.717)',
   'red-200': 'oklch(88.5% 0.062 18.334)',
@@ -313,3 +316,10 @@ export const colorsTokens = {
   'white': 'white',
   'black': 'black',
 };
+
+export const colors = createGlobalTheme(":root", {
+  '@layer': utilitiesLayer,
+  ...colorTokens
+});
+
+export type Colors = keyof typeof colors;

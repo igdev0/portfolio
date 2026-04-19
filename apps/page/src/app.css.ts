@@ -1,5 +1,6 @@
+import "./styles/index.css.ts";
 import {styled} from './core';
-import {colors} from './styles/global/theme.css.ts';
+import {colors} from './styles/global/colors.css.ts';
 
 /**
  * Styles Power Distribution:
@@ -13,7 +14,7 @@ export const Layout = styled("div", {
   flexWrap: "wrap",
   width: "100%",
   gap: 10
-})
+});
 
 export const Box = styled("div", {
   aspectRatio: "1",
