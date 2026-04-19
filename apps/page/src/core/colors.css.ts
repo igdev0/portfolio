@@ -1,4 +1,7 @@
-const colors = {
+import {createTheme} from '@vanilla-extract/css';
+import {themeLayer} from './layers.css.ts';
+
+const colorsTokens = {
   'red-50': 'oklch(97.1% 0.013 17.38)',
   'red-100': 'oklch(93.6% 0.032 17.717)',
   'red-200': 'oklch(88.5% 0.062 18.334)',
@@ -314,5 +317,9 @@ const colors = {
   'black': 'black',
 };
 
+const colors= createTheme({
+  '@layer': themeLayer,
+  ...colorsTokens,
+});
 
 export default colors;

@@ -1,12 +1,12 @@
 import {createSprinkles, defineProperties} from '@vanilla-extract/sprinkles';
-import colors from '../globals/colors.css.ts';
-import {componentsL} from './layers.css.ts';
+import colors from './colors.css.ts';
+import {utilitiesLayer} from './layers.css.ts';
 
 const space = {
   none: 0,
-  small: '1rem',
-  medium: '2rem',
-  large: '3rem'
+  small: '.5rem',
+  medium: '1rem',
+  large: '2rem'
   // etc.
 };
 
@@ -20,6 +20,10 @@ const responsiveProperties = defineProperties({
   properties: {
     display: ['none', 'flex', 'block', 'grid', 'inline'],
     flexDirection: ['row', 'column'],
+    gap: {
+      sm: '1rem',
+      md: '1rem',
+    },
     justifyContent: [
       'stretch',
       'flex-start',
@@ -39,7 +43,7 @@ const responsiveProperties = defineProperties({
     paddingLeft: space,
     paddingRight: space
   },
-  '@layer': componentsL,
+  '@layer': utilitiesLayer,
   shorthands: {
     padding: [
       'paddingTop',
@@ -58,15 +62,16 @@ const responsiveProperties = defineProperties({
 const colorProperties = defineProperties({
   conditions: {
     lightMode: {},
-    darkMode: {'@media': '(prefers-color-scheme: dark)'}
+    darkMode: {
+      '@media': '(prefers-color-scheme: dark)'
+    }
   },
   defaultCondition: 'lightMode',
   properties: {
-    color: colors,
-    backgroundColor: colors
-    // etc.
+    color: colors[1],
+    backgroundColor: colors[1]
   },
-  '@layer': componentsL,
+  '@layer': utilitiesLayer,
 });
 
 
