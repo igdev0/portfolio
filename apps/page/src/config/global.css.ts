@@ -1,7 +1,7 @@
 import {createGlobalTheme, globalStyle,} from '@vanilla-extract/css';
-import {resetLayer, utilitiesLayer} from './layers.css.ts';
-import "./colors.css.ts";
-import {colorsTokens} from './colors.css.ts';
+import {resetLayer, utilitiesLayer} from '../config/layers.css.ts';
+import "../config/colors.css.ts";
+import {colorsTokens} from '../config/colors.css.ts';
 
 export const colors = createGlobalTheme(":root", {
   '@layer': utilitiesLayer,

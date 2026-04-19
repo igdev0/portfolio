@@ -1,5 +1,5 @@
 import {createSprinkles, defineProperties} from '@vanilla-extract/sprinkles';
-import {utilitiesLayer} from './layers.css.ts';
+import {utilitiesLayer} from '../config/layers.css.ts';
 import {colors} from './global.css.ts';
 
 const space = {
