@@ -1,5 +1,5 @@
 import {styled} from './core';
-import {colors} from './core/colors.css.ts';
+import {colors} from './core/global.css.ts';
 
 /**
  * Styles Power Distribution:
@@ -7,8 +7,16 @@ import {colors} from './core/colors.css.ts';
  * 2. Recipes objects are passed explicitly as "recipe".
  * 3. Flex, Grid, Block are display domains available as Component.display
  */
-export const Button = styled("button", {
-  backgroundColor: colors['blue-900'],
-});
 
-export const Box = styled("div", {});
+export const Layout = styled("div", {
+  display: "flex",
+  flexWrap: "wrap",
+  width: "100%",
+  gap: 10
+})
+
+export const Box = styled("div", {
+  aspectRatio: "1",
+  padding: 30,
+  backgroundColor: colors['amber-300']
+});

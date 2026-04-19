@@ -1,19 +1,19 @@
-import {Button} from './app.css.ts';
+import {Box, Layout} from './app.css.ts';
 import "./core/global.css.ts";
 
 function App() {
   return (
-      <div>
-        <Button>
+      <Layout>
+        <Box.flex alignItems="center" backgroundColor="blue-400">
           Hello world
-        </Button>
-        <Button>
+        </Box.flex>
+        <Box>
           Hello world
-        </Button>
-        <Button>
+        </Box>
+        <Box>
           Hello world
-        </Button>
-      </div>
+        </Box>
+      </Layout>
   );
 }
 
