@@ -10,6 +10,13 @@ globalStyle("html, body", {
   }
 });
 
+globalStyle("#app", {
+  "@layer": {
+    [resetLayer]: {
+      width: "100%",
+    }
+  }
+});
 
 globalStyle("*", {
   "@layer": {

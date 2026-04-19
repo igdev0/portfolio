@@ -1,6 +1,4 @@
-import "./styles/index.css.ts";
 import {styled} from './core';
-import {colors} from './styles/global/colors.css.ts';
 
 /**
  * Styles Power Distribution:
@@ -10,14 +8,7 @@ import {colors} from './styles/global/colors.css.ts';
  */
 
 export const Layout = styled("div", {
-  display: "flex",
-  flexWrap: "wrap",
-  width: "100%",
-  gap: 10
+
 });
 
-export const Box = styled("div", {
-  aspectRatio: "1",
-  padding: 30,
-  backgroundColor: colors['amber-300']
-});
+export const Box = styled("div", {});

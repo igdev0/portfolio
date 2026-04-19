@@ -1,16 +1,20 @@
-import {Box, Layout} from './app.css.ts';
+import './styles/global/index.css';
+import {Box, Layout} from './app.css';
 import {useState} from 'react';
-import './styles/global/index.css.ts';
+import type {Colors} from './styles/global/colors.css';
 
-import type {Colors} from './styles/global/colors.css.ts';
 
 function App() {
   const [color, setColor] = useState<Colors>("blue-400");
   return (
-      <>
-        <Box as="button" onClick={() => setColor("amber-500")}>Click</Box>
+      <Layout.flex>
+        <Box as="button" onClick={() => setColor("red-300")}>Click</Box>
         <Layout>
-          <Box.flex alignItems="center" backgroundColor={color}>
+          <Box.flex
+              alignItems="center"
+              backgroundColor={color}
+              py="sm"
+              px="lg">
             Hello world
           </Box.flex>
           <Box>
@@ -20,7 +24,7 @@ function App() {
             Hello world
           </Box>
         </Layout>
-      </>
+      </Layout.flex>
   );
 }
 

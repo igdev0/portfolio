@@ -3,7 +3,7 @@ import {utilitiesLayer} from './layers.css.ts';
 
 export const spaces = createGlobalTheme(":root", {
   "@layer": utilitiesLayer,
-  sm: "10",
-  md: "20",
-  lg: "30",
+  sm: "1rem",
+  md: "2rem",
+  lg: "3rem",
 })
