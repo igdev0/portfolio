@@ -1,6 +1,6 @@
 import {createSprinkles, defineProperties} from '@vanilla-extract/sprinkles';
-import colors from './colors.css.ts';
 import {utilitiesLayer} from './layers.css.ts';
+import {colors} from './colors.css.ts';
 
 const space = {
   none: 0,
@@ -68,8 +68,8 @@ const colorProperties = defineProperties({
   },
   defaultCondition: 'lightMode',
   properties: {
-    color: colors[1],
-    backgroundColor: colors[1]
+    color: colors,
+    backgroundColor: colors,
   },
   '@layer': utilitiesLayer,
 });

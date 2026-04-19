@@ -317,9 +317,10 @@ const colorsTokens = {
   'black': 'black',
 };
 
-const colors= createTheme({
+const [_themeClass, _colors]= createTheme({
   '@layer': themeLayer,
   ...colorsTokens,
 });
 
-export default colors;
+export const themeClass = _themeClass;
+export const colors = _colors;

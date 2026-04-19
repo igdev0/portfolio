@@ -4,10 +4,10 @@ import "./core/global.css.ts";
 function App() {
   return (
       <div>
-        <Button backgroundColor={{lightMode: "indigo-500", darkMode: "blue-500"}} padding="small">
+        <Button>
           Hello world
         </Button>
-        <Button padding="medium" backgroundColor={{lightMode: "blue-200"}}>
+        <Button>
           Hello world
         </Button>
         <Button>

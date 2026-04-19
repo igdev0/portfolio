@@ -1,4 +1,5 @@
 import {styled} from './core';
+import {colors} from './core/colors.css.ts';
 
 /**
  * Styles Power Distribution:
@@ -7,7 +8,7 @@ import {styled} from './core';
  * 3. Flex, Grid, Block are display domains available as Component.display
  */
 export const Button = styled("button", {
-  backgroundColor: "purple",
+  backgroundColor: colors['blue-900'],
 });
 
-export const Box = styled("div", {})
+export const Box = styled("div", {});

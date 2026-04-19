@@ -1,7 +1,7 @@
 import {type ComponentPropsWithoutRef, createElement, type ElementType} from 'react';
 import {type PolymorphicForwardedRef, type PolymorphicProps} from '@axa-ch/react-polymorphic-types';
 import {type CssUtils, cssUtils} from './utils.css.ts';
-import colors from './colors.css.ts';
+import {themeClass} from './colors.css.ts';
 
 export type BoxOwnProps<T extends ElementType> = ComponentPropsWithoutRef<T> & {
   ref?: PolymorphicForwardedRef<T>;
@@ -45,7 +45,7 @@ export function runtimeStyledBox<T extends ElementType>(elementType: T, classNam
           ...attrs,
           ref,
           className: [
-              colors[0],
+              themeClass,
               className,
               cssUtils(utils)].join(" ")
         },
