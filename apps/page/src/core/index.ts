@@ -13,8 +13,8 @@ export function styled<T extends ElementType, V extends VariantGroup>(elementTyp
     }
   });
 
-  const args = [elementType as string, baseClassName];
   const variantsClasses = styleVariants(options.variants);
+  const args = [elementType as string, baseClassName];
   // First we call our runtime function at build time
   const Component = runtimeStyledBox<T, VariantProps<V>>(elementType, baseClassName);
 

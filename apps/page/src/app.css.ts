@@ -18,6 +18,9 @@ export const Box = styled("div", {
     test: {
       "1": {
         width: "100%"
+      },
+      "2": {
+        height: "100%"
       }
     }
   }

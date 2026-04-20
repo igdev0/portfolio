@@ -19,8 +19,8 @@ export type VariantProps<T extends VariantGroup> =
 
 
 export type OptionsType<Group extends VariantGroup> = {
-  base: StyleRule,
-  variants: Group,
+  base?: StyleRule,
+  variants?: Group,
 }
 
 
