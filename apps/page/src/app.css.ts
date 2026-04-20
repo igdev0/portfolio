@@ -23,6 +23,9 @@ export const Box = styled("div", {
         height: "100%"
       }
     }
+  },
+  defaultVariants: {
+    test: "2"
   }
 });
 

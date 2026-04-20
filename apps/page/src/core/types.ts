@@ -7,8 +7,17 @@ import type {PolymorphicForwardedRef, PolymorphicProps} from '@axa-ch/react-poly
 export type VariantDefinition<Key extends string> = Record<Key, ComplexStyleRule>;
 export type VariantGroup<VariantProp extends string = string, VariantValue extends string = string> = Record<VariantProp, VariantDefinition<VariantValue>>;
 
+export type WithDefaults<
+  Group extends VariantGroup,
+  Target extends VariantProps<Group>,
+  Defaults extends Partial<Target>
+> =
+  Prettify<
+    Omit<Target, keyof Defaults> &
+    Partial<Pick<Target, Extract<keyof Defaults, keyof Target>>>
+  >;
 
-type Prettify<T> = {
+export type Prettify<T> = {
   [K in keyof T]: T[K];
 } & {};
 
@@ -18,9 +27,10 @@ export type VariantProps<T extends VariantGroup> =
     }>;
 
 
-export type OptionsType<Group extends VariantGroup> = {
+export type OptionsType<Group extends VariantGroup, Defaults extends Partial<VariantProps<Group>>> = {
   base?: StyleRule,
   variants?: Group,
+  defaultVariants?: Defaults
 }
 
 
