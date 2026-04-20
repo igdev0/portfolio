@@ -4,7 +4,7 @@ import {Box} from './app.css';
 
 function App() {
   return (
-      <Box test="second">
+      <Box p="sm" test="second" backgroundColor="purple-400">
         Hello
       </Box>
   );

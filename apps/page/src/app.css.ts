@@ -24,7 +24,6 @@ export const Box = styled("div", {
       },
       "second": {
         backgroundColor: colors['blue-300'],
-        width: "100%",
       }
     }
   },

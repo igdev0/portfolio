@@ -5,7 +5,8 @@ globalStyle("html, body", {
   "@layer": {
     [resetLayer]: {
       margin: 0,
-      padding: 0
+      padding: 0,
+      fontFamily: "sans-serif"
     }
   }
 });
