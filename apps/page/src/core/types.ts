@@ -29,6 +29,13 @@ export type VariantProps<T extends VariantGroup> =
     }>;
 
 
+export interface StyledOptions<Element extends ElementType, Props> {
+  elementType: Element,
+  baseClass: string,
+  variants: Record<keyof Props, string>,
+  defaultVariants: Record<keyof Props, string>
+}
+
 export type OptionsType<Group extends VariantGroup, Defaults extends Partial<VariantProps<Group>>> = {
   base?: StyleRule,
   variants?: Group,

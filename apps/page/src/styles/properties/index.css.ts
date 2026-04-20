@@ -81,6 +81,7 @@ const responsiveProperties = defineProperties({
 });
 
 const colorProperties = defineProperties({
+  '@layer': utilitiesLayer,
   conditions: {
     lightMode: {},
     darkMode: {
@@ -92,7 +93,6 @@ const colorProperties = defineProperties({
     color: colors,
     backgroundColor: colors,
   },
-  '@layer': utilitiesLayer,
 });
 
 

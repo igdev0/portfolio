@@ -30,7 +30,9 @@ export const Box = styled("div", {
       }
     }
   },
-  defaultVariants: {}
+  defaultVariants: {
+    rounded: true
+  }
 });
 
 export const Button = styled("button", {
