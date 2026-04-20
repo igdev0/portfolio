@@ -13,7 +13,7 @@ export type WithDefaults<
   Defaults extends Partial<Target>
 > =
   Prettify<
-    Omit<Target, keyof Defaults> &
+      Omit<Target, Extract<keyof Defaults, keyof Target>> &
     Partial<Pick<Target, Extract<keyof Defaults, keyof Target>>>
   >;
 

@@ -5,7 +5,6 @@ import {style, styleVariants} from '@vanilla-extract/css';
 import {baseLayer} from '../styles/global/layers.css.ts';
 import type {OptionsType, VariantGroup, VariantProps, WithDefaults} from './types.ts';
 
-
 export function styled<T extends ElementType, V extends VariantGroup, D extends Partial<VariantProps<V>>>(elementType: T, options: OptionsType<V, D>) {
   const baseClassName = style({
     '@layer': {
