@@ -4,7 +4,7 @@ import {type CssUtils} from '../styles/properties/index.css.ts';
 import type {ComponentPropsWithoutRef, createElement, ElementType} from 'react';
 import type {PolymorphicForwardedRef, PolymorphicProps} from '@axa-ch/react-polymorphic-types';
 
-export type VariantDefinition<Key extends string> = Record<Key, ComplexStyleRule>;
+export type VariantDefinition<Key extends string> = Record<Key, ComplexStyleRule | string>;
 export type VariantGroup<VariantProp extends string = string, VariantValue extends string = string> = Record<VariantProp, VariantDefinition<VariantValue>>;
 
 export type WithDefaults<

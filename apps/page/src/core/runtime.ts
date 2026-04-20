@@ -11,26 +11,30 @@ export interface Display<Element extends ElementType> {
   inline: StyledComponent<Element>,
 }*/
 
-export function runtimeStyledBox<Element extends ElementType, V>(elementType: Element, baseClassName: string) {
+export function runtimeStyledBox<Element extends ElementType, V>(elementType: Element, baseClassName: string, variants: Record<keyof V, string>) {
 
   function StyledComponent<PolymorphicElement extends ElementType = Element>(props: StyledComponentProps<PolymorphicElement, V>) {
     const {as = elementType, ref, children, ...rest} = props;
     const attrs = {};
+    const selectedVariants = [];
     const utils = {};
 
     for (const key of Object.keys(rest)) {
       if (cssUtils.properties.has(key as keyof object)) {
         Object.assign(utils, {[key]: rest[key as keyof object]});
+      } else if (variants[key]) {
+        selectedVariants.push(variants[key][rest[key]]);
       } else {
         Object.assign(attrs, {[key]: rest[key as keyof object]});
       }
     }
+
     return createElement(
         as,
         {
           ...attrs,
           ref,
-          className: [baseClassName, cssUtils(utils)].join(" ")
+          className: [baseClassName, ...selectedVariants, cssUtils(utils)].join(" ")
         },
         children,
     );

@@ -1,4 +1,5 @@
 import {styled} from './core';
+import {colors} from './styles/global/colors.css.ts';
 
 /**
  * Styles Power Distribution:
@@ -13,20 +14,21 @@ export const Layout = styled("div", {
 });
 
 export const Box = styled("div", {
-  base: {},
+  base: {
+    backgroundColor: colors['amber-500']
+  },
   variants: {
     test: {
-      "1": {
-        width: "100%"
+      "first": {
+        width: "100%",
       },
-      "2": {
-        height: "100%"
+      "second": {
+        backgroundColor: colors['blue-300'],
+        width: "100%",
       }
     }
   },
-  defaultVariants: {
-    test: "2"
-  }
+  defaultVariants: {}
 });
 
 export const Button = styled("button", {

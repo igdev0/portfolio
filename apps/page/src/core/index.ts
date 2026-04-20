@@ -12,10 +12,15 @@ export function styled<T extends ElementType, V extends VariantGroup, D extends 
     }
   });
 
-  const variantsClasses = styleVariants(options.variants);
-  const args = [elementType as string, baseClassName];
+  const vs = {};
+  for (const key in options.variants) {
+    Object.assign(vs, {[key]: styleVariants(options.variants[key] as keyof object)});
+  }
+
+  const args = [elementType as string, baseClassName, vs];
+
   // First we call our runtime function at build time
-  const Component = runtimeStyledBox<T, WithDefaults<V, VariantProps<V>, D>>(elementType, baseClassName);
+  const Component = runtimeStyledBox<T, WithDefaults<V, VariantProps<V>, D>>(elementType, baseClassName, vs as Record<keyof V, string>);
 
   // Then we tell vanilla-extract how to serialize the previous
   // function call by annotating its return value
