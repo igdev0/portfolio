@@ -43,8 +43,7 @@ export function styled<As extends ElementType,
     variants: variantsMap,
     defaultVariants: defaultVariantsMap
   }];
-  // elementType, baseClassName, variantsMap as Record<keyof V, string>
-  // First we call our runtime function at build time
+  
   const Component = runtimeStyledBox<As, WithDefaults<Props, VariantProps<Props>, DefaultProps>>({
     elementType,
     baseClass,
