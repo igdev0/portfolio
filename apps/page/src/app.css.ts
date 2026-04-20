@@ -16,6 +16,9 @@ export const Box = styled("div", {
     backgroundColor: colors['amber-500']
   },
   variants: {
+    /**
+     * Some comment made about this
+     */
     test: {
       "first": {
         width: "100%",
