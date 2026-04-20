@@ -25,6 +25,11 @@ export const Box = styled("div", {
       "second": {
         backgroundColor: colors['blue-300'],
       }
+    },
+    rounded: {
+      true: {
+        borderRadius: '5px'
+      }
     }
   },
   defaultVariants: {}

@@ -7,6 +7,8 @@ import type {PolymorphicForwardedRef, PolymorphicProps} from '@axa-ch/react-poly
 export type VariantDefinition<Key extends string> = Record<Key, ComplexStyleRule | string>;
 export type VariantGroup<VariantProp extends string = string, VariantValue extends string = string> = Record<VariantProp, VariantDefinition<VariantValue>>;
 
+export type BooleanMap<T> = T extends 'true' | 'false' ? boolean : T;
+
 export type WithDefaults<
   Group extends VariantGroup,
   Target extends VariantProps<Group>,
@@ -23,7 +25,7 @@ export type Prettify<T> = {
 
 export type VariantProps<T extends VariantGroup> =
     Prettify<{
-      [K in keyof T]: keyof T[K];
+      [K in keyof T]: BooleanMap<keyof T[K]>;
     }>;
 
 
