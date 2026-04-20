@@ -8,7 +8,7 @@ import type {OptionsType, VariantGroup, VariantProps, WithDefaults} from './type
 export function styled<T extends ElementType, V extends VariantGroup, D extends Partial<VariantProps<V>>>(elementType: T, options: OptionsType<V, D>) {
   const baseClassName = style({
     '@layer': {
-      [baseLayer]: options.base,
+      [baseLayer]: options.base??{},
     }
   });
 

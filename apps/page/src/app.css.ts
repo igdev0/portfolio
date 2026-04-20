@@ -9,8 +9,6 @@ import {colors} from './styles/global/colors.css.ts';
  */
 
 export const Layout = styled("div", {
-  base: {},
-  variants: {}
 });
 
 export const Box = styled("div", {
