@@ -1,14 +1,15 @@
 import {addFunctionSerializer} from '@vanilla-extract/css/functionSerializer';
 import {runtimeStyledBox} from './runtime';
 import type {ElementType} from 'react';
-import {style, type StyleRule} from '@vanilla-extract/css';
+import {style} from '@vanilla-extract/css';
 import {baseLayer} from '../styles/global/layers.css.ts';
+import type {OptionsType} from './types.ts';
 
 
-export function styled<T extends ElementType = 'div'>(elementType: T, styles: StyleRule) {
+export function styled<T extends ElementType>(elementType: T, options: OptionsType) {
   const className = style({
     '@layer': {
-      [baseLayer]: styles,
+      [baseLayer]: options.base,
     }
   });
 

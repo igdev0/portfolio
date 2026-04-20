@@ -8,7 +8,16 @@ import {styled} from './core';
  */
 
 export const Layout = styled("div", {
-
+  base: {},
+  variants: {}
 });
 
-export const Box = styled("div", {});
+export const Box = styled("div", {
+  base: {},
+  variants: {}
+});
+
+export const Button = styled("button", {
+  base: {},
+  variants: {}
+})

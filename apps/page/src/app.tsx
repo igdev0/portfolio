@@ -1,5 +1,5 @@
 import './styles/global/index.css';
-import {Box} from './app.css';
+import {Box, Button} from './app.css';
 
 
 function App() {
@@ -16,6 +16,8 @@ function App() {
         <Box>
           Test 2
         </Box>
+        <Box as="button">Click</Box>
+        <Button type="button">Click</Button>
       </Box.grid>
   );
 }
