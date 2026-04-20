@@ -15,7 +15,7 @@ export function styled<T extends ElementType = 'div'>(elementType: T, styles: St
   const args = [elementType as string, className];
 
   // First we call our runtime function at build time
-  const Component = runtimeStyledBox<T>(elementType, [className]);
+  const Component = runtimeStyledBox<T>(elementType, className);
 
   // Then we tell vanilla-extract how to serialize the previous
   // function call by annotating its return value

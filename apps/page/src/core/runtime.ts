@@ -2,31 +2,31 @@ import {type ComponentPropsWithoutRef, createElement, type ElementType} from 're
 import {type PolymorphicForwardedRef, type PolymorphicProps} from '@axa-ch/react-polymorphic-types';
 import {type CssUtils, cssUtils} from '../styles/properties/index.css.ts';
 
-export type BoxOwnProps<T extends ElementType> = ComponentPropsWithoutRef<T> & {
-  ref?: PolymorphicForwardedRef<T>;
+export type BoxOwnProps<Element extends ElementType> = ComponentPropsWithoutRef<Element> & {
+  ref?: PolymorphicForwardedRef<Element>;
 } & CssUtils;
 
-export type BoxProps<T extends ElementType> = PolymorphicProps<
-    BoxOwnProps<T>,
-    T
+export type BoxProps<Element extends ElementType> = PolymorphicProps<
+    BoxOwnProps<Element>,
+    Element
 >;
 
-export type StyledComponent<T extends ElementType> = <
-    C extends ElementType = T
+export type StyledComponent<Element extends ElementType> = <
+    PolymorphicElement extends ElementType = Element
 >(
-    props: BoxProps<C>
+    props: BoxProps<PolymorphicElement>
 ) => ReturnType<typeof createElement>;
 
-export interface Display<T extends ElementType> {
-  flex: StyledComponent<T>,
-  grid: StyledComponent<T>,
-  block: StyledComponent<T>,
-  inline: StyledComponent<T>,
+export interface Display<Element extends ElementType> {
+  flex: StyledComponent<Element>,
+  grid: StyledComponent<Element>,
+  block: StyledComponent<Element>,
+  inline: StyledComponent<Element>,
 }
 
-export function runtimeStyledBox<T extends ElementType>(elementType: T, className: string[]) {
+export function runtimeStyledBox<Element extends ElementType>(elementType: Element, className: string) {
 
-  function StyledComponent<C extends ElementType = T>(props: BoxProps<C>) {
+  function StyledComponent<PolymorphicElement extends ElementType = Element>(props: BoxProps<PolymorphicElement>) {
     const {as = elementType, ref, children, ...rest} = props;
     const attrs = {};
     const utils = {};
@@ -52,22 +52,22 @@ export function runtimeStyledBox<T extends ElementType>(elementType: T, classNam
 
   }
 
-  StyledComponent.flex = function flex<T extends ElementType>(props: BoxProps<T>) {
+  StyledComponent.flex = function flex<Element extends ElementType>(props: BoxProps<Element>) {
     return StyledComponent({display: "flex", ...props});
   };
 
-  StyledComponent.grid = function grid<T extends ElementType>(props: BoxProps<T>) {
+  StyledComponent.grid = function grid<Element extends ElementType>(props: BoxProps<Element>) {
     return StyledComponent({display: "grid", ...props});
   };
 
-  StyledComponent.block = function block<T extends ElementType>(props: BoxProps<T>) {
+  StyledComponent.block = function block<Element extends ElementType>(props: BoxProps<Element>) {
     return StyledComponent({display: "block", ...props});
   };
 
-  StyledComponent.inline = function inline<T extends ElementType>(props: BoxProps<T>) {
+  StyledComponent.inline = function inline<Element extends ElementType>(props: BoxProps<Element>) {
     return StyledComponent({display: "inline", ...props});
   };
 
-  return StyledComponent as StyledComponent<T> & Display<T>;
+  return StyledComponent as StyledComponent<Element> & Display<Element>;
 
 }
