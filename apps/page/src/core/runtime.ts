@@ -11,7 +11,7 @@ export interface Display<Element extends ElementType> {
   inline: StyledComponent<Element>,
 }*/
 
-export function runtimeStyledBox<Element extends ElementType>(elementType: Element, className: string) {
+export function runtimeStyledBox<Element extends ElementType>(elementType: Element, baseClassName: string) {
 
   function StyledComponent<PolymorphicElement extends ElementType = Element>(props: StyledComponentProps<PolymorphicElement>) {
     const {as = elementType, ref, children, ...rest} = props;
@@ -30,7 +30,7 @@ export function runtimeStyledBox<Element extends ElementType>(elementType: Eleme
         {
           ...attrs,
           ref,
-          className: [className, cssUtils(utils)].join(" ")
+          className: [baseClassName, cssUtils(utils)].join(" ")
         },
         children,
     );

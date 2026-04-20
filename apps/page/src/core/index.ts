@@ -7,16 +7,16 @@ import type {OptionsType, VariantGroup} from './types.ts';
 
 
 export function styled<T extends ElementType, V extends VariantGroup>(elementType: T, options: OptionsType<V>) {
-  const className = style({
+  const baseClassName = style({
     '@layer': {
       [baseLayer]: options.base,
     }
   });
 
-  const args = [elementType as string, className];
+  const args = [elementType as string, baseClassName];
   const variantsClasses = styleVariants(options.variants);
   // First we call our runtime function at build time
-  const Component = runtimeStyledBox<T>(elementType, className);
+  const Component = runtimeStyledBox<T>(elementType, baseClassName);
 
   // Then we tell vanilla-extract how to serialize the previous
   // function call by annotating its return value
