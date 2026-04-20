@@ -24,18 +24,18 @@ export type OptionsType<Group extends VariantGroup> = {
 }
 
 
-export type StyledComponentOwnedProps<Element extends ElementType> = ComponentPropsWithoutRef<Element> & {
+export type StyledComponentOwnedProps<Element extends ElementType, V> = ComponentPropsWithoutRef<Element> & {
   ref?: PolymorphicForwardedRef<Element>;
-} &  CssUtils;
+} &  CssUtils & V;
 
 
-export type StyledComponentProps<Element extends ElementType> = PolymorphicProps<
-    StyledComponentOwnedProps<Element>,
+export type StyledComponentProps<Element extends ElementType, V> = PolymorphicProps<
+    StyledComponentOwnedProps<Element, V>,
     Element
 >;
 
-export type StyledComponent<Element extends ElementType> = <
+export type StyledComponentType<Element extends ElementType, V> = <
     PolymorphicElement extends ElementType = Element
 >(
-    props: StyledComponentProps<PolymorphicElement>
+    props: StyledComponentProps<PolymorphicElement, V>
 ) => ReturnType<typeof createElement>;

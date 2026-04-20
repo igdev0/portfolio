@@ -1,5 +1,5 @@
 import {createElement, type ElementType} from 'react';
-import type {StyledComponent, StyledComponentProps} from './types.ts';
+import type {StyledComponentProps, StyledComponentType} from './types.ts';
 import {cssUtils} from '../styles/properties/index.css.ts';
 
 
@@ -11,9 +11,9 @@ export interface Display<Element extends ElementType> {
   inline: StyledComponent<Element>,
 }*/
 
-export function runtimeStyledBox<Element extends ElementType>(elementType: Element, baseClassName: string) {
+export function runtimeStyledBox<Element extends ElementType, V>(elementType: Element, baseClassName: string) {
 
-  function StyledComponent<PolymorphicElement extends ElementType = Element>(props: StyledComponentProps<PolymorphicElement>) {
+  function StyledComponent<PolymorphicElement extends ElementType = Element>(props: StyledComponentProps<PolymorphicElement, V>) {
     const {as = elementType, ref, children, ...rest} = props;
     const attrs = {};
     const utils = {};
@@ -56,6 +56,6 @@ export function runtimeStyledBox<Element extends ElementType>(elementType: Eleme
     };
   */
 
-  return StyledComponent as StyledComponent<Element>;
+  return StyledComponent as StyledComponentType<Element, V>;
 
 }

@@ -14,10 +14,16 @@ export const Layout = styled("div", {
 
 export const Box = styled("div", {
   base: {},
-  variants: {}
+  variants: {
+    test: {
+      "1": {
+        width: "100%"
+      }
+    }
+  }
 });
 
 export const Button = styled("button", {
   base: {},
   variants: {}
-})
+});

@@ -4,7 +4,7 @@ import {Box} from './app.css';
 
 function App() {
   return (
-      <Box>
+      <Box test="1">
         Hello
       </Box>
   );
