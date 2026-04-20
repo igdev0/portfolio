@@ -18,15 +18,15 @@ export type VariantProps<T extends VariantGroup> =
     }>;
 
 
-export type OptionsType = {
+export type OptionsType<Group extends VariantGroup> = {
   base: StyleRule,
-  variants: VariantGroup,
+  variants: Group,
 }
 
 
 export type StyledComponentOwnedProps<Element extends ElementType> = ComponentPropsWithoutRef<Element> & {
   ref?: PolymorphicForwardedRef<Element>;
-} & CssUtils;
+} &  CssUtils;
 
 
 export type StyledComponentProps<Element extends ElementType> = PolymorphicProps<
