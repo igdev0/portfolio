@@ -36,7 +36,12 @@ export function styled<As extends ElementType,
     Object.assign(variantsMap, {[key]: styleVariants(scopedVariantProps)});
   }
 
-  const args = [{elementType, baseClass, variants: variantsMap, defaultVariants: defaultVariantsMap}];
+  const args = [{
+    elementType: elementType as string,
+    baseClass,
+    variants: variantsMap,
+    defaultVariants: defaultVariantsMap
+  }];
   // elementType, baseClassName, variantsMap as Record<keyof V, string>
   // First we call our runtime function at build time
   const Component = runtimeStyledBox<As, WithDefaults<Props, VariantProps<Props>, DefaultProps>>({
@@ -51,7 +56,6 @@ export function styled<As extends ElementType,
   addFunctionSerializer(Component, {
     importPath: './core/runtime',
     importName: 'runtimeStyledBox',
-    // @ts-expect-error It should work.
     args
   });
 
