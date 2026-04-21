@@ -31,11 +31,6 @@ export type VariantProps<T extends VariantGroup> =
 
 export type PropsMap<Props> = Record<keyof Props, Record<string, string>> & {__brand?: "props"};
 
-export type VariantSelection<Variants> = {
-  [key in keyof Variants]: BooleanMap<Variants[key]>
-}
-
-
 export interface StyledOptions<Element extends ElementType, Props, Variants extends Partial<PropsMap<Props>>> {
   elementType: Element,
   baseClass: string,

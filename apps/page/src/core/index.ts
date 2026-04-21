@@ -21,11 +21,13 @@ export function styled<As extends ElementType,
   for (const key in options.variants) {
     const unscopedVariantProps = options.variants[key];
     const scopedVariantProps: Record<string, StyleRule> = {};
-
     for (const variantKey in unscopedVariantProps) {
+
+      const rules = unscopedVariantProps[variantKey];
+
       scopedVariantProps[variantKey] = {
         "@layer": {
-          [variantsLayer]: unscopedVariantProps[variantKey] as keyof object
+          [variantsLayer]: rules as keyof object
         }
       };
     }

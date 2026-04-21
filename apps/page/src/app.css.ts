@@ -14,43 +14,25 @@ export const Box = styled("div", {
     padding: spaces.sm
   },
   variants: {
-    /**
-     * Some comment made about this
-     */
+    example: {
+      true: {
+        padding: "sm",
+      }
+    },
     great: {
       1: {
         backgroundColor: colors['amber-300'],
       },
       2: {
-        position: "relative",
-        backgroundColor: colors['indigo-400'],
-        ":hover": {
-          backgroundColor: colors['amber-200']
-        },
-        ":before": {
-          content: "",
-          position: "absolute",
-          width: "100%",
-          height: "100%",
-          zIndex: -1,
-          backgroundColor: colors['amber-300']
-        }
+        backgroundColor: colors['orange-400'],
       },
       3: {
         backgroundColor: colors['red-300'],
       }
     },
-    example: {
-      true: {
-        backgroundColor: colors['indigo-400'],
-        ":hover": {
-          backgroundColor: colors['indigo-600'],
-        }
-      }
-    }
   },
   defaultVariants: {
     example: true,
-    great: 2,
+    great: 3,
   }
 });
