@@ -43,7 +43,7 @@ export function styled<As extends ElementType,
     variants: variantsMap,
     defaultVariants: defaultVariantsMap
   }];
-  
+
   const Component = runtimeStyledBox<As, WithDefaults<Props, VariantProps<Props>, DefaultProps>>({
     elementType,
     baseClass,

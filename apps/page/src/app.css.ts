@@ -8,37 +8,20 @@ import {colors} from './styles/global/colors.css.ts';
  * 3. Flex, Grid, Block are display domains available as Component.display
  */
 
-export const Layout = styled("div", {
-});
-
 export const Box = styled("div", {
-  base: {
-    backgroundColor: colors['amber-500']
-  },
+  base: {},
   variants: {
     /**
      * Some comment made about this
      */
-    test: {
-      "first": {
-        width: "100%",
-      },
-      "second": {
-        backgroundColor: colors['blue-300'],
-      }
-    },
-    rounded: {
+    example: {
       true: {
-        borderRadius: '5px'
+        backgroundColor: colors['amber-500'],
+        ":hover": {
+          backgroundColor: colors['blue-500'],
+        }
       }
     }
   },
-  defaultVariants: {
-    rounded: true
-  }
-});
-
-export const Button = styled("button", {
-  base: {},
-  variants: {}
+  defaultVariants: {}
 });

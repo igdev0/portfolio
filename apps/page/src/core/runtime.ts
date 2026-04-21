@@ -33,6 +33,10 @@ export function runtimeStyledBox<Element extends ElementType, Props>(args: Style
         Object.assign(utils, {[key]: rest[key as keyof object]});
       } else if (variants[key]) {
       // 2. Apply styles
+        if(defaultVariants[key]) {
+          selectedVariants.push(defaultVariants[key][rest[key]]);
+        }
+
         selectedVariants.push(variants[key][rest[key]]);
 
       } else {
