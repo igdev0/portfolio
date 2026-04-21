@@ -1,5 +1,6 @@
 import {styled} from './core';
 import {colors} from './styles/global/colors.css.ts';
+import {spaces} from './styles/global/spaces.css.ts';
 
 /**
  * Styles Power Distribution:
@@ -9,7 +10,9 @@ import {colors} from './styles/global/colors.css.ts';
  */
 
 export const Box = styled("div", {
-  base: {},
+  base: {
+    padding: spaces.sm
+  },
   variants: {
     /**
      * Some comment made about this
@@ -19,7 +22,19 @@ export const Box = styled("div", {
         backgroundColor: colors['amber-300'],
       },
       2: {
-        backgroundColor: colors['indigo-300'],
+        position: "relative",
+        backgroundColor: colors['indigo-400'],
+        ":hover": {
+          backgroundColor: colors['amber-200']
+        },
+        ":before": {
+          content: "",
+          position: "absolute",
+          width: "100%",
+          height: "100%",
+          zIndex: -1,
+          backgroundColor: colors['amber-300']
+        }
       },
       3: {
         backgroundColor: colors['red-300'],
@@ -36,6 +51,6 @@ export const Box = styled("div", {
   },
   defaultVariants: {
     example: true,
-    great: 2
+    great: 2,
   }
 });

@@ -24,8 +24,8 @@ export function styled<As extends ElementType,
 
     for (const variantKey in unscopedVariantProps) {
       scopedVariantProps[variantKey] = {
-        ['@layer']: {
-          [variantsLayer]: unscopedVariantProps[variantKey] as keyof object,
+        "@layer": {
+          [variantsLayer]: unscopedVariantProps[variantKey] as keyof object
         }
       };
     }

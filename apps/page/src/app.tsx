@@ -3,7 +3,7 @@ import {Box} from './app.css';
 
 function App() {
   return (
-      <Box p="sm" display="block">
+      <Box>
         Hello
       </Box>
   );
