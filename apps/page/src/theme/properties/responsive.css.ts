@@ -1,6 +1,6 @@
 import {defineProperties} from '@vanilla-extract/sprinkles';
-import {layers} from '../layers.css.ts';
-import {spaces} from '../spaces.css.ts';
+import {layers} from '../global/layers.css.ts';
+import {spaces} from '../global/spaces.css.ts';
 
 export const responsiveProperties = defineProperties({
   '@layer': layers.utilities,

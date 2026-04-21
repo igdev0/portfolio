@@ -1,5 +1,5 @@
 import {defineProperties} from '@vanilla-extract/sprinkles';
-import {layers} from '../layers.css.ts';
+import {layers} from '../global/layers.css.ts';
 
 export const boxProperties = defineProperties({
   '@layer': layers.utilities,

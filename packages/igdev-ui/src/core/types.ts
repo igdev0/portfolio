@@ -1,8 +1,8 @@
 import type {ComplexStyleRule, StyleRule} from '@vanilla-extract/css';
 
+import {type CssUtils} from '../theme/properties/index.css.ts';
 import type {ComponentPropsWithoutRef, createElement, ElementType} from 'react';
 import type {PolymorphicForwardedRef, PolymorphicProps} from '@axa-ch/react-polymorphic-types';
-import type {CssUtils} from '../theme/properties/index.css.ts';
 
 export type VariantDefinition<Key extends string> = Record<Key, ComplexStyleRule | string>;
 export type VariantGroup<VariantProp extends string = string, VariantValue extends string = string> = Record<VariantProp, VariantDefinition<VariantValue>>;
@@ -30,6 +30,11 @@ export type VariantProps<T extends VariantGroup> =
 
 
 export type PropsMap<Props> = Record<keyof Props, Record<string, string>> & {__brand?: "props"};
+
+export type VariantSelection<Variants> = {
+  [key in keyof Variants]: BooleanMap<Variants[key]>
+}
+
 
 export interface StyledOptions<Element extends ElementType, Props, Variants extends Partial<PropsMap<Props>>> {
   elementType: Element,
