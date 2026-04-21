@@ -1,5 +1,5 @@
 import {createElement, type ElementType} from 'react';
-import type {StyledComponentProps, StyledComponentType, StyledOptions} from './types.ts';
+import type {PropsMap, StyledComponentProps, StyledComponentType, StyledOptions} from './types.ts';
 import {cssUtils} from '../styles/properties/index.css.ts';
 
 
@@ -12,36 +12,27 @@ export interface Display<Element extends ElementType> {
 }*/
 
 
-export function runtimeStyledBox<Element extends ElementType, Props>(args: StyledOptions<Element, Props>) {
-  const {elementType, variants, defaultVariants, baseClass} = args
+export function runtimeStyledBox<Element extends ElementType, Props>(args: StyledOptions<Element, Props, Partial<PropsMap<Props>>>) {
+  const {elementType, variants, defaultVariants, baseClass} = args;
 
   function StyledComponent<As extends ElementType = Element>(props: StyledComponentProps<As, Props>) {
     const {as = elementType, ref, children, ...rest} = props;
     const attrs = {};
     const selectedVariants = [];
     const utils = {};
-    /**
-     * 1. Implement default variants.
-     * 2. Implement tailwind equivalent "apply" property.
-     * 3. Implement compound types.
-     */
 
-    for (const key of Object.keys(rest)) {
+    const propsWithDefault = {...defaultVariants, ...rest};
 
+    for (const key in propsWithDefault) {
       if (cssUtils.properties.has(key as keyof object)) {
-      // 1. Apply utilities from props
-        Object.assign(utils, {[key]: rest[key as keyof object]});
+        // 1. Apply utilities from props
+        Object.assign(utils, {[key]: propsWithDefault[key as keyof object]});
       } else if (variants[key]) {
-      // 2. Apply styles
-        if(defaultVariants[key]) {
-          selectedVariants.push(defaultVariants[key][rest[key]]);
-        }
-
-        selectedVariants.push(variants[key][rest[key]]);
-
+        // 2. Apply styles
+        selectedVariants.push(variants[key][propsWithDefault[key]]);
       } else {
-      // 3. Forward Other React Props
-        Object.assign(attrs, {[key]: rest[key as keyof object]});
+        // 3. Forward Other React Props
+        Object.assign(attrs, {[key]: propsWithDefault[key as keyof object]});
       }
     }
 

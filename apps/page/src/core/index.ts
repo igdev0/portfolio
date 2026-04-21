@@ -16,7 +16,7 @@ export function styled<As extends ElementType,
   });
 
   const variantsMap: Partial<PropsMap<Props>> = {};
-  const defaultVariantsMap: Partial<PropsMap<Props>> = {};
+  const defaultProps: Partial<PropsMap<Props>> = {};
 
   for (const key in options.variants) {
     const unscopedVariantProps = options.variants[key];
@@ -29,26 +29,27 @@ export function styled<As extends ElementType,
         }
       };
     }
+    const computedVariants = styleVariants(scopedVariantProps);
 
     if (Object.hasOwn(options.defaultVariants, key)) {
-      Object.assign(defaultVariantsMap, {[key]: styleVariants(scopedVariantProps)});
+      Object.assign(defaultProps, {[key]: options.defaultVariants[key]});
     }
 
-    Object.assign(variantsMap, {[key]: styleVariants(scopedVariantProps)});
+    Object.assign(variantsMap, {[key]: computedVariants});
   }
 
   const args = [{
     elementType: elementType as string,
     baseClass,
     variants: variantsMap,
-    defaultVariants: defaultVariantsMap
+    defaultVariants: defaultProps
   }];
 
   const Component = runtimeStyledBox<As, WithDefaults<Props, VariantProps<Props>, DefaultProps>>({
     elementType,
     baseClass,
     variants: variantsMap,
-    defaultVariants: defaultVariantsMap,
+    defaultVariants: defaultProps,
   });
 
   // Then we tell vanilla-extract how to serialize the previous

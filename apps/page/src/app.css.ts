@@ -14,14 +14,28 @@ export const Box = styled("div", {
     /**
      * Some comment made about this
      */
+    great: {
+      1: {
+        backgroundColor: colors['amber-300'],
+      },
+      2: {
+        backgroundColor: colors['indigo-300'],
+      },
+      3: {
+        backgroundColor: colors['red-300'],
+      }
+    },
     example: {
       true: {
-        backgroundColor: colors['amber-500'],
+        backgroundColor: colors['indigo-400'],
         ":hover": {
-          backgroundColor: colors['blue-500'],
+          backgroundColor: colors['indigo-600'],
         }
       }
     }
   },
-  defaultVariants: {}
+  defaultVariants: {
+    example: true,
+    great: 2
+  }
 });
