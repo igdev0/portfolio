@@ -7,7 +7,9 @@ import type {OptionsType, PropsMap, VariantGroup, VariantProps, WithDefaults} fr
 
 export function styled<As extends ElementType,
     Props extends VariantGroup,
-    DefaultProps extends Partial<VariantProps<Props>>>(elementType: As, options: OptionsType<Props, DefaultProps>) {
+    DefaultProps extends Partial<VariantProps<Props>>>(
+    elementType: As, options: OptionsType<Props, DefaultProps>
+) {
 
   const baseClass = style({
     '@layer': {
