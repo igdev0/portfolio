@@ -32,7 +32,7 @@ export function styled<As extends ElementType,
     const computedVariants = styleVariants(scopedVariantProps);
 
     if (Object.hasOwn(options.defaultVariants, key)) {
-      Object.assign(defaultProps, {[key]: options.defaultVariants[key]});
+      Object.assign(defaultProps, {[key]: options.defaultVariants[key as keyof object]});
     }
 
     Object.assign(variantsMap, {[key]: computedVariants});
