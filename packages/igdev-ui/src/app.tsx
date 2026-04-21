@@ -1,8 +1,9 @@
+import {Box} from './app.css.ts';
 
 function App() {
   return (
       <div>
-        Hello
+        <Box test>Hello</Box>
       </div>
   );
 }

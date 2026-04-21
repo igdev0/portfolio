@@ -1,8 +1,8 @@
 import {defineProperties} from '@vanilla-extract/sprinkles';
-import {utilitiesLayer} from '../global/layers.css.ts';
+import {layers} from '../layers.css.ts';
 
-export const sizeCss = defineProperties({
-  '@layer': utilitiesLayer,
+export const boxProperties = defineProperties({
+  '@layer': layers.utilities,
   properties: {
     width: {
       full: "100%",

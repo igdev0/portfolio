@@ -1,8 +1,8 @@
 import {createGlobalTheme} from '@vanilla-extract/css';
-import {utilitiesLayer} from './layers.css.ts';
+import {layers} from './layers.css.ts';
 
 export const breakpoints = createGlobalTheme(":root",{
-  '@layer': utilitiesLayer,
+  '@layer': layers.utilities,
   'breakpoint-sm': "40rem",
   'breakpoint-md': "48rem",
   'breakpoint-lg': "64rem",

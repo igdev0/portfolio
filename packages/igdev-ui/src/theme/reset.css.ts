@@ -1,9 +1,9 @@
 import {globalStyle} from '@vanilla-extract/css';
-import {resetLayer} from './layers.css.ts';
+import {layers} from './layers.css.ts';
 
 globalStyle("html, body", {
   "@layer": {
-    [resetLayer]: {
+    [layers.reset]: {
       margin: 0,
       padding: 0,
       fontFamily: "sans-serif"
@@ -13,7 +13,7 @@ globalStyle("html, body", {
 
 globalStyle("#app", {
   "@layer": {
-    [resetLayer]: {
+    [layers.reset]: {
       width: "100%",
     }
   }
@@ -21,7 +21,7 @@ globalStyle("#app", {
 
 globalStyle("*", {
   "@layer": {
-    [resetLayer]: {
+    [layers.reset]: {
       boxSizing: "border-box"
     }
   }

@@ -1,5 +1,5 @@
 import {createGlobalTheme} from '@vanilla-extract/css';
-import {utilitiesLayer} from './layers.css.ts';
+import {layers} from './layers.css.ts';
 
 export const colorTokens = {
   'red-50': 'oklch(97.1% 0.013 17.38)',
@@ -318,7 +318,7 @@ export const colorTokens = {
 };
 
 export const colors = createGlobalTheme(":root", {
-  '@layer': utilitiesLayer,
+  '@layer': layers.utilities,
   ...colorTokens
 });
 

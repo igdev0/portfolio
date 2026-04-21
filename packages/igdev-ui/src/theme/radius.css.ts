@@ -1,8 +1,8 @@
 import {createGlobalTheme} from '@vanilla-extract/css';
-import {utilitiesLayer} from './layers.css.ts';
+import {layers} from './layers.css.ts';
 
 export const radius = createGlobalTheme(":root", {
-  "@layer": utilitiesLayer,
+  "@layer": layers.utilities,
   "radius-xs": '0.125rem',
   "radius-sm": '0.25rem',
   "radius-md": '0.375rem',

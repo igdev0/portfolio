@@ -1,11 +1,9 @@
-import {createSprinkles, defineProperties} from '@vanilla-extract/sprinkles';
-import "../global/reset.css.ts";
-import {utilitiesLayer} from '../global/layers.css.ts';
-import {colors} from '../global/colors.css.ts';
-import {spaces} from '../global/spaces.css.ts';
+import {defineProperties} from '@vanilla-extract/sprinkles';
+import {layers} from '../layers.css.ts';
+import {spaces} from '../spaces.css.ts';
 
-const responsiveProperties = defineProperties({
-  '@layer': utilitiesLayer,
+export const responsiveProperties = defineProperties({
+  '@layer': layers.utilities,
   conditions: {
     mobile: {},
     tablet: {'@media': 'screen and (min-width: 768px)'},
@@ -79,28 +77,3 @@ const responsiveProperties = defineProperties({
     mt: ['marginTop'],
   }
 });
-
-const colorProperties = defineProperties({
-  '@layer': utilitiesLayer,
-  conditions: {
-    lightMode: {},
-    darkMode: {
-      '@media': '(prefers-color-scheme: dark)'
-    }
-  },
-  defaultCondition: 'lightMode',
-  properties: {
-    color: colors,
-    backgroundColor: colors,
-  },
-});
-
-
-export const cssUtils = createSprinkles(
-    responsiveProperties,
-    colorProperties
-);
-
-
-// It's a good idea to export the Sprinkles type too
-export type CssUtils = Parameters<typeof cssUtils>[0];

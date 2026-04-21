@@ -1,8 +1,8 @@
 import {createGlobalTheme} from '@vanilla-extract/css';
-import {utilitiesLayer} from './layers.css.ts';
+import {layers} from './layers.css.ts';
 
 export const text = createGlobalTheme(':root', {
-  '@layer': utilitiesLayer,
+  '@layer': layers.utilities,
   'text-xs': ' 0.75rem',
   'text-sm': ' 0.875rem',
   'text-base': '1rem',

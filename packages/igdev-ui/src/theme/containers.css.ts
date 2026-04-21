@@ -1,8 +1,8 @@
 import {createGlobalTheme} from '@vanilla-extract/css';
-import {utilitiesLayer} from './layers.css.ts';
+import {layers} from './layers.css.ts';
 
 export const containers = createGlobalTheme(":root", {
-  "@layer": utilitiesLayer,
+  "@layer": layers.utilities,
   "container-3xs": "16rem",
   "container-2xs": "18rem",
   "container-xs": "20rem",
@@ -17,3 +17,5 @@ export const containers = createGlobalTheme(":root", {
   "container-6xl": "72rem",
   "container-7xl": "80rem",
 })
+
+export type Containers = typeof containers;

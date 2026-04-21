@@ -5,7 +5,7 @@ export default defineConfig({
   plugins: [vanillaExtractPlugin()],
   build: {
     lib: {
-      entry: "./src/index.ts",
+      entry: "./src/index.css.ts",
       formats: ["es"]
     },
     rollupOptions: {

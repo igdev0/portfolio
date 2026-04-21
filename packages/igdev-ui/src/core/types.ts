@@ -1,8 +1,8 @@
 import type {ComplexStyleRule, StyleRule} from '@vanilla-extract/css';
 
-import {type CssUtils} from '../styles/properties/index.css.ts';
 import type {ComponentPropsWithoutRef, createElement, ElementType} from 'react';
 import type {PolymorphicForwardedRef, PolymorphicProps} from '@axa-ch/react-polymorphic-types';
+import type {CssUtils} from '../theme/properties/index.css.ts';
 
 export type VariantDefinition<Key extends string> = Record<Key, ComplexStyleRule | string>;
 export type VariantGroup<VariantProp extends string = string, VariantValue extends string = string> = Record<VariantProp, VariantDefinition<VariantValue>>;
