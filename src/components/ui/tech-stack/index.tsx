@@ -5,6 +5,7 @@ import Button from '@/components/lib/button';
 import {motion} from "framer-motion";
 import {useEffect, useState} from 'react';
 import Statement from '@/components/lib/statement';
+import {PanInfo} from 'motion-dom';
 
 const useCases = {
   "Languages": "Built single page web apps with React since 2020.\nBuilt single page web apps with React since 2020.\nBuilt single page web apps with React since 2020.\nBuilt single page web apps with React since 2020.",
@@ -100,6 +101,17 @@ export default function TechStack() {
     };
   });
 
+  const handleDragEnd = (_:any, info: PanInfo) => {
+    const offset = isMobile ? info.offset.x : info.offset.y;
+    const velocity = isMobile ? info.velocity.x : info.velocity.y;
+    const threshold = 60;
+    if (offset < -threshold || velocity < -500) {
+      setActive((prev) => wrapIndex(prev + 1));
+    } else if (offset > threshold || velocity > 500) {
+      setActive((prev) => wrapIndex(prev - 1));
+    }
+  };
+
   return (
       <div className="tech-stack">
         <div className="tech-stack__controllers">
@@ -117,7 +129,7 @@ export default function TechStack() {
           }
         </div>
         <div
-          className="stack"
+            className="stack"
         >
           {
             frames.map(({offsetValue, z, scale, key, index: originalIndex}) => {
@@ -132,16 +144,7 @@ export default function TechStack() {
                       }}
                       drag={originalIndex === active ? (isMobile ? "x" : "y") : false}
                       dragElastic={0.2}
-                      onDragEnd={(_, info) => {
-                        const offset = isMobile ? info.offset.x : info.offset.y;
-                        const velocity = isMobile ? info.velocity.x : info.velocity.y;
-                        const threshold = 60;
-                        if (offset < -threshold || velocity < -500) {
-                          setActive((prev) => wrapIndex(prev + 1));
-                        } else if (offset > threshold || velocity > 500) {
-                          setActive((prev) => wrapIndex(prev - 1));
-                        }
-                      }}
+                      onDragEnd={handleDragEnd}
                       dragSnapToOrigin={true}
                       onClick={() => {
                         if (originalIndex !== active) {
@@ -169,7 +172,7 @@ export default function TechStack() {
                       <h4 className="font-bold">{key}</h4>
                     </div>
                     <Statement className="stack__card__body">
-                      {useCases[key]?? "No content to be displayed."}
+                      {useCases[key] ?? "No content to be displayed."}
                     </Statement>
                     <ul className="stack__card__tags">
                       {
