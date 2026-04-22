@@ -7,12 +7,12 @@ import {useEffect, useState} from 'react';
 import Statement from '@/components/lib/statement';
 
 const useCases = {
-  "React": "Built single page web apps with React since 2020.",
-  "NextJS": "Built SSG, ICR with NextJS, since 2021.",
+  "Languages": "Built single page web apps with React since 2020.\nBuilt single page web apps with React since 2020.\nBuilt single page web apps with React since 2020.\nBuilt single page web apps with React since 2020.",
+  "Frontend": "Built SSG, ICR with NextJS, since 2021.",
 };
 
 const stack = {
-  "PRO languages": [
+  "Languages": [
     'JavaScript',
     'TypeScript',
     'HTML5',
@@ -24,7 +24,7 @@ const stack = {
     'Next',
     'Vue',
     'Redux',
-    'tailwindcss',
+    'Tailwind CSS',
     'React Router',
   ],
   "Backend": [
@@ -36,7 +36,7 @@ const stack = {
     'MySQL',
     'Drizzle'
   ],
-  "Infrastructure": [
+  "Infra & DevOps": [
     'Docker',
     "Github",
     "Bitbucket",
@@ -85,7 +85,7 @@ export default function TechStack() {
     if (delta < -total / 2) delta += total;
 
     const distance = Math.abs(delta);
-    const offset = 0.1;
+    const offset = 0.13;
 
     const offsetValue = delta * 30;
 
@@ -93,8 +93,7 @@ export default function TechStack() {
       key: key as keyof typeof stack,
       isActive: index === active,
       distance,
-      x: isMobile ? offsetValue : 0,
-      y: isMobile ? 0 : offsetValue,
+      offsetValue,
       z: total - distance,
       scale: 1 - offset * distance,
       index,
@@ -117,17 +116,19 @@ export default function TechStack() {
             )
           }
         </div>
-        <div className="stack">
+        <div
+          className="stack"
+        >
           {
-            frames.map(({x, y, z, scale, key, index: originalIndex}) => {
+            frames.map(({offsetValue, z, scale, key, index: originalIndex}) => {
               return (
                   <motion.div
                       initial={false}
                       animate={{
-                        x,
-                        y,
                         scale,
                         zIndex: z,
+                        x: isMobile ? offsetValue : 0,
+                        y: isMobile ? 0 : offsetValue,
                       }}
                       drag={originalIndex === active ? (isMobile ? "x" : "y") : false}
                       dragElastic={0.2}
@@ -159,6 +160,8 @@ export default function TechStack() {
                       style={{
                         cursor: originalIndex === active ? 'grab' : 'pointer',
                         touchAction: 'pan-x pan-y',
+                        gridRow: 1,
+                        gridColumn: 1,
                       }}
                   >
                     <div className="stack__card__header">
@@ -166,7 +169,7 @@ export default function TechStack() {
                       <h4 className="font-bold">{key}</h4>
                     </div>
                     <Statement className="stack__card__body">
-                      Been developing frontend web apps since 20216
+                      {useCases[key]?? "No content to be displayed."}
                     </Statement>
                     <ul className="stack__card__tags">
                       {
