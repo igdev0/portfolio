@@ -27,6 +27,10 @@
             &:not(:disabled) {
                 @apply hover:bg-accent-100/90 hover:text-accent-500/90 hover:border-accent-400/90;
             }
+
+            &.button--active {
+                @apply bg-accent-400 text-default opacity-100;
+            }
         }
 
         &:disabled {

@@ -9,7 +9,7 @@ export const buttonVariants = cva('button', {
       solid: 'button--solid',
       secondary: 'button--secondary',
       outline: 'button--outline',
-    }
+    },
   },
   defaultVariants: {
     variant: "solid"
@@ -20,13 +20,14 @@ export interface ButtonProps extends PropsWithChildren, VariantProps<typeof butt
   className?: string;
   onClick?: () => void;
   icon?: IconNames;
+  active?: boolean;
   disabled?: boolean;
 }
 
 export default function Button(props: ButtonProps) {
-  const {className, ref, children, icon, disabled, onClick, ...variants} = props;
+  const {className, ref, children, icon, disabled, active, onClick, ...variants} = props;
   return (
-      <button ref={ref} className={`${buttonVariants(variants)} ${className}`} disabled={disabled ?? false} onClick={onClick}>
+      <button ref={ref} className={`${buttonVariants(variants)} ${className} ${active ? "button--active" : ''}`} disabled={disabled ?? false} onClick={onClick}>
         {icon && <Icon name={icon}/>}
         {children}
       </button>

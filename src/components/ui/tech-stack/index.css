@@ -1,26 +1,40 @@
 @import "../../../app/globals.css";
 @layer components {
     .tech-stack {
-        .tech-stack__card {
-            @apply border dark:border-default-700 border-default-300 rounded-md p-3;
+        @apply grid 2xl:grid-cols-2 gap-6;
 
-            .tech-stack__card__header {
-                @apply flex justify-start gap-3 items-center pb-4;
+        .tech-stack__controllers {
+            @apply flex gap-3 flex-wrap h-fit;
 
-                svg {
-                    @apply dark:text-accent-500 text-accent-500;
-                }
+            button {
+                @apply w-fit h-fit;
             }
+        }
 
-            .tech-stack__card__body {
-                @apply relative;
+        .stack {
+            @apply w-80 aspect-square;
+            @apply relative;
+            @apply transform-3d perspective-near;
 
-                .tech-stack__card__body__skill {
-                    @apply flex justify-start items-center ml-9;
+            .stack__card {
+                @apply border dark:border-default-700 border-default-300 rounded-md p-3;
+                @apply absolute bg-default w-full top-0 left-0 right-0 bottom-0;
+                @apply transform-3d;
 
-                    &:before {
-                        content: ' ';
-                        @apply size-2 bg-accent-500 mr-2;
+                .stack__card__header {
+                    @apply flex justify-start gap-3 items-center pb-4;
+
+                    svg {
+                        @apply dark:text-accent-500 text-accent-500;
+                    }
+                }
+
+                .stack__card__body {
+                    @apply relative flex flex-wrap gap-2;
+
+                    .stack__card__skill {
+                        @apply text-xs;
+                        @apply px-2 py-1 rounded border-2;
                     }
                 }
             }
