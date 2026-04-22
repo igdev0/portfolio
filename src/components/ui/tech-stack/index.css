@@ -1,7 +1,7 @@
 @import "../../../app/globals.css";
 @layer components {
     .tech-stack {
-        @apply gap-6 grid;
+        @apply gap-6 grid items-center;
         @apply xl:grid-cols-[250px_minmax(250px,1fr)];
 
         .tech-stack__controllers {
@@ -15,10 +15,13 @@
         .stack {
             @apply max-w-2xl w-full;
             @apply relative grid;
+            @apply grid-rows-1 grid-cols-1;
             @apply transform-3d perspective-near;
             @apply mx-auto;
 
             .stack__card {
+                @apply col-start-1;
+                @apply row-end-1;
                 @apply border dark:border-default-700 border-default-300 rounded-md p-3;
                 @apply dark:bg-(--bg-surface-2) bg-accent-50 w-full top-0 left-0 right-0 bottom-0;
                 @apply flex flex-col justify-between;

@@ -6,9 +6,10 @@ import {motion} from "framer-motion";
 import {useEffect, useState} from 'react';
 import Statement from '@/components/lib/statement';
 import {PanInfo} from 'motion-dom';
+import clsx from 'clsx';
 
 const useCases = {
-  "Languages": "Built single page web apps with React since 2020.\nBuilt single page web apps with React since 2020.\nBuilt single page web apps with React since 2020.\nBuilt single page web apps with React since 2020.",
+  "Languages": "JavaScript: – I love its simplicity, my little [object] dummy 😅\n CSS3: Truly love its API, and I think",
   "Frontend": "Built SSG, ICR with NextJS, since 2021.",
 };
 
@@ -112,6 +113,14 @@ export default function TechStack() {
     }
   };
 
+  const handleClick = (originalIndex: number) => {
+      return () => {
+        if (originalIndex !== active) {
+          setActive(originalIndex);
+        }
+      }
+  }
+
   return (
       <div className="tech-stack">
         <div className="tech-stack__controllers">
@@ -146,23 +155,12 @@ export default function TechStack() {
                       dragElastic={0.2}
                       onDragEnd={handleDragEnd}
                       dragSnapToOrigin={true}
-                      onClick={() => {
-                        if (originalIndex !== active) {
-                          setActive(originalIndex);
-                        }
-                      }}
-                      onTap={() => {
-                        if (originalIndex !== active) {
-                          setActive(originalIndex);
-                        }
-                      }}
-                      className="stack__card"
+                      onClick={handleClick(originalIndex)}
+                      className={clsx('stack__card', originalIndex !== active ? 'blur-[2px]' : '')}
                       key={key}
                       style={{
                         cursor: originalIndex === active ? 'grab' : 'pointer',
                         touchAction: 'pan-x pan-y',
-                        gridRow: 1,
-                        gridColumn: 1,
                       }}
                   >
                     <div className="stack__card__header">
@@ -170,7 +168,7 @@ export default function TechStack() {
                       <h4 className="font-bold">{key}</h4>
                     </div>
                     <Statement className="stack__card__body">
-                      {useCases[key] ?? "No content to be displayed."}
+                      {useCases[key as keyof object] ?? "No content to be displayed."}
                     </Statement>
                     <ul className="stack__card__tags">
                       {
