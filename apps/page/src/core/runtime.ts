@@ -3,15 +3,6 @@ import type {PropsMap, StyledComponentProps, StyledComponentType, StyledOptions}
 import {cssUtils} from '../theme/properties/index.css.ts';
 
 
-/*
-export interface Display<Element extends ElementType> {
-  flex: StyledComponent<Element>,
-  grid: StyledComponent<Element>,
-  block: StyledComponent<Element>,
-  inline: StyledComponent<Element>,
-}*/
-
-
 export function runtimeStyledBox<Element extends ElementType, Props>(args: StyledOptions<Element, Props, Partial<PropsMap<Props>>>) {
   const {elementType, variants, defaultVariants, baseClass} = args;
 
@@ -33,6 +24,7 @@ export function runtimeStyledBox<Element extends ElementType, Props>(args: Style
       } else {
         // 3. Forward Other React Props
         Object.assign(attrs, {[key]: propsWithDefault[key as keyof object]});
+        
       }
     }
 
@@ -47,25 +39,6 @@ export function runtimeStyledBox<Element extends ElementType, Props>(args: Style
     );
 
   }
-
-  /*
-
-    StyledComponent.flex = function flex<Element extends ElementType>(props: BoxProps<Element>) {
-      return StyledComponent({display: "flex", ...props});
-    };
-
-    StyledComponent.grid = function grid<Element extends ElementType>(props: BoxProps<Element>) {
-      return StyledComponent({display: "grid", ...props});
-    };
-
-    StyledComponent.block = function block<Element extends ElementType>(props: BoxProps<Element>) {
-      return StyledComponent({display: "block", ...props});
-    };
-
-    StyledComponent.inline = function inline<Element extends ElementType>(props: BoxProps<Element>) {
-      return StyledComponent({display: "inline", ...props});
-    };
-  */
 
   return StyledComponent as StyledComponentType<Element, Props>;
 
