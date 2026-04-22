@@ -38,11 +38,15 @@ const stack = {
   ],
   "Infrastructure": [
     'Docker',
+    "Github",
+    "Bitbucket",
+    "Google Cloud",
     'Github Actions',
   ],
   "Tools": [
     'Figma',
     'Adobe Illustrator',
+    "Webstorm",
     'Photoshop'
   ]
 } as const;
@@ -115,7 +119,7 @@ export default function TechStack() {
         </div>
         <div className="stack">
           {
-            frames.map(({ x, y, z, scale, key, index: originalIndex }) => {
+            frames.map(({x, y, z, scale, key, index: originalIndex}) => {
               return (
                   <motion.div
                       initial={false}
@@ -143,7 +147,7 @@ export default function TechStack() {
                           setActive(originalIndex);
                         }
 
-                        console.log("Clicked")
+                        console.log("Clicked");
                       }}
                       onTap={() => {
                         if (originalIndex !== active) {
@@ -174,7 +178,7 @@ export default function TechStack() {
                       }
                     </ul>
                   </motion.div>
-              )
+              );
             })
           }
         </div>

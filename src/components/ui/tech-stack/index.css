@@ -12,8 +12,8 @@
         }
 
         .stack {
-            aspect-ratio: 2/1.5;
-            @apply w-80;
+            aspect-ratio: 2/1.8;
+            @apply w-80 mx-auto;
             @apply relative;
             @apply transform-3d perspective-near;
 
@@ -21,7 +21,7 @@
                 @apply border dark:border-default-700 border-default-300 rounded-md p-3;
                 @apply absolute dark:bg-(--bg-surface-2) bg-accent-50 w-full top-0 left-0 right-0 bottom-0;
                 @apply flex flex-col justify-between;
-                @apply transform-3d;
+                @apply transform-3d shadow-lg backdrop-blur-3xl;
 
                 .stack__card__header {
                     @apply flex justify-start gap-3 items-center pb-4;
