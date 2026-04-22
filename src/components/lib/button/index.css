@@ -24,9 +24,11 @@
             @apply bg-accent-50 dark:bg-accent-950 border-2;
             @apply text-accent-500 border-accent-400 dark:border-accent-800 dark:text-accent-50;
 
-            &:not(:disabled) {
-                @apply hover:bg-accent-100/90 hover:text-accent-500/90 hover:border-accent-400/90;
+
+            &:not(:disabled):hover {
+                @apply dark:bg-accent-950/50 bg-accent-100/90;
             }
+
 
             &.button--active {
                 @apply bg-accent-400 text-default opacity-100;

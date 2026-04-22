@@ -12,13 +12,15 @@
         }
 
         .stack {
-            @apply w-80 aspect-square;
+            aspect-ratio: 2/1.5;
+            @apply w-80;
             @apply relative;
             @apply transform-3d perspective-near;
 
             .stack__card {
                 @apply border dark:border-default-700 border-default-300 rounded-md p-3;
-                @apply absolute bg-default w-full top-0 left-0 right-0 bottom-0;
+                @apply absolute dark:bg-(--bg-surface-2) bg-accent-50 w-full top-0 left-0 right-0 bottom-0;
+                @apply flex flex-col justify-between;
                 @apply transform-3d;
 
                 .stack__card__header {
@@ -30,7 +32,11 @@
                 }
 
                 .stack__card__body {
-                    @apply relative flex flex-wrap gap-2;
+                    @apply dark:bg-gray-900 bg-default p-3;
+                }
+
+                .stack__card__tags {
+                    @apply relative flex flex-wrap gap-2 dark:text-gray-300 text-gray-600;
 
                     .stack__card__skill {
                         @apply text-xs;

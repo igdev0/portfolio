@@ -161,10 +161,10 @@ export default function TechStack() {
                       <Icon name="github"/>
                       <h4 className="font-bold">{key}</h4>
                     </div>
-                    <Statement>
+                    <Statement className="stack__card__body">
                       Been developing frontend web apps since 20216
                     </Statement>
-                    <ul className="stack__card__body">
+                    <ul className="stack__card__tags">
                       {
                         stack[key as StackKey].map((skill) => (
                             <li key={skill} className="stack__card__skill">

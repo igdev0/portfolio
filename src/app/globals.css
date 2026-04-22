@@ -1,6 +1,9 @@
 @import "tailwindcss";
 
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+html {
+    touch-action: pan-x pan-y;
+}
 
 [data-theme="dark"] {
     --fg-default: var(--color-default);
@@ -11,7 +14,7 @@
     --semigrid: var(--color-gray-700);
     --statement: var(--color-accent-300);
     --button-solid: var(--color-accent-600);
-    --bg-surface-2: var(--color-indigo-950);
+    --bg-surface-2: var(--color-gray-800);
 }
 
 @layer base {
@@ -19,7 +22,6 @@
         @apply bg-(--bg-default) text-(--fg-default);
     }
 
-    .example {}
 }
 
 @theme {
