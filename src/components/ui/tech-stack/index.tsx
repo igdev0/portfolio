@@ -101,7 +101,7 @@ export default function TechStack() {
     };
   });
 
-  const handleDragEnd = (_:any, info: PanInfo) => {
+  const handleDragEnd = (_: any, info: PanInfo) => {
     const offset = isMobile ? info.offset.x : info.offset.y;
     const velocity = isMobile ? info.velocity.x : info.velocity.y;
     const threshold = 60;
@@ -150,8 +150,6 @@ export default function TechStack() {
                         if (originalIndex !== active) {
                           setActive(originalIndex);
                         }
-
-                        console.log("Clicked");
                       }}
                       onTap={() => {
                         if (originalIndex !== active) {

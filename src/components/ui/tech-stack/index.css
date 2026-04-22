@@ -2,7 +2,7 @@
 @layer components {
     .tech-stack {
         @apply gap-6 grid;
-        @apply xl:grid-cols-[200px_minmax(200px,1fr)];
+        @apply xl:grid-cols-[250px_minmax(250px,1fr)];
 
         .tech-stack__controllers {
             @apply flex flex-col gap-3 flex-wrap h-fit;
@@ -40,7 +40,7 @@
                     @apply relative flex flex-wrap gap-2 dark:text-gray-300 text-gray-600;
 
                     .stack__card__skill {
-                        @apply bg-default;
+                        @apply bg-(--bg-default);
                         @apply px-2 py-1 rounded border-2;
                     }
                 }
