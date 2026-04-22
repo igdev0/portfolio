@@ -1,0 +1,20 @@
+@import "../../../app/globals.css";
+
+@layer components {
+    .hero {
+        @apply flex flex-col;
+
+        .hero__layout {
+            @apply pt-30 grid xl:grid-cols-2 items-center sm:justify-between gap-4;
+
+            .hero__column:not(.hero__column--image) {
+                @apply sm:order-1;
+            }
+
+            .hero__column.hero__column--image {
+                @apply flex items-center self-end w-full max-w-[400] aspect-square justify-center sm:justify-center sm:order-2 relative ml-auto md:mr-17 z-0;
+            }
+
+        }
+    }
+}

@@ -1,0 +1,20 @@
+@import "../../../app/globals.css";
+
+@layer components {
+    .experience {
+        @apply w-full h-full flex gap-3 md:gap-6 mt-12;
+    }
+
+    .timeline {
+        .timeline__head {
+            @apply size-6 bg-accent-500;
+        }
+
+        .timeline__bar {
+            @apply h-full;
+            @apply border-l-3 border-gray-200 border-dashed;
+            @apply translate-x-2.5;
+        }
+
+    }
+}

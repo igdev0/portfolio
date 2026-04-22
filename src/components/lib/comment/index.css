@@ -1,0 +1,15 @@
+@import "../../../app/globals.css";
+
+[data-theme="dark"] {
+    --color-comment: var(--color-gray-300);
+}
+
+@theme {
+    --color-comment: var(--color-gray-500);
+}
+
+@layer components {
+    .comment {
+        @apply text-comment text-sm inline-block;
+    }
+}

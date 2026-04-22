@@ -1,7 +1,0 @@
-@import "../../../globals.css";
-
-@layer base {
-    .profile {
-        @apply w-full px-6;
-    }
-}

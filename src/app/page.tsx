@@ -1,10 +1,10 @@
 "use client";
 import {Fragment} from 'react';
-import Nav from '@/app/components/ui/nav';
-import Hero from '@/app/components/ui/hero';
-import Profile from '@/app/components/ui/profile';
-import Expertise from '@/app/components/lib/expertise';
-import Collaborate from '@/app/components/lib/collaborate';
+import Nav from '@/components/ui/nav';
+import Hero from '@/components/ui/hero';
+import Profile from '@/components/ui/profile';
+import Expertise from '@/components/lib/expertise';
+import Collaborate from '@/components/lib/collaborate';
 
 export default function LandingPage() {
 

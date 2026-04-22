@@ -1,9 +1,0 @@
-@import "../../../globals.css";
-
-@layer components {
-    .container {
-        &.bordered {
-            @apply border-x border-(--semigrid) mx-auto px-9;
-        }
-    }
-}
