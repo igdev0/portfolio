@@ -1,5 +1,5 @@
 "use client";
-import hero from '@/config/content/hero';
+import hero from '@/content/hero';
 import LinkButton from '@/components/lib/link-button';
 import clsx from 'clsx';
 import Statement from '@/components/lib/statement';

@@ -2,9 +2,9 @@
 import Link from 'next/dist/client/link';
 import "./index.css";
 import {useTheme} from 'next-themes';
-import menu from '@/config/content/menu';
 import clsx from 'clsx';
 import {useState} from 'react';
+import menu from '@/content/menu';
 import IconButton from '@/components/lib/icon-button';
 import IconLink from '@/components/lib/icon-link';
 import Container from '@/components/lib/container';
