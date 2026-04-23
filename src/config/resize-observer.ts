@@ -1,15 +1,23 @@
 "use client";
 
-const callbacks = new Map<Element, () => void>();
+type Callback = (props: ResizeObserverEntry) => void;
+
+const callbacks = new WeakMap<Element, Callback>();
 
 const observer = new ResizeObserver((entries) => {
   for (const entry of entries) {
-    callbacks.get(entry.target)?.();
+    const callback = callbacks.get(entry.target);
+    if (callback) {
+      callback(entry);
+    }
   }
 });
 
-export function observe(el: Element, cb: () => void) {
-  callbacks.set(el, cb);
+export function observe(el: Element, callback: Callback) {
+  if (callbacks.has(el)) {
+    observer.unobserve(el);
+  }
+  callbacks.set(el, callback);
   observer.observe(el);
 }
 

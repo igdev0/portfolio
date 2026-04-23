@@ -1,4 +1,4 @@
-import {PropsWithChildren} from 'react';
+import {ForwardedRef, PropsWithChildren} from 'react';
 import "./index.css";
 import {cva, VariantProps} from 'class-variance-authority';
 import Box from '@/components/lib/box';
@@ -17,6 +17,7 @@ const containerVariants = cva('container', {
 export interface ContainerProps extends PropsWithChildren, VariantProps<typeof containerVariants> {
   name?: string;
   className?: string;
+  ref?: ForwardedRef<HTMLDivElement>
 }
 
 
@@ -24,8 +25,8 @@ export default function Container(props: ContainerProps) {
   const {children, className, name = 'default', ...variants} = props;
   return (
       <Box className="px-4 md:px-8">
-        <Box className={`@container/${name} ${containerVariants(variants)}` + ` ${className}`}>
-          {children}
+        <Box className={`@container/${name} ${containerVariants(variants)}` + ` ${className}`} ref={props?.ref??null}>
+            {children}
         </Box>
       </Box>
   );
