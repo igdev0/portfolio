@@ -7,7 +7,6 @@ import {useEffect, useRef, useState} from 'react';
 import Statement from '@/components/lib/statement';
 import {PanInfo} from 'motion-dom';
 import clsx from 'clsx';
-import Related from '@/components/lib/related';
 
 const useCases = {
   "Languages": "JavaScript: – I love its simplicity, my little [object] dummy 😅\n CSS3: Truly love its API, and I think",
@@ -148,7 +147,6 @@ export default function TechStack() {
           </div>
           {
             Object.keys(stack).map((key, index) => (
-                <Related id={key} ports={new Set()} z={index} asChild>
                   <Button key={key} variant="secondary" disabled={active === index} active={active === index}
                           onClick={() => {
                             setActive(index);
@@ -156,7 +154,6 @@ export default function TechStack() {
                     <Icon name="github"/>
                     {key}
                   </Button>
-                </Related>
                 )
             )
           }

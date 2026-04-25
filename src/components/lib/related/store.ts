@@ -1,55 +1,74 @@
 import {create} from 'zustand';
 
-export interface RelatedNodePort {
-  id: string;
-  x: number; // relative
-  y: number; // relative
+interface NodeCoords {
+  z: number;
+  x: number;
+  y: number;
   width: number;
   height: number;
 }
 
-export interface RelatedNode {
+export interface RelatedNodePort extends NodeCoords {
   id: string;
-  x: number; // relative to its parent
-  y: number; // relative to its parent
-  z: number; // relative to its parent
-  width: number;
-  height: number;
+  path: string;
+}
+
+export interface RelatedNode extends NodeCoords {
+  id: string;
   ports: Set<RelatedNodePort>;
+}
+
+interface ConnectNode {
+  id: string;
+  port: RelatedNodePort;
 }
 
 interface RelatedStore {
   nodes: RelatedNode[];
 
-  addNode(ref: RelatedNode): void;
+  add(ref: RelatedNode): void;
 
-  hasNode(id: string): void;
+  remove(id: string): void;
 
-  removeNode(id: string): void;
+  updateCoords(id: string, data: Partial<Omit<RelatedNode, "id" | "ports">>): void;
 
-  connect(): void;
+  getCoords(id: string): NodeCoords;
+
+  connect(a: ConnectNode, b: ConnectNode): void;
 }
 
 export const useRelatedStore = create<RelatedStore>((setState, getState, store) => (
     {
       nodes: [],
-      addNode(node) {
+      add(node) {
         setState((previousState) => {
-          if(!previousState.nodes.some(prevNode => prevNode.id === node.id)) {
-            return previousState;
+          let nodes = previousState.nodes;
+          if (previousState.nodes.some(prevNode => prevNode.id === node.id)) {
+            nodes = previousState.nodes.filter(prevNode => prevNode.id !== node.id);
           }
-          return {nodes: [...previousState.nodes, node]};
+          nodes.push(node);
+          return {nodes};
         });
       },
-      hasNode(id) {
-        return
+      getCoords(id: string) {
+        const node = store.getState().nodes.find(node => node.id === id);
+        if (!node) {
+          throw new Error(`Node ${id} not found`);
+        }
+        return node;
       },
-      removeNode(id) {
+      updateCoords(id: string, data) {
+        getState().nodes.map(node => (id === node.id ? {...node, ...data} : node));
+      },
+      remove(id) {
         setState((previousState) => {
           return {nodes: previousState.nodes.filter(node => node.id !== id)};
         });
       },
-      connect() {
+      connect(a, b) {
+        setState((previousState) => {
+          return {};
+        });
       }
     }
 ));
