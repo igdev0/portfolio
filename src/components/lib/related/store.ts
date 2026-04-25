@@ -23,6 +23,8 @@ interface RelatedStore {
 
   addNode(ref: RelatedNode): void;
 
+  hasNode(id: string): void;
+
   removeNode(id: string): void;
 
   connect(): void;
@@ -33,8 +35,14 @@ export const useRelatedStore = create<RelatedStore>((setState, getState, store) 
       nodes: [],
       addNode(node) {
         setState((previousState) => {
+          if(!previousState.nodes.some(prevNode => prevNode.id === node.id)) {
+            return previousState;
+          }
           return {nodes: [...previousState.nodes, node]};
         });
+      },
+      hasNode(id) {
+        return
       },
       removeNode(id) {
         setState((previousState) => {

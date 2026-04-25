@@ -7,6 +7,7 @@ import {useEffect, useRef, useState} from 'react';
 import Statement from '@/components/lib/statement';
 import {PanInfo} from 'motion-dom';
 import clsx from 'clsx';
+import Related from '@/components/lib/related';
 
 const useCases = {
   "Languages": "JavaScript: – I love its simplicity, my little [object] dummy 😅\n CSS3: Truly love its API, and I think",
@@ -126,8 +127,7 @@ export default function TechStack() {
 
 
   return (
-      <div className="tech-stack"
-      >
+      <div className="tech-stack">
         <div className="tech-stack__controllers">
           <div className="top-0 left-0 w-full h-1 bg-(--bg-default-800) overflow-hidden">
             <motion.div
@@ -148,13 +148,15 @@ export default function TechStack() {
           </div>
           {
             Object.keys(stack).map((key, index) => (
-                    <Button key={key} variant="secondary" disabled={active === index} active={active === index}
-                            onClick={() => {
-                              setActive(index);
-                            }}>
-                      <Icon name="github"/>
-                      {key}
-                    </Button>
+                <Related id={key} ports={new Set()} z={index} asChild>
+                  <Button key={key} variant="secondary" disabled={active === index} active={active === index}
+                          onClick={() => {
+                            setActive(index);
+                          }}>
+                    <Icon name="github"/>
+                    {key}
+                  </Button>
+                </Related>
                 )
             )
           }
