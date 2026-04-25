@@ -1,65 +1,76 @@
-import {Fragment, PropsWithChildren, useLayoutEffect, useRef} from 'react';
+import {PropsWithChildren, useLayoutEffect, useRef} from 'react';
 import {RelatedNodePort, useRelatedStore} from '@/components/lib/related/store';
+import clsx from 'clsx';
 
-interface RelatedProps extends PropsWithChildren {
-  id: string;
-  ports?: Set<RelatedNodePort>;
-  z: number;
-  asChild?: boolean;
-  className?: string;
-}
-
-export function RelatedOverlay() {
+export function RelatedOverlay(props: { className?: string }) {
   const store = useRelatedStore();
+
   return (
       <svg
-          className="fixed w-full h-full border-2 border-pink-300 z-100 top-0 left-0 right-0 bottom-0"
+          className={clsx(`z-20 w-full h-full border-2 border-pink-300 ${props.className ?? ""}`)}
           xmlns="http://www.w3.org/2000/svg">
         {
           Array.from(store.nodes).map((node) => (
-              <Fragment key={`node-${node.id}`}>
+              <g key={`node-${node.id}`}>
                 {
                   [...node.ports.entries()].map(([port]) => (
                       <path key={`port-${port.id}`} className="stroke-(--fg-default)" d={port.path}
                             strokeWidth={2}/>
                   ))
                 }
-              </Fragment>
+              </g>
           ))
         }
       </svg>
   );
 }
 
+interface RelatableProps extends PropsWithChildren {
+  id: string;
+  to?: string;
+  asChild?: boolean;
+  className?: string;
+}
 
-export function RelatedNode(props: RelatedProps) {
+export function Relatable(props: RelatableProps) {
   const store = useRelatedStore();
   const ref = useRef<HTMLDivElement>(null);
-  const {z, id, className, children} = props;
-
-  const defaultPorts = new Set<RelatedNodePort>([]);
+  const {id, className, children} = props;
+  const ports = useRef(new Set<RelatedNodePort>([]));
+  const z = 1;
 
   useLayoutEffect(() => {
     if (ref.current) {
-      const {x, y, width, height} = ref.current.getBoundingClientRect();
+      const {x, y, width, top, left, height} = ref.current.getBoundingClientRect();
+      const container = ref.current.offsetParent?.getBoundingClientRect();
+      if (!container) {
+        throw new Error("Offset parent is required");
+      }
+      const relX = left - container.left;
+      const relY = top - container.top;
 
-      defaultPorts.add({
+      ports.current.add({
+        id,
         height,
-        z: 1,
-        path: `M ${x} ${y} h ${width - 2}`,
+        z,
+        path: `M ${relX - 2} ${relY + height / 2} h ${width}`,
         width,
-        y, id, x
+        x,
+        y
       });
+
       store.add({
+        id,
         x,
         y,
+        z,
         width,
         height,
-        id,
-        ports: defaultPorts,
-        z: z
+        ports: ports.current,
       });
     }
+
+    return () => {};
   }, []);
 
   return (

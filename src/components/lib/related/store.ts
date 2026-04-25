@@ -32,7 +32,7 @@ interface RelatedStore {
 
   updateCoords(id: string, data: Partial<Omit<RelatedNode, "id" | "ports">>): void;
 
-  getCoords(id: string): NodeCoords;
+  getNode(id: string): NodeCoords;
 
   connect(a: ConnectNode, b: ConnectNode): void;
 }
@@ -50,7 +50,7 @@ export const useRelatedStore = create<RelatedStore>((setState, getState, store) 
           return {nodes};
         });
       },
-      getCoords(id: string) {
+      getNode(id: string) {
         const node = store.getState().nodes.find(node => node.id === id);
         if (!node) {
           throw new Error(`Node ${id} not found`);
