@@ -175,8 +175,8 @@ export default function TechStack() {
                         }}
                         drag={originalIndex === active ? (isMobile ? "x" : "y") : false}
                         dragElastic={0.2}
-                        onDragEnd={handleDragEnd}
                         dragSnapToOrigin={true}
+                        onDragEnd={handleDragEnd}
                         onClick={handleClick(originalIndex)}
                         className={clsx('stack__card', originalIndex !== active ? 'blur-[2px]' : '')}
                         style={{
