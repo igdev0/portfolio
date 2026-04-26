@@ -1,7 +1,6 @@
 import {create} from 'zustand';
 
 interface NodeCoords {
-  z: number;
   x: number;
   y: number;
   width: number;
@@ -15,8 +14,6 @@ export interface RelatedNodePort {
 
 export interface RelatedNode extends NodeCoords {
   id: string;
-  absX: number;
-  absY: number;
   ports: RelatedNodePort[];
 }
 
@@ -25,8 +22,19 @@ interface ConnectNode {
   port: RelatedNodePort;
 }
 
+interface ContainerBoundaries {
+  width: number;
+  height: number;
+  top: number;
+  bottom: number;
+  left: number;
+}
+
 interface RelatedStore {
   nodes: RelatedNode[];
+  container: ContainerBoundaries;
+
+  updateContainer(containerCoords: ContainerBoundaries): void;
 
   add(ref: RelatedNode): void;
 
@@ -42,6 +50,16 @@ interface RelatedStore {
 export const useRelatedStore = create<RelatedStore>((setState, getState, store) => (
     {
       nodes: [],
+      container: {
+        top: 0,
+        bottom: 0,
+        left: 0,
+        width: 0,
+        height: 0,
+      },
+      updateContainer(container) {
+        setState((prev) => ({...prev, container}));
+      },
       add(node) {
         setState((previousState) => {
           let nodes = previousState.nodes;
@@ -56,7 +74,18 @@ export const useRelatedStore = create<RelatedStore>((setState, getState, store) 
         return store.getState().nodes.find(node => node.id === id);
       },
       updateCoords(id: string, data) {
-        getState().nodes.map(node => (id === node.id ? {...node, ...data} : node));
+        setState(prevState => {
+          return {
+            ...prevState,
+            nodes: prevState.nodes.map(node => {
+              if (node.id === id) {
+                return {...node, ...data};
+              } else {
+                return node;
+              }
+            })
+          };
+        });
       },
       remove(id) {
         setState((previousState) => {

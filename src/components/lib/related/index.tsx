@@ -1,17 +1,18 @@
-import {PropsWithChildren, useCallback, useEffect, useLayoutEffect, useRef} from 'react';
+import {PropsWithChildren, useEffect, useLayoutEffect, useRef} from 'react';
 import {RelatedNodePort, useRelatedStore} from '@/components/lib/related/store';
 import clsx from 'clsx';
+import useResizeObserver from '@/hooks/use-resize-observer';
 
 export function RelatedOverlay(props: { className?: string }) {
-  const store = useRelatedStore();
-
+  const container = useRelatedStore().container;
+  const nodes = useRelatedStore().nodes;
   return (
       <svg
           className={clsx(`z-20 w-full h-full border-2 border-pink-300 ${props.className ?? ""}`)}
           xmlns="http://www.w3.org/2000/svg">
         {
-          Array.from(store.nodes).map((node) => (
-              <g transform={`translate(${node.absX}, ${node.absY})`} key={`node-${node.id}`}>
+          Array.from(nodes).map((node) => (
+              <g transform={`translate(${node.x + window.scrollX}, ${node.y + window.scrollY})`} key={`node-${node.id}`}>
                 {
                   node.ports.map((port) => (
                       <path key={`port-${port.id}`} className="stroke-(--fg-default)" d={port.path}
@@ -32,72 +33,90 @@ interface RelatableProps extends PropsWithChildren {
   className?: string;
 }
 
+export function RelatedContainer(props: PropsWithChildren) {
+  const updateContainer = useRelatedStore().updateContainer;
+  const ref = useRef<HTMLDivElement>(null);
+  const [addRef] = useResizeObserver();
+
+  const onResize = (entry: ResizeObserverEntry) => {
+    const rect = entry.target.getBoundingClientRect();
+    updateContainer({
+      top: rect.top,
+      left: rect.left,
+      bottom: rect.bottom,
+      width: rect.width,
+      height: rect.height,
+    });
+  };
+
+  useLayoutEffect(() => {
+    if (ref.current) {
+      addRef(onResize)(ref.current);
+    }
+  }, []);
+
+  return (
+      <div className="w-full h-full grid" ref={ref}>
+        {props.children}
+      </div>
+  );
+}
+
 export function Relatable(props: RelatableProps) {
   const store = useRelatedStore();
   const ref = useRef<HTMLDivElement>(null);
   const {id, className, children} = props;
-  const ports = useRef<RelatedNodePort[]>([]);
-  const z = 1;
 
-  const getOffsets = () => {
+  const ports = useRef<RelatedNodePort[]>([]);
+
+  const calcOffsets = () => {
 
     if (!ref.current) {
       throw new Error("Attempting to get offsets before layout");
     }
-    const {width, top, x, y, left, height} = ref.current.getBoundingClientRect();
-    const container = ref.current.offsetParent?.getBoundingClientRect();
-    if (!container) {
-      throw new Error("Offset parent is required");
+    const {width, x, y, top, left, height} = ref.current.getBoundingClientRect();
+    if (!parent) {
+      throw new Error("Attempting to get offsets after layout");
     }
-    const absX = left - container.left;
-    const absY = top - container.top;
-    return {x, y, absX, absY, width, height};
+    return {x, y, width, top, left, height};
   };
 
   const setup = () => {
-
     if (ref.current) {
-      const {width, absY, absX, height, y, x} = getOffsets();
 
+      const {width, height, y, x} = calcOffsets();
       store.add({
         id,
-        absY,
-        absX,
         x,
         y,
-        z,
         width,
         height,
         ports: ports.current,
       });
     }
+
   };
 
-  const link = useCallback(() => {
-    if (props.to) {
-      const current = store.getNode(props.id);
-      const node = store.getNode(props.to);
-      if (current && node) {
+  const link = () => {
+    const current = store.getNode(props.id);
+    const node = store.getNode(props.to);
+    if (current && node) {
+      current.ports = [
+        {
+          id: `${props.id}-${props.to}`,
+          path: `M ${current.width} ${node.height / 2} l ${node.x - current.x - node.width} ${0}`,
+        }
+      ];
 
-        current.ports = [
-          {
-            id: `${props.id}-${props.to}`,
-            path: `M ${node.width - 2} ${node.height / 2} h ${node.x - current.x - node.width}`,
-          }
-        ];
-
-      }
     }
-  }, [store]);
-
-  const update = () => {
-    const offsets = getOffsets();
-    store.updateCoords(props.id, offsets);
   };
 
   useEffect(() => {
-    link();
-  }, [store]);
+    window.requestAnimationFrame(() => {
+      setup()
+      link()
+    });
+  }, [store.container]);
 
   useLayoutEffect(() => {
     setup();
