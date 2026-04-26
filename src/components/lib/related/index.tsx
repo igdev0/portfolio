@@ -1,4 +1,4 @@
-import {PropsWithChildren, useEffect, useLayoutEffect, useRef} from 'react';
+import {cloneElement, isValidElement, PropsWithChildren, useEffect, useLayoutEffect, useRef} from 'react';
 import {RelatedNodePort, useRelatedStore} from '@/components/lib/related/store';
 import clsx from 'clsx';
 import useResizeObserver from '@/hooks/use-resize-observer';
@@ -8,7 +8,7 @@ export function RelatedOverlay(props: { className?: string }) {
   const nodes = useRelatedStore().nodes;
   return (
       <svg
-          className={clsx(`z-20 w-full h-full border-2 border-pink-300 ${props.className ?? ""}`)}
+          className={clsx(`z-20 w-full pointer-events-none h-full border-2 border-pink-300 ${props.className ?? ""}`)}
           xmlns="http://www.w3.org/2000/svg">
         {
           Array.from(nodes).map((node) => (
@@ -122,6 +122,13 @@ export function Relatable(props: RelatableProps) {
   useLayoutEffect(() => {
     setup();
   }, []);
+
+  if (props.asChild && isValidElement(children)) {
+    return cloneElement(children, {
+      ref,
+      className: clsx((children as any).props?.className, className),
+    });
+  }
 
   return (
       <div className={className} ref={ref}>

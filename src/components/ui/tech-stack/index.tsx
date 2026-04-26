@@ -7,6 +7,7 @@ import {useEffect, useRef, useState} from 'react';
 import Statement from '@/components/lib/statement';
 import {PanInfo} from 'motion-dom';
 import clsx from 'clsx';
+import {Relatable} from '@/components/lib/related';
 
 const useCases = {
   "Languages": "JavaScript: – I love its simplicity, my little [object] dummy 😅\n CSS3: Truly love its API, and I think",
@@ -147,6 +148,7 @@ export default function TechStack() {
           </div>
           {
             Object.keys(stack).map((key, index) => (
+                <Relatable id={`controller-${key}`} to={key} asChild={true}>
                   <Button key={key} variant="secondary" disabled={active === index} active={active === index}
                           onClick={() => {
                             setActive(index);
@@ -154,6 +156,7 @@ export default function TechStack() {
                     <Icon name="github"/>
                     {key}
                   </Button>
+                </Relatable>
                 )
             )
           }
@@ -164,43 +167,45 @@ export default function TechStack() {
           {
             frames.map(({offsetValue, z, scale, key, index: originalIndex}) => {
               return (
-                  <motion.div
-                      initial={false}
-                      animate={{
-                        scale,
-                        zIndex: z,
-                        x: isMobile ? offsetValue : 0,
-                        y: isMobile ? 0 : offsetValue,
-                      }}
-                      drag={originalIndex === active ? (isMobile ? "x" : "y") : false}
-                      dragElastic={0.2}
-                      onDragEnd={handleDragEnd}
-                      dragSnapToOrigin={true}
-                      onClick={handleClick(originalIndex)}
-                      className={clsx('stack__card', originalIndex !== active ? 'blur-[2px]' : '')}
-                      key={key}
-                      style={{
-                        cursor: originalIndex === active ? 'grab' : 'pointer',
-                        touchAction: 'pan-x pan-y',
-                      }}
-                  >
-                    <div className="stack__card__header">
-                      <Icon name="github"/>
-                      <h4 className="font-bold">{key}</h4>
-                    </div>
-                    <Statement className="stack__card__body">
-                      {useCases[key as keyof object] ?? "No content to be displayed."}
-                    </Statement>
-                    <ul className="stack__card__tags">
-                      {
-                        stack[key as StackKey].map((skill) => (
-                            <li key={skill} className="stack__card__skill">
-                              {skill}
-                            </li>
-                        ))
-                      }
-                    </ul>
-                  </motion.div>
+                  <Relatable id={key} asChild={true}>
+                    <motion.div
+                        key={key}
+                        initial={false}
+                        animate={{
+                          scale,
+                          zIndex: z,
+                          x: isMobile ? offsetValue : 0,
+                          y: isMobile ? 0 : offsetValue,
+                        }}
+                        drag={originalIndex === active ? (isMobile ? "x" : "y") : false}
+                        dragElastic={0.2}
+                        onDragEnd={handleDragEnd}
+                        dragSnapToOrigin={true}
+                        onClick={handleClick(originalIndex)}
+                        className={clsx('stack__card', originalIndex !== active ? 'blur-[2px]' : '')}
+                        style={{
+                          cursor: originalIndex === active ? 'grab' : 'pointer',
+                          touchAction: 'pan-x pan-y',
+                        }}
+                    >
+                      <div className="stack__card__header">
+                        <Icon name="github"/>
+                        <h4 className="font-bold">{key}</h4>
+                      </div>
+                      <Statement className="stack__card__body">
+                        {useCases[key as keyof object] ?? "No content to be displayed."}
+                      </Statement>
+                      <ul className="stack__card__tags">
+                        {
+                          stack[key as StackKey].map((skill) => (
+                              <li key={skill} className="stack__card__skill">
+                                {skill}
+                              </li>
+                          ))
+                        }
+                      </ul>
+                    </motion.div>
+                  </Relatable>
               );
             })
           }
