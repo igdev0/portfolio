@@ -12,7 +12,8 @@ export function RelatedOverlay(props: { className?: string }) {
           xmlns="http://www.w3.org/2000/svg">
         {
           Array.from(nodes).map((node) => (
-              <g transform={`translate(${node.x + window.scrollX}, ${node.y + window.scrollY})`} key={`node-${node.id}`}>
+              <g transform={`translate(${node.x + window.scrollX}, ${node.y + window.scrollY})`}
+                 key={`node-${node.id}`}>
                 {
                   node.ports.map((port) => (
                       <path key={`port-${port.id}`} className="stroke-(--fg-default)" d={port.path}
@@ -75,9 +76,6 @@ export function Relatable(props: RelatableProps) {
       throw new Error("Attempting to get offsets before layout");
     }
     const {width, x, y, top, left, height} = ref.current.getBoundingClientRect();
-    if (!parent) {
-      throw new Error("Attempting to get offsets after layout");
-    }
     return {x, y, width, top, left, height};
   };
 
@@ -104,18 +102,21 @@ export function Relatable(props: RelatableProps) {
       current.ports = [
         {
           id: `${props.id}-${props.to}`,
-          path: `M ${current.width} ${node.height / 2} l ${node.x - current.x - node.width} ${0}`,
+          path: `M ${current.width} ${current.height / 2} L ${node.x - current.x} ${node.y - current.y + node.height / 2}`,
         }
       ];
-
     }
   };
 
   useEffect(() => {
-    window.requestAnimationFrame(() => {
-      setup()
-      link()
-    });
+    const calc = () => {
+      setup();
+      link();
+    };
+    const anim = window.requestAnimationFrame(calc);
+    return () => {
+      window.cancelAnimationFrame(anim);
+    };
   }, [store.container]);
 
   useLayoutEffect(() => {

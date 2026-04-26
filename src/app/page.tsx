@@ -19,8 +19,9 @@ export default function LandingPage() {
               <Collaborate/>
               <Container className="flex flex-wrap gap-2 justify-between">
                 <Relatable id="a"
+
                            to="b"
-                           className="w-50 aspect-square border-2"/>
+                           className="w-50 aspect-square border-2 -translate-y-40"/>
                 <Relatable id="b"
                            className="w-50 aspect-square border-2"/>
               </Container>
