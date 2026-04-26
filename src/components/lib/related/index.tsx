@@ -1,4 +1,4 @@
-import {PropsWithChildren, useLayoutEffect, useRef} from 'react';
+import {PropsWithChildren, useCallback, useEffect, useLayoutEffect, useRef} from 'react';
 import {RelatedNodePort, useRelatedStore} from '@/components/lib/related/store';
 import clsx from 'clsx';
 
@@ -11,9 +11,9 @@ export function RelatedOverlay(props: { className?: string }) {
           xmlns="http://www.w3.org/2000/svg">
         {
           Array.from(store.nodes).map((node) => (
-              <g key={`node-${node.id}`}>
+              <g transform={`translate(${node.absX}, ${node.absY})`} key={`node-${node.id}`}>
                 {
-                  [...node.ports.entries()].map(([port]) => (
+                  node.ports.map((port) => (
                       <path key={`port-${port.id}`} className="stroke-(--fg-default)" d={port.path}
                             strokeWidth={2}/>
                   ))
@@ -36,31 +36,33 @@ export function Relatable(props: RelatableProps) {
   const store = useRelatedStore();
   const ref = useRef<HTMLDivElement>(null);
   const {id, className, children} = props;
-  const ports = useRef(new Set<RelatedNodePort>([]));
+  const ports = useRef<RelatedNodePort[]>([]);
   const z = 1;
 
-  useLayoutEffect(() => {
-    if (ref.current) {
-      const {x, y, width, top, left, height} = ref.current.getBoundingClientRect();
-      const container = ref.current.offsetParent?.getBoundingClientRect();
-      if (!container) {
-        throw new Error("Offset parent is required");
-      }
-      const relX = left - container.left;
-      const relY = top - container.top;
+  const getOffsets = () => {
 
-      ports.current.add({
-        id,
-        height,
-        z,
-        path: `M ${relX - 2} ${relY + height / 2} h ${width}`,
-        width,
-        x,
-        y
-      });
+    if (!ref.current) {
+      throw new Error("Attempting to get offsets before layout");
+    }
+    const {width, top, x, y, left, height} = ref.current.getBoundingClientRect();
+    const container = ref.current.offsetParent?.getBoundingClientRect();
+    if (!container) {
+      throw new Error("Offset parent is required");
+    }
+    const absX = left - container.left;
+    const absY = top - container.top;
+    return {x, y, absX, absY, width, height};
+  };
+
+  const setup = () => {
+
+    if (ref.current) {
+      const {width, absY, absX, height, y, x} = getOffsets();
 
       store.add({
         id,
+        absY,
+        absX,
         x,
         y,
         z,
@@ -69,8 +71,36 @@ export function Relatable(props: RelatableProps) {
         ports: ports.current,
       });
     }
+  };
 
-    return () => {};
+  const link = useCallback(() => {
+    if (props.to) {
+      const current = store.getNode(props.id);
+      const node = store.getNode(props.to);
+      if (current && node) {
+
+        current.ports = [
+          {
+            id: `${props.id}-${props.to}`,
+            path: `M ${node.width - 2} ${node.height / 2} h ${node.x - current.x - node.width}`,
+          }
+        ];
+
+      }
+    }
+  }, [store]);
+
+  const update = () => {
+    const offsets = getOffsets();
+    store.updateCoords(props.id, offsets);
+  };
+
+  useEffect(() => {
+    link();
+  }, [store]);
+
+  useLayoutEffect(() => {
+    setup();
   }, []);
 
   return (

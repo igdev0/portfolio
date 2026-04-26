@@ -8,14 +8,16 @@ interface NodeCoords {
   height: number;
 }
 
-export interface RelatedNodePort extends NodeCoords {
+export interface RelatedNodePort {
   id: string;
   path: string;
 }
 
 export interface RelatedNode extends NodeCoords {
   id: string;
-  ports: Set<RelatedNodePort>;
+  absX: number;
+  absY: number;
+  ports: RelatedNodePort[];
 }
 
 interface ConnectNode {
@@ -32,7 +34,7 @@ interface RelatedStore {
 
   updateCoords(id: string, data: Partial<Omit<RelatedNode, "id" | "ports">>): void;
 
-  getNode(id: string): NodeCoords;
+  getNode(id: string): RelatedNode | undefined;
 
   connect(a: ConnectNode, b: ConnectNode): void;
 }
@@ -51,11 +53,7 @@ export const useRelatedStore = create<RelatedStore>((setState, getState, store) 
         });
       },
       getNode(id: string) {
-        const node = store.getState().nodes.find(node => node.id === id);
-        if (!node) {
-          throw new Error(`Node ${id} not found`);
-        }
-        return node;
+        return store.getState().nodes.find(node => node.id === id);
       },
       updateCoords(id: string, data) {
         getState().nodes.map(node => (id === node.id ? {...node, ...data} : node));
