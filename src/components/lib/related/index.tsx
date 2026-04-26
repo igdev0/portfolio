@@ -97,7 +97,7 @@ export function Relatable(props: RelatableProps) {
 
   const link = () => {
     const current = store.getNode(props.id);
-    const node = store.getNode(props.to);
+    const node = store.getNode(props.to??"");
     if (current && node) {
       current.ports = [
         {
