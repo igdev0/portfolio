@@ -3,18 +3,17 @@ import Nav from '@/components/ui/nav';
 import Hero from '@/components/ui/hero';
 import Profile from '@/components/ui/profile';
 import Expertise from '@/components/lib/expertise';
-import Collaborate from '@/components/lib/collaborate';
+import TechStackV2 from '@/components/lib/tech-stack-v2';
+import {stack} from '@/components/lib/tech-stack-v2/const';
 
 export default function LandingPage() {
   return (
       <>
-        <div className="col-start-1 row-start-1">
           <Nav/>
           <Hero/>
           <Profile/>
           <Expertise/>
-          <Collaborate/>
-        </div>
+          <TechStackV2 data={stack}/>
       </>
   );
 }

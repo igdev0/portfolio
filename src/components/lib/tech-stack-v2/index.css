@@ -1,0 +1,30 @@
+@import "tailwindcss";
+@import "../../../app/globals.css";
+@layer components {
+    .tech-stack-v2 {
+        @apply flex w-full relative gap-3 justify-between flex-wrap;
+
+        .stack-controllers {
+            @apply w-auto;
+            @apply flex flex-col gap-3;
+        }
+
+        .stack-overlay {
+            @apply absolute w-full h-full left-0 right-0 top-0 bottom-0;
+        }
+
+        .stack-cards {
+            @apply grid;
+            @apply transform-3d perspective-near;
+
+            .stack-card {
+                @apply border  border-default-300 dark:border-default-700 rounded-md p-3;
+                @apply h-full transform-3d;
+                @apply bg-(--bg-default);
+                @apply p-2;
+                @apply col-start-1;
+                @apply row-end-1;
+            }
+        }
+    }
+}

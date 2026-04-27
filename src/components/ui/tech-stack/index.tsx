@@ -3,7 +3,7 @@ import "./index.css";
 import Icon from '@/components/lib/icon';
 import Button from '@/components/lib/button';
 import {motion} from "framer-motion";
-import {useEffect, useRef, useState} from 'react';
+import {useState} from 'react';
 import Statement from '@/components/lib/statement';
 import {PanInfo} from 'motion-dom';
 import clsx from 'clsx';
@@ -59,9 +59,8 @@ const stackKeys = [...Object.keys(stack)];
 
 export default function TechStack() {
   const [active, setActive] = useState(0);
-  const [isMobile, setIsMobile] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
   const [isPaused, setIsPaused] = useState(true);
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const TIMER_DURATION = 4000; // ms
   const total = stackKeys.length;
@@ -114,56 +113,46 @@ export default function TechStack() {
     };
   };
 
-  useEffect(() => {
-    const media = window.matchMedia('(max-width: 50rem)');
-
-    const update = () => setIsMobile(media.matches);
-    update();
-
-    media.addEventListener?.('change', update);
-    return () => media.removeEventListener?.('change', update);
-  }, []);
-
 
   return (
-      <div className="tech-stack">
-        <div className="tech-stack__controllers">
-          <div className="top-0 left-0 w-full h-1 bg-(--bg-default-800) overflow-hidden">
-            <motion.div
-                key={active}
-                className="h-full bg-gray-600 origin-center"
-                initial={{scaleX: 1}}
-                animate={{scaleX: isPaused ? 1 : 0}}
-                transition={{
-                  duration: TIMER_DURATION / 1000,
-                  ease: "linear",
-                }}
-                onAnimationComplete={() => {
-                  if (!isPaused) {
-                    setActive((prev) => wrapIndex(prev + 1));
-                  }
-                }}
-            />
+        <div className="tech-stack">
+          <div className="tech-stack__controllers">
+            <div className="top-0 left-0 w-full h-1 bg-(--bg-default-800) overflow-hidden">
+              <motion.div
+                  key={active}
+                  className="h-full bg-gray-600 origin-center"
+                  initial={{scaleX: 1}}
+                  animate={{scaleX: isPaused ? 1 : 0}}
+                  transition={{
+                    duration: TIMER_DURATION / 1000,
+                    ease: "linear",
+                  }}
+                  onAnimationComplete={() => {
+                    if (!isPaused) {
+                      setActive((prev) => wrapIndex(prev + 1));
+                    }
+                  }}
+              />
+            </div>
+            {
+              Object.keys(stack).map((key, index) => (
+                      <Button key={key} variant="secondary" disabled={active === index} active={active === index}
+                              onClick={() => {
+                                setActive(index);
+                              }}>
+                        <Icon name="github"/>
+                        {key}
+                      </Button>
+                  )
+              )
+            }
           </div>
-          {
-            Object.keys(stack).map((key, index) => (
-                  <Button key={key} variant="secondary" disabled={active === index} active={active === index}
-                          onClick={() => {
-                            setActive(index);
-                          }}>
-                    <Icon name="github"/>
-                    {key}
-                  </Button>
-                )
-            )
-          }
-        </div>
-        <div
-            className="stack relative"
-        >
-          {
-            frames.map(({offsetValue, z, scale, key, index: originalIndex}) => {
-              return (
+          <div
+              className="stack relative"
+          >
+            {
+              frames.map(({offsetValue, z, scale, key, index: originalIndex}) => {
+                return (
                     <motion.div
                         key={key}
                         initial={false}
@@ -201,10 +190,10 @@ export default function TechStack() {
                         }
                       </ul>
                     </motion.div>
-              );
-            })
-          }
+                );
+              })
+            }
+          </div>
         </div>
-      </div>
   );
 }
