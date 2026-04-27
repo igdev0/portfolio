@@ -19,6 +19,7 @@
 
             .stack-card {
                 @apply w-80;
+                @apply transform-3d perspective-distant origin-center;
                 @apply border  border-default-300 dark:border-default-700 rounded-md p-3;
                 @apply h-full transform-3d;
                 @apply bg-(--bg-default);

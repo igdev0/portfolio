@@ -36,15 +36,13 @@ export default function TechStackV2(props: TechStackProps) {
       if (delta < -total / 2) delta += total;
 
       const distance = Math.abs(delta);
-      const offset = 0.13;
-
       return {
         isActive: active === index,
         key: key as StackKey,
         distance,
         offset: delta * 30,
         z: total - distance,
-        scale: 1 - offset * distance,
+        scale: -distance * 20,
         index,
       };
     });
@@ -63,21 +61,14 @@ export default function TechStackV2(props: TechStackProps) {
   const onUpdate = (draggable: Draggable) => {
     const distance = calcDistance(draggable.x, draggable.y);
 
-    for (const card of cards.current) {
-      const value = card.attributes.getNamedItem("data-order")?.value;
-      if (value === active.toString()) continue;
-      const parsed = parseInt(value as string);
+    const scale = Math.max(0.7, 100 - distance / 300);
 
-      utils.set(card, {
-        y: frames[parsed].offset,
-        scale: frames[parsed].scale
-      });
-    }
+
 
     utils.set(draggable.$target, {
-      x: draggable.x,
-      y: draggable.y,
-      scale: Math.max(0.7, 1 - distance / 300),
+      translateZ: frames[active].scale - (distance / stackKeys.length),
+      translateY: draggable.y,
+      scaleZ: scale,
     });
   };
 
@@ -99,22 +90,17 @@ export default function TechStackV2(props: TechStackProps) {
   const onRelease = (draggable: Draggable) => {
     const nextIndex = calcNext(draggable);
     setActive(nextIndex);
+    if(nextIndex !== active) {
+      for (const element of cards.current) {
 
-    const nextFrames = calcFrames(nextIndex);
-    for (const element of cards.current) {
-      const order = element.attributes.getNamedItem("data-order");
-
-      if (order) {
-        const parsed = parseInt(order.value);
         utils.set(element, {
-          z: nextFrames[parsed].z,
-          y: nextFrames[parsed].offset,
-          scale: nextFrames[parsed].scale,
+          translateZ: frames[active].scale,
+          translateY: frames[active].offset,
+          scaleZ: frames[active].z,
         });
       }
     }
   };
-
 
 
   useLayoutEffect(() => {
@@ -134,21 +120,18 @@ export default function TechStackV2(props: TechStackProps) {
         snap: [0, 0, 0, 0],
         onUpdate,
         onRelease,
-        onSettle(e) {
-          console.log(e)
-        }
       });
     });
 
-  }, [frames, cards]);
+  }, [active]);
 
   useLayoutEffect(() => {
     let i = 0;
     for (const card of cards.current) {
       utils.set(card, {
-        y: frames[i].offset,
-        scale: frames[i].scale,
-        z: frames[i].z,
+        translateZ: frames[i].scale,
+        translateY: frames[i].offset,
+        scaleZ: frames[i].z,
       });
       i++;
     }
