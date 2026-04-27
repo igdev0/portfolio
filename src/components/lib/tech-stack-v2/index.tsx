@@ -41,7 +41,7 @@ export default function TechStackV2(props: TechStackProps) {
     });
   }, [active, stackKeys]);
 
-  const wrapIndex = (next: number) => {
+  const safeIndex = (next: number) => {
     if (next < 0) return stackKeys.length - 1;
     if (next >= stackKeys.length) return 0;
     return next;
@@ -71,19 +71,14 @@ export default function TechStackV2(props: TechStackProps) {
     const sum = draggable.x + draggable.y;
 
     if (distance > threshold) {
-      return (sum < 0 ? active + 1 : active - 1);
+      return safeIndex(sum < 0 ? active + 1 : active - 1);
     }
-    /**
-     * 1. Check if distance is bigger than threshold.
-     * 2. Check if
-     */
 
     return active;
   };
 
   const onRelease = (draggable: Draggable) => {
     const next = calcNext(draggable);
-    console.log({active, next});
     setActive(next);
   };
 
