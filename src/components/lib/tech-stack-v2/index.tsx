@@ -3,7 +3,7 @@ import {useLayoutEffect, useMemo, useRef, useState} from 'react';
 import Button from '@/components/lib/button';
 import "./index.css";
 import Container from '@/components/lib/container';
-import {createDraggable, createScope, Draggable, Scope, spring, utils} from 'animejs';
+import {animate, createDraggable, createScope, Draggable, Scope, spring} from 'animejs';
 
 export interface TechStackProps {
   data: typeof stack;
@@ -58,19 +58,6 @@ export default function TechStackV2(props: TechStackProps) {
     return next;
   };
 
-  const onUpdate = (draggable: Draggable) => {
-    const distance = calcDistance(draggable.x, draggable.y);
-
-    const scale = Math.max(0.7, 100 - distance / 300);
-
-
-
-    utils.set(draggable.$target, {
-      translateZ: frames[active].scale - (distance / stackKeys.length),
-      translateY: draggable.y,
-      scaleZ: scale,
-    });
-  };
 
   const calcDistance = (x: number, y: number) => {
     return Math.sqrt(x ** 2 + y ** 2);
@@ -89,15 +76,26 @@ export default function TechStackV2(props: TechStackProps) {
 
   const onRelease = (draggable: Draggable) => {
     const nextIndex = calcNext(draggable);
-    setActive(nextIndex);
-    if(nextIndex !== active) {
-      for (const element of cards.current) {
 
-        utils.set(element, {
-          translateZ: frames[active].scale,
-          translateY: frames[active].offset,
-          scaleZ: frames[active].z,
+    // always reset draggable position so it doesn't get stuck
+    animate(draggable.$target, {
+      translateX: 0,
+      translateY: 0,
+    });
+
+    setActive(nextIndex);
+
+    if (nextIndex !== active) {
+      let i = 0;
+      for (const element of cards.current) {
+        animate(element, {
+          translateZ: frames[i].scale,
+          translateY: frames[i].offset,
+
+          scaleZ: frames[i].z,
+          duration: 200,
         });
+        i++;
       }
     }
   };
@@ -108,17 +106,16 @@ export default function TechStackV2(props: TechStackProps) {
       scope.current.revert();
     }
 
-    scope.current = createScope({root}).add((self) => {
+    scope.current = createScope({root}).add(() => {
       const card = cards.current[active];
-
       const cardWidth = card.clientWidth;
       const cardHeight = card.clientHeight;
 
       createDraggable(card, {
         container: [-cardWidth, cardHeight, cardHeight, -cardWidth],
+        containerPadding: 10,
         releaseEase: spring({bounce: .2}),
-        snap: [0, 0, 0, 0],
-        onUpdate,
+        dragThreshold: 2,
         onRelease,
       });
     });
@@ -128,10 +125,11 @@ export default function TechStackV2(props: TechStackProps) {
   useLayoutEffect(() => {
     let i = 0;
     for (const card of cards.current) {
-      utils.set(card, {
+      animate(card, {
         translateZ: frames[i].scale,
         translateY: frames[i].offset,
         scaleZ: frames[i].z,
+        duration: 200,
       });
       i++;
     }
