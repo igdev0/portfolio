@@ -10,7 +10,7 @@ export interface TechStackProps {
 }
 
 export type StackKey = keyof typeof stack;
-
+const threshold = 60;
 export default function TechStackV2(props: TechStackProps) {
   const root = useRef<HTMLDivElement>(null);
   const scope = useRef<Scope>(null);
@@ -48,10 +48,10 @@ export default function TechStackV2(props: TechStackProps) {
   };
 
   const onUpdate = (draggable: Draggable) => {
-    const distance = Math.sqrt(draggable.x ** 2 + draggable.y ** 2);
-    utils.clamp(0.7, distance);
+    const distance = calcDistance(draggable.x, draggable.y);
 
-    // tweak this, but keep it clamped
+    const next = calcNext(draggable);
+
     const scale = Math.max(0.7, 1 - distance / 300);
 
     utils.set(draggable.$target, {
@@ -61,21 +61,32 @@ export default function TechStackV2(props: TechStackProps) {
     });
   };
 
-  const onRelease = (draggable: Draggable) => {
-    const threshold = 60;
-
-    if (draggable.y < -threshold) {
-      setActive(prev => wrapIndex(prev + 1));
-    } else if (draggable.y > threshold) {
-      setActive(prev => wrapIndex(prev - 1));
-    }
-
-    utils.set(draggable.$target, {
-      x: 0,
-      y: 0,
-      scale: 1,
-    });
+  const calcDistance = (x: number, y: number) => {
+    return Math.sqrt(x ** 2 + y ** 2);
   };
+
+  const calcNext = (draggable: Draggable) => {
+    const distance = calcDistance(draggable.x, draggable.y);
+
+    const sum = draggable.x + draggable.y;
+
+    if (distance > threshold) {
+      return (sum < 0 ? active + 1 : active - 1);
+    }
+    /**
+     * 1. Check if distance is bigger than threshold.
+     * 2. Check if
+     */
+
+    return active;
+  };
+
+  const onRelease = (draggable: Draggable) => {
+    const next = calcNext(draggable);
+    console.log({active, next});
+    setActive(next);
+  };
+
   useLayoutEffect(() => {
     scope.current = createScope({root}).add((self) => {
       const cards = self?.root.querySelectorAll(".stack-card");
@@ -87,26 +98,17 @@ export default function TechStackV2(props: TechStackProps) {
       for (const card of cards) {
 
         utils.set(card, {y: frames[i].offsetValue, scale: frames[i].scale, z: frames[i].z});
+        const cardWidth = card.clientWidth;
+        const cardHeight = card.clientHeight;
 
         const draggable = createDraggable(card, {
-          container: [-card.clientWidth, card.clientHeight, card.clientHeight, -100],
-          minVelocity: 10,
+          container: [-cardWidth, cardHeight, cardHeight, -cardWidth],
           releaseEase: spring({bounce: .2}),
+          snap: [0,0,0,0],
           onUpdate,
           onRelease,
         });
         draggable.setY(frames[i].offsetValue);
-
-        draggable.onRelease = (draggable) => {
-          const threshold = 60;
-          const offset = draggable.x > draggable.y ? draggable.x : draggable.y;
-
-          if (offset > threshold) {
-            setActive(prev => wrapIndex(prev + 1));
-          } else {
-            setActive(prev => wrapIndex(prev - 1));
-          }
-        };
         i++;
       }
 
@@ -119,13 +121,15 @@ export default function TechStackV2(props: TechStackProps) {
       <Container>
         <div className="tech-stack-v2" ref={root}>
           <div className="stack-controllers">
-            {frames.map((item, index) => (<Button onClick={() => setActive(index)} variant="secondary" key={item.key}>{item.key}</Button>))}
+            {frames.map((item, index) => (
+                <Button onClick={() => setActive(index)} variant="secondary" key={item.key}>{item.key}</Button>))}
           </div>
           <svg className="stack-overlay"/>
           <div className="stack-cards">
             {
               frames.map((frame, index) => (
                   <div key={frame.key}
+                       data-order={index}
                        style={{transform: `scale(${frame.scale}) translateZ(${frame.z}) translateY(${frame.offsetValue}px)`}}
                        className="stack-card">{frame.key}</div>)
               )
