@@ -24,6 +24,7 @@ export default function TechStackV2(props: TechStackProps) {
   const root = useRef<HTMLDivElement>(null);
   const scope = useRef<Scope>(null);
   const cards = useRef<HTMLDivElement[]>([]);
+  const controllers = useRef<HTMLButtonElement[]>([]);
   const stackKeys = [...Object.keys(props.data)];
   const [active, setActive] = useState(0);
 
@@ -87,12 +88,13 @@ export default function TechStackV2(props: TechStackProps) {
 
     if (nextIndex !== active) {
       let i = 0;
+      const frame = frames[i]
       for (const element of cards.current) {
         animate(element, {
-          translateZ: frames[i].scale,
-          translateY: frames[i].offset,
+          translateZ: frame.scale,
+          translateY: frame.offset,
 
-          scaleZ: frames[i].z,
+          scaleZ: frame.z,
           duration: 200,
         });
         i++;
@@ -108,14 +110,10 @@ export default function TechStackV2(props: TechStackProps) {
 
     scope.current = createScope({root}).add(() => {
       const card = cards.current[active];
-      const cardWidth = card.clientWidth;
-      const cardHeight = card.clientHeight;
 
       createDraggable(card, {
-        container: [-cardWidth, cardHeight, cardHeight, -cardWidth],
-        containerPadding: 10,
+        containerFriction: 1,
         releaseEase: spring({bounce: .2}),
-        dragThreshold: 2,
         onRelease,
       });
     });
@@ -140,10 +138,15 @@ export default function TechStackV2(props: TechStackProps) {
         <div className="tech-stack-v2" ref={root}>
           <div className="stack-controllers">
             {frames.map((item, index) => (
-                <Button active={active === index} onClick={() => setActive(index)} variant="secondary"
+                <Button active={active === index} ref={(el) => {
+                  if(el) {
+                    controllers.current[index] = el;
+                  }
+                }} onClick={() => setActive(index)} variant="secondary"
                         key={item.key}>{item.key}</Button>))}
           </div>
-          <svg className="stack-overlay"/>
+          <svg className="stack-overlay">
+          </svg>
           <div className="stack-cards">
             {
               frames.map((frame, index) => (
