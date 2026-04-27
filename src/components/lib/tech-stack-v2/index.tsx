@@ -23,6 +23,7 @@ const threshold = 60;
 export default function TechStackV2(props: TechStackProps) {
   const root = useRef<HTMLDivElement>(null);
   const scope = useRef<Scope>(null);
+  const cards = useRef<HTMLDivElement[]>([]);
   const stackKeys = [...Object.keys(props.data)];
   const [active, setActive] = useState(0);
   const activeRef = useRef(active);
@@ -63,6 +64,17 @@ export default function TechStackV2(props: TechStackProps) {
   const onUpdate = (draggable: Draggable) => {
     const distance = calcDistance(draggable.x, draggable.y);
 
+    for (const card of cards.current) {
+      const value = card.attributes.getNamedItem("data-order")?.value;
+      if (value === active.toString()) continue;
+      const parsed = parseInt(value as string);
+
+      utils.set(card, {
+        y: frames[parsed].offset,
+        scale: frames[parsed].scale
+      });
+    }
+
     utils.set(draggable.$target, {
       x: draggable.x,
       y: draggable.y,
@@ -90,8 +102,9 @@ export default function TechStackV2(props: TechStackProps) {
     setActive(nextIndex);
 
     const nextFrames = calcFrames(nextIndex);
-    for (const element of root.current?.querySelectorAll(".stack-card") || []) {
+    for (const element of cards.current) {
       const order = element.attributes.getNamedItem("data-order");
+
       if (order) {
         const parsed = parseInt(order.value);
         utils.set(element, {
@@ -114,49 +127,51 @@ export default function TechStackV2(props: TechStackProps) {
     }
 
     scope.current = createScope({root}).add((self) => {
-        const cards = self?.root.querySelectorAll(".stack-card");
+      const card = cards.current[active];
 
-        if(!cards) {return}
+      const cardWidth = card.clientWidth;
+      const cardHeight = card.clientHeight;
 
-        for (const card of cards) {
-          const order = card.attributes.getNamedItem("data-order");
-          if (order) {
-            const i = parseInt(order.value);
-
-            utils.set(card, {
-              y: frames[i].offset,
-              scale: frames[i].scale,
-              z: frames[i].z
-            });
-
-            const cardWidth = card.clientWidth;
-            const cardHeight = card.clientHeight;
-            console.log("Reapplying")
-            createDraggable(card, {
-              container: [-cardWidth, cardHeight, cardHeight, -cardWidth],
-              releaseEase: spring({bounce: .2}),
-              snap: [0, 0, 0, 0],
-              onUpdate,
-              onRelease,
-            });
-          }
-        }
+      createDraggable(card, {
+        container: [-cardWidth, cardHeight, cardHeight, -cardWidth],
+        releaseEase: spring({bounce: .2}),
+        snap: [0, 0, 0, 0],
+        onUpdate,
+        onRelease,
       });
+    });
 
-  }, [frames]);
+  }, [frames, cards]);
+
+  useLayoutEffect(() => {
+    let i = 0;
+    for (const card of cards.current) {
+      utils.set(card, {
+        y: frames[i].offset,
+        scale: frames[i].scale,
+        z: frames[i].z,
+      });
+      i++;
+    }
+  }, [cards, active]);
 
   return (
       <Container>
         <div className="tech-stack-v2" ref={root}>
           <div className="stack-controllers">
             {frames.map((item, index) => (
-                <Button onClick={() => setActive(index)} variant="secondary" key={item.key}>{item.key}</Button>))}
+                <Button active={active === index} onClick={() => setActive(index)} variant="secondary"
+                        key={item.key}>{item.key}</Button>))}
           </div>
           <svg className="stack-overlay"/>
           <div className="stack-cards">
             {
               frames.map((frame, index) => (
-                      <div key={frame.key}
+                      <div ref={ref => {
+                        if (ref) {
+                          cards.current[index] = ref;
+                        }
+                      }} key={frame.key}
                            data-order={index}
                            className="stack-card">
                         {frame.key}
