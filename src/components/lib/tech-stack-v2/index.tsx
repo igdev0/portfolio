@@ -49,6 +49,7 @@ export default function TechStackV2(props: TechStackProps) {
 
   const onUpdate = (draggable: Draggable) => {
     const distance = Math.sqrt(draggable.x ** 2 + draggable.y ** 2);
+    utils.clamp(0.7, distance);
 
     // tweak this, but keep it clamped
     const scale = Math.max(0.7, 1 - distance / 300);
@@ -69,7 +70,6 @@ export default function TechStackV2(props: TechStackProps) {
       setActive(prev => wrapIndex(prev - 1));
     }
 
-    // snap back (important, otherwise transforms accumulate)
     utils.set(draggable.$target, {
       x: 0,
       y: 0,
@@ -89,7 +89,7 @@ export default function TechStackV2(props: TechStackProps) {
         utils.set(card, {y: frames[i].offsetValue, scale: frames[i].scale, z: frames[i].z});
 
         const draggable = createDraggable(card, {
-          container: [0, 0, 0, 0],
+          container: [-card.clientWidth, card.clientHeight, card.clientHeight, -100],
           minVelocity: 10,
           releaseEase: spring({bounce: .2}),
           onUpdate,
@@ -119,13 +119,15 @@ export default function TechStackV2(props: TechStackProps) {
       <Container>
         <div className="tech-stack-v2" ref={root}>
           <div className="stack-controllers">
-            {frames.map((item) => (<Button variant="secondary" key={item.key}>{item.key}</Button>))}
+            {frames.map((item, index) => (<Button onClick={() => setActive(index)} variant="secondary" key={item.key}>{item.key}</Button>))}
           </div>
           <svg className="stack-overlay"/>
           <div className="stack-cards">
             {
               frames.map((frame, index) => (
-                  <div key={frame.key} style={{transform: `scale(${frame.scale}) translateZ(${frame.z}) translateY(${frame.offsetValue}px)`}} className="stack-card">{frame.key}</div>)
+                  <div key={frame.key}
+                       style={{transform: `scale(${frame.scale}) translateZ(${frame.z}) translateY(${frame.offsetValue}px)`}}
+                       className="stack-card">{frame.key}</div>)
               )
             }
           </div>

@@ -10,7 +10,7 @@
         }
 
         .stack-overlay {
-            @apply absolute w-full h-full left-0 right-0 top-0 bottom-0;
+            @apply absolute w-full h-full left-0 right-0 top-0 bottom-0 pointer-events-none;
         }
 
         .stack-cards {
