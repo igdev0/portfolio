@@ -10,8 +10,6 @@ export interface TechStackProps {
 }
 
 interface FrameRef {
-  target: HTMLElement | null;
-  draggable: Scope | null;
   key: string;
   distance: number;
   offset: number;
@@ -23,11 +21,13 @@ interface FrameRef {
 export type StackKey = keyof typeof stack;
 const threshold = 60;
 export default function TechStackV2(props: TechStackProps) {
+  const root = useRef<HTMLDivElement>(null);
+  const scope = useRef<Scope>(null);
   const stackKeys = [...Object.keys(props.data)];
   const [active, setActive] = useState(0);
   const activeRef = useRef(active);
 
-  const frames = useMemo<FrameRef[]>(() => {
+  const calcFrames = (active: number) => {
     return stackKeys.map((key, index) => {
       let delta = index - active;
       const total = stackKeys.length;
@@ -39,8 +39,7 @@ export default function TechStackV2(props: TechStackProps) {
       const offset = 0.13;
 
       return {
-        target: null,
-        draggable: null,
+        isActive: active === index,
         key: key as StackKey,
         distance,
         offset: delta * 30,
@@ -49,6 +48,10 @@ export default function TechStackV2(props: TechStackProps) {
         index,
       };
     });
+  };
+
+  const frames = useMemo<FrameRef[]>(() => {
+    return calcFrames(active);
   }, [active]);
 
   const safeIndex = (next: number) => {
@@ -83,48 +86,68 @@ export default function TechStackV2(props: TechStackProps) {
   };
 
   const onRelease = (draggable: Draggable) => {
-    const prevIndex = activeRef.current;
     const nextIndex = calcNext(draggable);
-
-    const previous = frames[prevIndex];
-    const next = frames[nextIndex];
-
     setActive(nextIndex);
+
+    const nextFrames = calcFrames(nextIndex);
+    for (const element of root.current?.querySelectorAll(".stack-card") || []) {
+      const order = element.attributes.getNamedItem("data-order");
+      if (order) {
+        const parsed = parseInt(order.value);
+        utils.set(element, {
+          z: nextFrames[parsed].z,
+          y: nextFrames[parsed].offset,
+          scale: nextFrames[parsed].scale,
+        });
+      }
+    }
   };
+
 
   useEffect(() => {
     activeRef.current = active;
-    console.log(active);
-  }, [active, frames]);
+  }, [active]);
 
   useLayoutEffect(() => {
-    for (const {index: i, target: card} of frames) {
-      if (!card) continue;
-
-      utils.set(frames[i].target as HTMLDivElement, {
-        y: frames[i].offset,
-        scale: frames[i].scale,
-        z: frames[i].z
-      });
-
-      const cardWidth = card.clientWidth;
-      const cardHeight = card.clientHeight;
-
-      frames[i].draggable = createScope({root: frames[i].target as HTMLDivElement}).add(() => {
-        createDraggable(frames[i].target as HTMLDivElement, {
-          container: [-cardWidth, cardHeight, cardHeight, -cardWidth],
-          releaseEase: spring({bounce: .2}),
-          snap: [0, 0, 0, 0],
-          onUpdate,
-          onRelease,
-        });
-      });
+    if (scope.current) {
+      scope.current.revert();
     }
-  }, []);
+
+    scope.current = createScope({root}).add((self) => {
+        const cards = self?.root.querySelectorAll(".stack-card");
+
+        if(!cards) {return}
+
+        for (const card of cards) {
+          const order = card.attributes.getNamedItem("data-order");
+          if (order) {
+            const i = parseInt(order.value);
+
+            utils.set(card, {
+              y: frames[i].offset,
+              scale: frames[i].scale,
+              z: frames[i].z
+            });
+
+            const cardWidth = card.clientWidth;
+            const cardHeight = card.clientHeight;
+            console.log("Reapplying")
+            createDraggable(card, {
+              container: [-cardWidth, cardHeight, cardHeight, -cardWidth],
+              releaseEase: spring({bounce: .2}),
+              snap: [0, 0, 0, 0],
+              onUpdate,
+              onRelease,
+            });
+          }
+        }
+      });
+
+  }, [frames]);
 
   return (
       <Container>
-        <div className="tech-stack-v2">
+        <div className="tech-stack-v2" ref={root}>
           <div className="stack-controllers">
             {frames.map((item, index) => (
                 <Button onClick={() => setActive(index)} variant="secondary" key={item.key}>{item.key}</Button>))}
@@ -134,11 +157,7 @@ export default function TechStackV2(props: TechStackProps) {
             {
               frames.map((frame, index) => (
                       <div key={frame.key}
-                           ref={(ref) => {
-                             frame.target = ref;
-                           }}
                            data-order={index}
-                           style={{transform: `scale(${frame.scale}) translateZ(${frame.z}) translateY(${frame.offset}px)`}}
                            className="stack-card">
                         {frame.key}
                       </div>
