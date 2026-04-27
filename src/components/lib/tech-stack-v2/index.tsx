@@ -1,9 +1,9 @@
 import {stack} from '@/components/lib/tech-stack-v2/const';
-import {useLayoutEffect, useMemo, useState} from 'react';
+import {useEffect, useLayoutEffect, useMemo, useRef, useState} from 'react';
 import Button from '@/components/lib/button';
 import "./index.css";
 import Container from '@/components/lib/container';
-import {createDraggable, Draggable, JSAnimation, spring, utils} from 'animejs';
+import {createDraggable, createScope, Draggable, Scope, spring, utils} from 'animejs';
 
 export interface TechStackProps {
   data: typeof stack;
@@ -11,9 +11,8 @@ export interface TechStackProps {
 
 interface FrameRef {
   target: HTMLElement | null;
-  animation: JSAnimation | null;
+  draggable: Scope | null;
   key: string;
-  isNext: boolean;
   distance: number;
   offset: number;
   scale: number;
@@ -26,8 +25,9 @@ const threshold = 60;
 export default function TechStackV2(props: TechStackProps) {
   const stackKeys = [...Object.keys(props.data)];
   const [active, setActive] = useState(0);
+  const activeRef = useRef(active);
 
-  const frames = useMemo<FrameRef[]>(() =>{
+  const frames = useMemo<FrameRef[]>(() => {
     return stackKeys.map((key, index) => {
       let delta = index - active;
       const total = stackKeys.length;
@@ -40,16 +40,15 @@ export default function TechStackV2(props: TechStackProps) {
 
       return {
         target: null,
-        animation: null,
+        draggable: null,
         key: key as StackKey,
-        isNext: false,
         distance,
         offset: delta * 30,
         z: total - distance,
         scale: 1 - offset * distance,
         index,
       };
-    })
+    });
   }, [active]);
 
   const safeIndex = (next: number) => {
@@ -74,37 +73,54 @@ export default function TechStackV2(props: TechStackProps) {
 
   const calcNext = (draggable: Draggable) => {
     const distance = calcDistance(draggable.x, draggable.y);
-
     const sum = draggable.x + draggable.y;
 
     if (distance > threshold) {
-      return safeIndex(sum < 0 ? active + 1 : active - 1);
+      return safeIndex(sum < 0 ? activeRef.current + 1 : activeRef.current - 1);
     }
 
-    return active;
+    return activeRef.current;
   };
 
   const onRelease = (draggable: Draggable) => {
-    const next = calcNext(draggable);
-    setActive(next);
+    const prevIndex = activeRef.current;
+    const nextIndex = calcNext(draggable);
+
+    const previous = frames[prevIndex];
+    const next = frames[nextIndex];
+
+    setActive(nextIndex);
   };
+
+  useEffect(() => {
+    activeRef.current = active;
+    console.log(active);
+  }, [active, frames]);
 
   useLayoutEffect(() => {
     for (const {index: i, target: card} of frames) {
       if (!card) continue;
-      utils.set(card, {y: frames[i].offset, scale: frames[i].scale, z: frames[i].z});
+
+      utils.set(frames[i].target as HTMLDivElement, {
+        y: frames[i].offset,
+        scale: frames[i].scale,
+        z: frames[i].z
+      });
+
       const cardWidth = card.clientWidth;
       const cardHeight = card.clientHeight;
 
-      createDraggable(card, {
-        container: [-cardWidth, cardHeight, cardHeight, -cardWidth],
-        releaseEase: spring({bounce: .2}),
-        snap: [0, 0, 0, 0],
-        onUpdate,
-        onRelease,
+      frames[i].draggable = createScope({root: frames[i].target as HTMLDivElement}).add(() => {
+        createDraggable(frames[i].target as HTMLDivElement, {
+          container: [-cardWidth, cardHeight, cardHeight, -cardWidth],
+          releaseEase: spring({bounce: .2}),
+          snap: [0, 0, 0, 0],
+          onUpdate,
+          onRelease,
+        });
       });
     }
-  }, [frames]);
+  }, []);
 
   return (
       <Container>
