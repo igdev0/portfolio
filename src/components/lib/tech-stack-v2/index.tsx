@@ -1,5 +1,5 @@
 import {stack} from '@/components/lib/tech-stack-v2/const';
-import {useEffect, useLayoutEffect, useMemo, useRef, useState} from 'react';
+import {useLayoutEffect, useMemo, useRef, useState} from 'react';
 import Button from '@/components/lib/button';
 import "./index.css";
 import Container from '@/components/lib/container';
@@ -26,7 +26,6 @@ export default function TechStackV2(props: TechStackProps) {
   const cards = useRef<HTMLDivElement[]>([]);
   const stackKeys = [...Object.keys(props.data)];
   const [active, setActive] = useState(0);
-  const activeRef = useRef(active);
 
   const calcFrames = (active: number) => {
     return stackKeys.map((key, index) => {
@@ -91,10 +90,10 @@ export default function TechStackV2(props: TechStackProps) {
     const sum = draggable.x + draggable.y;
 
     if (distance > threshold) {
-      return safeIndex(sum < 0 ? activeRef.current + 1 : activeRef.current - 1);
+      return safeIndex(sum < 0 ? active + 1 : active - 1);
     }
 
-    return activeRef.current;
+    return active;
   };
 
   const onRelease = (draggable: Draggable) => {
@@ -117,9 +116,6 @@ export default function TechStackV2(props: TechStackProps) {
   };
 
 
-  useEffect(() => {
-    activeRef.current = active;
-  }, [active]);
 
   useLayoutEffect(() => {
     if (scope.current) {
@@ -138,6 +134,9 @@ export default function TechStackV2(props: TechStackProps) {
         snap: [0, 0, 0, 0],
         onUpdate,
         onRelease,
+        onSettle(e) {
+          console.log(e)
+        }
       });
     });
 
