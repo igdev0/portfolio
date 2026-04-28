@@ -6,9 +6,18 @@
 
         .stack-controllers {
             @apply w-auto mb-10;
+
             button {
-                @apply w-fit;
+                @apply w-fit relative;
+
+                &:before {
+                    content: "";
+                    @apply w-2 h-2 bg-gray-800 rounded-sm;
+
+                    @apply absolute top-0 right-0 bottom-0 m-auto z-10 translate-x-1/2;
+                }
             }
+
             @apply flex flex-row flex-wrap xl:flex-col gap-3;
         }
 
