@@ -12,7 +12,7 @@
 
                 &:before {
                     content: "";
-                    @apply w-2 h-2 bg-gray-800 rounded-sm;
+                    @apply w-2 h-2 bg-gray-800 rounded-sm opacity-0 xl:opacity-100;
 
                     @apply absolute top-0 right-0 bottom-0 m-auto z-10 translate-x-1/2;
                 }
@@ -41,14 +41,8 @@
 
                 &:after {
                     @apply w-3 h-3;
+                    @apply top-0 left-0 bottom-0 opacity-0 xl:opacity-100 absolute -translate-x-1/2 z-10 m-auto;
                     content: "";
-                    position: absolute;
-                    left: 0;
-                    bottom: 0;
-                    top: 0;
-                    margin: auto;
-                    z-index: 10;
-                    transform: translateX(-50%);
                     @apply bg-(--bg-surface-2);
                 }
             }
