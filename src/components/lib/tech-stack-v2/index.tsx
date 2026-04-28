@@ -100,22 +100,6 @@ export default function TechStackV2(props: TechStackProps) {
     stackCards();
   };
 
-  useLayoutEffect(() => {
-    if (scope.current) {
-      scope.current.revert();
-    }
-
-    scope.current = createScope({root}).add(() => {
-      for (const card of cards.current) {
-        createDraggable(card, {
-          snap: [0, 0, 0, 0],
-          onAfterResize,
-          onRelease,
-        });
-      }
-    });
-
-  }, []);
   const startTimer = () => {
     if (intervalRef.current) return;
 
@@ -132,6 +116,23 @@ export default function TechStackV2(props: TechStackProps) {
       intervalRef.current = null;
     }
   };
+
+  useLayoutEffect(() => {
+    if (scope.current) {
+      scope.current.revert();
+    }
+
+    scope.current = createScope({root}).add(() => {
+      for (const card of cards.current) {
+        createDraggable(card, {
+          snap: [0, 0, 0, 0],
+          onAfterResize,
+          onRelease,
+        });
+      }
+    });
+
+  }, []);
   useLayoutEffect(() => {
     startTimer();
 
