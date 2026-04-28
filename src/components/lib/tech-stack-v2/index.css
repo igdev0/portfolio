@@ -6,11 +6,14 @@
 
         .stack-controllers {
             @apply w-auto;
-            @apply flex flex-col gap-3;
+            button {
+                @apply w-fit;
+            }
+            @apply flex flex-row flex-wrap xl:flex-col gap-3;
         }
 
         .stack-overlay {
-            @apply absolute w-full h-full left-0 right-0 top-0 bottom-0 pointer-events-none;
+            @apply absolute w-full h-full left-0 right-0 top-0 bottom-0 pointer-events-none opacity-0 xl:opacity-100;
         }
 
         .stack-cards {

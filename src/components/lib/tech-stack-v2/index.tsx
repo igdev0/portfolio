@@ -19,6 +19,13 @@ interface FrameRef {
   i: number;
 }
 
+interface PathData {
+  mx: number;
+  my: number;
+  lx: number;
+  ly: number;
+}
+
 export type StackKey = keyof typeof stack;
 const threshold = 60;
 export default function TechStackV2(props: TechStackProps) {
@@ -27,14 +34,16 @@ export default function TechStackV2(props: TechStackProps) {
   const root = useRef<HTMLDivElement>(null);
   const scope = useRef<Scope>(null);
   const cards = useRef<HTMLDivElement[]>([]);
+  const [draws, setDraws] = useState<PathData[]>([]);
+  const drawsRef = useRef<PathData[]>([]);
+  const pathRef = useRef<SVGPathElement>(null);
+  const dragOffsetRef = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
 
   const controllers = useRef<HTMLButtonElement[]>([]);
 
-  const pathRef = useRef<SVGPathElement>(null);
   const stackKeys = [...Object.keys(props.data)];
   const controllersLayouts = useRef<{ offsetLeft: number, offsetTop: number }[]>([]);
   const activeRef = useRef(active);
-  const [draws, setDraws] = useState<string[]>([]);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const isPausedRef = useRef(false);
 
@@ -86,13 +95,16 @@ export default function TechStackV2(props: TechStackProps) {
 
   const onRelease = (draggable: Draggable) => {
     const nextIndex = calcNext(draggable);
+
+    // reset drag offset so line snaps back
+    dragOffsetRef.current.x = 0;
+    dragOffsetRef.current.y = 0;
+
     setActive(nextIndex);
   };
 
   const stackCards = () => {
-    if (controllersLayouts.current) {
-      // draw.current = `M ${controllersLayouts.current[activeRef.current].offsetLeft} ${controllersLayouts.current[activeRef.current].offsetTop} h 200`;
-    }
+    calculateDraws();
     for (const frame of frames) {
       animate(cards.current[frame.i], {
         translateZ: frame.scale,
@@ -125,6 +137,11 @@ export default function TechStackV2(props: TechStackProps) {
     }
   };
 
+  const onUpdate = (draggable: Draggable) => {
+    dragOffsetRef.current.x = draggable.x;
+    dragOffsetRef.current.y = draggable.y;
+  };
+
   useLayoutEffect(() => {
     if (scope.current) {
       scope.current.revert();
@@ -138,10 +155,25 @@ export default function TechStackV2(props: TechStackProps) {
           y: activeRef.current === frame.i,
           onAfterResize,
           onRelease,
+          onUpdate,
         });
       }
     });
 
+  }, []);
+
+  useLayoutEffect(() => {
+    drawsRef.current = draws;
+  }, [draws]);
+
+  useLayoutEffect(() => {
+    const loop = () => {
+      calculateDraws();
+      requestAnimationFrame(loop);
+    };
+
+    const id = requestAnimationFrame(loop);
+    return () => cancelAnimationFrame(id);
   }, []);
 
   useLayoutEffect(() => {
@@ -153,23 +185,29 @@ export default function TechStackV2(props: TechStackProps) {
   }, []);
 
   const calculateDraws = () => {
+    const { x, y } = dragOffsetRef.current;
+
     setDraws(
         frames.map((frame) => {
           const controller = controllers.current[frame.i];
           const card = cards.current[frame.i];
-          const mx = controller.offsetLeft + controller.clientWidth;
+          const border = 2;
+          const mx = controller.offsetLeft + controller.clientWidth + border;
           const my = controller.offsetTop + controller.clientHeight / 2;
 
           const rect = card.getBoundingClientRect();
 
-          return `M ${mx + 2} ${my} L ${card.parentElement?.offsetLeft??0 + card.offsetLeft} ${(rect.height / 2)}`
+          const baseLx = (card.parentElement?.offsetLeft ?? 0) + card.offsetLeft;
+          const baseLy = rect.height / 2;
+
+          const lx = baseLx + (frame.i === activeRef.current ? x : 0);
+          const ly = baseLy + (frame.i === activeRef.current ? y : 0);
+
+          return {mx, my, lx, ly};
         })
-    )
-  }
+    );
+  };
 
-  useLayoutEffect(() => {
-
-  }, []);
 
   useLayoutEffect(() => {
     activeRef.current = active;
@@ -203,8 +241,9 @@ export default function TechStackV2(props: TechStackProps) {
           </div>
           <svg className="stack-overlay z-20">
             {
-                draws && (
-                    <path d={draws[active]} ref={pathRef}
+                draws.length && (
+                    <path d={`M ${draws[active].mx} ${draws[active].my} L ${draws[active].lx} ${draws[active].ly}`}
+                          ref={pathRef}
                           strokeWidth={2}
                           className="stroke-gray-700"/>
                 )
