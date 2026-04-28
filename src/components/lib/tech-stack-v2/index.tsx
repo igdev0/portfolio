@@ -1,5 +1,5 @@
 import {stack} from '@/components/lib/tech-stack-v2/const';
-import {useEffect, useLayoutEffect, useMemo, useRef, useState} from 'react';
+import {useLayoutEffect, useMemo, useRef, useState} from 'react';
 import Button from '@/components/lib/button';
 import "./index.css";
 import Container from '@/components/lib/container';
@@ -15,7 +15,7 @@ interface FrameRef {
   offset: number;
   scale: number;
   z: number;
-  index: number;
+  i: number;
 }
 
 export type StackKey = keyof typeof stack;
@@ -40,19 +40,17 @@ export default function TechStackV2(props: TechStackProps) {
 
       const distance = Math.abs(delta);
       return {
-        isActive: active === index,
         key: key as StackKey,
         distance,
-        offset: delta * 30,
+        offset: active === index ? 0 : delta * 30,
         z: total - distance,
         scale: -distance * 20,
-        index,
+        i: index,
       };
     });
   };
 
   const frames = useMemo<FrameRef[]>(() => {
-
     return calcFrames(active);
   }, [active]);
 
@@ -80,47 +78,18 @@ export default function TechStackV2(props: TechStackProps) {
 
   const onRelease = (draggable: Draggable) => {
     const nextIndex = calcNext(draggable);
-    const active = activeRef.current;
     setActive(nextIndex);
-    // always reset draggable position so it doesn't get stuck
-    if (nextIndex === active) {
-      return;
-    }
+  };
 
-    const nextFrames = calcFrames(nextIndex);
-
-    let i = 0;
-    for (const element of cards.current) {
-      const frame = nextFrames[i];
-      animate(element, {
+  const stackCards = () => {
+    for (const frame of frames) {
+      animate(cards.current[frame.i], {
         translateZ: frame.scale,
-        translateY: i === nextIndex ? 0 : frame.offset,
+        translateY: frame.offset,
         translateX: 0,
         scaleZ: frame.z,
         duration: 200,
       });
-      i++;
-    }
-    scope.current?.refresh();
-  };
-
-
-  useEffect(() => {
-    activeRef.current = active;
-  }, [active]);
-
-  const stackCards = () => {
-
-    let i = 0;
-    for (const card of cards.current) {
-      animate(card, {
-        translateZ: frames[i].scale,
-        translateY: frames[i].offset,
-        scaleZ: frames[i].z,
-        duration: 200,
-      });
-
-      i++;
     }
     scope.current?.refresh();
   };
@@ -135,7 +104,6 @@ export default function TechStackV2(props: TechStackProps) {
     }
 
     scope.current = createScope({root}).add(() => {
-      // const card = cards.current[active];
       for (const card of cards.current) {
         createDraggable(card, {
           snap: [0, 0, 0, 0],
@@ -147,10 +115,10 @@ export default function TechStackV2(props: TechStackProps) {
 
   }, []);
 
-
   useLayoutEffect(() => {
+    activeRef.current = active;
     stackCards();
-  }, [cards]);
+  }, [cards, active]);
 
   return (
       <Container>
