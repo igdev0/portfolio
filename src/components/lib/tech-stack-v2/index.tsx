@@ -87,9 +87,11 @@ export default function TechStackV2(props: TechStackProps) {
       return;
     }
 
+    const nextFrames = calcFrames(nextIndex);
+
     let i = 0;
-    const frame = frames[i];
     for (const element of cards.current) {
+      const frame = nextFrames[i];
       animate(element, {
         translateZ: frame.scale,
         translateY: i === nextIndex ? 0 : frame.offset,
@@ -148,7 +150,7 @@ export default function TechStackV2(props: TechStackProps) {
 
   useLayoutEffect(() => {
     stackCards();
-  }, [cards, active]);
+  }, [cards]);
 
   return (
       <Container>
