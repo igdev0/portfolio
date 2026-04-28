@@ -24,6 +24,7 @@ interface PathData {
   my: number;
   lx: number;
   ly: number;
+  c: number;
 }
 
 export type StackKey = keyof typeof stack;
@@ -42,7 +43,6 @@ export default function TechStackV2(props: TechStackProps) {
   const controllers = useRef<HTMLButtonElement[]>([]);
 
   const stackKeys = [...Object.keys(props.data)];
-  const controllersLayouts = useRef<{ offsetLeft: number, offsetTop: number }[]>([]);
   const activeRef = useRef(active);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const isPausedRef = useRef(false);
@@ -146,7 +146,6 @@ export default function TechStackV2(props: TechStackProps) {
     if (scope.current) {
       scope.current.revert();
     }
-
     scope.current = createScope({root}).add(() => {
       for (const frame of frames) {
         createDraggable(cards.current[frame.i], {
@@ -167,16 +166,7 @@ export default function TechStackV2(props: TechStackProps) {
   }, [draws]);
 
   useLayoutEffect(() => {
-    const loop = () => {
-      calculateDraws();
-      requestAnimationFrame(loop);
-    };
-
-    const id = requestAnimationFrame(loop);
-    return () => cancelAnimationFrame(id);
-  }, []);
-
-  useLayoutEffect(() => {
+    calculateDraws();
     startTimer();
 
     return () => {
@@ -203,7 +193,7 @@ export default function TechStackV2(props: TechStackProps) {
           const lx = baseLx + (frame.i === activeRef.current ? x : 0);
           const ly = baseLy + (frame.i === activeRef.current ? y : 0);
 
-          return {mx, my, lx, ly};
+          return {mx, my, lx, ly, c: 0};
         })
     );
   };
@@ -214,9 +204,8 @@ export default function TechStackV2(props: TechStackProps) {
     stackCards();
   }, [active]);
 
-
   return (
-      <Container ref={addRef(calculateDraws)}>
+      <Container ref={addRef(calculateDraws)} className="py-20">
         <div className="tech-stack-v2" ref={root}
 
              onMouseEnter={() => {
@@ -239,13 +228,14 @@ export default function TechStackV2(props: TechStackProps) {
                   startTimer();
                 }} variant="secondary" key={item.key}>{item.key}</Button>))}
           </div>
-          <svg className="stack-overlay z-20">
+          <svg className="stack-overlay">
             {
                 draws.length && (
-                    <path d={`M ${draws[active].mx} ${draws[active].my} L ${draws[active].lx} ${draws[active].ly}`}
+                    <path d={`M ${draws[active].mx} ${draws[active].my} Q ${(draws[active].mx + draws[active].lx) / 2} ${(draws[active].my + draws[active].ly) / 2 - draws[active].c} ${draws[active].lx} ${draws[active].ly}`}
                           ref={pathRef}
-                          strokeWidth={2}
-                          className="stroke-gray-700"/>
+                          fill="none"
+                          strokeWidth={1}
+                          className="stroke-gray-300 dark:stroke-gray-700"/>
                 )
             }
           </svg>

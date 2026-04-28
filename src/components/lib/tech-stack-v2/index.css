@@ -2,10 +2,10 @@
 @import "../../../app/globals.css";
 @layer components {
     .tech-stack-v2 {
-        @apply flex w-full relative gap-3 justify-between flex-wrap mb-50;
+        @apply flex w-full relative gap-3 justify-between flex-wrap items-center;
 
         .stack-controllers {
-            @apply w-auto;
+            @apply w-auto mb-10;
             button {
                 @apply w-fit;
             }
@@ -13,7 +13,7 @@
         }
 
         .stack-overlay {
-            @apply absolute w-full h-full left-0 right-0 top-0 bottom-0 pointer-events-none opacity-0 xl:opacity-100;
+            @apply absolute w-full h-full left-0 right-0 top-0 bottom-0 pointer-events-none opacity-0 xl:opacity-100 z-0;
         }
 
         .stack-cards {
@@ -21,7 +21,7 @@
             @apply transform-3d perspective-near;
 
             .stack-card {
-                @apply w-80 aspect-square mt-10;
+                @apply w-80 aspect-square;
                 @apply transform-3d perspective-distant;
                 @apply border  border-default-300 dark:border-default-700 rounded-md p-3;
                 @apply h-full transform-3d;
@@ -29,6 +29,19 @@
                 @apply p-2;
                 @apply col-start-1;
                 @apply row-end-1;
+
+                &:after {
+                    @apply w-3 h-3;
+                    content: "";
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    top: 0;
+                    margin: auto;
+                    z-index: 10;
+                    transform: translateX(-50%);
+                    @apply bg-(--bg-surface-2);
+                }
             }
         }
     }
