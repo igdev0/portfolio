@@ -22,6 +22,7 @@ export type StackKey = keyof typeof stack;
 const threshold = 60;
 export default function TechStackV2(props: TechStackProps) {
   const root = useRef<HTMLDivElement>(null);
+  const container = useRef<HTMLDivElement>(null);
   const scope = useRef<Scope>(null);
   const cards = useRef<HTMLDivElement[]>([]);
   const controllers = useRef<HTMLButtonElement[]>([]);
@@ -82,18 +83,18 @@ export default function TechStackV2(props: TechStackProps) {
     animate(draggable.$target, {
       translateX: 0,
       translateY: 0,
+      duration: 200,
     });
 
     setActive(nextIndex);
 
     if (nextIndex !== active) {
       let i = 0;
-      const frame = frames[i]
+      const frame = frames[i];
       for (const element of cards.current) {
         animate(element, {
           translateZ: frame.scale,
           translateY: frame.offset,
-
           scaleZ: frame.z,
           duration: 200,
         });
@@ -112,8 +113,13 @@ export default function TechStackV2(props: TechStackProps) {
       const card = cards.current[active];
 
       createDraggable(card, {
-        containerFriction: 1,
         releaseEase: spring({bounce: .2}),
+        x: {
+          snap: 200
+        },
+        y: {
+          snap: 200,
+        },
         onRelease,
       });
     });
@@ -129,6 +135,7 @@ export default function TechStackV2(props: TechStackProps) {
         scaleZ: frames[i].z,
         duration: 200,
       });
+
       i++;
     }
   }, [cards, active]);
@@ -139,7 +146,7 @@ export default function TechStackV2(props: TechStackProps) {
           <div className="stack-controllers">
             {frames.map((item, index) => (
                 <Button active={active === index} ref={(el) => {
-                  if(el) {
+                  if (el) {
                     controllers.current[index] = el;
                   }
                 }} onClick={() => setActive(index)} variant="secondary"
@@ -147,7 +154,7 @@ export default function TechStackV2(props: TechStackProps) {
           </div>
           <svg className="stack-overlay">
           </svg>
-          <div className="stack-cards">
+          <div className="stack-cards" ref={container}>
             {
               frames.map((frame, index) => (
                       <div ref={ref => {
