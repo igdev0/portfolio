@@ -8,6 +8,7 @@ import useResizeObserver from '@/hooks/use-resize-observer';
 
 export interface TechStackProps {
   data: typeof stack;
+  auto?: boolean;
 }
 
 interface FrameRef {
@@ -31,6 +32,7 @@ export type StackKey = keyof typeof stack;
 const threshold = 60;
 export default function TechStackV2(props: TechStackProps) {
   const [active, setActive] = useState(0);
+  const [auto, setAuto] = useState(false);
   const [addRef] = useResizeObserver();
   const root = useRef<HTMLDivElement>(null);
   const scope = useRef<Scope>(null);
@@ -38,7 +40,7 @@ export default function TechStackV2(props: TechStackProps) {
   const [draws, setDraws] = useState<PathData[]>([]);
   const drawsRef = useRef<PathData[]>([]);
   const pathRef = useRef<SVGPathElement>(null);
-  const dragOffsetRef = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
+  const dragOffsetRef = useRef<{ x: number; y: number }>({x: 0, y: 0});
 
   const controllers = useRef<HTMLButtonElement[]>([]);
 
@@ -117,6 +119,18 @@ export default function TechStackV2(props: TechStackProps) {
     scope.current?.refresh();
   };
 
+  const onMouseEnter = () => {
+    if (auto) {
+      isPausedRef.current = true;
+    }
+  };
+
+  const onMouseLeave = () => {
+    if (auto) {
+      isPausedRef.current = false;
+    }
+  };
+
   const onAfterResize = () => {
     stackCards();
   };
@@ -135,6 +149,16 @@ export default function TechStackV2(props: TechStackProps) {
       clearInterval(intervalRef.current);
       intervalRef.current = null;
     }
+  };
+
+  const handleButtonClick = (index: number) => {
+    return () => {
+      setActive(index);
+      if (auto) {
+        stopTimer();
+        startTimer();
+      }
+    };
   };
 
   const onUpdate = (draggable: Draggable) => {
@@ -167,15 +191,18 @@ export default function TechStackV2(props: TechStackProps) {
 
   useLayoutEffect(() => {
     calculateDraws();
-    startTimer();
+
+    if (auto) {
+      startTimer();
+    }
 
     return () => {
       stopTimer();
     };
-  }, []);
+  }, [auto]);
 
   const calculateDraws = () => {
-    const { x, y } = dragOffsetRef.current;
+    const {x, y} = dragOffsetRef.current;
 
     setDraws(
         frames.map((frame) => {
@@ -198,6 +225,9 @@ export default function TechStackV2(props: TechStackProps) {
     );
   };
 
+  useLayoutEffect(() => {
+    setAuto(props?.auto ?? false);
+  }, [props.auto]);
 
   useLayoutEffect(() => {
     activeRef.current = active;
@@ -208,13 +238,9 @@ export default function TechStackV2(props: TechStackProps) {
       <Container ref={addRef(calculateDraws)} className="py-20">
         <div className="tech-stack-v2" ref={root}
 
-             onMouseEnter={() => {
-               isPausedRef.current = true;
-             }}
+             onMouseEnter={onMouseEnter}
 
-             onMouseLeave={() => {
-               isPausedRef.current = false;
-             }}
+             onMouseLeave={onMouseLeave}
         >
           <div className="stack-controllers">
             {frames.map((item, index) => (
@@ -222,20 +248,17 @@ export default function TechStackV2(props: TechStackProps) {
                   if (el) {
                     controllers.current[index] = el;
                   }
-                }} onClick={() => {
-                  setActive(index);
-                  stopTimer();
-                  startTimer();
-                }} variant="secondary" key={item.key}>{item.key}</Button>))}
+                }} onClick={handleButtonClick(index)} variant="secondary" key={item.key}>{item.key}</Button>))}
           </div>
           <svg className="stack-overlay">
             {
                 draws.length && (
-                    <path d={`M ${draws[active].mx} ${draws[active].my} Q ${(draws[active].mx + draws[active].lx) / 2} ${(draws[active].my + draws[active].ly) / 2 - draws[active].c} ${draws[active].lx} ${draws[active].ly}`}
-                          ref={pathRef}
-                          fill="none"
-                          strokeWidth={1}
-                          className="stroke-gray-300 dark:stroke-gray-700"/>
+                    <path
+                        d={`M ${draws[active].mx} ${draws[active].my} Q ${(draws[active].mx + draws[active].lx) / 2} ${(draws[active].my + draws[active].ly) / 2 - draws[active].c} ${draws[active].lx} ${draws[active].ly}`}
+                        ref={pathRef}
+                        fill="none"
+                        strokeWidth={1}
+                        className="stroke-gray-300 dark:stroke-gray-700"/>
                 )
             }
           </svg>
@@ -245,11 +268,11 @@ export default function TechStackV2(props: TechStackProps) {
                       <div
                           className="stack-card"
                           ref={ref => {
-                        if (ref) {
-                          cards.current[index] = ref;
-                        }
-                      }} key={frame.key}
-                           data-order={index}>
+                            if (ref) {
+                              cards.current[index] = ref;
+                            }
+                          }} key={frame.key}
+                          data-order={index}>
                         {frame.key}
                       </div>
                   )
