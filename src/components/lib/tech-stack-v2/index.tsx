@@ -252,13 +252,14 @@ export default function TechStackV2(props: TechStackProps) {
           <div className="stack-cards">
             {
               frames.map((frame, index) => (
-                      <div ref={ref => {
+                      <div
+                          className="stack-card"
+                          ref={ref => {
                         if (ref) {
                           cards.current[index] = ref;
                         }
                       }} key={frame.key}
-                           data-order={index}
-                           className="stack-card">
+                           data-order={index}>
                         {frame.key}
                       </div>
                   )
