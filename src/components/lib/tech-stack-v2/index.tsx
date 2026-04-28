@@ -86,18 +86,14 @@ export default function TechStackV2(props: TechStackProps) {
     if (nextIndex === active) {
       return;
     }
-    animate(draggable.$target, {
-      translateX: 0,
-      translateY: 0,
-      duration: 200,
-    });
 
     let i = 0;
     const frame = frames[i];
     for (const element of cards.current) {
       animate(element, {
         translateZ: frame.scale,
-        translateY: frame.offset,
+        translateY: i === nextIndex ? 0 : frame.offset,
+        translateX: 0,
         scaleZ: frame.z,
         duration: 200,
       });
@@ -111,25 +107,8 @@ export default function TechStackV2(props: TechStackProps) {
     activeRef.current = active;
   }, [active]);
 
-  useLayoutEffect(() => {
-    if (scope.current) {
-      scope.current.revert();
-    }
+  const stackCards = () => {
 
-    scope.current = createScope({root}).add(() => {
-      // const card = cards.current[active];
-      for (const card of cards.current) {
-        createDraggable(card, {
-          snap: [0, 0, 0, 0],
-          onRelease,
-        });
-      }
-    });
-
-  }, []);
-
-
-  useLayoutEffect(() => {
     let i = 0;
     for (const card of cards.current) {
       animate(card, {
@@ -142,6 +121,33 @@ export default function TechStackV2(props: TechStackProps) {
       i++;
     }
     scope.current?.refresh();
+  };
+
+  const onAfterResize = () => {
+    stackCards();
+  };
+
+  useLayoutEffect(() => {
+    if (scope.current) {
+      scope.current.revert();
+    }
+
+    scope.current = createScope({root}).add(() => {
+      // const card = cards.current[active];
+      for (const card of cards.current) {
+        createDraggable(card, {
+          snap: [0, 0, 0, 0],
+          onAfterResize,
+          onRelease,
+        });
+      }
+    });
+
+  }, []);
+
+
+  useLayoutEffect(() => {
+    stackCards();
   }, [cards, active]);
 
   return (
