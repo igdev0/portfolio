@@ -123,9 +123,11 @@ export default function TechStackV2(props: TechStackProps) {
     }
 
     scope.current = createScope({root}).add(() => {
-      for (const card of cards.current) {
-        createDraggable(card, {
+      for (const frame of frames) {
+        createDraggable(cards.current[frame.i], {
           snap: [0, 0, 0, 0],
+          x: activeRef.current === frame.i,
+          y: activeRef.current === frame.i,
           onAfterResize,
           onRelease,
         });
@@ -144,7 +146,7 @@ export default function TechStackV2(props: TechStackProps) {
   useLayoutEffect(() => {
     activeRef.current = active;
     stackCards();
-  }, [cards, active]);
+  }, [active]);
 
   return (
       <Container>
