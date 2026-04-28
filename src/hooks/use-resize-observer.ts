@@ -1,5 +1,5 @@
 "use client";
-import {useEffect, useRef} from "react";
+import {RefObject, useEffect, useRef} from "react";
 import {observe, unobserve} from '@/config/resize-observer';
 
 export default function useResizeObserver() {
@@ -28,5 +28,5 @@ export default function useResizeObserver() {
     };
   }, []);
 
-  return [addRef, removeRef] as [typeof addRef, typeof removeRef];
+  return [addRef, removeRef, elementRef] as [typeof addRef, typeof removeRef, RefObject<HTMLElement>];
 }

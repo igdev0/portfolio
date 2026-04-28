@@ -1,12 +1,12 @@
 import {stack} from '@/components/lib/tech-stack-v2/const';
-import {useLayoutEffect, useMemo, useRef, useState} from 'react';
+import {PropsWithChildren, useLayoutEffect, useMemo, useRef, useState} from 'react';
 import Button from '@/components/lib/button';
 import "./index.css";
-import Container from '@/components/lib/container';
 import {animate, createDraggable, createScope, Draggable, Scope} from 'animejs';
 import useResizeObserver from '@/hooks/use-resize-observer';
+import Statement from '@/components/lib/statement';
 
-export interface TechStackProps {
+export interface TechStackProps extends PropsWithChildren {
   data: typeof stack;
   auto?: boolean;
 }
@@ -30,11 +30,11 @@ interface PathData {
 
 export type StackKey = keyof typeof stack;
 const threshold = 60;
+
 export default function TechStackV2(props: TechStackProps) {
   const [active, setActive] = useState(0);
   const [auto, setAuto] = useState(false);
-  const [addRef] = useResizeObserver();
-  const root = useRef<HTMLDivElement>(null);
+  const [addRef, , root] = useResizeObserver();
   const scope = useRef<Scope>(null);
   const cards = useRef<HTMLDivElement[]>([]);
   const [draws, setDraws] = useState<PathData[]>([]);
@@ -78,7 +78,6 @@ export default function TechStackV2(props: TechStackProps) {
     if (next >= stackKeys.length) return 0;
     return next;
   };
-
 
   const calcDistance = (x: number, y: number) => {
     return Math.sqrt(x ** 2 + y ** 2);
@@ -235,51 +234,51 @@ export default function TechStackV2(props: TechStackProps) {
   }, [active]);
 
   return (
-      <Container ref={addRef(calculateDraws)} className="py-20">
-        <div className="tech-stack-v2" ref={root}
+      <div ref={addRef(calculateDraws)} className="tech-stack-v2"
 
-             onMouseEnter={onMouseEnter}
+           onMouseEnter={onMouseEnter}
 
-             onMouseLeave={onMouseLeave}
-        >
-          <div className="stack-controllers">
-            {frames.map((item, index) => (
-                <Button active={active === index} disabled={active === index} ref={(el) => {
-                  if (el) {
-                    controllers.current[index] = el;
-                  }
-                }} onClick={handleButtonClick(index)} variant="secondary" key={item.key}>{item.key}</Button>))}
-          </div>
-          <svg className="stack-overlay">
-            {
-                draws.length && (
-                    <path
-                        d={`M ${draws[active].mx} ${draws[active].my} Q ${(draws[active].mx + draws[active].lx) / 2} ${(draws[active].my + draws[active].ly) / 2 - draws[active].c} ${draws[active].lx} ${draws[active].ly}`}
-                        ref={pathRef}
-                        fill="none"
-                        strokeWidth={1}
-                        className="stroke-gray-300 dark:stroke-gray-700"/>
-                )
-            }
-          </svg>
-          <div className="stack-cards">
-            {
-              frames.map((frame, index) => (
-                      <div
-                          className="stack-card"
-                          ref={ref => {
-                            if (ref) {
-                              cards.current[index] = ref;
-                            }
-                          }} key={frame.key}
-                          data-order={index}>
-                        {frame.key}
-                      </div>
-                  )
-              )
-            }
-          </div>
+           onMouseLeave={onMouseLeave}
+      >
+        <div className="stack-controllers">
+          {frames.map((item, index) => (
+              <Button active={active === index} disabled={active === index} ref={(el) => {
+                if (el) {
+                  controllers.current[index] = el;
+                }
+              }} onClick={handleButtonClick(index)} variant="secondary" key={item.key}>{item.key}</Button>))}
         </div>
-      </Container>
+        <svg className="stack-overlay">
+          {
+              draws.length && (
+                  <path
+                      d={`M ${draws[active].mx} ${draws[active].my} Q ${(draws[active].mx + draws[active].lx) / 2} ${(draws[active].my + draws[active].ly) / 2 - draws[active].c} ${draws[active].lx} ${draws[active].ly}`}
+                      ref={pathRef}
+                      fill="none"
+                      strokeWidth={1}
+                      className="stroke-gray-300 dark:stroke-gray-700"/>
+              )
+          }
+        </svg>
+        <div className="stack-cards">
+          {
+            frames.map((frame, index) => (
+                    <div
+                        className="stack-card"
+                        ref={ref => {
+                          if (ref) {
+                            cards.current[index] = ref;
+                          }
+                        }} key={frame.key}
+                        data-order={index}>
+                      <Statement>
+                        Hello
+                      </Statement>
+                    </div>
+                )
+            )
+          }
+        </div>
+      </div>
   );
 }
