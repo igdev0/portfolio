@@ -4,6 +4,7 @@ import Button from '@/components/lib/button';
 import "./index.css";
 import Container from '@/components/lib/container';
 import {animate, createDraggable, createScope, Draggable, Scope} from 'animejs';
+import useResizeObserver from '@/hooks/use-resize-observer';
 
 export interface TechStackProps {
   data: typeof stack;
@@ -21,13 +22,19 @@ interface FrameRef {
 export type StackKey = keyof typeof stack;
 const threshold = 60;
 export default function TechStackV2(props: TechStackProps) {
+  const [active, setActive] = useState(0);
+  const [addRef] = useResizeObserver();
   const root = useRef<HTMLDivElement>(null);
   const scope = useRef<Scope>(null);
   const cards = useRef<HTMLDivElement[]>([]);
+
   const controllers = useRef<HTMLButtonElement[]>([]);
+
+  const pathRef = useRef<SVGPathElement>(null);
   const stackKeys = [...Object.keys(props.data)];
-  const [active, setActive] = useState(0);
+  const controllersLayouts = useRef<{ offsetLeft: number, offsetTop: number }[]>([]);
   const activeRef = useRef(active);
+  const [draws, setDraws] = useState<string[]>([]);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const isPausedRef = useRef(false);
 
@@ -83,6 +90,9 @@ export default function TechStackV2(props: TechStackProps) {
   };
 
   const stackCards = () => {
+    if (controllersLayouts.current) {
+      // draw.current = `M ${controllersLayouts.current[activeRef.current].offsetLeft} ${controllersLayouts.current[activeRef.current].offsetTop} h 200`;
+    }
     for (const frame of frames) {
       animate(cards.current[frame.i], {
         translateZ: frame.scale,
@@ -104,7 +114,6 @@ export default function TechStackV2(props: TechStackProps) {
 
     intervalRef.current = setInterval(() => {
       if (isPausedRef.current) return;
-
       setActive(prev => safeIndex(prev + 1));
     }, 2000); // 3s, tweak as needed
   };
@@ -134,6 +143,7 @@ export default function TechStackV2(props: TechStackProps) {
     });
 
   }, []);
+
   useLayoutEffect(() => {
     startTimer();
 
@@ -142,13 +152,33 @@ export default function TechStackV2(props: TechStackProps) {
     };
   }, []);
 
+  const calculateDraws = () => {
+    setDraws(
+        frames.map((frame) => {
+          const controller = controllers.current[frame.i];
+          const card = cards.current[frame.i];
+          const mx = controller.offsetLeft + controller.clientWidth;
+          const my = controller.offsetTop + controller.clientHeight / 2;
+
+          const rect = card.getBoundingClientRect();
+
+          return `M ${mx + 2} ${my} L ${card.parentElement?.offsetLeft??0 + card.offsetLeft} ${(rect.height / 2)}`
+        })
+    )
+  }
+
+  useLayoutEffect(() => {
+
+  }, []);
+
   useLayoutEffect(() => {
     activeRef.current = active;
     stackCards();
   }, [active]);
 
+
   return (
-      <Container>
+      <Container ref={addRef(calculateDraws)}>
         <div className="tech-stack-v2" ref={root}
 
              onMouseEnter={() => {
@@ -161,7 +191,7 @@ export default function TechStackV2(props: TechStackProps) {
         >
           <div className="stack-controllers">
             {frames.map((item, index) => (
-                <Button active={active === index} ref={(el) => {
+                <Button active={active === index} disabled={active === index} ref={(el) => {
                   if (el) {
                     controllers.current[index] = el;
                   }
@@ -169,11 +199,16 @@ export default function TechStackV2(props: TechStackProps) {
                   setActive(index);
                   stopTimer();
                   startTimer();
-                }} variant="secondary"
-                        key={item.key}>{item.key}</Button>))}
+                }} variant="secondary" key={item.key}>{item.key}</Button>))}
           </div>
-          <svg className="stack-overlay">
-            <path d="" strokeWidth={2} className="stroke-accent-400"/>
+          <svg className="stack-overlay z-20">
+            {
+                draws && (
+                    <path d={draws[active]} ref={pathRef}
+                          strokeWidth={2}
+                          className="stroke-gray-700"/>
+                )
+            }
           </svg>
           <div className="stack-cards">
             {
