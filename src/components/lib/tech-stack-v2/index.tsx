@@ -29,6 +29,8 @@ export default function TechStackV2(props: TechStackProps) {
   const stackKeys = [...Object.keys(props.data)];
   const [active, setActive] = useState(0);
   const activeRef = useRef(active);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const isPausedRef = useRef(false);
 
   const calcFrames = (active: number) => {
     return stackKeys.map((key, index) => {
@@ -114,6 +116,29 @@ export default function TechStackV2(props: TechStackProps) {
     });
 
   }, []);
+  const startTimer = () => {
+    if (intervalRef.current) return;
+
+    intervalRef.current = setInterval(() => {
+      if (isPausedRef.current) return;
+
+      setActive(prev => safeIndex(prev + 1));
+    }, 2000); // 3s, tweak as needed
+  };
+
+  const stopTimer = () => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
+    }
+  };
+  useLayoutEffect(() => {
+    startTimer();
+
+    return () => {
+      stopTimer();
+    };
+  }, []);
 
   useLayoutEffect(() => {
     activeRef.current = active;
@@ -122,17 +147,31 @@ export default function TechStackV2(props: TechStackProps) {
 
   return (
       <Container>
-        <div className="tech-stack-v2" ref={root}>
+        <div className="tech-stack-v2" ref={root}
+
+             onMouseEnter={() => {
+               isPausedRef.current = true;
+             }}
+
+             onMouseLeave={() => {
+               isPausedRef.current = false;
+             }}
+        >
           <div className="stack-controllers">
             {frames.map((item, index) => (
                 <Button active={active === index} ref={(el) => {
                   if (el) {
                     controllers.current[index] = el;
                   }
-                }} onClick={() => setActive(index)} variant="secondary"
+                }} onClick={() => {
+                  setActive(index);
+                  stopTimer();
+                  startTimer();
+                }} variant="secondary"
                         key={item.key}>{item.key}</Button>))}
           </div>
           <svg className="stack-overlay">
+            <path d="" strokeWidth={2} className="stroke-accent-400"/>
           </svg>
           <div className="stack-cards" ref={container}>
             {
