@@ -22,7 +22,6 @@ export type StackKey = keyof typeof stack;
 const threshold = 60;
 export default function TechStackV2(props: TechStackProps) {
   const root = useRef<HTMLDivElement>(null);
-  const container = useRef<HTMLDivElement>(null);
   const scope = useRef<Scope>(null);
   const cards = useRef<HTMLDivElement[]>([]);
   const controllers = useRef<HTMLButtonElement[]>([]);
@@ -176,7 +175,7 @@ export default function TechStackV2(props: TechStackProps) {
           <svg className="stack-overlay">
             <path d="" strokeWidth={2} className="stroke-accent-400"/>
           </svg>
-          <div className="stack-cards" ref={container}>
+          <div className="stack-cards">
             {
               frames.map((frame, index) => (
                       <div ref={ref => {
