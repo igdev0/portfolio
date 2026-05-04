@@ -5,6 +5,7 @@ import "./index.css";
 import {animate, createDraggable, createScope, Draggable, Scope} from 'animejs';
 import useResizeObserver from '@/hooks/use-resize-observer';
 import Statement from '@/components/lib/statement';
+import {calcFrames, calcNext, safeIndex} from '@/components/lib/tech-stack-v2/utils';
 
 export interface TechStackProps extends PropsWithChildren {
   data: typeof stack;
@@ -41,61 +42,19 @@ export default function TechStackV2(props: TechStackProps) {
   const drawsRef = useRef<PathData[]>([]);
   const pathRef = useRef<SVGPathElement>(null);
   const dragOffsetRef = useRef<{ x: number; y: number }>({x: 0, y: 0});
-
   const controllers = useRef<HTMLButtonElement[]>([]);
-
   const stackKeys = [...Object.keys(props.data)];
   const activeRef = useRef(active);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const isPausedRef = useRef(false);
 
-  const calcFrames = (active: number) => {
-    return stackKeys.map((key, index) => {
-      let delta = index - active;
-      const total = stackKeys.length;
-
-      if (delta > total / 2) delta -= total;
-      if (delta < -total / 2) delta += total;
-
-      const distance = Math.abs(delta);
-      return {
-        key: key as StackKey,
-        distance,
-        offset: active === index ? 0 : delta * 30,
-        z: total - distance,
-        scale: -distance * 20,
-        i: index,
-      };
-    });
-  };
 
   const frames = useMemo<FrameRef[]>(() => {
-    return calcFrames(active);
+    return calcFrames(active, stackKeys);
   }, [active]);
 
-  const safeIndex = (next: number) => {
-    if (next < 0) return stackKeys.length - 1;
-    if (next >= stackKeys.length) return 0;
-    return next;
-  };
-
-  const calcDistance = (x: number, y: number) => {
-    return Math.sqrt(x ** 2 + y ** 2);
-  };
-
-  const calcNext = (draggable: Draggable) => {
-    const distance = calcDistance(draggable.x, draggable.y);
-    const sum = draggable.x + draggable.y;
-
-    if (distance > threshold) {
-      return safeIndex(sum < 0 ? activeRef.current + 1 : activeRef.current - 1);
-    }
-
-    return activeRef.current;
-  };
-
   const onRelease = (draggable: Draggable) => {
-    const nextIndex = calcNext(draggable);
+    const nextIndex = calcNext(draggable, activeRef, threshold, stackKeys);
 
     // reset drag offset so line snaps back
     dragOffsetRef.current.x = 0;
@@ -139,8 +98,8 @@ export default function TechStackV2(props: TechStackProps) {
 
     intervalRef.current = setInterval(() => {
       if (isPausedRef.current) return;
-      setActive(prev => safeIndex(prev + 1));
-    }, 2000); // 3s, tweak as needed
+      setActive(prev => safeIndex(prev + 1, stackKeys));
+    }, 2000);
   };
 
   const stopTimer = () => {
