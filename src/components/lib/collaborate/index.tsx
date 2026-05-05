@@ -1,25 +1,22 @@
 import Container from '@/components/lib/container';
 import Comment from '@/components/lib/comment';
 import Statement from '@/components/lib/statement';
+import {CollaborateType} from '@/content/collaborate';
 
-/**
- * @todo Make Architecture of the App Design Studio.
- */
-
-const contents = {
-  comment: "// Build",
-  title: "{Collaborate}"
+interface CollaborateProps {
+  data: CollaborateType;
 }
 
-export default function Collaborate() {
+export default function Collaborate(props: CollaborateProps) {
+  const {data} = props;
   return (
       <Container className="pt-40">
         <Comment>
-          {contents.comment}
+          {data.comment}
         </Comment>
-        <h1 className="text-4xl font-bold">{contents.title}</h1>
+        <h1 className="text-4xl font-bold">{data.title}</h1>
         <Statement>
-          Always open to work with talented teams.
+          {data.statement}
         </Statement>
       </Container>
   )

@@ -80,7 +80,7 @@ export default function Timeline(props: TimelineProps) {
         <Statement className="mb-6">
           {data.statement}
         </Statement>
-        <div className="relative my-6">
+        <div className="relative mt-6">
           <div className="border-l-2 border-(--semigrid) border-dashed h-full absolute left-0 translate-x-2.5 -z-1"/>
           {
             data.experiences.map((experience, index) => (

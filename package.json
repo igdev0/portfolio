@@ -26,6 +26,7 @@
     "postcss": "^8.5.8",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-hook-form": "^7.75.0",
     "tailwindcss": "^4.2.1",
     "tw-merge": "^0.0.1-alpha.3",
     "zustand": "^5.0.12"
