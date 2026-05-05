@@ -84,7 +84,7 @@ export default function TechStack() {
   }, [active]);
 
   return (
-      <div className="tech-stack-v2"
+      <div className="tech-stack"
            ref={addRef(calculateDraws)}
       >
         <TechStackControllers/>
