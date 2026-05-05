@@ -77,7 +77,7 @@ export default function Timeline(props: TimelineProps) {
         <Comment>{data.comment}</Comment>
         <h1 className="text-4xl font-bold mt-3">{data.title}</h1>
         <Statement className="mb-6">
-          I got more than 5 years of experience.
+          {data.statement}
         </Statement>
         <div className="relative my-6">
           <div className="border-l-2 border-(--semigrid) border-dashed h-full absolute left-0 translate-x-2.5 -z-1"/>
