@@ -37,11 +37,11 @@ export const experience = {
       ],
       links: [
         {
-          href: "",
+          href: "https://apps.apple.com/gb/app/star-the-symptom-tracker/id1560476806",
           text: "STAR App",
         },
         {
-          href: "",
+          href: "https://play.google.com/store/apps/details?id=com.finervision.RFD",
           text: "Teva MS App",
         }
       ],
