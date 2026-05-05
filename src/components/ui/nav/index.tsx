@@ -33,9 +33,9 @@ export default function Nav(props: NavProps) {
             }
           </div>
           <div className="nav__buttons">
-            <IconLink icon="git-commit" href={data.navigation.social.github.href}/>
+            <IconLink icon="github" href={data.navigation.social.github.href}/>
             <IconButton icon="sun" onClick={() => setTheme(theme === 'dark' ? "light" : "dark")}/>
-            <IconButton className="nav__drawer-toggler" icon="align-right" onClick={() => setMenuOpen(true)}></IconButton>
+            <IconButton className="nav__drawer-toggler" icon="menu" onClick={() => setMenuOpen(true)}></IconButton>
           </div>
           <div className={clsx('nav__drawer', menuOpen ? 'open' : 'close')}>
             <IconButton icon="x" onClick={() => setMenuOpen(false)}/>

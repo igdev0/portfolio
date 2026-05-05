@@ -1,7 +1,14 @@
-import {dynamicIconImports} from 'lucide-react/dynamic';
 import Github from '@/components/lib/icon/github';
+import {MenuIcon, SunIcon, XIcon} from 'lucide-react';
 
-export type IconNames = keyof typeof dynamicIconImports;
+export const iconsMap = {
+  github: Github,
+  menu: MenuIcon,
+  sun: SunIcon,
+  x: XIcon,
+}
+
+export type IconNames = keyof typeof iconsMap;
 
 export interface IconProps {
   name: IconNames;
@@ -9,9 +16,9 @@ export interface IconProps {
 }
 
 export default function Icon(props: IconProps) {
-  const {name} = props;
-
+  const Element = iconsMap[props.name];
+  if(!Element) {return null}
   return (
-      <Github className="w-6 h-6"/>
+      <Element className="w-6 h-6"/>
   );
 }
