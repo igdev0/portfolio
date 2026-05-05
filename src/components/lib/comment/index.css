@@ -1,4 +1,4 @@
-@import "../../../app/globals.css";
+@import "../../../app/(frontend)/globals.css";
 
 [data-theme="dark"] {
     --color-comment: var(--color-gray-300);

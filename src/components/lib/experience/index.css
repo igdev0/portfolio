@@ -1,4 +1,4 @@
-@import "../../../app/globals.css";
+@import "../../../app/(frontend)/globals.css";
 
 @layer components {
     .experience {
