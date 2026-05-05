@@ -193,10 +193,9 @@ export default function TechStack(props: TechStackProps) {
   }, [active]);
 
   return (
-      <div ref={addRef(calculateDraws)} className="tech-stack-v2"
-
+      <div className="tech-stack-v2"
+           ref={addRef(calculateDraws)}
            onMouseEnter={onMouseEnter}
-
            onMouseLeave={onMouseLeave}
       >
         <div className="stack-controllers">
