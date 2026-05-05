@@ -1,6 +1,6 @@
 import {Draggable} from 'animejs';
 import {RefObject} from 'react';
-import {StackKey} from '@/components/lib/tech-stack-v2/index';
+import {StackKey} from '@/components/lib/tech-stack/index';
 
 export const calcDistance = (x: number, y: number) => {
   return Math.sqrt(x ** 2 + y ** 2);

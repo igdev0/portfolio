@@ -1,11 +1,11 @@
-import {stack} from '@/components/lib/tech-stack-v2/const';
+import {stack} from '@/components/lib/tech-stack/const';
 import {PropsWithChildren, useLayoutEffect, useMemo, useRef, useState} from 'react';
 import Button from '@/components/lib/button';
 import "./index.css";
 import {animate, createDraggable, createScope, Draggable, Scope} from 'animejs';
 import useResizeObserver from '@/hooks/use-resize-observer';
 import Statement from '@/components/lib/statement';
-import {calcFrames, calcNext, safeIndex} from '@/components/lib/tech-stack-v2/utils';
+import {calcFrames, calcNext, safeIndex} from '@/components/lib/tech-stack/utils';
 
 export interface TechStackProps extends PropsWithChildren {
   data: typeof stack;
@@ -32,7 +32,7 @@ interface PathData {
 export type StackKey = keyof typeof stack;
 const threshold = 60;
 
-export default function TechStackV2(props: TechStackProps) {
+export default function TechStack(props: TechStackProps) {
   const [active, setActive] = useState(0);
   const [auto, setAuto] = useState(false);
   const [addRef, , root] = useResizeObserver();

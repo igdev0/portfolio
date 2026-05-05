@@ -5,8 +5,8 @@ import Box from '@/components/lib/box';
 import {profile} from '@/content/profile';
 import Html from '@/components/lib/html';
 import Statement from '@/components/lib/statement';
-import TechStackV2 from '@/components/lib/tech-stack-v2';
-import {stack} from '@/components/lib/tech-stack-v2/const';
+import TechStack from '@/components/lib/tech-stack';
+import {stack} from '@/components/lib/tech-stack/const';
 
 
 export default function Profile() {
@@ -32,7 +32,7 @@ export default function Profile() {
             {profile.stack.statement.value}
           </Statement>
         </Box>
-        <TechStackV2 data={stack}/>
+        <TechStack data={stack}/>
       </Container>
   );
 }
