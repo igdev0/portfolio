@@ -39,7 +39,7 @@ export const calcNext = (draggable: Draggable, activeRef: RefObject<number>, thr
   const sum = draggable.x + draggable.y;
 
   if (distance > threshold) {
-    return safeIndex(sum < 0 ? activeRef.current + 1 : activeRef.current - 1, threshold, stackKeys);
+    return safeIndex(sum < 0 ? activeRef.current + 1 : activeRef.current - 1, stackKeys);
   }
 
   return activeRef.current;
