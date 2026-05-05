@@ -1,49 +1,22 @@
-import {useContext, useLayoutEffect, useMemo, useRef, useState} from 'react';
+import {useContext, useLayoutEffect, useRef} from 'react';
 import Button from '@/components/lib/button';
 import "./index.css";
 import {animate, createDraggable, createScope, Draggable, Scope} from 'animejs';
 import useResizeObserver from '@/hooks/use-resize-observer';
 import Statement from '@/components/lib/statement';
-import {calcFrames, calcNext} from '@/components/lib/tech-stack/utils';
+import {calcNext} from '@/components/lib/tech-stack/utils';
 import {stack} from '@/content/profile';
 import {TechStackContext} from '@/components/lib/tech-stack/context';
 
-interface FrameRef {
-  key: string;
-  distance: number;
-  offset: number;
-  scale: number;
-  z: number;
-  i: number;
-}
-
-interface PathData {
-  mx: number;
-  my: number;
-  lx: number;
-  ly: number;
-  c: number;
-}
 
 export type StackKey = keyof typeof stack;
 const threshold = 60;
 
 export default function TechStack() {
-  const {active, setActive, data, keys} = useContext(TechStackContext);
+  const {active, setActive, keys, activeRef, dragOffsetRef, drawsRef, draws, calculateDraws, pathRef, cards, controllers, frames} = useContext(TechStackContext);
   const [addRef, , root] = useResizeObserver();
   const scope = useRef<Scope>(null);
-  const cards = useRef<HTMLDivElement[]>([]);
-  const [draws, setDraws] = useState<PathData[]>([]);
-  const drawsRef = useRef<PathData[]>([]);
-  const pathRef = useRef<SVGPathElement>(null);
-  const dragOffsetRef = useRef<{ x: number; y: number }>({x: 0, y: 0});
-  const controllers = useRef<HTMLButtonElement[]>([]);
-  const activeRef = useRef(active);
 
-
-  const frames = useMemo<FrameRef[]>(() => {
-    return calcFrames(active, keys);
-  }, [active]);
 
   const onRelease = (draggable: Draggable) => {
     const nextIndex = calcNext(draggable, activeRef, threshold, keys);
@@ -109,30 +82,6 @@ export default function TechStack() {
   useLayoutEffect(() => {
     calculateDraws();
   }, []);
-
-  const calculateDraws = () => {
-    const {x, y} = dragOffsetRef.current;
-
-    setDraws(
-        frames.map((frame) => {
-          const controller = controllers.current[frame.i];
-          const card = cards.current[frame.i];
-          const border = 2;
-          const mx = controller.offsetLeft + controller.clientWidth + border;
-          const my = controller.offsetTop + controller.clientHeight / 2;
-
-          const rect = card.getBoundingClientRect();
-
-          const baseLx = (card.parentElement?.offsetLeft ?? 0) + card.offsetLeft;
-          const baseLy = rect.height / 2;
-
-          const lx = baseLx + (frame.i === activeRef.current ? x : 0);
-          const ly = baseLy + (frame.i === activeRef.current ? y : 0);
-
-          return {mx, my, lx, ly, c: 0};
-        })
-    );
-  };
 
   useLayoutEffect(() => {
     activeRef.current = active;
