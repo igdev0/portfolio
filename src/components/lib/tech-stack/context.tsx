@@ -89,7 +89,7 @@ export function TechStackProvider(props: PropsWithChildren & Record<"data", type
 
         const rect = card.getBoundingClientRect();
         const baseLx = (card.parentElement?.offsetLeft ?? 0) + card.offsetLeft;
-        const baseLy = rect.height / 2 + 20;
+        const baseLy = rect.height / 1.85;
 
         const lx = baseLx + (frame.i === activeRef.current ? x : 0);
         const ly = baseLy + (frame.i === activeRef.current ? y : 0);
