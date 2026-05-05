@@ -2,9 +2,9 @@ import Comment from '@/components/lib/comment';
 import Container from '@/components/lib/container';
 import Statement from '@/components/lib/statement';
 import "./index.css";
-import {PropsWithChildren} from 'react';
 import LinkButton from '@/components/lib/link-button';
 import {experience} from '@/content/experience';
+import Tag from '@/components/lib/tag';
 
 
 interface ExternalLink {
@@ -19,14 +19,6 @@ export interface ExperienceProps {
   links: ExternalLink[];
 }
 
-
-function Tag(props: PropsWithChildren) {
-  return (
-      <div className="px-2 py-1 rounded-sm border  border-default-500 dark:border-default-700 bg-(--bg-surface-2)">
-        {props.children}
-      </div>
-  );
-}
 
 /**
  * Migrate from tailwind to vanilla extract
