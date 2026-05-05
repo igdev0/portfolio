@@ -5,6 +5,11 @@
     .button {
         @apply inline-flex px-3 md:px-4 py-2 font-bold rounded-md items-center gap-3 cursor-pointer;
 
+        &:active {
+            opacity: .7;
+            transition: opacity ease-in-out 0.2s;
+        }
+
         &.button--default {
             @apply bg-default-900 text-default;
         }
