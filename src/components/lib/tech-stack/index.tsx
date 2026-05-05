@@ -1,5 +1,4 @@
 import {useContext, useLayoutEffect, useRef} from 'react';
-import Button from '@/components/lib/button';
 import "./index.css";
 import {animate, createDraggable, createScope, Draggable, Scope} from 'animejs';
 import useResizeObserver from '@/hooks/use-resize-observer';
@@ -7,6 +6,7 @@ import Statement from '@/components/lib/statement';
 import {calcNext} from '@/components/lib/tech-stack/utils';
 import {stack} from '@/content/profile';
 import {TechStackContext} from '@/components/lib/tech-stack/context';
+import TechStackControllers from '@/components/lib/tech-stack/controllers';
 
 
 export type StackKey = keyof typeof stack;
@@ -43,12 +43,6 @@ export default function TechStack() {
 
   const onAfterResize = () => {
     stackCards();
-  };
-
-  const handleButtonClick = (index: number) => {
-    return () => {
-      setActive(index);
-    };
   };
 
   const onUpdate = (draggable: Draggable) => {
@@ -92,14 +86,7 @@ export default function TechStack() {
       <div className="tech-stack-v2"
            ref={addRef(calculateDraws)}
       >
-        <div className="stack-controllers">
-          {frames.map((item, index) => (
-              <Button active={active === index} disabled={active === index} ref={(el) => {
-                if (el) {
-                  controllers.current[index] = el;
-                }
-              }} onClick={handleButtonClick(index)} variant="secondary" key={item.key}>{item.key}</Button>))}
-        </div>
+        <TechStackControllers/>
         <svg className="stack-overlay">
           {
               draws.length && (
