@@ -18,7 +18,6 @@
             button {
                 @apply w-fit relative;
 
-
                 &.button--active {
                     &:before {
                         @apply not-dark:bg-accent-300 dark:bg-gray-800;
