@@ -3,11 +3,13 @@ import {TechStackContext} from '@/components/lib/tech-stack/context';
 import Statement from '@/components/lib/statement';
 import {animate, createDraggable, createScope, Draggable, Scope} from 'animejs';
 import {calcNext} from '@/components/lib/tech-stack/utils';
+import {stack} from '@/content/profile';
+import Tag from '@/components/lib/tag';
 
 const threshold = 60;
 
 export default function TechStackCards() {
-  const {frames, cards, activeRef, active, setActive, dragOffsetRef, keys} = useContext(TechStackContext);
+  const {frames, cards, activeRef, data, active, setActive, dragOffsetRef, keys} = useContext(TechStackContext);
   const root = useRef<HTMLDivElement>(null);
   const scope = useRef<Scope>(null);
 
@@ -80,13 +82,23 @@ export default function TechStackCards() {
                         }
                       }} key={frame.key}
                       data-order={index}>
+                    <div className="card-header">
+                      <h4 className="font-bold">{frame.key}</h4>
+                    </div>
                     <Statement>
-                      Hello
+                      {data[frame.key as keyof typeof stack.tech].statement}
                     </Statement>
+                    <div className="flex-group">
+                      {
+                        data[frame.key as keyof typeof stack.tech].tags.map((tag, index) => (
+                            <Tag key={`tech-${tag}`}>{tag}</Tag>
+                        ))
+                      }
+                    </div>
                   </div>
               )
           )
         }
       </div>
-  )
+  );
 }

@@ -1,0 +1,5 @@
+@import "../../../app/globals.css";
+
+@utility tag {
+    @apply px-2 py-1 rounded-sm border  border-default-500 dark:border-default-700 bg-(--bg-surface-2);
+}

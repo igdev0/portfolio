@@ -38,6 +38,7 @@
                 @apply p-2;
                 @apply col-start-1;
                 @apply row-end-1;
+                @apply flex flex-col justify-between;
 
                 &:after {
                     @apply w-3 h-3;

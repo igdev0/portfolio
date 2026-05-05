@@ -73,3 +73,7 @@ html {
     --breakpoint-6xl: initial;
     --breakpoint-7xl: initial;
 }
+
+@utility flex-group {
+    @apply flex flex-wrap gap-2;
+}

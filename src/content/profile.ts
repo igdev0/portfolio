@@ -8,43 +8,58 @@ export const stack = {
     value: 'I’m always learning something new.'
   },
   tech: {
-    "Languages": [
-      'JavaScript',
-      'TypeScript',
-      'HTML5',
-      'CSS3',
-      'Rust',
-    ],
-    "Frontend": [
-      'React',
-      'Next',
-      'Vue',
-      'Redux',
-      'Tailwind CSS',
-      'React Router',
-    ],
-    "Backend": [
-      'Node',
-      'Bun',
-      'tRPC',
-      'Express',
-      'Nest',
-      'MySQL',
-      'Drizzle'
-    ],
-    "Infra & DevOps": [
-      'Docker',
-      "Github",
-      "Bitbucket",
-      "Google Cloud",
-      'Github Actions',
-    ],
-    "Tools": [
-      'Figma',
-      'Adobe Illustrator',
-      "Webstorm",
-      'Photoshop'
-    ]
+    "Languages": {
+      statement: "I'm always learning something new.",
+      tags: [
+        'JavaScript',
+        'TypeScript',
+        'HTML5',
+        'CSS3',
+        'Rust',
+      ]
+    },
+    "Frontend": {
+      statement: "I'm always learning something new.",
+      tags: [
+        'React',
+        'Next',
+        'Vue',
+        'Redux',
+        'Tailwind CSS',
+        'React Router',
+      ]
+    },
+    "Backend": {
+      statement: "I'm always learning something new.",
+      tags: [
+        'Node',
+        'Bun',
+        'tRPC',
+        'Express',
+        'Nest',
+        'MySQL',
+        'Drizzle'
+      ]
+    },
+    "Infra & DevOps": {
+      statement: "I'm always learning something new.",
+      tags: [
+        'Docker',
+        "Github",
+        "Bitbucket",
+        "Google Cloud",
+        'Github Actions',
+      ]
+    },
+    "Tools": {
+      statement: "I'm always learning something new.",
+      tags: [
+        'Figma',
+        'Adobe Illustrator',
+        "Webstorm",
+        'Photoshop'
+      ]
+    }
   },
 } as const;
 
