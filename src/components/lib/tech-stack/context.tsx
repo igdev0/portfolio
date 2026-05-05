@@ -63,6 +63,7 @@ export function TechStackProvider(props: PropsWithChildren & Record<"data", type
   const pathRef = useRef<SVGPathElement>(null);
   const dragOffsetRef = useRef<{ x: number; y: number }>({x: 0, y: 0});
   const controllers = useRef<HTMLButtonElement[]>([]);
+  const rafRef = useRef<number | null>(null);
   const activeRef = useRef(active);
   const keys = Object.keys(profile.stack.tech) as TechStackContext['keys'];
 
@@ -71,25 +72,33 @@ export function TechStackProvider(props: PropsWithChildren & Record<"data", type
   }, [active]);
 
   const calculateDraws = () => {
-    const {x, y} = dragOffsetRef.current;
+    if (rafRef.current) {
+      cancelAnimationFrame(rafRef.current);
+    }
 
-    setDraws(
-        frames.map((frame) => {
-          const controller = controllers.current[frame.i];
-          const card = cards.current[frame.i];
-          const border = 2;
-          const mx = controller.offsetLeft + controller.clientWidth + border;
-          const my = controller.offsetTop + controller.clientHeight / 2;
-          const rect = card.getBoundingClientRect();
-          const baseLx = (card.parentElement?.offsetLeft ?? 0) + card.offsetLeft;
-          const baseLy = rect.height / 2 + 40;
+    rafRef.current = requestAnimationFrame(() => {
+      const {x, y} = dragOffsetRef.current;
 
-          const lx = baseLx + (frame.i === activeRef.current ? x : 0);
-          const ly = baseLy + (frame.i === activeRef.current ? y : 0);
+      const nextDraws = frames.map((frame) => {
+        const controller = controllers.current[frame.i];
+        const card = cards.current[frame.i];
+        const border = 2;
 
-          return {mx, my, lx, ly, c: 0};
-        })
-    );
+        const mx = controller.offsetLeft + controller.clientWidth + border;
+        const my = controller.offsetTop + controller.clientHeight / 2;
+
+        const rect = card.getBoundingClientRect();
+        const baseLx = (card.parentElement?.offsetLeft ?? 0) + card.offsetLeft;
+        const baseLy = rect.height / 2 + 20;
+
+        const lx = baseLx + (frame.i === activeRef.current ? x : 0);
+        const ly = baseLy + (frame.i === activeRef.current ? y : 0);
+
+        return {mx, my, lx, ly, c: 0};
+      });
+
+      setDraws(nextDraws);
+    });
   };
 
   return (

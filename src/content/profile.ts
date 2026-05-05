@@ -21,7 +21,7 @@ export const stack = {
     },
     "Frontend": {
       icon: "code",
-      statement: "I'm always learning something new.",
+      statement: "I'm always learning something new. I'm always learning something new. I'm always learning something new.",
       tags: [
         'React',
         'Next',
