@@ -18,3 +18,15 @@
 
     }
 }
+
+@utility responsabilities {
+    @apply flex flex-col gap-2 font-medium;
+
+    li {
+        &:before {
+            content: "> ";
+            @apply text-accent-500;
+        }
+    }
+
+}

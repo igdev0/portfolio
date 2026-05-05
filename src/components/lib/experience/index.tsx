@@ -1,11 +1,10 @@
 import Comment from '@/components/lib/comment';
 import Container from '@/components/lib/container';
 import Statement from '@/components/lib/statement';
-import "./index.css";
 import LinkButton from '@/components/lib/link-button';
 import {experience} from '@/content/experience';
 import Tag from '@/components/lib/tag';
-import Icon from '@/components/lib/icon';
+import "./index.css";
 
 
 interface ExternalLink {
@@ -43,10 +42,10 @@ function Experience(props: ExperienceProps) {
               ))
             }
           </div>
-          <ul className="flex flex-col gap-2 font-medium my-10">
+          <ul className="responsabilities my-10">
             {
               props.responsibilities?.map((responsibility, index) => (
-                  <li className="flex-group gap-1" key={index}><span className="text-accent-500"><Icon name="chevron-right"/></span> {responsibility}</li>
+                  <li key={index}>{responsibility}</li>
               ))
             }
           </ul>
