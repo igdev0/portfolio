@@ -3,7 +3,7 @@
 
 @utility port-node {
     content: "";
-    @apply not-dark:bg-accent-300 dark:bg-gray-800;
+    @apply dark:bg-gray-800/10 not-dark:bg-accent-300/10;
     @apply w-2 h-2;
     @apply rounded-sm;
 }
@@ -18,6 +18,12 @@
             button {
                 @apply w-fit relative;
 
+
+                &.button--active {
+                    &:before {
+                        @apply not-dark:bg-accent-300 dark:bg-gray-800;
+                    }
+                }
                 &:before {
                     @apply opacity-0 xl:opacity-100;
                     @apply port-node;
@@ -52,6 +58,7 @@
                 &:after {
                     @apply top-0 left-0 bottom-0 opacity-0 xl:opacity-100 absolute -translate-x-1/2 z-10 m-auto;
                     @apply port-node;
+                    @apply not-dark:bg-accent-300 dark:bg-gray-800;
                 }
 
                 .card-header {
