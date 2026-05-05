@@ -5,6 +5,7 @@ import {animate, createDraggable, createScope, Draggable, Scope} from 'animejs';
 import {calcNext} from '@/components/lib/tech-stack/utils';
 import {stack} from '@/content/profile';
 import Tag from '@/components/lib/tag';
+import Icon from '@/components/lib/icon';
 
 const threshold = 60;
 
@@ -73,31 +74,36 @@ export default function TechStackCards() {
 
       <div className="stack-cards" ref={root}>
         {
-          frames.map((frame, index) => (
-                  <div
-                      className="stack-card"
-                      ref={ref => {
-                        if (ref) {
-                          cards.current[index] = ref;
-                        }
-                      }} key={frame.key}
-                      data-order={index}>
-                    <div className="card-header">
-                      <h4 className="font-bold">{frame.key}</h4>
-                    </div>
-                    <Statement>
-                      {data[frame.key as keyof typeof stack.tech].statement}
-                    </Statement>
-                    <div className="flex-group">
-                      {
-                        data[frame.key as keyof typeof stack.tech].tags.map((tag, index) => (
-                            <Tag key={`tech-${tag}`}>{tag}</Tag>
-                        ))
+          frames.map((frame, index) => {
+            const content = data[frame.key as keyof typeof stack.tech];
+            return (
+
+                <div
+                    className="stack-card"
+                    ref={ref => {
+                      if (ref) {
+                        cards.current[index] = ref;
                       }
-                    </div>
+                    }}
+                    key={frame.key}
+                    data-order={index}>
+                  <div className="card-header">
+                    <Icon name={content.icon}/>
+                    <h4 className="font-bold">{frame.key}</h4>
                   </div>
-              )
-          )
+                  <Statement>
+                    {content.statement}
+                  </Statement>
+                  <div className="flex-group">
+                    {
+                      content.tags.map((tag, index) => (
+                          <Tag key={`tech-${tag}`}>{tag}</Tag>
+                      ))
+                    }
+                  </div>
+                </div>
+            )
+          })
         }
       </div>
   );

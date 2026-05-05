@@ -46,6 +46,10 @@
                     content: "";
                     @apply bg-(--bg-surface-2);
                 }
+
+                .card-header {
+                    @apply flex gap-2;
+                }
             }
         }
     }

@@ -9,6 +9,7 @@ export const stack = {
   },
   tech: {
     "Languages": {
+      icon: "book",
       statement: "I'm always learning something new.",
       tags: [
         'JavaScript',
@@ -19,6 +20,7 @@ export const stack = {
       ]
     },
     "Frontend": {
+      icon: "code",
       statement: "I'm always learning something new.",
       tags: [
         'React',
@@ -30,6 +32,7 @@ export const stack = {
       ]
     },
     "Backend": {
+      icon: "server",
       statement: "I'm always learning something new.",
       tags: [
         'Node',
@@ -42,6 +45,7 @@ export const stack = {
       ]
     },
     "Infra & DevOps": {
+      icon: "boxes",
       statement: "I'm always learning something new.",
       tags: [
         'Docker',
@@ -52,6 +56,7 @@ export const stack = {
       ]
     },
     "Tools": {
+      icon: 'wrench',
       statement: "I'm always learning something new.",
       tags: [
         'Figma',

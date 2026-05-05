@@ -1,12 +1,29 @@
 import Github from '@/components/lib/icon/github';
-import {LinkIcon, MenuIcon, SunIcon, XIcon} from 'lucide-react';
+import {
+  BookIcon,
+  BoxesIcon,
+  CodeIcon,
+  LinkIcon,
+  MenuIcon,
+  ServerIcon,
+  SquareTerminalIcon,
+  SunIcon,
+  WrenchIcon,
+  XIcon
+} from 'lucide-react';
 
 export const iconsMap = {
   github: Github,
   menu: MenuIcon,
   sun: SunIcon,
   x: XIcon,
-  link: LinkIcon
+  link: LinkIcon,
+  book: BookIcon,
+  code: CodeIcon,
+  wrench: WrenchIcon,
+  server: ServerIcon,
+  terminal: SquareTerminalIcon,
+  boxes: BoxesIcon,
 }
 
 export type IconNames = keyof typeof iconsMap;
