@@ -2,11 +2,11 @@ import {useContext, useLayoutEffect, useRef} from 'react';
 import "./index.css";
 import {animate, createDraggable, createScope, Draggable, Scope} from 'animejs';
 import useResizeObserver from '@/hooks/use-resize-observer';
-import Statement from '@/components/lib/statement';
 import {calcNext} from '@/components/lib/tech-stack/utils';
 import {stack} from '@/content/profile';
 import {TechStackContext} from '@/components/lib/tech-stack/context';
 import TechStackControllers from '@/components/lib/tech-stack/controllers';
+import TechStackCards from '@/components/lib/tech-stack/cards';
 
 
 export type StackKey = keyof typeof stack;
@@ -99,25 +99,7 @@ export default function TechStack() {
               )
           }
         </svg>
-        <div className="stack-cards">
-          {
-            frames.map((frame, index) => (
-                    <div
-                        className="stack-card"
-                        ref={ref => {
-                          if (ref) {
-                            cards.current[index] = ref;
-                          }
-                        }} key={frame.key}
-                        data-order={index}>
-                      <Statement>
-                        Hello
-                      </Statement>
-                    </div>
-                )
-            )
-          }
-        </div>
+        <TechStackCards/>
       </div>
   );
 }
