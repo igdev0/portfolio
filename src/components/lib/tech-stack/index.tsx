@@ -14,7 +14,7 @@ export type StackKey = keyof typeof stack;
 const threshold = 60;
 
 export default function TechStack() {
-  const {active, setActive, keys, activeRef, dragOffsetRef, drawsRef, draws, calculateDraws, pathRef, cards, controllers, frames} = useContext(TechStackContext);
+  const {active, setActive, keys, activeRef, dragOffsetRef, drawsRef, draws, calculateDraws, cards, frames} = useContext(TechStackContext);
   const [addRef, , root] = useResizeObserver();
   const scope = useRef<Scope>(null);
 
