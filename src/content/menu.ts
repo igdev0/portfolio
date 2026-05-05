@@ -13,7 +13,7 @@ const menu = {
       },
       expertise: {
         text: "Expertise",
-        href: "#expertise",
+        href: "#experience",
       },
       letsBuild: {
         text: "Lets Build",

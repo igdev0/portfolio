@@ -59,7 +59,7 @@ export const profile = {
   },
   bio: {
     type: 'html',
-    value: '<p>Full Stack Developer with 5+ years of experience <strong>building reliable, secure, and high-performance systems</strong>. Demonstrated expertise in clean architecture, scalable API design, and efficient data workflows using Node.js, Bun and Rust. Proven track record of delivering high-quality apps. <strong>Strong foundation in React and TypeScript app engineering</strong>, and cloud deployment with Docker and CI/CD pipelines. <strong>Active edge tech researcher and chill vibes</strong>.</p>'
+    value: '<p>Full Stack Developer with 5+ years of experience <strong>building reliable, secure, and high-performance systems</strong>. Demonstrated experience in clean architecture, scalable API design, and efficient data workflows using Node.js, Bun and Rust. Proven track record of delivering high-quality apps. <strong>Strong foundation in React and TypeScript app engineering</strong>, and cloud deployment with Docker and CI/CD pipelines. <strong>Active edge tech researcher and chill vibes</strong>.</p>'
   },
   stack,
 } as const;

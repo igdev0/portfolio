@@ -6,6 +6,7 @@ import Expertise from '@/components/lib/expertise';
 import menu from '@/content/menu';
 import hero from '@/content/hero';
 import {profile} from '@/content/profile';
+import {experience} from '@/content/experience';
 
 export default function LandingPage() {
   return (
@@ -13,7 +14,7 @@ export default function LandingPage() {
           <Nav data={menu}/>
           <Hero data={hero}/>
           <Profile data={profile}/>
-          <Expertise/>
+          <Expertise data={experience}/>
       </>
   );
 }

@@ -1,4 +1,3 @@
-import {stack} from '@/components/lib/tech-stack/const';
 import {PropsWithChildren, useLayoutEffect, useMemo, useRef, useState} from 'react';
 import Button from '@/components/lib/button';
 import "./index.css";
@@ -6,6 +5,7 @@ import {animate, createDraggable, createScope, Draggable, Scope} from 'animejs';
 import useResizeObserver from '@/hooks/use-resize-observer';
 import Statement from '@/components/lib/statement';
 import {calcFrames, calcNext, safeIndex} from '@/components/lib/tech-stack/utils';
+import {stack} from '@/content/profile';
 
 export interface TechStackProps extends PropsWithChildren {
   data: typeof stack;
