@@ -7,7 +7,6 @@ import TechStackControllers from '@/components/lib/tech-stack/controllers';
 import TechStackCards from '@/components/lib/tech-stack/cards';
 import TechStackOverlay from '@/components/lib/tech-stack/overlay';
 
-
 export type StackKey = keyof typeof stack;
 
 export default function TechStack() {
@@ -17,7 +16,6 @@ export default function TechStack() {
     calculateDraws,
   } = useContext(TechStackContext);
   const [addRef] = useResizeObserver();
-
 
   useLayoutEffect(() => {
     drawsRef.current = draws;
