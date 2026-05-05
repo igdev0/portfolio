@@ -61,10 +61,6 @@ export const experience = {
           text: "RFD App",
         },
         {
-          href: "https://play.google.com/store/apps/details?id=com.elevenLondon.MSConnections",
-          text: "Teva MS App",
-        },
-        {
           href: 'https://bluespherebio.com/',
           text: "Bluespherebio",
         }
