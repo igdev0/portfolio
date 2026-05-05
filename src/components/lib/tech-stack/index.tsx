@@ -5,13 +5,8 @@ import {animate, createDraggable, createScope, Draggable, Scope} from 'animejs';
 import useResizeObserver from '@/hooks/use-resize-observer';
 import Statement from '@/components/lib/statement';
 import {calcFrames, calcNext} from '@/components/lib/tech-stack/utils';
-import {profile, stack} from '@/content/profile';
+import {stack} from '@/content/profile';
 import {TechStackContext} from '@/components/lib/tech-stack/context';
-
-export interface TechStackProps {
-  data: typeof profile.stack.tech;
-  auto?: boolean;
-}
 
 interface FrameRef {
   key: string;
