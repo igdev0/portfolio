@@ -11,8 +11,7 @@ export interface IconProps {
 export default function Icon(props: IconProps) {
   const {name} = props;
 
-
   return (
-      <Github/>
+      <Github className="w-6 h-6"/>
   );
 }
