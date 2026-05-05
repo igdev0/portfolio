@@ -6,6 +6,7 @@ import {profile} from '@/content/profile';
 import Html from '@/components/lib/html';
 import Statement from '@/components/lib/statement';
 import TechStack from '@/components/lib/tech-stack';
+import {TechStackProvider} from '@/components/lib/tech-stack/context';
 
 interface ProfileProps {
   data: typeof profile;
@@ -35,7 +36,9 @@ export default function Profile(props: ProfileProps) {
             {data.stack.statement.value}
           </Statement>
         </Box>
-        <TechStack data={data.stack.tech}/>
+        <TechStackProvider data={data.stack.tech}>
+          <TechStack />
+        </TechStackProvider>
       </Container>
   );
 }

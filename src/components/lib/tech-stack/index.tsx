@@ -1,14 +1,15 @@
-import {PropsWithChildren, useLayoutEffect, useMemo, useRef, useState} from 'react';
+import {useContext, useLayoutEffect, useMemo, useRef, useState} from 'react';
 import Button from '@/components/lib/button';
 import "./index.css";
 import {animate, createDraggable, createScope, Draggable, Scope} from 'animejs';
 import useResizeObserver from '@/hooks/use-resize-observer';
 import Statement from '@/components/lib/statement';
 import {calcFrames, calcNext} from '@/components/lib/tech-stack/utils';
-import {stack} from '@/content/profile';
+import {profile, stack} from '@/content/profile';
+import {TechStackContext} from '@/components/lib/tech-stack/context';
 
-export interface TechStackProps extends PropsWithChildren {
-  data: typeof stack;
+export interface TechStackProps {
+  data: typeof profile.stack.tech;
   auto?: boolean;
 }
 
@@ -32,8 +33,8 @@ interface PathData {
 export type StackKey = keyof typeof stack;
 const threshold = 60;
 
-export default function TechStack(props: TechStackProps) {
-  const [active, setActive] = useState(0);
+export default function TechStack() {
+  const {active, setActive, data} = useContext(TechStackContext);
   const [addRef, , root] = useResizeObserver();
   const scope = useRef<Scope>(null);
   const cards = useRef<HTMLDivElement[]>([]);
@@ -42,7 +43,7 @@ export default function TechStack(props: TechStackProps) {
   const pathRef = useRef<SVGPathElement>(null);
   const dragOffsetRef = useRef<{ x: number; y: number }>({x: 0, y: 0});
   const controllers = useRef<HTMLButtonElement[]>([]);
-  const stackKeys = [...Object.keys(props.data)];
+  const stackKeys = [...Object.keys(data)];
   const activeRef = useRef(active);
 
 
