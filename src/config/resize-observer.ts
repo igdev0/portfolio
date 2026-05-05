@@ -1,5 +1,4 @@
 "use client";
-
 type Callback = (props: ResizeObserverEntry) => void;
 
 const callbacks = new WeakMap<Element, Callback>();

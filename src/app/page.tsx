@@ -5,13 +5,14 @@ import Profile from '@/components/ui/profile';
 import Expertise from '@/components/lib/expertise';
 import menu from '@/content/menu';
 import hero from '@/content/hero';
+import {profile} from '@/content/profile';
 
 export default function LandingPage() {
   return (
       <>
           <Nav data={menu}/>
           <Hero data={hero}/>
-          <Profile/>
+          <Profile data={profile}/>
           <Expertise/>
       </>
   );

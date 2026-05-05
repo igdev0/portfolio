@@ -6,33 +6,36 @@ import {profile} from '@/content/profile';
 import Html from '@/components/lib/html';
 import Statement from '@/components/lib/statement';
 import TechStack from '@/components/lib/tech-stack';
-import {stack} from '@/components/lib/tech-stack/const';
 
+interface ProfileProps {
+  data: typeof profile;
+}
 
-export default function Profile() {
+export default function Profile(props: ProfileProps) {
+  const {data} = props;
 
   return (
       <Container>
         <Box as="div" className="profile pt-40">
           <Comment className="mb-4">
-            {profile.tag.value}
+            {data.tag.value}
           </Comment>
           <h2 className="text-4xl font-bold mb-10">
-            {profile.title.value}
+            {data.title.value}
           </h2>
           <Html className="text-(--fg-story)">
-            {profile.bio.value}
+            {data.bio.value}
           </Html>
         </Box>
         <Box as="div" className="mt-20 mb-8">
           <h3 className="text-3xl font-bold">
-            {profile.stack.title.value}
+            {data.stack.title.value}
           </h3>
           <Statement>
-            {profile.stack.statement.value}
+            {data.stack.statement.value}
           </Statement>
         </Box>
-        <TechStack data={stack}/>
+        <TechStack data={data.stack.tech}/>
       </Container>
   );
 }

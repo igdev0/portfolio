@@ -1,4 +1,5 @@
-import {DynamicIcon, dynamicIconImports} from 'lucide-react/dynamic';
+import {dynamicIconImports} from 'lucide-react/dynamic';
+import Github from '@/components/lib/icon/github';
 
 export type IconNames = keyof typeof dynamicIconImports;
 
@@ -12,6 +13,6 @@ export default function Icon(props: IconProps) {
 
 
   return (
-      <DynamicIcon name={name} strokeWidth={1.5} className="w-6 h-6"/>
+      <Github/>
   );
 }
