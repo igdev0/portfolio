@@ -3,6 +3,7 @@
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 html {
     touch-action: pan-x pan-y;
+    @apply scroll-smooth;
 }
 
 [data-theme="dark"] {
