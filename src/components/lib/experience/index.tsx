@@ -54,6 +54,7 @@ function Experience(props: ExperienceProps) {
               props.links.map((link, index) => (
                   <LinkButton key={index}
                               href={link.href}
+                              external
                               variant="secondary"
                               icon="link">
                     {link.text}
