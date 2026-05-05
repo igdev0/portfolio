@@ -64,7 +64,6 @@ export default function TechStack(props: TechStackProps) {
   };
 
   const stackCards = () => {
-    calculateDraws();
     for (const frame of frames) {
       animate(cards.current[frame.i], {
         translateZ: frame.scale,
