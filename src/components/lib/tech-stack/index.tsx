@@ -34,7 +34,7 @@ export type StackKey = keyof typeof stack;
 const threshold = 60;
 
 export default function TechStack() {
-  const {active, setActive, data} = useContext(TechStackContext);
+  const {active, setActive, data, keys} = useContext(TechStackContext);
   const [addRef, , root] = useResizeObserver();
   const scope = useRef<Scope>(null);
   const cards = useRef<HTMLDivElement[]>([]);
@@ -43,16 +43,15 @@ export default function TechStack() {
   const pathRef = useRef<SVGPathElement>(null);
   const dragOffsetRef = useRef<{ x: number; y: number }>({x: 0, y: 0});
   const controllers = useRef<HTMLButtonElement[]>([]);
-  const stackKeys = [...Object.keys(data)];
   const activeRef = useRef(active);
 
 
   const frames = useMemo<FrameRef[]>(() => {
-    return calcFrames(active, stackKeys);
+    return calcFrames(active, keys);
   }, [active]);
 
   const onRelease = (draggable: Draggable) => {
-    const nextIndex = calcNext(draggable, activeRef, threshold, stackKeys);
+    const nextIndex = calcNext(draggable, activeRef, threshold, keys);
 
     // reset drag offset so line snaps back
     dragOffsetRef.current.x = 0;
