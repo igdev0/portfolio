@@ -10,10 +10,10 @@ export interface TechStackContext {
   cards: RefObject<HTMLDivElement[]>;
   activeRef: RefObject<number>;
   draws: PathData[];
-  drawsRef: RefObject<PathData[]>
+  drawsRef: RefObject<PathData[]>;
   pathRef: RefObject<SVGPathElement | null>;
-  dragOffsetRef: RefObject<{x: number, y: number}>;
-  frames: FrameRef[]
+  dragOffsetRef: RefObject<{ x: number, y: number }>;
+  frames: FrameRef[];
 
   setActive(active: number): void;
 
@@ -40,7 +40,8 @@ export const TechStackContext = createContext<TechStackContext>({
   draws: [],
   activeRef: {current: 0},
   dragOffsetRef: {current: {x: 0, y: 0}},
-  calculateDraws() {},
+  calculateDraws() {
+  },
   pathRef: {current: null},
   frames: []
 });
@@ -79,11 +80,9 @@ export function TechStackProvider(props: PropsWithChildren & Record<"data", type
           const border = 2;
           const mx = controller.offsetLeft + controller.clientWidth + border;
           const my = controller.offsetTop + controller.clientHeight / 2;
-
           const rect = card.getBoundingClientRect();
-
           const baseLx = (card.parentElement?.offsetLeft ?? 0) + card.offsetLeft;
-          const baseLy = rect.height / 2;
+          const baseLy = rect.height / 2 + 40;
 
           const lx = baseLx + (frame.i === activeRef.current ? x : 0);
           const ly = baseLy + (frame.i === activeRef.current ? y : 0);

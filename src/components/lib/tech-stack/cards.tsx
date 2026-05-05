@@ -94,7 +94,7 @@ export default function TechStackCards() {
                   <Statement>
                     {content.statement}
                   </Statement>
-                  <div className="flex-group">
+                  <div className="flex-group mt-4">
                     {
                       content.tags.map((tag, index) => (
                           <Tag key={`tech-${tag}`}>{tag}</Tag>
