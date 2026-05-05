@@ -3,7 +3,7 @@ const brand = "<span><</span><strong>IGDev</strong><span>/></span>";
 const menu = {
   brand: {
     html: brand,
-    href: "#",
+    href: "#top",
   },
   navigation: {
     list: {

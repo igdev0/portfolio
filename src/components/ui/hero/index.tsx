@@ -18,7 +18,7 @@ interface HeroProps {
 export default function Hero(props: HeroProps) {
   const {data} = props;
   return (
-      <Box className="hero" as="header">
+      <Box className="hero" as="header" id="top">
         <Container className="hero__layout">
           <Box className="hero__column">
             <Comment className="comment mb-3">

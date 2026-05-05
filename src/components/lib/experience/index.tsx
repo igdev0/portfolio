@@ -74,7 +74,7 @@ export interface TimelineProps {
 export default function Timeline(props: TimelineProps) {
   const {data} = props;
   return (
-      <Container className="pt-40">
+      <Container className="pt-40" id="experience">
         <Comment>{data.comment}</Comment>
         <h1 className="text-4xl font-bold mt-3">{data.title}</h1>
         <Statement className="mb-6">

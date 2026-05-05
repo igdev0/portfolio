@@ -17,17 +17,18 @@ const containerVariants = cva('container', {
 export interface ContainerProps extends PropsWithChildren, VariantProps<typeof containerVariants> {
   name?: string;
   className?: string;
+  id?: string;
   ref?: ForwardedRef<HTMLDivElement>
 }
 
 
 export default function Container(props: ContainerProps) {
-  const {children, className, name = 'default', ...variants} = props;
+  const {children, className, id, name = 'default', ...variants} = props;
   return (
-      <Box className="px-4 md:px-8">
+      <div className="px-4 md:px-8" id={id}>
         <Box className={`@container/${name} ${containerVariants(variants)}` + ` ${className}`} ref={props?.ref??null}>
             {children}
         </Box>
-      </Box>
+      </div>
   );
 }
