@@ -34,7 +34,7 @@
                 @apply transform-3d perspective-distant;
                 @apply border  border-default-300 dark:border-default-700 rounded-md p-3;
                 @apply h-full transform-3d;
-                @apply bg-(--bg-default);
+                @apply bg-(--bg-surface-2);
                 @apply p-4;
                 @apply col-start-1;
                 @apply row-end-1;

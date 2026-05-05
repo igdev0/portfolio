@@ -91,7 +91,7 @@ export default function TechStackCards() {
                     <Icon name={content.icon}/>
                     <h4 className="font-bold">{frame.key}</h4>
                   </div>
-                  <Statement>
+                  <Statement className="dark:bg-(--bg-default) py-2">
                     {content.statement}
                   </Statement>
                   <div className="flex-group mt-4">
