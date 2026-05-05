@@ -28,12 +28,12 @@ export default function Nav() {
             }
           </div>
           <div className="nav__buttons">
-            <IconLink icon="github" href={menu.navigation.social.github.href}/>
+            <IconLink icon="git-commit" href={menu.navigation.social.github.href}/>
             <IconButton icon="sun" onClick={() => setTheme(theme === 'dark' ? "light" : "dark")}/>
-            <IconButton className="nav__drawer-toggler" icon="menu" onClick={() => setMenuOpen(true)}></IconButton>
+            <IconButton className="nav__drawer-toggler" icon="align-right" onClick={() => setMenuOpen(true)}></IconButton>
           </div>
           <div className={clsx('nav__drawer', menuOpen ? 'open' : 'close')}>
-            <IconButton icon="menu" onClick={() => setMenuOpen(false)}/>
+            <IconButton icon="x" onClick={() => setMenuOpen(false)}/>
             {
               Object.entries(menu.navigation.list).map(([menuItemKey, entry]) => (
                   <Link draggable={false} key={menuItemKey}

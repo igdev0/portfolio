@@ -1,25 +1,17 @@
-import {Bars3Icon, SunIcon} from '@heroicons/react/24/outline';
-import {ComponentType, SVGProps} from 'react';
-import Github from '@/components/lib/icon/github';
+import {DynamicIcon, dynamicIconImports} from 'lucide-react/dynamic';
 
-export type IconNames = "github" | "sun" | "menu";
+export type IconNames = keyof typeof dynamicIconImports;
 
 export interface IconProps {
   name: IconNames;
   size?: "small";
 }
 
-const iconsMap: Record<IconNames, ComponentType<SVGProps<SVGSVGElement>>> = {
-  sun: SunIcon,
-  github: Github,
-  menu: Bars3Icon,
-};
-
 export default function Icon(props: IconProps) {
   const {name} = props;
-  const Element = iconsMap[name];
+
 
   return (
-      <Element className="w-6 h-6"/>
+      <DynamicIcon name={name} strokeWidth={1.5} className="w-6 h-6"/>
   );
 }
