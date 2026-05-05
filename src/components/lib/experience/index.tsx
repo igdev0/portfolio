@@ -5,6 +5,7 @@ import "./index.css";
 import LinkButton from '@/components/lib/link-button';
 import {experience} from '@/content/experience';
 import Tag from '@/components/lib/tag';
+import Icon from '@/components/lib/icon';
 
 
 interface ExternalLink {
@@ -45,7 +46,7 @@ function Experience(props: ExperienceProps) {
           <ul className="flex flex-col gap-2 font-medium my-10">
             {
               props.responsibilities?.map((responsibility, index) => (
-                  <li key={index}><span className="text-accent-500">{'>'}</span> {responsibility}</li>
+                  <li className="flex-group gap-1" key={index}><span className="text-accent-500"><Icon name="chevron-right"/></span> {responsibility}</li>
               ))
             }
           </ul>

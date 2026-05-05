@@ -2,6 +2,7 @@ import Github from '@/components/lib/icon/github';
 import {
   BookIcon,
   BoxesIcon,
+  ChevronRightIcon,
   CodeIcon,
   LinkIcon,
   MenuIcon,
@@ -24,6 +25,7 @@ export const iconsMap = {
   server: ServerIcon,
   terminal: SquareTerminalIcon,
   boxes: BoxesIcon,
+  ['chevron-right']: ChevronRightIcon,
 }
 
 export type IconNames = keyof typeof iconsMap;
