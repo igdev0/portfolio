@@ -4,7 +4,7 @@ import "./index.css";
 import {animate, createDraggable, createScope, Draggable, Scope} from 'animejs';
 import useResizeObserver from '@/hooks/use-resize-observer';
 import Statement from '@/components/lib/statement';
-import {calcFrames, calcNext, safeIndex} from '@/components/lib/tech-stack/utils';
+import {calcFrames, calcNext} from '@/components/lib/tech-stack/utils';
 import {stack} from '@/content/profile';
 
 export interface TechStackProps extends PropsWithChildren {
@@ -34,7 +34,6 @@ const threshold = 60;
 
 export default function TechStack(props: TechStackProps) {
   const [active, setActive] = useState(0);
-  const [auto, setAuto] = useState(false);
   const [addRef, , root] = useResizeObserver();
   const scope = useRef<Scope>(null);
   const cards = useRef<HTMLDivElement[]>([]);
@@ -45,8 +44,6 @@ export default function TechStack(props: TechStackProps) {
   const controllers = useRef<HTMLButtonElement[]>([]);
   const stackKeys = [...Object.keys(props.data)];
   const activeRef = useRef(active);
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
-  const isPausedRef = useRef(false);
 
 
   const frames = useMemo<FrameRef[]>(() => {
@@ -76,45 +73,13 @@ export default function TechStack(props: TechStackProps) {
     scope.current?.refresh();
   };
 
-  const onMouseEnter = () => {
-    if (auto) {
-      isPausedRef.current = true;
-    }
-  };
-
-  const onMouseLeave = () => {
-    if (auto) {
-      isPausedRef.current = false;
-    }
-  };
-
   const onAfterResize = () => {
     stackCards();
-  };
-
-  const startTimer = () => {
-    if (intervalRef.current) return;
-
-    intervalRef.current = setInterval(() => {
-      if (isPausedRef.current) return;
-      setActive(prev => safeIndex(prev + 1, stackKeys));
-    }, 2000);
-  };
-
-  const stopTimer = () => {
-    if (intervalRef.current) {
-      clearInterval(intervalRef.current);
-      intervalRef.current = null;
-    }
   };
 
   const handleButtonClick = (index: number) => {
     return () => {
       setActive(index);
-      if (auto) {
-        stopTimer();
-        startTimer();
-      }
     };
   };
 
@@ -148,15 +113,7 @@ export default function TechStack(props: TechStackProps) {
 
   useLayoutEffect(() => {
     calculateDraws();
-
-    if (auto) {
-      startTimer();
-    }
-
-    return () => {
-      stopTimer();
-    };
-  }, [auto]);
+  }, []);
 
   const calculateDraws = () => {
     const {x, y} = dragOffsetRef.current;
@@ -183,10 +140,6 @@ export default function TechStack(props: TechStackProps) {
   };
 
   useLayoutEffect(() => {
-    setAuto(props?.auto ?? false);
-  }, [props.auto]);
-
-  useLayoutEffect(() => {
     activeRef.current = active;
     stackCards();
   }, [active]);
@@ -194,8 +147,6 @@ export default function TechStack(props: TechStackProps) {
   return (
       <div className="tech-stack-v2"
            ref={addRef(calculateDraws)}
-           onMouseEnter={onMouseEnter}
-           onMouseLeave={onMouseLeave}
       >
         <div className="stack-controllers">
           {frames.map((item, index) => (
