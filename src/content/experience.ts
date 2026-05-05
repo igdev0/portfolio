@@ -37,22 +37,6 @@ export const experience = {
       ],
       links: [
         {
-          href: "https://apps.apple.com/gb/app/star-the-symptom-tracker/id1560476806",
-          text: "STAR App",
-        },
-        {
-          href: "https://play.google.com/store/apps/details?id=com.finervision.RFD",
-          text: "Teva MS App",
-        }
-      ],
-
-    },
-    {
-      title: "[Freelancer]",
-      tags: ["Freelancer", "Part-Time", "Remote", "December 2017 → February 2020"],
-      responsibilities: ['Led the front-end development of the web tools.', 'Led the front-end development of the web tools.', 'Led the front-end development of the web tools.'],
-      links: [
-        {
           href: "https://apps.apple.com/gb/app/star-the-symptom-tracker/id1560476806?platform=iphone",
           text: "STAR App",
         },
@@ -63,6 +47,22 @@ export const experience = {
         {
           href: 'https://bluespherebio.com/',
           text: "Bluespherebio",
+        }
+      ],
+
+    },
+    {
+      title: "[Freelancer]",
+      tags: ["Freelancer", "Part-Time", "Remote", "December 2017 → February 2020"],
+      responsibilities: ['Led the front-end development of the web tools.', 'Led the front-end development of the web tools.', 'Led the front-end development of the web tools.'],
+      links: [
+        {
+          href: 'https://pro-scan-solutions.ro/',
+          text: "Pro Scan Solutions",
+        },
+        {
+          href: 'https://codifyidea.com/',
+          text: "Codify Idea",
         }
       ],
 
