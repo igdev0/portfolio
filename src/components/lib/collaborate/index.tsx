@@ -56,7 +56,7 @@ export default function Collaborate(props: CollaborateProps) {
           {data.statement}
         </Statement>
         <div className="mt-10 mb-4 border border-(--semigrid) p-4 w-fit rounded-sm">
-          <p className="text-accent-100 flex gap-2"><InfoIcon/>Use the buttons below to get in touch with me.</p>
+          <p className="text-accent-100 flex gap-4"><InfoIcon/>Use the actions below to get in touch with me.</p>
         </div>
         <div className="flex-col md:flex-row md:items-center inline-flex gap-4">
           <div className="flex flex-col gap-4 w-fit">
