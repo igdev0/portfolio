@@ -9,6 +9,7 @@ import {profile} from '@/content/profile';
 import {experience} from '@/content/experience';
 import Collaborate from '@/components/lib/collaborate';
 import {collaborate} from '@/content/collaborate';
+import Footer from '@/components/lib/footer';
 
 export default function LandingPage() {
   return (
@@ -18,6 +19,7 @@ export default function LandingPage() {
         <Profile data={profile}/>
         <Expertise data={experience}/>
         <Collaborate data={collaborate}/>
+        <Footer/>
       </>
   );
 }
