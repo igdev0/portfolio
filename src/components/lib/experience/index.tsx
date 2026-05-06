@@ -32,7 +32,7 @@ function Experience(props: ExperienceProps) {
           <div className="timeline__head z-5 sticky top-18"/>
         </div>
         <div>
-          <div className="z-5 sticky top-12 bg-(--bg-default) pt-6">
+          <div className="z-5 sticky top-12 bg-(--bg-default) pt-6 pb-3">
             <h3 className="text-2xl font-bold">{props.title}</h3>
             <div className="flex flex-wrap gap-4 mt-4 relative">
               {
@@ -44,7 +44,7 @@ function Experience(props: ExperienceProps) {
               }
             </div>
           </div>
-          <ul className="responsabilities my-10">
+          <ul className="responsabilities my-4">
             {
               props.responsibilities?.map((responsibility, index) => (
                   <li key={index}>{responsibility}</li>
