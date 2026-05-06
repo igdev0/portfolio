@@ -1,7 +1,17 @@
 import {createContext} from 'react';
+import {WizardStep} from '@/components/lib/wizard/step';
 
 interface WizardContextType {
-  data: [];
+  activeStep: number;
+  steps: WizardStep[];
+  next(): void;
+  previous(): void;
+  addStep(step: WizardStep): void;
 }
 
-export const WizardContext = createContext<WizardContextType>({data: []});
+export const WizardContext = createContext<WizardContextType>({
+  activeStep: 0,
+  next() {},
+  previous() {},
+  addStep(){}
+});

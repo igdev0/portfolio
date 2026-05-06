@@ -71,7 +71,7 @@ export default function Collaborate(props: CollaborateProps) {
         <Wizard.Provider>
           <Wizard>
             {
-              steps.map((step: WizardStepProps) => (
+              steps.map((step) => (
                   <Wizard.Step key={step.id} {...step}/>
               ))
             }

@@ -12,13 +12,15 @@ interface WizardField {
   schema: ZodType
 }
 
-
-export interface WizardStepProps {
+export interface WizardStep {
   id: string;
   icon: IconNames;
+  fields: WizardField[];
+}
+
+export interface WizardStepProps extends WizardStep {
   title: string;
   description: string;
-  fields: WizardField[];
 }
 
 export default function WizardStep(props: WizardStepProps) {
