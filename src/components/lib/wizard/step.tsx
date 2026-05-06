@@ -39,7 +39,8 @@ export default function WizardStep(props: WizardStepProps) {
                 <Icon name={props.icon}/>
                 <label htmlFor={name}>
                   {field.label}
-                  <input type={field.type} name={name} placeholder={field.placeholder}/>
+                  <input type={field.type} placeholder={field.placeholder} {...context.form?.register(name as keyof object)}/>
+                  <span className="text-red-400">{context.form?.formState?.errors[name as keyof object]?.message}</span>
                 </label>
               </fieldset>
           ))

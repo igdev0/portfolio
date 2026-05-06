@@ -2,8 +2,6 @@ import Container from '@/components/lib/container';
 import Comment from '@/components/lib/comment';
 import Statement from '@/components/lib/statement';
 import {CollaborateType} from '@/content/collaborate';
-import {zodResolver} from "@hookform/resolvers/zod";
-import {useForm} from "react-hook-form";
 import * as z from "zod";
 import "./index.css";
 import Wizard from '@/components/lib/wizard';
@@ -25,7 +23,7 @@ const steps: WizardStepProps[] = [
     description: "I need this information",
     icon: "server",
     fields: {
-      describe: {
+      'describe': {
         label: "Classify Project",
         type: "text",
         placeholder: "Classify project",
@@ -52,10 +50,7 @@ const steps: WizardStepProps[] = [
 export default function Collaborate(props: CollaborateProps) {
   const {data} = props;
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {}
-  });
+  const onSubmit = () => {}
 
   return (
       <Container className="py-40" id="collaborate">
@@ -67,7 +62,7 @@ export default function Collaborate(props: CollaborateProps) {
           {data.statement}
         </Statement>
         <Wizard.Provider>
-          <Wizard>
+          <Wizard onSubmit={onSubmit}>
             {
               steps.map((step) => (
                   <Wizard.Step key={step.id} {...step}/>

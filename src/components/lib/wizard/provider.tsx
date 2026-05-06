@@ -20,15 +20,15 @@ export default function WizardProvider(props: CollaborateProviderProps) {
       for (const [name, field] of Object.entries(step.fields)) {
         target = target.extend({
           [name]: field.schema
-        })
+        });
       }
       return acc.extend(target.shape);
-    }, z.object())
-  }, [steps])
+    }, z.object());
+  }, [steps]);
 
-  const form = useForm<z.infer<typeof schema>>({
+  const form = useForm({
     resolver: zodResolver(schema),
-  })
+  });
 
   function next() {
     setActiveStep(prev => prev + 1 > steps.length - 1 ? steps.length - 1 : prev + 1);
@@ -53,7 +53,14 @@ export default function WizardProvider(props: CollaborateProviderProps) {
   }
 
   return (
-      <WizardContext.Provider value={{next, previous, steps, addStep, activeStep}}>
+      <WizardContext.Provider value={{
+        next,
+        previous,
+        form,
+        steps,
+        addStep,
+        activeStep
+      }}>
         {props.children}
       </WizardContext.Provider>
   );
