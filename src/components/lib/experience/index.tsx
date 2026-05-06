@@ -28,19 +28,21 @@ export interface ExperienceProps {
 function Experience(props: ExperienceProps) {
   return (
       <div className="experience">
-        <div className="timeline">
-          <div className="timeline__head"/>
+        <div className="timeline mt-6">
+          <div className="timeline__head z-5 sticky top-18"/>
         </div>
         <div>
-          <h3 className="text-2xl font-bold">{props.title}</h3>
-          <div className="flex flex-wrap gap-4 mt-4 relative">
-            {
-              props.tags.map((tag, index) => (
-                  <Tag key={index}>
-                    {tag}
-                  </Tag>
-              ))
-            }
+          <div className="z-5 sticky top-12 bg-(--bg-default) pt-6">
+            <h3 className="text-2xl font-bold">{props.title}</h3>
+            <div className="flex flex-wrap gap-4 mt-4 relative">
+              {
+                props.tags.map((tag, index) => (
+                    <Tag key={index}>
+                      {tag}
+                    </Tag>
+                ))
+              }
+            </div>
           </div>
           <ul className="responsabilities my-10">
             {
@@ -81,7 +83,8 @@ export default function Timeline(props: TimelineProps) {
           {data.statement}
         </Statement>
         <div className="relative mt-6">
-          <div className="border-l-2 border-(--semigrid) border-dashed h-full absolute left-0 translate-x-2.5 -z-1"/>
+          <div
+              className="border-l-2 mt-6 border-(--semigrid) border-dashed h-full absolute left-0 translate-x-2.5 -z-1"/>
           {
             data.experiences.map((experience, index) => (
                 <Experience key={index + 1} {...experience}/>
