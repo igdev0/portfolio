@@ -5,13 +5,15 @@ import {UseFormReturn} from 'react-hook-form';
 interface WizardContextType {
   activeStep: number;
   steps: WizardStep[];
-  form: UseFormReturn<Record<string, never>, unknown, Record<string, never>> | null;
+  form:  UseFormReturn<Record<string, unknown>, unknown, Record<string, unknown>> | null;
 
   next(): void;
 
   previous(): void;
 
   addStep(step: WizardStep): void;
+
+  isActive(id: string): boolean;
 }
 
 export const WizardContext = createContext<WizardContextType>({
@@ -23,5 +25,8 @@ export const WizardContext = createContext<WizardContextType>({
   },
   addStep() {
   },
-  form: null
+  form: null,
+  isActive(id: string) {
+    return false;
+  }
 });

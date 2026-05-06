@@ -30,6 +30,10 @@ export default function WizardStep(props: WizardStepProps) {
   useLayoutEffect(() => {
     context.addStep({id: props.id, icon: props.icon, fields: props.fields})
   }, [props]);
+  /**
+   * Verify that steps are set and if the step is not equal to the current one return null
+   */
+  if(context.steps[context.activeStep] && context.steps[context.activeStep].id !== props.id) return null;
 
   return (
       <>

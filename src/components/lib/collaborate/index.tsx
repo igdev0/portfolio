@@ -27,7 +27,7 @@ const steps: WizardStepProps[] = [
         label: "Classify Project",
         type: "text",
         placeholder: "Classify project",
-        schema: z.string().min(3).max(100)
+        schema: z.string().min(3, "The text must be at least 3 in length").max(100)
       }
     },
   },
@@ -35,7 +35,7 @@ const steps: WizardStepProps[] = [
     id: "classify-project",
     title: "How do you describe yourself?",
     description: "I need this information",
-    icon: "server",
+    icon: "link",
     fields: {
       'classify': {
         label: "Classify Project",
@@ -50,7 +50,9 @@ const steps: WizardStepProps[] = [
 export default function Collaborate(props: CollaborateProps) {
   const {data} = props;
 
-  const onSubmit = () => {}
+  const onSubmit = (data: any) => {
+    console.log(data);
+  }
 
   return (
       <Container className="py-40" id="collaborate">

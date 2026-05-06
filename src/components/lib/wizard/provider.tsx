@@ -1,6 +1,6 @@
 "use client";
 import {WizardContext} from '@/components/lib/wizard/context';
-import {PropsWithChildren, useMemo, useState} from 'react';
+import {PropsWithChildren, useMemo, useRef, useState} from 'react';
 import {WizardStep} from '@/components/lib/wizard/step';
 import * as z from 'zod';
 import {useForm} from 'react-hook-form';
@@ -12,19 +12,25 @@ interface CollaborateProviderProps extends PropsWithChildren {
 export default function WizardProvider(props: CollaborateProviderProps) {
   const [activeStep, setActiveStep] = useState(0);
   const [steps, setSteps] = useState<WizardStep[]>([]);
+  const schemaRef = useRef<z.ZodObject>(null);
 
   const schema = useMemo(() => {
-    return steps.reduce((acc, step) => {
-      let target = z.object();
+    const prev = schemaRef.current;
+    if(!steps[activeStep]) {
+      schemaRef.current = z.object();
+      return schemaRef.current; // return empty object so its safely typed.
+    }
+    const step = steps[activeStep];
+    let target = prev as z.ZodObject;
 
-      for (const [name, field] of Object.entries(step.fields)) {
-        target = target.extend({
-          [name]: field.schema
-        });
-      }
-      return acc.extend(target.shape);
-    }, z.object());
-  }, [steps]);
+    for (const [name, field] of Object.entries(step.fields)) {
+      target = target.extend({
+        [name]: field.schema
+      });
+    }
+    schemaRef.current = prev!.extend(target.shape);
+    return schemaRef.current;
+  }, [steps, activeStep]);
 
   const form = useForm({
     resolver: zodResolver(schema),
@@ -52,6 +58,10 @@ export default function WizardProvider(props: CollaborateProviderProps) {
     });
   }
 
+  function isActive(id: string) {
+    return steps[activeStep].id === id;
+  }
+
   return (
       <WizardContext.Provider value={{
         next,
@@ -59,7 +69,8 @@ export default function WizardProvider(props: CollaborateProviderProps) {
         form,
         steps,
         addStep,
-        activeStep
+        activeStep,
+        isActive
       }}>
         {props.children}
       </WizardContext.Provider>
