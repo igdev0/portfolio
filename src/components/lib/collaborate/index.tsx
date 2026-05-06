@@ -11,20 +11,14 @@ interface CollaborateProps {
   data: CollaborateType;
 }
 
-const formSchema = z.object({
-  describeYourself: z.string(),
-  availability: z.date(),
-});
-
 const steps: WizardStepProps[] = [
   {
     id: "describe-yourself",
     title: "How do you describe yourself?",
-    description: "I need this information",
+    description: "Please let me know what is your expertise to know how to start things off.",
     icon: "server",
     fields: {
       'describe': {
-        label: "Classify Project",
         type: "text",
         placeholder: "Classify project",
         schema: z.string().min(3, "The text must be at least 3 in length").max(100)
@@ -33,7 +27,7 @@ const steps: WizardStepProps[] = [
   },
   {
     id: "classify-project",
-    title: "How do you describe yourself?",
+    title: "Where does your project classify?",
     description: "I need this information",
     icon: "link",
     fields: {

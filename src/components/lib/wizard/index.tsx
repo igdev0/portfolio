@@ -44,7 +44,7 @@ export default function Wizard(props: WizardProps) {
           {
             props.children
           }
-          <div className="flex gap-3">
+          <div className="flex gap-3 justify-end p-2">
             <Button type="button" iconPosition="left" variant="secondary" icon="chevron-left" onClick={context.previous} disabled={context.activeStep === 0}>Previous</Button>
             <Button type="submit" iconPosition="right" variant={isLastStep ? 'solid' : "secondary"} icon={isLastStep ? "send" : "chevron-right"}>{isLastStep ? "Submit" : "Next"}</Button>
           </div>
