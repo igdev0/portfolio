@@ -2,10 +2,12 @@ import Github from '@/components/lib/icon/github';
 import {
   BookIcon,
   BoxesIcon,
+  ChevronLeftIcon,
   ChevronRightIcon,
   CodeIcon,
   LinkIcon,
   MenuIcon,
+  SendIcon,
   ServerIcon,
   SquareTerminalIcon,
   SunIcon,
@@ -26,7 +28,9 @@ export const iconsMap = {
   terminal: SquareTerminalIcon,
   boxes: BoxesIcon,
   ['chevron-right']: ChevronRightIcon,
-}
+  ['chevron-left']: ChevronLeftIcon,
+  'send': SendIcon,
+};
 
 export type IconNames = keyof typeof iconsMap;
 
@@ -37,7 +41,9 @@ export interface IconProps {
 
 export default function Icon(props: IconProps) {
   const Element = iconsMap[props.name];
-  if(!Element) {return null}
+  if (!Element) {
+    return null;
+  }
   return (
       <Element className="w-6 h-6"/>
   );

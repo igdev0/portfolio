@@ -26,7 +26,7 @@ export default function Wizard(props: WizardProps) {
       context.next();
     }
   }
-
+  const isLastStep = context.activeStep === context.steps.length -1;
   return (
       <div>
         <div className="flex gap-3">
@@ -45,8 +45,8 @@ export default function Wizard(props: WizardProps) {
             props.children
           }
           <div className="flex gap-3">
-            <Button type="button" onClick={context.previous} disabled={context.activeStep === 0}>Previous</Button>
-            <Button type="submit">{context.activeStep === context.steps.length - 1 ? "Submit" : "Next"}</Button>
+            <Button type="button" iconPosition="left" variant="secondary" icon="chevron-left" onClick={context.previous} disabled={context.activeStep === 0}>Previous</Button>
+            <Button type="submit" iconPosition="right" variant={isLastStep ? 'solid' : "secondary"} icon={isLastStep ? "send" : "chevron-right"}>{isLastStep ? "Submit" : "Next"}</Button>
           </div>
         </form>
       </div>

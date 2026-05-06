@@ -20,16 +20,18 @@ export interface ButtonProps extends PropsWithChildren, VariantProps<typeof butt
   className?: string;
   onClick?: () => void;
   icon?: IconNames;
+  iconPosition?: "left" | 'right';
   active?: boolean;
   disabled?: boolean;
 }
 
 export default function Button(props: ButtonProps) {
-  const {className, ref, children, icon, disabled, active, onClick, ...variants} = props;
+  const {className, ref, children, icon, iconPosition = 'left', disabled, active, onClick, ...variants} = props;
   return (
       <button ref={ref} className={`${buttonVariants(variants)} ${className} ${active ? "button--active" : ''}`} disabled={disabled ?? false} onClick={onClick}>
-        {icon && <Icon name={icon}/>}
+        {icon && iconPosition === 'left' && <Icon name={icon}/>}
         {children}
+        {icon && iconPosition === 'right' && <Icon name={icon}/>}
       </button>
   );
 }
