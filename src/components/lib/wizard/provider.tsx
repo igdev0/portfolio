@@ -37,13 +37,11 @@ export default function WizardProvider(props: CollaborateProviderProps) {
   });
 
   function next() {
-    setActiveStep(prev => prev + 1 > steps.length - 1 ? steps.length - 1 : prev + 1);
+    setActiveStep(prev => prev + 1 > steps.length - 1 ? prev : prev + 1);
   }
-
   function previous() {
     setActiveStep(prev => prev - 1 < 0 ? 0 : prev - 1);
   }
-
   function addStep(step: WizardStep) {
     /**
      * Add in the new step, but if it exists, just refresh the given step (so it rerenders properly in hot mode).

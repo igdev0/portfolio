@@ -40,11 +40,14 @@ export default function Wizard(props: WizardProps) {
             ))
           }
         </div>
-        <form className="collaborate-form mt-6" onSubmit={context.form?.handleSubmit(onSubmit)}>
+        <form name="wizard" className="collaborate-form mt-6" onSubmit={context.form?.handleSubmit(onSubmit)}>
           {
             props.children
           }
-          <Button type="submit">{context.activeStep === context.steps.length - 1 ? "Submit" : "Next"}</Button>
+          <div className="flex gap-3">
+            <Button type="button" onClick={context.previous} disabled={context.activeStep === 0}>Previous</Button>
+            <Button type="submit">{context.activeStep === context.steps.length - 1 ? "Submit" : "Next"}</Button>
+          </div>
         </form>
       </div>
   );
