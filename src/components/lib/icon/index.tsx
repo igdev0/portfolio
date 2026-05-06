@@ -2,6 +2,7 @@ import Github from '@/components/lib/icon/github';
 import {
   BookIcon,
   BoxesIcon,
+  CalendarIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
   CodeIcon,
@@ -14,6 +15,9 @@ import {
   WrenchIcon,
   XIcon
 } from 'lucide-react';
+import Email from '@/components/lib/icon/email';
+import Linkedin from '@/components/lib/icon/linkedin';
+import Telegram from '@/components/lib/icon/telegram';
 
 export const iconsMap = {
   github: Github,
@@ -30,6 +34,10 @@ export const iconsMap = {
   ['chevron-right']: ChevronRightIcon,
   ['chevron-left']: ChevronLeftIcon,
   'send': SendIcon,
+  'email': Email,
+  'linkedin': Linkedin,
+  'calendar': CalendarIcon,
+  'telegram': Telegram,
 };
 
 export type IconNames = keyof typeof iconsMap;

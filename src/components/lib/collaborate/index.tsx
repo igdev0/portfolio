@@ -4,8 +4,10 @@ import Statement from '@/components/lib/statement';
 import {CollaborateType} from '@/content/collaborate';
 import * as z from "zod";
 import "./index.css";
-import Wizard from '@/components/lib/wizard';
 import {WizardStepProps} from '@/components/lib/wizard/step';
+import LinkButton from '@/components/lib/link-button';
+import {IconNames} from '@/components/lib/icon';
+import {InfoIcon} from 'lucide-react';
 
 interface CollaborateProps {
   data: CollaborateType;
@@ -44,10 +46,6 @@ const steps: WizardStepProps[] = [
 export default function Collaborate(props: CollaborateProps) {
   const {data} = props;
 
-  const onSubmit = (data: any) => {
-    console.log(data);
-  }
-
   return (
       <Container className="py-40" id="collaborate">
         <Comment>
@@ -57,15 +55,26 @@ export default function Collaborate(props: CollaborateProps) {
         <Statement>
           {data.statement}
         </Statement>
-        <Wizard.Provider>
-          <Wizard onSubmit={onSubmit}>
+        <div className="mt-10 mb-4 border border-(--semigrid) p-4 w-fit rounded-sm">
+          <p className="text-accent-100 flex gap-2"><InfoIcon/>Use the buttons below to get in touch with me.</p>
+        </div>
+        <div className="flex-col md:flex-row md:items-center inline-flex gap-4">
+          <div className="flex flex-col gap-4 w-fit">
             {
-              steps.map((step) => (
-                  <Wizard.Step key={step.id} {...step}/>
+              Object.entries(props.data.social).filter(([key]) => key !== 'calendar').map(([key, value]) => (
+                  <LinkButton icon={key as IconNames} key={key} href={value.href} external variant="secondary" className="w-fit">
+                    {value.text}
+                  </LinkButton>
               ))
             }
-          </Wizard>
-        </Wizard.Provider>
+          </div>
+          <span className="font-bold">OR</span>
+          <div>
+            <LinkButton href={props.data.social.calendar.href} icon="calendar">
+              {props.data.social.calendar.text}
+            </LinkButton>
+          </div>
+        </div>
       </Container>
   );
 }
