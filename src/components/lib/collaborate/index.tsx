@@ -2,11 +2,12 @@ import Container from '@/components/lib/container';
 import Comment from '@/components/lib/comment';
 import Statement from '@/components/lib/statement';
 import {CollaborateType} from '@/content/collaborate';
-import {MessageCircle, Projector, User2} from 'lucide-react';
 import {zodResolver} from "@hookform/resolvers/zod";
 import {useForm} from "react-hook-form";
 import * as z from "zod";
 import "./index.css";
+import Wizard from '@/components/lib/wizard';
+import {WizardStepProps} from '@/components/lib/wizard/step';
 
 interface CollaborateProps {
   data: CollaborateType;
@@ -16,6 +17,39 @@ const formSchema = z.object({
   describeYourself: z.string(),
   availability: z.date(),
 });
+
+const steps: WizardStepProps[] = [
+  {
+    id: "describe-yourself",
+    title: "How do you describe yourself?",
+    description: "I need this information",
+    icon: "server",
+    fields: [
+      {
+        name: "classify-project",
+        label: "Classify Project",
+        type: "text",
+        placeholder: "Classify project",
+        schema: z.string().min(3).max(100)
+      }
+    ],
+  },
+  {
+    id: "classify-project",
+    title: "How do you describe yourself?",
+    description: "I need this information",
+    icon: "server",
+    fields: [
+      {
+        name: "classify-project",
+        label: "Classify Project",
+        type: "text",
+        placeholder: "Classify project",
+        schema: z.string().min(3).max(100)
+      }
+    ],
+  }
+]
 
 export default function Collaborate(props: CollaborateProps) {
   const {data} = props;
@@ -34,29 +68,15 @@ export default function Collaborate(props: CollaborateProps) {
         <Statement>
           {data.statement}
         </Statement>
-        <form className="collaborate-form mt-6">
-          <fieldset>
-            <User2/>
-            <label htmlFor="question-0">
-              1. How do you describe yourself?
-              <input type="text" name="question-0" placeholder="Type your answer ..."/>
-            </label>
-          </fieldset>
-          <fieldset>
-            <Projector/>
-            <label htmlFor="question-1">
-              2. Classify your project.
-              <input type="text" name="question-1" placeholder="Type your answer ..."/>
-            </label>
-          </fieldset>
-          <fieldset>
-            <MessageCircle/>
-            <label htmlFor="question-2">
-              3. Your handle
-              <input type="text" name="question-2" placeholder="Type your answer ..."/>
-            </label>
-          </fieldset>
-        </form>
+        <Wizard.Provider>
+          <Wizard>
+            {
+              steps.map((step: WizardStepProps) => (
+                  <Wizard.Step key={step.id} {...step}/>
+              ))
+            }
+          </Wizard>
+        </Wizard.Provider>
       </Container>
   );
 }
