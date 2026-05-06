@@ -11,7 +11,8 @@ interface WizardContextType {
 
 export const WizardContext = createContext<WizardContextType>({
   activeStep: 0,
+  steps: [],
   next() {},
   previous() {},
-  addStep(){}
+  addStep(){},
 });

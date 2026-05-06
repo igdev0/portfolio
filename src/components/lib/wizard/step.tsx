@@ -27,8 +27,8 @@ export default function WizardStep(props: WizardStepProps) {
   const context = useContext(WizardContext);
 
   useLayoutEffect(() => {
-
-  }, []);
+    context.addStep({id: props.id, icon: props.icon, fields: props.fields})
+  }, [props]);
 
   return (
       <>

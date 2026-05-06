@@ -11,18 +11,25 @@ export default function WizardProvider(props: CollaborateProviderProps) {
   const [steps, setSteps] = useState<WizardStep[]>([]);
 
   function next() {
-    setActiveStep(prev => prev + 1 > steps.length -1 ? steps.length -1 : prev + 1);
+    setActiveStep(prev => prev + 1 > steps.length - 1 ? steps.length - 1 : prev + 1);
   }
 
   function previous() {
-    setActiveStep(prev => prev - 1 < 0 ? 0 : prev -1);
+    setActiveStep(prev => prev - 1 < 0 ? 0 : prev - 1);
   }
 
   function addStep(step: WizardStep) {
     /**
-     * Add the step if the step does not exist in the list.
+     * Add in the new step, but if it exists, just refresh the given step (so it rerenders properly in hot mode).
      */
-    setSteps((prev) => prev.some(prevStep => prevStep.id === step.id) ? prev : [...prev, step]);
+    setSteps((prev) => {
+      const existingIndex = prev.findIndex(item => item.id === step.id);
+      if (existingIndex > -1) {
+        return prev.map(item => item.id === step.id ? step : item);
+      } else {
+        return [...prev, step];
+      }
+    });
   }
 
   return (
