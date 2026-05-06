@@ -24,32 +24,30 @@ const steps: WizardStepProps[] = [
     title: "How do you describe yourself?",
     description: "I need this information",
     icon: "server",
-    fields: [
-      {
-        name: "classify-project",
+    fields: {
+      describe: {
         label: "Classify Project",
         type: "text",
         placeholder: "Classify project",
         schema: z.string().min(3).max(100)
       }
-    ],
+    },
   },
   {
     id: "classify-project",
     title: "How do you describe yourself?",
     description: "I need this information",
     icon: "server",
-    fields: [
-      {
-        name: "classify-project",
+    fields: {
+      'classify': {
         label: "Classify Project",
         type: "text",
         placeholder: "Classify project",
         schema: z.string().min(3).max(100)
       }
-    ],
+    },
   }
-]
+];
 
 export default function Collaborate(props: CollaborateProps) {
   const {data} = props;

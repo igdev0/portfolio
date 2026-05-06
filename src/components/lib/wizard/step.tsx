@@ -8,14 +8,15 @@ interface WizardField {
   type: "text",
   label: string;
   placeholder: string;
-  name: string;
   schema: ZodType
 }
+
+export type WizardStepFields = Record<string, WizardField>
 
 export interface WizardStep {
   id: string;
   icon: IconNames;
-  fields: WizardField[];
+  fields: WizardStepFields;
 }
 
 export interface WizardStepProps extends WizardStep {
@@ -33,12 +34,12 @@ export default function WizardStep(props: WizardStepProps) {
   return (
       <>
         {
-          props.fields.map((field, index) => (
+          Object.entries(props.fields).map(([name,field], index) => (
               <fieldset key={index}>
                 <Icon name={props.icon}/>
-                <label htmlFor={field.name}>
+                <label htmlFor={name}>
                   {field.label}
-                  <input type={field.type} name={field.name} placeholder={field.placeholder}/>
+                  <input type={field.type} name={name} placeholder={field.placeholder}/>
                 </label>
               </fieldset>
           ))
