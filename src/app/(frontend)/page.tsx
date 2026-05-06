@@ -13,11 +13,11 @@ import {collaborate} from '@/content/collaborate';
 export default function LandingPage() {
   return (
       <>
-          <Nav data={menu}/>
-          <Hero data={hero}/>
-          <Profile data={profile}/>
-          <Expertise data={experience}/>
-          <Collaborate data={collaborate}/>
+        <Nav data={menu}/>
+        <Hero data={hero}/>
+        <Profile data={profile}/>
+        <Expertise data={experience}/>
+        <Collaborate data={collaborate}/>
       </>
   );
 }

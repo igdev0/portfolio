@@ -4,7 +4,6 @@ import Statement from '@/components/lib/statement';
 import {CollaborateType} from '@/content/collaborate';
 import {MessageCircle, Projector, User2} from 'lucide-react';
 import {zodResolver} from "@hookform/resolvers/zod";
-import {useState} from 'react';
 import {useForm} from "react-hook-form";
 import * as z from "zod";
 import "./index.css";
@@ -20,7 +19,7 @@ const formSchema = z.object({
 
 export default function Collaborate(props: CollaborateProps) {
   const {data} = props;
-  const [active, setActive] = useState(0);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {}
@@ -35,9 +34,6 @@ export default function Collaborate(props: CollaborateProps) {
         <Statement>
           {data.statement}
         </Statement>
-        <div className="grid grid-cols-3">
-
-        </div>
         <form className="collaborate-form mt-6">
           <fieldset>
             <User2/>
