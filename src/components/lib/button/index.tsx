@@ -39,7 +39,7 @@ export interface ButtonProps extends PropsWithChildren, VariantProps<typeof butt
 export default function Button(props: ButtonProps) {
   const {className, ref, children, icon, iconPosition = 'left', disabled, active, onClick, ...variants} = props;
   return (
-      <button className={`${buttonVariants(variants)} ref={ref} ${className??""} ${active ? "button--active" : ''}`} disabled={disabled ?? false} onClick={onClick}>
+      <button ref={ref} className={`${buttonVariants(variants)} ${className??""} ${active ? "button--active" : ''}`} disabled={disabled ?? false} onClick={onClick}>
         {icon && iconPosition === 'left' && <Icon name={icon}/>}
         {children}
         {icon && iconPosition === 'right' && <Icon name={icon}/>}
