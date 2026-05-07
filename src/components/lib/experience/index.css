@@ -1,9 +1,9 @@
-@import "../../../app/(frontend)/globals.css";
+@import "../../../app/globals.css";
 
 @layer components {
     .experience {
         @apply w-full h-full flex gap-3 md:gap-6 mt-12;
-        
+
     }
 
     .timeline {

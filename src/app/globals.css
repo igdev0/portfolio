@@ -54,7 +54,7 @@ html {
     --bg-surface: var(--color-indigo-100);
     --bg-surface-2: var(--color-indigo-50);
 
-    --semigrid: var(--color-gray-200);
+    --semigrid: var(--color-gray-300);
     --link: var(--color-white);
     --link-hover: var(--color-gray-600);
 

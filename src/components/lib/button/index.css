@@ -1,9 +1,10 @@
 @import "tailwindcss";
-@import "../../../app/(frontend)/globals.css";
+@import "../../../app/globals.css";
 
 @layer components {
     .button {
-        @apply inline-flex px-3 md:px-4 py-2 font-bold rounded-md items-center gap-3 cursor-pointer;
+        @apply inline-flex px-3 py-3 font-bold rounded-md items-center gap-2 cursor-pointer;
+
 
         &:active {
             opacity: .7;
@@ -18,8 +19,12 @@
             @apply border-2;
         }
 
+        &.button--solid-light {
+            @apply bg-indigo-400 text-white;
+        }
+
         &.button--solid {
-            @apply bg-accent-400 text-white ;
+            @apply bg-accent-500 text-white ;
 
             &:not(:disabled) {
                 @apply hover:bg-accent-500/90;

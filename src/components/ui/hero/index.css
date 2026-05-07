@@ -1,4 +1,4 @@
-@import "../../../app/(frontend)/globals.css";
+@import "../../../app/globals.css";
 
 @layer components {
     .hero {

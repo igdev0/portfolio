@@ -10,7 +10,7 @@ export const collaborate = {
     },
     github: {
       href: "https://github.com/igdev0",
-      text: "Open issue on github"
+      text: "Connect on github"
     },
     telegram: {
       href: "tg://resolve?domain=igdev0",
@@ -22,7 +22,7 @@ export const collaborate = {
     },
     calendar: {
       href: "https://calendly.com/dorultanianos/30min",
-      text: "Book 30min with me"
+      text: "Book 30 min"
     },
   }
 } as const;
