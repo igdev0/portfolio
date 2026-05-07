@@ -57,7 +57,7 @@
                 @apply row-end-1;
 
                 &:after {
-                    @apply top-0 left-0 bottom-0 opacity-0 2xl:opacity-100 absolute -translate-x-1/2 z-10 m-auto;
+                    @apply top-0 left-0 bottom-0 opacity-0 3xl:opacity-100 absolute -translate-x-1/2 z-10 m-auto;
                     @apply port-node;
                     @apply not-dark:bg-accent-300 dark:bg-gray-800;
                 }
