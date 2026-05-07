@@ -3,8 +3,11 @@
 
 @layer components {
     .button {
-        @apply inline-flex px-3 py-3 font-bold rounded-md items-center gap-2 cursor-pointer;
+        @apply inline-flex px-3 py-2 font-bold rounded-md items-center gap-2 cursor-pointer;
 
+        &.button--icon {
+            @apply py-3;
+        }
 
         &:active {
             opacity: .7;
