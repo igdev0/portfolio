@@ -8,16 +8,18 @@ import Link from 'next/dist/client/link';
 interface LinkButtonProps extends AppLinkProps, VariantProps<typeof buttonVariants> {
   icon?: IconNames;
   external?: boolean;
+  iconPosition?: 'left' | 'right';
 }
 
 export default function LinkButton(props: LinkButtonProps) {
-  const {href, children, icon, external, className = '', ...variants} = props;
+  const {href, children, icon, iconPosition = 'left', external, className = '', ...variants} = props;
   return (
       <Link
           className={`${buttonVariants(variants)} ${className}`}
           href={href} target={external ? "_blank" : "_self"}>
-        {icon && <Icon name={icon}/>}
+        {icon && iconPosition === 'left' &&<Icon name={icon}/>}
         {children}
+        {icon && iconPosition === 'right' &&<Icon name={icon}/>}
       </Link>
   );
 }

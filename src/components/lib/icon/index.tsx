@@ -6,6 +6,7 @@ import {
   ChevronLeftIcon,
   ChevronRightIcon,
   CodeIcon,
+  Link2Icon,
   LinkIcon,
   MenuIcon,
   SendIcon,
@@ -38,6 +39,7 @@ export const iconsMap = {
   'linkedin': Linkedin,
   'calendar': CalendarIcon,
   'telegram': Telegram,
+  'new-tab': Link2Icon,
 };
 
 export type IconNames = keyof typeof iconsMap;

@@ -28,11 +28,11 @@ export interface ExperienceProps {
 function Experience(props: ExperienceProps) {
   return (
       <div className="experience">
-        <div className="timeline mt-6">
-          <div className="timeline__head z-5 sticky top-18"/>
+        <div className="timeline relative">
+          <div className="timeline__head z-5 sticky top-16 translate-y-6"/>
         </div>
         <div>
-          <div className="z-5 sticky top-12 bg-(--bg-default) pt-6 pb-3">
+          <div className="z-5 sticky top-16 pb-3 bg-(--bg-default) py-6">
             <h3 className="text-2xl font-bold">{props.title}</h3>
             <div className="flex flex-wrap gap-4 mt-4 relative">
               {
@@ -51,14 +51,16 @@ function Experience(props: ExperienceProps) {
               ))
             }
           </ul>
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-wrap gap-3 mt-8 mb-0">
             {
               props.links.map((link, index) => (
                   <LinkButton key={index}
                               href={link.href}
                               external
                               variant="secondary"
-                              icon="link">
+                              iconPosition="right"
+                              size="small"
+                              icon="new-tab">
                     {link.text}
                   </LinkButton>
               ))

@@ -98,7 +98,7 @@ export default function TechStackCards() {
                         <Tabs.List className="tabs-header">
                           {
                             Object.keys(content.tabs).map((key) => (
-                                <Fragment key={key}>
+                                <Fragment key={`tab-header-${key}`}>
                                   <Tabs.Tab className="tab-control" nativeButton value={key}>
                                     {key}
                                   </Tabs.Tab>
@@ -109,7 +109,7 @@ export default function TechStackCards() {
                         </Tabs.List>
                         {
                           Object.entries(content.tabs).map(([key, value]) => (
-                              <Tabs.Panel value={key}>
+                              <Tabs.Panel key={key} value={key}>
                                 <Statement>{value.statement}</Statement>
                               </Tabs.Panel>
                           ))
