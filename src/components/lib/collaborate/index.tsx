@@ -2,9 +2,7 @@ import Container from '@/components/lib/container';
 import Comment from '@/components/lib/comment';
 import Statement from '@/components/lib/statement';
 import {CollaborateType} from '@/content/collaborate';
-import * as z from "zod";
 import "./index.css";
-import {WizardStepProps} from '@/components/lib/wizard/step';
 import LinkButton from '@/components/lib/link-button';
 import {IconNames} from '@/components/lib/icon';
 import {MessageCircle} from 'lucide-react';
@@ -13,36 +11,6 @@ import Button from '@/components/lib/button';
 interface CollaborateProps {
   data: CollaborateType;
 }
-
-const steps: WizardStepProps[] = [
-  {
-    id: "describe-yourself",
-    title: "How do you describe yourself?",
-    description: "Please let me know what is your expertise to know how to start things off.",
-    icon: "server",
-    fields: {
-      'describe': {
-        type: "text",
-        placeholder: "Classify project",
-        schema: z.string().min(3, "The text must be at least 3 in length").max(100)
-      }
-    },
-  },
-  {
-    id: "classify-project",
-    title: "Where does your project classify?",
-    description: "I need this information",
-    icon: "link",
-    fields: {
-      'classify': {
-        label: "Classify Project",
-        type: "text",
-        placeholder: "Classify project",
-        schema: z.string().min(3).max(100)
-      }
-    },
-  }
-];
 
 export default function Collaborate(props: CollaborateProps) {
   const {data} = props;
@@ -73,7 +41,8 @@ export default function Collaborate(props: CollaborateProps) {
               </div>
               <textarea className="border border-(--semigrid) p-2 rounded-sm h-60" name="message"
                         placeholder="Type message ..."/>
-              <Button className="self-end" variant="solid-light" type="submit" icon="send" iconPosition="right"></Button>
+              <Button className="self-end" variant="solid-light" type="submit" icon="send"
+                      iconPosition="right"></Button>
             </label>
           </form>
           <div>
