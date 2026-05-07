@@ -84,12 +84,23 @@ export function TechStackProvider(props: PropsWithChildren & Record<"data", type
         const card = cards.current[frame.i];
         const border = 2;
 
+        if (!controller || !card) {
+          return {mx: 0, my: 0, lx: 0, ly: 0, c: 0};
+        }
+
+        const cardParent = card.offsetParent as HTMLElement | null;
+
         const mx = controller.offsetLeft + controller.clientWidth + border;
         const my = controller.offsetTop + controller.clientHeight / 2;
 
-        const rect = card.getBoundingClientRect();
-        const baseLx = (card.parentElement?.offsetLeft ?? 0) + card.offsetLeft;
-        const baseLy = rect.height / 1.85;
+        const baseLx =
+          (cardParent?.offsetLeft ?? 0) +
+          card.offsetLeft;
+
+        const baseLy =
+          (cardParent?.offsetTop ?? 0) +
+          card.offsetTop +
+          card.clientHeight / 2;
 
         const lx = baseLx + (frame.i === activeRef.current ? x : 0);
         const ly = baseLy + (frame.i === activeRef.current ? y : 0);
