@@ -31,7 +31,7 @@ export default function TechStackCards() {
         translateY: frame.offset,
         translateX: 0,
         scaleZ: frame.z,
-        duration: 200,
+        duration: 300,
       });
     }
     scope.current?.refresh();
