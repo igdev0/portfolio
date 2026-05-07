@@ -6,19 +6,19 @@ export const collaborate = {
   social: {
     linkedin: {
       href: "https://www.linkedin.com/in/ioan-dorultan-364235143/",
-      text: "Connect on linkedin"
+      text: ""
     },
     github: {
       href: "https://github.com/igdev0",
-      text: "Connect on github"
+      text: ""
     },
     telegram: {
       href: "tg://resolve?domain=igdev0",
-      text: "Chat on telegram"
+      text: ""
     },
     email: {
       href: "ioan.dorultan@gmail.com",
-      text: "Email me directly"
+      text: ""
     },
     calendar: {
       href: "https://calendly.com/dorultanianos/30min",

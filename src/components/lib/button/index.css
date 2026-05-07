@@ -3,10 +3,18 @@
 
 @layer components {
     .button {
-        @apply inline-flex px-3 py-2 font-bold rounded-md items-center gap-2 cursor-pointer;
+        @apply inline-flex font-bold rounded-md items-center gap-2 cursor-pointer;
 
-        &.button--icon {
-            @apply py-3;
+        &.button--square {
+            @apply aspect-square;
+        }
+
+        &.button--medium {
+            @apply px-4 py-2
+        }
+
+        &.button--small {
+            @apply px-3 py-2;
         }
 
         &:active {

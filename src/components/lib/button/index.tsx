@@ -11,10 +11,20 @@ export const buttonVariants = cva('button', {
       'solid-light': 'button--solid-light',
       outline: 'button--outline',
     },
+    aspect: {
+      square: 'button--square',
+    },
+    size: {
+      small: 'button--small',
+      medium: 'button--medium'
+    }
   },
+
   defaultVariants: {
-    variant: "solid"
-  }
+    variant: "solid",
+    size: 'medium'
+  },
+
 });
 
 export interface ButtonProps extends PropsWithChildren, VariantProps<typeof buttonVariants>, ComponentPropsWithRef<"button"> {
@@ -29,7 +39,7 @@ export interface ButtonProps extends PropsWithChildren, VariantProps<typeof butt
 export default function Button(props: ButtonProps) {
   const {className, ref, children, icon, iconPosition = 'left', disabled, active, onClick, ...variants} = props;
   return (
-      <button ref={ref} className={`${buttonVariants(variants)} ${className??""} ${active ? "button--active" : ''} ${icon ? "button--icon" : ""}`} disabled={disabled ?? false} onClick={onClick}>
+      <button className={`${buttonVariants(variants)} ref={ref} ${className??""} ${active ? "button--active" : ''}`} disabled={disabled ?? false} onClick={onClick}>
         {icon && iconPosition === 'left' && <Icon name={icon}/>}
         {children}
         {icon && iconPosition === 'right' && <Icon name={icon}/>}
