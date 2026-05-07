@@ -28,7 +28,7 @@ export default function Collaborate(props: CollaborateProps) {
         <Statement>
           {data.statement}
         </Statement>
-        <div className="max-w-130 gap-6 w-full">
+        <div className="max-w-150 gap-6 w-full">
           <form onSubmit={handleSubmit} className="mt-2">
             <label className="flex flex-col gap-4 w-full h-full" htmlFor="message">
               <div className="flex w-full gap-4 items-baseline justify-between">
