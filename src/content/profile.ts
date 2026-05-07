@@ -5,65 +5,123 @@ export const stack = {
   },
   statement: {
     type: 'statement',
-    value: 'I’m always learning something new.'
+    value: 'Always learning, always shipping.'
   },
   tech: {
     "Languages": {
       icon: "book",
-      statement: "I'm always learning something new.",
-      tags: [
-        'JavaScript',
-        'TypeScript',
-        'HTML5',
-        'CSS3',
-        'Rust',
-      ]
+      statement: "Strong fundamentals make everything else easier.",
+      tabs: {
+        'JavaScript': {
+          statement: "Flexible, chaotic, and somehow still everywhere."
+        },
+        'TypeScript': {
+          statement: "Makes large codebases way less painful to work with."
+        },
+        'HTML5': {
+          statement: "Easy to start with, surprisingly deep when done right.",
+        },
+        'CSS3': {
+          statement: "Looks simple until you try centering something at 2AM.",
+        },
+        'Rust': {
+          statement: "Steep learning curve, but the performance and safety are worth it."
+        },
+      }
     },
+
     "Frontend": {
       icon: "code",
-      statement: "I'm always learning something new. I'm always learning something new. I'm always learning something new.",
-      tags: [
-        'React',
-        'Next',
-        'Vue',
-        'Redux',
-        'Tailwind CSS',
-        'React Router',
-      ]
+      statement: "Clean UI, smooth UX, and maintainable code matter.",
+      tabs: {
+        'React': {
+          statement: "Component-driven development done right."
+        },
+        'Next': {
+          statement: "Makes production React apps feel structured and scalable."
+        },
+        'Vue': {
+          statement: "Clean developer experience with a really nice learning curve."
+        },
+        'Redux': {
+          statement: "Verbose sometimes, but solid for predictable state management."
+        },
+        'Tailwind CSS': {
+          statement: "Fast workflow if you stay disciplined."
+        },
+        'React Router': {
+          statement: "Flexible routing without getting in your way."
+        },
+      } as const
     },
+
     "Backend": {
       icon: "server",
-      statement: "I'm always learning something new.",
-      tags: [
-        'Node',
-        'Bun',
-        'tRPC',
-        'Express',
-        'Nest',
-        'MySQL',
-        'Drizzle'
-      ]
+      statement: "I enjoy building scalable systems and clean APIs.",
+      tabs: {
+        'Node': {
+          statement: "Fast iteration and a huge ecosystem."
+        },
+        'Bun': {
+          statement: "Ridiculously fast and getting better fast."
+        },
+        'tRPC': {
+          statement: "End-to-end types feel almost unfair sometimes."
+        },
+        'Express': {
+          statement: "Minimal, simple, and still relevant."
+        },
+        'Nest': {
+          statement: "Structured backend architecture without the mess."
+        },
+        'MySQL': {
+          statement: "Reliable and battle-tested."
+        },
+        'Drizzle': {
+          statement: "Lightweight ORM with a surprisingly clean developer experience."
+        },
+      } as const
     },
+
     "Infra & DevOps": {
       icon: "boxes",
-      statement: "I'm always learning something new.",
-      tags: [
-        'Docker',
-        "Github",
-        "Bitbucket",
-        "Google Cloud",
-        'Github Actions',
-      ]
+      statement: "Automation and deployment workflows save real time.",
+      tabs: {
+        'Docker': {
+          statement: "Makes environments predictable instead of painful."
+        },
+        "Github": {
+          statement: "Good tooling, smooth collaboration, massive ecosystem."
+        },
+        "Bitbucket": {
+          statement: "Gets the job done, especially in enterprise setups."
+        },
+        "Google Cloud": {
+          statement: "Powerful platform with a lot to explore."
+        },
+        'Github Actions': {
+          statement: "CI/CD setup without unnecessary complexity."
+        },
+      } as const
     },
+
     "Tools": {
       icon: 'wrench',
-      statement: "I'm always learning something new.",
-      tags: [
-        'Figma',
-        'Adobe Illustrator',
-        "Webstorm",
-        'Photoshop'
-      ]
+      statement: "Good tools speed up good work.",
+      tabs: {
+        'Figma': {
+          statement: "Makes collaboration between design and development smooth."
+        },
+        'Adobe Illustrator': {
+          statement: "Still one of the best tools for vector work."
+        },
+        "Webstorm": {
+          statement: "Top-tier TypeScript IDE. Hard to switch away from it."
+        },
+        'Photoshop': {
+          statement: "Useful when things need more than basic edits."
+        },
+      } as const
     }
   },
 } as const;

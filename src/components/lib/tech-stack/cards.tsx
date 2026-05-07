@@ -1,11 +1,11 @@
-import {useContext, useLayoutEffect, useRef} from 'react';
+import {Tabs} from '@base-ui/react/tabs';
+import {Fragment, useContext, useLayoutEffect, useRef} from 'react';
 import {TechStackContext} from '@/components/lib/tech-stack/context';
-import Statement from '@/components/lib/statement';
 import {animate, createDraggable, createScope, Draggable, Scope} from 'animejs';
 import {calcNext} from '@/components/lib/tech-stack/utils';
 import {stack} from '@/content/profile';
-import Tag from '@/components/lib/tag';
 import Icon from '@/components/lib/icon';
+import Statement from '@/components/lib/statement';
 
 const threshold = 60;
 
@@ -87,22 +87,39 @@ export default function TechStackCards() {
                     }}
                     key={frame.key}
                     data-order={index}>
-                  <div className="card-header">
-                    <Icon name={content.icon}/>
-                    <h4 className="font-bold">{frame.key}</h4>
-                  </div>
-                  <Statement className="dark:bg-(--bg-default) py-2">
-                    {content.statement}
-                  </Statement>
-                  <div className="flex-group mt-4">
-                    {
-                      content.tags.map((tag, index) => (
-                          <Tag key={`tech-${tag}`}>{tag}</Tag>
-                      ))
-                    }
+                  <div className="inner">
+                    <div className="card-header gap-4">
+                      <Icon name={content.icon}/>
+                      <h4 className="font-bold">{frame.key}</h4>
+                    </div>
+                    <div className="flex-group mt-4">
+
+                      <Tabs.Root>
+                        <Tabs.List className="tabs-header">
+                          {
+                            Object.keys(content.tabs).map((key) => (
+                                <Fragment key={key}>
+                                  <Tabs.Tab className="tab-control" nativeButton value={key}>
+                                    {key}
+                                  </Tabs.Tab>
+                                  <Tabs.Indicator/>
+                                </Fragment>
+                            ))
+                          }
+                        </Tabs.List>
+                        {
+                          Object.entries(content.tabs).map(([key, value]) => (
+                              <Tabs.Panel value={key}>
+                                <Statement>{value.statement}</Statement>
+                              </Tabs.Panel>
+                          ))
+                        }
+                      </Tabs.Root>
+
+                    </div>
                   </div>
                 </div>
-            )
+            );
           })
         }
       </div>
