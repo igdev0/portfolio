@@ -97,8 +97,6 @@ export default function Collaborate(props: CollaborateProps) {
             </div>
           </div>
         </div>
-
-
       </Container>
   );
 }
