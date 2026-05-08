@@ -9,6 +9,7 @@ import {
   Link2Icon,
   LinkIcon,
   MenuIcon,
+  MessageCircleIcon,
   SendIcon,
   ServerIcon,
   SquareTerminalIcon,
@@ -40,6 +41,7 @@ export const iconsMap = {
   'calendar': CalendarIcon,
   'telegram': Telegram,
   'new-tab': Link2Icon,
+  'chat': MessageCircleIcon,
 };
 
 export type IconNames = keyof typeof iconsMap;

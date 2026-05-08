@@ -1,3 +1,5 @@
+import {collaborate} from '@/content/collaborate';
+
 const hero = {
   tag: {
     type: "html",
@@ -14,13 +16,15 @@ const hero = {
   cta: {
     first: {
       type: "link",
-      href: "#about",
-      text: "About me"
+      href: "#collaborate",
+      icon: "chat",
+      text: "Chat"
     },
     second: {
       type: "link",
-      href: "#lets-chat",
-      text: "Lets Chat",
+      href: collaborate.social.calendar.href,
+      text: "Book 30 min",
+      icon: 'calendar'
     }
   },
   card: {
@@ -32,6 +36,6 @@ const hero = {
       alt: "me"
     },
   }
-};
+} as const;
 
 export default hero;

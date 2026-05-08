@@ -31,10 +31,10 @@ export default function Hero(props: HeroProps) {
               {data.statement.value}
             </Statement>
             <Box className="flex gap-4">
-              <LinkButton variant="outline" href="#about">
+              <LinkButton variant="secondary" href={data.cta.first.href} icon={data.cta.first.icon}>
                 {data.cta.first.text}
               </LinkButton>
-              <LinkButton variant="solid" href="#about">
+              <LinkButton variant="solid" href={data.cta.second.href} external icon={data.cta.second.icon}>
                 {data.cta.second.text}
               </LinkButton>
             </Box>
