@@ -13,6 +13,10 @@
             @apply px-4 py-2
         }
 
+        &.button--extra-small {
+            @apply px-2 py-2;
+        }
+
         &.button--small {
             @apply px-3 py-2;
         }

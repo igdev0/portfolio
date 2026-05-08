@@ -15,6 +15,7 @@ export const buttonVariants = cva('button', {
       square: 'button--square',
     },
     size: {
+      xs: "button--extra-small",
       small: 'button--small',
       medium: 'button--medium'
     }
