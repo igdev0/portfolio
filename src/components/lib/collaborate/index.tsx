@@ -35,7 +35,7 @@ export default function Collaborate(props: CollaborateProps) {
                 <span className="flex gap-4 mb-2">
                 <MessageCircle/><span>Write me a message:</span>
                 </span>
-                <LinkButton size="small" className="w-fit" href={props.data.social.calendar.href} icon="calendar">
+                <LinkButton size="small" className="w-fit" external href={props.data.social.calendar.href} icon="calendar">
                   {props.data.social.calendar.text}
                 </LinkButton>
               </div>
