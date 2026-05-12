@@ -1,6 +1,6 @@
 const brand = "<span><</span><strong>IGDev</strong><span>/></span>";
 
-const menu = {
+const nav = {
   brand: {
     html: brand,
     href: "#top",
@@ -17,7 +17,7 @@ const menu = {
       },
       letsBuild: {
         text: "Lets Build",
-        href: "#letsBuild",
+        href: "#collaborate",
       },
     },
     social: {
@@ -29,4 +29,4 @@ const menu = {
   }
 } as const;
 
-export default menu;
+export default nav;

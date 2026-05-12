@@ -3,7 +3,7 @@ import Nav from '@/components/ui/nav';
 import Hero from '@/components/ui/hero';
 import Profile from '@/components/ui/profile';
 import Expertise from '@/components/lib/experience';
-import menu from '@/content/menu';
+import nav from '@/content/nav';
 import hero from '@/content/hero';
 import {profile} from '@/content/profile';
 import {experience} from '@/content/experience';
@@ -14,7 +14,7 @@ import Footer from '@/components/lib/footer';
 export default function LandingPage() {
   return (
       <>
-        <Nav data={menu}/>
+        <Nav data={nav}/>
         <Hero data={hero}/>
         <Profile data={profile}/>
         <Expertise data={experience}/>

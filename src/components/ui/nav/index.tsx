@@ -7,10 +7,10 @@ import {useState} from 'react';
 import IconButton from '@/components/lib/icon-button';
 import IconLink from '@/components/lib/icon-link';
 import Container from '@/components/lib/container';
-import menu from '@/content/menu';
+import nav from '@/content/nav';
 
 interface NavProps {
-  data: typeof menu;
+  data: typeof nav;
 }
 
 export default function Nav(props: NavProps) {
@@ -35,7 +35,7 @@ export default function Nav(props: NavProps) {
           <div className="nav__buttons">
             <IconLink icon="github" href={data.navigation.social.github.href}/>
             <IconButton icon="sun" onClick={() => setTheme(theme === 'dark' ? "light" : "dark")}/>
-            <IconButton className="nav__drawer-toggler" icon="menu" onClick={() => setMenuOpen(true)}></IconButton>
+            <IconButton className="nav__drawer-toggler" icon="nav" onClick={() => setMenuOpen(true)}></IconButton>
           </div>
           <div className={clsx('nav__drawer', menuOpen ? 'open' : 'close')}>
             <IconButton icon="x" onClick={() => setMenuOpen(false)}/>
