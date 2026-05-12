@@ -5,11 +5,11 @@ export const experience = {
   experiences: [
     {
       title: "[Independent Developer]",
-      tags: ["Self-Employed", "Remote", "April 2024 → On-Going"],
+      tags: ["Self-Employed", "Remote", "April 2024 → Present"],
       responsibilities: [
-        "Explored new programming languages such as Rust and Solidity.",
-        "Designed and architected multi-chain donation platform proof of concept as part of a chainlink hackathon.",
-        "Developed a CMS-driven website for a client of mine.",
+        "Built full-stack applications and explored distributed systems using TypeScript, Rust, and Solidity.",
+        "Architected a multi-chain donation platform integrating smart contracts and Chainlink automation concepts.",
+        "Developed a CMS-driven website for a client using modern frontend and content management tooling.",
       ],
       links: [
         {
@@ -29,10 +29,10 @@ export const experience = {
     },
     {
       title: "[Frontend Engineer]",
-      tags: ["Input output Global", "Full-Time", "Remote", "December 2022 → April 2024"],
+      tags: ["Input Output Global", "Full-Time", "Remote", "December 2022 → April 2024"],
       responsibilities: [
         "Developed core features for the infrastructure provisioning tool.",
-        "Ideated, designed and implemented internal web tooling for our internal SSI agent.",
+        "Designed and implemented internal web tooling for SSI agent and developer operations.",
         "Contributed to the open-source wallet SDK, improving functionality and usability.",
         "Developed and maintained the documentation website to support developer adoption.",
         "Conducted code reviews to ensure high-quality, maintainable code.",
@@ -53,8 +53,8 @@ export const experience = {
         "Built and enhanced web applications using React, Next.js, and Node.js.",
         "Collaborated directly with clients to streamline development and improve team efficiency.",
         "Translated Figma/XD designs into pixel-perfect, responsive, and functional code.",
-        "Assisted teammates by troubleshooting bugs and ensuring timely project delivery.",
-        "Maintained and improved legacy projects to ensure stability and performance.",
+        "Resolved production issues and collaborated with teammates to deliver projects on schedule.",
+        "Improved stability and maintainability across legacy web and mobile applications.",
       ],
       links: [
         {
