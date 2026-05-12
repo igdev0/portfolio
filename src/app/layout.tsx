@@ -24,6 +24,11 @@ export default function RootLayout({
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
         <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png"/>
         <link rel="manifest" href="/site.webmanifest"/>
+        <meta property="og:image" content="https://dorultanianos.dev/preview.png" />
+        <meta property="og:image:alt" content="About Acme" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       </head>
       <body className={(`${lexend.className}`)}>
