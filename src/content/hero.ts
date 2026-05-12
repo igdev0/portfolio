@@ -7,11 +7,11 @@ const hero = {
   },
   title: {
     type: "text",
-    value: "Full-Stack Engineer"
+    value: "Software Engineer"
   },
   statement: {
     type: "text",
-    value: `Passionate engineer with a keen eye for technology of tomorrow.`
+    value: `Frontend-focused engineer specializing in performant and intuitive user interfaces.`
   },
   cta: {
     first: {
