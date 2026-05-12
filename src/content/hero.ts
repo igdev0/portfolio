@@ -7,23 +7,23 @@ const hero = {
   },
   title: {
     type: "text",
-    value: "Front-End Expert"
+    value: "Full-Stack Engineer"
   },
   statement: {
     type: "text",
-    value: `Pasionated engineer with a keen eye for technology of tomorrow.`
+    value: `Passionate engineer with a keen eye for technology of tomorrow.`
   },
   cta: {
     first: {
       type: "link",
       href: "#collaborate",
       icon: "chat",
-      text: "Chat"
+      text: "Let's talk"
     },
     second: {
       type: "link",
       href: collaborate.social.calendar.href,
-      text: "Book 30 min",
+      text: "Book a call",
       icon: 'calendar'
     }
   },

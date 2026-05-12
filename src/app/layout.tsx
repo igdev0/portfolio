@@ -6,8 +6,8 @@ import {GoogleAnalytics} from '@next/third-parties/google';
 import {ThemeProvider} from 'next-themes';
 
 export const metadata: Metadata = {
-  title: "IGDev's portfolio",
-  description: "IGDev is a software developer that enjoys building apps, and exploring bleeding edge technologies.",
+  title: "IGDev's personal website",
+  description:  "IGDev is a full-stack software engineer focused on building modern applications and exploring bleeding-edge technologies.",
 };
 
 const lexend = Inter({weight: ["600", "400"]});

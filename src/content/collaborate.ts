@@ -22,7 +22,7 @@ export const collaborate = {
     },
     calendar: {
       href: "https://calendly.com/dorultanianos/30min",
-      text: "Book 30 min"
+      text: "Book a call"
     },
   }
 } as const;
