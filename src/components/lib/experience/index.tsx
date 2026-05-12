@@ -15,6 +15,7 @@ interface ExternalLink {
 export interface ExperienceProps {
   title: string;
   tags: string[];
+  statement: string;
   responsibilities: string[];
   links: ExternalLink[];
 }
@@ -33,7 +34,7 @@ function Experience(props: ExperienceProps) {
         </div>
         <div>
           <div className="z-5 sticky top-16 pb-3 bg-(--bg-default) py-6">
-            <h3 className="text-2xl font-bold">{props.title}</h3>
+            <h3 className="text-2xl font-bold mb-0">{props.title}</h3>
             <div className="flex flex-wrap gap-4 mt-4 relative">
               {
                 props.tags.map((tag, index) => (

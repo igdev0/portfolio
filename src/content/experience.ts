@@ -7,9 +7,9 @@ export const experience = {
       title: "[Independent Developer]",
       tags: ["Self-Employed", "Remote", "April 2024 → On-Going"],
       responsibilities: [
-        "Built and experimented with blockchain-based applications on Ethereum and Solana.",
-        "Learned new programming languages such as: Rust and Solidity.",
+        "Explored new programming languages such as Rust and Solidity.",
         "Designed and architected multi-chain donation platform proof of concept as part of a chainlink hackathon.",
+        "Developed a CMS-driven website for a client of mine.",
       ],
       links: [
         {
@@ -17,12 +17,12 @@ export const experience = {
           text: "Bee Funded",
         },
         {
-          href: 'https://github.com/igdev0/tokensmith',
-          text: "Token Smith",
-        },
-        {
           href: 'https://github.com/igdev0/simple-wallet-generator',
           text: "Wallet Generator",
+        },
+        {
+          text: "Pro Scan Solutions",
+          href: "https://proscansolutions.ro"
         }
       ],
 
@@ -49,7 +49,7 @@ export const experience = {
       title: "[Full-Stack Developer]",
       tags: ["Finer Vision", "Full-Time", "Hybrid", "December 2020 → February 2022"],
       responsibilities: [
-        "Developed and maintained native apps using React Native and Expo.",
+        "Developed and maintained native apps built using React Native and Expo.",
         "Built and enhanced web applications using React, Next.js, and Node.js.",
         "Collaborated directly with clients to streamline development and improve team efficiency.",
         "Translated Figma/XD designs into pixel-perfect, responsive, and functional code.",
