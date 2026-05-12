@@ -5,7 +5,7 @@ export const collaborate = {
   statement: "Always open to work with talented teams.",
   social: {
     linkedin: {
-      href: "https://www.linkedin.com/in/ioan-dorultan-364235143/",
+      href: "https://www.linkedin.com/in/ianos-dorultan-364235143/",
       text: ""
     },
     github: {
@@ -17,7 +17,7 @@ export const collaborate = {
       text: ""
     },
     email: {
-      href: "ioan.dorultan@gmail.com",
+      href: "mailto:ioan.dorultan@gmail.com",
       text: ""
     },
     calendar: {

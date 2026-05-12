@@ -21,9 +21,11 @@ export default function Collaborate(props: CollaborateProps) {
 
   const handleSubmit: SubmitEventHandler = async (event) => {
     event.preventDefault();
-    await notifyDiscord(message);
-    setMessage("");
-    setSuccess(true);
+    if (message.length) {
+      await notifyDiscord(message);
+      setMessage("");
+      setSuccess(true);
+    }
   };
 
   return (
@@ -53,12 +55,14 @@ export default function Collaborate(props: CollaborateProps) {
                         placeholder="Say Hello ..."/>
               <Button className="self-end" variant="solid-light" type="submit" icon="send"
                       aspect="square"
+                      disabled={message.length === 0}
                       iconPosition="right"></Button>
             </label>
           </form>
           {
               success && (
-                  <div className="relative rounded-sm bg-(--bg-surface-2) p-2 mb-6 flex items-center border border-(--semigrid) w-fit">
+                  <div
+                      className="relative rounded-sm bg-(--bg-surface-2) p-2 mb-6 flex items-center border border-(--semigrid) w-fit">
                     Thanks for messaging me, I will take a look at it shortly.
                     <button className="cursor-pointer pl-2" onClick={() => setSuccess(false)}>
                       <XIcon/>
