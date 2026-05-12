@@ -7,7 +7,7 @@ import {ThemeProvider} from 'next-themes';
 
 export const metadata: Metadata = {
   title: "IGDev's portfolio",
-  description: "IGDev's portfolio",
+  description: "IGDev is a software developer that enjoys building apps, and exploring bleeding edge technologies.",
 };
 
 const lexend = Inter({weight: ["600", "400"]});
