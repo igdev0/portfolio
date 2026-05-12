@@ -17,7 +17,7 @@ export default function Profile(props: ProfileProps) {
 
   return (
       <Container id="profile">
-        <Box as="div" className="profile pt-40">
+        <Box as="div" className="profile pt-20 md:pt-40">
           <Comment className="mb-4">
             {data.tag.value}
           </Comment>
