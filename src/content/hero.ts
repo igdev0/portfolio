@@ -3,7 +3,7 @@ import {collaborate} from '@/content/collaborate';
 const hero = {
   tag: {
     type: "html",
-    value: "Ianos Dorultan",
+    value: "Ianos G Dorultan",
   },
   title: {
     type: "text",
