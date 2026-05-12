@@ -5,11 +5,11 @@ export const experience = {
   experiences: [
     {
       title: "[Independent Developer]",
-      tags: ["Self-Employed", "Remote", "April 2024 → Present"],
+      tags: ["Self-Employed", "April 2024 → Present"],
       responsibilities: [
         "Built full-stack applications and explored distributed systems using TypeScript, Rust, and Solidity.",
         "Architected a multi-chain donation platform integrating smart contracts and Chainlink automation concepts.",
-        "Developed a CMS-driven website for a client using modern frontend and content management tooling.",
+        "Developed a CMS-driven website for a client using modern frontend and content management tooling for provided UI design.",
       ],
       links: [
         {
