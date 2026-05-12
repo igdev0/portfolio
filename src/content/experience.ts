@@ -31,7 +31,7 @@ export const experience = {
       title: "[Frontend Engineer]",
       tags: ["Input Output Global", "Full-Time", "Remote", "December 2022 → April 2024"],
       responsibilities: [
-        "Developed core features for the infrastructure provisioning tool.",
+        "Developed core features for the agent provisioning tool.",
         "Designed and implemented internal web tooling for SSI agent and developer operations.",
         "Contributed to the open-source wallet SDK, improving functionality and usability.",
         "Developed and maintained the documentation website to support developer adoption.",
