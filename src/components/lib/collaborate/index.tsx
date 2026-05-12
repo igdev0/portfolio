@@ -7,17 +7,22 @@ import LinkButton from '@/components/lib/link-button';
 import {IconNames} from '@/components/lib/icon';
 import {MessageCircle} from 'lucide-react';
 import Button from '@/components/lib/button';
+import {SubmitEventHandler, useState} from 'react';
+import {notifyDiscord} from '@/app/actions';
 
 interface CollaborateProps {
   data: CollaborateType;
 }
 
 export default function Collaborate(props: CollaborateProps) {
+  const [message, setMessage] = useState('');
   const {data} = props;
 
-  function handleSubmit() {
-
-  }
+  const handleSubmit: SubmitEventHandler = async (event) => {
+    event.preventDefault();
+    await notifyDiscord(message);
+    setMessage("");
+  };
 
   return (
       <Container className="pt-40 pb-4" id="collaborate">
@@ -35,11 +40,14 @@ export default function Collaborate(props: CollaborateProps) {
                 <span className="flex gap-4 mb-2">
                 <MessageCircle/><span>Write me a message:</span>
                 </span>
-                <LinkButton size="small" className="w-fit" external href={props.data.social.calendar.href} icon="calendar">
+                <LinkButton size="small" className="w-fit" external href={props.data.social.calendar.href}
+                            icon="calendar">
                   {props.data.social.calendar.text}
                 </LinkButton>
               </div>
               <textarea className="border border-(--semigrid) p-2 rounded-sm h-30" name="message"
+                        value={message}
+                        onChange={(event) => setMessage(event.currentTarget.value)}
                         placeholder="Say Hello ..."/>
               <Button className="self-end" variant="solid-light" type="submit" icon="send"
                       aspect="square"
@@ -52,7 +60,8 @@ export default function Collaborate(props: CollaborateProps) {
         <div className="flex gap-4 w-fit">
           {
             Object.entries(props.data.social).filter(([key]) => key !== 'calendar').map(([key, value]) => (
-                <LinkButton icon={key as IconNames} size="xs" key={key} href={value.href} aspect="square" external variant="outline"
+                <LinkButton icon={key as IconNames} size="xs" key={key} href={value.href} aspect="square" external
+                            variant="outline"
 
                             className="w-fit">
                   {value.text}
