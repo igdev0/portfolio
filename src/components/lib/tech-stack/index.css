@@ -83,7 +83,7 @@
             @apply cursor-pointer p-2 rounded-sm bg-(--bg-surface-2) text-sm;
 
             &[data-active] {
-                @apply bg-accent-500;
+                @apply bg-accent-500 text-white;
             }
 
             @variant active {
