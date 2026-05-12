@@ -4,9 +4,35 @@ export const experience = {
   statement: "I got more than 5 years of web development experience",
   experiences: [
     {
+      title: "[Independent Engineer]",
+      tags: ['Self-Employed', 'April 2024 → Now'],
+      links: [
+        {
+          href: 'https://github.com/igdev0/tokensmith',
+          text: "Tokensmith",
+        },
+        {
+          href: 'https://github.com/igdev0/bee-funded',
+          text: "BeeFunded",
+        },
+        {
+          href: "https://github.com/igdev0/wallet-generator",
+          text: "Wallet Generator",
+        }
+      ],
+      done: [
+        'Built and experimented with blockchain and decentralized application architectures.',
+        'Developed personal projects including BeeFunded, Tokensmith, and cryptographic tooling.',
+        'Researched local-first distributed systems, synchronization strategies, and decentralized identity architectures.',
+        'Explored Rust systems programming through hands-on projects and language fundamentals.',
+        'Completed the Alchemy Ethereum and Solidity bootcamp focused on smart contract development.',
+        'Collaborated on and delivered a web3 hackathon project.',
+      ],
+    },
+    {
       title: "[Frontend Engineer]",
       tags: ["Input Output Global", "Full-Time", "Remote", "December 2022 → April 2024"],
-      responsibilities: [
+      done: [
         "Developed core features for the agent provisioning tool.",
         "Designed and implemented internal web tooling for SSI agent and developer operations.",
         "Contributed to the open-source wallet SDK, improving functionality and usability.",
@@ -24,7 +50,7 @@ export const experience = {
     {
       title: "[Full-Stack Developer]",
       tags: ["Finer Vision", "Full-Time", "Hybrid", "December 2020 → February 2022"],
-      responsibilities: [
+      done: [
         "Developed and maintained native apps built using React Native and Expo.",
         "Built and enhanced web applications using React, Next.js, and Node.js.",
         "Collaborated directly with clients to streamline development and improve team efficiency.",

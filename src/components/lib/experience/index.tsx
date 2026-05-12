@@ -15,7 +15,7 @@ interface ExternalLink {
 export interface ExperienceProps {
   title: string;
   tags: string[];
-  responsibilities: string[];
+  done: string[];
   links: ExternalLink[];
 }
 
@@ -46,7 +46,7 @@ function Experience(props: ExperienceProps) {
           </div>
           <ul className="responsabilities my-4">
             {
-              props.responsibilities?.map((responsibility, index) => (
+              props.done?.map((responsibility, index) => (
                   <li key={index}>{responsibility}</li>
               ))
             }
