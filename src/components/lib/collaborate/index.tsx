@@ -5,7 +5,7 @@ import {CollaborateType} from '@/content/collaborate';
 import "./index.css";
 import LinkButton from '@/components/lib/link-button';
 import {IconNames} from '@/components/lib/icon';
-import {MessageCircle} from 'lucide-react';
+import {MessageCircle, XIcon} from 'lucide-react';
 import Button from '@/components/lib/button';
 import {SubmitEventHandler, useState} from 'react';
 import {notifyDiscord} from '@/app/actions';
@@ -16,12 +16,14 @@ interface CollaborateProps {
 
 export default function Collaborate(props: CollaborateProps) {
   const [message, setMessage] = useState('');
+  const [success, setSuccess] = useState(false);
   const {data} = props;
 
   const handleSubmit: SubmitEventHandler = async (event) => {
     event.preventDefault();
     await notifyDiscord(message);
     setMessage("");
+    setSuccess(true);
   };
 
   return (
@@ -54,6 +56,16 @@ export default function Collaborate(props: CollaborateProps) {
                       iconPosition="right"></Button>
             </label>
           </form>
+          {
+              success && (
+                  <div className="relative rounded-sm bg-(--bg-surface-2) p-2 mb-6 flex items-center border border-(--semigrid) w-fit">
+                    Thanks for messaging me, I will take a look at it shortly.
+                    <button className="cursor-pointer pl-2" onClick={() => setSuccess(false)}>
+                      <XIcon/>
+                    </button>
+                  </div>
+              )
+          }
         </div>
 
         <span className="font-bold inline-block mb-3">Lets Connect on:</span>
