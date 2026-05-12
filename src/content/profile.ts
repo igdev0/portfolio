@@ -137,9 +137,13 @@ export const profile = {
   },
   bio: {
     type: 'html',
-    value: '<p>Full Stack Developer with 5+ years of experience <strong>building reliable, secure, and high-performance systems</strong>. Demonstrated experience in clean architecture, scalable API design, and efficient data workflows using Node.js or Bun. Proven track record of delivering high-quality apps. <strong>Strong foundation in React and TypeScript app engineering</strong>, and cloud deployment with Docker and CI/CD pipelines. <strong>Active edge tech researcher and chill vibes</strong>.</p>'
+    value:`
+        <p>
+            Full Stack Developer with 5+ years of experience building web and mobile applications focused on performance, maintainability, and clean architecture. 
+            <strong>Strong expertise in React and TypeScript</strong>, with experience across backend APIs, cloud deployments, and CI/CD workflows using Docker and modern tooling. 
+            Proven ability to deliver production-ready applications across frontend, backend, and infrastructure.
+        </p>
+    `
   },
   stack,
 } as const;
-
-
