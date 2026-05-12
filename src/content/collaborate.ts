@@ -17,7 +17,7 @@ export const collaborate = {
       text: ""
     },
     email: {
-      href: "mailto:ioan.dorultan@gmail.com",
+      href: "mailto:ianos.dorultan@gmail.com",
       text: ""
     },
     calendar: {
