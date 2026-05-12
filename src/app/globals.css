@@ -52,7 +52,7 @@ html {
     --fg-story: var(--color-default-700);
     --bg-default: var(--color-white);
     --bg-surface: var(--color-indigo-100);
-    --bg-surface-2: var(--color-indigo-50);
+    --bg-surface-2: var(--color-indigo-100);
 
     --semigrid: var(--color-gray-300);
     --link: var(--color-white);
