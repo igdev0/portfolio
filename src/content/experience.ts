@@ -1,14 +1,14 @@
 export const experience = {
-  comment: "// Expertise",
-  title: "{Expertise}",
-  statement: "I have more than 5 years of experience",
+  comment: "// Work experience",
+  title: "{Experience}",
+  statement: "I got more than 5 years of web development experience",
   experiences: [
     {
       title: "[Independent Developer]",
       tags: ["Self-Employed", "April 2024 → Present"],
       responsibilities: [
-        "Built full-stack applications and explored distributed systems using TypeScript, Rust, and Solidity.",
-        "Architected a multi-chain donation platform integrating smart contracts and Chainlink automation concepts.",
+        "Built several small web3 applications and explored distributed systems using TypeScript, Rust, and Solidity.",
+        `Collaborated with a small team to build "Bee Funded", a Web3 donation platform, during a Chainlink hackathon.`,
         "Developed a CMS-driven website for a client using modern frontend and content management tooling for provided UI design.",
       ],
       links: [

@@ -10,7 +10,6 @@ export const stack = {
   tech: {
     "Languages": {
       icon: "book",
-      statement: "Strong fundamentals make everything else easier.",
       tabs: {
         'JavaScript': {
           statement: "Flexible, chaotic, and somehow still everywhere."
@@ -32,7 +31,6 @@ export const stack = {
 
     "Frontend": {
       icon: "code",
-      statement: "Clean UI, smooth UX, and maintainable code matter.",
       tabs: {
         'React': {
           statement: "Component-driven development done right."
@@ -57,7 +55,6 @@ export const stack = {
 
     "Backend": {
       icon: "server",
-      statement: "I enjoy building scalable systems and clean APIs.",
       tabs: {
         'Node': {
           statement: "Fast iteration and a huge ecosystem."
@@ -85,7 +82,6 @@ export const stack = {
 
     "Infra & DevOps": {
       icon: "boxes",
-      statement: "Automation and deployment workflows save real time.",
       tabs: {
         'Docker': {
           statement: "Makes environments predictable instead of painful."
@@ -107,7 +103,6 @@ export const stack = {
 
     "Tools": {
       icon: 'wrench',
-      statement: "Good tools speed up good work.",
       tabs: {
         'Figma': {
           statement: "Makes collaboration between design and development smooth."

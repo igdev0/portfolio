@@ -15,7 +15,6 @@ interface ExternalLink {
 export interface ExperienceProps {
   title: string;
   tags: string[];
-  statement: string;
   responsibilities: string[];
   links: ExternalLink[];
 }
