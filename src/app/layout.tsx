@@ -25,7 +25,7 @@ export default function RootLayout({
         <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png"/>
         <link rel="manifest" href="/site.webmanifest"/>
         <meta property="og:image" content="https://dorultanianos.dev/preview.png" />
-        <meta property="og:image:alt" content="About Acme" />
+        <meta property="og:image:alt" content="IGDev website" />
         <meta property="og:image:type" content="image/png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
