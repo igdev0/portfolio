@@ -4,30 +4,6 @@ export const experience = {
   statement: "I got more than 5 years of web development experience",
   experiences: [
     {
-      title: "[Independent Developer]",
-      tags: ["Self-Employed", "April 2024 → Present"],
-      responsibilities: [
-        "Built several small web3 applications and explored distributed systems using TypeScript, Rust, and Solidity.",
-        `Collaborated with a small team to build "Bee Funded", a Web3 donation platform, during a Chainlink hackathon.`,
-        "Developed a CMS-driven website for a client using modern frontend and content management tooling for provided UI design.",
-      ],
-      links: [
-        {
-          href: 'https://github.com/igdev0/bee-funded',
-          text: "Bee Funded",
-        },
-        {
-          href: 'https://github.com/igdev0/simple-wallet-generator',
-          text: "Wallet Generator",
-        },
-        {
-          text: "Pro Scan Solutions",
-          href: "https://proscansolutions.ro"
-        }
-      ],
-
-    },
-    {
       title: "[Frontend Engineer]",
       tags: ["Input Output Global", "Full-Time", "Remote", "December 2022 → April 2024"],
       responsibilities: [
