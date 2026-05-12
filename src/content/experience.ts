@@ -5,7 +5,7 @@ export const experience = {
   experiences: [
     {
       title: "[Independent Engineer]",
-      tags: ['Self-Employed', 'April 2024 → Now'],
+      tags: ['Self-Employed', 'December 2024 → Now'],
       links: [
         {
           href: 'https://github.com/igdev0/tokensmith',
