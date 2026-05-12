@@ -63,7 +63,7 @@ export default function Collaborate(props: CollaborateProps) {
               success && (
                   <div
                       className="relative rounded-sm bg-(--bg-surface-2) p-2 mb-6 flex items-center border border-(--semigrid) w-fit">
-                    Thanks for messaging me, I will take a look at it shortly.
+                    Message received. Looking forward to reading it.
                     <button className="cursor-pointer pl-2" onClick={() => setSuccess(false)}>
                       <XIcon/>
                     </button>
