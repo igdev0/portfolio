@@ -2,7 +2,7 @@
 export const collaborate = {
   comment: "// Build",
   title: "{Collaborate}",
-  statement: "Always open to work with talented teams.",
+  statement: "Open to meaningful collaborations and ambitious projects.",
   social: {
     linkedin: {
       href: "https://www.linkedin.com/in/ianos-dorultan-364235143/",
