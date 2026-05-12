@@ -34,15 +34,15 @@ function Experience(props: ExperienceProps) {
         <div>
           <div className="z-5 sticky top-16 pb-3 bg-(--bg-default) py-6">
             <h3 className="text-2xl font-bold mb-0">{props.title}</h3>
-            <div className="flex flex-wrap gap-4 mt-4 relative">
-              {
-                props.tags.map((tag, index) => (
-                    <Tag key={index}>
-                      {tag}
-                    </Tag>
-                ))
-              }
-            </div>
+          </div>
+          <div className="flex flex-wrap gap-4 mt-4 relative">
+            {
+              props.tags.map((tag, index) => (
+                  <Tag key={index}>
+                    {tag}
+                  </Tag>
+              ))
+            }
           </div>
           <ul className="responsabilities my-4">
             {
