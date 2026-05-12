@@ -1,17 +1,42 @@
 export const experience = {
   comment: "// Expertise",
   title: "{Expertise}",
-  statement: "I got more than 5 years of experience",
+  statement: "I have more than 5 years of experience",
   experiences: [
+    {
+      title: "[Independent Developer]",
+      tags: ["Self-Employed", "Remote", "April 2024 → On-Going"],
+      responsibilities: [
+        "Built and experimented with blockchain-based applications on Ethereum and Solana.",
+        "Learned new programming languages such as: Rust and Solidity.",
+        "Designed and architected multi-chain donation platform proof of concept as part of a chainlink hackathon.",
+      ],
+      links: [
+        {
+          href: 'https://github.com/igdev0/bee-funded',
+          text: "Bee Funded",
+        },
+        {
+          href: 'https://github.com/igdev0/tokensmith',
+          text: "Token Smith",
+        },
+        {
+          href: 'https://github.com/igdev0/simple-wallet-generator',
+          text: "Wallet Generator",
+        }
+      ],
+
+    },
     {
       title: "[Frontend Engineer]",
       tags: ["Input output Global", "Full-Time", "Remote", "December 2022 → April 2024"],
       responsibilities: [
-        'Led the front-end development of the web tools',
-        'Contributed to each step in the process of development, from ideating to real-thing agent infrastructure provisioning tool',
-        'Developed reusable react component library',
-        'Worked closely with the UI designer to develop the best UI/UX possible',
-        'Maintained the legacy software'
+        "Developed core features for the infrastructure provisioning tool.",
+        "Ideated, designed and implemented internal web tooling for our internal SSI agent.",
+        "Contributed to the open-source wallet SDK, improving functionality and usability.",
+        "Developed and maintained the documentation website to support developer adoption.",
+        "Conducted code reviews to ensure high-quality, maintainable code.",
+        "Maintained the legacy browser wallet extension and web platform, ensuring continued functionality.",
       ],
       links: [
         {
@@ -24,16 +49,12 @@ export const experience = {
       title: "[Full-Stack Developer]",
       tags: ["Finer Vision", "Full-Time", "Hybrid", "December 2020 → February 2022"],
       responsibilities: [
-        "Contributed to a few native apps using React native and Expo",
-        "Collaborated with some clients directly, to ease the development process and help the team",
-        "Contributed to resolving complex app data migration issues",
-        "Transformed designs into pixel-perfect responsive and functional code",
-        "Automated content integration into apps using Google APIs",
-        "Delivered timely ahead of project deadline most of the time",
-        "Supported team mates fixing bugs & helping them meet the deadline",
-        "Equipped virtual machines with the necessary software for web services",
-        "Maintained legacy projects and fixed bunch of bugs",
-        "Developed numerous bespoke designed emails",
+        "Developed and maintained native apps using React Native and Expo.",
+        "Built and enhanced web applications using React, Next.js, and Node.js.",
+        "Collaborated directly with clients to streamline development and improve team efficiency.",
+        "Translated Figma/XD designs into pixel-perfect, responsive, and functional code.",
+        "Assisted teammates by troubleshooting bugs and ensuring timely project delivery.",
+        "Maintained and improved legacy projects to ensure stability and performance.",
       ],
       links: [
         {
@@ -51,21 +72,5 @@ export const experience = {
       ],
 
     },
-    {
-      title: "[Freelancer]",
-      tags: ["Freelancer", "Part-Time", "Remote", "December 2017 → February 2020"],
-      responsibilities: ['Led the front-end development of the web tools.', 'Led the front-end development of the web tools.', 'Led the front-end development of the web tools.'],
-      links: [
-        {
-          href: 'https://pro-scan-solutions.ro/',
-          text: "Pro Scan Solutions",
-        },
-        {
-          href: 'https://codifyidea.com/',
-          text: "Codify Idea",
-        }
-      ],
-
-    }
   ]
 };
