@@ -121,7 +121,7 @@ export const stack = {
       }
     },
     "Blockchain": {
-      icon: 'blockchain',
+      icon: 'boxes',
       tabs: {
         "Solidity": {
           statement: "Smart contract programming language for Ethereum-based applications."
@@ -135,7 +135,7 @@ export const stack = {
       }
     },
     "Infra & DevOps": {
-      icon: "boxes",
+      icon: "blocks",
       tabs: {
         'Docker': {
           statement: "Makes environments predictable instead of painful."

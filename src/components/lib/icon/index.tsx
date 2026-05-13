@@ -1,5 +1,6 @@
 import Github from '@/components/lib/icon/github';
 import {
+  BlocksIcon,
   BookIcon,
   BoxesIcon,
   CalendarIcon,
@@ -45,7 +46,7 @@ export const iconsMap = {
   'telegram': Telegram,
   'new-tab': Link2Icon,
   'chat': MessageCircleIcon,
-  'blockchain': BoxesIcon,
+  'blocks': BlocksIcon,
   'phone': SmartphoneIcon,
   'test': TestTubeIcon,
   'database': DatabaseIcon
