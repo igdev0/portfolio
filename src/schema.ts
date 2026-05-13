@@ -7,12 +7,15 @@ export const Root = co.map({
   conversations: co.list(Conversation),
 });
 
+export type Profile = co.loaded<typeof Profile>;
+export const Profile = co.profile({
+  avatar: co.image(),
+  status: z.enum(['active', 'inactive', 'busy']),
+  thought: z.string(),
+});
+
 export type Account = co.loaded<typeof Account>
 export const Account = co.account({
   root: Root,
-  profile: co.profile({
-    avatar: co.image(),
-    status: z.enum(['active', 'inactive', 'busy']),
-    thought: z.string(),
-  }),
+  profile: Profile,
 });
