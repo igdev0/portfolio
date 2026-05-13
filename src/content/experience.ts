@@ -5,7 +5,7 @@ export const experience = {
   experiences: [
     {
       title: "[Independent Engineer]",
-      tags: ['Self-Employed', 'December 2024 → Now'],
+      tags: ['Self-Employed', 'September 2024 → Now'],
       links: [
         {
           href: 'https://github.com/igdev0/tokensmith',
@@ -31,7 +31,7 @@ export const experience = {
     },
     {
       title: "[Frontend Engineer]",
-      tags: ["Input Output Global", "Full-Time", "Remote", "December 2022 → April 2024"],
+      tags: ["Input Output Global", "Full-Time", "Remote", "April 2022 → April 2024"],
       done: [
         "Owned the design and development of an internal React-based UI component library, using styled-components and Storybook to define reusable frontend patterns and standardize UI consistency across applications",
         "Led frontend development for the internal SSI agent provisioning platform, driving architecture and delivery of core features",
