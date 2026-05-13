@@ -54,9 +54,9 @@ export const experience = {
         "Developed and maintained React Native (Expo) mobile applications in production environments",
         "Built and extended web applications using React, Next.js, and Node.js, including new features and refactoring of existing systems",
         "Collaborated directly with clients to refine requirements, reduce ambiguity, and improve development efficiency",
+        "Worked within an agile team to diagnose bugs, unblock development, and ensure on-time feature delivery",
         "Translated Figma/XD designs into responsive, production-ready interfaces with consistent UX across devices",
         "Developed and implemented custom email templates based on design specifications",
-        "Worked within an agile team to diagnose bugs, unblock development, and ensure on-time feature delivery",
       ],
       links: [
         {
