@@ -38,10 +38,10 @@
         }
 
         &.button--solid {
-            @apply bg-accent-600 text-white ;
+            @apply bg-accent-500 text-white ;
 
             &:not(:disabled) {
-                @apply hover:bg-accent-600/90;
+                @apply hover:bg-accent-500/90;
             }
         }
 
