@@ -1,7 +1,7 @@
 export const experience = {
   comment: "// Work experience",
   title: "{Experience}",
-  statement: "I got more than 5 years of web development experience",
+  statement: "I have over 5 years of experience in web development.",
   experiences: [
     {
       title: "[Independent Engineer]",
