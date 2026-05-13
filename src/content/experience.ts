@@ -33,12 +33,12 @@ export const experience = {
       title: "[Frontend Engineer]",
       tags: ["Input Output Global", "Full-Time", "Remote", "December 2022 → April 2024"],
       done: [
-        "Developed core features for the agent provisioning tool.",
-        "Designed and implemented internal web tooling for SSI agent and developer operations.",
-        "Contributed to the open-source wallet SDK, improving functionality and usability.",
-        "Developed and maintained the documentation website to support developer adoption.",
-        "Conducted code reviews to ensure high-quality, maintainable code.",
-        "Maintained the legacy browser wallet extension and web platform, ensuring continued functionality.",
+        "Owned the design and development of an internal UI component library, defining reusable frontend patterns and standardizing UI consistency across applications.",
+        "Led frontend development for the internal SSI agent provisioning platform, driving architecture and delivery of core features.",
+        "Designed and implemented internal web tools and quick prototypes for SSI agent operations, proactively identifying needs and collaborating with cross-functional teams to deliver solutions.",
+        "Contributed to the architecture and evolution of an open-source wallet SDK, improving usability, integration experience, and feature completeness.",
+        "Owned development and ongoing maintenance of the developer documentation platform, improving onboarding and adoption for internal and community developers",
+        "Actively participated in Scrum ceremonies (PI planning, sprint planning, reviews, retrospectives) to align delivery with product and engineering goals.",
       ],
       links: [
         {
