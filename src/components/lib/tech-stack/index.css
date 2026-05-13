@@ -42,7 +42,7 @@
 
         .stack-cards {
             @apply grid;
-            @apply transform-3d perspective-near;
+            @apply transform-3d perspective-near mt-10;
 
             .stack-card {
                 @apply w-full max-w-200;
