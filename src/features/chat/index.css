@@ -1,6 +1,18 @@
 @import "../../app/globals.css";
 
-
 @layer components {
-    
+    .chat {
+        .header {
+        }
+
+        .conversation {
+            .avatar {}
+            .name {}
+            .message {}
+            .date {}
+        }
+
+        .form {
+        }
+    }
 }

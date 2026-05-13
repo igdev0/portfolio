@@ -1,12 +1,11 @@
-import {co} from 'jazz-tools';
-import {z} from 'zod';
+import {co, z} from 'jazz-tools';
 
 export type Message = co.loaded<typeof Message>;
 export const Message = co.map({
   text: z.string(),
   sender: co.account(),
   timestamp: z.number(),
-})
+});
 
 
 export type Conversation = co.loaded<typeof Conversation>;

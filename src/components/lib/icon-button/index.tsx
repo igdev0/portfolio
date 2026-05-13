@@ -21,9 +21,9 @@ export interface IconButtonProps extends VariantProps<typeof iconButtonVariants>
 }
 
 export default function IconButton(props: IconButtonProps) {
-  const {onClick, icon, className, ...variants} = props;
+  const {onClick, icon, type, className, ...variants} = props;
   return (
-      <button className={clsx(iconButtonVariants(variants), className)} onClick={onClick}>
+      <button type={type} className={clsx(iconButtonVariants(variants), className)} onClick={onClick}>
         <Icon name={icon}/>
       </button>
   );
