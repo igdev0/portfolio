@@ -22,10 +22,10 @@ export const experience = {
       ],
       done: [
         'Built and experimented with blockchain and decentralized application architectures',
-        'Developed personal projects including BeeFunded, Tokensmith, and cryptographic tooling',
         'Researched local-first distributed systems, synchronization strategies, and decentralized identity architectures',
         'Explored Rust systems programming through hands-on projects and language fundamentals',
         'Completed the Alchemy Ethereum and Solidity bootcamp focused on smart contract development',
+        'Redesigned and rebuilt personal portfolio to better showcase projects and technical experience',
         'Collaborated on and delivered a web3 hackathon project',
       ],
     },

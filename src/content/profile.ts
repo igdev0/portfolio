@@ -1,3 +1,15 @@
+import {IconNames} from '@/components/lib/icon';
+
+interface Tech {
+  [key: string]: {
+    icon: IconNames,
+    tabs: {
+      [key: string]: {
+        statement: string;
+      }
+    }
+  }
+}
 export const stack = {
   title: {
     type: 'text',
@@ -41,8 +53,8 @@ export const stack = {
         'Vue': {
           statement: "Clean developer experience with a really nice learning curve."
         },
-        'Redux': {
-          statement: "Verbose sometimes, but solid for predictable state management."
+        'Zustand': {
+          statement: "Simple and predictable state management."
         },
         'Tailwind CSS': {
           statement: "Fast workflow if you stay disciplined."
@@ -52,7 +64,28 @@ export const stack = {
         },
       } as const
     },
-
+    "Testing": {
+      icon: "code",
+      tabs: {
+        "Jest": {
+          statement: "Fast and reliable unit testing framework for JavaScript applications."
+        },
+        "Cypress": {
+          statement: "End-to-end testing tool for testing real user flows in the browser."
+        }
+      }
+    },
+    "Mobile": {
+      icon: "code",
+      tabs: {
+        "React Native": {
+          statement: "Cross-platform mobile development with native-like performance."
+        },
+        "Expo": {
+          statement: "Streamlines React Native development with faster setup and deployment."
+        },
+      }
+    },
     "Backend": {
       icon: "server",
       tabs: {
@@ -62,24 +95,31 @@ export const stack = {
         'Bun': {
           statement: "Ridiculously fast and getting better fast."
         },
-        'tRPC': {
-          statement: "End-to-end types feel almost unfair sometimes."
-        },
         'Express': {
           statement: "Minimal, simple, and still relevant."
         },
         'Nest': {
           statement: "Structured backend architecture without the mess."
         },
-        'MySQL': {
-          statement: "Reliable and battle-tested."
-        },
-        'Drizzle': {
-          statement: "Lightweight ORM with a surprisingly clean developer experience."
+        'TypeORM': {
+          statement: "Robust ORM with a surprisingly clean developer experience."
         },
       } as const
     },
-
+    "Databases": {
+      icon: "code",
+      tabs: {
+        "MySQL": {
+          statement: "Reliable and battle-tested."
+        },
+        "Sqlite": {
+          statement: "Lightweight and perfect for local or embedded use."
+        },
+        "MongoDB": {
+          statement: "Flexible document model, great for fast-changing schemas."
+        }
+      }
+    },
     "Infra & DevOps": {
       icon: "boxes",
       tabs: {
@@ -92,15 +132,11 @@ export const stack = {
         "Bitbucket": {
           statement: "Gets the job done, especially in enterprise setups."
         },
-        "Google Cloud": {
-          statement: "Powerful platform with a lot to explore."
-        },
         'Github Actions': {
           statement: "CI/CD setup without unnecessary complexity."
         },
       } as const
     },
-
     "Tools": {
       icon: 'wrench',
       tabs: {
@@ -118,7 +154,7 @@ export const stack = {
         },
       } as const
     }
-  },
+  } as Tech,
 } as const;
 
 export const profile = {
@@ -132,7 +168,7 @@ export const profile = {
   },
   bio: {
     type: 'html',
-    value:`
+    value: `
         <p>
             Full Stack Developer with 5+ years of experience building web and mobile applications focused on performance, maintainability, and clean architecture. 
             <strong>Strong expertise in React and TypeScript</strong>, with experience across backend APIs, cloud deployments, and CI/CD workflows using Docker and modern tooling. 

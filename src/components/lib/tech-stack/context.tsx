@@ -68,7 +68,7 @@ export function TechStackProvider(props: PropsWithChildren & Record<"data", type
   const keys = Object.keys(profile.stack.tech) as TechStackContext['keys'];
 
   const frames = useMemo<FrameRef[]>(() => {
-    return calcFrames(active, keys);
+    return calcFrames(active, keys as string[]);
   }, [active]);
 
   const calculateDraws = () => {
@@ -94,13 +94,13 @@ export function TechStackProvider(props: PropsWithChildren & Record<"data", type
         const my = controller.offsetTop + controller.clientHeight / 2;
 
         const baseLx =
-          (cardParent?.offsetLeft ?? 0) +
-          card.offsetLeft;
+            (cardParent?.offsetLeft ?? 0) +
+            card.offsetLeft;
 
         const baseLy =
-          (cardParent?.offsetTop ?? 0) +
-          card.offsetTop +
-          card.clientHeight / 2;
+            (cardParent?.offsetTop ?? 0) +
+            card.offsetTop +
+            card.clientHeight / 2;
 
         const lx = baseLx + (frame.i === activeRef.current ? x : 0);
         const ly = baseLy + (frame.i === activeRef.current ? y : 0);

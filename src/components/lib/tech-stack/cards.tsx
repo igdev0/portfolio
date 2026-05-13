@@ -16,7 +16,7 @@ export default function TechStackCards() {
 
 
   const onRelease = (draggable: Draggable) => {
-    const nextIndex = calcNext(draggable, activeRef, threshold, keys);
+    const nextIndex = calcNext(draggable, activeRef, threshold, keys as string[]);
 
     dragOffsetRef.current.x = 0;
     dragOffsetRef.current.y = 0;
@@ -93,6 +93,7 @@ export default function TechStackCards() {
                       <h4 className="font-bold">{frame.key}</h4>
                     </div>
                     <div className="flex-group mt-4">
+
 
                       <Tabs.Root>
                         <Tabs.List className="tabs-header">
