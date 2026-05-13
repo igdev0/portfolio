@@ -11,7 +11,7 @@ const hero = {
   },
   statement: {
     type: "text",
-    value: `Frontend-focused engineer specializing in performant and intuitive user interfaces.`
+    value: `Frontend-focused engineer passionate about building modern user experiences.`
   },
   cta: {
     first: {
