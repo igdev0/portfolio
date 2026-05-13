@@ -1,3 +1,4 @@
+"use client";
 import {useAccount, useCoState} from 'jazz-tools/react-core';
 import {ChangeEventHandler, KeyboardEventHandler, SubmitEventHandler, useState} from 'react';
 import "./index.css";
@@ -6,8 +7,10 @@ import {Account} from '@/schema';
 import {Image} from 'next/dist/client/image-component';
 import Button from '@/components/lib/button';
 import {Group} from 'jazz-tools';
+import {notifyDiscord} from '@/app/actions';
 
 const adminID = process.env.ADMIN_ID ?? "";
+const appURL = process.env.NEXT_PUBLIC_APP_URL??"http://localhost:3000";
 
 export function ChatHeader() {
   const account = useAccount();
@@ -20,6 +23,14 @@ export function ChatHeader() {
 
 export function ChatMessage(props: { conversationId: string }) {
   const message = useCoState(Message, props.conversationId, {resolve: {sender: true, text: true, timestamp: true}});
+  if (!message.$isLoaded) {
+    return (
+        <div>
+          Loading ...
+        </div>
+    );
+  }
+
   return (
 
       <div key={message.$jazz.id}>
@@ -62,48 +73,57 @@ export function ChatConversation() {
 
 export function ChatForm() {
   const [text, set] = useState('');
-  const account = useAccount(Account, {resolve: {root: {conversations: {$each: {messages: {$each: true}}}}}});
-  const admin = useCoState(Account, adminID);
+  const account = useAccount(Account, {
+    resolve: {
+      root: {
+        conversations: {
+          $each: true
+        }
+      }
+    }
+  });
+
+  const admin = useCoState(Account, adminID, {resolve: {profile: {avatar: true,}}});
   const onInputChange: ChangeEventHandler<HTMLInputElement> = (event) => {
     set(event.currentTarget.value);
   };
 
-  const sendMessage = () => {
+  const sendMessage = async () => {
     if (!account.$isLoaded || !admin.$isLoaded) {
       throw new Error("Account is not loaded");
     }
     if (text.length === 0) return; // ignore empty messages
 
-    let conversation: Conversation;
     let dm: Group;
     if (!account.root.conversations.length) {
       dm = Group.create();
       dm.addMember(account, 'manager');
       dm.addMember(admin, 'admin');
-      const message = Message.create({text, sender: account, timestamp: 100}, dm);
-      conversation = Conversation.create({messages: [message], status: 'pending'}, dm);
+      const message = Message.create({text, sender: account, timestamp: Date.now()}, dm);
+      const conversation = Conversation.create({messages: [message], status: 'pending'}, dm);
+      account.root.conversations.$jazz.push(conversation);
+      await notifyDiscord(`${appURL}?conversationId=${conversation.$jazz.id}` );
 
     } else {
-      conversation = account.root.conversations[0];
+      const conversation = account.root.conversations[0];
       if (conversation.messages.$isLoaded) {
         const message = Message.create({text, sender: account, timestamp: 100}, conversation.$jazz.owner);
         conversation.messages.$jazz.push(message);
       }
-
     }
 
 
     set('');
   };
 
-  const onSubmit: SubmitEventHandler = (event) => {
+  const onSubmit: SubmitEventHandler = async (event) => {
     event.preventDefault();
-    sendMessage();
+    await sendMessage();
   };
 
-  const onKeyUo: KeyboardEventHandler = (event) => {
+  const onKeyUo: KeyboardEventHandler = async (event) => {
     if (event.code === 'Enter') {
-      sendMessage();
+      await sendMessage();
     }
   };
 

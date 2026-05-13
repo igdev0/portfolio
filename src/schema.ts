@@ -1,6 +1,5 @@
-import {co} from 'jazz-tools';
+import {co, z} from 'jazz-tools';
 import {Conversation} from '@/features/chat/schema';
-import {z} from 'zod';
 
 export type Root = co.loaded<typeof Root>;
 export const Root = co.map({
