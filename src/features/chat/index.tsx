@@ -9,7 +9,7 @@ import Button from '@/components/lib/button';
 import {Group} from 'jazz-tools';
 import {notifyDiscord} from '@/app/actions';
 
-const adminID = process.env.ADMIN_ID ?? "";
+const adminID = process.env.NEXT_PUBLIC_ADMIN_ID ?? "";
 const appURL = process.env.NEXT_PUBLIC_APP_URL??"http://localhost:3000";
 
 export function ChatHeader() {
@@ -22,6 +22,7 @@ export function ChatHeader() {
 }
 
 export function ChatMessage(props: { conversationId: string }) {
+
   const message = useCoState(Message, props.conversationId, {resolve: {sender: true, text: true, timestamp: true}});
   if (!message.$isLoaded) {
     return (
@@ -61,7 +62,7 @@ export function ChatConversation() {
   return (
       <div className="conversation">
         {
-          state.messages.map((message) => {
+          state.messages?.map((message) => {
             return (
                 <ChatMessage key={message.$jazz.id} conversationId={state.$jazz.id}/>
             );
@@ -95,20 +96,20 @@ export function ChatForm() {
     if (text.length === 0) return; // ignore empty messages
 
     let dm: Group;
-    if (!account.root.conversations.length) {
+    if (!account.root.conversations?.length) {
       dm = Group.create();
       dm.addMember(account, 'manager');
       dm.addMember(admin, 'admin');
       const message = Message.create({text, sender: account, timestamp: Date.now()}, dm);
       const conversation = Conversation.create({messages: [message], status: 'pending'}, dm);
-      account.root.conversations.$jazz.push(conversation);
+      account.root.conversations?.$jazz.push(conversation);
       await notifyDiscord(`${appURL}?conversationId=${conversation.$jazz.id}` );
 
     } else {
       const conversation = account.root.conversations[0];
-      if (conversation.messages.$isLoaded) {
+      if (conversation.messages?.$isLoaded) {
         const message = Message.create({text, sender: account, timestamp: 100}, conversation.$jazz.owner);
-        conversation.messages.$jazz.push(message);
+        conversation.messages?.$jazz?.push(message);
       }
     }
 
@@ -136,7 +137,7 @@ export function ChatForm() {
 }
 
 export default function Chat() {
-
+  const account = useAccount();
   return (
       <div className="chat">
         <ChatHeader/>
