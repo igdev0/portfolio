@@ -11,6 +11,7 @@ import Collaborate from '@/components/lib/collaborate';
 import {collaborate} from '@/content/collaborate';
 import Footer from '@/components/lib/footer';
 
+
 export default function LandingPage() {
   return (
       <>
