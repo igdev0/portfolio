@@ -1,6 +1,6 @@
 "use client";
 import {useAccount, useCoState} from 'jazz-tools/react-core';
-import {ChangeEventHandler, KeyboardEventHandler, SubmitEventHandler, useState} from 'react';
+import {ChangeEventHandler, KeyboardEventHandler, SubmitEventHandler, useEffect, useMemo, useState} from 'react';
 import "./index.css";
 import {Conversation, Message} from '@/features/chat/schema';
 import {Account} from '@/schema';
@@ -10,13 +10,16 @@ import {Group} from 'jazz-tools';
 import {notifyDiscord} from '@/app/actions';
 
 const adminID = process.env.NEXT_PUBLIC_ADMIN_ID ?? "";
-const appURL = process.env.NEXT_PUBLIC_APP_URL??"http://localhost:3000";
+const appURL = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
 
 export function ChatHeader() {
-  const account = useAccount();
+  const account = useAccount(Account, {resolve: {profile: true}});
+  if (!account.$isLoaded) {
+    return <div>Loading ...</div>;
+  }
   return (
       <div className="header">
-
+        {account.profile.name}
       </div>
   );
 }
@@ -46,7 +49,7 @@ export function ChatMessage(props: { conversationId: string }) {
 }
 
 export function ChatConversation() {
-  const account = useAccount();
+  const account = useAccount(Account, {resolve: {root: {conversations: {$each: true}}}});
   const state = useCoState(Conversation, account.$jazz.id, {
     resolve: {
       messages: {
@@ -58,6 +61,14 @@ export function ChatConversation() {
   if (!state.$isLoaded) {
     return (<div>Loading ..</div>);
   }
+
+  useEffect(() => {
+    if (!account.$isLoaded) {
+      return;
+    }
+
+
+  }, [account]);
 
   return (
       <div className="conversation">
@@ -85,9 +96,21 @@ export function ChatForm() {
   });
 
   const admin = useCoState(Account, adminID, {resolve: {profile: {avatar: true,}}});
+
+  const isSendDisabled = useMemo(() => {
+    if (!account.$isLoaded) {
+      return true;
+    }
+    return account.root.conversations.length > 0 && ['pending', 'denied'].includes(account.root.conversations[0].status);
+  }, [account]);
+
   const onInputChange: ChangeEventHandler<HTMLInputElement> = (event) => {
     set(event.currentTarget.value);
   };
+
+  if (!account.$isLoaded) {
+    return <div>Loading ...</div>;
+  }
 
   const sendMessage = async () => {
     if (!account.$isLoaded || !admin.$isLoaded) {
@@ -95,15 +118,16 @@ export function ChatForm() {
     }
     if (text.length === 0) return; // ignore empty messages
 
-    let dm: Group;
+    let conversationGroup: Group;
     if (!account.root.conversations?.length) {
-      dm = Group.create();
-      dm.addMember(account, 'manager');
-      dm.addMember(admin, 'admin');
-      const message = Message.create({text, sender: account, timestamp: Date.now()}, dm);
-      const conversation = Conversation.create({messages: [message], status: 'pending'}, dm);
+      conversationGroup = Group.create();
+      conversationGroup.addMember(admin, 'admin');
+      conversationGroup.addMember(account, 'admin');
+
+      const message = Message.create({text, sender: account, timestamp: Date.now()}, conversationGroup);
+      const conversation = Conversation.create({messages: [message], status: 'pending'}, conversationGroup);
       account.root.conversations?.$jazz.push(conversation);
-      await notifyDiscord(`${appURL}?conversationId=${conversation.$jazz.id}` );
+      await notifyDiscord(`${appURL}?conversationId=${conversation.$jazz.id}`);
 
     } else {
       const conversation = account.root.conversations[0];
@@ -112,7 +136,6 @@ export function ChatForm() {
         conversation.messages?.$jazz?.push(message);
       }
     }
-
 
     set('');
   };
@@ -124,14 +147,14 @@ export function ChatForm() {
 
   const onKeyUo: KeyboardEventHandler = async (event) => {
     if (event.code === 'Enter') {
-      await sendMessage();
+      // await sendMessage();
     }
   };
 
   return (
       <form className="form" onSubmit={onSubmit}>
         <input type="text" value={text} onChange={onInputChange} placeholder="Type ..." onKeyUp={onKeyUo}/>
-        <Button type="submit" variant="solid" aspect="square" icon="send"/>
+        <Button disabled={isSendDisabled} type="submit" variant="solid" aspect="square" icon="send"/>
       </form>
   );
 }

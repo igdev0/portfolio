@@ -4,7 +4,7 @@ import {faker} from '@faker-js/faker/locale/en';
 
 export type Root = co.loaded<typeof Root>;
 export const Root = co.map({
-  conversations: co.optional(co.list(Conversation)),
+  conversations: co.list(Conversation),
 });
 
 
@@ -20,13 +20,16 @@ export const Account = co.account({
   root: Root,
   profile: Profile,
 }).withMigration(async (account) => {
-
+  if(account.root.$isLoaded) {
+    if(!account.root.$jazz.has('conversations')) {
+      account.root.$jazz.set("conversations", []);
+    }
+  }
   if (!account.$jazz.has("root")) {
     account.$jazz.set("root", Root.create({
       conversations: []
     }));
   }
-
 
   if (!account.$jazz.has('profile')) {
     account.$jazz.set("profile", Profile.create({
