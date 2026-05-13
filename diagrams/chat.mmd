@@ -1,0 +1,19 @@
+sequenceDiagram
+    actor User
+    actor IGDev
+    participant Website
+    participant Server
+    participant Discord
+
+
+    User --> Website: Writes a message to IGDev using chat feature
+    Website --> Website: (internal) Does user have a conversation? Start one.
+    Website --> Website: Otherwise create a new conversation
+
+
+    Website -->> Discord: Sends the URL for the message request
+    Discord -->> IGDev: Gets notified opens the link
+    IGDev -->> Website: Once the link is visited:
+    IGDev -->> Website: 1. Changes the status of the Conversation from "Pending" to "started"
+    IGDev -->> Website: 2. Stores the reference into owned private storage called "conversations"
+    IGDev -->> Website: 3. Done, conversation has begun 🎉
