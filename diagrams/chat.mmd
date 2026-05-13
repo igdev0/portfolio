@@ -7,8 +7,8 @@ sequenceDiagram
 
 
     User --> Website: Writes a message to IGDev using chat feature
-    Website --> Website: (internal) Does user have a conversation? Start one.
-    Website --> Website: Otherwise create a new conversation
+    Website --> Website: (internal) no conversation? Create one.
+    Website --> Website: Otherwise reuse existing conversation.
 
 
     Website -->> Discord: Sends the URL for the message request

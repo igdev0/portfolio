@@ -1,0 +1,16 @@
+import {co} from 'jazz-tools';
+import {z} from 'zod';
+
+export type Message = co.loaded<typeof Message>;
+export const Message = co.map({
+  text: z.string(),
+  sender: co.account(),
+  timestamp: z.number(),
+})
+
+
+export type Conversation = co.loaded<typeof Conversation>;
+export const Conversation = co.map({
+  messages: co.list(Message),
+  status: z.enum(['started', 'pending', 'denied'])
+});
