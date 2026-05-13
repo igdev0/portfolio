@@ -65,7 +65,7 @@ export const stack = {
       } as const
     },
     "Testing": {
-      icon: "code",
+      icon: "test",
       tabs: {
         "Jest": {
           statement: "Fast and reliable unit testing framework for JavaScript applications."
@@ -76,7 +76,7 @@ export const stack = {
       }
     },
     "Mobile": {
-      icon: "code",
+      icon: "phone",
       tabs: {
         "React Native": {
           statement: "Cross-platform mobile development with native-like performance."
@@ -107,7 +107,7 @@ export const stack = {
       } as const
     },
     "Databases": {
-      icon: "code",
+      icon: "database",
       tabs: {
         "MySQL": {
           statement: "Reliable and battle-tested."
@@ -117,6 +117,20 @@ export const stack = {
         },
         "MongoDB": {
           statement: "Flexible document model, great for fast-changing schemas."
+        }
+      }
+    },
+    "Blockchain": {
+      icon: 'blockchain',
+      tabs: {
+        "Solidity": {
+          statement: "Smart contract programming language for Ethereum-based applications."
+        },
+        "Ethereum": {
+          statement: "Decentralized blockchain platform for building distributed applications."
+        },
+        "Hardhat": {
+          statement: "Development environment for testing, deploying, and debugging smart contracts."
         }
       }
     },

@@ -6,14 +6,17 @@ import {
   ChevronLeftIcon,
   ChevronRightIcon,
   CodeIcon,
+  DatabaseIcon,
   Link2Icon,
   LinkIcon,
   MenuIcon,
   MessageCircleIcon,
   SendIcon,
   ServerIcon,
+  SmartphoneIcon,
   SquareTerminalIcon,
   SunIcon,
+  TestTubeIcon,
   WrenchIcon,
   XIcon
 } from 'lucide-react';
@@ -42,6 +45,10 @@ export const iconsMap = {
   'telegram': Telegram,
   'new-tab': Link2Icon,
   'chat': MessageCircleIcon,
+  'blockchain': BoxesIcon,
+  'phone': SmartphoneIcon,
+  'test': TestTubeIcon,
+  'database': DatabaseIcon
 };
 
 export type IconNames = keyof typeof iconsMap;
