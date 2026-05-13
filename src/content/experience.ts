@@ -33,7 +33,7 @@ export const experience = {
       title: "[Frontend Engineer]",
       tags: ["Input Output Global", "Full-Time", "Remote", "December 2022 → April 2024"],
       done: [
-        "Owned the design and development of an internal UI component library, defining reusable frontend patterns and standardizing UI consistency across applications.",
+        "Owned the design and development of an internal React-based UI component library, using styled-components and Storybook to define reusable frontend patterns and standardize UI consistency across applications.",
         "Led frontend development for the internal SSI agent provisioning platform, driving architecture and delivery of core features.",
         "Designed and implemented internal web tools and quick prototypes for SSI agent operations, proactively identifying needs and collaborating with cross-functional teams to deliver solutions.",
         "Contributed to the architecture and evolution of an open-source wallet SDK, improving usability, integration experience, and feature completeness.",
