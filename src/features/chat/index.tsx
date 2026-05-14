@@ -9,14 +9,12 @@ import {useMemo} from 'react';
 import {co, Group} from 'jazz-tools';
 import {Conversation, Conversations, Message} from '@/features/chat/schema';
 import {notifyDiscord} from '@/app/actions';
+import {ADMIN_ID, APP_URL} from '@/features/chat/const';
 
-
-const adminID = process.env.NEXT_PUBLIC_ADMIN_ID ?? "";
-const appURL = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
 
 export default function Chat() {
   const account = useAccount(Account, {resolve: {root: {conversations: {$each: true}}, profile: true}});
-  const admin = useCoState(Account, adminID);
+  const admin = useCoState(Account, ADMIN_ID);
   const conversation = useMemo(() => {
     if (!account.$isLoaded) {
       return undefined;
@@ -30,7 +28,7 @@ export default function Chat() {
       return undefined;
     }
 
-    return account.root.conversations[0];
+    return account.root.conversations.at(-1);
   }, [account]);
 
 
@@ -51,14 +49,13 @@ export default function Chat() {
     }, conversationGroup);
 
     account.root.$jazz.set("conversations", Conversations.create([conversation], conversationGroup));
-    await notifyDiscord(`${appURL}?conversationId=${conversationGroup.$jazz.id}`);
+    await notifyDiscord(`${APP_URL}?conversationId=${conversationGroup.$jazz.id}`);
 
   };
 
   if (!admin.$isLoaded || !account.$isLoaded || (conversation && !conversation.$isLoaded)) {
     return <div>Loading ...</div>;
   }
-
 
   return (
       <div className="chat">
