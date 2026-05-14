@@ -20,15 +20,19 @@ export const Account = co.account({
   root: Root,
   profile: Profile,
 }).withMigration(async (account) => {
-  if(account.root.$isLoaded) {
-    if(!account.root.$jazz.has('conversations')) {
-      account.root.$jazz.set("conversations", []);
-    }
-  }
+
   if (!account.$jazz.has("root")) {
     account.$jazz.set("root", Root.create({
       conversations: []
     }));
+  }
+
+  const loadedAccount = await account.$jazz.ensureLoaded({resolve: {root: true}});
+
+  if (loadedAccount.root.$isLoaded) {
+    if (!loadedAccount.root.$jazz.has('conversations')) {
+      loadedAccount.root.$jazz.set("conversations", []);
+    }
   }
 
   if (!account.$jazz.has('profile')) {
