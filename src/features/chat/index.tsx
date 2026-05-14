@@ -15,6 +15,7 @@ import {ADMIN_ID, APP_URL} from '@/features/chat/const';
 export default function Chat() {
   const account = useAccount(Account, {resolve: {root: {conversations: {$each: true}}, profile: true}});
   const admin = useCoState(Account, ADMIN_ID);
+
   const conversation = useMemo(() => {
     if (!account.$isLoaded) {
       return undefined;
@@ -36,27 +37,33 @@ export default function Chat() {
     if (!account.$isLoaded || !admin.$isLoaded) {
       throw new Error("Account is not loaded");
     }
-    let conversationGroup: Group;
-    conversationGroup = Group.create();
-    conversationGroup.addMember(admin, 'admin');
-    conversationGroup.addMember(account, 'manager');
+    const group = Group.create();
+    group.addMember(admin, 'admin');
+    group.addMember(account, 'admin');
 
 
-    const message = Message.create({text, sender: account.profile, timestamp: Date.now()}, conversationGroup);
+    const conversations = Conversations.create([], group);
+
+    const message = Message.create({text, sender: account.profile, timestamp: Date.now()}, group);
+    const messages = co.list(Message).create([], group);
+    messages.$jazz.push(message);
+
     const conversation = Conversation.create({
-      messages: co.list(Message).create([message], conversationGroup),
+      messages,
       status: 'pending'
-    }, conversationGroup);
+    }, group);
 
-    account.root.$jazz.set("conversations", Conversations.create([conversation], conversationGroup));
-    await notifyDiscord(`${APP_URL}?conversationId=${conversationGroup.$jazz.id}`);
+    conversations.$jazz.push(conversation);
+
+    account.root.$jazz.set("conversations", conversations);
+
+    await notifyDiscord(`${APP_URL}?conversationId=${conversation.$jazz.id}`);
 
   };
 
   if (!admin.$isLoaded || !account.$isLoaded || (conversation && !conversation.$isLoaded)) {
     return <div>Loading ...</div>;
   }
-
   return (
       <div className="chat">
         <ChatHeader userId={account.$jazz.id}/>
