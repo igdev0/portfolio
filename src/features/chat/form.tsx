@@ -70,8 +70,7 @@ export default function ChatForm() {
       throw new Error("Account is not loaded");
     }
     if (text.length === 0) return; // ignore empty messages
-
-    if (!account.root.conversations) {
+    if (!account.root.conversations || account.root.conversations.length === 0) {
       await initializeConversation();
     } else {
       const conversation = account.root.conversations[0];
