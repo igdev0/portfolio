@@ -14,7 +14,7 @@ export const Conversation = co.map({
   status: z.enum(['started', 'pending', 'denied'])
 });
 
-export type Conversation = z.infer<typeof Conversation>;
+export type Conversation = co.loaded<typeof Conversation>;
 
 
 export type Conversations = co.loaded<typeof Conversations>;

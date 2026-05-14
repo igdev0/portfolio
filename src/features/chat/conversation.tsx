@@ -1,31 +1,27 @@
 "use client";
-import {useAccount} from 'jazz-tools/react';
-import {Account} from '@/schema';
+import {useCoState} from 'jazz-tools/react';
+import {Conversation} from '@/features/chat/schema';
 
-export default function ChatConversation() {
-  const account = useAccount(Account, {resolve: {root: {conversations: {$each: true}}}});
+interface ChatConversationProps {
+  conversationId?: string;
+}
 
+export default function ChatConversation(props: ChatConversationProps) {
+  const conversation = useCoState(Conversation, props.conversationId, {resolve: {messages: {$each: true}}});
 
-  if (!account.$isLoaded) {
+  if (!conversation.$isLoaded) {
     return <div>Loading...</div>;
   }
 
   return (
       <div className="conversation">
         {
-          account.root.conversations?.map((conversation) => {
-            return (
-                <div key={conversation.$jazz.id}>{conversation.$jazz.id} {conversation.status}</div>
-            );
-          })
+          conversation.messages?.map((message) => (
+              <div key={message.$jazz.id}>
+                {message.text}
+              </div>
+          ))
         }
-        {/*{*/}
-        {/*  conversation.messages?.map((message) => {*/}
-        {/*    return (*/}
-        {/*        <ChatMessage key={message.$jazz.id} conversationId={conversation.$jazz.owner.$jazz.id}/>*/}
-        {/*    );*/}
-        {/*  })*/}
-        {/*}*/}
       </div>
   );
 }

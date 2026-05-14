@@ -1,15 +1,19 @@
 "use client";
-import {useAccount} from 'jazz-tools/react';
-import {Account} from '@/schema';
+import {useCoState} from 'jazz-tools/react';
+import {Profile} from '@/schema';
 
-export default function ChatHeader() {
-  const account = useAccount(Account, {resolve: {profile: true}});
+interface ChatHeaderProps {
+  userId: string;
+}
+
+export default function ChatHeader(props: ChatHeaderProps) {
+  const account = useCoState(Profile, props.userId, {resolve: {avatar: true}});
   if (!account.$isLoaded) {
     return <div>Loading ...</div>;
   }
   return (
       <div className="header">
-        {account.profile.name}
+        {account.name}
       </div>
   );
 }
