@@ -1,9 +1,9 @@
 sequenceDiagram
     actor User
-    actor IGDev
     participant Website
     participant Server
     participant Discord
+    actor IGDev
 
 
     User --> Website: Writes a message to IGDev using chat feature
@@ -14,6 +14,12 @@ sequenceDiagram
     Website -->> Discord: Sends the URL for the message request
     Discord -->> IGDev: Gets notified opens the link
     IGDev -->> Website: Once the link is visited:
-    IGDev -->> Website: 1. Changes the status of the Conversation from "Pending" to "started"
-    IGDev -->> Website: 2. Stores the reference into owned private storage called "conversations"
-    IGDev -->> Website: 3. Done, conversation has begun 🎉
+    alt link visited
+        IGDev -->> Website: 1. Changes the status of the Conversation from "Pending" to "started"
+    end
+    alt change status
+        IGDev -->> Website: 2. Stores the reference into owned private storage called "conversations"
+    end
+    alt done
+        IGDev -->> Website: 3. Done, conversation has begun 🎉
+    end
