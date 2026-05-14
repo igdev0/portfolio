@@ -1,6 +1,7 @@
 "use client";
 import {useCoState} from 'jazz-tools/react';
 import {Conversation} from '@/features/chat/schema';
+import ChatMessage from '@/features/chat/message';
 
 interface ChatConversationProps {
   conversationId?: string;
@@ -16,12 +17,14 @@ export default function ChatConversation(props: ChatConversationProps) {
   return (
       <div className="conversation">
         {
-          conversation.messages?.map((message) => (
-              <div key={message.$jazz.id}>
-                {message.text}
-              </div>
-          ))
+          conversation.messages?.map((message) => {
+            return (
+                <ChatMessage key={message.$jazz.id}
+                             id={message.$jazz.id}/>
+            );
+          })
         }
       </div>
+
   );
 }

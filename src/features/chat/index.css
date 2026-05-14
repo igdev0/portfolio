@@ -6,9 +6,19 @@
         }
 
         .conversation {
+            @apply flex flex-col gap-2;
             .avatar {}
             .name {}
-            .message {}
+            .message {
+                @apply border border-gray-200 rounded-md;
+                .message-header {
+                    @apply flex gap-2;
+                }
+
+                .message-text {
+                    @apply p-2 rounded-md;
+                }
+            }
             .date {}
         }
 

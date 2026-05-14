@@ -13,7 +13,7 @@ import {ADMIN_ID, APP_URL} from '@/features/chat/const';
 
 
 export default function Chat() {
-  const account = useAccount(Account, {resolve: {root: {conversations: {$each: true}}, profile: true}});
+  const account = useAccount(Account, {resolve: {root: {conversations: {$each: true}}, profile: {avatar: true}}});
   const admin = useCoState(Account, ADMIN_ID);
 
   const conversation = useMemo(() => {
@@ -41,11 +41,11 @@ export default function Chat() {
     group.addMember(admin, 'admin');
     group.addMember(account, 'admin');
 
-
     const conversations = Conversations.create([], group);
 
-    const message = Message.create({text, sender: account.profile, timestamp: Date.now()}, group);
+    const message = Message.create({text, sender: account, timestamp: Date.now()}, group);
     const messages = co.list(Message).create([], group);
+
     messages.$jazz.push(message);
 
     const conversation = Conversation.create({

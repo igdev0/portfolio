@@ -1,4 +1,4 @@
-import {co, z} from 'jazz-tools';
+import {co, Group, z} from 'jazz-tools';
 import {Conversations} from '@/features/chat/schema';
 import {faker} from '@faker-js/faker/locale/en';
 
@@ -11,6 +11,9 @@ export const Profile = co.profile({
   avatar: co.optional(co.image()),
   status: z.enum(['active', 'inactive', 'busy']),
   thought: z.string(),
+  name: z.string(),
+}).withPermissions({
+  default: () => Group.create().makePublic('reader')
 });
 
 export type Profile = co.loaded<typeof Profile>;
@@ -23,7 +26,6 @@ export const Account = co.account({
   if (!account.$jazz.has("root")) {
     account.$jazz.set("root", Root.create({}));
   }
-
   if (!account.$jazz.has('profile')) {
     account.$jazz.set("profile", Profile.create({
       name: faker.person.firstName(),

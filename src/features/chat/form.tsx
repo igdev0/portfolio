@@ -42,7 +42,7 @@ export default function ChatForm(props: ChatFormProps) {
         if (conversation.messages?.$isLoaded) {
           const message = Message.create({
             text,
-            sender: account.profile,
+            sender: account,
             timestamp: Date.now()
           }, conversation.$jazz.owner);
           conversation.messages.$jazz.push(message);
