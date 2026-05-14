@@ -1,4 +1,5 @@
-import {useAccount} from 'jazz-tools/react-core';
+"use client";
+import {useAccount} from 'jazz-tools/react';
 import {Account} from '@/schema';
 
 export default function ChatHeader() {

@@ -3,16 +3,16 @@ import {Conversation} from '@/features/chat/schema';
 import {faker} from '@faker-js/faker/locale/en';
 
 export const Root = co.map({
-  conversations: co.list(Conversation),
+  conversations: co.optional(co.list(Conversation)),
 });
 export type Root = co.loaded<typeof Root>;
-
 
 export const Profile = co.profile({
   avatar: co.optional(co.image()),
   status: z.enum(['active', 'inactive', 'busy']),
   thought: z.string(),
 });
+
 export type Profile = co.loaded<typeof Profile>;
 
 export const Account = co.account({
@@ -24,14 +24,6 @@ export const Account = co.account({
     account.$jazz.set("root", Root.create({
       conversations: []
     }));
-  }
-
-  const loadedAccount = await account.$jazz.ensureLoaded({resolve: {root: true}});
-
-  if (loadedAccount.root.$isLoaded) {
-    if (!loadedAccount.root.$jazz.has('conversations')) {
-      loadedAccount.root.$jazz.set("conversations", []);
-    }
   }
 
   if (!account.$jazz.has('profile')) {

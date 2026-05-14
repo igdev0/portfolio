@@ -1,4 +1,5 @@
-import {useAccount, useCoState} from 'jazz-tools/react-core';
+"use client";
+import {useAccount, useCoState} from 'jazz-tools/react';
 import {Account} from '@/schema';
 import {ChangeEventHandler, SubmitEventHandler, useMemo, useState} from 'react';
 import {Group} from 'jazz-tools';
@@ -16,16 +17,16 @@ export default function ChatForm() {
     resolve: {
       root: {
         conversations: {
-          $each: true
-        }
+          $each: true,
+        },
       }
     }
   });
 
-  const admin = useCoState(Account, adminID, {resolve: {profile: {avatar: true,}}});
+  const admin = useCoState(Account, adminID, {resolve: {profile: {avatar: true}}});
 
   const isSendDisabled = useMemo(() => {
-    if (!account.$isLoaded) {
+    if (!account.$isLoaded || !account.root.conversations) {
       return true;
     }
     return account.root.conversations.length > 0 && ['pending', 'denied'].includes(account.root.conversations[0].status);
@@ -55,7 +56,7 @@ export default function ChatForm() {
     } else {
       const conversation = account.root.conversations[0];
       if (conversation.messages?.$isLoaded) {
-        const message = Message.create({text, sender: account, timestamp: 100}, conversation.$jazz.owner);
+        const message = Message.create({text, sender: account, timestamp: Date.now()}, conversation.$jazz.owner);
         conversation.messages?.$jazz?.push(message);
       }
     }
@@ -71,7 +72,7 @@ export default function ChatForm() {
   if (!account.$isLoaded) {
     return <div>Loading ...</div>;
   }
-
+  
   return (
       <form className="form" onSubmit={onSubmit}>
         <input type="text" value={text} onChange={onInputChange} placeholder="Type ..."/>

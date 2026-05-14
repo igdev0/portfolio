@@ -1,10 +1,10 @@
-import {useCoState} from 'jazz-tools/react-core';
+"use client";
+import {useCoState} from 'jazz-tools/react';
 import {Message} from '@/features/chat/schema';
 import {Image} from 'next/dist/client/image-component';
 
 export default function ChatMessage(props: { conversationId: string }) {
-
-  const message = useCoState(Message, props.conversationId, {resolve: {sender: true, text: true, timestamp: true}});
+  const message = useCoState(Message, props.conversationId, {resolve: {sender: {profile: true}}});
 
   if (!message.$isLoaded) {
     return (
