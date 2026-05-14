@@ -2,18 +2,22 @@
 
 @layer components {
     .chat {
+        @apply border border-(--semigrid) rounded-md overflow-hidden;
+
         .header {
         }
 
         .form {
-            @apply flex border border-(--semigrid) rounded-full overflow-hidden;
+            @apply flex border border-(--semigrid) overflow-hidden bg-(--bg-surface-3);
+
 
             input {
-                @apply h-15 flex-1 ml-auto bg-(--bg-surface-3) p-3;
+                @apply h-12 flex-1 ml-auto bg-(--bg-surface-3) p-3;
             }
 
             button {
-                @apply h-15 rounded-r-full rounded-l-none outline-none;
+                @apply w-12 h-12 p-0 flex items-center justify-center;
+                @apply outline-none;
             }
         }
     }
@@ -21,12 +25,8 @@
     .conversation {
         @apply flex flex-col gap-2 h-100;
 
-        .conversation-viewport {
-
-        }
-
         .conversation-content {
-            @apply flex flex-col gap-2;
+            @apply flex flex-col gap-2 p-3;
         }
 
         .conversation-scrollbar {
@@ -38,19 +38,11 @@
             }
         }
 
-        .avatar {
-
-        }
-
-        .name {
-
-        }
-
         .message-header {
             @apply flex gap-2 w-fit;
 
             input {
-                @apply field-sizing-content;
+                @apply field-sizing-content h-auto;
             }
         }
 
@@ -60,7 +52,7 @@
 
         .message {
             @apply w-fit;
-            @apply rounded-md mr-4;
+            @apply rounded-md mr-2;
 
             .message-text {
                 @apply p-2 my-2 rounded-full bg-(--bg-surface-3) w-fit;

@@ -6,7 +6,6 @@ import "./index.css";
 import LinkButton from '@/components/lib/link-button';
 import {IconNames} from '@/components/lib/icon';
 import {usePasskeyAuth} from 'jazz-tools/react';
-import Button from '@/components/lib/button';
 import Chat from '@/features/chat';
 
 interface CollaborateProps {
@@ -25,9 +24,9 @@ export default function Collaborate(props: CollaborateProps) {
         <Statement>
           {data.statement}
         </Statement>
-        <div className="max-w-150 gap-6 w-full">
+        <div className="max-w-120 gap-6 w-full">
+          {/*<Button className="mb-2" onClick={auth.logIn}>Log in</Button>*/}
           <Chat/>
-          <Button onClick={auth.logIn}>Log in</Button>
         </div>
 
         <span className="font-bold inline-block mb-3">Lets Connect on:</span>
