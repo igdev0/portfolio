@@ -26,7 +26,6 @@ export default function Collaborate(props: CollaborateProps) {
           {data.statement}
         </Statement>
         <div className="max-w-150 gap-6 w-full">
-          {/*<BasicMessage book={{text: props.data.social.calendar.text, href: props.data.social.calendar.href}}/>*/}
           <Chat/>
           <Button onClick={auth.logIn}>Log in</Button>
         </div>
