@@ -5,24 +5,71 @@
         .header {
         }
 
-        .conversation {
-            @apply flex flex-col gap-2;
-            .avatar {}
-            .name {}
-            .message {
-                @apply border border-gray-200 rounded-md;
-                .message-header {
-                    @apply flex gap-2;
-                }
+        .form {
+            @apply flex border border-(--semigrid) rounded-full overflow-hidden;
 
-                .message-text {
-                    @apply p-2 rounded-md;
-                }
+            input {
+                @apply h-15 flex-1 ml-auto bg-(--bg-surface-3) p-3;
             }
-            .date {}
+
+            button {
+                @apply h-15 rounded-r-full rounded-l-none outline-none;
+            }
+        }
+    }
+
+    .conversation {
+        @apply flex flex-col gap-2 h-100;
+
+        .conversation-viewport {
+
         }
 
-        .form {
+        .conversation-content {
+            @apply flex flex-col gap-2;
+        }
+
+        .conversation-scrollbar {
+            @apply bg-(--bg-surface-3) w-1;
+
+            .conversation-thumb {
+                @apply bg-(--bg-surface-2);
+
+            }
+        }
+
+        .avatar {
+
+        }
+
+        .name {
+
+        }
+
+        .message-header {
+            @apply flex gap-2 w-fit;
+
+            input {
+                @apply field-sizing-content;
+            }
+        }
+
+        .me {
+            @apply ml-auto;
+        }
+
+        .message {
+            @apply w-fit;
+            @apply rounded-md mr-4;
+
+            .message-text {
+                @apply p-2 my-2 rounded-full bg-(--bg-surface-3) w-fit;
+            }
+        }
+
+        .date {
+            @apply w-fit;
+
         }
     }
 }

@@ -15,7 +15,8 @@ html {
     --semigrid: var(--color-gray-700);
     --statement: var(--color-accent-300);
     --button-solid: var(--color-accent-600);
-    --bg-surface-2: var(--color-gray-800);
+    --bg-surface-2: var(--color-gray-700);
+    --bg-surface-3: var(--color-gray-800);
 }
 
 @layer base {
@@ -52,7 +53,8 @@ html {
     --fg-story: var(--color-default-700);
     --bg-default: var(--color-white);
     --bg-surface: var(--color-indigo-100);
-    --bg-surface-2: var(--color-indigo-100);
+    --bg-surface-2: var(--color-indigo-200);
+    --bg-surface-3: var(--color-indigo-100);
 
     --semigrid: var(--color-gray-300);
     --link: var(--color-white);

@@ -12,7 +12,7 @@ import {notifyDiscord} from '@/app/actions';
 import {ADMIN_ID, APP_URL} from '@/features/chat/const';
 
 
-export default function Chat() {
+export default function ChatApp() {
   const account = useAccount(Account, {resolve: {root: {conversations: {$each: true}}, profile: {avatar: true}}});
   const admin = useCoState(Account, ADMIN_ID);
 
@@ -39,7 +39,7 @@ export default function Chat() {
     }
     const group = Group.create();
     group.addMember(admin, 'admin');
-    group.addMember(account, 'admin');
+    group.addMember(account, 'manager');
 
     const conversations = Conversations.create([], group);
 
