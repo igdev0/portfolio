@@ -2,8 +2,8 @@
 import {useAccount, useCoState} from 'jazz-tools/react';
 import {Account} from '@/schema';
 import {ChangeEventHandler, SubmitEventHandler, useMemo, useState} from 'react';
-import {Group} from 'jazz-tools';
-import {Conversation, Message} from '@/features/chat/schema';
+import {co, Group} from 'jazz-tools';
+import {Conversation, Conversations, Message} from '@/features/chat/schema';
 import {notifyDiscord} from '@/app/actions';
 import Button from '@/components/lib/button';
 
@@ -19,21 +19,50 @@ export default function ChatForm() {
         conversations: {
           $each: true,
         },
-      }
+      },
+      profile: true,
     }
   });
 
   const admin = useCoState(Account, adminID, {resolve: {profile: {avatar: true}}});
 
   const isSendDisabled = useMemo(() => {
-    if (!account.$isLoaded || !account.root.conversations) {
+    if (!account.$isLoaded) {
       return true;
     }
+
+    if (!account.root.conversations) {
+      return false;
+    }
+
     return account.root.conversations.length > 0 && ['pending', 'denied'].includes(account.root.conversations[0].status);
+
   }, [account]);
 
   const onInputChange: ChangeEventHandler<HTMLInputElement> = (event) => {
     set(event.currentTarget.value);
+  };
+
+
+  const initializeConversation = async () => {
+    if (!account.$isLoaded || !admin.$isLoaded) {
+      throw new Error("Account is not loaded");
+    }
+    let conversationGroup: Group;
+    conversationGroup = Group.create();
+    conversationGroup.addMember(admin, 'admin');
+    conversationGroup.addMember(account, 'manager');
+
+
+    const message = Message.create({text, sender: account.profile, timestamp: Date.now()}, conversationGroup);
+    const conversation = Conversation.create({
+      messages: co.list(Message).create([message], conversationGroup),
+      status: 'pending'
+    }, conversationGroup);
+
+    account.root.$jazz.set("conversations", Conversations.create([conversation], conversationGroup));
+    await notifyDiscord(`${appURL}?conversationId=${conversationGroup.$jazz.id}`);
+
   };
 
   const sendMessage = async () => {
@@ -42,22 +71,17 @@ export default function ChatForm() {
     }
     if (text.length === 0) return; // ignore empty messages
 
-    let conversationGroup: Group;
-    if (!account.root.conversations?.length) {
-      conversationGroup = Group.create();
-      conversationGroup.addMember(admin, 'admin');
-      conversationGroup.addMember(account, 'admin');
-
-      const message = Message.create({text, sender: account, timestamp: Date.now()}, conversationGroup);
-      const conversation = Conversation.create({messages: [message], status: 'pending'}, conversationGroup);
-      account.root.conversations?.$jazz.push(conversation);
-      await notifyDiscord(`${appURL}?conversationId=${conversation.$jazz.id}`);
-
+    if (!account.root.conversations) {
+      await initializeConversation();
     } else {
       const conversation = account.root.conversations[0];
       if (conversation.messages?.$isLoaded) {
-        const message = Message.create({text, sender: account, timestamp: Date.now()}, conversation.$jazz.owner);
-        conversation.messages?.$jazz?.push(message);
+        const message = Message.create({
+          text,
+          sender: account.profile,
+          timestamp: Date.now()
+        }, conversation.$jazz.owner);
+        conversation.messages.$jazz.push(message);
       }
     }
 
@@ -72,7 +96,7 @@ export default function ChatForm() {
   if (!account.$isLoaded) {
     return <div>Loading ...</div>;
   }
-  
+
   return (
       <form className="form" onSubmit={onSubmit}>
         <input type="text" value={text} onChange={onInputChange} placeholder="Type ..."/>

@@ -3,7 +3,7 @@ import {co, z} from 'jazz-tools';
 
 export const Message = co.map({
   text: z.string(),
-  sender: co.account(),
+  sender: co.profile(),
   timestamp: z.number(),
 });
 export type Message = co.loaded<typeof Message>;
@@ -16,3 +16,6 @@ export const Conversation = co.map({
 
 export type Conversation = z.infer<typeof Conversation>;
 
+
+export type Conversations = co.loaded<typeof Conversations>;
+export const Conversations = co.list(Conversation);

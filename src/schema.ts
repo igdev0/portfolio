@@ -1,9 +1,9 @@
 import {co, z} from 'jazz-tools';
-import {Conversation} from '@/features/chat/schema';
+import {Conversations} from '@/features/chat/schema';
 import {faker} from '@faker-js/faker/locale/en';
 
 export const Root = co.map({
-  conversations: co.optional(co.list(Conversation)),
+  conversations: co.optional(Conversations),
 });
 export type Root = co.loaded<typeof Root>;
 
@@ -18,12 +18,10 @@ export type Profile = co.loaded<typeof Profile>;
 export const Account = co.account({
   root: Root,
   profile: Profile,
-}).withMigration(async (account) => {
+}).withMigration((account) => {
 
   if (!account.$jazz.has("root")) {
-    account.$jazz.set("root", Root.create({
-      conversations: []
-    }));
+    account.$jazz.set("root", Root.create({}));
   }
 
   if (!account.$jazz.has('profile')) {
