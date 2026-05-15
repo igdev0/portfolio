@@ -4,6 +4,7 @@ import {
   BookIcon,
   BoxesIcon,
   CalendarIcon,
+  Check,
   ChevronLeftIcon,
   ChevronRightIcon,
   CodeIcon,
@@ -12,6 +13,7 @@ import {
   LinkIcon,
   MenuIcon,
   MessageCircleIcon,
+  Pen,
   SendIcon,
   ServerIcon,
   SmartphoneIcon,
@@ -51,7 +53,9 @@ export const iconsMap = {
   'phone': SmartphoneIcon,
   'test': TestTubeIcon,
   'database': DatabaseIcon,
-  'trash': TrashIcon
+  'trash': TrashIcon,
+  'pen': Pen,
+  'check': Check
 };
 
 export type IconNames = keyof typeof iconsMap;

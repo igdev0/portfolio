@@ -5,10 +5,25 @@
         @apply border border-(--semigrid) rounded-md overflow-hidden;
 
         .header {
-            @apply flex justify-between;
+            @apply flex justify-between px-3 border-b border-(--semigrid);
 
             .header-account {
-                @apply p-3;
+                @apply field-sizing-content p-2;
+            }
+
+            .field {
+                @apply flex items-center;
+            }
+
+            button {
+                @apply cursor-pointer p-2 rounded-md aspect-square;
+
+                svg {
+                    @apply w-4 text-accent-500;
+                }
+            }
+
+            .field {
             }
         }
 
