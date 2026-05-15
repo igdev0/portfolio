@@ -32,13 +32,12 @@ export default function ChatApp() {
   if (!admin.$isLoaded || !account.$isLoaded || (conversation && !conversation.$isLoaded)) {
     return <div>Loading ...</div>;
   }
-  
+
   return (
       <div className="chat">
         <ChatHeader userId={account.profile.$jazz.id}/>
         <ChatConversation conversationId={conversation?.$jazz.id}/>
-        <ChatForm account={account}
-                  conversationId={conversation?.$jazz.id}
+        <ChatForm conversationId={conversation?.$jazz.id}
         />
       </div>
   );

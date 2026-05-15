@@ -10,7 +10,6 @@ import {notifyDiscord} from '@/app/actions';
 
 
 interface ChatFormProps {
-  account: Account;
   conversationId?: string;
 }
 

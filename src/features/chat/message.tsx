@@ -28,7 +28,7 @@ export default function ChatMessage(props: ChatMessageProps) {
           <div className="message-avatar">
             <UserCircle/>
           </div>
-          <input className="message-sender" type="text" value={message.sender.profile.name} disabled={true}/>
+          <div className="message-sender">{message.sender.profile.name}</div>
         </div>
         <div className="message-text">{message.text}</div>
         <div className="message-time">{moment(message.timestamp).format('h:mm A')}</div>
