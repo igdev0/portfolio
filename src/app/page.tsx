@@ -35,12 +35,12 @@ export default function LandingPage() {
       const conversations = Conversations.create([]);
       conversations.$jazz.push(conversation as keyof object);
       account.root.$jazz.set("conversations", conversations);
-      conversation.$jazz.set("status", 'started');
+      conversation.$jazz.set("status", 'accepted');
     }
 
     if(!has) {
       account.root.conversations?.$jazz.push(conversation);
-      conversation.$jazz.set("status", 'started');
+      conversation.$jazz.set("status", 'accepted');
     }
 
 
