@@ -45,7 +45,7 @@ export default function ChatConversation(props: ChatConversationProps) {
               !props.conversationId && (
                   <div className="panel">
                     <Info className="mr-3"/>
-                    We have no conversation started, send a message and I will answer as soon as I can.
+                    You can only send up to one message before I accept your message request.
                   </div>
                 )
             }
