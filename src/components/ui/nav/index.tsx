@@ -9,7 +9,6 @@ import IconLink from '@/components/lib/icon-link';
 import Container from '@/components/lib/container';
 import nav from '@/content/nav';
 import {usePasskeyAuth} from 'jazz-tools/react';
-import {faker} from '@faker-js/faker/locale/en';
 
 interface NavProps {
   data: typeof nav;
@@ -37,7 +36,7 @@ export default function Nav(props: NavProps) {
           </div>
           <div className="nav__buttons">
             <IconLink icon="github" href={data.navigation.social.github.href}/>
-            {auth.state === 'anonymous' && <IconButton className="cursor-pointer" onClick={() => auth.signUp(faker.internet.username())} icon="sign" size="sm"/>}
+            {auth.state === 'anonymous' && <IconButton className="cursor-pointer" onClick={() => auth.logIn()} icon="sign" size="sm"/>}
             <IconButton icon="sun" onClick={() => setTheme(theme === 'dark' ? "light" : "dark")}/>
             <IconButton className="nav__drawer-toggler" icon="menu" onClick={() => setMenuOpen(true)}></IconButton>
           </div>
