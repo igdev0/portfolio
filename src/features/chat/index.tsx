@@ -35,10 +35,9 @@ export default function ChatApp() {
 
   return (
       <div className="chat">
-        <ChatHeader userId={account.profile.$jazz.id}/>
+        <ChatHeader/>
         <ChatConversation conversationId={conversation?.$jazz.id}/>
-        <ChatForm conversationId={conversation?.$jazz.id}
-        />
+        <ChatForm conversationId={conversation?.$jazz.id}/>
       </div>
   );
 
