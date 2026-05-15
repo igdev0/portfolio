@@ -5,7 +5,11 @@
         @apply border border-(--semigrid) rounded-md overflow-hidden;
 
         .header {
-            @apply p-3;
+            @apply flex justify-between;
+
+            .header-account {
+                @apply p-3;
+            }
         }
 
         .form {

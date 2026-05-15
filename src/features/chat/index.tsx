@@ -38,7 +38,7 @@ export default function ChatApp() {
         <div>Loading ...</div>
     )
   }
-  //
+
   if (canAdmin) {
     return (
         <Tabs.Root>
