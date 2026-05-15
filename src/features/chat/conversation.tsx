@@ -13,7 +13,7 @@ interface ChatConversationProps {
 
 export default function ChatConversation(props: ChatConversationProps) {
   const viewport = useRef<HTMLDivElement>(null);
-  const conversation = useCoState(Conversation, props.conversationId, {resolve: {messages: {$each: true}}});
+  const conversation = useCoState(Conversation, props.conversationId, {resolve: {messages: {$each: {sender: true}}}});
 
   useEffect(() => {
     if (!conversation.$isLoaded || !viewport.current) {
@@ -37,7 +37,7 @@ export default function ChatConversation(props: ChatConversationProps) {
               conversation.messages?.map((message) => {
                 return (
                     <ChatMessage key={message.$jazz.id}
-                                 isMe={message.sender.$jazz.id === ADMIN_ID}
+                                 isMe={message.sender?.$jazz.id === ADMIN_ID}
                                  id={message.$jazz.id}/>
                 );
               })

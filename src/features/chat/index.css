@@ -41,9 +41,14 @@
         .message-header {
             @apply flex gap-2 w-fit;
 
-            input {
+            .message-avatar {
+                @apply text-(--color-default);
+            }
+
+            .message-text {
                 @apply field-sizing-content h-auto;
             }
+
         }
 
         .me {
@@ -53,6 +58,11 @@
         .message {
             @apply w-fit;
             @apply rounded-md mr-2;
+
+
+            img {
+                @apply text-white;
+            }
 
             .message-text {
                 @apply p-2 my-2 rounded-full bg-(--bg-surface-3) w-fit;
