@@ -5,6 +5,7 @@
         @apply border border-(--semigrid) rounded-md overflow-hidden;
 
         .header {
+            @apply p-3;
         }
 
         .form {

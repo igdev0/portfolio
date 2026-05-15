@@ -8,6 +8,20 @@ import {Account} from '@/schema';
 import {useMemo} from 'react';
 import {ADMIN_ID} from '@/features/chat/const';
 
+interface ChatProps {
+  conversationId?: string;
+}
+
+export function Chat(props: ChatProps) {
+  const {conversationId} = props;
+  return (
+      <div className="chat">
+        <ChatHeader/>
+        <ChatConversation conversationId={conversationId}/>
+        <ChatForm conversationId={conversationId}/>
+      </div>
+  )
+}
 
 export default function ChatApp() {
   const account = useAccount(Account, {resolve: {root: {conversations: {$each: true}}, profile: {avatar: true}}});
@@ -34,11 +48,7 @@ export default function ChatApp() {
   }
 
   return (
-      <div className="chat">
-        <ChatHeader/>
-        <ChatConversation conversationId={conversation?.$jazz.id}/>
-        <ChatForm conversationId={conversation?.$jazz.id}/>
-      </div>
+      <Chat conversationId={conversation?.$jazz.id}/>
   );
 
 }
