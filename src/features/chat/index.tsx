@@ -19,7 +19,7 @@ export function Chat(props: ChatProps) {
   const {conversationId} = props;
   return (
       <div className="chat">
-        <ChatHeader/>
+        <ChatHeader conversationId={conversationId} />
         <ChatConversation conversationId={conversationId}/>
         <ChatForm conversationId={conversationId}/>
       </div>

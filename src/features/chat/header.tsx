@@ -4,13 +4,19 @@ import {Account} from '@/schema';
 import {ADMIN_ID} from '@/features/chat/const';
 import {ChangeEventHandler, useState} from 'react';
 import {Check, Pen, XIcon} from 'lucide-react';
+import {Conversation} from '@/features/chat/schema';
 
 interface Field {
   value: string | null;
   editing: boolean;
 }
 
-export default function ChatHeader() {
+interface ChatHeaderProps {
+  conversationId?: string;
+}
+
+export default function ChatHeader(props: ChatHeaderProps) {
+  const conversation = useCoState(Conversation, props.conversationId, {resolve: {participants: {$each: {profile: true}}}});
   const adminAccount = useCoState(Account, ADMIN_ID, {resolve: {profile: {avatar: true}}});
   const account = useAccount(Account, {resolve: {profile: {avatar: true}}});
   const [fields, setFields] = useState<{ admin: Field, user: Field }>({
@@ -61,61 +67,55 @@ export default function ChatHeader() {
     };
   };
 
+  if (!conversation.$isLoaded) {
+    return <div>Loading ...</div>;
+  }
+
   if (!account.$isLoaded || !adminAccount.$isLoaded) {
     return <div>Loading ...</div>;
   }
 
-  const adminValue = fields.admin.value ? fields.admin.value : adminAccount.profile.name;
-  const userValue = fields.user.value ? fields.user.value : account.profile.name;
+  const admin = conversation.participants!.at(0);
+  const user = conversation.participants!.at(1);
+
+  const adminValue = fields.admin.value ? fields.admin.value : admin?.profile.name;
+  const userValue = fields.user.value ? fields.user.value : user?.profile.name;
+
 
   return (
       <div className="header">
-        <div className="field">
-          <input className="header-account" value={adminValue} name="admin" onChange={onInputChange}
-                 disabled={!fields.admin.editing}/>
-          {
-              adminAccount.isMe && !fields.admin.editing && (
-                  <button onClick={toggleEdit('admin')}>
-                    <Pen/>
-                  </button>
-              )
-          }
-          {
-              fields.admin.editing && (
-                  <>
-                    <button onClick={onSave('admin')}>
-                      <Check/>
-                    </button>
-                    <button onClick={onCancel('admin')}>
-                      <XIcon/>
-                    </button>
-                  </>
-              )
-          }
-        </div>
-        <div className="field">
-          <input className="header-account" value={userValue} name="user" onChange={onInputChange}
-                 disabled={!fields.user.editing}/>
-          {
-              account.isMe && !fields.user.editing && (
-                  <button onClick={toggleEdit('user')}>
-                    <Pen/>
-                  </button>
-              )
-          }
-          {
-              fields.user.editing && (
-                  <>
-                    <button onClick={onSave('user')}>
-                      <Check/>
-                    </button>
-                    <button onClick={onCancel('user')}>
-                      <XIcon/>
-                    </button>
-                  </>
-              )
-          }
-        </div>
+        {
+          conversation.participants?.map((participant) => {
+            const isAdmin = participant.canAdmin(conversation);
+            const fieldKey = isAdmin ? "admin" : "user";
+            return (
+                <div className="field" key={participant.$jazz.id}>
+                  <input className="header-account" value={isAdmin ? adminValue : userValue} name={fieldKey}
+                         onChange={onInputChange}
+                         disabled={!fields[fieldKey].editing}/>
+                  {
+                      participant.isMe && !fields[fieldKey].editing && (
+                          <button onClick={toggleEdit(fieldKey)}>
+                            <Pen/>
+                          </button>
+                      )
+                  }
+                  {
+                      fields[isAdmin ? 'admin' : "user"].editing && (
+                          <>
+                            <button onClick={onSave(fieldKey)}>
+                              <Check/>
+                            </button>
+                            <button onClick={onCancel(fieldKey)}>
+                              <XIcon/>
+                            </button>
+                          </>
+                      )
+                  }
+                </div>
+            );
+          })
+        }
       </div>
   );
 }
