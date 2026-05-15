@@ -18,6 +18,7 @@ import {
   SquareTerminalIcon,
   SunIcon,
   TestTubeIcon,
+  TrashIcon,
   WrenchIcon,
   XIcon
 } from 'lucide-react';
@@ -49,7 +50,8 @@ export const iconsMap = {
   'blocks': BlocksIcon,
   'phone': SmartphoneIcon,
   'test': TestTubeIcon,
-  'database': DatabaseIcon
+  'database': DatabaseIcon,
+  'trash': TrashIcon
 };
 
 export type IconNames = keyof typeof iconsMap;

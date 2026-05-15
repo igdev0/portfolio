@@ -58,6 +58,7 @@
             &.button--active {
                 @apply bg-accent-400 text-default opacity-100;
             }
+
         }
 
         &:disabled {
