@@ -90,7 +90,8 @@ export default function ChatHeader(props: ChatHeaderProps) {
             const fieldKey = isAdmin ? "admin" : "user";
             return (
                 <div className="field" key={participant.$jazz.id}>
-                  <input className="header-account" value={isAdmin ? adminValue : userValue} name={fieldKey}
+                  <input className="header-account" value={isAdmin ? adminValue : userValue}
+                         name={fieldKey}
                          onChange={onInputChange}
                          disabled={!fields[fieldKey].editing}/>
                   {
