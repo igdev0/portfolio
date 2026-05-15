@@ -5,7 +5,7 @@
         @apply border border-(--semigrid) rounded-md overflow-hidden;
 
         .header {
-            @apply flex justify-between px-3 border-b border-(--semigrid);
+            @apply flex justify-between px-3 py-2 border-b border-(--semigrid);
 
             .header-account {
                 @apply field-sizing-content p-2;

@@ -5,6 +5,7 @@ import {ADMIN_ID} from '@/features/chat/const';
 import {ChangeEventHandler, useState} from 'react';
 import {Check, Pen, XIcon} from 'lucide-react';
 import {Conversation} from '@/features/chat/schema';
+import {Image} from 'next/dist/client/image-component';
 
 interface Field {
   value: string | null;
@@ -90,6 +91,7 @@ export default function ChatHeader(props: ChatHeaderProps) {
             const fieldKey = isAdmin ? "admin" : "user";
             return (
                 <div className="field" key={participant.$jazz.id}>
+                  {isAdmin && <div className="w-12.5 aspect-square rounded-full overflow-hidden flex items-center"><Image src="/images/me.png" alt="me" width={50} height={50}/></div>}
                   <input className="header-account" value={isAdmin ? adminValue : userValue}
                          name={fieldKey}
                          onChange={onInputChange}
@@ -113,6 +115,7 @@ export default function ChatHeader(props: ChatHeaderProps) {
                           </>
                       )
                   }
+                  {!isAdmin && <div>(You)</div>}
                 </div>
             );
           })
