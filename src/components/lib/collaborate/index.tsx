@@ -21,7 +21,7 @@ export default function Collaborate(props: CollaborateProps) {
           {data.comment}
         </Comment>
         <h1 className="text-4xl font-bold">{data.title}</h1>
-        <Statement>
+        <Statement className="mb-12">
           {data.statement}
         </Statement>
         <div className="max-w-120 gap-6 w-full mb-4">
