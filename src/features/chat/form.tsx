@@ -20,7 +20,7 @@ export default function ChatForm(props: ChatFormProps) {
   const account = useAccount(Account, {resolve: {profile: true, root: {conversations: {$each: true}}}});
 
   const isSendDisabled = useMemo(() => {
-    if(conversation) {
+    if (conversation) {
       return ['pending', 'denied'].includes(conversation.status);
     }
     return false;
@@ -30,13 +30,12 @@ export default function ChatForm(props: ChatFormProps) {
     if (!account.$isLoaded) {
       throw new Error("Account is not loaded");
     }
-    if (text.length === 0) return;
-
+    if (!text.trim().length) return;
 
     if (!account.root.conversations || account.root.conversations.length === 0) {
       await initializeConversation(text);
 
-    } else if(conversation) {
+    } else if (conversation) {
       if (conversation.$isLoaded) {
         if (conversation.messages?.$isLoaded) {
           const message = Message.create({
@@ -52,9 +51,9 @@ export default function ChatForm(props: ChatFormProps) {
     set('');
   };
 
-  const onInputChange:ChangeEventHandler<HTMLInputElement> = (event) => {
+  const onInputChange: ChangeEventHandler<HTMLInputElement> = (event) => {
     set(event.currentTarget.value);
-  }
+  };
 
   const onSubmit: SubmitEventHandler = async (event) => {
     event.preventDefault();
