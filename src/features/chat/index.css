@@ -2,10 +2,10 @@
 
 @layer components {
     .chat {
-        @apply border border-(--semigrid) rounded-md overflow-hidden;
+        @apply border border-(--semigrid) rounded-md overflow-hidden relative;
 
         .header {
-            @apply flex justify-between px-3 py-2 border-b border-(--semigrid);
+            @apply flex justify-between px-3 py-2 border-b border-(--semigrid) items-center;
 
             .header-account {
                 @apply field-sizing-content p-2;

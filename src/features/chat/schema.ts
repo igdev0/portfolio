@@ -13,7 +13,7 @@ export const Participants = co.list(co.account());
 export const Conversation = co.map({
   messages: co.optional(co.list(Message)),
   participants: co.optional(Participants),
-  status: z.enum(['started', 'pending', 'denied'])
+  status: z.enum(['accepted', 'pending', 'closed'])
 });
 
 export type Conversation = co.loaded<typeof Conversation>;

@@ -2,8 +2,8 @@
 import {useAccount, useCoState} from 'jazz-tools/react';
 import {Account} from '@/schema';
 import {ADMIN_ID} from '@/features/chat/const';
-import {ChangeEventHandler, useState} from 'react';
-import {Check, Pen, XIcon} from 'lucide-react';
+import {ChangeEventHandler, Fragment, useState} from 'react';
+import {Check, Circle, Pen, XIcon} from 'lucide-react';
 import {Conversation} from '@/features/chat/schema';
 import {Image} from 'next/dist/client/image-component';
 
@@ -86,46 +86,59 @@ export default function ChatHeader(props: ChatHeaderProps) {
   const adminValue = fields.admin.value ? fields.admin.value : admin?.profile.name;
   const userValue = fields.user.value ? fields.user.value : user?.profile.name;
 
-
   return (
-      <div className="header">
-        {
-          participants?.map((participant) => {
-            const isAdmin = conversation.$isLoaded ? participant.canAdmin(conversation) : participant.$jazz.id === ADMIN_ID;
-            const fieldKey = isAdmin ? "admin" : "user";
-            return (
-                <div className="field" key={participant.$jazz.id}>
-                  {participant.isMe && !isAdmin && <div>(You)</div>}
-                  {isAdmin &&
-                      <div className="w-12.5 aspect-square rounded-full overflow-hidden flex items-center"><Image
-                          src="/images/me.png" alt="me" width={50} height={50}/></div>}
-                  <input className="header-account" value={isAdmin ? adminValue : userValue}
-                         name={fieldKey}
-                         onChange={onInputChange}
-                         disabled={!fields[fieldKey].editing}/>
-                  {
-                      participant.isMe && !fields[fieldKey].editing && (
-                          <button onClick={toggleEdit(fieldKey)}>
-                            <Pen/>
-                          </button>
-                      )
-                  }
-                  {
-                      fields[isAdmin ? 'admin' : "user"].editing && (
-                          <>
-                            <button onClick={onSave(fieldKey)}>
-                              <Check/>
-                            </button>
-                            <button onClick={onCancel(fieldKey)}>
-                              <XIcon/>
-                            </button>
-                          </>
-                      )
-                  }
-                </div>
-            );
-          })
-        }
-      </div>
+      <>
+
+        <div className="header">
+          {
+            participants?.map((participant, index) => {
+              const isAdmin = conversation.$isLoaded ? participant.canAdmin(conversation) : participant.$jazz.id === ADMIN_ID;
+              const fieldKey = isAdmin ? "admin" : "user";
+              const statusColor = conversation.$isLoaded && (['started', 'accepted'].includes(conversation.status) ? 'fill-green-500' : conversation.status === 'pending' ? "fill-orange-500" : ['closed', 'denied'].includes(conversation.status) ? "fill-red-500" : "fill-gray-500");
+              return (
+                  <Fragment key={participant.$jazz.id}>
+
+                    {
+                        conversation.$isLoaded && index === 1 && (
+                            <div className="flex gap-2"><Circle
+                                className={`${statusColor} w-3 stroke-(--bg-default)`}/>{conversation.status}
+                            </div>
+                        )
+                    }
+                    <div className="field">
+                      {participant.isMe && !isAdmin && <div>(You)</div>}
+                      {isAdmin &&
+                          <div className="w-12.5 aspect-square rounded-full overflow-hidden flex items-center"><Image
+                              src="/images/me.png" alt="me" width={50} height={50}/></div>}
+                      <input className="header-account" value={isAdmin ? adminValue : userValue}
+                             name={fieldKey}
+                             onChange={onInputChange}
+                             disabled={!fields[fieldKey].editing}/>
+                      {
+                          participant.isMe && !fields[fieldKey].editing && (
+                              <button onClick={toggleEdit(fieldKey)}>
+                                <Pen/>
+                              </button>
+                          )
+                      }
+                      {
+                          fields[isAdmin ? 'admin' : "user"].editing && (
+                              <>
+                                <button onClick={onSave(fieldKey)}>
+                                  <Check/>
+                                </button>
+                                <button onClick={onCancel(fieldKey)}>
+                                  <XIcon/>
+                                </button>
+                              </>
+                          )
+                      }
+                    </div>
+                  </Fragment>
+              );
+            })
+          }
+        </div>
+      </>
   );
 }
