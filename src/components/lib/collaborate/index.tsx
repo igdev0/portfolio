@@ -27,7 +27,7 @@ export default function Collaborate(props: CollaborateProps) {
         <Statement>
           {data.statement}
         </Statement>
-        <div className="max-w-120 gap-6 w-full">
+        <div className="max-w-120 gap-6 w-full mb-4">
           {auth.state !== 'signedIn' && <Button className="mb-2" onClick={auth.logIn}>Log in</Button>}
           <div className="panel gap-2 mb-3">
             <LockIcon className="text-accent-500"/>
@@ -36,7 +36,6 @@ export default function Collaborate(props: CollaborateProps) {
           <Chat/>
         </div>
 
-        <span className="font-bold inline-block mb-3">Lets Connect on:</span>
         <div className="flex gap-4 w-fit">
           {
             Object.entries(props.data.social).filter(([key]) => key !== 'calendar').map(([key, value]) => (
