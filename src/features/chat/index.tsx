@@ -70,7 +70,7 @@ export default function ChatApp() {
         <ChatConversation conversationId={conversation?.$jazz.id}/>
         <ChatForm account={account}
                   initializeConversation={initializeConversation}
-                  conversation={conversation}
+                  conversationId={conversation?.$jazz.id}
         />
       </div>
   );

@@ -3,12 +3,12 @@ import {Account} from '@/schema';
 import {ChangeEventHandler, SubmitEventHandler, useMemo, useState} from 'react';
 import {Conversation, Message} from '@/features/chat/schema';
 import Button from '@/components/lib/button';
-import {useAccount} from 'jazz-tools/react';
+import {useAccount, useCoState} from 'jazz-tools/react';
 
 
 interface ChatFormProps {
   account: Account;
-  conversation?: Conversation;
+  conversationId?: string;
 
   initializeConversation(text: string): Promise<void>;
 
@@ -16,37 +16,38 @@ interface ChatFormProps {
 
 export default function ChatForm(props: ChatFormProps) {
   const [text, set] = useState('');
-  const {conversation, initializeConversation} = props;
-  const account = useAccount(Account, {resolve: {profile: true, root: {conversations: {$each: true}}}});
+  const {initializeConversation, conversationId} = props;
+  const account = useAccount(Account);
+  const conversation = useCoState(Conversation, conversationId, {resolve: {messages: {$each: true}}});
 
   const isSendDisabled = useMemo(() => {
-    if (conversation) {
+    if (conversation.$isLoaded) {
       return ['pending', 'denied'].includes(conversation.status);
     }
     return false;
   }, [conversation]);
 
   const sendMessage = async () => {
-    if (!account.$isLoaded) {
-      throw new Error("Account is not loaded");
+    if (!text.trim().length) {
+      return;
     }
-    if (!text.trim().length) return;
-
-    if (!account.root.conversations || account.root.conversations.length === 0) {
-      await initializeConversation(text);
-
-    } else if (conversation) {
-      if (conversation.$isLoaded) {
-        if (conversation.messages?.$isLoaded) {
-          const message = Message.create({
-            text,
-            sender: account,
-            timestamp: Date.now()
-          }, conversation.$jazz.owner);
-          conversation.messages.$jazz.push(message);
-        }
-      }
+    if (!conversation) {
+      return await initializeConversation(text);
     }
+
+    if (!account.$isLoaded || !conversation.$isLoaded) throw new Error('Conversation or account is not loaded');
+
+    if (!conversation.messages) {
+      throw new Error(`Conversation was initiated, but doesn't have messages list, avoiding to send messages.`);
+    }
+
+    const message = Message.create({
+      text,
+      sender: account,
+      timestamp: Date.now()
+    }, conversation.$jazz.owner);
+
+    conversation.messages.$jazz.push(message);
 
     set('');
   };
