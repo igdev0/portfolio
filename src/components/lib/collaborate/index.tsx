@@ -37,7 +37,6 @@ export default function Collaborate(props: CollaborateProps) {
             Object.entries(props.data.social).filter(([key]) => key !== 'calendar').map(([key, value]) => (
                 <LinkButton icon={key as IconNames} size="xs" key={key} href={value.href} aspect="square" external
                             variant="outline"
-
                             className="w-fit">
                   {value.text}
                 </LinkButton>

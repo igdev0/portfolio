@@ -9,11 +9,11 @@ export const Message = co.map({
 export type Message = co.loaded<typeof Message>;
 
 export const Participants = co.list(co.account());
-
+export const conversationStatus = ['accepted', 'pending', 'closed'];
 export const Conversation = co.map({
   messages: co.optional(co.list(Message)),
   participants: co.optional(Participants),
-  status: z.enum(['accepted', 'pending', 'closed'])
+  status: z.enum(conversationStatus)
 });
 
 export type Conversation = co.loaded<typeof Conversation>;

@@ -22,7 +22,7 @@ export default function ChatForm(props: ChatFormProps) {
 
   const isSendDisabled = useMemo(() => {
     if (conversation.$isLoaded) {
-      return ['pending', 'denied'].includes(conversation.status);
+      return ['pending', 'closed'].includes(conversation.status);
     }
     return false;
   }, [conversation, account]);

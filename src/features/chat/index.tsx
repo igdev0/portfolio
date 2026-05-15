@@ -8,7 +8,7 @@ import {Account} from '@/schema';
 import {Fragment, useMemo, useState} from 'react';
 import {Tabs} from '@base-ui/react/tabs';
 import Button from '@/components/lib/button';
-import {Conversation} from '@/features/chat/schema';
+import {Conversation, conversationStatus} from '@/features/chat/schema';
 import "./admin.css";
 
 interface ChatProps {
@@ -19,7 +19,7 @@ export function Chat(props: ChatProps) {
   const {conversationId} = props;
   return (
       <div className="chat">
-        <ChatHeader conversationId={conversationId} />
+        <ChatHeader conversationId={conversationId}/>
         <ChatConversation conversationId={conversationId}/>
         <ChatForm conversationId={conversationId}/>
       </div>
@@ -54,7 +54,8 @@ export default function ChatApp() {
                   return (
                       <Fragment key={index}>
                         <Tabs.Tab value={index} className="tabs-tab" nativeButton
-                                  render={(_, state) => <Button onClick={_.onClick as keyof object} variant="secondary" disabled={state.active}
+                                  render={(_, state) => <Button onClick={_.onClick as keyof object} variant="secondary"
+                                                                disabled={state.active}
                                                                 active={state.active}>{conversation.participants![1].profile.name}</Button>}/>
                         <Tabs.Indicator/>
                       </Fragment>
@@ -66,10 +67,19 @@ export default function ChatApp() {
               account.root.conversations && account.root.conversations?.map((conversation, index) => {
                 return (
                     <Tabs.Panel key={index} value={index}>
-                      <Button variant="secondary"
-                              icon="trash"
-                              className="ml-auto mb-2"
-                              onClick={() => account.root.conversations!.$jazz.remove(index)} aspect="square" size="xs"/>
+                      <div className="flex gap-2 items-center flex-wrap">
+                        <Button variant="secondary"
+                                icon="trash"
+                                className="ml-auto mb-2"
+                                onClick={() => account.root.conversations!.$jazz.remove(index)} aspect="square" size="xs"/>
+                        {
+                          conversationStatus.map((status) => (
+                              <Button key={status} variant="secondary" active={conversation.status === status}
+                                      disabled={conversation.status === status}
+                                      onClick={() => conversation.$jazz.set("status", status)}>{status}</Button>
+                          ))
+                        }
+                      </div>
                       <Chat conversationId={conversation.$jazz.id}/>
                     </Tabs.Panel>
                 );
