@@ -67,7 +67,6 @@
                 @apply flex gap-2 w-fit;
 
                 .message-avatar {
-                    @apply text-(--color-default);
                 }
 
                 .message-sender {
