@@ -50,7 +50,7 @@
         }
 
         .nav__buttons {
-            @apply grid grid-cols-3 xl:grid-cols-2 gap-2;
+            @apply grid grid-cols-4 xl:grid-cols-3 gap-2 items-center;
         }
     }
 

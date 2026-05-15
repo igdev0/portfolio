@@ -9,13 +9,17 @@ import {
   ChevronRightIcon,
   CodeIcon,
   DatabaseIcon,
+  LayoutPanelLeft,
   Link2Icon,
   LinkIcon,
+  LockIcon,
+  LogIn,
   MenuIcon,
   MessageCircleIcon,
   Pen,
   SendIcon,
   ServerIcon,
+  SignatureIcon,
   SmartphoneIcon,
   SquareTerminalIcon,
   SunIcon,
@@ -55,7 +59,11 @@ export const iconsMap = {
   'database': DatabaseIcon,
   'trash': TrashIcon,
   'pen': Pen,
-  'check': Check
+  'check': Check,
+  'app': LayoutPanelLeft,
+  'sign': SignatureIcon,
+  'log-in': LogIn,
+  'lock': LockIcon,
 };
 
 export type IconNames = keyof typeof iconsMap;
