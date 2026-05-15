@@ -71,7 +71,7 @@ export default function ChatApp() {
   }
 
   return (
-      <Chat conversationId={account.root.conversations?.at(conversationIndex)?.$jazz.id}/>
+      <Chat conversationId={account.root?.conversations?.at(conversationIndex)?.$jazz.id}/>
   );
 
 }

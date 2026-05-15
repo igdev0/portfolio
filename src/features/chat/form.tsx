@@ -21,11 +21,8 @@ export default function ChatForm(props: ChatFormProps) {
   const conversation = useCoState(Conversation, conversationId, {resolve: {messages: {$each: true}}});
 
   const isSendDisabled = useMemo(() => {
-    if (account.$jazz.id === ADMIN_ID) {
-      return true;
-    }
     if (conversation.$isLoaded) {
-      return ['pending', 'denied'].includes(conversation.status) || account.$jazz.id === ADMIN_ID;
+      return ['pending', 'denied'].includes(conversation.status);
     }
     return false;
   }, [conversation, account]);
