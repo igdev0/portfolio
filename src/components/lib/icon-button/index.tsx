@@ -16,6 +16,7 @@ export const iconButtonVariants = cva('icon-button', {
 
 export interface IconButtonProps extends VariantProps<typeof iconButtonVariants> {
   icon: IconNames;
+  type?: 'button' | 'submit' | 'reset';
   className?: string;
   onClick?: () => void;
 }
