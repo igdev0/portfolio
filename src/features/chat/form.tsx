@@ -35,7 +35,7 @@ export default function ChatForm(props: ChatFormProps) {
     }
     const group = Group.create();
     group.addMember(adminAccount, 'admin');
-    group.addMember(account, 'manager');
+    group.addMember(account, 'writer');
 
     const conversations = Conversations.create([], group);
 

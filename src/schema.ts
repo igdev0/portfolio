@@ -29,7 +29,7 @@ export const Account = co.account({
 
   if (!account.$jazz.has('profile')) {
     account.$jazz.set("profile", Profile.create({
-      name: faker.person.firstName(),
+      name: faker.animal.petName(),
       status: 'inactive',
       thought: '',
     }));
