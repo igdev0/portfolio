@@ -15,7 +15,6 @@
         }
 
         .nav__brand {
-            @apply -translate-x-6;
             span {
                 @apply text-accent-500 px-1 font-bold;
             }
