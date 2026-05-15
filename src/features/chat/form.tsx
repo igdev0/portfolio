@@ -1,23 +1,24 @@
 "use client";
 import {Account} from '@/schema';
 import {ChangeEventHandler, SubmitEventHandler, useMemo, useState} from 'react';
-import {Conversation, Message} from '@/features/chat/schema';
+import {Conversation, Conversations, Message} from '@/features/chat/schema';
 import Button from '@/components/lib/button';
 import {useAccount, useCoState} from 'jazz-tools/react';
+import {co, Group} from 'jazz-tools';
+import {ADMIN_ID, APP_URL} from '@/features/chat/const';
+import {notifyDiscord} from '@/app/actions';
 
 
 interface ChatFormProps {
   account: Account;
   conversationId?: string;
-
-  initializeConversation(text: string): Promise<void>;
-
 }
 
 export default function ChatForm(props: ChatFormProps) {
   const [text, set] = useState('');
-  const {initializeConversation, conversationId} = props;
-  const account = useAccount(Account);
+  const {conversationId} = props;
+  const account = useAccount(Account, {resolve: {root: {conversations: {$each: true}}}});
+  const adminAccount = useCoState(Account, ADMIN_ID);
   const conversation = useCoState(Conversation, conversationId, {resolve: {messages: {$each: true}}});
 
   const isSendDisabled = useMemo(() => {
@@ -26,6 +27,35 @@ export default function ChatForm(props: ChatFormProps) {
     }
     return false;
   }, [conversation]);
+
+
+  const initializeConversation = async (text: string) => {
+    if (!account.$isLoaded || !adminAccount.$isLoaded) {
+      throw new Error("Account is not loaded");
+    }
+    const group = Group.create();
+    group.addMember(adminAccount, 'admin');
+    group.addMember(account, 'manager');
+
+    const conversations = Conversations.create([], group);
+
+    const message = Message.create({text, sender: account, timestamp: Date.now()}, group);
+    const messages = co.list(Message).create([], group);
+
+    messages.$jazz.push(message);
+
+    const conversation = Conversation.create({
+      messages,
+      status: 'pending'
+    }, group);
+
+    conversations.$jazz.push(conversation);
+
+    account.root.$jazz.set("conversations", conversations);
+
+    await notifyDiscord(`${APP_URL}?conversationId=${conversation.$jazz.id}`);
+  };
+
 
   const sendMessage = async () => {
     if (!text.trim().length) {
