@@ -68,16 +68,20 @@ export default function ChatHeader(props: ChatHeaderProps) {
     };
   };
 
-  if (!conversation.$isLoaded) {
+  if (!conversation.$isLoaded && props.conversationId) {
     return <div>Loading ...</div>;
   }
 
   if (!account.$isLoaded || !adminAccount.$isLoaded) {
     return <div>Loading ...</div>;
   }
+  const participants = conversation.$isLoaded && conversation.participants ? conversation.participants : [
+    adminAccount,
+    account,
+  ];
 
-  const admin = conversation.participants!.at(0);
-  const user = conversation.participants!.at(1);
+  const admin = participants!.at(0);
+  const user = participants!.at(1);
 
   const adminValue = fields.admin.value ? fields.admin.value : admin?.profile.name;
   const userValue = fields.user.value ? fields.user.value : user?.profile.name;
@@ -86,9 +90,10 @@ export default function ChatHeader(props: ChatHeaderProps) {
   return (
       <div className="header">
         {
-          conversation.participants?.map((participant) => {
-            const isAdmin = participant.canAdmin(conversation);
+          participants?.map((participant) => {
+            const isAdmin = conversation.$isLoaded ? participant.canAdmin(conversation) : participant.$jazz.id === ADMIN_ID;
             const fieldKey = isAdmin ? "admin" : "user";
+            
             return (
                 <div className="field" key={participant.$jazz.id}>
                   {isAdmin &&

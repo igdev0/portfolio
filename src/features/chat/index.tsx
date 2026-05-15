@@ -54,7 +54,7 @@ export default function ChatApp() {
                   return (
                       <Fragment key={index}>
                         <Tabs.Tab value={index} className="tabs-tab" nativeButton
-                                  render={(_, state) => <Button variant="secondary" disabled={state.active}
+                                  render={(_, state) => <Button onClick={_.onClick as keyof object} variant="secondary" disabled={state.active}
                                                                 active={state.active}>{conversation.participants![1].profile.name}</Button>}/>
                         <Tabs.Indicator/>
                       </Fragment>
