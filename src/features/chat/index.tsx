@@ -56,7 +56,7 @@ export default function ChatApp() {
                         <Tabs.Tab value={index} className="tabs-tab" nativeButton
                                   render={(_, state) => <Button onClick={_.onClick as keyof object} variant="secondary"
                                                                 disabled={state.active}
-                                                                active={state.active}>{conversation.participants![1].profile.name}</Button>}/>
+                                                                active={state.active}>{conversation.participants && conversation.participants[1]?.profile.name}</Button>}/>
                         <Tabs.Indicator/>
                       </Fragment>
                   );

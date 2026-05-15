@@ -43,7 +43,6 @@ export default function LandingPage() {
       conversation.$jazz.set("status", 'accepted');
     }
 
-
   };
 
   useEffect(() => {
