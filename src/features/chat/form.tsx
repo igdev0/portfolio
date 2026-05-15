@@ -8,7 +8,6 @@ import {useAccount} from 'jazz-tools/react';
 
 interface ChatFormProps {
   account: Account;
-  admin: Account;
   conversation?: Conversation;
 
   initializeConversation(text: string): Promise<void>;
@@ -17,7 +16,7 @@ interface ChatFormProps {
 
 export default function ChatForm(props: ChatFormProps) {
   const [text, set] = useState('');
-  const {conversation, initializeConversation, admin} = props;
+  const {conversation, initializeConversation} = props;
   const account = useAccount(Account, {resolve: {profile: true, root: {conversations: {$each: true}}}});
 
   const isSendDisabled = useMemo(() => {

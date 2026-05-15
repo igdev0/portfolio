@@ -68,8 +68,10 @@ export default function ChatApp() {
       <div className="chat">
         <ChatHeader userId={account.$jazz.id}/>
         <ChatConversation conversationId={conversation?.$jazz.id}/>
-        <ChatForm admin={admin} account={account} initializeConversation={initializeConversation}
-                  conversation={conversation}/>
+        <ChatForm account={account}
+                  initializeConversation={initializeConversation}
+                  conversation={conversation}
+        />
       </div>
   );
 
