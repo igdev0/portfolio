@@ -3,9 +3,10 @@ import {useCoState} from 'jazz-tools/react';
 import {Conversation} from '@/features/chat/schema';
 import ChatMessage from '@/features/chat/message';
 import {ScrollArea} from '@base-ui/react';
-import "./index.css";
 import {ADMIN_ID} from '@/features/chat/const';
 import {useEffect, useRef} from 'react';
+import "./index.css";
+import {Info} from 'lucide-react';
 
 interface ChatConversationProps {
   conversationId?: string;
@@ -25,22 +26,28 @@ export default function ChatConversation(props: ChatConversationProps) {
     });
   }, [conversation]);
 
-  if (!conversation.$isLoaded) {
-    return <div>Loading...</div>;
-  }
 
   return (
       <ScrollArea.Root className="conversation">
         <ScrollArea.Viewport className="conversation-viewport" ref={viewport}>
           <ScrollArea.Content className="conversation-content">
             {
-              conversation.messages?.map((message) => {
+
+              conversation.$isLoaded && conversation?.messages?.map((message) => {
                 return (
                     <ChatMessage key={message.$jazz.id}
                                  isMe={message.sender?.$jazz.id === ADMIN_ID}
                                  id={message.$jazz.id}/>
                 );
               })
+            }
+            {
+              !props.conversationId && (
+                  <div className="panel">
+                    <Info className="mr-3"/>
+                    We have no conversation started, send a message and I will answer as soon as I can.
+                  </div>
+                )
             }
           </ScrollArea.Content>
         </ScrollArea.Viewport>

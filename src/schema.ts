@@ -21,11 +21,12 @@ export type Profile = co.loaded<typeof Profile>;
 export const Account = co.account({
   root: Root,
   profile: Profile,
-}).withMigration((account) => {
+}).withMigration(async (account) => {
 
   if (!account.$jazz.has("root")) {
     account.$jazz.set("root", Root.create({}));
   }
+
   if (!account.$jazz.has('profile')) {
     account.$jazz.set("profile", Profile.create({
       name: faker.person.firstName(),

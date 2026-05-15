@@ -1,7 +1,7 @@
 "use client";
 import {Account} from '@/schema';
 import {ChangeEventHandler, SubmitEventHandler, useMemo, useState} from 'react';
-import {Conversation, Conversations, Message} from '@/features/chat/schema';
+import {Conversation, Conversations, Message, Participants} from '@/features/chat/schema';
 import Button from '@/components/lib/button';
 import {useAccount, useCoState} from 'jazz-tools/react';
 import {co, Group} from 'jazz-tools';
@@ -21,16 +21,20 @@ export default function ChatForm(props: ChatFormProps) {
   const conversation = useCoState(Conversation, conversationId, {resolve: {messages: {$each: true}}});
 
   const isSendDisabled = useMemo(() => {
+    if (account.$jazz.id === ADMIN_ID) {
+      return true;
+    }
     if (conversation.$isLoaded) {
-      return ['pending', 'denied'].includes(conversation.status);
+      return ['pending', 'denied'].includes(conversation.status) || account.$jazz.id === ADMIN_ID;
     }
     return false;
-  }, [conversation]);
+  }, [conversation, account]);
 
 
   const initializeConversation = async (text: string) => {
     if (!account.$isLoaded || !adminAccount.$isLoaded) {
-      throw new Error("Account is not loaded");
+
+      throw new Error(`${!adminAccount.$isLoaded ? "Admin" : 'User'} account is not loaded`);
     }
     const group = Group.create();
     group.addMember(adminAccount, 'admin');
@@ -45,7 +49,8 @@ export default function ChatForm(props: ChatFormProps) {
 
     const conversation = Conversation.create({
       messages,
-      status: 'pending'
+      status: 'pending',
+      participants: Participants.create([adminAccount, account], group),
     }, group);
 
     conversations.$jazz.push(conversation);
@@ -53,6 +58,7 @@ export default function ChatForm(props: ChatFormProps) {
     account.root.$jazz.set("conversations", conversations);
 
     await notifyDiscord(`${APP_URL}?conversationId=${conversation.$jazz.id}`);
+    set("");
   };
 
 
@@ -60,7 +66,7 @@ export default function ChatForm(props: ChatFormProps) {
     if (!text.trim().length) {
       return;
     }
-    if (!conversation) {
+    if (!conversation.$isLoaded) {
       return await initializeConversation(text);
     }
 

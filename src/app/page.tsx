@@ -30,6 +30,7 @@ export default function LandingPage() {
     }
 
     const has = account.root.conversations?.some(item => item.$jazz.id === conversationId)??null;
+
     if(has === null) {
       const conversations = Conversations.create([]);
       conversations.$jazz.push(conversation as keyof object);
