@@ -27,7 +27,7 @@ export default function Collaborate(props: CollaborateProps) {
         <div className="max-w-120 gap-6 w-full mb-4">
           <div className="panel gap-2 mb-3">
             <LockIcon className="text-accent-500"/>
-            <p>This chat is end-to-end encrypted and built using <a className="text-accent-500 underline" href="https://jazz-tools.com">Jazz</a>, local-first architecture.</p>
+            <p>This chat is end-to-end encrypted and built using <a className="text-accent-500 underline" href="https://jazz.tools/" target="_blank">Jazz</a>, local-first architecture.</p>
           </div>
           <Chat/>
         </div>
