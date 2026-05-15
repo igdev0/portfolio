@@ -43,7 +43,7 @@
     }
 
     .conversation {
-        @apply flex flex-col gap-2 h-100;
+        @apply flex flex-col gap-2 h-60;
 
         .conversation-content {
             @apply flex flex-col gap-2 p-3;

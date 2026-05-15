@@ -30,7 +30,6 @@ export default function ChatForm(props: ChatFormProps) {
 
   const initializeConversation = async (text: string) => {
     if (!account.$isLoaded || !adminAccount.$isLoaded) {
-
       throw new Error(`${!adminAccount.$isLoaded ? "Admin" : 'User'} account is not loaded`);
     }
     const group = Group.create();
