@@ -38,39 +38,35 @@
             }
         }
 
-        .message-header {
-            @apply flex gap-2 w-fit;
-
-            .message-avatar {
-                @apply text-(--color-default);
-            }
-
-            .message-text {
-                @apply field-sizing-content h-auto;
-            }
-
-        }
-
-        .me {
-            @apply ml-auto;
-        }
-
         .message {
-            @apply w-fit;
+            @apply w-fit max-w-2/3;
             @apply rounded-md mr-2;
 
 
-            img {
-                @apply text-white;
+            .message-header {
+                @apply flex gap-2 w-fit;
+
+                .message-avatar {
+                    @apply text-(--color-default);
+                }
+
+                .message-sender {
+                    @apply field-sizing-content h-auto;
+                }
+            }
+
+            &.message--owned {
+                @apply ml-auto;
+                @apply flex flex-col items-end;
             }
 
             .message-text {
-                @apply p-2 my-2 rounded-full bg-(--bg-surface-3) w-fit;
+                @apply p-3 my-2 rounded-full bg-(--bg-surface-3) w-fit wrap-anywhere;
             }
         }
 
-        .date {
-            @apply w-fit;
+        .message-time {
+            @apply w-fit text-xs;
 
         }
     }

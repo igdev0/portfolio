@@ -23,15 +23,15 @@ export default function ChatMessage(props: ChatMessageProps) {
 
   return (
 
-      <div className={clsx('message', isMe ? " me" : "")}>
+      <div className={clsx('message', isMe ? " message--owned" : "")}>
         <div className="message-header">
           <div className="message-avatar">
             <UserCircle/>
           </div>
-          <input className="message-name" type="text" value={message.sender.profile.name} disabled={true}/>
+          <input className="message-sender" type="text" value={message.sender.profile.name} disabled={true}/>
         </div>
         <div className="message-text">{message.text}</div>
-        <div className="date">{moment(message.timestamp).format('h:mm A')}</div>
+        <div className="message-time">{moment(message.timestamp).format('h:mm A')}</div>
       </div>
   );
 }
