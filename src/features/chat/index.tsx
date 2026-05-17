@@ -47,7 +47,7 @@ export default function ChatApp() {
 
   if (canAdmin) {
     return (
-        <Tabs.Root className="tabs">
+        <Tabs.Root className="tabs relative">
           <Tabs.List className="tabs-header">
             {
                 account.root.conversations && account.root.conversations?.map((conversation, index) => {
@@ -67,16 +67,16 @@ export default function ChatApp() {
               account.root.conversations && account.root.conversations?.map((conversation, index) => {
                 return (
                     <Tabs.Panel key={index} value={index}>
-                      <div className="flex gap-2 items-center flex-wrap">
+                      <div className="flex gap-2 flex-col flex-wrap absolute border top-0 -right-3 translate-x-full z-100 bg-gray-100 p-2 rounded-sm border-(--semigrid)">
                         <Button variant="secondary"
                                 icon="trash"
-                                className="ml-auto mb-2"
+                                className="mb-2 w-fit"
                                 onClick={() => account.root.conversations!.$jazz.remove(index)} aspect="square" size="xs"/>
                         {
                           conversationStatus.map((status) => (
-                              <Button key={status} variant="secondary" active={conversation.status === status}
+                              <Button key={status} variant="outline" active={conversation.status === status}
                                       disabled={conversation.status === status}
-                                      onClick={() => conversation.$jazz.set("status", status)}>{status}</Button>
+                                      onClick={() => conversation.$jazz.set("status", status)}>{status} </Button>
                           ))
                         }
                       </div>
