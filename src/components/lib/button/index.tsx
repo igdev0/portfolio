@@ -18,7 +18,7 @@ export const buttonVariants = cva('button', {
       xs: "button--extra-small",
       small: 'button--small',
       medium: 'button--medium'
-    }
+    },
   },
 
   defaultVariants: {
@@ -40,7 +40,7 @@ export interface ButtonProps extends PropsWithChildren, VariantProps<typeof butt
 export default function Button(props: ButtonProps) {
   const {className, ref, children, icon, iconPosition = 'left', disabled, active, onClick, ...variants} = props;
   return (
-      <button ref={ref} className={`${buttonVariants(variants)} ${className ?? ""} ${active ? "button--active" : ''}`}
+      <button ref={ref} className={`${buttonVariants(variants)} icon--${iconPosition} ${className ?? ""} ${active ? "button--active" : ''}`}
               disabled={disabled ?? false} onClick={onClick}>
         {icon && iconPosition === 'left' && <Icon name={icon}/>}
         {children}

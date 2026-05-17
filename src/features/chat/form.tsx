@@ -2,11 +2,11 @@
 import {Account} from '@/schema';
 import {ChangeEventHandler, SubmitEventHandler, useMemo, useState} from 'react';
 import {Conversation, Conversations, Message, Participants} from '@/features/chat/schema';
-import Button from '@/components/lib/button';
 import {useAccount, useCoState} from 'jazz-tools/react';
 import {co, Group} from 'jazz-tools';
 import {ADMIN_ID, APP_URL} from '@/features/chat/const';
 import {notifyDiscord} from '@/app/actions';
+import IconButton from '@/components/lib/icon-button';
 
 
 interface ChatFormProps {
@@ -99,7 +99,7 @@ export default function ChatForm(props: ChatFormProps) {
   return (
       <form className="form" onSubmit={onSubmit}>
         <input type="text" value={text} onChange={onInputChange} placeholder="Type ..."/>
-        <Button disabled={isSendDisabled} type="submit" variant="solid" aspect="square" icon="send"/>
+        <IconButton disabled={isSendDisabled} type="submit" variant="solid" aspect="square" icon="send"/>
       </form>
   );
 }

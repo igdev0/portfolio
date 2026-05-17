@@ -29,6 +29,18 @@
             @apply bg-default-900 text-default;
         }
 
+        &.icon--right {
+            svg {
+                @apply translate-x-0.5;
+            }
+        }
+
+        &.icon--left {
+            svg {
+                @apply -translate-x-1;
+            }
+        }
+
         &.button--outline {
             @apply border-2;
         }

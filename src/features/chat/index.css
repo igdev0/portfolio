@@ -38,6 +38,10 @@
             button {
                 @apply w-12 h-12 p-0 flex items-center justify-center;
                 @apply outline-none;
+
+                svg {
+                    @apply text-accent-500;
+                }
             }
         }
     }

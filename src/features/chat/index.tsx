@@ -10,6 +10,7 @@ import {Tabs} from '@base-ui/react/tabs';
 import Button from '@/components/lib/button';
 import {Conversation, conversationStatus} from '@/features/chat/schema';
 import "./admin.css";
+import IconButton from '@/components/lib/icon-button';
 
 interface ChatProps {
   conversationId?: string;
@@ -68,7 +69,7 @@ export default function ChatApp() {
                 return (
                     <Tabs.Panel key={index} value={index}>
                       <div className="flex gap-2 flex-col flex-wrap absolute border top-0 -right-3 translate-x-full z-100 bg-gray-100 p-2 rounded-sm border-(--semigrid)">
-                        <Button variant="secondary"
+                        <IconButton
                                 icon="trash"
                                 className="mb-2 w-fit"
                                 onClick={() => account.root.conversations!.$jazz.remove(index)} aspect="square" size="xs"/>

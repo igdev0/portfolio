@@ -15,7 +15,7 @@ export default function LinkButton(props: LinkButtonProps) {
   const {href, children, icon, iconPosition = 'left', external, className = '', ...variants} = props;
   return (
       <Link
-          className={`${buttonVariants(variants)} ${className}`}
+          className={`${buttonVariants(variants)} icon--${variants.aspect === 'square' ? '' : iconPosition} ${external ? 'icon--external' : ''} ${className}`}
           href={href} target={external ? "_blank" : "_self"}>
         {icon && iconPosition === 'left' &&<Icon name={icon}/>}
         {children}
