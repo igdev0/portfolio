@@ -2,6 +2,28 @@
 
 @layer components {
     .chat {
+
+        .status {
+            @apply px-2 py-1 border rounded-sm capitalize;
+
+            &.status--not-started {
+                @apply text-gray-600;
+            }
+
+
+            &.status--pending {
+                @apply text-orange-600;
+            }
+
+            &.status--accepted {
+                @apply text-green-600;
+            }
+
+            &.status--closed {
+                @apply text-red-600;
+            }
+        }
+
         @apply border border-(--semigrid) rounded-md overflow-hidden relative;
 
         .header {
