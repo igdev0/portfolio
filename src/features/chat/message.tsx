@@ -3,7 +3,6 @@ import {useCoState} from 'jazz-tools/react';
 import {Message} from '@/features/chat/schema';
 import moment from 'moment';
 import clsx from 'clsx';
-import {UserCircle} from 'lucide-react';
 
 interface ChatMessageProps {
   id: string;
@@ -25,9 +24,6 @@ export default function ChatMessage(props: ChatMessageProps) {
 
       <div className={clsx('message', isMe ? " message--owned" : "")}>
         <div className="message-header">
-          <div className="message-avatar">
-            <UserCircle/>
-          </div>
           <div className="message-sender">{message.sender.profile.name}</div>
         </div>
         <div className="message-text">{message.text}</div>

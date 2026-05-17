@@ -7,7 +7,7 @@ export const iconButtonVariants = cva('icon-button', {
   variants: {
     size: {
       sm: 'sm'
-    }
+    },
   },
   defaultVariants: {
     size: 'sm'
@@ -19,12 +19,13 @@ export interface IconButtonProps extends VariantProps<typeof iconButtonVariants>
   type?: 'button' | 'submit' | 'reset';
   className?: string;
   onClick?: () => void;
+  disabled?: boolean;
 }
 
 export default function IconButton(props: IconButtonProps) {
   const {onClick, icon, type, className, ...variants} = props;
   return (
-      <button type={type} className={clsx(iconButtonVariants(variants), className)} onClick={onClick}>
+      <button disabled={props.disabled??false} type={type} className={clsx(iconButtonVariants(variants), className)} onClick={onClick}>
         <Icon name={icon}/>
       </button>
   );

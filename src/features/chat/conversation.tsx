@@ -12,6 +12,11 @@ interface ChatConversationProps {
   conversationId?: string;
 }
 
+const messagesPerStatus = {
+  pending: `Thanks for your message, I will be with you shortly.`,
+  default: `Looks like we have no conversation started, use the input box below to send me a message.`,
+};
+
 export default function ChatConversation(props: ChatConversationProps) {
   const viewport = useRef<HTMLDivElement>(null);
   const conversation = useCoState(Conversation, props.conversationId, {resolve: {messages: {$each: {sender: true}}}});
@@ -32,22 +37,25 @@ export default function ChatConversation(props: ChatConversationProps) {
         <ScrollArea.Viewport className="conversation-viewport" ref={viewport}>
           <ScrollArea.Content className="conversation-content">
             {
-
-              conversation.$isLoaded && conversation?.messages?.map((message) => {
-                return (
-                    <ChatMessage key={message.$jazz.id}
-                                 isMe={message.sender?.$jazz.id === ADMIN_ID}
-                                 id={message.$jazz.id}/>
-                );
-              })
-            }
-            {
-              !props.conversationId && (
+              !conversation.$isLoaded ? (
                   <div className="panel">
                     <Info className="mr-3"/>
-                    You can only send up to one message before I accept your message request.
+                    <p>{messagesPerStatus.default}</p>
                   </div>
-                )
+              ) : conversation.status === 'pending' ? <div className="panel">
+                <span className="mr-2">🎉</span>
+                <p>{messagesPerStatus.pending}</p>
+              </div> : null
+            }
+            {
+
+                conversation.$isLoaded && conversation?.messages?.map((message) => {
+                  return (
+                      <ChatMessage key={message.$jazz.id}
+                                   isMe={message.sender?.$jazz.id === ADMIN_ID}
+                                   id={message.$jazz.id}/>
+                  );
+                })
             }
           </ScrollArea.Content>
         </ScrollArea.Viewport>

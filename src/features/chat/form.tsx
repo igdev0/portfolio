@@ -1,6 +1,6 @@
 "use client";
 import {Account} from '@/schema';
-import {ChangeEventHandler, SubmitEventHandler, useMemo, useState} from 'react';
+import {ChangeEventHandler, SubmitEventHandler, useState} from 'react';
 import {Conversation, Conversations, Message, Participants} from '@/features/chat/schema';
 import {useAccount, useCoState} from 'jazz-tools/react';
 import {co, Group} from 'jazz-tools';
@@ -19,14 +19,6 @@ export default function ChatForm(props: ChatFormProps) {
   const account = useAccount(Account, {resolve: {root: {conversations: {$each: true}}}});
   const adminAccount = useCoState(Account, ADMIN_ID);
   const conversation = useCoState(Conversation, conversationId, {resolve: {messages: {$each: true}}});
-
-  const isSendDisabled = useMemo(() => {
-    if (conversation.$isLoaded) {
-      return ['pending', 'closed'].includes(conversation.status);
-    }
-    return false;
-  }, [conversation, account]);
-
 
   const initializeConversation = async (text: string) => {
     if (!account.$isLoaded || !adminAccount.$isLoaded) {
@@ -99,7 +91,7 @@ export default function ChatForm(props: ChatFormProps) {
   return (
       <form className="form" onSubmit={onSubmit}>
         <input type="text" value={text} onChange={onInputChange} placeholder="Type ..."/>
-        <IconButton disabled={isSendDisabled} type="submit" variant="solid" aspect="square" icon="send"/>
+        <IconButton type="submit" icon="send"/>
       </form>
   );
 }
