@@ -72,7 +72,7 @@ export default function ChatApp() {
                         <IconButton
                                 icon="trash"
                                 className="mb-2 w-fit"
-                                onClick={() => account.root.conversations!.$jazz.remove(index)} aspect="square" size="xs"/>
+                                onClick={() => account.root.conversations!.$jazz.remove(index)}/>
                         {
                           conversationStatus.map((status) => (
                               <Button key={status} variant="outline" active={conversation.status === status}
