@@ -8,7 +8,6 @@ import IconButton from '@/components/lib/icon-button';
 import IconLink from '@/components/lib/icon-link';
 import Container from '@/components/lib/container';
 import nav from '@/content/nav';
-import {usePasskeyAuth} from 'jazz-tools/react';
 
 interface NavProps {
   data: typeof nav;
@@ -17,7 +16,7 @@ interface NavProps {
 export default function Nav(props: NavProps) {
   const {theme, setTheme} = useTheme();
   const [menuOpen, setMenuOpen] = useState(false);
-  const auth = usePasskeyAuth({appName: "IGDev's portfolio"});
+  const [count, setCount] = useState(0);
   const {data} = props;
   return (
       <nav className="nav">
@@ -36,7 +35,6 @@ export default function Nav(props: NavProps) {
           </div>
           <div className="nav__buttons">
             <IconLink icon="github" href={data.navigation.social.github.href}/>
-            {auth.state === 'anonymous' && <IconButton className="cursor-pointer" onClick={() => auth.logIn()} icon="sign" size="sm"/>}
             <IconButton icon="sun" onClick={() => setTheme(theme === 'dark' ? "light" : "dark")}/>
             <IconButton className="nav__drawer-toggler" icon="menu" onClick={() => setMenuOpen(true)}></IconButton>
           </div>
