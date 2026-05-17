@@ -93,7 +93,7 @@ export default function ChatHeader(props: ChatHeaderProps) {
             <span
                 className={`status status--${conversation.$isLoaded ? conversation.status : 'not-started'}`}>{!conversation.$isLoaded ? "Not started" : conversation?.status}</span>
           </div>
-          <div>
+          <div className="flex items-center">
             (You)
             <input className="header-account" value={userValue}
                    name="user"
