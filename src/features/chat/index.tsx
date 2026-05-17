@@ -68,7 +68,7 @@ export default function ChatApp() {
               account.root.conversations && account.root.conversations?.map((conversation, index) => {
                 return (
                     <Tabs.Panel key={index} value={index}>
-                      <div className="flex gap-2 flex-col flex-wrap absolute border top-0 -right-3 translate-x-full z-100 bg-gray-100 p-2 rounded-sm border-(--semigrid)">
+                      <div className="flex gap-2 flex-col flex-wrap absolute border top-0 -right-3 translate-x-full z-100 bg-(--bg-default) p-2 rounded-sm border-(--semigrid)">
                         <IconButton
                                 icon="trash"
                                 className="mb-2 w-fit"
