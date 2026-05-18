@@ -101,9 +101,6 @@ export const stack = {
         'Nest': {
           statement: "Structured backend architecture without the mess."
         },
-        'TypeORM': {
-          statement: "Robust ORM with a surprisingly clean developer experience."
-        },
       } as const
     },
     "Databases": {
