@@ -12,33 +12,32 @@ export const experience = {
           text: "Tokensmith",
         },
         {
+          href: "https://pro-scan-solutions.ro/inspectii-foto-video",
+          text: "Pro Scan Solutions",
+        },
+        {
           href: 'https://github.com/igdev0/bee-funded',
           text: "BeeFunded",
         },
-        {
-          href: "https://github.com/igdev0/wallet-generator",
-          text: "Wallet Generator",
-        }
       ],
       done: [
-        'Built and experimented with blockchain and decentralized application architectures',
-        'Developed personal projects including BeeFunded, Tokensmith, and cryptographic tooling',
-        'Researched local-first distributed systems, synchronization strategies, and decentralized identity architectures',
-        'Explored Rust systems programming through hands-on projects and language fundamentals',
-        'Completed the Alchemy Ethereum and Solidity bootcamp focused on smart contract development',
-        'Collaborated on and delivered a web3 hackathon project',
+        "Explored Rust systems programming through hands-on projects and language fundamentals.",
+        "Explored blockchain and decentralized application architectures.",
+        "Completed the Alchemy Ethereum and Solidity bootcamp focused on smart contract development.",
+        "Collaborated on and delivered a web3 hackathon project.",
+        "Redesigned and rebuilt my personal portfolio.",
+        "Collaborated with a UI/UX designer to deliver a CMS-driven website. for a client of mine using Strapi and NextJS.",
       ],
     },
     {
       title: "[Frontend Engineer]",
       tags: ["Input Output Global", "Full-Time", "Remote", "April 2022 → April 2024"],
       done: [
-        "Owned the design and development of an internal React-based UI component library, using styled-components and Storybook to define reusable frontend patterns and standardize UI consistency across applications.",
-        "Led frontend development for the internal SSI agent provisioning platform, driving architecture and delivery of core features.",
-        "Designed and implemented internal web tools and quick prototypes for SSI agent operations, proactively identifying needs and collaborating with cross-functional teams to deliver solutions.",
-        "Contributed to the architecture and evolution of an open-source wallet SDK, improving usability, integration experience, and feature completeness.",
-        "Owned development and ongoing maintenance of the developer documentation platform, improving onboarding and adoption for internal and community developers",
-        "Actively participated in Scrum ceremonies (PI planning, sprint planning, reviews, retrospectives) to align delivery with product and engineering goals.",
+        "Led frontend development and UX implementation for internal tools, documentation platform, public-facing websites, and prototypes within the Atala PRISM (Identus Hyperledger) ecosystem.",
+        "Collaborated with cross-functional teams on ideation, rapid prototyping, and delivery of MVPs leveraging the Atala PRISM SSI agent, accelerating early product validation.",
+        "Built and maintained a shared component library using Styled Components and Storybook, translating Figma designs into reusable, scalable UI components, improving frontend consistency and accelerating development.",
+        "Contributed to the design and development of the wallet SDK, improving developer experience and functionality.",
+        "Participated in Agile ceremonies (PI planning, sprint planning, reviews, retrospectives), ensuring alignment between product direction and engineering delivery.",
       ],
       links: [
         {
@@ -51,12 +50,13 @@ export const experience = {
       title: "[Full-Stack Developer]",
       tags: ["Finer Vision", "Full-Time", "Hybrid", "December 2020 → February 2022"],
       done: [
-        "Developed and maintained React Native (Expo) mobile applications in production environments",
-        "Built and extended web applications using React, Next.js, and Node.js, including new features and refactoring of existing systems",
-        "Collaborated directly with clients to refine requirements, reduce ambiguity, and improve development efficiency",
-        "Translated Figma/XD designs into responsive, production-ready interfaces with consistent UX across devices",
-        "Developed and implemented custom email templates based on design specifications",
-        "Worked within an agile team to diagnose bugs, unblock development, and ensure on-time feature delivery",
+        "Designed, developed, and maintained offline-first medical applications using Expo and React Native within a small Agile team, focusing on reliability in constrained environments.",
+        "Modernized and extended React codebases by delivering production features, client-driven enhancements, and critical bug fixes across multiple applications.",
+        "Translated Figma/XD designs into responsive, accessible, cross-browser interfaces, ensuring consistent UX across applications.",
+        "Built and delivered CMS-driven web applications using React, TypeScript, and Next.js with SCSS and Strapi, Directus, or WordPress across multiple client projects.",
+        "Delivered features under tight deadlines while maintaining production-quality standards and predictable release cycles.",
+        "Collaborated with teammates to investigate and resolve hard-to-reproduce critical production issues in React Native applications.",
+        "Worked directly with clients and stakeholders to refine requirements, align expectations, and improve project delivery.",
       ],
       links: [
         {
