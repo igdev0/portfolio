@@ -1,4 +1,31 @@
 {
-  "error": "This was an error",
-  "some-kind-of-text": "Some kind of message"
+  "about": {
+    "name": "Ianos G Dorultan",
+    "bio": "Full Stack Engineer with 5+ years of experience building web and mobile applications focused on performance, maintainability, and clean architecture. Strong expertise in React and TypeScript, with experience across backend APIs, cloud deployments, and CI/CD workflows using Docker and modern tooling. Proven ability to deliver production-ready applications across frontend, backend, and infrastructure."
+  },
+  "contact": {
+    "github": "https://github.com/igdev0",
+    "linked-in": "https://www.linkedin.com/in/ianos-dorultan-364235143/",
+    "phone": "0746666666661",
+    "telegram": "igdev0",
+    "email": "ianos.dorultan@gmail.com",
+    "instagram": "igdev.03"
+  },
+  "nav": {
+    "brand": "<span><</span><strong>IGDev</strong><span>/></span>",
+    "navigation": [
+      {
+        "href": "#about",
+        "text": "About"
+      },
+      {
+        "href": "#experience",
+        "text": "Experience"
+      },
+      {
+        "href": "#collaborate",
+        "text": "Lets build"
+      }
+    ]
+  }
 }
