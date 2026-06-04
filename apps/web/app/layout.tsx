@@ -4,11 +4,6 @@ import type {Metadata} from "next";
 import {GeistSans} from "geist/font/sans";
 import {NextIntlClientProvider} from 'next-intl';
 import {ReactNode} from 'react';
-import {routing} from '../i18n/routing';
-
-export function generateStaticParams() {
-  return routing.locales.map((locale) => ({locale}));
-}
 
 export const metadata: Metadata = {
   title: "Create Turborepo",
@@ -17,15 +12,13 @@ export const metadata: Metadata = {
 
 export type Props = {
   children: ReactNode;
-  params: Promise<{ locale: string }>;
 };
 
 export default function RootLayout({children}: Props) {
-
   return (
       <html lang="en">
       <body className={GeistSans.className}>
-      <NextIntlClientProvider>
+      <NextIntlClientProvider locale="en">
         {children}
       </NextIntlClientProvider>
       </body>
