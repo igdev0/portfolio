@@ -1,9 +1,12 @@
 import "@repo/ui/styles.css";
 import "./globals.css";
 import type {Metadata} from "next";
-import {GeistSans} from "geist/font/sans";
 import {NextIntlClientProvider} from 'next-intl';
 import {ReactNode} from 'react';
+import {Inter} from 'next/font/google';
+import {ThemeProvider} from 'next-themes';
+
+const inter = Inter({weight: ['700', '600', '500', '400']});
 
 export const metadata: Metadata = {
   title: "Create Turborepo",
@@ -16,10 +19,16 @@ export type Props = {
 
 export default function RootLayout({children}: Props) {
   return (
-      <html lang="en">
-      <body className={GeistSans.className}>
+      <html lang="en" suppressHydrationWarning>
+      <body className={inter.className}>
       <NextIntlClientProvider locale="en">
+        <ThemeProvider
+            defaultTheme="system"
+            enableSystem={true}
+            enableColorScheme={true}
+        >
         {children}
+        </ThemeProvider>
       </NextIntlClientProvider>
       </body>
       </html>
