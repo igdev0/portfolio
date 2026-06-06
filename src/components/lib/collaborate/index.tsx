@@ -4,11 +4,8 @@ import Statement from '@/components/lib/statement';
 import {CollaborateType} from '@/content/collaborate';
 import LinkButton from '@/components/lib/link-button';
 import {IconNames} from '@/components/lib/icon';
-import Chat from '@/features/chat';
-import {LockIcon} from 'lucide-react';
-import {useAccount} from 'jazz-tools/react';
-import {Account} from '@/schema';
 import "./index.css";
+import BasicMessage from '@/features/basic-message';
 
 interface CollaborateProps {
   data: CollaborateType;
@@ -16,7 +13,6 @@ interface CollaborateProps {
 
 export default function Collaborate(props: CollaborateProps) {
   const {data} = props;
-  const account = useAccount(Account);
   return (
       <Container className="pt-40 pb-4" id="collaborate">
         <Comment>
@@ -27,20 +23,7 @@ export default function Collaborate(props: CollaborateProps) {
           {data.statement}
         </Statement>
         <div className="max-w-120 gap-6 w-full mb-4">
-          <div className="panel gap-2 mb-3" onClick={() => window.navigator.clipboard.writeText(account.$jazz.id)}>
-            <LockIcon className="text-accent-500"/>
-            <p>
-              This chat is end-to-end encrypted and built from scratch using <a
-                  className="text-accent-500 underline"
-                  href="https://classic.jazz.tools"
-                  target="_blank"
-              >
-                Classic Jazz
-              </a>
-              , a local-first distributed database.
-            </p>
-          </div>
-          <Chat/>
+          <BasicMessage book={{href: props.data.social.calendar.href, text: props.data.social.calendar.text}}/>
         </div>
 
         <div className="flex gap-4 w-fit">

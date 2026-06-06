@@ -4,14 +4,13 @@ import "./globals.css";
 import {Inter} from "next/font/google";
 import {GoogleAnalytics} from '@next/third-parties/google';
 import {ThemeProvider} from 'next-themes';
-import {JazzSetup} from '@/app/setup';
 
 export const metadata: Metadata = {
   title: "IGDev | Software Engineer",
   description: "IGDev is a Software Engineer focused on building modern applications and exploring bleeding-edge technologies.",
 };
 
-const lexend = Inter({weight: ["600", "400"]});
+const inter = Inter({weight: ["600", "400"]});
 
 export default function RootLayout({
                                      children,
@@ -32,17 +31,15 @@ export default function RootLayout({
         <meta property="og:image:height" content="630"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       </head>
-      <body className={(`${lexend.className}`)}>
+      <body className={(`${inter.className}`)}>
       {process.env.NODE_ENV === "production" && <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID ?? "not set"}/>}
-      <JazzSetup>
-        <ThemeProvider
-            defaultTheme="system"
-            enableSystem={true}
-            enableColorScheme={true}
-        >
-          {children}
-        </ThemeProvider>
-      </JazzSetup>
+      <ThemeProvider
+          defaultTheme="system"
+          enableSystem={true}
+          enableColorScheme={true}
+      >
+        {children}
+      </ThemeProvider>
       </body>
       </html>
   );
