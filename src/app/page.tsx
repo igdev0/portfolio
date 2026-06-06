@@ -1,4 +1,3 @@
-"use client";
 import Nav from '@/components/ui/nav';
 import Hero from '@/components/ui/hero';
 import Profile from '@/components/ui/profile';
