@@ -26,7 +26,7 @@ export default function Container(props: ContainerProps) {
   const {children, className, id, name = 'default', ...variants} = props;
   return (
       <div className="px-4 md:px-8" id={id}>
-        <Box className={`@container/${name} ${containerVariants(variants)}` + ` ${className}`} ref={props?.ref??null}>
+        <Box className={`${containerVariants(variants)}` + ` ${className}`} ref={props?.ref??null}>
             {children}
         </Box>
       </div>
