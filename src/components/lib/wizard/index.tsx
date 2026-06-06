@@ -33,7 +33,7 @@ export default function Wizard(props: WizardProps) {
           {
             context.steps.map((step) => (
                 <div
-                    className={clsx('border-2 border-(--grid-color) p-2 rounded-sm', context.isActive(step.id) ? 'text-accent-500' : '')}
+                    className={clsx('border-2 border-(--grid) p-2 rounded-sm', context.isActive(step.id) ? 'text-accent-500' : '')}
                     key={step.id}>
                   <Icon name={step.icon}/>
                 </div>

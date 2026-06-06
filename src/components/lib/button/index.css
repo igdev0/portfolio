@@ -26,7 +26,7 @@
         }
 
         &.button--default {
-            @apply bg-default-900 ;
+            @apply bg-foundation-900 ;
         }
 
         &.icon--right {

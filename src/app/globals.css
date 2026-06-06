@@ -7,7 +7,7 @@ html {
 }
 
 @variant dark {
-    --grid-color: var(--color-gray-700);
+    --grid: var(--color-gray-700);
     --button-solid: var(--color-accent-600);
 
     /*Surface Tokens*/
@@ -33,7 +33,17 @@ html {
     --foreground: var(--color-gray-900);
     --background: var(--color-white);
 
-    /* Utilities */
+    --surface-1: var(--color-indigo-100);
+    --surface-2: var(--color-indigo-200);
+    --surface-3: var(--color-indigo-100);
+
+    --grid: var(--color-gray-300);
+    --link: var(--color-white);
+    --link-hover: var(--color-gray-600);
+
+    --button-solid: var(--color-accent-500);
+
+    /* Colors */
     --color-accent-50: var(--color-indigo-50);
     --color-accent-100: var(--color-indigo-100);
     --color-accent-200: var(--color-indigo-200);
@@ -46,29 +56,19 @@ html {
     --color-accent-900: var(--color-indigo-900);
     --color-accent-950: var(--color-indigo-950);
 
+    --color-foundation-50: var(--color-indigo-50);
+    --color-foundation-100: var(--color-indigo-100);
+    --color-foundation-200: var(--color-indigo-200);
+    --color-foundation-300: var(--color-indigo-300);
+    --color-foundation-400: var(--color-indigo-400);
+    --color-foundation-500: var(--color-indigo-500);
+    --color-foundation-600: var(--color-indigo-600);
+    --color-foundation-700: var(--color-indigo-700);
+    --color-foundation-800: var(--color-indigo-800);
+    --color-foundation-900: var(--color-indigo-900);
+    --color-foundation-950: var(--color-indigo-950);
 
-
-    --color-default-50: var(--color-gray-50);
-    --color-default-300: var(--color-gray-300);
-    --color-default-400: var(--color-gray-400);
-    --color-default-500: var(--color-gray-500);
-    --color-default-600: var(--color-gray-600);
-    --color-default-700: var(--color-gray-700);
-    --color-default-800: var(--color-gray-800);
-    --color-default-900: var(--color-gray-900);
-
-    --fg-default: var(--color-default-900);
-
-    --surface-1: var(--color-indigo-100);
-    --surface-2: var(--color-indigo-200);
-    --surface-3: var(--color-indigo-100);
-
-    --grid-color: var(--color-gray-300);
-    --link: var(--color-white);
-    --link-hover: var(--color-gray-600);
-
-    --button-solid: var(--color-accent-500);
-
+    /* Breakpoints */
     --breakpoint-3xs: 16rem;
     --breakpoint-2xs: 18rem;
     --breakpoint-xs: 20rem;
@@ -106,5 +106,5 @@ html {
 }
 
 @utility panel {
-    @apply flex p-3 rounded-md border border-(--grid-color);
+    @apply flex p-3 rounded-md border border-(--grid);
 }

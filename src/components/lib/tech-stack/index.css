@@ -47,7 +47,7 @@
             .stack-card {
                 @apply w-full max-w-200;
                 @apply transform-3d perspective-distant;
-                @apply border  border-default-300 dark:border-default-700 rounded-md p-3;
+                @apply border  border-foundation-300 dark:border-foundation-700 rounded-md p-3;
 
                 @apply h-full transform-3d;
                 @apply bg-(--surface-2);

@@ -6,7 +6,7 @@ import Box from '@/components/lib/box';
 const containerVariants = cva('container', {
   variants: {
     variant: {
-      bordered: "border-x border-(--grid-color) mx-auto px-4 md:px-8"
+      bordered: "border-x border-(--grid) mx-auto px-4 md:px-8"
     }
   },
   defaultVariants: {

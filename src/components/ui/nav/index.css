@@ -2,7 +2,7 @@
 
 @layer components {
     .nav {
-        @apply w-full border-y border-(--grid-color) sticky top-0 z-12;
+        @apply w-full border-y border-(--grid) sticky top-0 z-12;
         &:before {
             content: '';
             @apply absolute top-0 left-0 right-0 bottom-0 bg-(--background)/70 backdrop-blur-2xl;
@@ -60,7 +60,7 @@
 
     .nav__drawer {
         @apply fixed p-4 py-4 transform translate-x-0 right-0 transition-all;
-        @apply bg-(--background) top-0 z-10 border border-(--grid-color) flex flex-col items-end;
+        @apply bg-(--background) top-0 z-10 border border-(--grid) flex flex-col items-end;
 
         &.open {
             @apply xl:translate-x-full;
