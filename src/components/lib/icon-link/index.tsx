@@ -1,5 +1,5 @@
 import Link from 'next/dist/client/link';
-import Icon, {IconNames} from '@/components/lib/icon';
+import Icon, {IconNames} from '@/components/lib/social';
 import "../icon-button/index.css";
 import {AppLinkProps} from '@/components/lib/link';
 import {VariantProps} from 'class-variance-authority';

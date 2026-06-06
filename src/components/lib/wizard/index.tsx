@@ -3,7 +3,7 @@ import {WizardContext} from '@/components/lib/wizard/context';
 import WizardProvider from '@/components/lib/wizard/provider';
 import WizardStep from '@/components/lib/wizard/step';
 import Button from '@/components/lib/button';
-import Icon from '@/components/lib/icon';
+import Icon from '@/components/lib/social';
 import clsx from 'clsx';
 
 export interface WizardProps {

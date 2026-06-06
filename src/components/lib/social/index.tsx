@@ -1,4 +1,4 @@
-import Github from '@/components/lib/icon/github';
+import Github from '@/components/lib/social/github';
 import {
   BlocksIcon,
   BookIcon,
@@ -28,9 +28,9 @@ import {
   WrenchIcon,
   XIcon
 } from 'lucide-react';
-import Email from '@/components/lib/icon/email';
-import Linkedin from '@/components/lib/icon/linkedin';
-import Telegram from '@/components/lib/icon/telegram';
+import Email from '@/components/lib/social/email';
+import Linkedin from '@/components/lib/social/linkedin';
+import Telegram from '@/components/lib/social/telegram';
 
 export const iconsMap = {
   github: Github,

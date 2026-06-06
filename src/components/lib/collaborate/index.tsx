@@ -3,7 +3,7 @@ import Comment from '@/components/lib/comment';
 import Statement from '@/components/lib/statement';
 import {CollaborateType} from '@/content/collaborate';
 import LinkButton from '@/components/lib/link-button';
-import {IconNames} from '@/components/lib/icon';
+import {IconNames} from '@/components/lib/social';
 import "./index.css";
 import BasicMessage from '@/features/basic-message';
 

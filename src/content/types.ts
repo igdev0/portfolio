@@ -1,4 +1,4 @@
-import {IconNames} from '@/components/lib/icon';
+import {IconNames} from '@/components/lib/social';
 
 export type IconType = IconNames;
 

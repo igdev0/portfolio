@@ -1,7 +1,7 @@
 import {ComponentPropsWithRef, PropsWithChildren} from 'react';
 import "./index.css";
 import {cva, VariantProps} from 'class-variance-authority';
-import Icon, {IconNames} from '@/components/lib/icon';
+import Icon, {IconNames} from '@/components/lib/social';
 
 export const buttonVariants = cva('button', {
   variants: {
