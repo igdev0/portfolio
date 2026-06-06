@@ -16,7 +16,6 @@ interface NavProps {
 export default function Nav(props: NavProps) {
   const {theme, setTheme} = useTheme();
   const [menuOpen, setMenuOpen] = useState(false);
-  const [count, setCount] = useState(0);
   const {data} = props;
   return (
       <nav className="nav">
