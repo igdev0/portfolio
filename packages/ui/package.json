@@ -21,6 +21,7 @@
     "lint": "eslint src --max-warnings 0"
   },
   "peerDependencies": {
+    "next": "16.2.0",
     "react": "^19"
   },
   "devDependencies": {
@@ -30,7 +31,13 @@
     "@tailwindcss/cli": "^4.1.5",
     "@types/react": "^19.1.0",
     "eslint": "^9.39.1",
+    "next": "16.2.0",
     "tailwindcss": "^4.1.5",
     "typescript": "5.9.2"
+  },
+  "dependencies": {
+    "@base-ui/react": "^1.5.0",
+    "clsx": "^2.1.1",
+    "motion": "^12.40.0"
   }
 }

@@ -1,0 +1,10 @@
+@layer components {
+    .nav-link {
+        @apply flex gap-2;
+
+        &[data-active="true"],
+        &:active {
+            @apply text-(--accent-300);
+        }
+    }
+}
