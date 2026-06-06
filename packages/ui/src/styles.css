@@ -2,3 +2,4 @@
 @import "tailwindcss";
 @import "@repo/tailwind-config";
 @import "./nav-link/styles.css";
+@import "./navbar/styles.css";

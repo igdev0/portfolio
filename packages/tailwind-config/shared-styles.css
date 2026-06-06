@@ -4,37 +4,39 @@
 
 /*0 = default */
 @variant dark {
-    --background-0: var(--color-gray-900);
-    --text-0: var(--color-white);
-    --text-1: var(--color-gray-300);
-    --grid-color: var(--color-gray-700);
-    --surface-0: var(--color-gray-300);
-    --surface-1: var(--color-gray-800);
+    --background-c0: var(--color-gray-900);
+    --text-c0: var(--color-white);
+    --text-c1: var(--color-gray-300);
+    --grid-c0: var(--color-gray-700);
+    --surface-c0: var(--color-gray-300);
+    --surface-c1: var(--color-gray-800);
 }
 
 
 @theme inline {
     /*Themed tokens*/
-    --background-0: var(--color-white);
-    --text-0: var(--color-gray-900);
-    --text-1: var(--color-gray-800);
-    --surface-0: var(--accent-100);
-    --surface-1: var(--accent-100);
+    --background-c0: var(--color-white);
+    --text-c0: var(--color-gray-900);
+    --text-c1: var(--color-gray-800);
+    --surface-c0: var(--accent-c100);
+    --surface-c1: var(--accent-c100);
 
     /*Accent color*/
-    --accent-50: var(--color-indigo-50);
-    --accent-100: var(--color-indigo-100);
-    --accent-200: var(--color-indigo-200);
-    --accent-300: var(--color-indigo-300);
-    --accent-400: var(--color-indigo-400);
-    --accent-500: var(--color-indigo-500);
-    --accent-600: var(--color-indigo-600);
-    --accent-700: var(--color-indigo-700);
-    --accent-800: var(--color-indigo-800);
-    --accent-900: var(--color-indigo-900);
-    --accent-950: var(--color-indigo-950);
+    --accent-c50: var(--color-indigo-50);
+    --accent-c100: var(--color-indigo-100);
+    --accent-c200: var(--color-indigo-200);
+    --accent-c300: var(--color-indigo-300);
+    --accent-c400: var(--color-indigo-400);
+    --accent-c500: var(--color-indigo-500);
+    --accent-c600: var(--color-indigo-600);
+    --accent-c700: var(--color-indigo-700);
+    --accent-c800: var(--color-indigo-800);
+    --accent-c900: var(--color-indigo-900);
+    --accent-c950: var(--color-indigo-950);
 
     /* Spacing*/
-
     --spacing: 3px;
+
+
+    --container-8xl: 96rem;
 }
