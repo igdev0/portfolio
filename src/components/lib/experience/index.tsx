@@ -89,7 +89,7 @@ export default function Timeline(props: TimelineProps) {
               className="border-l-2 mt-6 border-(--grid) border-dashed h-full absolute left-0 translate-x-2.5 -z-1"/>
           {
             data.experiences.map((experience, index) => (
-                <Experience key={index + 1} {...experience}/>
+                <Experience key={index} {...experience}/>
             ))
           }
         </div>
