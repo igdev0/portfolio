@@ -1,5 +1,4 @@
 "use client";
-import hero from '@/content/hero';
 import LinkButton from '@/components/lib/link-button';
 import clsx from 'clsx';
 import Statement from '@/components/lib/statement';
@@ -8,45 +7,42 @@ import "./index.css";
 import Container from '@/components/lib/container';
 import Box from '@/components/lib/box';
 import Comment from '@/components/lib/comment';
+import {HeroType} from '@/content/types';
 
 const corners = clsx(`absolute h-1/9 w-1/9 m-4 border-r-12 border-b-12 border-(--surface-1)`);
 
-interface HeroProps {
-  data: typeof hero;
-}
-
-export default function Hero(props: HeroProps) {
-  const {data} = props;
+export default function Hero(props: HeroType) {
+  const {cta0, cta1, image, comment, title, statement} = props;
   return (
       <Box className="hero" as="header" id="top">
         <Container className="hero__layout">
           <Box className="hero__column">
             <Comment className="comment mb-3">
-              {data.tag.value}
+              {comment}
             </Comment>
             <h1
-                className="text-5xl mb-6 font-bold">{data.title.value}
+                className="text-5xl mb-6 font-bold">{title}
             </h1>
             <Statement className="mb-6 max-w-96">
-              {data.statement.value}
+              {statement}
             </Statement>
             <Box className="flex gap-4">
-              <LinkButton variant="secondary" href={data.cta.first.href} icon={data.cta.first.icon}>
-                {data.cta.first.text}
+              <LinkButton variant="secondary" href={cta0.href} icon={cta0.icon}>
+                {cta0.text}
               </LinkButton>
-              <LinkButton variant="solid" href={data.cta.second.href} external icon={data.cta.second.icon}>
-                {data.cta.second.text}
+              <LinkButton variant="solid" href={cta1.href} external icon={cta1.icon}>
+                {cta1.text}
               </LinkButton>
             </Box>
           </Box>
           <Box
               className="hero__column hero__column--image">
             <Image draggable={false}
-                   src={data.card.image.src}
+                   src={image.src}
                    loading="eager"
                    width={354}
                    height={393}
-                   alt={data.card.image.alt}/>
+                   alt={image.alt}/>
             <Box className="bg-(--bg-surface) w-3/5 h-3/5 absolute -z-1 top-0 left-0 right-0 bottom-0 m-auto"/>
             <Box className={clsx(corners, 'rotate-180 top-3 left-0')}/>
             <Box

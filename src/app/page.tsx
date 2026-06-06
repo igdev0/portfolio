@@ -6,19 +6,19 @@ import nav from '@/content/nav';
 import hero from '@/content/hero';
 import {profile} from '@/content/profile';
 import {experience} from '@/content/experience';
-import Collaborate from '@/components/lib/collaborate';
-import {collaborate} from '@/content/collaborate';
 import Footer from '@/components/lib/footer';
+import {contact} from '@/content/collaborate';
+import Collaborate from '@/components/lib/collaborate';
 
 
 export default function LandingPage() {
   return (
       <>
         <Nav data={nav}/>
-        <Hero data={hero}/>
+        <Hero {...hero}/>
         <Profile data={profile}/>
         <Expertise data={experience}/>
-        <Collaborate data={collaborate}/>
+        <Collaborate data={contact}/>
         <Footer/>
       </>
   );

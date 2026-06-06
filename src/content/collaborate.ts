@@ -1,5 +1,5 @@
 
-export const collaborate = {
+export const contact = {
   comment: "// Build",
   title: "{Collaborate}",
   statement: "I'm on the other end, let me know if you need anything.",
@@ -27,4 +27,4 @@ export const collaborate = {
   }
 } as const;
 
-export type CollaborateType = typeof collaborate;
+export type ContactType = typeof contact;

@@ -1,41 +1,26 @@
-import {collaborate} from '@/content/collaborate';
+import {contact} from '@/content/collaborate';
+import {HeroType} from '@/content/types';
 
-const hero = {
-  tag: {
-    type: "html",
-    value: "Ianos G Dorultan",
+const hero: HeroType = {
+  comment: "Ianos G Dorultan",
+  title: "Software Engineer",
+  statement: "Frontend-focused engineer passionate about building modern user experiences.",
+  cta0: {
+    icon: "chat",
+    href: "#about-me",
+    text: "Let's talk"
   },
-  title: {
-    type: "text",
-    value: "Software Engineer"
+  cta1: {
+    icon: "chat",
+    href: contact.social.calendar.href,
+    text: "Book a call"
   },
-  statement: {
-    type: "text",
-    value: `Frontend-focused engineer passionate about building modern user experiences.`
+  image: {
+    src: "/images/me.webp",
+    width: 383,
+    height: 383,
+    alt: "Me"
   },
-  cta: {
-    first: {
-      type: "link",
-      href: "#collaborate",
-      icon: "chat",
-      text: "Let's talk"
-    },
-    second: {
-      type: "link",
-      href: collaborate.social.calendar.href,
-      text: "Book a call",
-      icon: 'calendar'
-    }
-  },
-  card: {
-    image: {
-      type: "image",
-      width: 383,
-      height: 383,
-      src: "/images/me.webp",
-      alt: "me"
-    },
-  }
 } as const;
 
 export default hero;
