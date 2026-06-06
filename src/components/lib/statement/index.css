@@ -2,6 +2,8 @@
 
 @layer components {
     .statement {
-        @apply border-l-4 pl-4 border-(--color-accent-300) mb-4 mt-4;
+        --statement: var(--color-accent-300);
+        @apply border-l-4 pl-4 border-(--statement) mb-4 mt-4;
+
     }
 }

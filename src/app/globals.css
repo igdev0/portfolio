@@ -6,27 +6,34 @@ html {
     @apply scroll-smooth;
 }
 
-[data-theme="dark"] {
-    --fg-default: var(--color-default);
-    --fg-story: var(--color-default-300);
-    --bg-default: var(--color-default-900);
-    --bg-default-800: var(--color-default-800);
-    --bg-surface: var(--color-accent-300);
+@variant dark {
     --grid-color: var(--color-gray-700);
-    --statement: var(--color-accent-300);
     --button-solid: var(--color-accent-600);
-    --bg-surface-2: var(--color-gray-700);
-    --bg-surface-3: var(--color-gray-800);
+
+    /*Surface Tokens*/
+    --surface-1: var(--color-accent-300);
+    --surface-2: var(--color-gray-700);
+    --surface-3: var(--color-gray-800);
+
+    /* Foreground */
+    --foreground: var(--color-white);
+    --background: var(--color-gray-900);
+
 }
 
 @layer base {
     body {
-        @apply bg-(--bg-default) text-(--fg-default);
+        @apply bg-(--background) text-(--foreground);
     }
 
 }
 
 @theme inline {
+    /*Themed tokens*/
+    --foreground: var(--color-gray-900);
+    --background: var(--color-white);
+
+    /* Utilities */
     --color-accent-50: var(--color-indigo-50);
     --color-accent-100: var(--color-indigo-100);
     --color-accent-200: var(--color-indigo-200);
@@ -39,7 +46,8 @@ html {
     --color-accent-900: var(--color-indigo-900);
     --color-accent-950: var(--color-indigo-950);
 
-    --color-default: var(--color-white);
+
+
     --color-default-50: var(--color-gray-50);
     --color-default-300: var(--color-gray-300);
     --color-default-400: var(--color-gray-400);
@@ -50,11 +58,10 @@ html {
     --color-default-900: var(--color-gray-900);
 
     --fg-default: var(--color-default-900);
-    --fg-story: var(--color-default-700);
-    --bg-default: var(--color-white);
-    --bg-surface: var(--color-indigo-100);
-    --bg-surface-2: var(--color-indigo-200);
-    --bg-surface-3: var(--color-indigo-100);
+
+    --surface-1: var(--color-indigo-100);
+    --surface-2: var(--color-indigo-200);
+    --surface-3: var(--color-indigo-100);
 
     --grid-color: var(--color-gray-300);
     --link: var(--color-white);

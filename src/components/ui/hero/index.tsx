@@ -9,7 +9,7 @@ import Container from '@/components/lib/container';
 import Box from '@/components/lib/box';
 import Comment from '@/components/lib/comment';
 
-const corners = clsx(`absolute h-1/9 w-1/9 m-4 border-r-12 border-b-12 border-(--bg-surface)`);
+const corners = clsx(`absolute h-1/9 w-1/9 m-4 border-r-12 border-b-12 border-(--surface-1)`);
 
 interface HeroProps {
   data: typeof hero;

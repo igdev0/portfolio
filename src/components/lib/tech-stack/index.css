@@ -50,7 +50,7 @@
                 @apply border  border-default-300 dark:border-default-700 rounded-md p-3;
 
                 @apply h-full transform-3d;
-                @apply bg-(--bg-surface-2);
+                @apply bg-(--surface-2);
                 @apply p-4;
                 @apply col-start-1;
                 @apply row-end-1;
@@ -67,7 +67,7 @@
 
                 .inner {
                     @apply flex flex-col;
-                    @apply bg-(--bg-default) h-full w-full p-4 rounded-md
+                    @apply bg-(--background) h-full w-full p-4 rounded-md
                 }
             }
         }
@@ -78,7 +78,7 @@
         @apply flex gap-2 flex-wrap;
 
         .tab-control {
-            @apply cursor-pointer p-2 rounded-sm bg-(--bg-surface-2) text-sm;
+            @apply cursor-pointer p-2 rounded-sm bg-(--surface-2) text-sm;
 
             &[data-active] {
                 @apply bg-accent-500 text-white;

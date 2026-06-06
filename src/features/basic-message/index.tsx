@@ -53,7 +53,7 @@ export default function BasicMessage(props: BasicMessageProps) {
         {
             success && (
                 <div
-                    className="relative rounded-sm bg-(--bg-surface-2) p-2 mb-6 flex items-center border border-(--grid-color) w-fit">
+                    className="relative rounded-sm bg-(--surface-2) p-2 mb-6 flex items-center border border-(--grid-color) w-fit">
                   Message received. Looking forward to reading it.
                   <button className="cursor-pointer pl-2" onClick={() => setSuccess(false)}>
                     <XIcon/>

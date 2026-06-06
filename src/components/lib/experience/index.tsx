@@ -32,7 +32,7 @@ function Experience(props: ExperienceProps) {
           <div className="timeline__head z-5 sticky top-16 translate-y-6"/>
         </div>
         <div>
-          <div className="z-5 sticky top-16 pb-3 bg-(--bg-default) py-6">
+          <div className="z-5 sticky top-16 pb-3 bg-(--background) py-6">
             <h3 className="text-2xl font-bold mb-0">{props.title}</h3>
           </div>
           <div className="flex flex-wrap gap-4 mt-4 relative">

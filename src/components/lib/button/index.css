@@ -26,7 +26,7 @@
         }
 
         &.button--default {
-            @apply bg-default-900 text-default;
+            @apply bg-default-900 ;
         }
 
         &.icon--right {
@@ -50,7 +50,7 @@
         }
 
         &.button--solid {
-            @apply bg-accent-500 text-white ;
+            @apply bg-accent-500 text-white;
 
             &:not(:disabled) {
                 @apply hover:bg-accent-500/90;
@@ -68,7 +68,7 @@
 
 
             &.button--active {
-                @apply bg-accent-400 text-default opacity-100;
+                @apply bg-accent-400  opacity-100 text-white;
             }
 
         }
