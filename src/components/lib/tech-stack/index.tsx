@@ -1,6 +1,6 @@
 import {useContext, useLayoutEffect} from 'react';
-import "./index.css";
 import useResizeObserver from '@/hooks/use-resize-observer';
+import "./index.css";
 import {stack} from '@/content/profile';
 import {TechStackContext} from '@/components/lib/tech-stack/context';
 import TechStackControllers from '@/components/lib/tech-stack/controllers';
