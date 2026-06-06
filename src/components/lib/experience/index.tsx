@@ -86,7 +86,7 @@ export default function Timeline(props: TimelineProps) {
         </Statement>
         <div className="relative mt-6">
           <div
-              className="border-l-2 mt-6 border-(--semigrid) border-dashed h-full absolute left-0 translate-x-2.5 -z-1"/>
+              className="border-l-2 mt-6 border-(--grid-color) border-dashed h-full absolute left-0 translate-x-2.5 -z-1"/>
           {
             data.experiences.map((experience, index) => (
                 <Experience key={index + 1} {...experience}/>

@@ -40,7 +40,7 @@ export default function BasicMessage(props: BasicMessageProps) {
                 {props.book.text}
               </LinkButton>
             </div>
-            <textarea className="border border-(--semigrid) p-2 rounded-sm h-30" name="message"
+            <textarea className="border border-(--grid-color) p-2 rounded-sm h-30" name="message"
                       value={message}
                       onChange={(event) => setMessage(event.currentTarget.value)}
                       placeholder="Say Hello ..."/>
@@ -53,7 +53,7 @@ export default function BasicMessage(props: BasicMessageProps) {
         {
             success && (
                 <div
-                    className="relative rounded-sm bg-(--bg-surface-2) p-2 mb-6 flex items-center border border-(--semigrid) w-fit">
+                    className="relative rounded-sm bg-(--bg-surface-2) p-2 mb-6 flex items-center border border-(--grid-color) w-fit">
                   Message received. Looking forward to reading it.
                   <button className="cursor-pointer pl-2" onClick={() => setSuccess(false)}>
                     <XIcon/>
