@@ -44,7 +44,7 @@ function Experience(props: ExperienceProps) {
               ))
             }
           </div>
-          <ul className="responsabilities my-4">
+          <ul className="experience-contributions my-4">
             {
               props.done?.map((responsibility, index) => (
                   <li key={index}>{responsibility}</li>
