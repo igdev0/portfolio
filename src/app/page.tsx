@@ -10,6 +10,7 @@ import {collaborate, contact} from '@/content/collaborate';
 import Collaborate from '@/components/lib/collaborate';
 import {stack} from '@/content/stack';
 import Passions from '@/components/ui/passions';
+import {passions} from '@/content/passions';
 
 
 export default function LandingPage() {
@@ -18,7 +19,7 @@ export default function LandingPage() {
         <Nav {...nav} github={contact.github}/>
         <Hero {...hero}/>
         <Skills {...stack}/>
-        <Passions/>
+        <Passions {...passions}/>
         <Expertise {...experience}/>
         <Collaborate {...collaborate}/>
         <Footer/>

@@ -90,7 +90,7 @@ export default function Hero(props: HeroType) {
           </Box>
           <motion.div
               drag
-              dragConstraints={{top: 10, left: 10, right: 10, bottom: 10}}
+              dragConstraints={{top: 5, left: 5, right: 5, bottom: 5}}
               className="hero-image"
               onPointerDown={handlePointerDown}
               onMouseMove={handleMouseMove}

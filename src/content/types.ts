@@ -78,7 +78,7 @@ export interface PassionEntityType {
 }
 
 export interface PassionsType extends SectionType {
-  passions: PassionEntityType
+  passions: PassionEntityType[]
 }
 
 export interface SectionType {

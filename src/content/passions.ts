@@ -1,6 +1,8 @@
-import {SectionType} from '@/content/types';
+import {PassionsType} from '@/content/types';
 
-export const passions:SectionType = {
+export const passions: PassionsType = {
   comment: "// passions",
-  title: "Passions & Hobbies"
-}
+  title: "Passions & Hobbies",
+  statement: "Passions & Hobbies",
+  passions: [],
+};
