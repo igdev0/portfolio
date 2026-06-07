@@ -71,6 +71,16 @@ export interface HeroType extends SectionType {
   image: ImageType;
 }
 
+export interface PassionEntityType {
+  image: ImageType;
+  bio: string;
+  content: string;
+}
+
+export interface PassionsType extends SectionType {
+  passions: PassionEntityType
+}
+
 export interface SectionType {
   comment?: string;
   title: string;
