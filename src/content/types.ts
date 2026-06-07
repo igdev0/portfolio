@@ -1,4 +1,4 @@
-import {IconNames} from '@/components/lib/social';
+import {IconNames} from '@/components/lib/icons';
 
 export interface ConfigType {
   animationDuration: number;

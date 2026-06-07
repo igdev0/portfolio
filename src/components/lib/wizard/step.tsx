@@ -1,7 +1,7 @@
 "use client";
 import {Fragment, useContext, useLayoutEffect} from 'react';
 import {WizardContext} from '@/components/lib/wizard/context';
-import Icon, {IconNames} from '@/components/lib/social';
+import Icon, {IconNames} from '@/components/lib/icons';
 import {ZodType} from 'zod';
 
 interface WizardBaseField {

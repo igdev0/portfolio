@@ -1,9 +1,9 @@
-import Icon, {IconNames} from '@/components/lib/social';
+import Icon, {IconNames} from '@/components/lib/icons';
 import "./index.css";
 import {cva, VariantProps} from 'class-variance-authority';
 import clsx from 'clsx';
 
-export const iconButtonVariants = cva('social-button', {
+export const iconButtonVariants = cva('icons-button', {
   variants: {
     size: {
       sm: 'sm'
