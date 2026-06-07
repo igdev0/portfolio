@@ -18,9 +18,9 @@ export default function LandingPage() {
       <>
         <Nav {...nav} github={contact.github}/>
         <Hero {...hero}/>
-        <Skills {...stack}/>
         <Passions {...passions}/>
         <Expertise {...experience}/>
+        <Skills {...stack}/>
         <Collaborate {...collaborate}/>
         <Footer/>
       </>

@@ -6,12 +6,16 @@ const nav: NavType = {
   brand,
   links: [
     {
-      text: "Profile",
-      href: "#skills",
+      text: "Passions",
+      href: "#passions",
     },
     {
       text: "Experience",
       href: "#experience",
+    },
+    {
+      text: "Tech Stack",
+      href: "#skills",
     },
     {
       text: "Lets Build",

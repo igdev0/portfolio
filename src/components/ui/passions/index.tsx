@@ -10,7 +10,7 @@ import {AnimatedHeading} from '@/components/lib/heading';
 export default function Passions(props: PassionsType) {
   const {title, comment, passions, statement} = props;
   return (
-      <div className="passions">
+      <div className="passions" id="passions">
         <Container className="pt-20">
           <AnimatedComment whileInView={{opacity: 1, y: 0}} initial={{y: 20, opacity: 0}}>{comment}</AnimatedComment>
           <AnimatedHeading whileInView={{opacity: 1, y: 0}} initial={{y: 20, opacity: 0}} as="h2"
