@@ -1,6 +1,5 @@
 import {Draggable} from 'animejs';
 import {RefObject} from 'react';
-import {StackKey} from '@/components/lib/tech-stack/index';
 
 export const calcDistance = (x: number, y: number) => {
   return Math.sqrt(x ** 2 + y ** 2);
@@ -24,7 +23,7 @@ export const calcFrames = (active: number, stackKeys: string[]) => {
 
     const distance = Math.abs(delta);
     return {
-      key: key as StackKey,
+      key: key as string,
       distance,
       offset: active === index ? 0 : delta * 30,
       z: total - distance,

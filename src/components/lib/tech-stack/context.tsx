@@ -55,7 +55,7 @@ interface FrameRef {
   i: number;
 }
 
-export function TechStackProvider(props: PropsWithChildren & Record<"data", typeof profile.stack.tech>) {
+export function TechStackProvider(props: PropsWithChildren & Record<"data", typeof profile.stack.skills>) {
   const [active, setActive] = useState(0);
   const [draws, setDraws] = useState<PathData[]>([]);
   const cards = useRef<HTMLDivElement[]>([]);
