@@ -21,7 +21,7 @@ export default function Hero(props: HeroType) {
   const z = useMotionValue(1);
   const scaleZ = useSpring(z);
 
-  const xy = useTransform(scaleZ, [1, 1.2], [1, 25])
+  const xy = useTransform(scaleZ, [1, 1.2], [1, 10])
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
