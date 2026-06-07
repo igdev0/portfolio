@@ -46,8 +46,8 @@ export default function Hero(props: HeroType) {
 
   return (
       <Box className="hero" as="header" id="top">
-        <Container className="hero__layout">
-          <Box className="hero__column">
+        <Container className="hero-layout">
+          <Box className="hero-content">
             <Comment className="comment mb-3">
               {comment}
             </Comment>
@@ -69,7 +69,7 @@ export default function Hero(props: HeroType) {
             </Box>
           </Box>
           <div
-              className="hero__column hero__column--image"
+              className="hero-image"
               onMouseMove={handleMouseMove}
               onMouseLeave={handleMouseLeave}>
             <AnimatedImage draggable={false}
