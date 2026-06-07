@@ -8,6 +8,7 @@ import Container from '@/components/lib/container';
 import Box from '@/components/lib/box';
 import Comment from '@/components/lib/comment';
 import {HeroType} from '@/content/types';
+import Heading from '@/components/lib/heading';
 
 const corners = clsx(`absolute h-1/9 w-1/9 m-4 border-r-12 border-b-12 border-(--surface-1)`);
 
@@ -20,10 +21,12 @@ export default function Hero(props: HeroType) {
             <Comment className="comment mb-3">
               {comment}
             </Comment>
-            <h1
-                className="text-5xl mb-6 font-bold">{title}
-            </h1>
-            <Statement className="mb-6 max-w-96">
+            <Heading
+                as="h1"
+                transition={{delay: .3}}
+                className="text-5xl mb-6 font-bold">{title}</Heading>
+            <Statement className="mb-6 max-w-96"
+                       transition={{delay: .4}}>
               {statement}
             </Statement>
             <Box className="flex gap-4">

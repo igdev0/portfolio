@@ -1,21 +1,20 @@
 import "./index.css";
-import {cva} from 'class-variance-authority';
-import Html from '@/components/lib/html';
+import {AnimatedHtml} from '@/components/lib/html';
 import {PropsWithChildren} from 'react';
+import {Transition} from 'motion';
+import clsx from 'clsx';
 
 interface Props {
   className?: string;
+  transition?: Transition;
 }
 
-export const statementVariants = cva('statement', {
-  variants: {}
-});
-
 export default function Statement(props: Props & PropsWithChildren) {
-  const {className = '', children, ...variants} = props;
+  const {className = '', children, transition} = props;
   return (
-      <Html className={`${statementVariants(variants)} ${className}`}>
+      <AnimatedHtml className={clsx('statement', className)} whileInView={{opacity: 1, y: 0}} transition={transition}
+                    initial={{opacity: 0, y: 20}}>
         {children}
-      </Html>
+      </AnimatedHtml>
   );
 }
