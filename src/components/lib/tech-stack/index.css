@@ -12,7 +12,7 @@
         @apply flex w-full relative gap-3 justify-between flex-wrap items-center;
 
         .stack-controllers {
-            @apply w-auto mb-10;
+            @apply w-auto pb-10;
 
             button {
                 @apply w-fit relative;

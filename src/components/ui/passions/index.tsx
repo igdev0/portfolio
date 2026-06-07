@@ -1,24 +1,33 @@
+"use client";
 import {PassionsType} from '@/content/types';
-import Comment from '@/components/lib/comment';
+import {AnimatedComment} from '@/components/lib/comment';
 import Statement from '@/components/lib/statement';
-import Image from 'next/image';
 import Container from '@/components/lib/container';
+import "./styles.css";
+import {motion} from 'framer-motion';
+import {AnimatedHeading} from '@/components/lib/heading';
 
 export default function Passions(props: PassionsType) {
   const {title, comment, passions, statement} = props;
   return (
       <div className="passions">
-        <Container>
-          <Comment>{comment}</Comment>
-          <h1 className="text-3xl">{title}</h1>
+        <Container className="pt-20">
+          <AnimatedComment whileInView={{opacity: 1, y: 0}} initial={{y: 20, opacity: 0}}>{comment}</AnimatedComment>
+          <AnimatedHeading whileInView={{opacity: 1, y: 0}} initial={{y: 20, opacity: 0}} as="h2"
+                           className="text-3xl">{title}</AnimatedHeading>
           <Statement>{statement}</Statement>
           <div className="passions-grid">
             {
               passions.map((passion, index) => (
-                  <div className="passion-card" key={index}>
-                    <Image {...passion.image}/>
-                    <p>{passion.bio}</p>
-                  </div>
+                  <motion.div whileInView={{opacity: 1, y: 0}} initial={{y: 20, opacity: 0}}
+                              transition={{delay: index * .1}} viewport={{once: true}}
+                              className="passion-card" key={index}>
+                    <div className="card-image" style={{backgroundImage: `url(${passion.image.src})`}}/>
+                    <div className="card-content">
+                      <h3 className="text-2xl">{passion.title}</h3>
+                      <p className="bio">{passion.bio}</p>
+                    </div>
+                  </motion.div>
               ))
             }
           </div>

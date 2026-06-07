@@ -75,6 +75,7 @@ export interface PassionEntityType {
   image: ImageType;
   bio: string;
   content: string;
+  title: string;
 }
 
 export interface PassionsType extends SectionType {

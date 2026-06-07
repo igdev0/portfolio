@@ -6,6 +6,10 @@ html {
     @apply scroll-smooth;
 }
 
+
+@utility image-filter {
+    @apply sepia-20 hue-rotate-220 saturate-120;
+}
 @variant dark {
     --grid: var(--color-gray-700);
     --button-solid: var(--color-accent-600);
