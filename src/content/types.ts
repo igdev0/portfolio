@@ -24,6 +24,17 @@ export interface TechType {
   }
 }
 
+export interface ExperienceEntityType {
+  title: string;
+  tags: string[];
+  contributions: string[];
+  links: LinkType[];
+}
+
+export interface ExperienceTimelineType extends SectionType {
+  roles: ExperienceEntityType[];
+}
+
 export interface SkillsType extends SectionType {
   skills: TechType;
 }

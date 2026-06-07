@@ -1,8 +1,10 @@
-export const experience = {
+import {ExperienceEntityType, ExperienceTimelineType} from '@/content/types';
+
+export const experience:ExperienceTimelineType = {
   comment: "// Work experience",
   title: "{Experience}",
   statement: "I have over 5 years of experience in web development",
-  experiences: [
+  roles: [
     {
       title: "[Independent Engineer]",
       tags: ['Self-Employed', 'September 2024 → Now'],
@@ -20,7 +22,7 @@ export const experience = {
           text: "BeeFunded",
         },
       ],
-      done: [
+      contributions: [
         "Explored Rust systems programming through hands-on projects and language fundamentals.",
         "Explored blockchain and decentralized application architectures.",
         "Completed the Alchemy Ethereum and Solidity bootcamp focused on smart contract development.",
@@ -32,7 +34,7 @@ export const experience = {
     {
       title: "[Frontend Engineer]",
       tags: ["Input Output Global", "Full-Time", "Remote", "April 2022 → April 2024"],
-      done: [
+      contributions: [
         "Led frontend development and UX implementation for internal tools, documentation platform, public-facing websites, and prototypes within the Atala PRISM (Identus Hyperledger) ecosystem.",
         "Collaborated with cross-functional teams on ideation, rapid prototyping, and delivery of MVPs leveraging the Atala PRISM SSI agent, accelerating early product validation.",
         "Built and maintained a shared component library using Styled Components and Storybook, translating Figma designs into reusable, scalable UI components, improving frontend consistency and accelerating development.",
@@ -49,7 +51,7 @@ export const experience = {
     {
       title: "[Full-Stack Developer]",
       tags: ["Finer Vision", "Full-Time", "Hybrid", "December 2020 → February 2022"],
-      done: [
+      contributions: [
         "Designed, developed, and maintained offline-first medical applications using Expo and React Native within a small Agile team, focusing on reliability in constrained environments.",
         "Modernized and extended React codebases by delivering production features, client-driven enhancements, and critical bug fixes across multiple applications.",
         "Translated Figma/XD designs into responsive, accessible, cross-browser interfaces, ensuring consistent UX across applications.",
@@ -74,5 +76,5 @@ export const experience = {
       ],
 
     },
-  ]
+  ] as ExperienceEntityType[]
 };

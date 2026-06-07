@@ -2,22 +2,9 @@ import Comment from '@/components/lib/comment';
 import Container from '@/components/lib/container';
 import Statement from '@/components/lib/statement';
 import LinkButton from '@/components/lib/link-button';
-import {experience} from '@/content/experience';
 import Tag from '@/components/lib/tag';
 import "./index.css";
-
-
-interface ExternalLink {
-  href: string;
-  text: string;
-}
-
-export interface ExperienceProps {
-  title: string;
-  tags: string[];
-  done: string[];
-  links: ExternalLink[];
-}
+import {ExperienceEntityType, ExperienceTimelineType} from '@/content/types';
 
 
 /**
@@ -25,7 +12,7 @@ export interface ExperienceProps {
  * @param props
  * @constructor
  */
-function Experience(props: ExperienceProps) {
+function Experience(props: ExperienceEntityType) {
   return (
       <div className="experience">
         <div className="timeline relative">
@@ -46,8 +33,8 @@ function Experience(props: ExperienceProps) {
           </div>
           <ul className="experience-contributions my-4">
             {
-              props.done?.map((responsibility, index) => (
-                  <li key={index}>{responsibility}</li>
+              props.contributions?.map((contribution, index) => (
+                  <li key={index}>{contribution}</li>
               ))
             }
           </ul>
@@ -71,24 +58,21 @@ function Experience(props: ExperienceProps) {
   );
 }
 
-export interface TimelineProps {
-  data: typeof experience;
-}
 
-export default function Timeline(props: TimelineProps) {
-  const {data} = props;
+export default function Expertise(props: ExperienceTimelineType) {
+  const {comment, title, statement, roles} = props;
   return (
       <Container className="pt-40" id="experience">
-        <Comment>{data.comment}</Comment>
-        <h1 className="text-4xl font-bold mt-3">{data.title}</h1>
+        <Comment>{comment}</Comment>
+        <h1 className="text-4xl font-bold mt-3">{title}</h1>
         <Statement className="mb-6">
-          {data.statement}
+          {statement}
         </Statement>
         <div className="relative mt-6">
           <div
               className="border-l-2 mt-6 border-(--grid) border-dashed h-full absolute left-0 translate-x-2.5 -z-1"/>
           {
-            data.experiences.map((experience, index) => (
+            roles.map((experience, index) => (
                 <Experience key={index} {...experience}/>
             ))
           }

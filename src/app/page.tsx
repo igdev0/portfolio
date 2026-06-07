@@ -17,7 +17,7 @@ export default function LandingPage() {
         <Nav data={nav}/>
         <Hero {...hero}/>
         <Profile {...profile}/>
-        <Expertise data={experience}/>
+        <Expertise {...experience}/>
         <Collaborate {...collaborate}/>
         <Footer/>
       </>
