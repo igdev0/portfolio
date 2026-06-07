@@ -1,3 +1,4 @@
+"use client";
 import "../button/index.css";
 import {AppLinkProps} from '@/components/lib/link';
 import {buttonVariants} from '@/components/lib/button';
@@ -17,9 +18,9 @@ export default function LinkButton(props: LinkButtonProps) {
       <Link
           className={`${buttonVariants(variants)} icon--${variants.aspect === 'square' ? '' : iconPosition} ${external ? 'social--external' : ''} ${className}`}
           href={href} target={external ? "_blank" : "_self"}>
-        {icon && iconPosition === 'left' &&<Icon name={icon}/>}
+        {icon && iconPosition === 'left' && <Icon name={icon}/>}
         {children}
-        {icon && iconPosition === 'right' &&<Icon name={icon}/>}
+        {icon && iconPosition === 'right' && <Icon name={icon}/>}
       </Link>
   );
 }

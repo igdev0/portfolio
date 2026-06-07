@@ -9,8 +9,6 @@ import IconButton from '@/components/lib/icon-button';
 import Container from '@/components/lib/container';
 import {NavType} from '@/content/types';
 import LinkButton from '@/components/lib/link-button';
-import useConfig from '@/hooks/use-config';
-import {stagger} from 'motion';
 
 export interface NavProps extends NavType {
   github: string;
@@ -21,7 +19,6 @@ export const AnimatedLink = motion(Link);
 export default function Nav(props: NavProps) {
   const {theme, setTheme} = useTheme();
   const {scrollYProgress} = useScroll();
-  const config = useConfig();
   const [menuOpen, setMenuOpen] = useState(false);
   const {brand, links} = props;
 
@@ -30,25 +27,20 @@ export default function Nav(props: NavProps) {
         <motion.div className="w-full h-1 bg-accent-500 origin-left fixed top-0 left-0 right-0 z-10"
                     style={{scaleX: scrollYProgress}}/>
         <Container className="nav__layout">
-          <AnimatedLink className="nav__link nav__brand" draggable={false}
-                        whileInView={{opacity: 1}}
-                        initial={{opacity: 0}}
+          <Link className="nav__link nav__brand" draggable={false}
                         href="#"
                         dangerouslySetInnerHTML={{__html: brand}}/>
           <div className="nav__list">
-            <MotionConfig transition={{delayChildren: stagger(1000)}}>
+            <MotionConfig transition={{delayChildren: 100000}}>
 
               {
                 links.map((entry, index) => (
-                    <AnimatedLink className="nav__link"
+                    <Link className="nav__link"
                                   key={index}
-                                  whileInView={{opacity: 1}}
-                                  initial={{opacity: 0}}
-                                  transition={{duration: config.animationDuration, delay: .1 * index}}
                                   draggable={false}
                                   href={entry.href}>
                       {entry.text}
-                    </AnimatedLink>
+                    </Link>
                 ))
               }
             </MotionConfig>
