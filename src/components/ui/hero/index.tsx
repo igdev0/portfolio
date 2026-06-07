@@ -92,20 +92,35 @@ export default function Hero(props: HeroType) {
                            height={393}
                            alt={image.alt}/>
             <motion.div
+                initial={{opacity: 0, scale: .5}}
+                whileInView={{opacity: 1, scale: 1}}
+                transition={{delay: .6}}
                 style={{scale: scaleZ}}
                 className="bg-(--surface-1) w-3/5 h-3/5 absolute -z-1 top-0 left-0 right-0 bottom-0 m-auto"/>
 
             <motion.div
                 style={{x: xy, y: xy}}
+                initial={{opacity: 0}}
+                whileInView={{opacity: 1}}
+                transition={{delay: .9}}
                 className={clsx(corners, 'rotate-180 top-3 left-0')}/>
             <motion.div
                 style={{x: xy, y: xy}}
+                initial={{opacity: 0}}
+                whileInView={{opacity: 1}}
+                transition={{delay: .9}}
                 className={clsx(corners, 'rotate-90 left-0 bottom-0')}/>
             <motion.div
                 style={{x: xy, y: xy}}
+                initial={{opacity: 0}}
+                whileInView={{opacity: 1}}
+                transition={{delay: .9}}
                 className={clsx(corners, 'right-0 bottom-0')}/>
             <motion.div
                 style={{x: xy, y: xy}}
+                initial={{opacity: 0}}
+                whileInView={{opacity: 1}}
+                transition={{delay: .9}}
                 className={clsx(corners, '-rotate-90 right-0 top-3')}/>
           </motion.div>
         </Container>
