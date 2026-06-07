@@ -14,8 +14,6 @@ export interface NavProps extends NavType {
   github: string;
 }
 
-export const AnimatedLink = motion(Link);
-
 export default function Nav(props: NavProps) {
   const {theme, setTheme} = useTheme();
   const {scrollYProgress} = useScroll();
