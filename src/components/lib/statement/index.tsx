@@ -13,7 +13,7 @@ export default function Statement(props: Props & PropsWithChildren) {
   const {className = '', children, transition} = props;
   return (
       <AnimatedHtml className={clsx('statement', className)} whileInView={{opacity: 1, y: 0}} transition={transition}
-                    initial={{opacity: 0, y: 20}}>
+                    initial={{opacity: 0, y: 20}} viewport={{once: true}}>
         {children}
       </AnimatedHtml>
   );
