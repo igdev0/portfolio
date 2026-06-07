@@ -7,7 +7,7 @@ const nav: NavType = {
   links: [
     {
       text: "Profile",
-      href: "#profile",
+      href: "#skills",
     },
     {
       text: "Experience",

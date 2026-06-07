@@ -1,11 +1,11 @@
 import {createContext, PropsWithChildren, RefObject, useMemo, useRef, useState} from 'react';
-import {profile} from '@/content/profile';
 import {calcFrames} from '@/components/lib/tech-stack/utils';
+import {stack} from '@/content/stack';
 
 export interface TechStackContext {
   active: number;
-  data: typeof profile.stack.skills;
-  keys: (keyof typeof profile.stack.skills)[];
+  data: typeof stack.skills;
+  keys: (keyof typeof stack.skills)[];
   controllers: RefObject<HTMLButtonElement[]>;
   cards: RefObject<HTMLDivElement[]>;
   activeRef: RefObject<number>;
@@ -32,7 +32,7 @@ export const TechStackContext = createContext<TechStackContext>({
   active: 0,
   setActive: () => {
   },
-  data: profile.stack.skills,
+  data: stack.skills,
   keys: [],
   cards: {current: []},
   controllers: {current: []},
@@ -55,7 +55,7 @@ interface FrameRef {
   i: number;
 }
 
-export function TechStackProvider(props: PropsWithChildren & Record<"data", typeof profile.stack.skills>) {
+export function TechStackProvider(props: PropsWithChildren & Record<"data", typeof stack.skills>) {
   const [active, setActive] = useState(0);
   const [draws, setDraws] = useState<PathData[]>([]);
   const cards = useRef<HTMLDivElement[]>([]);
@@ -65,7 +65,7 @@ export function TechStackProvider(props: PropsWithChildren & Record<"data", type
   const controllers = useRef<HTMLButtonElement[]>([]);
   const rafRef = useRef<number | null>(null);
   const activeRef = useRef(active);
-  const keys = Object.keys(profile.stack.skills) as TechStackContext['keys'];
+  const keys = Object.keys(stack.skills) as TechStackContext['keys'];
 
   const frames = useMemo<FrameRef[]>(() => {
     return calcFrames(active, keys as string[]);
@@ -123,7 +123,7 @@ export function TechStackProvider(props: PropsWithChildren & Record<"data", type
         calculateDraws,
         active,
         setActive,
-        data: profile.stack.skills,
+        data: stack.skills,
         keys,
         frames,
         pathRef,

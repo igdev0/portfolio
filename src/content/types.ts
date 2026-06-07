@@ -49,7 +49,6 @@ export interface SkillsType extends SectionType {
 }
 
 export interface ProfileType extends SectionType {
-  bio: string;
   stack: SkillsType;
 }
 

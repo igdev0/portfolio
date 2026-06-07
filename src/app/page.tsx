@@ -1,14 +1,14 @@
 import Nav from '@/components/ui/nav';
 import Hero from '@/components/ui/hero';
-import Profile from '@/components/ui/profile';
+import Skills from '@/components/ui/skills';
 import Expertise from '@/components/lib/experience';
 import nav from '@/content/nav';
 import hero from '@/content/hero';
-import {profile} from '@/content/profile';
 import {experience} from '@/content/experience';
 import Footer from '@/components/lib/footer';
 import {collaborate, contact} from '@/content/collaborate';
 import Collaborate from '@/components/lib/collaborate';
+import {stack} from '@/content/stack';
 
 
 export default function LandingPage() {
@@ -16,7 +16,7 @@ export default function LandingPage() {
       <>
         <Nav {...nav} github={contact.github}/>
         <Hero {...hero}/>
-        <Profile {...profile}/>
+        <Skills {...stack}/>
         <Expertise {...experience}/>
         <Collaborate {...collaborate}/>
         <Footer/>

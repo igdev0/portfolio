@@ -6,7 +6,7 @@ import Image from 'next/image';
 import "./index.css";
 import Container from '@/components/lib/container';
 import Box from '@/components/lib/box';
-import Comment from '@/components/lib/comment';
+import {AnimatedComment} from '@/components/lib/comment';
 import {HeroType} from '@/content/types';
 import Heading from '@/components/lib/heading';
 import {motion, useDragControls, useMotionValue, useSpring, useTransform} from 'framer-motion';
@@ -54,9 +54,9 @@ export default function Hero(props: HeroType) {
       <Box className="hero" as="header" id="top">
         <Container className="hero-layout">
           <Box className="hero-content">
-            <Comment className="comment mb-3" transition={{delay: 1}}>
+            <AnimatedComment className="mb-3" whileInView={{opacity: 1, y: 0}} initial={{opacity: 0, y: 0}} transition={{delay: .6}}>
               {comment}
-            </Comment>
+            </AnimatedComment>
             <Heading
                 as="h1"
                 transition={{delay: 1.2}}
