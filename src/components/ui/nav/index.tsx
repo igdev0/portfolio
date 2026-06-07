@@ -1,7 +1,7 @@
 "use client";
 import Link from 'next/dist/client/link';
 import "./index.css";
-import {motion, useScroll} from 'framer-motion';
+import {motion, MotionConfig, useScroll} from 'framer-motion';
 import {useTheme} from 'next-themes';
 import clsx from 'clsx';
 import {useState} from 'react';
@@ -9,32 +9,49 @@ import IconButton from '@/components/lib/icon-button';
 import Container from '@/components/lib/container';
 import {NavType} from '@/content/types';
 import LinkButton from '@/components/lib/link-button';
+import useConfig from '@/hooks/use-config';
+import {stagger} from 'motion';
 
 export interface NavProps extends NavType {
   github: string;
 }
 
+export const AnimatedLink = motion(Link);
+
 export default function Nav(props: NavProps) {
   const {theme, setTheme} = useTheme();
   const {scrollYProgress} = useScroll();
+  const config = useConfig();
   const [menuOpen, setMenuOpen] = useState(false);
   const {brand, links} = props;
 
   return (
       <nav className="nav">
-        <motion.div className="w-full h-1 bg-accent-500 origin-left fixed top-0 left-0 right-0 z-10" style={{scaleX: scrollYProgress}}/>
+        <motion.div className="w-full h-1 bg-accent-500 origin-left fixed top-0 left-0 right-0 z-10"
+                    style={{scaleX: scrollYProgress}}/>
         <Container className="nav__layout">
-          <Link draggable={false} className="nav__link nav__brand" href="#"
-                dangerouslySetInnerHTML={{__html: brand}}/>
+          <AnimatedLink className="nav__link nav__brand" draggable={false}
+                        whileInView={{opacity: 1}}
+                        initial={{opacity: 0}}
+                        href="#"
+                        dangerouslySetInnerHTML={{__html: brand}}/>
           <div className="nav__list">
-            {
-              links.map((entry, key) => (
-                  <Link draggable={false} key={key} className="nav__link"
-                        href={entry.href}>
-                    {entry.text}
-                  </Link>
-              ))
-            }
+            <MotionConfig transition={{delayChildren: stagger(1000)}}>
+
+              {
+                links.map((entry, index) => (
+                    <AnimatedLink className="nav__link"
+                                  key={index}
+                                  whileInView={{opacity: 1}}
+                                  initial={{opacity: 0}}
+                                  transition={{duration: config.animationDuration, delay: .1 * index}}
+                                  draggable={false}
+                                  href={entry.href}>
+                      {entry.text}
+                    </AnimatedLink>
+                ))
+              }
+            </MotionConfig>
           </div>
           <div className="nav__buttons">
             <LinkButton href={props.github} icon="github" aspect="square" size="xs" variant="ghost" external/>

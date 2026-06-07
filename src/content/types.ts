@@ -1,5 +1,9 @@
 import {IconNames} from '@/components/lib/social';
 
+export interface ConfigType {
+  animationDuration: number;
+}
+
 export type IconType = IconNames;
 export interface ContactType {
   linkedin: string;
