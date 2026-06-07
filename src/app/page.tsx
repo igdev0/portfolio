@@ -14,7 +14,7 @@ import Collaborate from '@/components/lib/collaborate';
 export default function LandingPage() {
   return (
       <>
-        <Nav data={nav}/>
+        <Nav {...nav}/>
         <Hero {...hero}/>
         <Profile {...profile}/>
         <Expertise {...experience}/>

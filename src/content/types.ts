@@ -9,6 +9,11 @@ export interface ContactType {
   calendly: string;
 }
 
+export interface NavType {
+  brand: string;
+  links: LinkType[];
+}
+
 export interface CollaborateType extends SectionType {
   contact: ContactType
 }
@@ -53,7 +58,7 @@ export interface ImageType {
 
 export interface LinkType {
   href: string;
-  icon: IconType;
+  icon?: IconType;
   text: string;
 }
 
