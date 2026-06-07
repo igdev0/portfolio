@@ -1,6 +1,7 @@
 "use client";
 import Link from 'next/dist/client/link';
 import "./index.css";
+import {motion, useScroll} from 'framer-motion';
 import {useTheme} from 'next-themes';
 import clsx from 'clsx';
 import {useState} from 'react';
@@ -15,10 +16,13 @@ export interface NavProps extends NavType {
 
 export default function Nav(props: NavProps) {
   const {theme, setTheme} = useTheme();
+  const {scrollYProgress} = useScroll();
   const [menuOpen, setMenuOpen] = useState(false);
   const {brand, links} = props;
+
   return (
       <nav className="nav">
+        <motion.div className="w-full h-1 bg-accent-500 origin-left fixed top-0 left-0 right-0 z-10" style={{scaleX: scrollYProgress}}/>
         <Container className="nav__layout">
           <Link draggable={false} className="nav__link nav__brand" href="#"
                 dangerouslySetInnerHTML={{__html: brand}}/>
