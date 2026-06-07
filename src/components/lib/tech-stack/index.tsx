@@ -1,13 +1,13 @@
 import {useContext, useLayoutEffect} from 'react';
 import useResizeObserver from '@/hooks/use-resize-observer';
 import "./index.css";
-import {stack} from '@/content/profile';
 import {TechStackContext} from '@/components/lib/tech-stack/context';
 import TechStackControllers from '@/components/lib/tech-stack/controllers';
 import TechStackCards from '@/components/lib/tech-stack/cards';
 import TechStackOverlay from '@/components/lib/tech-stack/overlay';
+import {stack} from '@/content/stack';
 
-export type StackKey = keyof typeof stack;
+export type StackKey = keyof typeof stack.skills;
 
 export default function TechStack() {
   const {

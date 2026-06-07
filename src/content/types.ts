@@ -8,9 +8,31 @@ export interface ContactType {
   email: string;
   calendly: string;
 }
+
 export interface CollaborateType extends SectionType {
   contact: ContactType
 }
+
+export interface TechType {
+  [key: string]: {
+    icon: IconType,
+    tabs: {
+      [key: string]: {
+        statement: string;
+      }
+    }
+  }
+}
+
+export interface SkillsType extends SectionType {
+  skills: TechType;
+}
+
+export interface ProfileType extends SectionType {
+  bio: string;
+  stack: SkillsType;
+}
+
 export interface ImageType {
   width: number;
   height: number;
@@ -31,7 +53,7 @@ export interface HeroType extends SectionType {
 }
 
 export interface SectionType {
-  comment: string;
+  comment?: string;
   title: string;
-  statement: string;
+  statement?: string;
 }

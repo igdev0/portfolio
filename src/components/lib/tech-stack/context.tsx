@@ -4,8 +4,8 @@ import {calcFrames} from '@/components/lib/tech-stack/utils';
 
 export interface TechStackContext {
   active: number;
-  data: typeof profile.stack.tech;
-  keys: (keyof typeof profile.stack.tech)[];
+  data: typeof profile.stack.skills;
+  keys: (keyof typeof profile.stack.skills)[];
   controllers: RefObject<HTMLButtonElement[]>;
   cards: RefObject<HTMLDivElement[]>;
   activeRef: RefObject<number>;
@@ -32,7 +32,7 @@ export const TechStackContext = createContext<TechStackContext>({
   active: 0,
   setActive: () => {
   },
-  data: profile.stack.tech,
+  data: profile.stack.skills,
   keys: [],
   cards: {current: []},
   controllers: {current: []},
@@ -65,7 +65,7 @@ export function TechStackProvider(props: PropsWithChildren & Record<"data", type
   const controllers = useRef<HTMLButtonElement[]>([]);
   const rafRef = useRef<number | null>(null);
   const activeRef = useRef(active);
-  const keys = Object.keys(profile.stack.tech) as TechStackContext['keys'];
+  const keys = Object.keys(profile.stack.skills) as TechStackContext['keys'];
 
   const frames = useMemo<FrameRef[]>(() => {
     return calcFrames(active, keys as string[]);
@@ -123,7 +123,7 @@ export function TechStackProvider(props: PropsWithChildren & Record<"data", type
         calculateDraws,
         active,
         setActive,
-        data: profile.stack.tech,
+        data: profile.stack.skills,
         keys,
         frames,
         pathRef,
