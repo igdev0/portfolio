@@ -2,8 +2,13 @@
 
 @layer components {
     .statement {
-        --statement: var(--color-accent-300);
-        @apply border-l-4 pl-4 border-(--statement) mb-4 mt-4;
-
+        --statement: var(--color-gray-100);
+        @apply border-l-4 pl-4 mb-4 mt-4 w-fit py-1 pr-2;
+        @apply border-l-accent-300;
+        @apply bg-(--statement);
+        @apply rounded-r-sm;
+        @variant dark {
+            --statement: var(--color-gray-800);
+        }
     }
 }
