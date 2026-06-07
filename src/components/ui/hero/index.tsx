@@ -9,7 +9,8 @@ import Box from '@/components/lib/box';
 import Comment from '@/components/lib/comment';
 import {HeroType} from '@/content/types';
 import Heading from '@/components/lib/heading';
-import {motion, useMotionValue, useSpring, useTransform} from 'framer-motion';
+import {motion, useDragControls, useMotionValue, useSpring, useTransform} from 'framer-motion';
+import {PointerEventHandler} from 'react';
 
 const corners = clsx(`absolute h-1/9 w-1/9 m-4 border-r-12 border-b-12 border-(--surface-1)`);
 
@@ -17,11 +18,12 @@ const AnimatedImage = motion(Image);
 
 export default function Hero(props: HeroType) {
   const {cta0, cta1, image, comment, title, statement} = props;
+  const controls = useDragControls();
 
   const z = useMotionValue(1);
   const scaleZ = useSpring(z);
 
-  const xy = useTransform(scaleZ, [1, 1.2], [1, 10])
+  const xy = useTransform(scaleZ, [1, 1.2], [1, 10]);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -42,6 +44,10 @@ export default function Hero(props: HeroType) {
   const handleMouseLeave = () => {
     z.set(1);
   };
+
+  const handlePointerDown: PointerEventHandler = (e) => {
+    controls.start(e);
+  }
 
 
   return (
@@ -68,8 +74,11 @@ export default function Hero(props: HeroType) {
               </LinkButton>
             </Box>
           </Box>
-          <div
+          <motion.div
+              drag
+              dragConstraints={{top: 10, left: 10, right: 10, bottom: 10}}
               className="hero-image"
+              onPointerDown={handlePointerDown}
               onMouseMove={handleMouseMove}
               onMouseLeave={handleMouseLeave}>
             <AnimatedImage draggable={false}
@@ -98,7 +107,7 @@ export default function Hero(props: HeroType) {
             <motion.div
                 style={{x: xy, y: xy}}
                 className={clsx(corners, '-rotate-90 right-0 top-3')}/>
-          </div>
+          </motion.div>
         </Container>
       </Box>
   );
