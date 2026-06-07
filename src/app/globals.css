@@ -56,17 +56,17 @@ html {
     --color-accent-900: var(--color-indigo-900);
     --color-accent-950: var(--color-indigo-950);
 
-    --color-foundation-50: var(--color-indigo-50);
-    --color-foundation-100: var(--color-indigo-100);
-    --color-foundation-200: var(--color-indigo-200);
-    --color-foundation-300: var(--color-indigo-300);
-    --color-foundation-400: var(--color-indigo-400);
-    --color-foundation-500: var(--color-indigo-500);
-    --color-foundation-600: var(--color-indigo-600);
-    --color-foundation-700: var(--color-indigo-700);
-    --color-foundation-800: var(--color-indigo-800);
-    --color-foundation-900: var(--color-indigo-900);
-    --color-foundation-950: var(--color-indigo-950);
+    --color-foundation-50: var(--color-gray-50);
+    --color-foundation-100: var(--color-gray-100);
+    --color-foundation-200: var(--color-gray-200);
+    --color-foundation-300: var(--color-gray-300);
+    --color-foundation-400: var(--color-gray-400);
+    --color-foundation-500: var(--color-gray-500);
+    --color-foundation-600: var(--color-gray-600);
+    --color-foundation-700: var(--color-gray-700);
+    --color-foundation-800: var(--color-gray-800);
+    --color-foundation-900: var(--color-gray-900);
+    --color-foundation-950: var(--color-gray-950);
 
     /* Breakpoints */
     --breakpoint-3xs: 16rem;

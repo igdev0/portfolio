@@ -1,13 +1,8 @@
 import "./index.css";
 import {PropsWithChildren} from 'react';
-import {cva, VariantProps} from 'class-variance-authority';
 import clsx from 'clsx';
 
-const tagVariants =  cva("tag", {
-  variants: {}
-});
-
-interface TagProps extends PropsWithChildren, VariantProps<typeof tagVariants> {
+interface TagProps extends PropsWithChildren {
   className?: string;
 }
 

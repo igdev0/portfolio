@@ -1,5 +1,7 @@
 @reference "../../../app/globals.css";
 
-@utility tag {
-    @apply px-2 py-1 rounded-sm border  border-foundation-500 dark:border-foundation-700 bg-(--surface-3);
+@layer components {
+    .tag {
+        @apply px-2 py-1 rounded-sm border  border-foundation-500 dark:border-foundation-700 bg-(--surface-3);
+    }
 }
