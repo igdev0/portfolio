@@ -12,7 +12,7 @@ export default function Skills(props: SkillsType) {
 
   return (
       <Container id="skills">
-        <Box as="div" className="mt-20 mb-8">
+        <Box as="div" className="pt-20 mb-8">
           <AnimatedComment whileInView={{opacity: 1, y: 0}} initial={{opacity: 0, y: 20}}>{comment}</AnimatedComment>
           <h2 className="text-4xl font-bold">
             {title}
