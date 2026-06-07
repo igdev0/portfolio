@@ -1,7 +1,16 @@
 import {IconNames} from '@/components/lib/social';
 
 export type IconType = IconNames;
-
+export interface ContactType {
+  linkedin: string;
+  github: string;
+  telegram: string;
+  email: string;
+  calendly: string;
+}
+export interface CollaborateType extends SectionType {
+  contact: ContactType
+}
 export interface ImageType {
   width: number;
   height: number;

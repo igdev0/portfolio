@@ -7,7 +7,7 @@ import hero from '@/content/hero';
 import {profile} from '@/content/profile';
 import {experience} from '@/content/experience';
 import Footer from '@/components/lib/footer';
-import {contact} from '@/content/collaborate';
+import {collaborate} from '@/content/collaborate';
 import Collaborate from '@/components/lib/collaborate';
 
 
@@ -18,7 +18,7 @@ export default function LandingPage() {
         <Hero {...hero}/>
         <Profile data={profile}/>
         <Expertise data={experience}/>
-        <Collaborate data={contact}/>
+        <Collaborate {...collaborate}/>
         <Footer/>
       </>
   );

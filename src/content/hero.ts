@@ -12,7 +12,7 @@ const hero: HeroType = {
   },
   cta1: {
     icon: "chat",
-    href: contact.social.calendar.href,
+    href: contact.calendly,
     text: "Book a call"
   },
   image: {
