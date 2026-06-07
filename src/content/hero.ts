@@ -11,7 +11,7 @@ const hero: HeroType = {
     text: "Let's talk"
   },
   cta1: {
-    icon: "chat",
+    icon: "calendar",
     href: contact.calendly,
     text: "Book a call"
   },
