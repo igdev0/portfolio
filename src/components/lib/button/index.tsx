@@ -7,6 +7,7 @@ export const buttonVariants = cva('button', {
   variants: {
     variant: {
       solid: 'button--solid',
+      ghost: 'button--ghost',
       secondary: 'button--secondary',
       'solid-light': 'button--solid-light',
       outline: 'button--outline',

@@ -7,8 +7,13 @@ import {useState} from 'react';
 import IconButton from '@/components/lib/icon-button';
 import Container from '@/components/lib/container';
 import {NavType} from '@/content/types';
+import LinkButton from '@/components/lib/link-button';
 
-export default function Nav(props: NavType) {
+export interface NavProps extends NavType {
+  github: string;
+}
+
+export default function Nav(props: NavProps) {
   const {theme, setTheme} = useTheme();
   const [menuOpen, setMenuOpen] = useState(false);
   const {brand, links} = props;
@@ -28,6 +33,7 @@ export default function Nav(props: NavType) {
             }
           </div>
           <div className="nav__buttons">
+            <LinkButton href={props.github} icon="github" aspect="square" size="xs" variant="ghost" external/>
             <IconButton icon="sun" onClick={() => setTheme(theme === 'dark' ? "light" : "dark")}/>
             <IconButton className="nav__drawer-toggler" icon="menu" onClick={() => setMenuOpen(true)}></IconButton>
           </div>

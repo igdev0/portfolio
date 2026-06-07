@@ -7,14 +7,14 @@ import hero from '@/content/hero';
 import {profile} from '@/content/profile';
 import {experience} from '@/content/experience';
 import Footer from '@/components/lib/footer';
-import {collaborate} from '@/content/collaborate';
+import {collaborate, contact} from '@/content/collaborate';
 import Collaborate from '@/components/lib/collaborate';
 
 
 export default function LandingPage() {
   return (
       <>
-        <Nav {...nav}/>
+        <Nav {...nav} github={contact.github}/>
         <Hero {...hero}/>
         <Profile {...profile}/>
         <Expertise {...experience}/>
