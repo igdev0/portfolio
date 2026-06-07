@@ -1,5 +1,5 @@
 "use client";
-import LinkButton from '@/components/lib/link-button';
+import {AnimatedLinkButton} from '@/components/lib/link-button';
 import clsx from 'clsx';
 import Statement from '@/components/lib/statement';
 import Image from 'next/image';
@@ -47,31 +47,39 @@ export default function Hero(props: HeroType) {
 
   const handlePointerDown: PointerEventHandler = (e) => {
     controls.start(e);
-  }
+  };
 
 
   return (
       <Box className="hero" as="header" id="top">
         <Container className="hero-layout">
           <Box className="hero-content">
-            <Comment className="comment mb-3">
+            <Comment className="comment mb-3" transition={{delay: 1}}>
               {comment}
             </Comment>
             <Heading
                 as="h1"
-                transition={{delay: .3}}
+                transition={{delay: 1.2}}
                 className="text-5xl mb-6 font-bold">{title}</Heading>
             <Statement className="mb-6 max-w-96"
-                       transition={{delay: .4}}>
+                       transition={{delay: 1.3}}>
               {statement}
             </Statement>
             <Box className="flex gap-4">
-              <LinkButton variant="secondary" href={cta0.href} icon={cta0.icon}>
+              <AnimatedLinkButton
+                  initial={{opacity: 0, y: 20}}
+                  transition={{delay: 1.4}}
+                  whileInView={{opacity: 1, y: 0}}
+                  variant="secondary" href={cta0.href} icon={cta0.icon}>
                 {cta0.text}
-              </LinkButton>
-              <LinkButton variant="solid" href={cta1.href} external icon={cta1.icon}>
+              </AnimatedLinkButton>
+              <AnimatedLinkButton
+                  initial={{opacity: 0, y: 20}}
+                  transition={{delay: 1.5}}
+                  whileInView={{opacity: 1, y: 0}}
+                  variant="solid" href={cta1.href} external icon={cta1.icon}>
                 {cta1.text}
-              </LinkButton>
+              </AnimatedLinkButton>
             </Box>
           </Box>
           <motion.div
