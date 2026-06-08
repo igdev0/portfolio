@@ -9,7 +9,7 @@ export const contact: ContactType = {
 };
 
 export const collaborate: CollaborateType = {
-  comment: "// contact",
+  comment: "// Message",
   title: "{Collaborate}",
   statement: "It all begins with a message, don't be shy.",
   contact

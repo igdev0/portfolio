@@ -10,7 +10,7 @@ import Heading from '@/components/lib/heading';
 export default function Collaborate(props: CollaborateType) {
   const {contact, comment, title, statement} = props;
   return (
-      <Container className="pt-40 pb-4" id="collaborate">
+      <Container className="pt-40 pb-4" id="message">
         <Comment>
           {comment}
         </Comment>
