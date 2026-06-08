@@ -7,9 +7,10 @@ export const contact: ContactType = {
   email: "mailto:ianos.dorultan@gmail.com",
   calendly: "https://calendly.com/dorultanianos/30min",
 };
+
 export const collaborate: CollaborateType = {
-  comment: "// Build",
+  comment: "// contact",
   title: "{Collaborate}",
-  statement: "I'm on the other end, let me know if you need anything.",
+  statement: "It all begins with a message, don't be shy.",
   contact
 } as const;

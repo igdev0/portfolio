@@ -18,8 +18,8 @@ const nav: NavType = {
       href: "#skills",
     },
     {
-      text: "Lets Build",
-      href: "#collaborate",
+      text: "Contact",
+      href: "#contact",
     }
   ],
 };
