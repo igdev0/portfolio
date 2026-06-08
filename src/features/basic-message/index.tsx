@@ -43,7 +43,7 @@ export default function BasicMessage(props: BasicMessageProps) {
             <textarea className="border border-(--grid) p-2 rounded-sm h-30" name="message"
                       value={message}
                       onChange={(event) => setMessage(event.currentTarget.value)}
-                      placeholder="Say Hello ..."/>
+                      placeholder="Type ..."/>
             <Button className="self-end" variant="solid-light" type="submit" icon="send"
                     aspect="square"
                     disabled={message.length === 0}
