@@ -6,7 +6,7 @@
     }
 
     .passions-grid {
-        @apply grid grid-cols-3 gap-6 mt-20;
+        @apply grid 2xl:grid-cols-2 5xl:grid-cols-3 gap-6 mt-20;
     }
 
     .passion-card {
@@ -14,7 +14,7 @@
 
 
         .card-image {
-            @apply h-[16rem] w-full bg-gray-900/90 bg-blend-overlay;
+            @apply h-[16rem] w-full bg-foundation-900/80 bg-blend-overlay;
 
             img {
                 @apply image-filter w-full h-[16rem] object-cover -z-1;
