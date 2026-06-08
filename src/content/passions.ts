@@ -1,8 +1,8 @@
 import {PassionsType} from '@/content/types';
 
 export const passions: PassionsType = {
-  comment: "// Enjoyable",
-  title: "Passions",
+  comment: "// Enjoyables",
+  title: "{Passions}",
   statement: "Always looking to improve in all areas.",
   passions: [
     {
