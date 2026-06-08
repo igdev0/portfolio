@@ -17,7 +17,7 @@ export default function Passions(props: PassionsType) {
           <Heading as="h2"
                    className="text-4xl">{title}</Heading>
           <Statement>{statement}</Statement>
-          <div className="passions-grid">
+          <div className="passions-grid items-center">
             {
               passions.map((passion, index) => (
                   <motion.div whileInView={{opacity: 1, y: 0}} initial={{y: 20, opacity: 0}}
