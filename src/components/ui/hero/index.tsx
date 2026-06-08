@@ -3,7 +3,6 @@ import LinkButton from '@/components/lib/link-button';
 import clsx from 'clsx';
 import Statement from '@/components/lib/statement';
 import Image from 'next/image';
-import "./index.css";
 import Container from '@/components/lib/container';
 import Box from '@/components/lib/box';
 import Comment from '@/components/lib/comment';
@@ -11,9 +10,9 @@ import {HeroType} from '@/content/types';
 import Heading from '@/components/lib/heading';
 import {motion, useDragControls, useMotionValue, useSpring, useTransform} from 'framer-motion';
 import {PointerEventHandler} from 'react';
+import "./index.css";
 
 const corners = clsx(`absolute h-1/9 w-1/9 m-4 border-r-12 border-b-12 border-(--surface-1)`);
-
 const AnimatedImage = motion(Image);
 
 export default function Hero(props: HeroType) {
@@ -60,7 +59,7 @@ export default function Hero(props: HeroType) {
             <Heading
                 as="h1"
                 className="text-5xl mb-6 font-bold">{title}</Heading>
-            <Statement className="mb-6 max-w-96" >
+            <Statement className="mb-6 max-w-96">
               {statement}
             </Statement>
             <Box className="flex gap-4">
@@ -74,7 +73,7 @@ export default function Hero(props: HeroType) {
           </Box>
           <motion.div
               drag
-              dragConstraints={{top: 5, left: 5, right: 5, bottom: 5}}
+              dragConstraints={{top: 0, left: 0, right: 0, bottom: 0}}
               className="hero-image"
               onPointerDown={handlePointerDown}
               onMouseMove={handleMouseMove}
@@ -90,12 +89,13 @@ export default function Hero(props: HeroType) {
                            height={393}
                            alt={image.alt}/>
             <motion.div
+                className="square"
                 initial={{opacity: 0, scale: .5}}
                 whileInView={{opacity: 1, scale: 1}}
+
                 transition={{delay: .6}}
                 viewport={{once: true}}
-                style={{scale: scaleZ}}
-                className="bg-(--surface-1) w-3/5 h-3/5 absolute -z-1 top-0 left-0 right-0 bottom-0 m-auto"/>
+                style={{scale: scaleZ}}/>
 
             <motion.div
                 style={{x: xy, y: xy}}

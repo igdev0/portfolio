@@ -3,7 +3,7 @@ import {ExperienceEntityType, ExperienceTimelineType} from '@/content/types';
 export const experience:ExperienceTimelineType = {
   comment: "// Work experience",
   title: "{Experience}",
-  statement: "I have over 5 years of experience in web development",
+  statement: "More than half-decate in web development",
   roles: [
     {
       title: "[Independent Engineer]",
