@@ -14,14 +14,13 @@
 
 
         .card-image {
-            @apply h-[16rem] w-full bg-foundation-900/80 bg-blend-overlay bg-cover;
-
+            @apply h-[16rem] w-full bg-accent-200/80 dark:bg-foundation-900/80 bg-blend-overlay bg-cover;
         }
 
         .card-content {
             @apply p-3 bg-(--surface-3);
             h3 {
-                @apply text-accent-100 mb-2 font-semibold;
+                @apply dark:text-accent-100 text-foundation-800 mb-2 font-semibold;
             }
         }
     }
