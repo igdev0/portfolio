@@ -14,7 +14,7 @@ export default function Comment(props: CommentProps) {
   const {children, className, ref} = props;
 
   return (
-      <Html className={clsx('comment', className)} ref={ref}>
+      <Html className={clsx('comment mb-3', className)} ref={ref}>
         {children??""}
       </Html>
   );

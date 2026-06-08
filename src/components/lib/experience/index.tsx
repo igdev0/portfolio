@@ -5,6 +5,7 @@ import LinkButton from '@/components/lib/link-button';
 import Tag from '@/components/lib/tag';
 import "./index.css";
 import {ExperienceEntityType, ExperienceTimelineType} from '@/content/types';
+import Heading from '@/components/lib/heading';
 
 
 /**
@@ -64,7 +65,7 @@ export default function Expertise(props: ExperienceTimelineType) {
   return (
       <Container className="pt-40" id="experience">
         <Comment>{comment}</Comment>
-        <h1 className="text-4xl font-bold mt-3">{title}</h1>
+        <Heading as="h2">{title}</Heading>
         <Statement className="mb-6">
           {statement}
         </Statement>

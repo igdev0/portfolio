@@ -54,7 +54,7 @@ export default function Hero(props: HeroType) {
       <Box className="hero" as="header" id="top">
         <Container className="hero-layout">
           <Box className="hero-content">
-            <AnimatedComment className="mb-3"
+            <AnimatedComment
                              viewport={{once: true}}
                              whileInView={{opacity: 1, y: 0}}
                              initial={{opacity: 0, y: 0}}
