@@ -14,11 +14,7 @@
 
 
         .card-image {
-            @apply h-[16rem] w-full bg-foundation-900/80 bg-blend-overlay;
-
-            img {
-                @apply image-filter w-full h-[16rem] object-cover -z-1;
-            }
+            @apply h-[16rem] w-full bg-foundation-900/80 bg-blend-overlay bg-cover;
 
         }
 
