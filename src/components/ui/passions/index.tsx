@@ -1,11 +1,11 @@
 "use client";
 import {PassionsType} from '@/content/types';
-import {AnimatedComment} from '@/components/lib/comment';
+import Comment from '@/components/lib/comment';
 import Statement from '@/components/lib/statement';
 import Container from '@/components/lib/container';
 import "./styles.css";
 import {motion} from 'framer-motion';
-import {AnimatedHeading} from '@/components/lib/heading';
+import Heading from '@/components/lib/heading';
 import Icons from '@/components/lib/icons';
 
 export default function Passions(props: PassionsType) {
@@ -13,9 +13,9 @@ export default function Passions(props: PassionsType) {
   return (
       <div className="passions" id="passions">
         <Container className="pt-40">
-          <AnimatedComment whileInView={{opacity: 1, y: 0}} initial={{y: 20, opacity: 0}}>{comment}</AnimatedComment>
-          <AnimatedHeading whileInView={{opacity: 1, y: 0}} initial={{y: 20, opacity: 0}} as="h2"
-                           className="text-4xl">{title}</AnimatedHeading>
+          <Comment>{comment}</Comment>
+          <Heading as="h2"
+                   className="text-4xl">{title}</Heading>
           <Statement>{statement}</Statement>
           <div className="passions-grid">
             {

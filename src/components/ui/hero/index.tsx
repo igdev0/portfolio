@@ -1,12 +1,12 @@
 "use client";
-import {AnimatedLinkButton} from '@/components/lib/link-button';
+import LinkButton from '@/components/lib/link-button';
 import clsx from 'clsx';
 import Statement from '@/components/lib/statement';
 import Image from 'next/image';
 import "./index.css";
 import Container from '@/components/lib/container';
 import Box from '@/components/lib/box';
-import {AnimatedComment} from '@/components/lib/comment';
+import Comment from '@/components/lib/comment';
 import {HeroType} from '@/content/types';
 import Heading from '@/components/lib/heading';
 import {motion, useDragControls, useMotionValue, useSpring, useTransform} from 'framer-motion';
@@ -54,38 +54,22 @@ export default function Hero(props: HeroType) {
       <Box className="hero" as="header" id="top">
         <Container className="hero-layout">
           <Box className="hero-content">
-            <AnimatedComment
-                             viewport={{once: true}}
-                             whileInView={{opacity: 1, y: 0}}
-                             initial={{opacity: 0, y: 0}}
-                             transition={{delay: .6}}>
+            <Comment>
               {comment}
-            </AnimatedComment>
+            </Comment>
             <Heading
                 as="h1"
-                transition={{delay: 1.2}}
                 className="text-5xl mb-6 font-bold">{title}</Heading>
-            <Statement className="mb-6 max-w-96"
-                       transition={{delay: 1.3}}>
+            <Statement className="mb-6 max-w-96" >
               {statement}
             </Statement>
             <Box className="flex gap-4">
-              <AnimatedLinkButton
-                  initial={{opacity: 0, y: 20}}
-                  transition={{delay: 1.4}}
-                  viewport={{once: true}}
-                  whileInView={{opacity: 1, y: 0}}
-                  variant="secondary" href={cta0.href} icon={cta0.icon}>
+              <LinkButton variant="secondary" href={cta0.href} icon={cta0.icon}>
                 {cta0.text}
-              </AnimatedLinkButton>
-              <AnimatedLinkButton
-                  initial={{opacity: 0, y: 20}}
-                  transition={{delay: 1.5}}
-                  viewport={{once: true}}
-                  whileInView={{opacity: 1, y: 0}}
-                  variant="solid" href={cta1.href} external icon={cta1.icon}>
+              </LinkButton>
+              <LinkButton variant="solid" href={cta1.href} external icon={cta1.icon}>
                 {cta1.text}
-              </AnimatedLinkButton>
+              </LinkButton>
             </Box>
           </Box>
           <motion.div
