@@ -39,22 +39,22 @@
 
         .nav__link.internal {
             @apply hidden;
-            @apply xl:flex;
+            @apply 3xl:flex;
         }
 
         .nav__list {
             @apply hidden;
-            @apply xl:flex justify-between gap-2 xl:gap-6 items-center self-center ml-auto mr-4;
+            @apply 3xl:flex justify-between gap-2 3xl:gap-6 items-center self-center ml-auto mr-4;
 
         }
 
         .nav__buttons {
-            @apply grid grid-cols-3 xl:grid-cols-2 gap-2 items-center;
+            @apply grid grid-cols-3 3xl:grid-cols-2 gap-2 items-center;
         }
     }
 
     .nav__drawer-toggler {
-        @apply xl:hidden!;
+        @apply 3xl:hidden!;
         /**Fix this thing, perhaps remove from link-button css the "flex" prop*/
     }
 
@@ -63,7 +63,7 @@
         @apply bg-(--background) top-0 z-10 border border-(--grid) flex flex-col items-end;
 
         &.open {
-            @apply xl:translate-x-full;
+            @apply 3xl:translate-x-full;
         }
 
         &.close {

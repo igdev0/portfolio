@@ -10,6 +10,7 @@ html {
 @utility image-filter {
     @apply sepia-20 hue-rotate-200 saturate-120;
 }
+
 @variant dark {
     --grid: var(--color-gray-700);
     --button-solid: var(--color-accent-600);
@@ -22,7 +23,6 @@ html {
     /* Foreground */
     --foreground: var(--color-white);
     --background: var(--color-gray-900);
-
 }
 
 @layer base {

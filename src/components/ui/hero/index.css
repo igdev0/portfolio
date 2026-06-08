@@ -5,7 +5,7 @@
         @apply flex flex-col;
 
         .hero-layout {
-            @apply pt-10 md:pt-30 grid xl:grid-cols-2 items-center sm:justify-between gap-4;
+            @apply pt-10 md:pt-30 grid 3xl:grid-cols-2 items-center sm:justify-between gap-4;
 
         }
 
