@@ -3,9 +3,9 @@ import {Fragment, useContext, useLayoutEffect, useRef} from 'react';
 import {TechStackContext} from '@/components/lib/tech-stack/context';
 import {animate, createDraggable, createScope, Draggable, Scope} from 'animejs';
 import {calcNext} from '@/components/lib/tech-stack/utils';
-import {stack} from '@/content/profile';
 import Icon from '@/components/lib/icons';
 import Statement from '@/components/lib/statement';
+import {stack} from '@/content/stack';
 
 const threshold = 60;
 
@@ -75,7 +75,7 @@ export default function TechStackCards() {
       <div className="stack-cards" ref={root}>
         {
           frames.map((frame, index) => {
-            const content = data[frame.key as keyof typeof stack.tech];
+            const content = data[frame.key as keyof typeof stack.skills];
             return (
 
                 <div
