@@ -8,7 +8,7 @@ html {
 
 
 @utility image-filter {
-    @apply sepia-20 hue-rotate-220 saturate-120;
+    @apply sepia-20 hue-rotate-200 saturate-120;
 }
 @variant dark {
     --grid: var(--color-gray-700);

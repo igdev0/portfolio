@@ -31,6 +31,8 @@ import {
 import Email from '@/components/lib/icons/email';
 import Linkedin from '@/components/lib/icons/linkedin';
 import Telegram from '@/components/lib/icons/telegram';
+import SkateIcon from '@/components/lib/icons/skate';
+import FootballIcon from '@/components/lib/icons/football';
 
 export const iconsMap = {
   github: Github,
@@ -64,6 +66,8 @@ export const iconsMap = {
   'sign': SignatureIcon,
   'log-in': LogIn,
   'lock': LockIcon,
+  'skate': SkateIcon,
+  'football': FootballIcon
 };
 
 export type IconNames = keyof typeof iconsMap;
@@ -73,7 +77,7 @@ export interface IconProps {
   size?: "small";
 }
 
-export default function Icon(props: IconProps) {
+export default function Icons(props: IconProps) {
   const Element = iconsMap[props.name];
   if (!Element) {
     return null;

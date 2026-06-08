@@ -12,19 +12,21 @@ export const passions: PassionsType = {
         width: 300,
         height: 533
       },
-      bio: "I'm passionate about building websites",
+      icon: "code",
+      bio: "Coding started as a hobby in 2017 and turned into my career. I still spend my free time coding.",
       title: "Coding",
       content: ""
     },
     {
       image: {
         src: "/passions/skate.png",
-        alt: "Coding",
+        alt: "Skateboarding",
         width: 300,
         height: 533
       },
+      icon: "skate",
       title: "Skateboarding",
-      bio: "I love riding and doing tricks on skate.",
+      bio: "Skateboarding is what I grew up with. I ride goofy stance and can land most foundational tricks.",
       content: ""
     },
     {
@@ -34,8 +36,9 @@ export const passions: PassionsType = {
         width: 300,
         height: 533
       },
+      icon: "football",
       title: "Football",
-      bio: "Football is my thing as well.",
+      bio: "Football is the first sport I ever got into. You can usually find me at the skatepark, juggling a ball.",
       content: ""
     },
   ],
