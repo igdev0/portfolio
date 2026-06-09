@@ -3,7 +3,7 @@ import {SubmitEventHandler, useState} from 'react';
 import {notifyDiscord} from '@/app/actions';
 import {MessageCircle, XIcon} from 'lucide-react';
 import LinkButton from '@/components/lib/link-button';
-import Button from '@/components/lib/button';
+import IconButton from '@/components/lib/icon-button';
 
 interface BasicMessageProps {
   book: {
@@ -44,10 +44,7 @@ export default function BasicMessage(props: BasicMessageProps) {
                       value={message}
                       onChange={(event) => setMessage(event.currentTarget.value)}
                       placeholder="Type ..."/>
-            <Button className="self-end" variant="solid-light" type="submit" icon="send"
-                    aspect="square"
-                    disabled={message.length === 0}
-                    iconPosition="right"></Button>
+            <IconButton className="self-end" size="sm" type="submit" icon="send" disabled={message.length === 0}/>
           </label>
         </form>
         {
