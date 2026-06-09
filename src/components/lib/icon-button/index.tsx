@@ -1,7 +1,7 @@
 import Icon, {IconNames} from '@/components/lib/icons';
-import "./index.css";
 import {cva, VariantProps} from 'class-variance-authority';
 import clsx from 'clsx';
+import "./index.css";
 
 export const iconButtonVariants = cva('icons-button', {
   variants: {
@@ -25,7 +25,8 @@ export interface IconButtonProps extends VariantProps<typeof iconButtonVariants>
 export default function IconButton(props: IconButtonProps) {
   const {onClick, icon, type, className, ...variants} = props;
   return (
-      <button disabled={props.disabled??false} type={type} className={clsx(iconButtonVariants(variants), className)} onClick={onClick}>
+      <button className={clsx('icon-button', iconButtonVariants(variants), className)} disabled={props.disabled ?? false} type={type}
+              onClick={onClick}>
         <Icon name={icon}/>
       </button>
   );
