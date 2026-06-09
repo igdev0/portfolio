@@ -3,7 +3,7 @@
 @layer components {
     .statement {
         --statement: var(--color-gray-100);
-        @apply border-l-4 pl-4 mb-4 mt-4 w-fit py-1 pr-2;
+        @apply border-l-4 pl-4 mb-4 mt-4 w-fit py-2 pr-2 rounded-r-2xl;
         @apply border-l-accent-300;
         @apply bg-(--statement);
         @apply rounded-r-sm;

@@ -11,7 +11,7 @@ import Icons from '@/components/lib/icons';
 export default function Passions(props: PassionsType) {
   const {title, comment, passions, statement} = props;
   const {scrollY} = useScroll();
-  const imageY = useTransform(scrollY, [0, 2000], [0, -50]);
+  const imageY = useTransform(scrollY, [0, 2000], [0, -100]);
 
   const onMouseMove = () => {
 
