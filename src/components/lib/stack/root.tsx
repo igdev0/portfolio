@@ -1,13 +1,18 @@
 import {StackActiveId, StackContext} from '@/components/lib/stack/context';
-import {PropsWithChildren, useState} from 'react';
+import {PropsWithChildren, useMemo, useState} from 'react';
 
 export default function StackRoot(props: PropsWithChildren) {
   const [activeId, setActiveId] = useState<StackActiveId>(null);
-  const [totalCards, setTotalCards] = useState<number>(0);
+  const [cards, setCards] = useState<string[]>([]);
+
+  const active = useMemo(() => {
+    return 0;
+  }, [activeId]);
+
   const {children} = props;
 
   return (
-      <StackContext.Provider value={{totalCards, setTotalCards, setActiveId, activeId}}>
+      <StackContext.Provider value={{cards, setCards, setActiveId, activeId, active}}>
         {children}
       </StackContext.Provider>
   );

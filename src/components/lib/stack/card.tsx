@@ -1,7 +1,8 @@
 import {PropsWithChildren, useContext, useLayoutEffect} from 'react';
 import {StackContext} from '@/components/lib/stack/context';
+import {motion} from 'framer-motion';
 
-interface StackCardProps extends PropsWithChildren {
+export interface StackCardProps extends PropsWithChildren {
   id: string;
 }
 
@@ -14,8 +15,8 @@ export default function StackCard(props: StackCardProps) {
   }, []);
 
   return (
-      <div>
+      <motion.div>
         {children}
-      </div>
+      </motion.div>
   );
 }

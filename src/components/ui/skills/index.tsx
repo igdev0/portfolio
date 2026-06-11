@@ -26,24 +26,26 @@ export default function Skills(props: SkillsType) {
           <TechStack/>
         </TechStackProvider>
         <Stack.Root>
-          <Stack.Controllers>
-            {
-              Object.entries(skills).map(([skill, entry], index) => (
-                  <Stack.Controller key={skill} id={skill}>
-                    {skill}
-                  </Stack.Controller>
-              ))
-            }
-          </Stack.Controllers>
-          <Stack.Cards>
-            {
-              Object.entries(skills).map(([skill, entry], index) => (
-                  <Stack.Card key={skill} id={skill}>
-                    {skill}
-                  </Stack.Card>
-              ))
-            }
-          </Stack.Cards>
+          <div className="flex flex-wrap">
+            <div className="stack-controllers">
+              {
+                Object.entries(skills).map(([skill, entry], index) => (
+                    <Stack.Trigger key={skill} id={skill}>
+                      {skill}
+                    </Stack.Trigger>
+                ))
+              }
+            </div>
+            <Stack.Cards>
+              {
+                Object.entries(skills).map(([skill, entry], index) => (
+                    <Stack.Card key={skill} id={skill}>
+                      {skill}
+                    </Stack.Card>
+                ))
+              }
+            </Stack.Cards>
+          </div>
         </Stack.Root>
       </Container>
   );

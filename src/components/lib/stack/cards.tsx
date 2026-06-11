@@ -1,20 +1,23 @@
-import {ReactNode, useContext, useLayoutEffect} from 'react';
+import {ReactElement, useContext, useLayoutEffect} from 'react';
 import {StackContext} from '@/components/lib/stack/context';
+import {StackCardProps} from '@/components/lib/stack/card';
 
 interface StackCardsProps {
-  children: ReactNode[];
+  children: ReactElement<StackCardProps>[];
 }
 
 export default function StackCards(props: StackCardsProps) {
   const {children} = props;
-  const {setTotalCards} = useContext(StackContext);
+  const {setCards, activeId} = useContext(StackContext);
 
   useLayoutEffect(() => {
-    setTotalCards(children.length);
+    const ids = children.map(child => child.props.id);
+    setCards(ids);
   }, [children]);
 
   return (
-      <div>
+      <div className="grid">
+        {activeId} = Active
         {children}
       </div>
   );

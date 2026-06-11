@@ -5,15 +5,17 @@ export type StackActiveId = string | null;
 export interface StackContextProps {
   activeId: StackActiveId;
   setActiveId: Dispatch<SetStateAction<StackActiveId>>;
-  totalCards: number;
-  setTotalCards: Dispatch<SetStateAction<number>>;
+  active: number;
+  cards: string[];
+  setCards: Dispatch<SetStateAction<string[]>>;
 }
 
 export const StackContext = createContext<StackContextProps>({
-  activeId: '',
-  totalCards: 0,
+  activeId: null,
+  active: 0,
+  cards: [],
   setActiveId() {
   },
-  setTotalCards() {
+  setCards() {
   },
 });

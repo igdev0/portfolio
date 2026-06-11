@@ -1,15 +1,13 @@
 import StackRoot from '@/components/lib/stack/root';
-import StackController from '@/components/lib/stack/controller';
+import StackTrigger from '@/components/lib/stack/trigger';
 import StackCard from '@/components/lib/stack/card';
 import StackCards from '@/components/lib/stack/cards';
-import StackControllers from '@/components/lib/stack/controllers';
 
 export const Stack = {
   Root: StackRoot,
-  Controller: StackController,
+  Trigger: StackTrigger,
   Card: StackCard,
   Cards: StackCards,
-  Controllers: StackControllers,
 };
 
 export default Stack;
