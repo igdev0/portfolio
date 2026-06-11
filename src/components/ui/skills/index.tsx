@@ -6,6 +6,7 @@ import TechStack from '@/components/lib/tech-stack';
 import {TechStackProvider} from '@/components/lib/tech-stack/context';
 import {SkillsType} from '@/content/types';
 import {AnimatedComment} from '@/components/lib/comment';
+import Stack from '@/components/lib/stack';
 
 export default function Skills(props: SkillsType) {
   const {title, comment, skills, statement} = props;
@@ -24,6 +25,26 @@ export default function Skills(props: SkillsType) {
         <TechStackProvider data={skills}>
           <TechStack/>
         </TechStackProvider>
+        <Stack.Root>
+          <Stack.Controllers>
+            {
+              Object.entries(skills).map(([skill, entry], index) => (
+                  <Stack.Controller key={skill} id={skill}>
+                    {skill}
+                  </Stack.Controller>
+              ))
+            }
+          </Stack.Controllers>
+          <Stack.Cards>
+            {
+              Object.entries(skills).map(([skill, entry], index) => (
+                  <Stack.Card key={skill} id={skill}>
+                    {skill}
+                  </Stack.Card>
+              ))
+            }
+          </Stack.Cards>
+        </Stack.Root>
       </Container>
   );
 }
