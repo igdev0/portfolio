@@ -93,8 +93,6 @@ export default function TechStackCards() {
                       <h4 className="font-bold">{frame.key}</h4>
                     </div>
                     <div className="flex-group mt-4">
-
-
                       <Tabs.Root>
                         <Tabs.List className="tabs-header">
                           {

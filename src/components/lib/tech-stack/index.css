@@ -47,10 +47,11 @@
             .stack-card {
                 @apply w-full max-w-200;
                 @apply transform-3d perspective-distant;
-                @apply border  border-foundation-300 dark:border-foundation-700 rounded-md p-3;
+                @apply dark:border-foundation-700 rounded-md p-3;
 
                 @apply h-full transform-3d;
-                @apply bg-(--surface-2);
+                @apply bg-(--surface-1) shadow-md border border-accent-200;
+
                 @apply p-4;
                 @apply col-start-1;
                 @apply row-end-1;
