@@ -9,7 +9,7 @@ interface StackCardsProps {
 
 export default function StackCards(props: StackCardsProps) {
   const {children, className} = props;
-  const {setFrames, active} = useContext(StackContext);
+  const {setFrames} = useContext(StackContext);
 
   useLayoutEffect(() => {
     setFrames(children.map((_, index) => ({
