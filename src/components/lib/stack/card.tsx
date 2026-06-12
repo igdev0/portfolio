@@ -1,6 +1,7 @@
+"use client";
 import {PropsWithChildren, useContext, useLayoutEffect} from 'react';
 import {StackContext} from '@/components/lib/stack/context';
-import {motion, useDragControls} from 'framer-motion';
+import {motion} from 'framer-motion';
 import {MotionNodeDragHandlers} from 'motion';
 
 export interface StackCardProps extends PropsWithChildren {
@@ -9,9 +10,8 @@ export interface StackCardProps extends PropsWithChildren {
 }
 
 export default function StackCard(props: StackCardProps) {
-  const {children} = props;
-  const controls = useDragControls();
   const {setActive, frames, active} = useContext(StackContext);
+  const {children} = props;
 
   useLayoutEffect(() => {
     setActive(id => id ? id : props.id);
@@ -21,15 +21,29 @@ export default function StackCard(props: StackCardProps) {
 
   };
 
-  if (!frames[props.id] || active !== props.id) {
-    return null;
-  }
+  /**
+   * We want to
+   */
+
+  const i = props.id;
+  const total = frames.length;
+
+  let delta = i - active;
+
+  if (delta > total / 2) delta -= total;
+  if (delta < -total / 2) delta += total;
+
+  const distance = Math.abs(delta);
+  const offset = delta * 30;
+  const z = total - distance * 15;
+  const y = offset;
 
   return (
       <motion.div drag
                   dragSnapToOrigin
                   dragDirectionLock
-                  dragControls={controls}
+                  initial={{ z, y }}
+                  animate={{y, z}}
                   onDrag={onDrag}
                   className={props.className}>
         {children}

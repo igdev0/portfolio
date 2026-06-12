@@ -42,7 +42,7 @@ export default function Skills(props: SkillsType) {
             <Stack.Cards className="stack-cards">
               {
                 Object.entries(skills).map(([skill, entry], index) => (
-                    <Stack.Card className="stack-card" key={skill} id={index}>
+                    <Stack.Card className="stack-card" key={skill + index} id={index}>
                       <div className="stack-card-inner">
 
                         <Tabs.Root>
