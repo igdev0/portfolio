@@ -10,9 +10,9 @@ export interface StackControllerProps extends PropsWithChildren {
 
 export default function StackTrigger(props: StackControllerProps) {
   const {children, icon} = props;
-  const {setActive} = useContext(StackContext);
+  const {setActive, active} = useContext(StackContext);
   return (
-      <Button variant="secondary" icon={icon} onClick={() => setActive(props.id)}>
+      <Button variant="secondary" active={active === props.id} disabled={active === props.id} icon={icon} onClick={() => setActive(props.id)}>
         {children}
       </Button>
   );
