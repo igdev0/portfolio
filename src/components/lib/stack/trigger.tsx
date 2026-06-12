@@ -1,16 +1,19 @@
 import {PropsWithChildren, useContext} from 'react';
 import {StackContext} from '@/components/lib/stack/context';
+import Button from '@/components/lib/button';
+import {IconNames} from '@/components/lib/icons';
 
 export interface StackControllerProps extends PropsWithChildren {
-  id: string;
+  id: number;
+  icon?: IconNames
 }
 
 export default function StackTrigger(props: StackControllerProps) {
-  const {children} = props;
-  const {setActiveId} = useContext(StackContext);
+  const {children, icon} = props;
+  const {setActive} = useContext(StackContext);
   return (
-      <div onClick={() => setActiveId(props.id)}>
+      <Button variant="secondary" icon={icon} onClick={() => setActive(props.id)}>
         {children}
-      </div>
+      </Button>
   );
 }

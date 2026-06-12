@@ -25,7 +25,7 @@ export const calcFrames = (active: number, stackKeys: string[]) => {
     return {
       key: key as string,
       distance,
-      offset: active === index ? 0 : delta * 30,
+      offset: delta * 30,
       z: total - distance,
       scale: -distance * 20,
       i: index,

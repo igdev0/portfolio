@@ -7,6 +7,9 @@ import {TechStackProvider} from '@/components/lib/tech-stack/context';
 import {SkillsType} from '@/content/types';
 import {AnimatedComment} from '@/components/lib/comment';
 import Stack from '@/components/lib/stack';
+import "./index.css";
+import {Tabs} from '@base-ui/react/tabs';
+import {Fragment} from 'react';
 
 export default function Skills(props: SkillsType) {
   const {title, comment, skills, statement} = props;
@@ -26,21 +29,44 @@ export default function Skills(props: SkillsType) {
           <TechStack/>
         </TechStackProvider>
         <Stack.Root>
-          <div className="flex flex-wrap">
+          <div className="stack-layout">
             <div className="stack-controllers">
               {
                 Object.entries(skills).map(([skill, entry], index) => (
-                    <Stack.Trigger key={skill} id={skill}>
-                      {skill}
+                    <Stack.Trigger key={skill} id={index} icon={entry.icon}>
+                        {skill}
                     </Stack.Trigger>
                 ))
               }
             </div>
-            <Stack.Cards>
+            <Stack.Cards className="stack-cards">
               {
                 Object.entries(skills).map(([skill, entry], index) => (
-                    <Stack.Card key={skill} id={skill}>
-                      {skill}
+                    <Stack.Card className="stack-card" key={skill} id={index}>
+                      <div className="stack-card-inner">
+
+                        <Tabs.Root>
+                          <Tabs.List className="tabs-header">
+                            {
+                              Object.keys(entry.tabs).map((key) => (
+                                  <Fragment key={`tab-header-${key}`}>
+                                    <Tabs.Tab className="tab-control" nativeButton value={key}>
+                                      {key}
+                                    </Tabs.Tab>
+                                    <Tabs.Indicator/>
+                                  </Fragment>
+                              ))
+                            }
+                          </Tabs.List>
+                          {
+                            Object.entries(entry.tabs).map(([key, value]) => (
+                                <Tabs.Panel key={key} value={key}>
+                                  <Statement>{value.statement}</Statement>
+                                </Tabs.Panel>
+                            ))
+                          }
+                        </Tabs.Root>
+                      </div>
                     </Stack.Card>
                 ))
               }

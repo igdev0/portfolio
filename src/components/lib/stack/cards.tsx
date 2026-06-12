@@ -3,21 +3,24 @@ import {StackContext} from '@/components/lib/stack/context';
 import {StackCardProps} from '@/components/lib/stack/card';
 
 interface StackCardsProps {
+  className?: string;
   children: ReactElement<StackCardProps>[];
 }
 
 export default function StackCards(props: StackCardsProps) {
-  const {children} = props;
-  const {setCards, activeId} = useContext(StackContext);
+  const {children, className} = props;
+  const {setFrames, active} = useContext(StackContext);
 
   useLayoutEffect(() => {
-    const ids = children.map(child => child.props.id);
-    setCards(ids);
+    setFrames(children.map((_, index) => ({
+      x: 0,
+      y: 0,
+      scaleZ: 0,
+    })));
   }, [children]);
 
   return (
-      <div className="grid">
-        {activeId} = Active
+      <div className={className}>
         {children}
       </div>
   );
