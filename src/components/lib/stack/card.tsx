@@ -17,8 +17,8 @@ export default function StackCard(props: StackCardProps) {
     setActive(id => id ? id : props.id);
   }, []);
 
-  const onDrag: MotionNodeDragHandlers['onDrag'] = (props: PointerEvent) => {
-
+  const onDrag: MotionNodeDragHandlers['onDrag'] = (event: PointerEvent) => {
+    console.log(event);
   };
 
   /**
@@ -35,16 +35,18 @@ export default function StackCard(props: StackCardProps) {
 
   const distance = Math.abs(delta);
   const offset = delta * 30;
-  const z = total - distance * 15;
+
+  const z = -distance * 15;
   const y = offset;
 
   return (
       <motion.div drag
                   dragSnapToOrigin
                   dragDirectionLock
-                  initial={{ z, y }}
+                  initial={{z, y}}
                   animate={{y, z}}
                   onDrag={onDrag}
+
                   className={props.className}>
         {children}
       </motion.div>
