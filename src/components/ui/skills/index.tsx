@@ -1,4 +1,3 @@
-"use client";
 import Container from '@/components/lib/container';
 import Box from '@/components/lib/box';
 import Statement from '@/components/lib/statement';
@@ -9,7 +8,6 @@ import "./index.css";
 import {Tabs} from '@base-ui/react/tabs';
 import {Fragment} from 'react';
 import Icon from '@/components/lib/icons';
-
 
 export default function Skills(props: SkillsType) {
   const {title, comment, skills, statement} = props;
@@ -31,7 +29,7 @@ export default function Skills(props: SkillsType) {
               {
                 Object.entries(skills).map(([skill, entry], index) => (
                     <Stack.Trigger key={skill} id={index} icon={entry.icon}>
-                        {skill}
+                      {skill}
                     </Stack.Trigger>
                 ))
               }

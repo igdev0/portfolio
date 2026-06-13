@@ -1,3 +1,4 @@
+"use client";
 import {PropsWithChildren, useContext} from 'react';
 import {StackContext} from '@/components/lib/stack/context';
 import Button from '@/components/lib/button';

@@ -1,3 +1,4 @@
+"use client";
 import {ReactElement, useContext, useLayoutEffect} from 'react';
 import {StackContext} from '@/components/lib/stack/context';
 import {StackCardProps} from '@/components/lib/stack/card';

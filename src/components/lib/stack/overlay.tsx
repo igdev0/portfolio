@@ -1,3 +1,4 @@
+"use client";
 import {motion} from 'framer-motion';
 import {useContext} from 'react';
 import {StackContext} from '@/components/lib/stack/context';

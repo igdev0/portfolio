@@ -80,7 +80,7 @@ export default function Hero(props: HeroType) {
               onMouseLeave={handleMouseLeave}>
             <AnimatedImage draggable={false}
                            src={image.src}
-                           loading="lazy"
+                           loading="eager"
                            whileInView={{opacity: 1}}
                            initial={{opacity: 0}}
                            transition={{delay: .3}}
