@@ -7,7 +7,7 @@ export const passions: PassionsType = {
   passions: [
     {
       image: {
-        src: "/passions/coding.jpg",
+        src: "/passions/coding.webp",
         alt: "Coding",
         width: 300,
         height: 533
@@ -19,7 +19,7 @@ export const passions: PassionsType = {
     },
     {
       image: {
-        src: "/passions/skate.png",
+        src: "/passions/skate.webp",
         alt: "Skateboarding",
         width: 300,
         height: 533
@@ -31,7 +31,7 @@ export const passions: PassionsType = {
     },
     {
       image: {
-        src: "/passions/football.png",
+        src: "/passions/football.webp",
         alt: "Football",
         width: 300,
         height: 533
