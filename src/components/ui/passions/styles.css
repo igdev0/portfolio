@@ -18,7 +18,11 @@
         }
 
         .card-content {
-            @apply p-3 bg-(--surface-3);
+            --passion-card-bg: var(--color-accent-50);
+            @apply p-3 bg-(--passion-card-bg);
+            @variant dark {
+                --passion-card-bg: var(--color-foundation-800);
+            }
             h3 {
                 @apply dark:text-accent-100 text-foundation-800 mb-2 font-semibold;
             }
