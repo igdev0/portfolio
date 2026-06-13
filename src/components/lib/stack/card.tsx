@@ -1,7 +1,7 @@
 "use client";
-import {PropsWithChildren, useContext, useLayoutEffect} from 'react';
+import {PropsWithChildren, useContext, useLayoutEffect, useRef} from 'react';
 import {StackContext} from '@/components/lib/stack/context';
-import {motion} from 'framer-motion';
+import {motion, useDragControls} from 'framer-motion';
 import {MotionNodeDragHandlers} from 'motion';
 
 export interface StackCardProps extends PropsWithChildren {
@@ -11,25 +11,14 @@ export interface StackCardProps extends PropsWithChildren {
 
 export default function StackCard(props: StackCardProps) {
   const {setActive, frames, active} = useContext(StackContext);
+  const controls = useDragControls();
+  const ref = useRef<HTMLDivElement>(null);
   const {children} = props;
-
-  useLayoutEffect(() => {
-    setActive(id => id ? id : props.id);
-  }, []);
-
-  const onDrag: MotionNodeDragHandlers['onDrag'] = (event: PointerEvent) => {
-    console.log(event);
-  };
-
-  /**
-   * We want to
-   */
 
   const i = props.id;
   const total = frames.length;
 
   let delta = i - active;
-
   if (delta > total / 2) delta -= total;
   if (delta < -total / 2) delta += total;
 
@@ -39,14 +28,43 @@ export default function StackCard(props: StackCardProps) {
   const z = -distance * 15;
   const y = offset;
 
+  useLayoutEffect(() => {
+    setActive(id => id ? id : props.id);
+  }, []);
+
+  const safeIndex = (idx: number, increment: boolean) => {
+    if (increment) {
+      return idx + 1 > frames.length - 1 ? 0 : idx + 1;
+    } else {
+      return idx - 1 < 0 ? frames.length -1 : idx - 1;
+    }
+  };
+
+  const onDragEnd: MotionNodeDragHandlers['onDragEnd'] = (event: PointerEvent, info) => {
+    if (ref.current) {
+      const {width, height} = ref.current?.getBoundingClientRect();
+      if (info.offset.y > 0 && info.offset.y > (height / 2) || info.offset.x > 0 && info.offset.x > (width / 2)) {
+        setActive(safeIndex(active, true));
+      }
+      if(info.offset.y < 0 && info.offset.y < -(height / 2) || info.offset.x < 0 && info.offset.x < - (width / 2)) {
+        setActive(safeIndex(active, false));
+      }
+    }
+  };
+
+
+  if (frames.length === 0) {
+    return null;
+  }
+
   return (
       <motion.div drag
                   dragSnapToOrigin
-                  dragDirectionLock
-                  initial={{z, y}}
+                  dragControls={controls}
+                  ref={ref}
+                  initial={{y, z}}
                   animate={{y, z}}
-                  onDrag={onDrag}
-
+                  onDragEnd={onDragEnd}
                   className={props.className}>
         {children}
       </motion.div>
