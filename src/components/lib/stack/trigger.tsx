@@ -13,7 +13,8 @@ export default function StackTrigger(props: StackControllerProps) {
   const {setActive, active, triggers} = useContext(StackContext);
 
   return (
-      <Button variant="secondary"
+      <Button className="stack-trigger"
+              variant="secondary"
               ref={(r) => {
                 triggers.current[props.id] = r as HTMLButtonElement;
               }}

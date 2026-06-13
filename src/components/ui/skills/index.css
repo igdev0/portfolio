@@ -15,6 +15,26 @@
         @apply rounded-lg;
     }
 
+    .stack-trigger {
+        @apply relative;
+
+        &:before {
+            content: '';
+            @apply w-2 h-2 rounded-full absolute right-0 top-0 bottom-0 my-auto bg-accent-300 translate-x-[60%] z-10;
+        }
+
+    }
+    .stack-trigger:not(.button--active) {
+        &:before {
+            @apply hidden;
+        }
+    }
+    .stack-trigger.button--active {
+        &:before {
+            @apply visible;
+        }
+    }
+
     .stack-controllers {
         @apply flex flex-col gap-3;
 
@@ -25,13 +45,20 @@
 
     .stack-card {
         @apply transform-3d perspective-distant;
-        @apply  rounded-md p-4;
+        @apply rounded-md p-4;
 
         @apply h-full transform-3d;
         @apply bg-(--surface-2) shadow-md;
 
         @apply col-start-1;
         @apply row-end-1;
+
+        @apply relative;
+
+        &:before {
+            content: '';
+            @apply w-2 h-2 rounded-full absolute left-0 top-0 bottom-0 my-auto bg-accent-300 translate-x-[-50%] z-10;
+        }
 
     }
 
