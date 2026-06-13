@@ -58,7 +58,7 @@ export default function Hero(props: HeroType) {
             </Comment>
             <Heading
                 as="h1"
-                className="text-5xl mb-6 font-bold">{title}</Heading>
+                className="text-5xl 6xl:text-6xl mb-6 font-bold">{title}</Heading>
             <Statement className="mb-6 max-w-96">
               {statement}
             </Statement>
@@ -79,15 +79,12 @@ export default function Hero(props: HeroType) {
               onMouseMove={handleMouseMove}
               onMouseLeave={handleMouseLeave}>
             <AnimatedImage draggable={false}
-                           src={image.src}
                            loading="eager"
                            whileInView={{opacity: 1}}
                            initial={{opacity: 0}}
                            transition={{delay: .3}}
                            viewport={{once: true}}
-                           width={354}
-                           height={393}
-                           alt={image.alt}/>
+                           {...image}/>
             <motion.div
                 className="square"
                 initial={{opacity: 0, scale: .5}}
@@ -103,7 +100,7 @@ export default function Hero(props: HeroType) {
                 viewport={{once: true}}
                 whileInView={{opacity: 1}}
                 transition={{delay: .9}}
-                className={clsx(corners, 'rotate-180 top-3 left-0')}/>
+                className={clsx(corners, 'rotate-180 top-0 left-0')}/>
             <motion.div
                 style={{x: xy, y: xy}}
                 initial={{opacity: 0}}
@@ -124,7 +121,7 @@ export default function Hero(props: HeroType) {
                 viewport={{once: true}}
                 whileInView={{opacity: 1}}
                 transition={{delay: .9}}
-                className={clsx(corners, '-rotate-90 right-0 top-3')}/>
+                className={clsx(corners, '-rotate-90 right-0 top-0')}/>
           </motion.div>
         </Container>
       </Box>

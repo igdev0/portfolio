@@ -16,12 +16,13 @@
         .hero-image {
             @apply relative;
             @apply cursor-grab;
-            @apply flex items-center self-end w-full max-w-[400] aspect-square justify-center sm:justify-center sm:order-2 relative ml-auto md:mr-17 z-0;
+            @apply max-w-[400] 6xl:max-w-[450] w-full 6xl:-translate-x-23;
+            @apply flex items-center self-end aspect-square justify-center sm:justify-center sm:order-2 relative ml-auto z-0;
 
         }
 
         .hero-image img {
-            @apply image-filter transition-[filter] duration-300 ease-out;
+            @apply image-filter transition-[filter] duration-300 ease-out w-full aspect-square object-contain;
         }
 
         .hero-image:hover img {

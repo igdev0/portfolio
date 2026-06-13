@@ -17,8 +17,8 @@ const hero: HeroType = {
   },
   image: {
     src: "/images/me.webp",
-    width: 383,
-    height: 383,
+    width: 500,
+    height: 500,
     alt: "Me"
   },
 } as const;
