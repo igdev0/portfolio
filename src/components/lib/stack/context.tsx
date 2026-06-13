@@ -16,7 +16,7 @@ export interface StackContextProps {
   cards: RefObject<HTMLDivElement[]>;
   setFrames: Dispatch<SetStateAction<CardFrame[]>>;
 
-  calculateDraw(x: number, y: number): string;
+  calculateDraw(x: number, y: number, z: number): string;
 }
 
 export const StackContext = createContext<StackContextProps>({

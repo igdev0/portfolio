@@ -11,7 +11,7 @@ export default function StackRoot(props: PropsWithChildren) {
   const draw = useMotionValue('');
   const {children} = props;
 
-  const calculateDraw = (x = 0, y = 0) => {
+  const calculateDraw = (x = 0, y = 0, z = 0) => {
     const card = cards.current[active];
     const controller = triggers.current[active];
 
@@ -37,7 +37,7 @@ export default function StackRoot(props: PropsWithChildren) {
   };
 
   useLayoutEffect(() => {
-    draw.set(calculateDraw());
+    draw.jump(calculateDraw());
   }, [active, cards, triggers]);
 
   useLayoutEffect(() => {

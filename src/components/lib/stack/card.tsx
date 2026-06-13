@@ -1,7 +1,7 @@
 "use client";
 import {PropsWithChildren, useContext, useLayoutEffect} from 'react';
 import {StackContext} from '@/components/lib/stack/context';
-import {motion, useSpring} from 'framer-motion';
+import {motion, useMotionValueEvent, useSpring} from 'framer-motion';
 import {MotionNodeDragHandlers} from 'motion';
 
 export interface StackCardProps extends PropsWithChildren {
@@ -34,6 +34,7 @@ export default function StackCard(props: StackCardProps) {
     x.set(_x);
     y.set(_y);
     z.set(_z);
+    draw.set(calculateDraw(_x, _y, Math.abs(_z)));
   }, [active]);
 
   useLayoutEffect(() => {
@@ -59,6 +60,9 @@ export default function StackCard(props: StackCardProps) {
         setActive(props.id !== active ? props.id : safeIndex(active, true));
       } else if (info.offset.y < 0 && info.offset.y < -(height / 2) || info.offset.x < 0 && info.offset.x < -(width / 2)) {
         setActive(props.id !== active ? props.id : safeIndex(active, false));
+      } else {
+        draw.stop();
+        draw.set(calculateDraw(0, 0, 0));
       }
 
       x.set(_x);
@@ -67,18 +71,30 @@ export default function StackCard(props: StackCardProps) {
     }
   };
 
+  const updateDraw = () => {
+    if (props.id === active) {
+      draw.jump(calculateDraw(x.get(), y.get(), Math.abs(z.get())));
+    }
+  };
+
+  useMotionValueEvent(x, "change", updateDraw);
+  useMotionValueEvent(y, "change", updateDraw);
+  useMotionValueEvent(z, "change", updateDraw);
+
   return (
       <motion.div
           drag
           whileTap={{cursor: "grabbing", scaleZ: 0}}
-          transition={{duration: 1000}}
           ref={(r) => {
             cards.current[props.id] = r as HTMLDivElement;
           }}
           onDrag={(_, info) => {
-            x.jump(info.offset.x + _x);
-            y.jump(info.offset.y + _y);
-            draw.set(calculateDraw(info.offset.x, info.offset.y));
+            const nextX = info.offset.x + _x;
+            const nextY = info.offset.y + _y;
+            draw.jump(calculateDraw(nextX + Math.abs(z.get()) + 2, nextY, 0));
+            x.jump(nextX);
+            y.jump(nextY);
+
           }}
 
           style={{x, y, z, cursor: "grab"}}
