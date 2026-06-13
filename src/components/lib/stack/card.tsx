@@ -3,6 +3,7 @@ import {PropsWithChildren, useContext, useLayoutEffect} from 'react';
 import {StackContext} from '@/components/lib/stack/context';
 import {motion, useMotionValueEvent, useSpring} from 'framer-motion';
 import {MotionNodeDragHandlers} from 'motion';
+import clsx from 'clsx';
 
 export interface StackCardProps extends PropsWithChildren {
   id: number;
@@ -61,8 +62,6 @@ export default function StackCard(props: StackCardProps) {
       } else if (info.offset.y < 0 && info.offset.y < -(height / 2) || info.offset.x < 0 && info.offset.x < -(width / 2)) {
         setActive(props.id !== active ? props.id : safeIndex(active, false));
       } else {
-        draw.stop();
-        draw.set(calculateDraw(0, 0, 0));
       }
 
       x.set(_x);
@@ -91,7 +90,6 @@ export default function StackCard(props: StackCardProps) {
           onDrag={(_, info) => {
             const nextX = info.offset.x + _x;
             const nextY = info.offset.y + _y;
-            draw.jump(calculateDraw(nextX + Math.abs(z.get()) + 2, nextY, 0));
             x.jump(nextX);
             y.jump(nextY);
 
@@ -99,7 +97,7 @@ export default function StackCard(props: StackCardProps) {
 
           style={{x, y, z, cursor: "grab"}}
           onDragEnd={onDragEnd}
-          className={props.className}>
+          className={clsx(props.className, active === props.id && 'active')}>
         {children}
       </motion.div>
   );

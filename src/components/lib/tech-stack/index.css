@@ -74,20 +74,4 @@
         }
     }
 
-
-    .tabs-header {
-        @apply flex gap-2 flex-wrap;
-        --tab-bg: var(--surface-2);
-        .tab-control {
-            @apply cursor-pointer p-2 rounded-sm bg-(--tab-bg) text-sm;
-
-            &[data-active] {
-                @apply bg-accent-500 text-white;
-            }
-
-            @variant active {
-                @apply opacity-70;
-            }
-        }
-    }
 }

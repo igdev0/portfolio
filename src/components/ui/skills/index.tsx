@@ -2,8 +2,6 @@
 import Container from '@/components/lib/container';
 import Box from '@/components/lib/box';
 import Statement from '@/components/lib/statement';
-import TechStack from '@/components/lib/tech-stack';
-import {TechStackProvider} from '@/components/lib/tech-stack/context';
 import {SkillsType} from '@/content/types';
 import {AnimatedComment} from '@/components/lib/comment';
 import Stack from '@/components/lib/stack';
@@ -26,9 +24,6 @@ export default function Skills(props: SkillsType) {
             {statement}
           </Statement>
         </Box>
-        <TechStackProvider data={skills}>
-          <TechStack/>
-        </TechStackProvider>
         <Stack.Root>
           <div className="stack-layout">
             <div className="stack-controllers">

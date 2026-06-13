@@ -48,7 +48,7 @@ export default function StackRoot(props: PropsWithChildren) {
     return () => {
       window.removeEventListener("resize", resizeHandler);
     }
-  }, []);
+  }, [active]);
 
   return (
       <StackContext.Provider
