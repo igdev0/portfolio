@@ -27,7 +27,6 @@ export default function StackCard(props: StackCardProps) {
 
   const z = -distance * 15;
   const y = offset;
-
   useLayoutEffect(() => {
     setActive(id => id ? id : props.id);
   }, []);
@@ -36,7 +35,7 @@ export default function StackCard(props: StackCardProps) {
     if (increment) {
       return idx + 1 > frames.length - 1 ? 0 : idx + 1;
     } else {
-      return idx - 1 < 0 ? frames.length -1 : idx - 1;
+      return idx - 1 < 0 ? frames.length - 1 : idx - 1;
     }
   };
 
@@ -44,10 +43,9 @@ export default function StackCard(props: StackCardProps) {
     if (ref.current) {
       const {width, height} = ref.current?.getBoundingClientRect();
       if (info.offset.y > 0 && info.offset.y > (height / 2) || info.offset.x > 0 && info.offset.x > (width / 2)) {
-        setActive(safeIndex(active, true));
-      }
-      if(info.offset.y < 0 && info.offset.y < -(height / 2) || info.offset.x < 0 && info.offset.x < - (width / 2)) {
-        setActive(safeIndex(active, false));
+        return setActive(props.id !== active ? props.id : safeIndex(active, true));
+      } else if (info.offset.y < 0 && info.offset.y < -(height / 2) || info.offset.x < 0 && info.offset.x < -(width / 2)) {
+        return setActive(props.id !== active ? props.id : safeIndex(active, false));
       }
     }
   };
@@ -60,7 +58,6 @@ export default function StackCard(props: StackCardProps) {
   return (
       <motion.div drag
                   dragSnapToOrigin
-                  dragControls={controls}
                   ref={ref}
                   initial={{y, z}}
                   animate={{y, z}}
