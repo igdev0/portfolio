@@ -43,17 +43,19 @@ export default function StackRoot(props: PropsWithChildren) {
   useLayoutEffect(() => {
     const resizeHandler = () => {
       draw.set(calculateDraw());
-    }
+    };
     window.addEventListener("resize", resizeHandler);
     return () => {
       window.removeEventListener("resize", resizeHandler);
-    }
+    };
   }, [active]);
 
   return (
-      <StackContext.Provider
-          value={{frames, draw, setFrames, active, setActive, triggers, cards, calculateDraw}}>
-        {children}
-      </StackContext.Provider>
+      <div className="stack">
+        <StackContext.Provider
+            value={{frames, draw, setFrames, active, setActive, triggers, cards, calculateDraw}}>
+          {children}
+        </StackContext.Provider>
+      </div>
   );
 }

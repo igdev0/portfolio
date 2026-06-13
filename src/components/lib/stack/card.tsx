@@ -14,7 +14,7 @@ export interface StackCardProps extends PropsWithChildren {
 export default function StackCard(props: StackCardProps) {
   const {setActive, draw, calculateDraw, frames, cards, active} = useContext(StackContext);
   const {children} = props;
-
+  const isMobile = typeof window !== "undefined" && window.innerWidth <= 768;
   const i = props.id;
   const total = props.max;
   let delta = i - active;
@@ -35,7 +35,7 @@ export default function StackCard(props: StackCardProps) {
     x.set(_x);
     y.set(_y);
     z.set(_z);
-    draw.set(calculateDraw(_x, _y, Math.abs(_z)));
+    !isMobile && draw.set(calculateDraw(_x, _y, Math.abs(_z)));
   }, [active]);
 
   useLayoutEffect(() => {
@@ -61,7 +61,6 @@ export default function StackCard(props: StackCardProps) {
         setActive(props.id !== active ? props.id : safeIndex(active, true));
       } else if (info.offset.y < 0 && info.offset.y < -(height / 2) || info.offset.x < 0 && info.offset.x < -(width / 2)) {
         setActive(props.id !== active ? props.id : safeIndex(active, false));
-      } else {
       }
 
       x.set(_x);
@@ -71,7 +70,7 @@ export default function StackCard(props: StackCardProps) {
   };
 
   const updateDraw = () => {
-    if (props.id === active) {
+    if (props.id === active && !isMobile) {
       draw.jump(calculateDraw(x.get(), y.get(), Math.abs(z.get())));
     }
   };
@@ -80,9 +79,10 @@ export default function StackCard(props: StackCardProps) {
   useMotionValueEvent(y, "change", updateDraw);
   useMotionValueEvent(z, "change", updateDraw);
 
+
   return (
       <motion.div
-          drag
+          drag={isMobile ? 'x' : true}
           whileTap={{cursor: "grabbing", scaleZ: 0}}
           ref={(r) => {
             cards.current[props.id] = r as HTMLDivElement;

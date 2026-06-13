@@ -1,10 +1,6 @@
 @reference "../../../app/globals.css";
 
 @layer components {
-    .profile {
-        @apply w-full px-6;
-    }
-
     .stack-layout {
         @apply flex justify-between items-center relative;
         @apply flex-col 5xl:flex-row;
