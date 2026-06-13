@@ -25,11 +25,10 @@
 
     .stack-card {
         @apply transform-3d perspective-distant;
-        @apply  rounded-md p-5;
+        @apply  rounded-md p-4;
 
         @apply h-full transform-3d;
         @apply bg-(--surface-2) shadow-md;
-
 
         @apply col-start-1;
         @apply row-end-1;
