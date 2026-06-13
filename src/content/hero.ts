@@ -7,7 +7,7 @@ const hero: HeroType = {
   statement: "Frontend-focused engineer passionate about building modern user experiences.",
   cta0: {
     icon: "chat",
-    href: "#about-me",
+    href: "#message",
     text: "Let's talk"
   },
   cta1: {
