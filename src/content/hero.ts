@@ -16,7 +16,7 @@ const hero: HeroType = {
     text: "Book a call"
   },
   image: {
-    src: "/images/me.webp",
+    src: "/images/me.png",
     width: 550,
     height: 550,
     alt: "Me"
