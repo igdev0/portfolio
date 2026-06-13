@@ -20,12 +20,14 @@
         }
 
     }
+
     .stack-trigger:not(.button--active),
     .stack-card:not(.active) {
         &:before {
             @apply hidden;
         }
     }
+
     .stack-card.active,
     .stack-trigger.button--active {
         &:before {
@@ -58,11 +60,16 @@
     }
 
     .stack-card {
+        --card-bg: var(--color-foundation-200);
+        @variant dark {
+            --card-bg: var(--color-foundation-700);
+        }
+
         @apply transform-3d perspective-distant;
         @apply rounded-md p-4;
 
         @apply h-full transform-3d;
-        @apply bg-(--surface-2) shadow-md;
+        @apply bg-(--card-bg) shadow-md;
 
         @apply col-start-1;
         @apply row-end-1;
