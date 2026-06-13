@@ -1,5 +1,4 @@
 import Container from '@/components/container';
-import Box from '@/components/box';
 import Statement from '@/components/statement';
 import {SkillsType} from '@/content/types';
 import {AnimatedComment} from '@/components/comment';
@@ -14,15 +13,15 @@ export default function Skills(props: SkillsType) {
   const total = Object.keys(skills).length;
   return (
       <Container id="skills">
-        <Box as="div" className="pt-40 mb-8">
+        <div className="pt-40">
           <AnimatedComment whileInView={{opacity: 1, y: 0}} initial={{opacity: 0, y: 20}}>{comment}</AnimatedComment>
           <h2 className="text-4xl font-bold">
             {title}
           </h2>
-          <Statement>
+          <Statement className="mb-16">
             {statement}
           </Statement>
-        </Box>
+        </div>
         <Stack.Root>
           <div className="stack-layout">
             <div className="stack-controllers">
