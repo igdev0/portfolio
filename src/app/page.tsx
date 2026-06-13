@@ -1,15 +1,15 @@
-import Nav from '@/components/ui/nav';
-import Hero from '@/components/ui/hero';
-import Skills from '@/components/ui/skills';
-import Expertise from '@/components/lib/experience';
+import Nav from '@/components/nav';
+import Hero from '@/components/hero';
+import Skills from '@/components/skills';
+import Expertise from '@/components/experience';
 import nav from '@/content/nav';
 import hero from '@/content/hero';
 import {experience} from '@/content/experience';
-import Footer from '@/components/lib/footer';
+import Footer from '@/components/footer';
 import {collaborate, contact} from '@/content/collaborate';
-import Collaborate from '@/components/lib/collaborate';
+import Collaborate from '@/components/collaborate';
 import {stack} from '@/content/stack';
-import Passions from '@/components/ui/passions';
+import Passions from '@/components/passions';
 import {passions} from '@/content/passions';
 
 

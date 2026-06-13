@@ -1,0 +1,80 @@
+@reference "../../app/globals.css";
+
+@layer components {
+    .button {
+        @apply inline-flex font-bold rounded-md items-center gap-2 cursor-pointer;
+
+        &.button--square {
+            @apply aspect-square;
+        }
+
+        &.button--medium {
+            @apply px-4 py-2
+        }
+
+        &.button--extra-small {
+            @apply px-2 py-2;
+        }
+
+        &.button--small {
+            @apply px-3 py-2;
+        }
+
+        &:active {
+            opacity: .7;
+            transition: opacity ease-in-out 0.2s;
+        }
+
+        &.button--default {
+            @apply bg-foundation-900 ;
+        }
+
+        &.icon--right {
+            svg {
+                @apply translate-x-0.5;
+            }
+        }
+
+        &.icon--left {
+            svg {
+                @apply -translate-x-1;
+            }
+        }
+
+        &.button--outline {
+            @apply border-2;
+        }
+
+        &.button--solid-light {
+            @apply bg-indigo-400 text-white;
+        }
+
+        &.button--solid {
+            @apply bg-accent-500 text-white;
+
+            &:not(:disabled) {
+                @apply hover:bg-accent-500/90;
+            }
+        }
+
+        &.button--secondary {
+            @apply bg-accent-50 dark:bg-accent-950 border-2;
+            @apply text-accent-500 border-accent-400 dark:border-accent-800 dark:text-accent-50;
+
+
+            &:not(:disabled):hover {
+                @apply dark:bg-accent-950/50 bg-accent-100/90;
+            }
+
+
+            &.button--active {
+                @apply bg-accent-400  opacity-100 text-white;
+            }
+
+        }
+
+        &:disabled {
+            @apply opacity-50 cursor-not-allowed;
+        }
+    }
+}

@@ -1,0 +1,58 @@
+import {ReactNode, useContext} from 'react';
+import {WizardContext} from '@/components/wizard/context';
+import WizardProvider from '@/components/wizard/provider';
+import WizardStep from '@/components/wizard/step';
+import Button from '@/components/button';
+import Icon from '@/components/icons';
+import clsx from 'clsx';
+
+export interface WizardProps {
+  children: ReactNode[];
+
+  /**
+   * This function is called when all steps are complete.
+   * @param data the type of data passed from context
+   */
+  onSubmit<T = any>(data: T): void;
+}
+
+export default function Wizard(props: WizardProps) {
+  const context = useContext(WizardContext);
+
+  function onSubmit(data: any) {
+    if (context.activeStep === context.steps.length - 1) {
+      props.onSubmit(data);
+    } else {
+      context.next();
+    }
+  }
+  const isLastStep = context.activeStep === context.steps.length -1;
+  return (
+      <div>
+        <div className="flex gap-3">
+          {
+            context.steps.map((step) => (
+                <div
+                    className={clsx('border-2 border-(--grid) p-2 rounded-sm', context.isActive(step.id) ? 'text-accent-500' : '')}
+                    key={step.id}>
+                  <Icon name={step.icon}/>
+                </div>
+            ))
+          }
+        </div>
+        <form name="wizard" className="collaborate-form mt-6" onSubmit={context.form?.handleSubmit(onSubmit)}>
+          {
+            props.children
+          }
+          <div className="flex gap-3 justify-end p-2">
+            <Button type="button" iconPosition="left" variant="secondary" icon="chevron-left" onClick={context.previous} disabled={context.activeStep === 0}>Previous</Button>
+            <Button type="submit" iconPosition="right" variant={isLastStep ? 'solid' : "secondary"} icon={isLastStep ? "send" : "chevron-right"}>{isLastStep ? "Submit" : "Next"}</Button>
+          </div>
+        </form>
+      </div>
+  );
+}
+
+
+Wizard.Provider = WizardProvider;
+Wizard.Step = WizardStep;

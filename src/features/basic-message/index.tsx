@@ -2,8 +2,8 @@
 import {SubmitEventHandler, useState} from 'react';
 import {notifyDiscord} from '@/app/actions';
 import {MessageCircle, XIcon} from 'lucide-react';
-import LinkButton from '@/components/lib/link-button';
-import IconButton from '@/components/lib/icon-button';
+import LinkButton from '@/components/link-button';
+import IconButton from '@/components/icon-button';
 
 interface BasicMessageProps {
   book: {
