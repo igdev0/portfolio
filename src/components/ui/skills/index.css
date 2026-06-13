@@ -6,7 +6,7 @@
     }
 
     .stack-layout {
-        @apply flex justify-between items-center;
+        @apply flex justify-between items-center relative;
     }
 
     .stack-cards {

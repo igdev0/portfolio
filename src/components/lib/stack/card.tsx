@@ -1,5 +1,5 @@
 "use client";
-import {PropsWithChildren, useContext, useLayoutEffect, useRef} from 'react';
+import {PropsWithChildren, useContext, useLayoutEffect} from 'react';
 import {StackContext} from '@/components/lib/stack/context';
 import {motion, useSpring} from 'framer-motion';
 import {MotionNodeDragHandlers} from 'motion';
@@ -11,14 +11,11 @@ export interface StackCardProps extends PropsWithChildren {
 }
 
 export default function StackCard(props: StackCardProps) {
-  const {setActive, frames, active} = useContext(StackContext);
-  const ref = useRef<HTMLDivElement>(null);
-
+  const {setActive, draw, calculateDraw, frames, cards, active} = useContext(StackContext);
   const {children} = props;
 
   const i = props.id;
   const total = props.max;
-
   let delta = i - active;
   if (delta > total / 2) delta -= total;
   if (delta < -total / 2) delta += total;
@@ -37,7 +34,6 @@ export default function StackCard(props: StackCardProps) {
     x.set(_x);
     y.set(_y);
     z.set(_z);
-
   }, [active]);
 
   useLayoutEffect(() => {
@@ -57,8 +53,8 @@ export default function StackCard(props: StackCardProps) {
     y.stop();
     z.stop();
 
-    if (ref.current) {
-      const {width, height} = ref.current?.getBoundingClientRect();
+    if (cards.current[props.id]) {
+      const {width, height} = cards.current[props.id]?.getBoundingClientRect();
       if (info.offset.y > 0 && info.offset.y > (height / 2) || info.offset.x > 0 && info.offset.x > (width / 2)) {
         setActive(props.id !== active ? props.id : safeIndex(active, true));
       } else if (info.offset.y < 0 && info.offset.y < -(height / 2) || info.offset.x < 0 && info.offset.x < -(width / 2)) {
@@ -76,11 +72,15 @@ export default function StackCard(props: StackCardProps) {
           drag
           whileTap={{cursor: "grabbing", scaleZ: 0}}
           transition={{duration: 1000}}
-          ref={ref}
+          ref={(r) => {
+            cards.current[props.id] = r as HTMLDivElement;
+          }}
           onDrag={(_, info) => {
             x.jump(info.offset.x + _x);
             y.jump(info.offset.y + _y);
+            draw.set(calculateDraw(info.offset.x, info.offset.y));
           }}
+
           style={{x, y, z, cursor: "grab"}}
           onDragEnd={onDragEnd}
           className={props.className}>

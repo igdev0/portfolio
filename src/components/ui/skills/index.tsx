@@ -40,10 +40,11 @@ export default function Skills(props: SkillsType) {
                 ))
               }
             </div>
+            <Stack.Overlay/>
             <Stack.Cards className="stack-cards">
               {
                 Object.entries(skills).map(([skill, entry], index) => (
-                    <Stack.Card max={total} className="stack-card" key={skill + index} id={index}>
+                    <Stack.Card className="stack-card" max={total} key={skill + index} id={index}>
                       <div className="stack-card-inner">
                         <div className="flex-group gap-4 mb-5">
                           <Icon name={entry.icon}/>

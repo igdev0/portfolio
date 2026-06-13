@@ -5,14 +5,20 @@ import {IconNames} from '@/components/lib/icons';
 
 export interface StackControllerProps extends PropsWithChildren {
   id: number;
-  icon?: IconNames
+  icon?: IconNames;
 }
 
 export default function StackTrigger(props: StackControllerProps) {
   const {children, icon} = props;
-  const {setActive, active} = useContext(StackContext);
+  const {setActive, active, triggers} = useContext(StackContext);
+
   return (
-      <Button variant="secondary" active={active === props.id} disabled={active === props.id} icon={icon} onClick={() => setActive(props.id)}>
+      <Button variant="secondary"
+              ref={(r) => {
+                triggers.current[props.id] = r as HTMLButtonElement;
+              }}
+              active={active === props.id} disabled={active === props.id} icon={icon}
+              onClick={() => setActive(props.id)}>
         {children}
       </Button>
   );
