@@ -14,7 +14,7 @@ import Icon from '@/components/lib/icons';
 
 export default function Skills(props: SkillsType) {
   const {title, comment, skills, statement} = props;
-
+  const total = Object.keys(skills).length;
   return (
       <Container id="skills">
         <Box as="div" className="pt-40 mb-8">
@@ -43,9 +43,8 @@ export default function Skills(props: SkillsType) {
             <Stack.Cards className="stack-cards">
               {
                 Object.entries(skills).map(([skill, entry], index) => (
-                    <Stack.Card className="stack-card" key={skill + index} id={index}>
+                    <Stack.Card max={total} className="stack-card" key={skill + index} id={index}>
                       <div className="stack-card-inner">
-
                         <div className="flex-group gap-4 mb-5">
                           <Icon name={entry.icon}/>
                           <h4 className="font-bold">{skill}</h4>
