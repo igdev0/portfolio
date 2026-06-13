@@ -15,7 +15,7 @@ export default function StackRoot(props: PropsWithChildren) {
     const card = cards.current[active];
     const controller = triggers.current[active];
 
-    const border = 0;
+    const border = 6;
     const cardParent = card.offsetParent as HTMLElement | null;
 
     const mx = controller.offsetLeft + controller.clientWidth + border;
