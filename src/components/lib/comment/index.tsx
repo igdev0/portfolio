@@ -20,4 +20,4 @@ export default function Comment(props: CommentProps) {
   );
 }
 
-export const AnimatedComment = motion(Comment)
+export const AnimatedComment = motion.create(Comment)

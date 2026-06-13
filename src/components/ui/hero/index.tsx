@@ -13,7 +13,7 @@ import {PointerEventHandler} from 'react';
 import "./index.css";
 
 const corners = clsx(`absolute h-1/9 w-1/9 m-4 border-r-12 border-b-12 border-(--surface-1)`);
-const AnimatedImage = motion(Image);
+const AnimatedImage = motion.create(Image);
 
 export default function Hero(props: HeroType) {
   const {cta0, cta1, image, comment, title, statement} = props;

@@ -10,6 +10,7 @@ import {Tabs} from '@base-ui/react/tabs';
 import {Fragment} from 'react';
 import Icon from '@/components/lib/icons';
 
+
 export default function Skills(props: SkillsType) {
   const {title, comment, skills, statement} = props;
   const total = Object.keys(skills).length;

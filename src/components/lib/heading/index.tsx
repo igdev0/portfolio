@@ -23,4 +23,4 @@ export default function Heading(props: TitleProps) {
   );
 }
 
-export const AnimatedHeading = motion(Heading);
+export const AnimatedHeading = motion.create(Heading);

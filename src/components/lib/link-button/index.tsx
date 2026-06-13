@@ -1,4 +1,3 @@
-"use client";
 import "../button/index.css";
 import {AppLinkProps} from '@/components/lib/link';
 import {buttonVariants} from '@/components/lib/button';
@@ -6,7 +5,6 @@ import {VariantProps} from 'class-variance-authority';
 import Icon, {IconNames} from '@/components/lib/icons';
 import Link from 'next/dist/client/link';
 import {Ref} from 'react';
-import {motion} from 'framer-motion';
 
 interface LinkButtonProps extends AppLinkProps, VariantProps<typeof buttonVariants> {
   icon?: IconNames;
@@ -28,5 +26,3 @@ export default function LinkButton(props: LinkButtonProps) {
       </Link>
   );
 }
-
-export const AnimatedLinkButton = motion(LinkButton)
