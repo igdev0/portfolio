@@ -9,7 +9,6 @@ export default function StackRoot(props: PropsWithChildren) {
   const triggers = useRef<HTMLButtonElement[]>([]);
   const cards = useRef<HTMLDivElement[]>([]);
   const draw = useMotionValue('');
-  const tempPath = useMotionValue('');
   const {children} = props;
 
   const calculateDraw = (x = 0, y = 0, z = 0) => {
@@ -34,13 +33,6 @@ export default function StackRoot(props: PropsWithChildren) {
     const ly = baseLy + y;
 
     return `M ${mx} ${my} Q ${(mx + lx) / 2} ${(my + ly) / 2} ${lx} ${ly}`;
-  };
-  /**
-   * @todo implement a proper calculation for tempPath
-   */
-  const calcTempPath = () => {
-    const {my, mx, ly, lx} = frames.current[active];
-    return `M ${mx} ${my} l ${lx} ${ly}`;
   };
 
   useLayoutEffect(() => {
@@ -68,8 +60,6 @@ export default function StackRoot(props: PropsWithChildren) {
               triggers,
               cards,
               calculateDraw,
-              tempPath,
-              calcTempPath
             }}>
           {children}
         </StackContext.Provider>

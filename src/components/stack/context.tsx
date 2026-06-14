@@ -14,10 +14,9 @@ export interface StackContextProps {
   setActive: Dispatch<SetStateAction<number>>;
   frames: RefObject<CardFrame[]>;
   draw: MotionValue<string>;
-  tempPath: MotionValue<string>;
-  calcTempPath: (x?: number, y?: number, z?: number) => string;
   triggers: RefObject<HTMLButtonElement[]>;
   cards: RefObject<HTMLDivElement[]>;
+
   calculateDraw(x?: number, y?: number, z?: number): string;
 }
 
@@ -30,10 +29,6 @@ export const StackContext = createContext<StackContextProps>({
   calculateDraw() {
     return '';
   },
-  calcTempPath() {
-    return '';
-  },
-  tempPath: new MotionValue(''),
   setActive() {
   },
 });
