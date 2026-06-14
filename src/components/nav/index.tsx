@@ -44,7 +44,7 @@ export default function Nav(props: NavProps) {
             <IconButton label="Menu" className="nav__drawer-toggler" icon="menu"
                         onClick={() => menuRef.current?.setMenuOpen(true)}></IconButton>
           </div>
-          <NavMenu {...props}/>
+          <NavMenu ref={menuRef} {...props}/>
         </Container>
       </nav>
   );

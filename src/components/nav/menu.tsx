@@ -1,11 +1,11 @@
 "use client";
-import {Dispatch, RefObject, SetStateAction, useImperativeHandle, useState} from 'react';
+import {Dispatch, Ref, SetStateAction, useImperativeHandle, useState} from 'react';
 import clsx from 'clsx';
 import IconButton from '@/components/icon-button';
 import {NavProps} from '@/components/nav/index';
 import Link from 'next/dist/client/link';
 
-export default function NavMenu(props: NavProps & {ref: RefObject<{setMenuOpen: Dispatch<SetStateAction<boolean>>}>}) {
+export default function NavMenu(props: NavProps & { ref: Ref<{ setMenuOpen: Dispatch<SetStateAction<boolean>> }> }) {
   const {links} = props;
   const [menuOpen, setMenuOpen] = useState(false);
 
