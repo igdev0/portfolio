@@ -8,6 +8,7 @@ import {NavType} from '@/content/types';
 import LinkButton from '@/components/link-button';
 import NavMenu from '@/components/nav/menu';
 import {Dispatch, SetStateAction, useRef} from 'react';
+import NavProgress from '@/components/nav/progress';
 
 export interface NavProps extends NavType {
   github: string;
@@ -20,6 +21,7 @@ export default function Nav(props: NavProps) {
 
   return (
       <nav className="nav">
+        <NavProgress/>
         <Container className="nav__layout">
           <Link className="nav__link nav__brand" draggable={false}
                 href="#"
