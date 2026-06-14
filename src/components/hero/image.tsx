@@ -46,6 +46,7 @@ export default function HeroImage(props: HeroType['image']) {
           drag
           dragConstraints={{top: 0, left: 0, right: 0, bottom: 0}}
           className="hero-image"
+          whileDrag={{cursor: "grabbing"}}
           onPointerDown={handlePointerDown}
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}>
