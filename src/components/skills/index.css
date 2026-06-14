@@ -52,7 +52,7 @@
     }
 
     .stack-controllers {
-        @apply flex flex-wrap 5xl:flex-col mb-20 5xl:mb-0 gap-3;
+        @apply flex flex-wrap 5xl:flex-col mb-20 5xl:mb-0 gap-3 relative;
 
         button {
             @apply w-fit;
@@ -85,7 +85,8 @@
     }
 
     .stack-overlay {
-        @apply w-full h-full absolute top-0 right-0 left-0 bottom-0 pointer-events-none;
+        @apply w-full h-full absolute top-0 right-0 left-0 bottom-0;
+        @apply pointer-events-none;
     }
 
     .stack-card-inner {

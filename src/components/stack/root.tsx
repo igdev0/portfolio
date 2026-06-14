@@ -5,10 +5,11 @@ import {useMotionValue} from 'framer-motion';
 
 export default function StackRoot(props: PropsWithChildren) {
   const [active, setActive] = useState(0);
-  const [frames, setFrames] = useState<CardFrame[]>([]);
+  const frames = useRef<CardFrame[]>([]);
   const triggers = useRef<HTMLButtonElement[]>([]);
   const cards = useRef<HTMLDivElement[]>([]);
   const draw = useMotionValue('');
+  const tempPath = useMotionValue('');
   const {children} = props;
 
   const calculateDraw = (x = 0, y = 0, z = 0) => {
@@ -35,6 +36,13 @@ export default function StackRoot(props: PropsWithChildren) {
 
     return `M ${mx} ${my} Q ${(mx + lx) / 2} ${(my + ly) / 2} ${lx} ${ly}`;
   };
+  /**
+   * @todo implement a proper calculation for tempPath
+   */
+  const calcTempPath = () => {
+    const {my, mx, ly, lx} = frames.current[active];
+    return `M ${mx} ${my} l ${lx} ${ly}`;
+  };
 
   useLayoutEffect(() => {
     draw.jump(calculateDraw());
@@ -53,7 +61,17 @@ export default function StackRoot(props: PropsWithChildren) {
   return (
       <div className="stack">
         <StackContext.Provider
-            value={{frames, draw, setFrames, active, setActive, triggers, cards, calculateDraw}}>
+            value={{
+              frames,
+              draw,
+              active,
+              setActive,
+              triggers,
+              cards,
+              calculateDraw,
+              tempPath,
+              calcTempPath
+            }}>
           {children}
         </StackContext.Provider>
       </div>

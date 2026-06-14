@@ -5,7 +5,6 @@ import {StackContext} from '@/components/stack/context';
 
 export default function StackOverlay() {
   const {draw} = useContext(StackContext);
-
   return (
       <motion.svg className="stack-overlay">
         <motion.path d={draw}

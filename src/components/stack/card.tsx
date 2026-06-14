@@ -12,7 +12,7 @@ export interface StackCardProps extends PropsWithChildren {
 }
 
 export default function StackCard(props: StackCardProps) {
-  const {setActive, draw, calculateDraw, frames, cards, active} = useContext(StackContext);
+  const {setActive, draw, triggers, calculateDraw, frames, cards, active} = useContext(StackContext);
   const {children} = props;
   const isMobile = typeof window !== "undefined" && window.innerWidth <= 768;
   const i = props.id;
@@ -44,9 +44,9 @@ export default function StackCard(props: StackCardProps) {
 
   const safeIndex = (idx: number, increment: boolean) => {
     if (increment) {
-      return idx + 1 > frames.length - 1 ? 0 : idx + 1;
+      return idx + 1 > frames.current?.length - 1 ? 0 : idx + 1;
     } else {
-      return idx - 1 < 0 ? frames.length - 1 : idx - 1;
+      return idx - 1 < 0 ? frames.current?.length - 1 : idx - 1;
     }
   };
 
