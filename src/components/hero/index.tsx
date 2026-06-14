@@ -12,7 +12,6 @@ import HeroImage from '@/components/hero/image';
 export default function Hero(props: HeroType) {
   const {cta0, cta1, image, comment, title, statement} = props;
 
-
   return (
       <Box className="hero" as="header" id="top">
         <Container className="hero-layout">
