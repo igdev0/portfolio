@@ -6,7 +6,7 @@ import "./index.css";
 import {Tabs} from '@base-ui/react/tabs';
 import {Fragment} from 'react';
 import Icon from '@/components/icons';
-import {AnimatedComment} from '@/components/comment/animated';
+import Comment from '@/components/comment';
 
 export default function Skills(props: SkillsType) {
   const {title, comment, skills, statement} = props;
@@ -14,7 +14,7 @@ export default function Skills(props: SkillsType) {
   return (
       <Container id="skills">
         <div className="pt-40">
-          <AnimatedComment whileInView={{opacity: 1, y: 0}} initial={{opacity: 0, y: 20}}>{comment}</AnimatedComment>
+          <Comment>{comment}</Comment>
           <h2 className="text-4xl font-bold">
             {title}
           </h2>
