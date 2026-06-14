@@ -83,7 +83,7 @@ export default function Hero(props: HeroType) {
                            whileInView={{opacity: 1}}
                            initial={{opacity: 0}}
                            transition={{delay: .3}}
-                           priority
+                           fetchPriority="high"
                            viewport={{once: true}}
                            {...image}/>
             <motion.div
