@@ -24,16 +24,20 @@ export default function Collaborate(props: CollaborateType) {
 
         <div className="flex gap-4 w-fit">
           <LinkButton icon="github" size="xs" href={contact.github} aspect="square" external
+                      label="Github"
                       variant="outline"
                       className="w-fit"/>
           <LinkButton icon="telegram" size="xs" href={contact.telegram} aspect="square" external
                       variant="outline"
+                      label="Telegram"
                       className="w-fit"/>
           <LinkButton icon="linkedin" size="xs" href={contact.linkedin} aspect="square" external
                       variant="outline"
+                      label="LinkedIn"
                       className="w-fit"/>
           <LinkButton icon="email" size="xs" href={contact.email} aspect="square" external
                       variant="outline"
+                      label="Email"
                       className="w-fit"/>
         </div>
       </Container>

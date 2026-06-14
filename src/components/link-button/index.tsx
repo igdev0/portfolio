@@ -9,15 +9,17 @@ import {Ref} from 'react';
 interface LinkButtonProps extends AppLinkProps, VariantProps<typeof buttonVariants> {
   icon?: IconNames;
   external?: boolean;
+  label?: string;
   ref?: Ref<HTMLAnchorElement>;
   iconPosition?: 'left' | 'right';
 }
 
 export default function LinkButton(props: LinkButtonProps) {
-  const {href, children, ref, icon, iconPosition = 'left', external, className = '', ...variants} = props;
+  const {href, children, label, ref, icon, iconPosition = 'left', external, className = '', ...variants} = props;
   return (
       <Link
           ref={ref}
+          aria-label={label}
           className={`${buttonVariants(variants)} icon--${variants.aspect === 'square' ? '' : iconPosition} ${external ? 'icons--external' : ''} ${className}`}
           href={href} target={external ? "_blank" : "_self"}>
         {icon && iconPosition === 'left' && <Icon name={icon}/>}

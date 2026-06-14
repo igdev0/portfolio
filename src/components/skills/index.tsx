@@ -41,7 +41,7 @@ export default function Skills(props: SkillsType) {
                       <div className="stack-card-inner">
                         <div className="flex-group gap-4 mb-5">
                           <Icon name={entry.icon}/>
-                          <h4 className="font-bold">{skill}</h4>
+                          <h3 className="font-bold">{skill}</h3>
                         </div>
                         <Tabs.Root>
                           <Tabs.List className="tabs-header">

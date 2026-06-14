@@ -15,7 +15,7 @@ import {passions} from '@/content/passions';
 
 export default function LandingPage() {
   return (
-      <>
+      <main>
         <Nav {...nav} github={contact.github}/>
         <Hero {...hero}/>
         <Passions {...passions}/>
@@ -23,6 +23,6 @@ export default function LandingPage() {
         <Skills {...stack}/>
         <Collaborate {...collaborate}/>
         <Footer/>
-      </>
+      </main>
   );
 };

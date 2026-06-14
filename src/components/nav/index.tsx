@@ -44,12 +44,12 @@ export default function Nav(props: NavProps) {
             </MotionConfig>
           </div>
           <div className="nav__buttons">
-            <LinkButton href={props.github} icon="github" aspect="square" size="xs" variant="ghost" external/>
-            <IconButton icon="sun" onClick={() => setTheme(theme === 'dark' ? "light" : "dark")}/>
-            <IconButton className="nav__drawer-toggler" icon="menu" onClick={() => setMenuOpen(true)}></IconButton>
+            <LinkButton label="Github" href={props.github} icon="github" aspect="square" size="xs" variant="ghost" external/>
+            <IconButton label="Theme" icon="sun" onClick={() => setTheme(theme === 'dark' ? "light" : "dark")}/>
+            <IconButton label="Menu" className="nav__drawer-toggler" icon="menu" onClick={() => setMenuOpen(true)}></IconButton>
           </div>
           <div className={clsx('nav__drawer', menuOpen ? 'open' : 'close')}>
-            <IconButton icon="x" onClick={() => setMenuOpen(false)}/>
+            <IconButton label="Menu Close" icon="x" onClick={() => setMenuOpen(false)}/>
             {
               links.map((entry, index) => (
                   <Link draggable={false} key={index}
