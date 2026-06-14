@@ -32,7 +32,6 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       </head>
       <body className={(`${inter.className}`)}>
-      {process.env.NODE_ENV === "production" && <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID ?? "not set"}/>}
       <ThemeProvider
           defaultTheme="system"
           enableSystem={true}
@@ -40,6 +39,7 @@ export default function RootLayout({
       >
         {children}
       </ThemeProvider>
+      {process.env.NODE_ENV === "production" && <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID ?? "not set"}/>}
       </body>
       </html>
   );

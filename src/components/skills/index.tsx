@@ -1,12 +1,12 @@
 import Container from '@/components/container';
 import Statement from '@/components/statement';
 import {SkillsType} from '@/content/types';
-import {AnimatedComment} from '@/components/comment';
 import Stack from '@/components/stack';
 import "./index.css";
 import {Tabs} from '@base-ui/react/tabs';
 import {Fragment} from 'react';
 import Icon from '@/components/icons';
+import {AnimatedComment} from '@/components/comment/animated';
 
 export default function Skills(props: SkillsType) {
   const {title, comment, skills, statement} = props;

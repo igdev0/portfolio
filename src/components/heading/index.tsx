@@ -1,6 +1,4 @@
-"use client";
 import {PropsWithChildren, Ref, useMemo} from 'react';
-import {motion} from 'framer-motion';
 import clsx from 'clsx';
 
 export interface TitleProps extends PropsWithChildren {
@@ -22,5 +20,3 @@ export default function Heading(props: TitleProps) {
       >{props.children}</Title>
   );
 }
-
-export const AnimatedHeading = motion.create(Heading);

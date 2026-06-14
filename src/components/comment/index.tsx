@@ -1,9 +1,7 @@
-"use client";
 import {Ref} from 'react';
 import "./index.css";
 import Html from '@/components/html';
 import clsx from 'clsx';
-import {motion} from 'framer-motion';
 
 export type CommentProps = {
   className?: string;
@@ -19,5 +17,3 @@ export default function Comment(props: CommentProps) {
       </Html>
   );
 }
-
-export const AnimatedComment = motion.create(Comment)
