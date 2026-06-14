@@ -4,7 +4,7 @@ import Statement from '@/components/statement';
 import {CollaborateType} from '@/content/types';
 import LinkButton from '@/components/link-button';
 import "./index.css";
-import BasicMessage from '@/features/basic-message';
+import BasicMessage from '@/components/basic-message';
 import Heading from '@/components/heading';
 
 export default function Collaborate(props: CollaborateType) {
