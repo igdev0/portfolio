@@ -44,9 +44,9 @@ export default function StackCard(props: StackCardProps) {
 
   const safeIndex = (idx: number, increment: boolean) => {
     if (increment) {
-      return idx + 1 > frames.current?.length - 1 ? 0 : idx + 1;
+      return idx + 1 > props.max - 1 ? 0 : idx + 1;
     } else {
-      return idx - 1 < 0 ? frames.current?.length - 1 : idx - 1;
+      return idx - 1 < 0 ? props.max - 1 : idx - 1;
     }
   };
 

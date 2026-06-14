@@ -18,7 +18,6 @@ export default function StackRoot(props: PropsWithChildren) {
 
     const border = 6;
     const cardParent = card.offsetParent as HTMLElement | null;
-
     const mx = controller.offsetLeft + controller.clientWidth + border;
     const my = controller.offsetTop + controller.clientHeight / 2;
 
