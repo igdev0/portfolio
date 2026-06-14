@@ -54,6 +54,7 @@ export default function HeroImage(props: HeroType['image']) {
                        initial={{opacity: 0}}
                        transition={{delay: .3}}
                        fetchPriority="high"
+                       draggable={false}
                        viewport={{once: true}}
                        {...props}/>
         <motion.div
