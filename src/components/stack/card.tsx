@@ -12,7 +12,7 @@ export interface StackCardProps extends PropsWithChildren {
 }
 
 export default function StackCard(props: StackCardProps) {
-  const {setActive, draw, triggers, calculateDraw, frames, cards, active} = useContext(StackContext);
+  const {setActive, draw, calculateDraw, cards, active} = useContext(StackContext);
   const {children} = props;
   const isMobile = typeof window !== "undefined" && window.innerWidth <= 768;
   const i = props.id;
