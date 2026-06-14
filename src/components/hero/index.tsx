@@ -1,52 +1,16 @@
-"use client";
 import LinkButton from '@/components/link-button';
-import clsx from 'clsx';
 import Statement from '@/components/statement';
-import Image from 'next/image';
 import Container from '@/components/container';
 import Box from '@/components/box';
 import Comment from '@/components/comment';
 import {HeroType} from '@/content/types';
 import Heading from '@/components/heading';
-import {motion, useDragControls, useMotionValue, useSpring, useTransform} from 'framer-motion';
-import {PointerEventHandler} from 'react';
 import "./index.css";
+import HeroImage from '@/components/hero/image';
 
-const corners = clsx(`absolute h-12 w-12 m-4 border-r-12 border-b-12 border-(--surface-1)`);
-const AnimatedImage = motion.create(Image);
 
 export default function Hero(props: HeroType) {
   const {cta0, cta1, image, comment, title, statement} = props;
-  const controls = useDragControls();
-
-  const z = useMotionValue(1);
-  const scaleZ = useSpring(z);
-
-  const xy = useTransform(scaleZ, [1, 1.2], [1, 10]);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-
-    const deltaX = (e.clientX - rect.left) - centerX;
-    const deltaY = (e.clientY - rect.top) - centerY;
-
-    const distance = Math.abs(deltaX) + Math.abs(deltaY);
-    const maxDistance = centerX + centerY;
-
-    const normalized = 1 - distance / maxDistance;
-
-    z.set(1 + normalized * 0.2);
-  };
-
-  const handleMouseLeave = () => {
-    z.set(1);
-  };
-
-  const handlePointerDown: PointerEventHandler = (e) => {
-    controls.start(e);
-  };
 
 
   return (
@@ -71,59 +35,7 @@ export default function Hero(props: HeroType) {
               </LinkButton>
             </Box>
           </Box>
-          <motion.div
-              drag
-              dragConstraints={{top: 0, left: 0, right: 0, bottom: 0}}
-              className="hero-image"
-              onPointerDown={handlePointerDown}
-              onMouseMove={handleMouseMove}
-              onMouseLeave={handleMouseLeave}>
-            <AnimatedImage draggable={false}
-                           loading="eager"
-                           whileInView={{opacity: 1}}
-                           initial={{opacity: 0}}
-                           transition={{delay: .3}}
-                           fetchPriority="high"
-                           viewport={{once: true}}
-                           {...image}/>
-            <motion.div
-                className="square"
-                initial={{opacity: 0, scale: .5}}
-                whileInView={{opacity: 1, scale: 1}}
-
-                transition={{delay: .6}}
-                viewport={{once: true}}
-                style={{scale: scaleZ}}/>
-
-            <motion.div
-                style={{x: xy, y: xy}}
-                initial={{opacity: 0}}
-                viewport={{once: true}}
-                whileInView={{opacity: 1}}
-                transition={{delay: .9}}
-                className={clsx(corners, 'rotate-180 top-0 left-0')}/>
-            <motion.div
-                style={{x: xy, y: xy}}
-                initial={{opacity: 0}}
-                viewport={{once: true}}
-                whileInView={{opacity: 1}}
-                transition={{delay: .9}}
-                className={clsx(corners, 'rotate-90 left-0 bottom-0')}/>
-            <motion.div
-                style={{x: xy, y: xy}}
-                initial={{opacity: 0}}
-                viewport={{once: true}}
-                whileInView={{opacity: 1}}
-                transition={{delay: .9}}
-                className={clsx(corners, 'right-0 bottom-0')}/>
-            <motion.div
-                style={{x: xy, y: xy}}
-                initial={{opacity: 0}}
-                viewport={{once: true}}
-                whileInView={{opacity: 1}}
-                transition={{delay: .9}}
-                className={clsx(corners, '-rotate-90 right-0 top-0')}/>
-          </motion.div>
+          <HeroImage {...image}/>
         </Container>
       </Box>
   );
