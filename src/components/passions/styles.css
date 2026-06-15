@@ -10,7 +10,7 @@
     }
 
     .passion-card {
-        @apply rounded-2xl overflow-hidden relative h-fit shadow-2xl;
+        @apply rounded-2xl overflow-hidden relative h-fit shadow-2xl ;
 
 
         .card-image {
@@ -18,8 +18,8 @@
         }
 
         .card-content {
-            --passion-card-bg: var(--color-accent-50);
-            @apply p-3 bg-(--passion-card-bg);
+            --passion-card-bg: var(--color-foundation-50);
+            @apply p-3 bg-(--passion-card-bg) relative;
             @variant dark {
                 --passion-card-bg: var(--color-foundation-800);
             }
