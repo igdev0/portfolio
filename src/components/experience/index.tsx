@@ -17,13 +17,13 @@ function Experience(props: ExperienceEntityType) {
   return (
       <div className="experience">
         <div className="timeline relative">
-          <div className="timeline__head z-5 sticky top-16 translate-y-6"/>
+          <div className="timeline__head z-5 translate-y-3 sticky top-18"/>
         </div>
         <div>
-          <div className="z-5 sticky top-16 pb-3 bg-(--background) py-6">
+          <div className="z-5 sticky top-18 py-3 mb-1 bg-(--background)">
             <h3 className="text-2xl font-bold mb-0">{props.title}</h3>
           </div>
-          <div className="flex flex-wrap gap-4 mt-4 relative">
+          <div className="flex flex-wrap gap-4 relative">
             {
               props.tags.map((tag, index) => (
                   <Tag key={index}>
@@ -39,7 +39,7 @@ function Experience(props: ExperienceEntityType) {
               ))
             }
           </ul>
-          <div className="flex flex-wrap gap-3 mt-8 mb-0">
+          <div className="flex flex-wrap gap-3 mt-5 mb-0">
             {
               props.links.map((link, index) => (
                   <LinkButton key={index}
@@ -69,9 +69,10 @@ export default function Expertise(props: ExperienceTimelineType) {
         <Statement className="mb-6">
           {statement}
         </Statement>
-        <div className="relative mt-6">
+        <div className="relative flex flex-col mt-16 gap-12">
           <div
-              className="border-l-2 mt-6 border-(--grid) border-dashed h-full absolute left-0 translate-x-2.5 -z-1"/>
+              className="border-l-2 top-3.5 border-(--grid) border-dashed h-[99%] w-0 left-0 translate-x-2.5 absolute"/>
+
           {
             roles.map((experience, index) => (
                 <Experience key={index} {...experience}/>
