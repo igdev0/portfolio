@@ -103,9 +103,9 @@ html {
     --color-foundation-950: var(--color-gray-950);
 
     /* Breakpoints */
-    --breakpoint-3xs: initial;
-    --breakpoint-2xs: initial;
-    --breakpoint-xs: 22rem;
+    --breakpoint-3xs: 16rem;
+    --breakpoint-2xs: 18rem;
+    --breakpoint-xs: 21rem;
     --breakpoint-sm: 24rem;
     --breakpoint-md: 28rem;
     --breakpoint-lg: 32rem;

@@ -24,8 +24,10 @@ export interface ContainerProps extends PropsWithChildren, VariantProps<typeof c
 export default function Container(props: ContainerProps) {
   const {children, className, id, name = 'default', ...variants} = props;
   return (
-      <div id={id} className={clsx(containerVariants(variants), className)} ref={props?.ref ?? null}>
-        {children}
+      <div className="px-3">
+        <div id={id} className={clsx(containerVariants(variants), className)} ref={props?.ref ?? null}>
+          {children}
+        </div>
       </div>
   );
 }
