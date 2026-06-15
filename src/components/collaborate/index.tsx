@@ -15,7 +15,7 @@ export default function Collaborate(props: CollaborateType) {
           {comment}
         </Comment>
         <Heading as="h2">{title}</Heading>
-        <Statement className="mb-12">
+        <Statement className="mb-16">
           {statement}
         </Statement>
         <div className="max-w-120 gap-6 w-full mb-4">

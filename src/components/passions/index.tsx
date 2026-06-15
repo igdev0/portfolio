@@ -14,7 +14,7 @@ export default function Passions(props: PassionsType) {
           <Comment>{comment}</Comment>
           <Heading as="h2"
                    className="text-4xl">{title}</Heading>
-          <Statement>{statement}</Statement>
+          <Statement className="mb-16">{statement}</Statement>
           <div className="passions-grid items-center">
             {
               passions.map((passion, index) => (
