@@ -39,7 +39,7 @@ export default function Skills(props: SkillsType) {
                 Object.entries(skills).map(([skill, entry], index) => (
                     <Stack.Card className="stack-card" max={total} key={skill + index} id={index}>
                       <div className="stack-card-inner">
-                        <div className="flex-group gap-4 mb-5">
+                        <div className="flex-group gap-4 mb-6">
                           <Icon name={entry.icon}/>
                           <h3 className="font-bold">{skill}</h3>
                         </div>

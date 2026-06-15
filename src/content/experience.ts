@@ -28,7 +28,7 @@ const experience:ExperienceTimelineType = {
         "Completed the Alchemy Ethereum and Solidity bootcamp focused on smart contract development.",
         "Collaborated on and delivered a web3 hackathon project.",
         "Redesigned and rebuilt my personal portfolio.",
-        "Collaborated with a UI/UX designer to deliver a CMS-driven website. for a client of mine using Strapi and NextJS.",
+        "Collaborated with a UI/UX designer to deliver a CMS-driven website for a client of mine using Strapi and NextJS.",
       ],
     },
     {
