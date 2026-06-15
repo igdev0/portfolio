@@ -1,11 +1,11 @@
 import {ForwardedRef, PropsWithChildren} from 'react';
-import "./index.css";
 import {cva, VariantProps} from 'class-variance-authority';
+import clsx from 'clsx';
 
 const containerVariants = cva('container', {
   variants: {
     variant: {
-      bordered: "border-x border-(--grid) mx-auto px-4 md:px-8"
+      bordered: "border-x border-(--grid) mx-auto px-3 md:px-6"
     }
   },
   defaultVariants: {
@@ -17,17 +17,15 @@ export interface ContainerProps extends PropsWithChildren, VariantProps<typeof c
   name?: string;
   className?: string;
   id?: string;
-  ref?: ForwardedRef<HTMLDivElement>
+  ref?: ForwardedRef<HTMLDivElement>;
 }
 
 
 export default function Container(props: ContainerProps) {
   const {children, className, id, name = 'default', ...variants} = props;
   return (
-      <div className="px-4 md:px-8" id={id}>
-        <div className={`${containerVariants(variants)}` + ` ${className}`} ref={props?.ref??null}>
-            {children}
-        </div>
+      <div id={id} className={clsx(containerVariants(variants), className)} ref={props?.ref ?? null}>
+        {children}
       </div>
   );
 }

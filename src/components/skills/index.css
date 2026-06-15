@@ -8,7 +8,7 @@
 
     .stack-cards {
         @apply grid grid-cols-1 grid-rows-1 transform-3d perspective-near;
-        @apply max-w-2xl w-full p-4;
+        @apply max-w-2xl w-full;
         @apply rounded-lg;
     }
 

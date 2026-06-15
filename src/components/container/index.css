@@ -1,9 +1,0 @@
-@reference "../../app/globals.css";
-
-@layer components {
-    .container {
-        &.bordered {
-            @apply border-x border-(--grid) mx-auto px-9;
-        }
-    }
-}
