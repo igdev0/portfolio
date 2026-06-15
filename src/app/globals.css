@@ -40,13 +40,20 @@ html {
 @layer components {
 
     .tabs-header {
-        @apply flex-group;
+        @apply flex-group gap-1.5;
         .tab-control {
-            @apply cursor-pointer p-2 rounded-sm text-sm;
-            background: var(--surface-3);
+            --tab-inactive: var(--color-foundation-100);
+            --tab-active: var(--color-accent-500);
+            --tab-border: var(--color-foundation-200);
+            @apply cursor-pointer px-2 py-1.5 rounded-sm text-sm bg-(--tab-inactive) border border-(--tab-border);
 
             &[data-active] {
-                @apply bg-accent-500 text-white;
+                @apply bg-(--tab-active) text-white;
+            }
+
+            @variant dark {
+                --tab-inactive: var(--color-foundation-700);
+                --tab-border: var(--color-foundation-600);
             }
 
             @variant active {
