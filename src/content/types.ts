@@ -16,6 +16,7 @@ export interface ContactType {
 export interface NavType {
   brand: string;
   links: LinkType[];
+  github: string;
 }
 
 export interface CollaborateType extends SectionType {

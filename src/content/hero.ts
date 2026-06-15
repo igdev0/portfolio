@@ -1,5 +1,5 @@
-import {contact} from '@/content/collaborate';
 import {HeroType} from '@/content/types';
+import contact from '@/content/contact';
 
 const hero: HeroType = {
   comment: "Ianos G Dorultan",

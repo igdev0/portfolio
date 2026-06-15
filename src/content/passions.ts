@@ -1,6 +1,6 @@
 import {PassionsType} from '@/content/types';
 
-export const passions: PassionsType = {
+const passions: PassionsType = {
   comment: "// Enjoyables",
   title: "{Passions}",
   statement: "Always looking to improve.",
@@ -43,3 +43,5 @@ export const passions: PassionsType = {
     },
   ],
 };
+
+export default passions;

@@ -1,6 +1,6 @@
 import {SkillsType, TechType} from '@/content/types';
 
-export const stack: SkillsType = {
+const stack: SkillsType = {
   comment: "// Skills",
   title: "{Tech Stack}",
   statement: "Always learning, always shipping.",
@@ -151,4 +151,6 @@ export const stack: SkillsType = {
       } as const
     }
   } as TechType,
-} as const;
+};
+
+export default stack;

@@ -10,9 +10,7 @@ import NavMenu from '@/components/nav/menu';
 import {Dispatch, SetStateAction, useRef} from 'react';
 import NavProgress from '@/components/nav/progress';
 
-export interface NavProps extends NavType {
-  github: string;
-}
+export interface NavProps extends NavType {}
 
 export default function Nav(props: NavProps) {
   const {theme, setTheme} = useTheme();

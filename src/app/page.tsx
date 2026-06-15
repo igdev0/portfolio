@@ -2,21 +2,21 @@ import Nav from '@/components/nav';
 import Hero from '@/components/hero';
 import Skills from '@/components/skills';
 import Expertise from '@/components/experience';
+import Footer from '@/components/footer';
+import Collaborate from '@/components/collaborate';
+import Passions from '@/components/passions';
 import nav from '@/content/nav';
 import hero from '@/content/hero';
-import {experience} from '@/content/experience';
-import Footer from '@/components/footer';
-import {collaborate, contact} from '@/content/collaborate';
-import Collaborate from '@/components/collaborate';
-import {stack} from '@/content/stack';
-import Passions from '@/components/passions';
-import {passions} from '@/content/passions';
+import experience from '@/content/experience';
+import stack from '@/content/stack';
+import passions from '@/content/passions';
+import collaborate from '@/content/collaborate';
 
 
 export default function LandingPage() {
   return (
       <main>
-        <Nav {...nav} github={contact.github}/>
+        <Nav {...nav}/>
         <Hero {...hero}/>
         <Passions {...passions}/>
         <Expertise {...experience}/>

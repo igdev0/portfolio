@@ -1,6 +1,6 @@
 import {ExperienceEntityType, ExperienceTimelineType} from '@/content/types';
 
-export const experience:ExperienceTimelineType = {
+const experience:ExperienceTimelineType = {
   comment: "// Work experience",
   title: "{Experience}",
   statement: "More than half-decate in web development",
@@ -78,3 +78,5 @@ export const experience:ExperienceTimelineType = {
     },
   ] as ExperienceEntityType[]
 };
+
+export default experience
