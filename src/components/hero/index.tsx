@@ -15,7 +15,7 @@ export default function Hero(props: HeroType) {
       <header className="hero" id="top">
         <Container className="hero-layout">
           <div className="hero-content">
-            <Comment>
+            <Comment> 
               {comment}
             </Comment>
             <Heading
