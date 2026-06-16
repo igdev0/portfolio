@@ -34,7 +34,7 @@ export interface TechType {
   }
 }
 
-export interface ExperienceEntityType {
+export interface ExperiencePinType {
   title: string;
   tags: string[];
   contributions: string[];
@@ -42,7 +42,7 @@ export interface ExperienceEntityType {
 }
 
 export interface ExperienceTimelineType extends SectionType {
-  roles: ExperienceEntityType[];
+  roles: ExperiencePinType[];
 }
 
 export interface SkillsType extends SectionType {
