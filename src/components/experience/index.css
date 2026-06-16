@@ -1,7 +1,7 @@
 @reference "../../app/globals.css";
 
 @layer components {
-    .experience {
+    .experience-pin {
         @apply w-full h-full flex gap-3 md:gap-6;
 
         .experience-contributions {

@@ -5,7 +5,7 @@ import LinkButton from '@/components/link-button';
 export default function ExperiencePin(props: ExperiencePinType) {
   return (
 
-      <div className="experience">
+      <div className="experience-pin">
         <div className="timeline relative">
           <div className="timeline__head z-5 translate-y-3 sticky top-18"/>
         </div>
