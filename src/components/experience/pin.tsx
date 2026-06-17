@@ -24,6 +24,7 @@ export default function ExperiencePin(props: ExperiencePinType) {
   return (
       <div className="experience-pin">
         <div className="timeline relative">
+          {/*@ts-ignore*/}
           <div ref={ref} className={clsx('experience-brand')} style={{'--brand-bg': active ? 'var(--color-accent-500)' : 'var(--surface-3)'}}>
             {props.brand}
           </div>
