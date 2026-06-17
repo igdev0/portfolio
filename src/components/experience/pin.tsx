@@ -1,26 +1,36 @@
+"use client";
+
 import {ExperiencePinType} from '@/content/types';
 import LinkButton from '@/components/link-button';
 import Tag from '@/components/tag';
 import {Building, ChevronRight, Clock, Globe, MapPin} from 'lucide-react';
 import moment from 'moment';
 import Expandable from '@/components/expandable';
+import {useInView} from 'framer-motion';
+import {useRef} from 'react';
+import clsx from 'clsx';
 
 export default function ExperiencePin(props: ExperiencePinType) {
-
-  const start = moment(props.startDate);
-  const end = props.endDate ? moment(props.endDate) : moment();
+  const ref = useRef(null)
+  const start = moment(new Date(props.startDate));
+  const end = props.endDate ? moment(new Date(props.endDate)) : moment();
 
   const months = end.diff(start, 'years');
   const time = `${months} year${months === 1 ? '' : 's'}`;
+  const active = useInView(ref, {
+    margin: "0px 0px -95% 0px",
+  });
 
   return (
       <div className="experience-pin">
         <div className="timeline relative">
-          <div className="timeline__head z-5 translate-y-3 sticky top-18"/>
+          <div ref={ref} className={clsx('experience-brand')} style={{'--brand-bg': active ? 'var(--color-accent-500)' : 'var(--surface-3)'}}>
+            {props.brand}
+          </div>
         </div>
         <div>
-          <div className="z-5 sticky top-18 py-3 mb-1 bg-(--background)">
-            <h3 className="text-2xl font-bold mb-0">{props.title}</h3>
+          <div className="z-5 sticky top-18 mt-2 py-3 mb-1 bg-(--background)">
+            <h3 className={clsx(active  ? "text-xl mt-2" : "text-2xl","font-bold mb-0 transition-all")}>{props.title}</h3>
           </div>
           <div className="flex flex-wrap gap-3 relative">
             <Tag>

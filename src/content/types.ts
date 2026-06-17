@@ -37,6 +37,7 @@ export interface TechType {
 
 export interface ExperiencePinType {
   title: string;
+  brand: string;
   contractType: "Full-Time" | "Part-Time";
   jobType: "Remote" | "Hybrid" | "On-Site";
   startDate: string;

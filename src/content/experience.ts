@@ -9,6 +9,7 @@ const experience: ExperienceTimelineType = {
       title: "[Independent Engineer]",
       summary: `Invested time in personal development by learning new technologies and working on side projects which includes a hackathon project called BeeFunded and I also took the opportunity to rebuilt my personal website using NextJS, TypeScript TailwindCSS.`,
       contractType: "Full-Time",
+      brand: "IGDev",
       company: "Self-Employed",
       jobType: "Remote",
       location: "Baia Mare, RO",
@@ -38,6 +39,7 @@ const experience: ExperienceTimelineType = {
     },
     {
       title: "[Frontend Engineer]",
+      brand: "IOG",
       summary: "Worked within a cross-functional product team at IOG’s Atala Product Vision, contributing to the ideation, prototyping, and validation of strategic products and initiatives within the Hyperledger Identus ecosystem.",
       contractType: "Full-Time",
       company: "Input-Output",
@@ -61,6 +63,7 @@ const experience: ExperienceTimelineType = {
     },
     {
       title: "[Full-Stack Developer]",
+      brand: "FV",
       summary: "Contributed to multiple client projects as part of a small Agile full-stack team, turning design requirements into responsive, accessible, and animation-rich web applications.",
       contractType: "Full-Time",
       location: "London, UK",

@@ -12,11 +12,11 @@
 
         }
     }
-
-    .timeline {
-        .timeline__head {
-            @apply size-6 bg-accent-500 rounded-sm;
-        }
+    .experience-brand {
+        --brand-bg: var(--surface-3);
+        @apply font-semibold;
+        @apply size-12 flex justify-center items-center rounded-md text-sm;
+        @apply z-5 translate-y-3 sticky top-18 bg-(--brand-bg);
     }
 
 }

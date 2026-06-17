@@ -18,7 +18,7 @@ export default function Experience(props: ExperienceTimelineType) {
         </Statement>
         <div className="relative flex flex-col mt-16 gap-12">
           <div
-              className="border-l-2 top-3.5 border-(--grid) border-dashed h-[99%] w-0 left-0 translate-x-2.5 absolute"/>
+              className="border-l-2 top-3.5 border-(--grid) border-dashed h-[99%] w-0 left-0 translate-x-5.5 absolute"/>
 
           {
             roles.map((experience, index) => (
