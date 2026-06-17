@@ -1,7 +1,7 @@
 import {ExperiencePinType} from '@/content/types';
 import LinkButton from '@/components/link-button';
 import Tag from '@/components/tag';
-import {Building, ChevronRight, Clock, MapPin} from 'lucide-react';
+import {Building, ChevronRight, Clock, Globe, MapPin} from 'lucide-react';
 import Panel from '@/components/panel';
 import moment from 'moment';
 
@@ -36,7 +36,7 @@ export default function ExperiencePin(props: ExperiencePinType) {
               {time}
             </Tag>
             <Tag>
-              <Clock className="stroke-accent-500"/>
+              <Globe className="stroke-accent-500"/>
               {props.location}
             </Tag>
           </div>
