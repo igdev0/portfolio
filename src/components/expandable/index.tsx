@@ -13,10 +13,10 @@ export default function Expandable(props: ExpandableProps) {
   return (
 
       <Collapsible.Root className={className}>
-        <div className="panel mt-6 relative pb-9">
+        <div className="panel mt-16 relative pb-9" style={{borderTopLeftRadius: 0}}>
           <Collapsible.Trigger className="text-left flex flex-col cursor-pointer">
-            <div className="flex gap-3">
-                  <span>
+            <div className="relative">
+                  <span className="absolute block -top-[12px] -left-[13px] border -translate-y-full bg-foundation-800 border-b-0 p-3 rounded-t-md border-(--grid)">
                     <ScanText/>
                   </span>
               {header}
