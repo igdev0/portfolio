@@ -1,10 +1,9 @@
 import {ExperiencePinType} from '@/content/types';
 import LinkButton from '@/components/link-button';
 import Tag from '@/components/tag';
-import {Building, ChevronDown, ChevronRight, Clock, Globe, MapPin, ScanText} from 'lucide-react';
-import Panel from '@/components/panel';
+import {Building, ChevronRight, Clock, Globe, MapPin} from 'lucide-react';
 import moment from 'moment';
-import {Collapsible} from '@base-ui/react';
+import Expandable from '@/components/expandable';
 
 export default function ExperiencePin(props: ExperiencePinType) {
 
@@ -42,32 +41,19 @@ export default function ExperiencePin(props: ExperiencePinType) {
             </Tag>
           </div>
 
+          <Expandable header={props.summary}>
 
-          <Collapsible.Root>
-            <Panel className="mt-6">
-              <Collapsible.Trigger className="text-left flex flex-col cursor-pointer">
-                <div className="flex gap-3">
-                  <span>
-                    <ScanText/>
-                  </span>
-                  <p>{props.summary}</p>
-                </div>
-                <ChevronDown className="stroke-accent-500 self-center mt-2"/>
-              </Collapsible.Trigger>
-              <Collapsible.Panel hiddenUntilFound={true} className="flex h-(--collapsible-panel-height) flex-col justify-end overflow-hidden text-sm transition-[height] duration-150 ease-[ease-out] [&[hidden]:not([hidden='until-found'])]:hidden data-ending-style:h-0 data-starting-style:h-0">
-                <ul className="mt-3">
-                  {
-                    props.contributions?.map((contribution, index) => (
-                        <li className="flex gap-1 mb-2 items-center" key={index}>
-                          <span><ChevronRight className="stroke-accent-500 w-fit"/></span>
-                          {contribution}
-                        </li>
-                    ))
-                  }
-                </ul>
-              </Collapsible.Panel>
-            </Panel>
-          </Collapsible.Root>
+            <ul className="mt-3">
+              {
+                props.contributions?.map((contribution, index) => (
+                    <li className="flex gap-1 mb-2 items-center" key={index}>
+                      <span><ChevronRight className="stroke-accent-500 w-fit"/></span>
+                      {contribution}
+                    </li>
+                ))
+              }
+            </ul>
+          </Expandable>
           <div className="flex flex-wrap gap-3 mt-6 mb-0">
             {
               props.links.map((link, index) => (
