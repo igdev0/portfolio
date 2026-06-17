@@ -11,15 +11,17 @@ import {useRef} from 'react';
 import clsx from 'clsx';
 
 export default function ExperiencePin(props: ExperiencePinType) {
-  const ref = useRef(null)
+  const ref = useRef(null);
   const start = moment(new Date(props.startDate));
   const end = props.endDate ? moment(new Date(props.endDate)) : moment();
-
   const months = end.diff(start, 'years');
   const time = `${months} year${months === 1 ? '' : 's'}`;
+
   const active = useInView(ref, {
-    margin: "0px 0px -95% 0px",
+    margin: `0px 0px -${window.innerHeight - 92}px 0px` as keyof object,
   });
+
+
 
   return (
       <div className="experience-pin">
@@ -31,7 +33,7 @@ export default function ExperiencePin(props: ExperiencePinType) {
         </div>
         <div>
           <div className="z-5 sticky top-18 mt-2 py-3 mb-1 bg-(--background)">
-            <h3 className={clsx(active  ? "text-xl mt-2" : "text-2xl","font-bold mb-0 transition-all")}>{props.title}</h3>
+            <h3 className={clsx("font-bold mb-0 transition-all min-h-12",active  ? "text-xl mt-2" : "text-2xl")}>{props.title}</h3>
           </div>
           <div className="flex flex-wrap gap-3 relative">
             <Tag>
