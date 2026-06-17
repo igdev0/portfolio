@@ -54,7 +54,6 @@ export default function ExperiencePin(props: ExperiencePinType) {
               {props.location}
             </Tag>
           </div>
-
           <Expandable header={props.summary}>
 
             <ul className="mt-3 flex gap-2 flex-col">

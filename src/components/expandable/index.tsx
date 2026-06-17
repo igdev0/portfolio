@@ -13,14 +13,13 @@ export default function Expandable(props: ExpandableProps) {
   return (
 
       <Collapsible.Root className={className}>
-        <div className="panel mt-16 relative pb-9" style={{borderTopLeftRadius: 0}}>
+        <div className="panel mt-6 relative pb-9">
           <Collapsible.Trigger className="text-left flex flex-col cursor-pointer">
-            <div className="relative">
-                  <span className="absolute block -top-[12px] -left-[13px] border -translate-y-full bg-foundation-800 border-b-0 p-3 rounded-t-md border-(--grid)">
-                    <ScanText/>
-                  </span>
-              {header}
+            <div className="flex mb-3 items-center gap-3">
+              <ScanText/>
+              <h3 className="font-bold">Summary</h3>
             </div>
+            {header}
             <ChevronDown className="stroke-accent-500 self-center mb-2 absolute right-0 bottom-0 left-0 mx-auto"/>
           </Collapsible.Trigger>
           <Collapsible.Panel className="flex h-(--collapsible-panel-height) flex-col justify-end overflow-hidden text-sm transition-[height] duration-150 ease-[ease-out] [&[hidden]:not([hidden='until-found'])]:hidden data-ending-style:h-0 data-starting-style:h-0">
