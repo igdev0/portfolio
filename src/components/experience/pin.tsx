@@ -15,7 +15,7 @@ export default function ExperiencePin(props: ExperiencePinType) {
   const start = moment(new Date(props.startDate));
   const end = props.endDate ? moment(new Date(props.endDate)) : moment();
   const months = end.diff(start, 'years');
-  const time = `${months} year${months === 1 ? '' : 's'}`;
+  const time = Number.isNaN(months) ? 'On-going' : `${months} year${months === 1 ? '' : 's'}`;
 
   const active = useInView(ref, {
     margin: `0px 0px -${window.innerHeight - 92}px 0px` as keyof object,
