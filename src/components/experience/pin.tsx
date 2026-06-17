@@ -1,7 +1,7 @@
 import {ExperiencePinType} from '@/content/types';
 import LinkButton from '@/components/link-button';
 import Tag from '@/components/tag';
-import {Building, Clock, MapPin} from 'lucide-react';
+import {Building, ChevronRight, Clock, MapPin} from 'lucide-react';
 import Panel from '@/components/panel';
 import moment from 'moment';
 
@@ -46,7 +46,7 @@ export default function ExperiencePin(props: ExperiencePinType) {
           <ul className="experience-contributions my-4">
             {
               props.contributions?.map((contribution, index) => (
-                  <li key={index}>{contribution}</li>
+                  <li key={index}><span><ChevronRight className="stroke-accent-500 w-fit"/></span>{contribution}</li>
               ))
             }
           </ul>

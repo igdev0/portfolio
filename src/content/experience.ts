@@ -38,7 +38,7 @@ const experience: ExperienceTimelineType = {
     },
     {
       title: "[Frontend Engineer]",
-      summary: "Worked as part of a cross-functional team within IOG / Atala Product Vision on ideating, prototyping strategic products for Atala Ecosystem (Hyperledger Identus).",
+      summary: "Worked within a cross-functional product team at IOG’s Atala Product Vision, contributing to the ideation, prototyping, and validation of strategic products and initiatives within the Hyperledger Identus ecosystem.",
       contractType: "Full-Time",
       company: "Input-Output",
       jobType: "Remote",

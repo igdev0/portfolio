@@ -21,6 +21,10 @@
 
     }
 
+    .stack-card {
+        @apply border border-(--grid);
+    }
+
     .stack-trigger:not(.button--active),
     .stack-card:not(.active) {
         &:before {
