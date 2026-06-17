@@ -1,9 +1,10 @@
 import {ExperiencePinType} from '@/content/types';
 import LinkButton from '@/components/link-button';
 import Tag from '@/components/tag';
-import {Building, ChevronRight, Clock, Globe, MapPin} from 'lucide-react';
+import {Building, ChevronDown, ChevronRight, Clock, Globe, MapPin, ScanText} from 'lucide-react';
 import Panel from '@/components/panel';
 import moment from 'moment';
+import {Collapsible} from '@base-ui/react';
 
 export default function ExperiencePin(props: ExperiencePinType) {
 
@@ -24,32 +25,49 @@ export default function ExperiencePin(props: ExperiencePinType) {
           </div>
           <div className="flex flex-wrap gap-3 relative">
             <Tag>
-              <Building className="stroke-accent-500"/>
+              <Building/>
               {props.company}
             </Tag>
             <Tag>
-              <MapPin className="stroke-accent-500"/>
+              <MapPin/>
               {props.jobType}
             </Tag>
             <Tag>
-              <Clock className="stroke-accent-500"/>
+              <Clock/>
               {time}
             </Tag>
             <Tag>
-              <Globe className="stroke-accent-500"/>
+              <Globe/>
               {props.location}
             </Tag>
           </div>
-          <Panel className="mt-3">
-            {props.summary}
-          </Panel>
-          <ul className="experience-contributions my-4">
-            {
-              props.contributions?.map((contribution, index) => (
-                  <li key={index}><span><ChevronRight className="stroke-accent-500 w-fit"/></span>{contribution}</li>
-              ))
-            }
-          </ul>
+
+
+          <Collapsible.Root>
+            <Panel className="mt-6">
+              <Collapsible.Trigger className="text-left flex flex-col cursor-pointer">
+                <div className="flex gap-3">
+                  <span>
+                    <ScanText/>
+                  </span>
+                  <p>{props.summary}</p>
+                </div>
+                <ChevronDown className="stroke-accent-500 self-center mt-2"/>
+              </Collapsible.Trigger>
+              <Collapsible.Panel hiddenUntilFound={true} className="flex h-(--collapsible-panel-height) flex-col justify-end overflow-hidden text-sm transition-[height] duration-150 ease-[ease-out] [&[hidden]:not([hidden='until-found'])]:hidden data-ending-style:h-0 data-starting-style:h-0">
+                <ul className="mt-3">
+                  {
+                    props.contributions?.map((contribution, index) => (
+                        <li className="flex gap-1 mb-2 items-center" key={index}>
+                          <span><ChevronRight className="stroke-accent-500 w-fit"/></span>
+                          {contribution}
+                        </li>
+                    ))
+                  }
+                </ul>
+              </Collapsible.Panel>
+            </Panel>
+          </Collapsible.Root>
           <div className="flex flex-wrap gap-3 mt-6 mb-0">
             {
               props.links.map((link, index) => (

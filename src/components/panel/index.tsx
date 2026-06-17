@@ -1,23 +1,18 @@
-import {ReactNode} from 'react';
+import {ReactNode, RefObject} from 'react';
 import clsx from 'clsx';
 import "./index.css";
-import {ScrollText} from 'lucide-react';
 
 export interface PanelProps {
   className?: string;
   children?: ReactNode;
+  ref?: RefObject<HTMLDivElement>;
 }
 
 export default function Panel(props: PanelProps) {
   const {className, children} = props;
   return (
-      <div className={clsx('panel', className)}>
-        <div>
-          <ScrollText className="stroke-accent-500"/>
-        </div>
-        <span>
+      <div ref={props.ref} className={clsx('panel', className)}>
         {children}
-        </span>
       </div>
   );
 }
