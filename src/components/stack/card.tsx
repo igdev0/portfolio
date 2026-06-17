@@ -4,6 +4,7 @@ import {StackContext} from '@/components/stack/context';
 import {motion, useMotionValueEvent, useSpring} from 'framer-motion';
 import {MotionNodeDragHandlers} from 'motion';
 import clsx from 'clsx';
+import {useIsMobile} from '@/hooks/use-is-mobile';
 
 export interface StackCardProps extends PropsWithChildren {
   id: number;
@@ -14,7 +15,7 @@ export interface StackCardProps extends PropsWithChildren {
 export default function StackCard(props: StackCardProps) {
   const {setActive, draw, calculateDraw, cards, active} = useContext(StackContext);
   const {children} = props;
-  const isMobile = typeof window !== "undefined" && window.innerWidth <= 768;
+  const isMobile = useIsMobile();
   const i = props.id;
   const total = props.max;
   let delta = i - active;

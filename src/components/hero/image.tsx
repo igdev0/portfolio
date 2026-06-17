@@ -4,12 +4,13 @@ import Image from 'next/image';
 import {motion, useDragControls, useMotionValue, useSpring, useTransform} from 'framer-motion';
 import {MouseEvent, PointerEventHandler} from 'react';
 import clsx from 'clsx';
+import {useIsMobile} from '@/hooks/use-is-mobile';
 
 const AnimatedImage = motion.create(Image);
 
 export default function HeroImage(props: HeroType['image']) {
   const controls = useDragControls();
-
+  const isMobile = useIsMobile();
   const z = useMotionValue(1);
   const scaleZ = useSpring(z);
 
@@ -43,7 +44,7 @@ export default function HeroImage(props: HeroType['image']) {
   return (
 
       <motion.div
-          drag
+          drag={isMobile ? "x" : true}
           dragConstraints={{top: 0, left: 0, right: 0, bottom: 0}}
           className="hero-image"
           whileDrag={{cursor: "grabbing"}}
