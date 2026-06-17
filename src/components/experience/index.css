@@ -6,13 +6,8 @@
 
         .experience-contributions {
             @apply flex flex-col gap-2 font-medium bg-(--surface-3) rounded-md p-3 border border-(--grid);
-
             li {
                 @apply flex gap-1;
-                /*&:before {*/
-                /*    content: "> ";*/
-                /*    @apply text-accent-500;*/
-                /*}*/
             }
 
         }

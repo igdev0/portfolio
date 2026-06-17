@@ -1,7 +1,7 @@
-import Panel from '@/components/panel';
 import {Collapsible} from '@base-ui/react';
 import {ChevronDown, ScanText} from 'lucide-react';
 import {ReactNode} from 'react';
+import "./index.css";
 
 export interface ExpandableProps {
   className?: string;
@@ -13,7 +13,7 @@ export default function Expandable(props: ExpandableProps) {
   return (
 
       <Collapsible.Root className={className}>
-        <Panel className="mt-6">
+        <div className="panel mt-6 relative pb-9">
           <Collapsible.Trigger className="text-left flex flex-col cursor-pointer">
             <div className="flex gap-3">
                   <span>
@@ -21,12 +21,12 @@ export default function Expandable(props: ExpandableProps) {
                   </span>
               {header}
             </div>
-            <ChevronDown className="stroke-accent-500 self-center mt-2"/>
+            <ChevronDown className="stroke-accent-500 self-center mb-2 absolute right-0 bottom-0 left-0 mx-auto"/>
           </Collapsible.Trigger>
-          <Collapsible.Panel hiddenUntilFound={true} className="flex h-(--collapsible-panel-height) flex-col justify-end overflow-hidden text-sm transition-[height] duration-150 ease-[ease-out] [&[hidden]:not([hidden='until-found'])]:hidden data-ending-style:h-0 data-starting-style:h-0">
+          <Collapsible.Panel className="flex h-(--collapsible-panel-height) flex-col justify-end overflow-hidden text-sm transition-[height] duration-150 ease-[ease-out] [&[hidden]:not([hidden='until-found'])]:hidden data-ending-style:h-0 data-starting-style:h-0">
               {children}
           </Collapsible.Panel>
-        </Panel>
+        </div>
       </Collapsible.Root>
   )
 }
