@@ -7,7 +7,7 @@ const experience: ExperienceTimelineType = {
   roles: [
     {
       title: "[Independent Engineer]",
-      summary: `Invested time in personal development by learning new technologies and working on side projects which includes a hackathon project called BeeFunded and I also took the opportunity to rebuilt my personal website using NextJS, TypeScript TailwindCSS.`,
+      summary: `Dedicated time to professional development by exploring new technologies and building side projects, including BeeFunded, a Web3 hackathon project. During this period, I also redesigned and rebuilt my personal portfolio using Next.js, TypeScript, and Tailwind CSS.`,
       contractType: "Full-Time",
       brand: "IGDev",
       company: "Self-Employed",
