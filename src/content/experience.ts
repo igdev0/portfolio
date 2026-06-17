@@ -1,25 +1,30 @@
-import {ExperienceEntityType, ExperienceTimelineType} from '@/content/types';
+import {ExperienceTimelineType} from '@/content/types';
 
-const experience:ExperienceTimelineType = {
+const experience: ExperienceTimelineType = {
   comment: "// Work experience",
   title: "{Experience}",
   statement: "More than half-decate in web development",
   roles: [
     {
       title: "[Independent Engineer]",
-      tags: ['Self-Employed', 'September 2024 → Now'],
+      summary: `Invested time in personal development by learning new technologies and working on side projects which includes a hackathon project called BeeFunded and I also took the opportunity to rebuilt my personal website using NextJS, TypeScript TailwindCSS.`,
+      contractType: "Full-Time",
+      company: "Self-Employed",
+      jobType: "Remote",
+      location: "Baia Mare, RO",
+      startDate: "April 2024",
       links: [
         {
-          href: 'https://github.com/igdev0/tokensmith',
-          text: "Tokensmith",
+          href: 'https://github.com/igdev0/bee-funded',
+          text: "BeeFunded",
         },
         {
           href: "https://pro-scan-solutions.ro/inspectii-foto-video",
           text: "Pro Scan Solutions",
         },
         {
-          href: 'https://github.com/igdev0/bee-funded',
-          text: "BeeFunded",
+          href: 'https://github.com/igdev0/tokensmith',
+          text: "Tokensmith",
         },
       ],
       contributions: [
@@ -33,7 +38,13 @@ const experience:ExperienceTimelineType = {
     },
     {
       title: "[Frontend Engineer]",
-      tags: ["Input Output Global", "Full-Time", "Remote", "April 2022 → April 2024"],
+      summary: "Worked as part of a cross-functional team within IOG / Atala Product Vision on ideating, prototyping strategic products for Atala Ecosystem (Hyperledger Identus).",
+      contractType: "Full-Time",
+      company: "Input-Output",
+      jobType: "Remote",
+      location: "Baia Mare, RO",
+      endDate: "April 2024",
+      startDate: "April 2022",
       contributions: [
         "Led frontend development and UX implementation for internal tools, documentation platform, public-facing websites, and prototypes within the Atala PRISM (Identus Hyperledger) ecosystem.",
         "Collaborated with cross-functional teams on ideation, rapid prototyping, and delivery of MVPs leveraging the Atala PRISM SSI agent, accelerating early product validation.",
@@ -50,7 +61,13 @@ const experience:ExperienceTimelineType = {
     },
     {
       title: "[Full-Stack Developer]",
-      tags: ["Finer Vision", "Full-Time", "Hybrid", "December 2020 → February 2022"],
+      summary: "Worked as part of a small Agile team of full-stack developers on multiple projects from diverse clients focused on translating designs into responsive, accessible and animated website.",
+      contractType: "Full-Time",
+      location: "London, UK",
+      company: "FinerVision",
+      jobType: "Hybrid",
+      endDate: "February 2022",
+      startDate: "February 2020",
       contributions: [
         "Designed, developed, and maintained offline-first medical applications using Expo and React Native within a small Agile team, focusing on reliability in constrained environments.",
         "Modernized and extended React codebases by delivering production features, client-driven enhancements, and critical bug fixes across multiple applications.",
@@ -76,7 +93,7 @@ const experience:ExperienceTimelineType = {
       ],
 
     },
-  ] as ExperienceEntityType[]
+  ]
 };
 
-export default experience
+export default experience;

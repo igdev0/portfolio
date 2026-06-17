@@ -34,9 +34,16 @@ export interface TechType {
   }
 }
 
+
 export interface ExperiencePinType {
   title: string;
-  tags: string[];
+  contractType: "Full-Time" | "Part-Time";
+  jobType: "Remote" | "Hybrid" | "On-Site";
+  startDate: string;
+  endDate?: string;
+  location?: string;
+  company: string;
+  summary: string;
   contributions: string[];
   links: LinkType[];
 }

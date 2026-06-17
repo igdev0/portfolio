@@ -122,7 +122,3 @@ html {
 @utility flex-group {
     @apply flex flex-wrap gap-2;
 }
-
-@utility panel {
-    @apply flex p-3 rounded-md border border-(--grid);
-}

@@ -1,0 +1,14 @@
+@import "../../app/globals.css";
+
+@layer components {
+    .panel {
+        --panel-bg: var(--color-gray-100);
+        @apply gap-3 border border-(--grid) rounded-md;
+        @apply flex p-3;
+        @apply bg-(--panel-bg) shadow-md;
+
+        @variant dark {
+            --panel-bg: var(--color-foundation-800);
+        }
+    }
+}
