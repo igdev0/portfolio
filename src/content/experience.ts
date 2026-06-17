@@ -61,7 +61,7 @@ const experience: ExperienceTimelineType = {
     },
     {
       title: "[Full-Stack Developer]",
-      summary: "Worked as part of a small Agile team of full-stack developers on multiple projects from diverse clients focused on translating designs into responsive, accessible and animated website.",
+      summary: "Contributed to multiple client projects as part of a small Agile full-stack team, turning design requirements into responsive, accessible, and animation-rich web applications.",
       contractType: "Full-Time",
       location: "London, UK",
       company: "FinerVision",
