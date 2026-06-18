@@ -13,7 +13,7 @@ export default function Expandable(props: ExpandableProps) {
   return (
 
       <Collapsible.Root className={className}>
-        <div className="panel mt-6 relative pb-9">
+        <div className="panel mt-3 md:mt-6 relative pb-9">
           <Collapsible.Trigger className="text-left flex flex-col cursor-pointer">
             <div className="flex mb-3 items-center gap-3">
               <ScanText/>

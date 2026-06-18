@@ -20,7 +20,7 @@ export default function ExperiencePin(props: ExperiencePinType) {
   const time = Number.isNaN(months) ? 'On-going' : `${months} year${months === 1 ? '' : 's'}`;
 
   const active = useInView(ref, {
-    margin: `0px 0px -90% 0px` as keyof object,
+    margin: `0px 0px -85% 0px` as keyof object,
     amount: 0.5,
   });
 
@@ -35,9 +35,9 @@ export default function ExperiencePin(props: ExperiencePinType) {
         </div>
         <div>
           <div className="z-5 sticky top-18 mt-2 py-3 mb-1 bg-(--background)">
-            <h3 className={clsx("font-bold mb-0 transition-all min-h-12", active ? "text-xl mt-2" : "text-2xl")}>{props.title}</h3>
+            <h3 className={clsx("font-bold mb-0 transition-all min-h-8", active ? "text-xl mt-2" : "text-2xl")}>{props.title}</h3>
           </div>
-          <div className="flex flex-wrap gap-3 relative">
+          <div className="flex flex-wrap gap-3 md:gap-6 relative">
             <Tag>
               <Building size={20}/>
               {props.company}
@@ -67,7 +67,7 @@ export default function ExperiencePin(props: ExperiencePinType) {
               }
             </ul>
           </Expandable>
-          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-3 mt-6 mb-0 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-3 md:gap-6 mt-3 md:mt-6 mb-0 w-full">
             {
               props.projects.map((project, index) => {
                 const cardHref = project.repositoryUrl ?? project.appUrl;
