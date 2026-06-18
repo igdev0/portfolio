@@ -56,7 +56,7 @@
     }
 
     .stack-controllers {
-        @apply flex flex-wrap 5xl:flex-col mb-20 5xl:mb-0 gap-3 relative;
+        @apply flex flex-wrap 5xl:flex-col mb-20 md:mb-26 5xl:mb-0 gap-3 relative;
 
         button {
             @apply w-fit;
