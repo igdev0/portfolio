@@ -69,27 +69,36 @@ export default function ExperiencePin(props: ExperiencePinType) {
           </Expandable>
           <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-3 mt-6 mb-0 w-full">
             {
-              props.projects.map((project, index) => (
-                  <motion.div whileInView={{opacity: 1}} initial={{opacity: 0}} viewport={{once: true}} transition={{delay: index / 3}} className="panel h-fit p-0" key={index}>
-                    {
+              props.projects.map((project, index) => {
+                const cardHref = project.repositoryUrl ?? project.appUrl;
+                return (
+                    <motion.div whileInView={{opacity: 1}} initial={{opacity: 0}} viewport={{once: true}}
+                                transition={{delay: index / 3}} className="panel h-fit p-0" key={index}>
+                      {
 
-                      <div className="project-header">
-                        {!project.imageSrc ? <ImageIcon/> :
-                            <Image className="h-fit w-fit p-2" src={project.imageSrc} alt={project.imageAlt ?? "Alt"} width={100} height={100}/>}
-                        <div className="absolute top-0 left-0 w-full h-full bg-accent-100/80 dark:bg-gray-700/80"/>
+                        <Link href={cardHref??"#"} target="_blank" className="project-header">
+                          {!project.imageSrc ? <ImageIcon/> :
+                                <Image className="h-fit w-fit p-2" src={project.imageSrc}
+                                       alt={project.imageAlt ?? "Alt"} width={100}
+                                       height={100}/>
+                          }
+                          <div className="absolute top-0 left-0 w-full h-full bg-accent-100/80 dark:bg-gray-700/80"/>
+                        </Link>
+                      }
+                      <div className="px-3">
+                        <h4 className="text-md font-bold mb-1 dark:text-accent-100 text-gray-900">{project.name}</h4>
+                        <p className="text-sm">{project.summary}</p>
+                        <div className="flex gap-3 justify-end mt-3 mb-3">
+                          {project.repositoryUrl &&
+                              <Link className="flex-1 max-w-6" target="_blank"
+                                    href={project.repositoryUrl}><Github/></Link>}
+                          {project.appUrl &&
+                              <Link className="flex-1 max-w-6" target="_blank" href={project.appUrl}><Globe/></Link>}
+                        </div>
                       </div>
-                    }
-                    <div className="px-3">
-                      <h4 className="text-md font-bold mb-1 dark:text-accent-100 text-gray-900">{project.name}</h4>
-                      <p className="text-sm">{project.summary}</p>
-                      <div className="flex gap-3 justify-end mt-3 mb-3">
-                        {project.repositoryUrl &&
-                            <Link className="flex-1 max-w-6" target="_blank" href={project.repositoryUrl}><Github/></Link>}
-                        {project.appUrl && <Link className="flex-1 max-w-6" target="_blank" href={project.appUrl}><Globe/></Link>}
-                      </div>
-                    </div>
-                  </motion.div>
-              ))
+                    </motion.div>
+                );
+              })
             }
           </div>
         </div>
