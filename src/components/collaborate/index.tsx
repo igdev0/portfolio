@@ -22,7 +22,7 @@ export default function Collaborate(props: CollaborateType) {
           <BasicMessage book={{href: contact.calendly, text: "Book a call"}}/>
         </div>
 
-        <div className="flex gap-4 w-full justify-center my-20">
+        <div className="flex gap-4 w-full justify-center my-10 md:my-15 lg:20">
           <LinkButton icon="github" size="xs" href={contact.github} aspect="square" external
                       label="Github"
                       variant="ghost"
