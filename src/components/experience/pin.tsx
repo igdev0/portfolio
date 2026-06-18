@@ -10,6 +10,7 @@ import {useRef} from 'react';
 import clsx from 'clsx';
 import Link from 'next/dist/client/link';
 import Github from '@/components/icons/github';
+import Image from 'next/image';
 
 export default function ExperiencePin(props: ExperiencePinType) {
   const ref = useRef(null);
@@ -66,22 +67,25 @@ export default function ExperiencePin(props: ExperiencePinType) {
               }
             </ul>
           </Expandable>
-          <div className="grid grid-cols-3 md:grid-cols-4 gap-3 mt-6 mb-0 w-full">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mt-6 mb-0 w-full">
             {
               props.projects.map((project, index) => (
                   <div className="panel h-fit p-0" key={index}>
                     {
-                      <div className="border-b border-b-(--grid) h-32 flex justify-center items-center mb-3">
-                        <ImageIcon/>
+
+                      <div className="project-header">
+                        {!project.imageSrc ? <ImageIcon/> :
+                            <Image className="h-fit w-fit p-2" src={project.imageSrc} alt={project.imageAlt ?? "Alt"} width={100} height={100}/>}
+                        <div className="absolute top-0 left-0 w-full h-full bg-accent-100/80 dark:bg-gray-700/80"/>
                       </div>
                     }
                     <div className="px-3">
-                      <h4 className="text-md mb-1">{project.name}</h4>
+                      <h4 className="text-md font-bold mb-1 dark:text-accent-100 text-gray-900">{project.name}</h4>
                       <p className="text-sm">{project.summary}</p>
                       <div className="flex gap-3 justify-end mt-3 mb-3">
                         {project.repositoryUrl &&
-                            <Link className="flex-1 max-w-6" href={project.repositoryUrl}><Github/></Link>}
-                        {project.appUrl && <Link className="flex-1 max-w-6" href={project.appUrl}><Github/></Link>}
+                            <Link className="flex-1 max-w-6" target="_blank" href={project.repositoryUrl}><Github/></Link>}
+                        {project.appUrl && <Link className="flex-1 max-w-6" target="_blank" href={project.appUrl}><Globe/></Link>}
                       </div>
                     </div>
                   </div>

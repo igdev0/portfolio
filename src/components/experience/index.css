@@ -26,4 +26,12 @@
         }
     }
 
+
+    .project-header {
+        @apply border-b border-b-(--grid) h-32 flex justify-center relative items-center mb-3;
+
+        img {
+            @apply w-full;
+        }
+    }
 }
