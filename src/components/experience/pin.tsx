@@ -5,7 +5,7 @@ import Tag from '@/components/tag';
 import {Building, ChevronRight, Clock, Globe, ImageIcon, MapPin} from 'lucide-react';
 import moment from 'moment';
 import Expandable from '@/components/expandable';
-import {useInView} from 'framer-motion';
+import {motion, useInView} from 'framer-motion';
 import {useRef} from 'react';
 import clsx from 'clsx';
 import Link from 'next/dist/client/link';
@@ -70,7 +70,7 @@ export default function ExperiencePin(props: ExperiencePinType) {
           <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-3 mt-6 mb-0 w-full">
             {
               props.projects.map((project, index) => (
-                  <div className="panel h-fit p-0" key={index}>
+                  <motion.div whileInView={{opacity: 1}} initial={{opacity: 0}} viewport={{once: true}} transition={{delay: index / 3}} className="panel h-fit p-0" key={index}>
                     {
 
                       <div className="project-header">
@@ -88,7 +88,7 @@ export default function ExperiencePin(props: ExperiencePinType) {
                         {project.appUrl && <Link className="flex-1 max-w-6" target="_blank" href={project.appUrl}><Globe/></Link>}
                       </div>
                     </div>
-                  </div>
+                  </motion.div>
               ))
             }
           </div>
