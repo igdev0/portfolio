@@ -1,3 +1,5 @@
-export function omit() {}
+import {ProjectType} from '@/content/types';
 
-export function extract() {}
+export function filterProjectsByOwner(src: ProjectType[], owner: ProjectType['owner']) {
+  return src.filter(item => item.owner === owner)??[];
+}

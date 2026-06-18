@@ -1,14 +1,15 @@
 "use client";
 
 import {ExperiencePinType} from '@/content/types';
-import LinkButton from '@/components/link-button';
 import Tag from '@/components/tag';
-import {Building, ChevronRight, Clock, Globe, MapPin} from 'lucide-react';
+import {Building, ChevronRight, Clock, Globe, ImageIcon, MapPin} from 'lucide-react';
 import moment from 'moment';
 import Expandable from '@/components/expandable';
 import {useInView} from 'framer-motion';
 import {useRef} from 'react';
 import clsx from 'clsx';
+import Link from 'next/dist/client/link';
+import Github from '@/components/icons/github';
 
 export default function ExperiencePin(props: ExperiencePinType) {
   const ref = useRef(null);
@@ -18,10 +19,9 @@ export default function ExperiencePin(props: ExperiencePinType) {
   const time = Number.isNaN(months) ? 'On-going' : `${months} year${months === 1 ? '' : 's'}`;
 
   const active = useInView(ref, {
-    margin: `0px 0px -80% 0px` as keyof object,
+    margin: `0px 0px -90% 0px` as keyof object,
     amount: 0.5,
   });
-
 
 
   return (
@@ -34,28 +34,27 @@ export default function ExperiencePin(props: ExperiencePinType) {
         </div>
         <div>
           <div className="z-5 sticky top-18 mt-2 py-3 mb-1 bg-(--background)">
-            <h3 className={clsx("font-bold mb-0 transition-all min-h-12",active  ? "text-xl mt-2" : "text-2xl")}>{props.title}</h3>
+            <h3 className={clsx("font-bold mb-0 transition-all min-h-12", active ? "text-xl mt-2" : "text-2xl")}>{props.title}</h3>
           </div>
           <div className="flex flex-wrap gap-3 relative">
             <Tag>
-              <Building/>
+              <Building size={20}/>
               {props.company}
             </Tag>
             <Tag>
-              <MapPin/>
+              <MapPin size={20}/>
               {props.jobType}
             </Tag>
             <Tag>
-              <Clock/>
+              <Clock size={20}/>
               {time}
             </Tag>
             <Tag>
-              <Globe/>
+              <Globe size={20}/>
               {props.location}
             </Tag>
           </div>
           <Expandable header={props.summary}>
-
             <ul className="mt-3 flex gap-2 flex-col">
               {
                 props.contributions?.map((contribution, index) => (
@@ -67,18 +66,25 @@ export default function ExperiencePin(props: ExperiencePinType) {
               }
             </ul>
           </Expandable>
-          <div className="flex flex-wrap gap-3 mt-6 mb-0">
+          <div className="grid grid-cols-3 md:grid-cols-4 gap-3 mt-6 mb-0 w-full">
             {
-              props.links.map((link, index) => (
-                  <LinkButton key={index}
-                              href={link.href}
-                              external
-                              variant="secondary"
-                              iconPosition="right"
-                              size="small"
-                              icon="new-tab">
-                    {link.text}
-                  </LinkButton>
+              props.projects.map((project, index) => (
+                  <div className="panel h-fit p-0" key={index}>
+                    {
+                      <div className="border-b border-b-(--grid) h-32 flex justify-center items-center mb-3">
+                        <ImageIcon/>
+                      </div>
+                    }
+                    <div className="px-3">
+                      <h4 className="text-md mb-1">{project.name}</h4>
+                      <p className="text-sm">{project.summary}</p>
+                      <div className="flex gap-3 justify-end mt-3 mb-3">
+                        {project.repositoryUrl &&
+                            <Link className="flex-1 max-w-6" href={project.repositoryUrl}><Github/></Link>}
+                        {project.appUrl && <Link className="flex-1 max-w-6" href={project.appUrl}><Github/></Link>}
+                      </div>
+                    </div>
+                  </div>
               ))
             }
           </div>

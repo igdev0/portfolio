@@ -46,7 +46,7 @@ export interface ExperiencePinType {
   company: string;
   summary: string;
   contributions: string[];
-  links: LinkType[];
+  projects: ProjectType[];
 }
 
 export interface ExperienceTimelineType extends SectionType {
@@ -96,4 +96,15 @@ export interface SectionType {
   comment?: string;
   title: string;
   statement?: string;
+}
+
+export interface ProjectType {
+  id: string;
+  name: string;
+  summary: string;
+  owner: "IGDev" | "FinerVision" | "IOG";
+  repositoryUrl?: string;
+  imageAlt?: string;
+  imageSrc?: string;
+  appUrl?: string;
 }
