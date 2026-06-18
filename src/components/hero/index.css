@@ -10,7 +10,7 @@
         }
 
         .hero-content {
-            @apply sm:order-1;
+            @apply sm:order-1 pb-6;
         }
 
         .hero-image {
