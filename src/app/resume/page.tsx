@@ -76,7 +76,7 @@ const iconMap = {
 export default function ResumePage() {
   return (
       <PDFViewer width="100%" style={tw("h-screen")}>
-        <Document>
+        <Document title="IGDev-Resume" creator="IGDev" author="Ianos G Dorultan">
           <Page size="A4" style={tw("flex flex-row gap-2")}>
             <View>
               <View style={tw("w-full self-center h-[187px] flex justify-center items-center relative")}>
