@@ -5,24 +5,38 @@ import Tag from '@/components/tag';
 import {ArrowRight, Building, Calendar, ChevronRight, Clock, Globe, ImageIcon, MapPin} from 'lucide-react';
 import moment from 'moment';
 import Expandable from '@/components/expandable';
-import {motion, useInView} from 'framer-motion';
-import {useRef} from 'react';
+import {motion, useScroll} from 'framer-motion';
+import {useEffect, useRef, useState} from 'react';
 import clsx from 'clsx';
 import Link from 'next/dist/client/link';
 import Github from '@/components/icons/github';
 import Image from 'next/image';
 
 export default function ExperiencePin(props: ExperiencePinType) {
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement>(null);
   const start = moment(new Date(props.startDate));
   const end = props.endDate ? moment(new Date(props.endDate)) : moment();
   const months = end.diff(start, 'years');
   const time = !props.endDate ? 'On-going' : `${months} year${months === 1 ? '' : 's'}`;
 
-  const active = useInView(ref, {
-    margin: `0px 0px -85% 0px` as keyof object,
-    amount: 0.5,
-  });
+  const { scrollY } = useScroll();
+  const [active, setActive] = useState(false);
+
+  useEffect(() => {
+    if (!ref.current) return;
+
+    const update = () => {
+      const rect = ref.current?.getBoundingClientRect();
+      if (!rect) return;
+      setActive(rect.top <= 86);
+    };
+
+    update();
+    const unsubscribe = scrollY.on("change", update);
+
+    return () => unsubscribe();
+  }, [scrollY]);
+
 
   return (
       <div className="experience-pin">
