@@ -61,7 +61,7 @@ Font.register({
   ],
 });
 
-const linkStyle = tw("flex flex-row items-center gap-3 my-[-2.5px]");
+const linkStyle = tw("flex flex-row items-center gap-3 h-[20px]");
 const linkTextStyle = tw('font-sans text-sm flex leading-0 text-white font-semibold');
 const linkImageStyle = tw("w-[15px]");
 
