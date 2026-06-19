@@ -8,5 +8,6 @@ const resume: ResumeType = {
   contact: contact,
   tech: stack.skills,
   experience: experience.roles,
+  languages: ['Romanian (main)', 'English']
 };
 export default resume;

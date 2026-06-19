@@ -118,4 +118,5 @@ export interface ResumeType {
   contact: ContactType;
   experience: ExperiencePinType[];
   tech: TechType;
+  languages: string[];
 }
