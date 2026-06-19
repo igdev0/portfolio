@@ -143,7 +143,7 @@ export default function ResumePage() {
                 Work Experience
               </Text>
               <View style={tw("flex flex-row gap-2 ml-6")}>
-                <View style={tw("h-full w-[2px] rounded-sm bg-gray-200")}>
+                <View style={tw("h-full rounded-sm border-l-2 border-dashed border-gray-200")}>
                 </View>
                 <View style={tw("flex gap-3")}>
                   {
