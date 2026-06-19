@@ -46,7 +46,7 @@ export default function ExperiencePin(props: ExperiencePinType) {
               <MapPin size={20}/>
               {props.jobType}
             </Tag>
-            <Tag tooltipPopup={
+            <Tag id="duration" tooltipPopup={
               <div className="flex gap-2 items-center">
                 <Calendar size={15}/>{moment(new Date(props.startDate)).format('MMM yyyy')}
                 <ArrowRight size={15}/>
@@ -56,7 +56,7 @@ export default function ExperiencePin(props: ExperiencePinType) {
               <Clock size={20}/>
               {time}
             </Tag>
-            <Tag tooltipPopup={
+            <Tag id="location" tooltipPopup={
               props.country
             }>
               <Globe size={20}/>

@@ -1,33 +1,46 @@
 "use client";
 import "./index.css";
-import {PropsWithChildren, ReactNode} from 'react';
+import {PropsWithChildren, ReactNode, useState} from 'react';
 import clsx from 'clsx';
 import {Tooltip} from '@base-ui/react';
 import {InfoIcon} from 'lucide-react';
 
 interface TagProps extends PropsWithChildren {
   className?: string;
+  id?: string;
   tooltipPopup?: ReactNode;
 }
+
 // -mr-.5 self-start mt-[2px]
 export default function Tag(props: TagProps) {
+  const [open, setOpen] = useState(false);
   return (
       <Tooltip.Provider delay={0}>
-        <Tooltip.Root>
-
-          <Tooltip.Trigger  className={clsx('tag relative', props.className, props.tooltipPopup && "cursor-pointer")}>
+        <Tooltip.Root open={open} onOpenChange={setOpen}>
+          <div className={clsx("tag relative", props.className, props.tooltipPopup && "cursor-pointer")}>
+            <Tooltip.Trigger>
               {props.children}
-            {props.tooltipPopup && <InfoIcon size={15} className=" absolute bottom-0 left-0 right-0 bg-(--grid) rounded-full p-.5 mx-auto translate-y-[50%] stroke-(--background)"/>}
-          </Tooltip.Trigger>
+            </Tooltip.Trigger>
+            {props.tooltipPopup && props.id && (
+              <InfoIcon
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setOpen((v) => !v);
+                }}
+                size={15}
+                className="absolute bottom-0 left-0 right-0 bg-(--grid) rounded-full p-.5 mx-auto translate-y-[50%] stroke-(--background)"
+              />
+            )}
+          </div>
           {
               props.tooltipPopup && (
                   <Tooltip.Portal>
-                    <Tooltip.Positioner side="bottom" sideOffset={12} align="center">
-                      <Tooltip.Popup className={clsx("bg-(--background) rounded-sm border border-(--grid)",popupClass)}>
+                    <Tooltip.Positioner side="bottom" sideOffset={20} align="center">
+                      <Tooltip.Popup className={clsx("bg-(--background) rounded-sm border border-(--grid)", popupClass)}>
                         <Tooltip.Arrow className={arrowClass}/>
                         {props.tooltipPopup}
                       </Tooltip.Popup>
-                    </Tooltip.Positioner>s
+                    </Tooltip.Positioner>
                   </Tooltip.Portal>
               )
           }
