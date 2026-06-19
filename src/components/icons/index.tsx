@@ -9,6 +9,7 @@ import {
   ChevronRightIcon,
   CodeIcon,
   DatabaseIcon,
+  DownloadIcon,
   ExternalLink,
   LayoutPanelLeft,
   LinkIcon,
@@ -70,6 +71,7 @@ export const iconsMap = {
   'skate': SkateIcon,
   'football': FootballIcon,
   'call': Phone,
+  'download': DownloadIcon,
 };
 
 export type IconNames = keyof typeof iconsMap;

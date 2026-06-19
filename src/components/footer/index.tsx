@@ -28,6 +28,11 @@ export default function Footer() {
                       label="Phone"
                       className="w-fit"/>
         </div>
+        <div className="flex justify-center items-center w-full mb-12">
+          <LinkButton href="/resume" icon="download" variant="ghost" className="text-center">
+            Download Resume
+          </LinkButton>
+        </div>
 
         <span className="flex w-full justify-center gap-2 text-sm items-center pb-10 md:pb-16">Built with <Heart className="text-indigo-500"/></span>
       </Container>
