@@ -79,7 +79,7 @@ export default function Resume(props: {ref?: RefObject<Document>}) {
               <Image style={tw("absolute bottom-2 left-2 rotate-90")} src="/resume-icons/corner.svg"/>
               <Image style={tw('z-1')} src="/images/me.png"/>
             </View>
-            <View style={tw("bg-gray-100 h-full px-6 pt-3 gap-0")}>
+            <View style={tw("bg-gray-100 h-full w-[220px] px-6 pt-3 gap-0")}>
               <View style={linkStyle}>
                 <Image style={linkImageStyle} src="/resume-icons/globe.svg"/>
                 <Link href={contact.websiteUrl} style={linkTextStyle}>{new URL(contact.websiteUrl).hostname}</Link>
@@ -105,7 +105,7 @@ export default function Resume(props: {ref?: RefObject<Document>}) {
                 <Text style={tw('text-2xl text-gray-900 leading-0 my-3 font-bold uppercase')}>Tech Stack</Text>
                 {
                   Object.entries(resume.tech).map(([key, value]) => (
-                      <View style={tw('mb-1')} key={key}>
+                      <View style={tw('mb-2')} key={key}>
                         <View style={tw('flex flex-row gap-3 mb-1.5 items-center')}>
                           <Image style={linkImageStyle} src={`/resume-icons/${iconMap[key as keyof object]}.svg`}/>
                           <Text style={tw("text-[13px] font-bold text-gray-900")}>{key}</Text>
@@ -133,11 +133,11 @@ export default function Resume(props: {ref?: RefObject<Document>}) {
             </View>
           </View>
           <View style={tw("flex-1 p-2")}>
-            <Text style={[tw("text-6xl leading-0 text-indigo-500 text-center mt-2 uppercase font-extrabold"), {
+            <Text style={[tw("text-6xl leading-0 text-indigo-500 text-center mt-6 uppercase font-extrabold"), {
               fontFamily: "BarlowCondensed",
               letterSpacing: "3px"
             }]}>{resume.name}</Text>
-            <Text style={tw("text-gray-700 mt-2 mb-4 text-[14px]")}>{resume.bio}</Text>
+            <Text style={tw("text-gray-700 mt-6 mb-6 text-[14px]")}>{resume.bio}</Text>
             <Text style={tw("text-2xl leading-0 mb-3 text-gray-900 uppercase font-bold")}>
               Work Experience
             </Text>
@@ -181,15 +181,15 @@ export default function Resume(props: {ref?: RefObject<Document>}) {
                               </Text>
                             </View>
                           </View>
-                          <Text style={tw("text-[8px] mb-1 mt-1 text-gray-900 pr-2 leading-5")}>
+                          <Text style={tw("text-[12px] my-3 text-gray-900 pr-2 leading-5")}>
                             {item.summary}
                           </Text>
-                          <Text style={tw("text-[8px] mb-1 mt-1 text-gray-900 font-bold w-full")}>
+                          <Text style={tw("text-[12px] mb-3 text-gray-900 font-bold w-full")}>
                             Key Achievements:
                           </Text>
                           {
                             item.contributions.map((contrib) => (
-                                <Text key={contrib} style={tw("text-[8px] mb-1 leading-5 w-full text-gray-800 pr-2")}>
+                                <Text key={contrib} style={tw("text-[12px] mb-1 leading-5 w-full text-gray-800 pr-2")}>
                                   - {contrib}
                                 </Text>
                             ))
