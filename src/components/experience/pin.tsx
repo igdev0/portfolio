@@ -95,7 +95,7 @@ export default function ExperiencePin(props: ExperiencePinType) {
                       }
                       <div className="px-3">
                         <h4 className="text-md font-bold mb-1 dark:text-accent-100 text-gray-900">{project.name}</h4>
-                        <p className="text-sm">{project.summary}</p>
+                        <p className="text-sm dark:text-foundation-400 text-gray-600">{project.summary}</p>
                         <div className="flex gap-3 justify-end mt-3 mb-3">
                           {project.repositoryUrl &&
                               <Link className="flex-1 max-w-6" target="_blank"
