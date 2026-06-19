@@ -2,7 +2,6 @@ import {Heart} from 'lucide-react';
 import Container from '@/components/container';
 import LinkButton from '@/components/link-button';
 import contact from '@/content/contact';
-import PDFDownloadLinkC from '@/components/pdf-download-button';
 
 export default function Footer() {
   return (
@@ -30,7 +29,9 @@ export default function Footer() {
                       className="w-fit"/>
         </div>
         <div className="flex justify-center items-center w-full mb-12">
-          <PDFDownloadLinkC/>
+          <LinkButton href="/resume" icon="download" variant="ghost">
+            Download Resume
+          </LinkButton>
         </div>
 
         <span className="flex w-full justify-center gap-2 text-sm items-center pb-10 md:pb-16">Built with <Heart
