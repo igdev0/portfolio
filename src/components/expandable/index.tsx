@@ -22,7 +22,7 @@ export default function Expandable(props: ExpandableProps) {
             {header}
             <ChevronDown className="stroke-accent-500 self-center mb-2 absolute right-0 bottom-0 left-0 mx-auto"/>
           </Collapsible.Trigger>
-          <Collapsible.Panel className="flex h-(--collapsible-panel-height) flex-col justify-end overflow-hidden text-sm transition-[height] duration-150 ease-[ease-out] [&[hidden]:not([hidden='until-found'])]:hidden data-ending-style:h-0 data-starting-style:h-0">
+          <Collapsible.Panel className="flex h-(--collapsible-panel-height) flex-col justify-end overflow-hidden transition-[height] duration-150 ease-[ease-out] [&[hidden]:not([hidden='until-found'])]:hidden data-ending-style:h-0 data-starting-style:h-0">
               {children}
           </Collapsible.Panel>
         </div>
