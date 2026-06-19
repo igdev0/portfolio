@@ -117,7 +117,7 @@ export default function Resume(props: {ref?: RefObject<Document>}) {
                 }
               </View>
               <View>
-                <Text style={tw("text-2xl leading-0 mb-2 mt-[14.1px] text-gray-900 uppercase")}>
+                <Text style={tw("text-2xl leading-0 mb-2 mt-[14.1px] text-gray-900 font-bold uppercase")}>
                   Languages
                 </Text>
                 {
@@ -138,7 +138,7 @@ export default function Resume(props: {ref?: RefObject<Document>}) {
               letterSpacing: "3px"
             }]}>{resume.name}</Text>
             <Text style={tw("text-gray-700 mt-2 mb-4 text-[14px]")}>{resume.bio}</Text>
-            <Text style={tw("text-2xl leading-0 mb-3 text-gray-900 uppercase")}>
+            <Text style={tw("text-2xl leading-0 mb-3 text-gray-900 uppercase font-bold")}>
               Work Experience
             </Text>
             <View style={tw("flex flex-row gap-2 ml-6")}>
