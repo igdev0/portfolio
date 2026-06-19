@@ -159,15 +159,28 @@ export default function ResumePage() {
                             </Text>
 
                             <View style={tw('mt-1.5 mb-1.5 w-full flex flex-row gap-2')}>
-                              <Text style={tw("text-gray-900 text-[10px]")}>
-                                {item.company}
-                              </Text>
-                              <Text style={tw("text-gray-900 text-[10px]")}>
-                                | {moment(new Date(item.startDate)).format("MMM YYYY")} - {item.endDate ? moment(new Date(item.endDate)).format("MMM YYYY") : 'Now'}
-                              </Text>
-                              <Text style={tw("text-gray-900 text-[10px]")}>
-                                | {item.city}, {item.countryShort}
-                              </Text>
+                              <View style={tw("flex flex-row gap-0")}>
+                                <Image style={tw("h-[10px] m-0 ml-[-10px] mr-[-3px]")} src="/resume-icons/building.svg"/>
+                                <Text style={tw("text-gray-900 text-[10px]")}>
+                                  {item.company}
+                                </Text>
+                              </View>
+                              <View style={tw("flex flex-row items-start")}>
+                                <Image style={tw("h-[10px] m-0 mr-[-3px]")} src="/resume-icons/calendar.svg"/>
+                                <Text style={tw("text-gray-900 text-[10px]")}>
+                                  {moment(new Date(item.startDate)).format("MMM YYYY")}
+                                </Text>
+                                <Image style={tw("h-[10px] m-0 mr-[-4px]")} src="/resume-icons/arrow-right.svg"/>
+                                <Text style={tw("text-gray-900 text-[10px]")}>
+                                  {item.endDate ? moment(new Date(item.endDate)).format("MMM YYYY") : 'Now'}
+                                </Text>
+                              </View>
+                              <View style={tw("flex flex-row gap-1")}>
+                                <Image style={tw("h-[10px] m-0 mr-[-8px]")} src="/resume-icons/map-pin-black.svg"/>
+                                <Text style={tw("text-gray-900 text-[10px]")}>
+                                  {item.city}, {item.countryShort}
+                                </Text>
+                              </View>
                             </View>
                             <Text style={tw("text-[8px] mb-1 mt-1 text-gray-900 pr-2 leading-5")}>
                               {item.summary}
