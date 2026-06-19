@@ -61,7 +61,7 @@ Font.register({
   ],
 });
 
-const linkStyle = tw("flex flex-row items-center gap-3");
+const linkStyle = tw("flex flex-row items-center gap-3 my-[-2.5px]");
 const linkTextStyle = tw('font-sans text-sm flex leading-0 text-white font-semibold');
 const linkImageStyle = tw("w-[15px]");
 
@@ -75,7 +75,11 @@ export default function Resume(props: {ref?: RefObject<Document>}) {
                   style={tw("absolute w-[130px] h-[130px] bg-indigo-200 top-auto left-auto bottom-auto right-auto")}/>
               <Image src="/images/me.png"/>
             </View>
-            <View style={tw("bg-indigo-400 h-full px-6 pt-3")}>
+            <View style={tw("bg-indigo-400 h-full px-6 pt-3 gap-0")}>
+              <View style={linkStyle}>
+                <Image style={linkImageStyle} src="/resume-icons/globe.svg"/>
+                <Link href={contact.websiteUrl} style={linkTextStyle}>{new URL(contact.websiteUrl).hostname}</Link>
+              </View>
               <View style={linkStyle}>
                 <Image style={linkImageStyle} src="/resume-icons/phone.svg"/>
                 <Link href={`tel:${contact.phone}`} style={linkTextStyle}>{contact.phone}</Link>
@@ -85,13 +89,13 @@ export default function Resume(props: {ref?: RefObject<Document>}) {
                 <Link href={`mailto:${contact.email}`} style={linkTextStyle}>{contact.email}</Link>
               </View>
               <View style={linkStyle}>
+                <Image style={linkImageStyle} src="/resume-icons/map-pin.svg"/>
+                <Text style={linkTextStyle}>{contact.location}</Text>
+              </View>
+              <View style={linkStyle}>
                 <Image style={linkImageStyle} src="/resume-icons/github.svg"/>
                 <Link href={contact.github}
                       style={linkTextStyle}>{new URL(contact.github).pathname.substring(1)}</Link>
-              </View>
-              <View style={linkStyle}>
-                <Image style={linkImageStyle} src="/resume-icons/globe.svg"/>
-                <Link href={contact.websiteUrl} style={linkTextStyle}>{new URL(contact.websiteUrl).hostname}</Link>
               </View>
               <View style={tw('mt-0')}>
                 <Text style={tw('text-2xl text-white leading-0 my-3 font-bold uppercase')}>Tech Stack</Text>
