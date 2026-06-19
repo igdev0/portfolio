@@ -151,7 +151,7 @@ export default function ResumePage() {
                         <View style={tw("flex flex-row justify-start gap-3 w-full")} key={index}>
                           <View
                               style={tw("w-[32px] ml-[-23px] h-[32px] rounded-md flex justify-center items-center bg-indigo-500")}>
-                            <Text style={tw("text-white text-[10px]")}>{item.brand}</Text>
+                            <Text style={tw("text-white text-[7px]")}>{item.brand}</Text>
                           </View>
                           <View style={tw("w-full")}>
                             <Text style={tw("text-xl leading-0")}>

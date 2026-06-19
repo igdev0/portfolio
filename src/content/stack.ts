@@ -35,9 +35,6 @@ const stack: SkillsType = {
         'Next': {
           statement: "Makes production React apps feel structured and scalable."
         },
-        'Vue': {
-          statement: "Clean developer experience with a really nice learning curve."
-        },
         'Zustand': {
           statement: "Simple and predictable state management."
         },
