@@ -6,12 +6,14 @@ export interface ConfigType {
 
 export type IconType = IconNames;
 export interface ContactType {
-  linkedin: string;
+  location: string;
+  websiteUrl: string;
   github: string;
   phone: string;
   telegram: string;
   email: string;
   calendly: string;
+  linkedin: string;
 }
 
 export interface NavType {
@@ -109,4 +111,11 @@ export interface ProjectType {
   imageAlt?: string;
   imageSrc?: string;
   appUrl?: string;
+}
+
+export interface ResumeType {
+  name: string;
+  contact: ContactType;
+  experience: ExperiencePinType[];
+  tech: TechType;
 }
