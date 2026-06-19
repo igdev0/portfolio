@@ -29,7 +29,17 @@ const tw = createTw({
 
 Font.register({
   family: "Inter",
-  src: "/fonts/Inter/static/Inter_18pt-Regular.ttf",
+  fonts: [
+    {
+      src: "/fonts/Inter/static/Inter_18pt-Regular.ttf",
+      fontWeight: "normal",
+    },
+    {
+      src: "/fonts/Inter/static/Inter_18pt-Bold.ttf",
+      fontWeight: "bold",
+    }
+  ],
+
 });
 
 Font.register({
@@ -93,7 +103,7 @@ export default function ResumePage() {
                   <Link href={contact.websiteUrl} style={linkTextStyle}>{new URL(contact.websiteUrl).hostname}</Link>
                 </View>
                 <View style={tw('mt-0')}>
-                  <Text style={tw('text-2xl text-white leading-0 my-3')}>Tech Stack</Text>
+                  <Text style={tw('text-2xl text-white leading-0 my-3 font-bold')}>Tech Stack</Text>
                   {
                     Object.entries(stack.skills).map(([key, value]) => (
                         <View style={tw('mb-1')} key={key}>
@@ -108,7 +118,7 @@ export default function ResumePage() {
                   }
                 </View>
                 <View>
-                  <Text style={tw("text-2xl leading-0 mb-2 mt-2 text-white")}>
+                  <Text style={tw("text-2xl leading-0 mb-2 mt-2 text-white font-bold")}>
                     Languages
                   </Text>
                   {
@@ -129,8 +139,8 @@ export default function ResumePage() {
                 letterSpacing: "3px"
               }]}>{resume.name}</Text>
               <Text style={tw("text-gray-700 mt-3 mb-4 text-[16px]")}>{resume.bio}</Text>
-              <Text style={tw("text-2xl leading-0 mb-3 text-gray-900")}>
-                Experience
+              <Text style={tw("text-2xl leading-0 mb-3 text-gray-900 font-bold")}>
+                Work Experience
               </Text>
               <View style={tw("flex flex-row gap-2 ml-6")}>
                 <View style={tw("h-full w-[2px] rounded-sm bg-gray-200")}>
@@ -148,12 +158,12 @@ export default function ResumePage() {
                               {item.title}
                             </Text>
 
-                            <View style={tw('mt-1.5 w-full')}>
+                            <View style={tw('mt-1.5 mb-1.5 w-full')}>
                               <Text style={tw("text-gray-900 text-[10px]")}>
                                 {moment(new Date(item.startDate)).format("MMM YYYY")} - {item.endDate ? moment(new Date(item.endDate)).format("MMM YYYY") : 'Now'}
                               </Text>
                             </View>
-                            <Text style={tw("text-[8px] mb-1 mt-1 text-gray-900 pr-2")}>
+                            <Text style={tw("text-[8px] mb-1 mt-1 text-gray-900 pr-2 leading-5")}>
                               {item.summary}
                             </Text>
                             <Text style={tw("text-[8px] mb-1 mt-1 text-gray-900 font-bold w-full")}>
@@ -161,7 +171,7 @@ export default function ResumePage() {
                             </Text>
                             {
                               item.contributions.map((contrib) => (
-                                  <Text key={contrib} style={tw("text-[8px] mb-2 w-full text-gray-800 pr-2")}>
+                                  <Text key={contrib} style={tw("text-[8px] mb-1.5 w-full text-gray-800 pr-2")}>
                                     - {contrib}
                                   </Text>
                               ))
