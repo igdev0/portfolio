@@ -28,15 +28,16 @@ export default function ExperiencePin(props: ExperiencePinType) {
       <div className="experience-pin">
         <div className="timeline relative">
           {/*@ts-ignore*/}
-          <div ref={ref} className={clsx('experience-brand', active && 'dark:bg-accent-500 bg-accent-500 text-white')}>
+          <div ref={ref} className={clsx('experience-brand top-21', active && 'bg-accent-500 text-white')}>
             {props.brand}
           </div>
         </div>
         <div>
-          <div className="sticky top-18 mt-2 py-3 mb-1 bg-(--background) z-1">
-            <h3 className={clsx("font-bold mb-0 transition-all min-h-8", active ? "text-xl mt-2" : "text-2xl")}>{props.title}</h3>
+          <div className="sticky top-21 py-3 bg-(--background) z-1">
+            <div className="w-full h-20 absolute -top-10 bg-(--background) -z-1"/>
+            <h3 className={clsx("font-bold mb-0 transition-all text-lg md:text-2xl ")}>{props.title}</h3>
           </div>
-          <div className="flex flex-wrap gap-3 md:gap-6 z-2">
+          <div className="flex flex-wrap gap-3 md:gap-6 z-2 mt-1">
             <Tag>
               <Building size={20}/>
               {props.company}

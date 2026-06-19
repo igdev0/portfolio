@@ -17,7 +17,7 @@
         --brand-color: var(--color-accent-500);
         @apply font-semibold shadow-lg;
         @apply size-12 flex justify-center items-center rounded-md text-sm;
-        @apply z-5 translate-y-3 sticky top-18 bg-(--brand-bg);
+        @apply z-5 sticky bg-(--brand-bg);
         @apply text-accent-500;
 
         @variant dark {
