@@ -11,7 +11,7 @@ export default function Footer() {
                       label="Github"
                       variant="ghost"
                       className="w-fit"/>
-          <LinkButton icon="telegram" size="xs" href={contact.telegram} aspect="square" external
+          <LinkButton icon="telegram" size="xs" href={`tg://${contact.telegram}`} aspect="square" external
                       variant="ghost"
                       label="Telegram"
                       className="w-fit"/>
@@ -19,11 +19,11 @@ export default function Footer() {
                       variant="ghost"
                       label="LinkedIn"
                       className="w-fit"/>
-          <LinkButton icon="email" size="xs" href={contact.email} aspect="square" external
+          <LinkButton icon="email" size="xs" href={`mailto:${contact.email}`} aspect="square" external
                       variant="ghost"
                       label="Email"
                       className="w-fit"/>
-          <LinkButton icon="call" size="xs" href={contact.phone} aspect="square" external
+          <LinkButton icon="call" size="xs" href={`tel:${contact.phone}`} aspect="square" external
                       variant="ghost"
                       label="Phone"
                       className="w-fit"/>
