@@ -9,7 +9,7 @@ const experience: ExperienceTimelineType = {
   roles: [
     {
       title: "[Independent Engineer]",
-      summary: `Dedicated time to professional development by exploring new technologies and building side projects, including BeeFunded, a Web3 hackathon project. During this period, I also redesigned and rebuilt my personal portfolio using Next.js, TypeScript, and Tailwind CSS.`,
+      summary: `Dedicated time to professional development by exploring new technologies and building side projects, including BeeFunded, a Web3 hackathon project and my personal website.`,
       contractType: "Full-Time",
       brand: "IGDev",
       company: "Self-Employed",
@@ -20,12 +20,11 @@ const experience: ExperienceTimelineType = {
       startDate: "April 2024",
       projects: filterProjectsByOwner(portfolio, 'IGDev'),
       contributions: [
-        "Explored Rust systems programming through hands-on portfolio and language fundamentals.",
-        "Explored blockchain and decentralized application architectures.",
-        "Completed the Alchemy Ethereum and Solidity bootcamp focused on smart contract development.",
-        "Collaborated on and delivered a web3 hackathon project.",
-        "Redesigned and rebuilt my personal portfolio.",
-        "Collaborated with a UI/UX designer to deliver a CMS-driven website for a client of mine using Strapi and NextJS.",
+        "Studied Rust fundamentals through The Rust Programming Language to broaden my systems programming knowledge.",
+        "Completed the Alchemy Ethereum and Solidity Bootcamp, gaining hands-on experience in smart contract development.",
+        "Collaborated on and delivered a Web3 hackathon MVP built on Ethereum.",
+        "Redesigned and rebuilt my personal portfolio using Figma, TypeScript, Next.js, and Tailwind CSS.",
+        "Partnered with a UI/UX designer to deliver a CMS-driven website for a client using Strapi and Next.js.",
       ],
     },
     {

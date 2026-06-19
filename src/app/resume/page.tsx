@@ -84,7 +84,7 @@ export default function ResumePage() {
                     style={tw("absolute w-[130px] h-[130px] bg-indigo-200 top-auto left-auto bottom-auto right-auto")}/>
                 <Image src="/images/me.png"/>
               </View>
-              <View style={tw("bg-indigo-500 h-full px-6 pt-3")}>
+              <View style={tw("bg-indigo-400 h-full px-6 pt-3")}>
                 <View style={linkStyle}>
                   <Image style={linkImageStyle} src="/resume-icons/phone.svg"/>
                   <Link href={`tel:${contact.phone}`} style={linkTextStyle}>{contact.phone}</Link>
@@ -118,13 +118,13 @@ export default function ResumePage() {
                   }
                 </View>
                 <View>
-                  <Text style={tw("text-2xl leading-0 mb-2 mt-2 text-white font-bold")}>
+                  <Text style={tw("text-2xl leading-0 mb-2 mt-[14.1px] text-white font-bold")}>
                     Languages
                   </Text>
                   {
                     resume.languages.map((lang) => {
                       return (
-                          <Text style={tw("text-sm text-white")} key={lang}>
+                          <Text style={tw("text-sm text-white leading-0")} key={lang}>
                             - {lang}
                           </Text>
                       );
@@ -134,11 +134,11 @@ export default function ResumePage() {
               </View>
             </View>
             <View style={tw("flex-1 p-2")}>
-              <Text style={[tw("text-6xl leading-0 text-indigo-600 text-center mt-3 uppercase font-extrabold"), {
+              <Text style={[tw("text-6xl leading-0 text-indigo-600 text-center mt-2 uppercase font-extrabold"), {
                 fontFamily: "BarlowCondensed",
                 letterSpacing: "3px"
               }]}>{resume.name}</Text>
-              <Text style={tw("text-gray-700 mt-3 mb-4 text-[16px]")}>{resume.bio}</Text>
+              <Text style={tw("text-gray-700 mt-2 mb-4 text-[16px]")}>{resume.bio}</Text>
               <Text style={tw("text-2xl leading-0 mb-3 text-gray-900 font-bold")}>
                 Work Experience
               </Text>
@@ -177,7 +177,7 @@ export default function ResumePage() {
                             </Text>
                             {
                               item.contributions.map((contrib) => (
-                                  <Text key={contrib} style={tw("text-[8px] mb-1.5 w-full text-gray-800 pr-2")}>
+                                  <Text key={contrib} style={tw("text-[8px] mb-1 leading-5 w-full text-gray-800 pr-2")}>
                                     - {contrib}
                                   </Text>
                               ))
