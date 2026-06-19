@@ -169,7 +169,7 @@ export default function Resume(props: {ref?: RefObject<Document>}) {
                               <Text style={tw("text-gray-900 text-[10px]")}>
                                 {moment(new Date(item.startDate)).format("MMM YYYY")}
                               </Text>
-                              <Image style={tw("h-[10px] m-0 mr-[-4px]")} src="/resume-icons/arrow-right.svg"/>
+                              <Image style={tw("h-[10px] m-0")} src="/resume-icons/arrow-right.svg"/>
                               <Text style={tw("text-gray-900 text-[10px]")}>
                                 {item.endDate ? moment(new Date(item.endDate)).format("MMM YYYY") : 'Now'}
                               </Text>
