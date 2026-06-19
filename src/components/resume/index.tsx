@@ -62,7 +62,7 @@ Font.register({
 });
 
 const linkStyle = tw("flex flex-row items-center gap-3 h-[20px]");
-const linkTextStyle = tw('font-sans text-sm flex leading-0 text-white font-semibold');
+const linkTextStyle = tw('font-sans text-sm flex leading-0 text-gray-900');
 const linkImageStyle = tw("w-[15px]");
 
 export default function Resume(props: {ref?: RefObject<Document>}) {
@@ -70,12 +70,16 @@ export default function Resume(props: {ref?: RefObject<Document>}) {
       <Document ref={props.ref} title="IGDev-Resume" subject="IGDev" creator="IGDev" author="Ianos G Dorultan">
         <Page size="A4" style={tw("flex flex-row gap-2")}>
           <View>
-            <View style={tw("w-full self-center h-[187px] flex justify-center items-center relative")}>
+            <View style={tw("self-center h-[175px] w-[175px] flex justify-center items-center relative")}>
               <View
-                  style={tw("absolute w-[130px] h-[130px] bg-indigo-200 top-auto left-auto bottom-auto right-auto")}/>
-              <Image src="/images/me.png"/>
+                  style={tw("z-3 absolute w-[100px] h-[100px] bg-indigo-200 top-auto left-auto bottom-auto right-auto")}/>
+              <Image style={tw("absolute bottom-2 right-2")} src="/resume-icons/corner.svg"/>
+              <Image style={tw("absolute top-2 right-2 -rotate-90")} src="/resume-icons/corner.svg"/>
+              <Image style={tw("absolute top-2 left-2 rotate-180")} src="/resume-icons/corner.svg"/>
+              <Image style={tw("absolute bottom-2 left-2 rotate-90")} src="/resume-icons/corner.svg"/>
+              <Image style={tw('z-1')} src="/images/me.png"/>
             </View>
-            <View style={tw("bg-indigo-400 h-full px-6 pt-3 gap-0")}>
+            <View style={tw("bg-gray-100 h-full px-6 pt-3 gap-0")}>
               <View style={linkStyle}>
                 <Image style={linkImageStyle} src="/resume-icons/globe.svg"/>
                 <Link href={contact.websiteUrl} style={linkTextStyle}>{new URL(contact.websiteUrl).hostname}</Link>
@@ -98,28 +102,28 @@ export default function Resume(props: {ref?: RefObject<Document>}) {
                       style={linkTextStyle}>{new URL(contact.github).pathname.substring(1)}</Link>
               </View>
               <View style={tw('mt-0')}>
-                <Text style={tw('text-2xl text-white leading-0 my-3 font-bold uppercase')}>Tech Stack</Text>
+                <Text style={tw('text-2xl text-gray-900 leading-0 my-3 font-bold uppercase')}>Tech Stack</Text>
                 {
                   Object.entries(resume.tech).map(([key, value]) => (
                       <View style={tw('mb-1')} key={key}>
                         <View style={tw('flex flex-row gap-3 mb-1.5 items-center')}>
                           <Image style={linkImageStyle} src={`/resume-icons/${iconMap[key as keyof object]}.svg`}/>
-                          <Text style={tw("text-[13px] font-bold text-white")}>{key}</Text>
+                          <Text style={tw("text-[13px] font-bold text-gray-900")}>{key}</Text>
                         </View>
                         <Text
-                            style={tw("text-sm w-[200px] text-white text-wrap")}> {Object.keys(value.tabs).join(", ")}</Text>
+                            style={tw("text-sm w-[200px] text-gray-900 text-wrap")}> {Object.keys(value.tabs).join(", ")}</Text>
                       </View>
                   ))
                 }
               </View>
               <View>
-                <Text style={tw("text-2xl leading-0 mb-2 mt-[14.1px] text-white uppercase")}>
+                <Text style={tw("text-2xl leading-0 mb-2 mt-[14.1px] text-gray-900 uppercase")}>
                   Languages
                 </Text>
                 {
                   resume.languages.map((lang) => {
                     return (
-                        <Text style={tw("text-sm text-white leading-0")} key={lang}>
+                        <Text style={tw("text-sm text-gray-900 leading-0")} key={lang}>
                           - {lang}
                         </Text>
                     );
@@ -146,7 +150,7 @@ export default function Resume(props: {ref?: RefObject<Document>}) {
                       <View style={tw("flex flex-row justify-start gap-3 w-full")} key={index}>
                         <View
                             style={tw("w-[32px] ml-[-23px] h-[32px] rounded-md flex justify-center items-center bg-indigo-500")}>
-                          <Text style={tw("text-white text-[7px]")}>{item.brand}</Text>
+                          <Text style={tw("text-white font-bold text-[7px]")}>{item.brand}</Text>
                         </View>
                         <View style={tw("w-full")}>
                           <Text style={tw("text-xl leading-0")}>
