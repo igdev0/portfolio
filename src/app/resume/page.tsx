@@ -103,7 +103,7 @@ export default function ResumePage() {
                   <Link href={contact.websiteUrl} style={linkTextStyle}>{new URL(contact.websiteUrl).hostname}</Link>
                 </View>
                 <View style={tw('mt-0')}>
-                  <Text style={tw('text-2xl text-white leading-0 my-3 font-bold')}>Tech Stack</Text>
+                  <Text style={tw('text-2xl text-white leading-0 my-3 font-bold uppercase')}>Tech Stack</Text>
                   {
                     Object.entries(stack.skills).map(([key, value]) => (
                         <View style={tw('mb-1')} key={key}>
@@ -118,7 +118,7 @@ export default function ResumePage() {
                   }
                 </View>
                 <View>
-                  <Text style={tw("text-2xl leading-0 mb-2 mt-[14.1px] text-white font-bold")}>
+                  <Text style={tw("text-2xl leading-0 mb-2 mt-[14.1px] text-white uppercase")}>
                     Languages
                   </Text>
                   {
@@ -139,7 +139,7 @@ export default function ResumePage() {
                 letterSpacing: "3px"
               }]}>{resume.name}</Text>
               <Text style={tw("text-gray-700 mt-2 mb-4 text-[14px]")}>{resume.bio}</Text>
-              <Text style={tw("text-2xl leading-0 mb-3 text-gray-900 font-bold")}>
+              <Text style={tw("text-2xl leading-0 mb-3 text-gray-900 uppercase")}>
                 Work Experience
               </Text>
               <View style={tw("flex flex-row gap-2 ml-6")}>
