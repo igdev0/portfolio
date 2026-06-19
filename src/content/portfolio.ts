@@ -22,7 +22,7 @@ export const portfolio: ProjectType[] = [
     name: "IGDev personal website",
     owner: "IGDev",
     summary: "Single Page website built with TypeScript, NextJS, Base UI, TailwindCSS and Motion.",
-    appUrl: "https://igdev.xyz",
+    repositoryUrl: "https://github.com/igdev0/portfolio",
   },
   {
     id: "identus",

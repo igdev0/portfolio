@@ -8,6 +8,7 @@ export type IconType = IconNames;
 export interface ContactType {
   linkedin: string;
   github: string;
+  phone: string;
   telegram: string;
   email: string;
   calendly: string;

@@ -39,6 +39,10 @@ export default function Collaborate(props: CollaborateType) {
                       variant="ghost"
                       label="Email"
                       className="w-fit"/>
+          <LinkButton icon="call" size="xs" href={contact.phone} aspect="square" external
+                      variant="ghost"
+                      label="Phone"
+                      className="w-fit"/>
         </div>
       </Container>
   );

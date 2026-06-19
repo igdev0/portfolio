@@ -17,6 +17,7 @@ import {
   MenuIcon,
   MessageCircleIcon,
   Pen,
+  Phone,
   SendIcon,
   ServerIcon,
   SignatureIcon,
@@ -67,7 +68,8 @@ export const iconsMap = {
   'log-in': LogIn,
   'lock': LockIcon,
   'skate': SkateIcon,
-  'football': FootballIcon
+  'football': FootballIcon,
+  'call': Phone,
 };
 
 export type IconNames = keyof typeof iconsMap;
