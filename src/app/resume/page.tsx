@@ -49,6 +49,7 @@ Font.register({
 const linkStyle = tw("flex flex-row items-center gap-3");
 const linkTextStyle = tw('font-sans text-sm flex text-white');
 const linkImageStyle = tw("w-[20px]");
+
 export default function ResumePage() {
   return (
       <PDFViewer width="100%" style={tw("h-screen")}>
@@ -76,6 +77,9 @@ export default function ResumePage() {
                 <View style={linkStyle}>
                   <Image style={linkImageStyle} src="/resume-icons/globe.svg"/>
                   <Link href={contact.websiteUrl} style={linkTextStyle}>{new URL(contact.websiteUrl).hostname}</Link>
+                </View>
+                <View style={tw('mt-3')}>
+                  <Text style={tw('text-2xl text-white')}>Tech Stack</Text>
                 </View>
               </View>
             </View>
