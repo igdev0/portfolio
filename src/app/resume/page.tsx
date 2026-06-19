@@ -138,7 +138,7 @@ export default function ResumePage() {
                 fontFamily: "BarlowCondensed",
                 letterSpacing: "3px"
               }]}>{resume.name}</Text>
-              <Text style={tw("text-gray-700 mt-2 mb-4 text-[16px]")}>{resume.bio}</Text>
+              <Text style={tw("text-gray-700 mt-2 mb-4 text-[14px]")}>{resume.bio}</Text>
               <Text style={tw("text-2xl leading-0 mb-3 text-gray-900 font-bold")}>
                 Work Experience
               </Text>
