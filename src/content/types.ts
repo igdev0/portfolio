@@ -115,6 +115,7 @@ export interface ProjectType {
 
 export interface ResumeType {
   name: string;
+  bio: string;
   contact: ContactType;
   experience: ExperiencePinType[];
   tech: TechType;

@@ -5,6 +5,7 @@ import dynamic from 'next/dynamic';
 import resume from '@/content/resume';
 import contact from '@/content/contact';
 import stack from '@/content/stack';
+import moment from 'moment';
 // Apply your own styles on top of Tailwind defaults
 const PDFViewer = dynamic(
     () => import("@react-pdf/renderer").then(m => m.PDFViewer),
@@ -100,7 +101,8 @@ export default function ResumePage() {
                             <Image style={linkImageStyle} src={`/resume-icons/${iconMap[key as keyof object]}.svg`}/>
                             <Text style={tw("text-[13px] font-bold text-white")}>{key}</Text>
                           </View>
-                            <Text style={tw("text-sm w-[200px] text-white text-wrap")}> {Object.keys(value.tabs).join(", ")}</Text>
+                          <Text
+                              style={tw("text-sm w-[200px] text-white text-wrap")}> {Object.keys(value.tabs).join(", ")}</Text>
                         </View>
                     ))
                   }
@@ -115,17 +117,61 @@ export default function ResumePage() {
                           <Text style={tw("text-sm text-white")} key={lang}>
                             - {lang}
                           </Text>
-                      )
+                      );
                     })
                   }
                 </View>
               </View>
             </View>
-            <View style={tw("flex-1")}>
-              <Text style={[tw("text-6xl text-indigo-600 text-center mt-6 uppercase font-extrabold"), {
+            <View style={tw("flex-1 p-2")}>
+              <Text style={[tw("text-6xl leading-0 text-indigo-600 text-center mt-3 uppercase font-extrabold"), {
                 fontFamily: "BarlowCondensed",
                 letterSpacing: "3px"
               }]}>{resume.name}</Text>
+              <Text style={tw("text-gray-700 mt-3 mb-4 text-[16px]")}>{resume.bio}</Text>
+              <Text style={tw("text-2xl leading-0 mb-3 text-gray-900")}>
+                Experience
+              </Text>
+              <View style={tw("flex flex-row gap-2 ml-6")}>
+                <View style={tw("h-full w-[2px] rounded-sm bg-gray-200")}>
+                </View>
+                <View style={tw("flex gap-3")}>
+                  {
+                    resume.experience.map((item, index) => (
+                        <View style={tw("flex flex-row justify-start gap-3 w-full")} key={index}>
+                          <View
+                              style={tw("w-[32px] ml-[-23px] h-[32px] rounded-md flex justify-center items-center bg-indigo-500")}>
+                            <Text style={tw("text-white text-[10px]")}>{item.brand}</Text>
+                          </View>
+                          <View style={tw("w-full")}>
+                            <Text style={tw("text-xl leading-0")}>
+                              {item.title}
+                            </Text>
+
+                            <View style={tw('mt-1.5 w-full')}>
+                              <Text style={tw("text-gray-900 text-[10px]")}>
+                                {moment(new Date(item.startDate)).format("MMM YYYY")} - {item.endDate ? moment(new Date(item.endDate)).format("MMM YYYY") : 'Now'}
+                              </Text>
+                            </View>
+                            <Text style={tw("text-[8px] mb-1 mt-1 text-gray-900 pr-2")}>
+                              {item.summary}
+                            </Text>
+                            <Text style={tw("text-[8px] mb-1 mt-1 text-gray-900 font-bold w-full")}>
+                              Key Achievements:
+                            </Text>
+                            {
+                              item.contributions.map((contrib) => (
+                                  <Text key={contrib} style={tw("text-[8px] mb-2 w-full text-gray-800 pr-2")}>
+                                    - {contrib}
+                                  </Text>
+                              ))
+                            }
+                          </View>
+                        </View>
+                    ))
+                  }
+                </View>
+              </View>
             </View>
           </Page>
         </Document>
