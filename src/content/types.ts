@@ -46,6 +46,7 @@ export interface ExperiencePinType {
   startDate: string;
   endDate?: string;
   city?: string;
+  countryShort?: string;
   country?: string;
   company: string;
   summary: string;

@@ -158,9 +158,15 @@ export default function ResumePage() {
                               {item.title}
                             </Text>
 
-                            <View style={tw('mt-1.5 mb-1.5 w-full')}>
+                            <View style={tw('mt-1.5 mb-1.5 w-full flex flex-row gap-2')}>
                               <Text style={tw("text-gray-900 text-[10px]")}>
-                                {moment(new Date(item.startDate)).format("MMM YYYY")} - {item.endDate ? moment(new Date(item.endDate)).format("MMM YYYY") : 'Now'}
+                                {item.company}
+                              </Text>
+                              <Text style={tw("text-gray-900 text-[10px]")}>
+                                | {moment(new Date(item.startDate)).format("MMM YYYY")} - {item.endDate ? moment(new Date(item.endDate)).format("MMM YYYY") : 'Now'}
+                              </Text>
+                              <Text style={tw("text-gray-900 text-[10px]")}>
+                                | {item.city}, {item.countryShort}
                               </Text>
                             </View>
                             <Text style={tw("text-[8px] mb-1 mt-1 text-gray-900 pr-2 leading-5")}>
