@@ -42,7 +42,8 @@ export interface ExperiencePinType {
   jobType: "Remote" | "Hybrid" | "On-Site";
   startDate: string;
   endDate?: string;
-  location?: string;
+  city?: string;
+  country?: string;
   company: string;
   summary: string;
   contributions: string[];

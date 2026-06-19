@@ -2,7 +2,7 @@
 
 import {ExperiencePinType} from '@/content/types';
 import Tag from '@/components/tag';
-import {Building, ChevronRight, Clock, Globe, ImageIcon, MapPin} from 'lucide-react';
+import {ArrowRight, Building, Calendar, ChevronRight, Clock, Globe, ImageIcon, MapPin} from 'lucide-react';
 import moment from 'moment';
 import Expandable from '@/components/expandable';
 import {motion, useInView} from 'framer-motion';
@@ -24,6 +24,7 @@ export default function ExperiencePin(props: ExperiencePinType) {
     amount: 0.5,
   });
 
+  const linkBg = clsx('bg-(--grid)');
 
   return (
       <div className="experience-pin">
@@ -34,10 +35,10 @@ export default function ExperiencePin(props: ExperiencePinType) {
           </div>
         </div>
         <div>
-          <div className="z-5 sticky top-18 mt-2 py-3 mb-1 bg-(--background)">
+          <div className="sticky top-18 mt-2 py-3 mb-1 bg-(--background) z-0">
             <h3 className={clsx("font-bold mb-0 transition-all min-h-8", active ? "text-xl mt-2" : "text-2xl")}>{props.title}</h3>
           </div>
-          <div className="flex flex-wrap gap-3 md:gap-6 relative">
+          <div className="flex flex-wrap gap-3 md:gap-6">
             <Tag>
               <Building size={20}/>
               {props.company}
@@ -46,13 +47,17 @@ export default function ExperiencePin(props: ExperiencePinType) {
               <MapPin size={20}/>
               {props.jobType}
             </Tag>
-            <Tag>
+            <Tag tooltipPopup={<div className="flex gap-2 items-center"><Calendar
+                size={15}/>{moment(props.startDate).format('MMM yyyy')} <ArrowRight
+                size={15}/> {moment(props.endDate).format('MMM yyyy')}</div>}>
               <Clock size={20}/>
               {time}
             </Tag>
-            <Tag>
+            <Tag tooltipPopup={
+              props.country
+            }>
               <Globe size={20}/>
-              {props.location}
+              {props.city}
             </Tag>
           </div>
           <Expandable header={props.summary}>
@@ -76,11 +81,11 @@ export default function ExperiencePin(props: ExperiencePinType) {
                                 transition={{delay: index / 3}} className="panel h-fit p-0" key={index}>
                       {
 
-                        <Link href={cardHref??"#"} target="_blank" className="project-header">
+                        <Link href={cardHref ?? "#"} target="_blank" className="project-header">
                           {!project.imageSrc ? <ImageIcon/> :
-                                <Image className="h-fit w-fit p-2" src={project.imageSrc}
-                                       alt={project.imageAlt ?? "Alt"} width={100}
-                                       height={100}/>
+                              <Image className="h-fit w-fit p-2" src={project.imageSrc}
+                                     alt={project.imageAlt ?? "Alt"} width={100}
+                                     height={100}/>
                           }
                           <div className="absolute top-0 left-0 w-full h-full bg-accent-100/80 dark:bg-gray-700/80"/>
                         </Link>

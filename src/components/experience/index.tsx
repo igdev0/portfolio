@@ -10,7 +10,7 @@ import "./index.css";
 export default function Experience(props: ExperienceTimelineType) {
   const {comment, title, statement, roles} = props;
   return (
-      <Container className="pt-40" id="experience">
+      <Container className="relative pt-40" id="experience">
         <Comment>{comment}</Comment>
         <Heading as="h2">{title}</Heading>
         <Statement className="mb-6">

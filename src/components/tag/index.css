@@ -6,7 +6,7 @@
         @variant dark {
             --tag-bg: var(--color-gray-800);
         }
-        @apply flex gap-2;
+        @apply flex gap-2 items-center;
         @apply px-2 py-1 rounded-sm border  border-(--grid) bg-(--tag-bg) shadow-md;
     }
 }
