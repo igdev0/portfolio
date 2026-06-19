@@ -32,7 +32,7 @@ const stack: SkillsType = {
         'React': {
           statement: "Component-driven development done right."
         },
-        'Next': {
+        'Next.js': {
           statement: "Makes production React apps feel structured and scalable."
         },
         'Zustand': {
@@ -74,13 +74,10 @@ const stack: SkillsType = {
         'Node': {
           statement: "Fast iteration and a huge ecosystem."
         },
-        'Bun': {
-          statement: "Ridiculously fast and getting better fast."
-        },
         'Express': {
           statement: "Minimal, simple, and still relevant."
         },
-        'Nest': {
+        'Nest.js': {
           statement: "Structured backend architecture without the mess."
         },
       } as const
