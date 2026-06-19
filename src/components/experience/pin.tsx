@@ -24,8 +24,6 @@ export default function ExperiencePin(props: ExperiencePinType) {
     amount: 0.5,
   });
 
-  const linkBg = clsx('bg-(--grid)');
-
   return (
       <div className="experience-pin">
         <div className="timeline relative">
