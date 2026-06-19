@@ -17,7 +17,7 @@ export default function ExperiencePin(props: ExperiencePinType) {
   const start = moment(new Date(props.startDate));
   const end = props.endDate ? moment(new Date(props.endDate)) : moment();
   const months = end.diff(start, 'years');
-  const time = Number.isNaN(months) ? 'On-going' : `${months} year${months === 1 ? '' : 's'}`;
+  const time = !props.endDate ? 'On-going' : `${months} year${months === 1 ? '' : 's'}`;
 
   const active = useInView(ref, {
     margin: `0px 0px -85% 0px` as keyof object,
@@ -45,9 +45,11 @@ export default function ExperiencePin(props: ExperiencePinType) {
               <MapPin size={20}/>
               {props.jobType}
             </Tag>
-            <Tag tooltipPopup={<div className="flex gap-2 items-center"><Calendar
-                size={15}/>{moment(props.startDate).format('MMM yyyy')} <ArrowRight
-                size={15}/> {moment(props.endDate).format('MMM yyyy')}</div>}>
+            <Tag tooltipPopup={props.endDate ? <div className="flex gap-2 items-center"><Calendar
+                size={15}/>{moment(new Date(props.startDate)).format('MMM yyyy')} <ArrowRight
+                size={15}/> {moment(new Date(props.endDate??"")).format('MMM yyyy')}</div>
+                : null
+            }>
               <Clock size={20}/>
               {time}
             </Tag>
