@@ -134,7 +134,7 @@ export default function ResumePage() {
               </View>
             </View>
             <View style={tw("flex-1 p-2")}>
-              <Text style={[tw("text-6xl leading-0 text-indigo-600 text-center mt-2 uppercase font-extrabold"), {
+              <Text style={[tw("text-6xl leading-0 text-indigo-500 text-center mt-2 uppercase font-extrabold"), {
                 fontFamily: "BarlowCondensed",
                 letterSpacing: "3px"
               }]}>{resume.name}</Text>
