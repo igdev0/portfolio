@@ -45,10 +45,12 @@ export default function ExperiencePin(props: ExperiencePinType) {
               <MapPin size={20}/>
               {props.jobType}
             </Tag>
-            <Tag tooltipPopup={props.endDate ? <div className="flex gap-2 items-center"><Calendar
-                size={15}/>{moment(new Date(props.startDate)).format('MMM yyyy')} <ArrowRight
-                size={15}/> {moment(new Date(props.endDate??"")).format('MMM yyyy')}</div>
-                : null
+            <Tag tooltipPopup={
+              <div className="flex gap-2 items-center">
+                <Calendar size={15}/>{moment(new Date(props.startDate)).format('MMM yyyy')}
+                <ArrowRight size={15}/>
+                {props.endDate ? moment(new Date(props.endDate)).format('MMM yyyy') : "Now"}
+              </div>
             }>
               <Clock size={20}/>
               {time}
