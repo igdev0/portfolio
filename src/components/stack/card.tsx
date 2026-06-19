@@ -57,10 +57,11 @@ export default function StackCard(props: StackCardProps) {
     z.stop();
 
     if (cards.current[props.id]) {
+      const minDrag = 12;
       const {width, height} = cards.current[props.id]?.getBoundingClientRect();
-      if (info.offset.y > 0 && info.offset.y > (height / 2) || info.offset.x > 0 && info.offset.x > (width / 2)) {
+      if (info.offset.y > 0 && info.offset.y > (height / minDrag) || info.offset.x > 0 && info.offset.x > (width / minDrag)) {
         setActive(props.id !== active ? props.id : safeIndex(active, true));
-      } else if (info.offset.y < 0 && info.offset.y < -(height / 2) || info.offset.x < 0 && info.offset.x < -(width / 2)) {
+      } else if (info.offset.y < 0 && info.offset.y < -(height / minDrag) || info.offset.x < 0 && info.offset.x < -(width / minDrag)) {
         setActive(props.id !== active ? props.id : safeIndex(active, false));
       }
 
