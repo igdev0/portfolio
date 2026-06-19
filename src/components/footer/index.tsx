@@ -1,10 +1,35 @@
 import {Heart} from 'lucide-react';
 import Container from '@/components/container';
+import LinkButton from '@/components/link-button';
+import contact from '@/content/contact';
 
 export default function Footer() {
   return (
-      <Container className="flex justify-center items-center pb-2">
-        <span className="flex gap-2 text-sm items-center mb-6 md:mb-8">Built with <Heart className="text-indigo-500"/></span>
+      <Container className="mt-0">
+        <div className="flex gap-4 w-full justify-center py-10 md:py-15">
+          <LinkButton icon="github" size="xs" href={contact.github} aspect="square" external
+                      label="Github"
+                      variant="ghost"
+                      className="w-fit"/>
+          <LinkButton icon="telegram" size="xs" href={contact.telegram} aspect="square" external
+                      variant="ghost"
+                      label="Telegram"
+                      className="w-fit"/>
+          <LinkButton icon="linkedin" size="xs" href={contact.linkedin} aspect="square" external
+                      variant="ghost"
+                      label="LinkedIn"
+                      className="w-fit"/>
+          <LinkButton icon="email" size="xs" href={contact.email} aspect="square" external
+                      variant="ghost"
+                      label="Email"
+                      className="w-fit"/>
+          <LinkButton icon="call" size="xs" href={contact.phone} aspect="square" external
+                      variant="ghost"
+                      label="Phone"
+                      className="w-fit"/>
+        </div>
+
+        <span className="flex w-full justify-center gap-2 text-sm items-center pb-10 md:pb-16">Built with <Heart className="text-indigo-500"/></span>
       </Container>
   );
 }

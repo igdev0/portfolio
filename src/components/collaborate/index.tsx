@@ -2,7 +2,6 @@ import Container from '@/components/container';
 import Comment from '@/components/comment';
 import Statement from '@/components/statement';
 import {CollaborateType} from '@/content/types';
-import LinkButton from '@/components/link-button';
 import "./index.css";
 import BasicMessage from '@/components/basic-message';
 import Heading from '@/components/heading';
@@ -10,7 +9,7 @@ import Heading from '@/components/heading';
 export default function Collaborate(props: CollaborateType) {
   const {contact, comment, title, statement} = props;
   return (
-      <Container className="pt-40 pb-4" id="message">
+      <Container className="pt-40" id="message">
         <Comment>
           {comment}
         </Comment>
@@ -18,31 +17,8 @@ export default function Collaborate(props: CollaborateType) {
         <Statement className="mb-16">
           {statement}
         </Statement>
-        <div className="max-w-120 gap-6 w-full mb-4">
+        <div className="max-w-120 gap-6 w-full">
           <BasicMessage book={{href: contact.calendly, text: "Book a call"}}/>
-        </div>
-
-        <div className="flex gap-4 w-full justify-center my-10 md:my-15 lg:20">
-          <LinkButton icon="github" size="xs" href={contact.github} aspect="square" external
-                      label="Github"
-                      variant="ghost"
-                      className="w-fit"/>
-          <LinkButton icon="telegram" size="xs" href={contact.telegram} aspect="square" external
-                      variant="ghost"
-                      label="Telegram"
-                      className="w-fit"/>
-          <LinkButton icon="linkedin" size="xs" href={contact.linkedin} aspect="square" external
-                      variant="ghost"
-                      label="LinkedIn"
-                      className="w-fit"/>
-          <LinkButton icon="email" size="xs" href={contact.email} aspect="square" external
-                      variant="ghost"
-                      label="Email"
-                      className="w-fit"/>
-          <LinkButton icon="call" size="xs" href={contact.phone} aspect="square" external
-                      variant="ghost"
-                      label="Phone"
-                      className="w-fit"/>
         </div>
       </Container>
   );
