@@ -48,11 +48,11 @@
     }
 
     .stack-trigger:before {
-        @apply -right-1 translate-x-[25%];
+        @apply right-0 translate-x-[50%];
     }
 
     .stack-card:before {
-        @apply -left-1 top-0 bottom-0 translate-x-[25%];
+        @apply left-0 top-0 bottom-0 translate-x-[-50%];
     }
 
     .stack-controllers {
