@@ -111,7 +111,7 @@ export default function Resume(props: {ref?: RefObject<Document>}) {
                           <Text style={tw("text-[13px] font-bold text-gray-900")}>{key}</Text>
                         </View>
                         <Text
-                            style={tw("text-sm w-[200px] text-gray-900 text-wrap")}> {Object.keys(value.tabs).join(", ")}</Text>
+                            style={tw("text-sm w-[200px] text-gray-900")}> {Object.keys(value.tabs).join(", ")}</Text>
                       </View>
                   ))
                 }
@@ -144,7 +144,7 @@ export default function Resume(props: {ref?: RefObject<Document>}) {
             <View style={tw("flex flex-row gap-2 ml-6")}>
               <View style={tw("h-full rounded-sm border-l-2 border-dashed border-gray-200")}>
               </View>
-              <View style={tw("flex gap-3")}>
+              <View style={tw("flex gap-3 pr-4")}>
                 {
                   resume.experience.map((item, index) => (
                       <View style={tw("flex flex-row justify-start gap-3 w-full")} key={index}>
@@ -158,13 +158,13 @@ export default function Resume(props: {ref?: RefObject<Document>}) {
                           </Text>
 
                           <View style={tw('mt-1.5 mb-1.5 w-full flex flex-row gap-2')}>
-                            <View style={tw("flex flex-row gap-0")}>
+                            <View style={tw("flex flex-row gap-0 p-1")}>
                               <Image style={tw("h-[10px] m-0 ml-[-10px] mr-[-3px]")} src="/resume-icons/building.svg"/>
                               <Text style={tw("text-gray-900 text-[10px]")}>
                                 {item.company}
                               </Text>
                             </View>
-                            <View style={tw("flex flex-row items-start")}>
+                            <View style={tw("flex flex-row items-start p-1")}>
                               <Image style={tw("h-[10px] m-0 mr-[-3px]")} src="/resume-icons/calendar.svg"/>
                               <Text style={tw("text-gray-900 text-[10px]")}>
                                 {moment(new Date(item.startDate)).format("MMM YYYY")}
@@ -174,14 +174,14 @@ export default function Resume(props: {ref?: RefObject<Document>}) {
                                 {item.endDate ? moment(new Date(item.endDate)).format("MMM YYYY") : 'Now'}
                               </Text>
                             </View>
-                            <View style={tw("flex flex-row gap-1")}>
+                            <View style={tw("flex flex-row gap-1 p-1")}>
                               <Image style={tw("h-[10px] m-0 mr-[-8px]")} src="/resume-icons/map-pin-black.svg"/>
                               <Text style={tw("text-gray-900 text-[10px]")}>
                                 {item.city}, {item.countryShort}
                               </Text>
                             </View>
                           </View>
-                          <Text style={tw("text-[12px] my-3 text-gray-900 pr-2 leading-5")}>
+                          <Text style={tw("text-[12px] mb-3 text-gray-900 pr-2 leading-5")}>
                             {item.summary}
                           </Text>
                           <Text style={tw("text-[12px] mb-3 text-gray-900 font-bold w-full")}>
