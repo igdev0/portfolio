@@ -35,10 +35,9 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "tailwindcss": "^4.2.1",
-    "zustand": "^5.0.12"
-  },
-  "optionalDependencies": {
-    "sharp": "^0.35.2"
+    "zustand": "^5.0.12",
+    "sharp": "^0.33.5",
+    "@img/sharp-linux-x64": "^0.33.5"
   },
   "devDependencies": {
     "@types/node": "^20",
