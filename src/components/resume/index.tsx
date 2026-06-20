@@ -144,7 +144,7 @@ export default function Resume(props: {ref?: RefObject<Document>}) {
             <View style={tw("flex flex-row gap-2 ml-6")}>
               <View style={tw("h-full rounded-sm border-l-2 border-dashed border-gray-200")}>
               </View>
-              <View style={tw("flex gap-3 pr-4")}>
+              <View style={tw("flex gap-3 pr-3")}>
                 {
                   resume.experience.map((item, index) => (
                       <View style={tw("flex flex-row justify-start gap-3 w-full")} key={index}>
@@ -188,8 +188,8 @@ export default function Resume(props: {ref?: RefObject<Document>}) {
                             Key Achievements:
                           </Text>
                           {
-                            item.contributions.map((contrib) => (
-                                <Text key={contrib} style={tw("text-sm mb-1 leading-5 w-full text-gray-800 pr-2")}>
+                            item.contributions.map((contrib, idx) => (
+                                <Text key={contrib} style={tw(`text-sm mb-2 leading-5 w-full text-gray-800 pr-2 ${index === resume.experience.length - 2 && idx === item.contributions.length - 1? "mb-[30px]" : ""}`)}>
                                   - {contrib}
                                 </Text>
                             ))
