@@ -181,15 +181,15 @@ export default function Resume(props: {ref?: RefObject<Document>}) {
                               </Text>
                             </View>
                           </View>
-                          <Text style={tw("text-[12px] mb-3 text-gray-900 pr-2 leading-5")}>
+                          <Text style={tw("text-sm mb-3 text-gray-900 pr-2 leading-5")}>
                             {item.summary}
                           </Text>
-                          <Text style={tw("text-[12px] mb-3 text-gray-900 font-bold w-full")}>
+                          <Text style={tw("text-sm mb-3 text-gray-900 font-bold w-full")}>
                             Key Achievements:
                           </Text>
                           {
                             item.contributions.map((contrib) => (
-                                <Text key={contrib} style={tw("text-[12px] mb-1 leading-5 w-full text-gray-800 pr-2")}>
+                                <Text key={contrib} style={tw("text-sm mb-1 leading-5 w-full text-gray-800 pr-2")}>
                                   - {contrib}
                                 </Text>
                             ))
