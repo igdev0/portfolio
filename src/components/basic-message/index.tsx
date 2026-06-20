@@ -1,6 +1,6 @@
 "use client";
 import {SubmitEventHandler, useState} from 'react';
-import {notifyDiscord} from '@/app/actions';
+import {notifyDiscord} from '@/app/(frontend)/actions';
 import {MessageCircle, XIcon} from 'lucide-react';
 import LinkButton from '@/components/link-button';
 import IconButton from '@/components/icon-button';

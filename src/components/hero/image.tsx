@@ -1,7 +1,7 @@
 "use client";
 import {HeroType} from '@/content/types';
 import Image from 'next/image';
-import {motion, useDragControls, useMotionValue, useSpring, useTransform} from 'framer-motion';
+import {motion, useDragControls, useMotionValue, useSpring, useTransform} from 'motion/react';
 import {MouseEvent, PointerEventHandler} from 'react';
 import clsx from 'clsx';
 import {useIsMobile} from '@/hooks/use-is-mobile';

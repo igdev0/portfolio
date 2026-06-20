@@ -1,6 +1,6 @@
 import type {Metadata} from "next";
 import type {ReactNode} from 'react';
-import "./globals.css";
+import "../globals.css";
 import {Inter} from "next/font/google";
 import {GoogleAnalytics} from '@next/third-parties/google';
 import {ThemeProvider} from 'next-themes';

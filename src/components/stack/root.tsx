@@ -1,7 +1,7 @@
 "use client";
 import {CardFrame, StackContext} from '@/components/stack/context';
 import {PropsWithChildren, useLayoutEffect, useRef, useState} from 'react';
-import {useMotionValue} from 'framer-motion';
+import {useMotionValue} from 'motion/react';
 
 export default function StackRoot(props: PropsWithChildren) {
   const [active, setActive] = useState(0);

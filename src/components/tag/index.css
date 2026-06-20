@@ -1,4 +1,4 @@
-@reference "../../app/globals.css";
+@import "../../app/globals.css";
 
 @layer components {
     .tag {

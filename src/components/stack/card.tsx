@@ -1,7 +1,7 @@
 "use client";
 import {PropsWithChildren, useContext, useLayoutEffect} from 'react';
 import {StackContext} from '@/components/stack/context';
-import {motion, useMotionValueEvent, useSpring} from 'framer-motion';
+import {motion, useMotionValueEvent, useSpring} from 'motion/react';
 import {MotionNodeDragHandlers} from 'motion';
 import clsx from 'clsx';
 import {useIsMobile} from '@/hooks/use-is-mobile';

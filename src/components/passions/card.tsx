@@ -1,6 +1,6 @@
 "use client";
 import {PassionEntityType} from '@/content/types';
-import {motion, useScroll, useTransform} from 'framer-motion';
+import {motion, useScroll, useTransform} from 'motion/react';
 import Icons from '@/components/icons';
 
 export default function PassionCard(props:PassionEntityType & {index: number}) {

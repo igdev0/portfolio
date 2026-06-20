@@ -1,6 +1,6 @@
 "use client";
 
-import {motion, useScroll} from 'framer-motion';
+import {motion, useScroll} from 'motion/react';
 
 export default function NavProgress() {
   const {scrollYProgress: scaleX} = useScroll();

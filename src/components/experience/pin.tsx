@@ -5,7 +5,7 @@ import Tag from '@/components/tag';
 import {ArrowRight, Building, Calendar, ChevronRight, Clock, Globe, ImageIcon, MapPin} from 'lucide-react';
 import moment from 'moment';
 import Expandable from '@/components/expandable';
-import {motion, useScroll} from 'framer-motion';
+import {motion, useScroll} from 'motion/react';
 import {useEffect, useRef, useState} from 'react';
 import clsx from 'clsx';
 import Link from 'next/dist/client/link';
