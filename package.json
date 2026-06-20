@@ -18,6 +18,7 @@
     "@payloadcms/db-postgres": "3.85.1",
     "@payloadcms/next": "3.85.1",
     "@payloadcms/richtext-lexical": "3.85.1",
+    "@payloadcms/storage-vercel-blob": "^3.85.1",
     "@payloadcms/ui": "3.85.1",
     "@react-pdf/renderer": "^4.5.1",
     "@tailwindcss/postcss": "^4.2.1",

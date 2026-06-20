@@ -65,6 +65,8 @@ const linkStyle = tw("flex flex-row items-center gap-3 h-[20px]");
 const linkTextStyle = tw('font-sans text-sm flex leading-0 text-gray-900');
 const linkImageStyle = tw("w-[15px]");
 
+const experienceItem = tw("flex flex-row items-center gap-2");
+
 export default function Resume(props: {ref?: RefObject<Document>}) {
   return (
       <Document ref={props.ref} title="IGDev-Resume" subject="IGDev" creator="IGDev" author="Ianos G Dorultan">
@@ -157,26 +159,26 @@ export default function Resume(props: {ref?: RefObject<Document>}) {
                             {item.title}
                           </Text>
 
-                          <View style={tw('mt-1.5 mb-1.5 w-full flex flex-row gap-2')}>
-                            <View style={tw("flex flex-row gap-0 p-1")}>
-                              <Image style={tw("h-[10px] m-0 ml-[-10px] mr-[-3px]")} src="/resume-icons/building.svg"/>
-                              <Text style={tw("text-gray-900 text-[10px]")}>
+                          <View style={tw('flex flex-row gap-3 my-1')}>
+                            <View style={experienceItem}>
+                              <Image style={linkImageStyle} src="/resume-icons/building.svg"/>
+                              <Text style={linkTextStyle}>
                                 {item.company}
                               </Text>
                             </View>
-                            <View style={tw("flex flex-row items-start p-1")}>
-                              <Image style={tw("h-[10px] m-0 mr-[-3px]")} src="/resume-icons/calendar.svg"/>
-                              <Text style={tw("text-gray-900 text-[10px]")}>
+                            <View style={experienceItem}>
+                              <Image style={linkImageStyle} src="/resume-icons/calendar.svg"/>
+                              <Text style={linkTextStyle}>
                                 {moment(new Date(item.startDate)).format("MMM YYYY")}
                               </Text>
-                              <Image style={tw("h-[10px] m-0")} src="/resume-icons/arrow-right.svg"/>
-                              <Text style={tw("text-gray-900 text-[10px]")}>
+                              <Image style={linkImageStyle} src="/resume-icons/arrow-right.svg"/>
+                              <Text style={linkTextStyle}>
                                 {item.endDate ? moment(new Date(item.endDate)).format("MMM YYYY") : 'Now'}
                               </Text>
                             </View>
-                            <View style={tw("flex flex-row gap-1 p-1")}>
-                              <Image style={tw("h-[10px] m-0 mr-[-8px]")} src="/resume-icons/map-pin-black.svg"/>
-                              <Text style={tw("text-gray-900 text-[10px]")}>
+                            <View style={experienceItem}>
+                              <Image style={linkImageStyle} src="/resume-icons/map-pin-black.svg"/>
+                              <Text style={linkTextStyle}>
                                 {item.city}, {item.countryShort}
                               </Text>
                             </View>

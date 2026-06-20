@@ -4,6 +4,9 @@ import {lexicalEditor} from '@payloadcms/richtext-lexical';
 import {buildConfig} from 'payload';
 import {postgresAdapter} from '@payloadcms/db-postgres';
 import sharp from 'sharp';
+import {Media} from '@/payload/collections/media';
+import {Users} from '@/payload/collections/users';
+import {vercelBlobStorage} from '@payloadcms/storage-vercel-blob';
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -13,10 +16,14 @@ export default buildConfig({
     importMap: {
       baseDir: path.resolve(dirname),
     },
+    avatar: "default",
   },
   blocks: [],
   globals: [],
-  collections: [],
+  collections: [
+    Users,
+    Media
+  ],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
@@ -28,5 +35,16 @@ export default buildConfig({
     },
   }),
   sharp: sharp as keyof object,
-  plugins: [],
+  plugins: [
+      vercelBlobStorage({
+        enabled: true,
+        collections: {
+          media: true,
+        },
+        addRandomSuffix: true,
+        access: "public",
+        clientUploads: true,
+        token: process.env.BLOB_READ_WRITE_TOKEN,
+      })
+  ],
 });
