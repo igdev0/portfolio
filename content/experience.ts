@@ -1,6 +1,6 @@
 import {ExperienceTimelineType} from '@/content/types';
-import {filterProjectsByOwner} from '@/components/utils';
 import {portfolio} from '@/content/portfolio';
+import {filterProjectsByOwner} from '@/utils';
 
 const experience: ExperienceTimelineType = {
   comment: "// Work experience",

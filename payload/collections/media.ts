@@ -5,5 +5,12 @@ export const Media: CollectionConfig = {
   upload: {
     mimeTypes: ['image/*']
   },
-  fields: [],
+  fields: [
+    {
+      type: "text",
+      name: "alt",
+      defaultValue: "Alt",
+      required: true,
+    }
+  ],
 };

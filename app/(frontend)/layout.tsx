@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description: "IGDev is a Software Engineer focused on building modern applications and exploring bleeding-edge technologies.",
 };
 
-const inter = Inter({weight: ["600", "400"]});
+const inter = Inter({weight: ["600", "500", "400"]});
 
 export default function RootLayout({
                                      children,

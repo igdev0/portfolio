@@ -20,8 +20,12 @@ const nav: NavType = {
       href: "#skills",
     },
     {
-      text: "Collaborate",
+      text: "Colab",
       href: "#message",
+    },
+    {
+      text: "Blogs",
+      href: "/blog",
     }
   ],
 };

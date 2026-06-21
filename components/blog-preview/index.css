@@ -1,0 +1,22 @@
+@import "../../app/globals.css";
+
+@layer components {
+    .blog-preview {
+        @apply rounded-md overflow-hidden border border-(--grid);
+
+        .preview-media {
+            @apply h-15 w-full overflow-hidden;
+        }
+
+        .preview-content {
+            @apply p-2;
+        }
+        .preview-title {
+            @apply text-lg;
+        }
+
+        .preview-link {
+            @apply underline gap-2;
+        }
+    }
+}
