@@ -5,7 +5,7 @@ import clsx from 'clsx';
 const containerVariants = cva('container', {
   variants: {
     variant: {
-      bordered: "border-x border-(--grid) mx-auto px-3 md:px-6"
+      bordered: "border-x border-0 border-(--grid) mx-auto px-3 md:px-6"
     }
   },
   defaultVariants: {
