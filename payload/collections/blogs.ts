@@ -3,8 +3,8 @@ import {PreviewGroup} from '@/payload/blocks/preview';
 import {BlogHeroBlock} from '@/payload/blocks/blog-hero';
 import {SlugField} from '@/payload/fields/slug';
 
-export const Logs: CollectionConfig = {
-  slug: "logs",
+export const Blogs: CollectionConfig = {
+  slug: "blogs",
   admin: {
     useAsTitle: "title",
   },

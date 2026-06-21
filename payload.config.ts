@@ -9,7 +9,7 @@ import {Users} from '@/payload/collections/users';
 import {vercelBlobStorage} from '@payloadcms/storage-vercel-blob';
 import {PreviewBlock} from '@/payload/blocks/preview';
 import {BlogHeroBlock} from '@/payload/blocks/blog-hero';
-import {Logs} from '@/payload/collections/logs';
+import {Blogs} from '@/payload/collections/blogs';
 import {Categories} from '@/payload/collections/categories';
 
 const filename = fileURLToPath(import.meta.url);
@@ -31,7 +31,7 @@ export default buildConfig({
     Users,
     Media,
     Categories,
-    Logs,
+    Blogs,
   ],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
