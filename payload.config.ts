@@ -7,6 +7,10 @@ import sharp from 'sharp';
 import {Media} from '@/payload/collections/media';
 import {Users} from '@/payload/collections/users';
 import {vercelBlobStorage} from '@payloadcms/storage-vercel-blob';
+import {PreviewBlock} from '@/payload/blocks/preview';
+import {BlogHeroBlock} from '@/payload/blocks/blog-hero';
+import {Logs} from '@/payload/collections/logs';
+import {Categories} from '@/payload/collections/categories';
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -18,11 +22,16 @@ export default buildConfig({
     },
     avatar: "default",
   },
-  blocks: [],
+  blocks: [
+    BlogHeroBlock,
+    PreviewBlock,
+  ],
   globals: [],
   collections: [
     Users,
-    Media
+    Media,
+    Categories,
+    Logs,
   ],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
@@ -36,15 +45,15 @@ export default buildConfig({
   }),
   sharp: sharp as keyof object,
   plugins: [
-      vercelBlobStorage({
-        enabled: true,
-        collections: {
-          media: true,
-        },
-        addRandomSuffix: true,
-        access: "public",
-        clientUploads: true,
-        token: process.env.BLOB_READ_WRITE_TOKEN,
-      })
+    vercelBlobStorage({
+      enabled: true,
+      collections: {
+        media: true,
+      },
+      addRandomSuffix: true,
+      access: "public",
+      clientUploads: true,
+      token: process.env.BLOB_READ_WRITE_TOKEN,
+    })
   ],
 });
