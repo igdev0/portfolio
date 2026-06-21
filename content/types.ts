@@ -122,3 +122,15 @@ export interface ResumeType {
   tech: TechType;
   languages: string[];
 }
+
+
+export interface BlogPreviewType {
+  image: ImageType;
+  title: string;
+  description: string;
+  slug: string;
+}
+
+export interface BlogSectionType extends SectionType {
+  previews: BlogPreviewType[];
+}

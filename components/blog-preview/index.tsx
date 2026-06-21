@@ -1,21 +1,14 @@
-import {Media} from '@/payload-types';
 import Image from 'next/image';
 import "./index.css";
 import Link from 'next/dist/client/link';
+import {BlogPreviewType} from '@/content/types';
 
-export interface BlogPreviewProps {
-  title: string;
-  description: string;
-  slug: string;
-  media: Media;
-}
-
-export default function BlogPreview(props: BlogPreviewProps) {
+export default function BlogPreview(props: BlogPreviewType) {
 
   return (
       <div className="blog-preview">
         <div className="preview-media">
-          <Image src={`${process.env.NEXT_PUBLIC_MEDIA_STORAGE_URL}/${props.media.filename}`}
+          <Image src={props.image.src}
                  alt={`props.media.filename`} width={300} height={200}/>
         </div>
         <div className="preview-content">

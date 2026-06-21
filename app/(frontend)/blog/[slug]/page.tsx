@@ -22,9 +22,7 @@ export default async function BlogPage(props: { params: Promise<{ slug: string }
     },
     limit: 1,
   });
-
   const blog = docs[0];
-
   return (
       <main>
         <Nav {...nav}/>
