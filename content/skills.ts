@@ -33,6 +33,12 @@ const skills: TechType = {
       'Zustand': {
         statement: "Simple and predictable state management."
       },
+      'Storybook': {
+        statement: "Isolated component development and UI documentation that keeps design systems consistent."
+      },
+      'Styled-Components': {
+        statement: "CSS-in-JS solution for scoped, dynamic styling in React components."
+      },
       'Tailwind CSS': {
         statement: "Fast workflow if you stay disciplined."
       },
