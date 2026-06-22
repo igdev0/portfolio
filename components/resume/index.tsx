@@ -14,8 +14,10 @@ const iconMap = {
   "Backend": "server",
   "Databases": "database",
   "Blockchain": "boxes",
-  "Infra & DevOps": "blocks",
-  "Tools": "wrench"
+  "Tools": "wrench",
+  "Platforms": "git-branch",
+  "DevOps": "blocks",
+  "API Integration": "network",
 };
 export const tw = createTw({
   fontFamily: {

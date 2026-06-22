@@ -1,6 +1,6 @@
 import {TechType} from '@/content/types';
 
-const skills = {
+const skills: TechType = {
   "Languages": {
     icon: "book",
     tabs: {
@@ -36,7 +36,7 @@ const skills = {
       'Tailwind CSS': {
         statement: "Fast workflow if you stay disciplined."
       },
-    } as const
+    }
   },
   "API Integration": {
     icon: "network",
@@ -92,7 +92,7 @@ const skills = {
       'Nest.js': {
         statement: "Structured backend architecture without the mess."
       },
-    } as const
+    }
   },
   "Blockchain": {
     icon: 'boxes',
@@ -148,7 +148,7 @@ const skills = {
       "Vercel": {
         statement: "Makes deploying modern web applications almost effortless."
       },
-    } as const
+    }
   },
   "Tools": {
     icon: 'wrench',
@@ -165,8 +165,8 @@ const skills = {
       'Photoshop': {
         statement: "Useful when things need more than basic edits."
       },
-    } as const
+    }
   }
-} as TechType;
+};
 
 export default skills;
