@@ -21,10 +21,10 @@ const experience: ExperienceTimelineType = {
       projects: filterProjectsByOwner(portfolio, 'IGDev'),
       contributions: [
         "Redesigned and rebuilt my personal portfolio using Figma, TypeScript, Next.js, and Tailwind CSS.",
-        "Collaborated on and delivered a Web3 hackathon MVP built on Ethereum.",
         "Partnered with a UI/UX designer to deliver a CMS-driven website for a client using Strapi and Next.js.",
-        "Completed the Alchemy Ethereum and Solidity Bootcamp, gaining hands-on experience in smart contract development.",
+        "Collaborated on and delivered a Web3 hackathon MVP built on Ethereum.",
         "Studied Rust fundamentals through The Rust Programming Language to broaden my systems programming knowledge.",
+        "Completed the Alchemy Ethereum and Solidity Bootcamp, gaining hands-on experience in smart contract development.",
       ],
     },
     {
