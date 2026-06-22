@@ -174,8 +174,13 @@ export interface Preview {
 export interface User {
   id: number;
   avatar?: (number | null) | Media;
+  name: string;
+  roles: ('admin' | 'editor' | 'user')[];
   updatedAt: string;
   createdAt: string;
+  enableAPIKey?: boolean | null;
+  apiKey?: string | null;
+  apiKeyIndex?: string | null;
   email: string;
   resetPasswordToken?: string | null;
   resetPasswordExpiration?: string | null;
@@ -344,8 +349,13 @@ export interface PayloadMigration {
  */
 export interface UsersSelect<T extends boolean = true> {
   avatar?: T;
+  name?: T;
+  roles?: T;
   updatedAt?: T;
   createdAt?: T;
+  enableAPIKey?: T;
+  apiKey?: T;
+  apiKeyIndex?: T;
   email?: T;
   resetPasswordToken?: T;
   resetPasswordExpiration?: T;

@@ -8,6 +8,11 @@ export const Blogs: CollectionConfig = {
   admin: {
     useAsTitle: "title",
   },
+  access: {
+    read: (props) => {
+      return props.req.user?.roles.includes('admin') ?? false;
+    }
+  },
   fields: [
     {
       type: "text",
@@ -35,7 +40,7 @@ export const Blogs: CollectionConfig = {
         return true;
       },
       blocks: [
-          BlogHeroBlock,
+        BlogHeroBlock,
         {
           slug: "main",
           labels: {
