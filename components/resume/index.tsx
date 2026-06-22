@@ -85,20 +85,20 @@ export default function Resume(props: {ref?: RefObject<Document>}) {
             </View>
             <View style={tw("bg-gray-100 h-full w-[220px] px-6 pt-3 gap-0")}>
               <View style={linkStyle}>
-                <Image style={linkImageStyle} src="/resume-icons/globe.svg"/>
-                <Link href={contact.websiteUrl} style={linkTextStyle}>{new URL(contact.websiteUrl).hostname}</Link>
-              </View>
-              <View style={linkStyle}>
                 <Image style={linkImageStyle} src="/resume-icons/phone.svg"/>
-                <Link href={`tel:${contact.phone}`} style={linkTextStyle}>{contact.phone}</Link>
+                <Text style={linkTextStyle}>{contact.phone}</Text>
               </View>
               <View style={linkStyle}>
                 <Image style={linkImageStyle} src="/resume-icons/at-sign.svg"/>
-                <Link href={`mailto:${contact.email}`} style={linkTextStyle}>{contact.email}</Link>
+                <Text style={linkTextStyle}>{contact.email}</Text>
               </View>
               <View style={linkStyle}>
                 <Image style={linkImageStyle} src="/resume-icons/map-pin.svg"/>
                 <Text style={linkTextStyle}>{contact.location}</Text>
+              </View>
+              <View style={linkStyle}>
+                <Image style={linkImageStyle} src="/resume-icons/globe.svg"/>
+                <Link href={contact.websiteUrl} style={linkTextStyle}>{new URL(contact.websiteUrl).hostname}</Link>
               </View>
               <View style={linkStyle}>
                 <Image style={linkImageStyle} src="/resume-icons/github.svg"/>
