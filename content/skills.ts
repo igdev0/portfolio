@@ -21,7 +21,6 @@ const skills = {
       },
     }
   },
-
   "Frontend": {
     icon: "code",
     tabs: {
@@ -38,6 +37,17 @@ const skills = {
         statement: "Fast workflow if you stay disciplined."
       },
     } as const
+  },
+  "API Integration": {
+    icon: "network",
+    tabs: {
+      "GraphQL": {
+        statement: "Flexible data fetching without over-fetching or under-fetching."
+      },
+      "REST": {
+        statement: "Still the default choice for most web APIs."
+      }
+    }
   },
   "Testing": {
     icon: "test",
@@ -64,8 +74,17 @@ const skills = {
   "Backend": {
     icon: "server",
     tabs: {
-      'Node': {
+      'Node.js': {
         statement: "Fast iteration and a huge ecosystem."
+      },
+      'Strapi': {
+        statement: "Headless CMS that gets APIs and content management up and running fast."
+      },
+      'Payload': {
+        statement: "Developer-first CMS with full control over content and APIs."
+      },
+      "Prisma": {
+        statement: "Type-safe database access that fits naturally with TypeScript."
       },
       'Express': {
         statement: "Minimal, simple, and still relevant."
@@ -74,20 +93,6 @@ const skills = {
         statement: "Structured backend architecture without the mess."
       },
     } as const
-  },
-  "Databases": {
-    icon: "database",
-    tabs: {
-      "MySQL": {
-        statement: "Reliable and battle-tested."
-      },
-      "Sqlite": {
-        statement: "Lightweight and perfect for local or embedded use."
-      },
-      "MongoDB": {
-        statement: "Flexible document model, great for fast-changing schemas."
-      }
-    }
   },
   "Blockchain": {
     icon: 'boxes',
@@ -103,20 +108,45 @@ const skills = {
       }
     }
   },
-  "Infra & DevOps": {
+  "DevOps": {
     icon: "blocks",
     tabs: {
       'Docker': {
         statement: "Makes environments predictable instead of painful."
       },
-      "Github": {
-        statement: "Good tooling, smooth collaboration, massive ecosystem."
-      },
-      "Bitbucket": {
-        statement: "Gets the job done, especially in enterprise setups."
-      },
       'Github Actions': {
         statement: "CI/CD setup without unnecessary complexity."
+      },
+    }
+  },
+  "Databases": {
+    icon: "database",
+    tabs: {
+      "MySQL": {
+        statement: "Reliable and battle-tested."
+      },
+      "Sqlite": {
+        statement: "Lightweight and perfect for local or embedded use."
+      },
+      "MongoDB": {
+        statement: "Flexible document model, great for fast-changing schemas."
+      }
+    }
+  },
+  "Platforms": {
+    icon: "git",
+    tabs: {
+      "Github": {
+        statement: "Industry standard for version control and collaboration."
+      },
+      "Bitbucket": {
+        statement: "A common choice in enterprise development environments."
+      },
+      "Digital Ocean": {
+        statement: "Simple cloud infrastructure for deploying and scaling applications."
+      },
+      "Vercel": {
+        statement: "Makes deploying modern web applications almost effortless."
       },
     } as const
   },
