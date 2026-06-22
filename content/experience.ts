@@ -9,7 +9,7 @@ const experience: ExperienceTimelineType = {
   roles: [
     {
       title: "[Independent Engineer]",
-      summary: `Dedicated time to professional development by exploring new technologies and building side projects, including BeeFunded, a Web3 hackathon project and my personal website.`,
+      summary: `Dedicated time to professional development by exploring new technologies and building side projects.`,
       contractType: "Full-Time",
       brand: "IGDev",
       company: "Self-Employed",

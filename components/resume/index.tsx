@@ -193,7 +193,7 @@ export default function Resume(props: {ref?: RefObject<Document>}) {
                           </Text>
                           {
                             item.contributions.map((contrib, idx) => (
-                                <Text key={contrib} style={tw(`text-sm mb-2 leading-5 w-full text-gray-800 pr-2 ${index === resume.experience.length - 2 && idx === item.contributions.length - 1? "mb-[30px]" : ""}`)}>
+                                <Text key={contrib} style={tw(`text-sm mb-3 leading-5 w-full text-gray-800 pr-2`)}>
                                   - {contrib}
                                 </Text>
                             ))
