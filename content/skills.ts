@@ -9,11 +9,11 @@ const skills: TechType = {
   "Languages": {
     icon: "book",
     tabs: {
-      'JavaScript': {
-        statement: "Used as a core language throughout my career to build full-stack web and mobile applications."
-      },
       'TypeScript': {
         statement: "Used extensively with Next.js, React, Nest.js and Node.js to build client-facing web applications and automations."
+      },
+      'JavaScript': {
+        statement: "Used as my core language at the beginning of my career to build full-stack web and mobile applications."
       },
       'HTML5': {
         statement: "Applied core web fundamentals to deliver responsive, accessible, and animation-rich web application interfaces."

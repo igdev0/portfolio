@@ -103,7 +103,7 @@ export const portfolio: ProjectType[] = [
   },
   {
     id: "bluespherebio",
-    name: "Bluesphere Bio",
+    name: "ATB Therapeutics",
     owner: "FinerVision",
     stage: "production",
     status: "active",
