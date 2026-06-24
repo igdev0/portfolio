@@ -78,10 +78,10 @@ export default function ExperiencePin(props: ExperiencePinType) {
             </Tag>
           </div>
           <Expandable header={props.summary}>
-            <ul className="mt-3 flex gap-2 flex-col">
+            <ul className="mt-3 flex gap-1 flex-col">
               {
                 props.contributions?.map((contribution, index) => (
-                    <li className="flex gap-1 mb-2 items-center" key={index}>
+                    <li className="flex gap-1 items-center" key={index}>
                       <span><ChevronRight className="stroke-accent-500 w-fit"/></span>
                       {contribution}
                     </li>
@@ -108,10 +108,10 @@ export default function ExperiencePin(props: ExperiencePinType) {
                         </Link>
                       }
                       <div className="px-3">
-                        <div className="flex items-center gap-1">
+                        <div className="flex gap-1 items-center">
                           <h4 className="text-md font-bold mb-1 dark:text-accent-100 text-gray-900">{project.name}</h4>
-                          <AtSignIcon size={15} className="stroke-accent-500 -translate-y-0.5"/>
-                          <span className="text-sm bg-accent-100 dark:bg-foundation-700 -translate-y-0.5">{project.owner}</span>
+                          <AtSignIcon size={15} className="dark:stroke-accent-300 stroke-accent-500 -translate-y-0.5"/>
+                          <span className="text-sm -translate-y-0.5 dark:text-accent-300 text-accent-500">{project.owner}</span>
                         </div>
                         <p className="text-sm dark:text-foundation-400 text-gray-600">{project.summary}</p>
                         <div className="flex gap-1 flex-wrap mt-2">
