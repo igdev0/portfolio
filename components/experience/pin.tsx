@@ -51,29 +51,29 @@ export default function ExperiencePin(props: ExperiencePinType) {
             <div className="w-full h-20 absolute -top-10 bg-(--background) -z-1"/>
             <h3 className={clsx("font-bold mb-0 transition-all text-lg md:text-2xl ")}>{props.title}</h3>
           </div>
-          <div className="flex flex-wrap gap-3 md:gap-6 z-2 mt-1">
+          <div className="flex flex-wrap gap-1.5 md:gap-3 z-2 mt-1">
             <Tag>
-              <Building size={20}/>
+              <Building className="stroke-accent-500" size={20}/>
               {props.company}
             </Tag>
             <Tag>
-              <MapPin size={20}/>
+              <MapPin className="stroke-accent-500" size={20}/>
               {props.jobType}
             </Tag>
             <Tag id="duration" tooltipPopup={
               <div className="flex gap-2 items-center">
-                <Calendar size={15}/>{moment(new Date(props.startDate)).format('MMM yyyy')}
-                <ArrowRight size={15}/>
+                <Calendar className="stroke-accent-500" size={15}/>{moment(new Date(props.startDate)).format('MMM yyyy')}
+                <ArrowRight className="stroke-accent-500" size={15}/>
                 {props.endDate ? moment(new Date(props.endDate)).format('MMM yyyy') : "Now"}
               </div>
             }>
-              <Clock size={20}/>
+              <Clock className="stroke-accent-500" size={20}/>
               {time}
             </Tag>
             <Tag id="location" tooltipPopup={
               props.country
             }>
-              <Globe size={20}/>
+              <Globe className="stroke-accent-500" size={20}/>
               {props.city}
             </Tag>
           </div>
@@ -96,8 +96,6 @@ export default function ExperiencePin(props: ExperiencePinType) {
                 return (
                     <motion.div whileInView={{opacity: 1}} initial={{opacity: 0}} viewport={{once: true}}
                                 transition={{delay: index / 3}} className="panel h-fit p-0" key={index}>
-                      {
-
                         <Link href={cardHref ?? "#"} target="_blank" className="project-header">
                           {!project.imageSrc ? <ImageIcon/> :
                               <Image className="h-fit w-fit p-2" src={project.imageSrc}
@@ -106,14 +104,13 @@ export default function ExperiencePin(props: ExperiencePinType) {
                           }
                           <div className="absolute top-0 left-0 w-full h-full bg-accent-100/80 dark:bg-gray-700/80"/>
                         </Link>
-                      }
                       <div className="px-3">
                         <div className="flex gap-1 items-center">
                           <h4 className="text-md font-bold mb-1 dark:text-accent-100 text-gray-900">{project.name}</h4>
                           <AtSignIcon size={15} className="dark:stroke-accent-300 stroke-accent-500 -translate-y-0.5"/>
                           <span className="text-sm -translate-y-0.5 dark:text-accent-300 text-accent-500">{project.owner}</span>
                         </div>
-                        <p className="text-sm dark:text-foundation-400 text-gray-600">{project.summary}</p>
+                        <p className="text-sm dark:text-foundation-400 text-gray-600 pb-1">{project.summary}</p>
                         <div className="flex gap-1 flex-wrap mt-2">
                           {
                             project.tech.map((tech, index) => (
