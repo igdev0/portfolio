@@ -69,7 +69,7 @@ const linkImageStyle = tw("w-[15px]");
 
 const experienceItem = tw("flex flex-row items-center gap-2");
 
-export default function Resume(props: {ref?: RefObject<Document>}) {
+export default function Resume(props: { ref?: RefObject<Document> }) {
   return (
       <Document ref={props.ref} title="IGDev-Resume" subject="IGDev" creator="IGDev" author="Ianos G Dorultan">
         <Page size="A4" style={tw("flex flex-row gap-2")}>
@@ -136,7 +136,7 @@ export default function Resume(props: {ref?: RefObject<Document>}) {
               </View>
             </View>
           </View>
-          <View style={tw("flex-1 p-2")}>
+          <View style={tw("flex-1 p-2 mr-3")}>
             <Text style={[tw("text-6xl leading-0 text-indigo-500 text-center mt-6 uppercase font-extrabold"), {
               fontFamily: "BarlowCondensed",
               letterSpacing: "3px"
@@ -148,15 +148,15 @@ export default function Resume(props: {ref?: RefObject<Document>}) {
             <View style={tw("flex flex-row gap-2 ml-6")}>
               <View style={tw("h-full rounded-sm border-l-2 border-dashed border-gray-200")}>
               </View>
-              <View style={tw("flex gap-3 pr-3")}>
+              <View style={tw("flex")}>
                 {
                   resume.experience.map((item, index) => (
-                      <View style={tw("flex flex-row justify-start gap-3 w-full")} key={index}>
+                      <View style={tw("flex flex-row justify-start w-full")} key={index}>
                         <View
                             style={tw("w-[32px] ml-[-23px] h-[32px] rounded-md flex justify-center items-center bg-indigo-500")}>
                           <Text style={tw("text-white font-bold text-[7px]")}>{item.brand}</Text>
                         </View>
-                        <View style={tw("w-full")}>
+                        <View style={tw("w-full pl-4")}>
                           <Text style={tw("text-xl leading-0")}>
                             {item.title}
                           </Text>
@@ -189,13 +189,16 @@ export default function Resume(props: {ref?: RefObject<Document>}) {
                             {item.summary}
                           </Text>
                           <Text style={tw("text-sm mb-3 text-gray-900 font-bold w-full")}>
-                            {item.preTitle??"Achievements"}:
+                            {item.preTitle ?? "Achievements"}:
                           </Text>
                           {
                             item.contributions.map((contrib, idx) => (
-                                <Text key={contrib} style={tw(`text-sm mb-3 leading-5 w-full text-gray-800 pr-2`)}>
-                                  - {contrib}
-                                </Text>
+                                <View style={tw("flex flex-row gap-2")}>
+                                  <Image style={linkImageStyle} src="/resume-icons/chevron-right.svg"/>
+                                  <Text key={contrib} style={tw(`text-sm mb-3 leading-5 w-full text-gray-800 pr-2`)}>
+                                    {contrib}
+                                  </Text>
+                                </View>
                             ))
                           }
                         </View>
@@ -207,5 +210,5 @@ export default function Resume(props: {ref?: RefObject<Document>}) {
           </View>
         </Page>
       </Document>
-  )
+  );
 }
