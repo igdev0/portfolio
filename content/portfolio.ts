@@ -13,10 +13,11 @@ export const portfolio: ProjectType[] = [
         'Vite',
         'Rest API Integration',
         'ethers.js',
+        'hardhat',
     ],
     stage: "mvp",
     status: "archived",
-    summary: "Web3 donation platform built on Ethereum Blockchain built during Chainlink Hackathon.",
+    summary: "Developed a Web3 donation platform on Ethereum during the Chainlink Hackathon, implementing smart contract-based donation flows for on-chain contributions.",
     repositoryUrl: "https://github.com/igdev0/bee-funded",
   },
   {
@@ -25,7 +26,7 @@ export const portfolio: ProjectType[] = [
     owner: "IGDev",
     stage: "production",
     status: "completed",
-    summary: "Multipage website translated from figma design spec provisioned built with TypeScript, NextJS driven by a Strapi CMS.",
+    summary: "Developed a multi-page i8n website for Pro Scan Solutions, implementing a Next.js frontend based on Figma designs with Strapi CMS and GraphQL integration for dynamic content.",
     imageSrc: "/projects/pro-scan-solutions.png",
     appUrl: "https://pro-scan-solutions.ro",
     tech: [
@@ -42,7 +43,7 @@ export const portfolio: ProjectType[] = [
     owner: "IGDev",
     stage: "production",
     status: "active",
-    summary: "Redesigned and developed my personal website to better showcase my work experience and skills.",
+    summary: "Built and redesigned my personal website to showcase projects and experience using a modern Next.js stack with TailwindCSS, Framer Motion, and Payload CMS.",
     repositoryUrl: "https://github.com/igdev0/portfolio",
     tech: [
         'Next.js (App Router)',
@@ -80,7 +81,7 @@ export const portfolio: ProjectType[] = [
     stage: "production",
     status: "active",
     imageSrc: "/projects/collect-plus.png",
-    summary: "Developed and maintained the Collect+ frontend, implementing end-to-end parcel drop-off, returns, and tracking UI integrated with multiple courier APIs and real-time status updates.",
+    summary: "Built and maintained the Collect+ frontend, delivering core parcel drop-off, returns, and tracking experiences integrated with multiple courier APIs and real-time shipment status updates.",
     appUrl: "https://www.collectplus.co.uk",
     tech: ['TypeScript', 'Next.js', 'Scss', 'Rest API Integration'],
   },
@@ -91,7 +92,7 @@ export const portfolio: ProjectType[] = [
     stage: "production",
     status: "active",
     imageSrc: "/projects/star.png",
-    summary: "Developed the core frontend features for the STAR App, a medical application for patients with ATTR amyloidosis.",
+    summary: "Implemented core frontend functionality for STAR App, a React Native symptom tracking app for patients with ATTR amyloidosis, enabling daily health logging and data management.",
     appUrl: "https://apps.apple.com/gb/app/star-the-symptom-tracker/id1560476806?platform=iphone",
     tech: [
         'React Native',
@@ -108,7 +109,7 @@ export const portfolio: ProjectType[] = [
     stage: "production",
     status: "active",
     imageSrc: "/projects/atb-therapeutics-logo.svg",
-    summary: "Developed the core features for ATB therapeutics website, implementing the design specification from Figma.",
+    summary: "Developed the ATB Therapeutics website, implementing a Next.js frontend from Figma designs with Strapi CMS and GraphQL API integration for dynamic content management.",
     appUrl: "https://atbtherapeutics.com/",
     tech: [
         'Next.js',
