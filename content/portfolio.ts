@@ -33,6 +33,14 @@ export const portfolio: ProjectType[] = [
     appUrl: "https://hyperledger-identus.github.io",
   },
   {
+    id: "collect-plus",
+    name: "Collect+",
+    owner: "FinerVision",
+    imageSrc: "/projects/collect-plus.png",
+    summary: "Contributed as a key developer to collectplus.co.uk, a greenfield Next.js project built with TypeScript and SCSS, focusing on performance and maintainable UI architecture.",
+    appUrl: "https://www.collectplus.co.uk"
+  },
+  {
     id: "star-app",
     name: "STAR App",
     owner: "FinerVision",
@@ -40,14 +48,14 @@ export const portfolio: ProjectType[] = [
     summary: "STAR is a mobile app for people with ATTR amyloidosis, built with TypeScript, React Native and Expo.",
     appUrl: "https://apps.apple.com/gb/app/star-the-symptom-tracker/id1560476806?platform=iphone",
   },
-  {
-    id: "rfd-app",
-    name: "Rain Free Days",
-    owner: "FinerVision",
-    imageSrc: "/projects/rain-free-days.png",
-    summary: "Rain Free Days is a symptom tracker mobile app that helps users monitor their migraines. Built with TypeScript React Native and Expo",
-    appUrl: "https://play.google.com/store/apps/details?id=com.finervision.RFD",
-  },
+  // {
+  //   id: "rfd-app",
+  //   name: "Rain Free Days",
+  //   owner: "FinerVision",
+  //   imageSrc: "/projects/rain-free-days.png",
+  //   summary: "Rain Free Days is a symptom tracker mobile app that helps users monitor their migraines. Built with TypeScript React Native and Expo",
+  //   appUrl: "https://play.google.com/store/apps/details?id=com.finervision.RFD",
+  // },
   {
     id: "bluespherebio",
     name: "Bluesphere Bio",
