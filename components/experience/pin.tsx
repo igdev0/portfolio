@@ -2,7 +2,7 @@
 
 import {ExperiencePinType} from '@/content/types';
 import Tag from '@/components/tag';
-import {ArrowRight, Building, Calendar, ChevronRight, Clock, Globe, ImageIcon, MapPin} from 'lucide-react';
+import {ArrowRight, AtSignIcon, Building, Calendar, ChevronRight, Clock, Globe, ImageIcon, MapPin} from 'lucide-react';
 import moment from 'moment';
 import Expandable from '@/components/expandable';
 import {motion, useScroll} from 'motion/react';
@@ -19,7 +19,7 @@ export default function ExperiencePin(props: ExperiencePinType) {
   const months = end.diff(start, 'years');
   const time = `${months} year${months === 1 ? '' : 's'}`;
 
-  const { scrollY } = useScroll();
+  const {scrollY} = useScroll();
   const [active, setActive] = useState(false);
 
   useEffect(() => {
@@ -108,8 +108,19 @@ export default function ExperiencePin(props: ExperiencePinType) {
                         </Link>
                       }
                       <div className="px-3">
-                        <h4 className="text-md font-bold mb-1 dark:text-accent-100 text-gray-900">{project.name}</h4>
+                        <div className="flex items-center gap-1">
+                          <h4 className="text-md font-bold mb-1 dark:text-accent-100 text-gray-900">{project.name}</h4>
+                          <AtSignIcon size={15} className="stroke-accent-500 -translate-y-0.5"/>
+                          <span className="text-sm text-foundation-600 -translate-y-0.5">{project.owner}</span>
+                        </div>
                         <p className="text-sm dark:text-foundation-400 text-gray-600">{project.summary}</p>
+                        <div className="flex gap-1 flex-wrap mt-2">
+                          {
+                            project.tech.map((tech, index) => (
+                                <span className="text-xs px-2 py-1 bg-accent-100 dark:bg-foundation-700 rounded-full" key={index}>{tech}</span>
+                            ))
+                          }
+                        </div>
                         <div className="flex gap-3 justify-end mt-3 mb-3">
                           {project.repositoryUrl &&
                               <Link className="flex-1 max-w-6" target="_blank"
