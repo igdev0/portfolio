@@ -189,7 +189,7 @@ export default function Resume(props: {ref?: RefObject<Document>}) {
                             {item.summary}
                           </Text>
                           <Text style={tw("text-sm mb-3 text-gray-900 font-bold w-full")}>
-                            Key Achievements:
+                            {item.preTitle??"Achievements"}:
                           </Text>
                           {
                             item.contributions.map((contrib, idx) => (

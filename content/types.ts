@@ -51,6 +51,7 @@ export interface ExperiencePinType {
   company: string;
   summary: string;
   contributions: string[];
+  preTitle?: string;
   projects: ProjectType[];
 }
 
