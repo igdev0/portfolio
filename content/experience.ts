@@ -52,7 +52,7 @@ const experience: ExperienceTimelineType = {
         {
           title: "[Full-Stack Developer]",
           brand: "FV",
-          summary: "Contributed to multiple client portfolio as part of a small Agile full-stack team, turning design requirements into responsive, accessible, and animation-rich web applications.",
+          summary: "Contributed to multiple client portfolio as part of a small Agile full-stack team, turning design requirements into responsive, accessible, cross-platform and animation-rich web applications.",
           contractType: "Full-Time",
           city: "London",
           country: "United Kingdom",
