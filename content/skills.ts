@@ -1,23 +1,28 @@
 import {TechType} from '@/content/types';
 
+/**
+ * - My First fuck-up was a "rm -rf ." while being in sudo on the staging server.
+ *
+ * While I was working on collect+ store finder, I accidentally deleted the package-lock.json file that triggered a failing rebuild.
+ */
 const skills: TechType = {
   "Languages": {
     icon: "book",
     tabs: {
       'JavaScript': {
-        statement: "Flexible, chaotic, and somehow still everywhere."
+        statement: "Used as a core language throughout my career to build full-stack web and mobile applications."
       },
       'TypeScript': {
-        statement: "Makes large codebases way less painful to work with."
+        statement: "Used extensively with Next.js, React, Nest.js and Node.js to build client-facing web applications and automations."
       },
       'HTML5': {
-        statement: "Easy to start with, surprisingly deep when done right.",
+        statement: "Applied core web fundamentals to deliver responsive, accessible, and animation-rich web application interfaces."
       },
       'CSS3': {
-        statement: "Looks simple until you try centering something at 2AM.",
+        statement: "Leveraged styling standards alongside frameworks to deliver responsive, cross-browser interfaces from Figma designs."
       },
       'Rust': {
-        statement: "Steep learning curve, but the performance and safety are worth it."
+        statement: "Built several experimental programs while reading The Rust Book."
       },
     }
   },
@@ -25,22 +30,22 @@ const skills: TechType = {
     icon: "code",
     tabs: {
       'React': {
-        statement: "Component-driven development done right."
+        statement: "Used React extensively through my career to build small to large projects web and native applications."
       },
       'Next.js': {
-        statement: "Makes production React apps feel structured and scalable."
+        statement: "Used Next.js (pages router) on several large content-driven websites and recently rebuilt my portfolio using the modern app Router."
       },
       'Zustand': {
-        statement: "Simple and predictable state management."
+        statement: "Used Zustand for managing global UI state on few medium-sized SPAs utilizing React and vite."
       },
       'Storybook': {
-        statement: "Isolated component development and UI documentation that keeps design systems consistent."
+        statement: "Used Storybook to document, showcase, and test components for the shared React component library developed for Atala PRISM."
       },
       'Styled-Components': {
-        statement: "CSS-in-JS solution for scoped, dynamic styling in React components."
+        statement: "Used Styled-Components to create reusable, maintainable, and scalable component-based styling systems in React applications."
       },
       'Tailwind CSS': {
-        statement: "Fast workflow if you stay disciplined."
+        statement: "Used Tailwind CSS across multiple large-scale projects to rapidly build responsive user interfaces, including a complete rebuild of my personal portfolio using Tailwind CSS 4."
       },
     }
   },
@@ -48,10 +53,10 @@ const skills: TechType = {
     icon: "network",
     tabs: {
       "GraphQL": {
-        statement: "Flexible data fetching without over-fetching or under-fetching."
+        statement: "Used GraphQL with Apollo Client across multiple web projects to efficiently query, manage, and consume data from backend services."
       },
       "REST": {
-        statement: "Still the default choice for most web APIs."
+        statement: "Designed and built couple of REST APIs using Node.js, Express, NestJS, and Strapi CMS, and integrated multiple third-party APIs in production-grade React applications."
       }
     }
   },
@@ -59,10 +64,10 @@ const skills: TechType = {
     icon: "test",
     tabs: {
       "Jest": {
-        statement: "Fast and reliable unit testing framework for JavaScript applications."
+        statement: "Implemented unit and integration tests with Jest across frontend and backend codebases to increase reliability and reduce regressions."
       },
       "Cypress": {
-        statement: "End-to-end testing tool for testing real user flows in the browser."
+        statement: "Used as part of my end-to-end testing stack to validate frontend user experiences."
       }
     }
   },
@@ -70,10 +75,10 @@ const skills: TechType = {
     icon: "phone",
     tabs: {
       "React Native": {
-        statement: "Cross-platform mobile development with native-like performance."
+        statement: "Designed, developed, and maintained offline-first, medical applications for multiple clients at FinerVision."
       },
       "Expo": {
-        statement: "Streamlines React Native development with faster setup and deployment."
+        statement: "Used alongside React Native to build and deliver reliable mobile applications."
       },
     }
   },
@@ -81,22 +86,22 @@ const skills: TechType = {
     icon: "server",
     tabs: {
       'Node.js': {
-        statement: "Fast iteration and a huge ecosystem."
+        statement: "Built REST APIs, automation scripts, and backend tools across multiple projects using Node.js."
       },
       'Strapi': {
-        statement: "Headless CMS that gets APIs and content management up and running fast."
+        statement: "Used Strapi CMS to model content and expose APIs for content-driven web applications."
       },
       'Payload': {
-        statement: "Developer-first CMS with full control over content and APIs."
+        statement: "Used to manage content on my portfolio."
       },
       "Prisma": {
-        statement: "Type-safe database access that fits naturally with TypeScript."
+        statement: "Used Prisma ORM to build and iterate on MVPs and internal tools at IOG."
       },
       'Express': {
-        statement: "Minimal, simple, and still relevant."
+        statement: "Used within a full-stack context to build backend APIs and services."
       },
       'Nest.js': {
-        statement: "Structured backend architecture without the mess."
+        statement: "Used NestJS to build modular backend APIs following a structured and maintainable architecture."
       },
     }
   },
@@ -104,13 +109,13 @@ const skills: TechType = {
     icon: 'boxes',
     tabs: {
       "Solidity": {
-        statement: "Smart contract programming language for Ethereum-based applications."
+        statement: "Completed the Alchemy bootcamp, gaining hands-on experience writing and developing smart contracts."
       },
       "Ethereum": {
-        statement: "Decentralized blockchain platform for building distributed applications."
+        statement: "Collaborated on delivering a Web3 hackathon MVP (BeeFunded) built on Ethereum testnet."
       },
       "Hardhat": {
-        statement: "Development environment for testing, deploying, and debugging smart contracts."
+        statement: "Used as an Ethereum development environment to compile, test, and deploy smart contracts."
       }
     }
   },
@@ -118,10 +123,10 @@ const skills: TechType = {
     icon: "blocks",
     tabs: {
       'Docker': {
-        statement: "Makes environments predictable instead of painful."
+        statement: "Integrated into the infrastructure workflow for containerizing applications and environment consistency."
       },
       'Github Actions': {
-        statement: "CI/CD setup without unnecessary complexity."
+        statement: "Used for setting up automated CI/CD workflows and managing deployment pipelines."
       },
     }
   },
@@ -129,13 +134,10 @@ const skills: TechType = {
     icon: "database",
     tabs: {
       "MySQL": {
-        statement: "Reliable and battle-tested."
+        statement: "Integrated structured database storage into application architectures for persistent data management."
       },
       "Sqlite": {
-        statement: "Lightweight and perfect for local or embedded use."
-      },
-      "MongoDB": {
-        statement: "Flexible document model, great for fast-changing schemas."
+        statement: "Used for local database management."
       }
     }
   },
@@ -143,16 +145,16 @@ const skills: TechType = {
     icon: "git",
     tabs: {
       "Github": {
-        statement: "Industry standard for version control and collaboration."
+        statement: "Used heavily for source control management, team collaboration, and codebase maintenance."
       },
       "Bitbucket": {
-        statement: "A common choice in enterprise development environments."
+        statement: "Used Bitbucket for source control, pull request reviews, and team collaboration at FinerVision."
       },
       "Digital Ocean": {
-        statement: "Simple cloud infrastructure for deploying and scaling applications."
+        statement: "Used Digital Ocean Droplets to provision and maintain web servers for client projects."
       },
       "Vercel": {
-        statement: "Makes deploying modern web applications almost effortless."
+        statement: "Used Vercel for deploying, hosting, and managing personal web applications built with React and Next.js."
       },
     }
   },
@@ -160,16 +162,16 @@ const skills: TechType = {
     icon: 'wrench',
     tabs: {
       'Figma': {
-        statement: "Makes collaboration between design and development smooth."
+        statement: "Used Figma extensively since 2021 to create prototypes, contribute to design systems, and translate designs into reusable React components."
       },
       'Adobe Illustrator': {
-        statement: "Still one of the best tools for vector work."
+        statement: "Used for asset handling and design support alongside development processes."
       },
       "Webstorm": {
-        statement: "Top-tier TypeScript IDE. Hard to switch away from it."
+        statement: "Used as a primary integrated development environment (IDE) for modern full-stack development."
       },
       'Photoshop': {
-        statement: "Useful when things need more than basic edits."
+        statement: "Applied for image asset optimization and design processing during application construction."
       },
     }
   }
