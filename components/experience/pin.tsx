@@ -111,7 +111,7 @@ export default function ExperiencePin(props: ExperiencePinType) {
                         <div className="flex items-center gap-1">
                           <h4 className="text-md font-bold mb-1 dark:text-accent-100 text-gray-900">{project.name}</h4>
                           <AtSignIcon size={15} className="stroke-accent-500 -translate-y-0.5"/>
-                          <span className="text-sm text-foundation-600 -translate-y-0.5">{project.owner}</span>
+                          <span className="text-sm bg-accent-100 dark:bg-foundation-700 -translate-y-0.5">{project.owner}</span>
                         </div>
                         <p className="text-sm dark:text-foundation-400 text-gray-600">{project.summary}</p>
                         <div className="flex gap-1 flex-wrap mt-2">
