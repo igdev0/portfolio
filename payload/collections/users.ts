@@ -31,7 +31,7 @@ export const Users: CollectionConfig = {
       required: true,
       access: {
         // Only existing admins can assign or modify roles
-        update: ({req: {user}}) => user?.roles?.includes(User_Roles.Admin),
+        update: ({req: {user}}) => user ?.roles?.includes(User_Roles.Admin),
       },
     },
   ]

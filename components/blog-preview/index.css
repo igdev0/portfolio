@@ -5,7 +5,7 @@
         @apply rounded-md overflow-hidden border border-(--grid);
 
         .preview-media {
-            @apply h-15 w-full overflow-hidden;
+            @apply h-40 w-full overflow-hidden;
         }
 
         .preview-content {

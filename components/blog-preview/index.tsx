@@ -1,21 +1,22 @@
 import Image from 'next/image';
 import "./index.css";
 import Link from 'next/dist/client/link';
-import {BlogPreviewType} from '@/content/types';
+import {Blog_Preview} from '@/remote/client/gql-generated';
 
-export default function BlogPreview(props: BlogPreviewType) {
-
+export default function BlogPreview(props: Blog_Preview & {slug: string}) {
   return (
-      <div className="blog-preview">
+      <Link href={`/blog/${props.slug}`} className="blog-preview">
+        <div className="flex flex-wrap gap-1">
+
+        </div>
         <div className="preview-media">
-          <Image src={props.image.src}
-                 alt={`props.media.filename`} width={300} height={200}/>
+          <Image src={`${process.env.NEXT_PUBLIC_MEDIA_STORAGE_URL}/${props.image?.filename}`}
+                 alt={props.image?.alt??"Blog image preview"} width={400} height={200}/>
         </div>
         <div className="preview-content">
           <h3 className="text-xl font-medium">{props.title}</h3>
           <p>{props.description}</p>
-          <Link href={`/blog/${props.slug}`}>View Blog</Link>
         </div>
-      </div>
+      </Link>
   );
 }

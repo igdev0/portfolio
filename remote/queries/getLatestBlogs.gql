@@ -1,0 +1,26 @@
+# src/queries/posts.queries
+
+query getLatestBlogs($limit: Int = 3) {
+    Blogs(limit: $limit) {
+        docs {
+            category {
+                title,
+                slug
+            },
+            slug
+            preview {
+                title,
+                description,
+                image {
+                    url,
+                    alt,
+                    height,
+                    filename,
+                    thumbnailURL,
+                    width,
+                }
+            }
+        },
+        limit
+    },
+}

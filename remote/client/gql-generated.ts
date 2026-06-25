@@ -5726,12 +5726,12 @@ export type UsersResetPassword = {
   user?: Maybe<User>;
 };
 
-export type GetBlogsQueryVariables = Exact<{
+export type GetLatestBlogsQueryVariables = Exact<{
   limit?: number | null | undefined;
 }>;
 
 
-export type GetBlogsQuery = { Blogs: { limit: number, docs: Array<{ title: string | null, category: { title: string } | null }> } | null };
+export type GetLatestBlogsQuery = { Blogs: { limit: number, docs: Array<{ slug: string | null, category: { title: string, slug: string | null } | null, preview: { title: string | null, description: string | null, image: { url: string | null, alt: string, height: number | null, filename: string | null, thumbnailURL: string | null, width: number | null } | null } | null }> } | null };
 
 
 export class TypedDocumentString<TResult, TVariables>
@@ -5753,55 +5753,68 @@ export class TypedDocumentString<TResult, TVariables>
   }
 }
 
-export const GetBlogsDocument = new TypedDocumentString(`
-    query getBlogs($limit: Int = 3) {
+export const GetLatestBlogsDocument = new TypedDocumentString(`
+    query getLatestBlogs($limit: Int = 3) {
   Blogs(limit: $limit) {
     docs {
       category {
         title
+        slug
       }
-      title
+      slug
+      preview {
+        title
+        description
+        image {
+          url
+          alt
+          height
+          filename
+          thumbnailURL
+          width
+        }
+      }
     }
     limit
   }
 }
     `);
 
-export const useGetBlogsQuery = <
-      TData = GetBlogsQuery,
+export const useGetLatestBlogsQuery = <
+      TData = GetLatestBlogsQuery,
       TError = unknown
     >(
-      variables?: GetBlogsQueryVariables,
-      options?: Omit<UseQueryOptions<GetBlogsQuery, TError, TData>, 'queryKey'> & { queryKey?: UseQueryOptions<GetBlogsQuery, TError, TData>['queryKey'] }
+      variables?: GetLatestBlogsQueryVariables,
+      options?: Omit<UseQueryOptions<GetLatestBlogsQuery, TError, TData>, 'queryKey'> & { queryKey?: UseQueryOptions<GetLatestBlogsQuery, TError, TData>['queryKey'] }
     ) => {
     
-    return useQuery<GetBlogsQuery, TError, TData>(
+    return useQuery<GetLatestBlogsQuery, TError, TData>(
       {
-    queryKey: variables === undefined ? ['getBlogs'] : ['getBlogs', variables],
-    queryFn: fetcher<GetBlogsQuery, GetBlogsQueryVariables>(GetBlogsDocument, variables),
+    queryKey: variables === undefined ? ['getLatestBlogs'] : ['getLatestBlogs', variables],
+    queryFn: fetcher<GetLatestBlogsQuery, GetLatestBlogsQueryVariables>(GetLatestBlogsDocument, variables),
     ...options
   }
     )};
 
-useGetBlogsQuery.getKey = (variables?: GetBlogsQueryVariables) => variables === undefined ? ['getBlogs'] : ['getBlogs', variables];
+useGetLatestBlogsQuery.getKey = (variables?: GetLatestBlogsQueryVariables) => variables === undefined ? ['getLatestBlogs'] : ['getLatestBlogs', variables];
 
-export const useSuspenseGetBlogsQuery = <
-      TData = GetBlogsQuery,
+export const useSuspenseGetLatestBlogsQuery = <
+      TData = GetLatestBlogsQuery,
       TError = unknown
     >(
-      variables?: GetBlogsQueryVariables,
-      options?: Omit<UseSuspenseQueryOptions<GetBlogsQuery, TError, TData>, 'queryKey'> & { queryKey?: UseSuspenseQueryOptions<GetBlogsQuery, TError, TData>['queryKey'] }
+      variables?: GetLatestBlogsQueryVariables,
+      options?: Omit<UseSuspenseQueryOptions<GetLatestBlogsQuery, TError, TData>, 'queryKey'> & { queryKey?: UseSuspenseQueryOptions<GetLatestBlogsQuery, TError, TData>['queryKey'] }
     ) => {
     
-    return useSuspenseQuery<GetBlogsQuery, TError, TData>(
+    return useSuspenseQuery<GetLatestBlogsQuery, TError, TData>(
       {
-    queryKey: variables === undefined ? ['getBlogs'] : ['getBlogs', variables],
-    queryFn: fetcher<GetBlogsQuery, GetBlogsQueryVariables>(GetBlogsDocument, variables),
+    queryKey: variables === undefined ? ['getLatestBlogs'] : ['getLatestBlogs', variables],
+    queryFn: fetcher<GetLatestBlogsQuery, GetLatestBlogsQueryVariables>(GetLatestBlogsDocument, variables),
     ...options
   }
     )};
 
-useSuspenseGetBlogsQuery.getKey = (variables?: GetBlogsQueryVariables) => variables === undefined ? ['getBlogs'] : ['getBlogs', variables];
+useSuspenseGetLatestBlogsQuery.getKey = (variables?: GetLatestBlogsQueryVariables) => variables === undefined ? ['getLatestBlogs'] : ['getLatestBlogs', variables];
 
 
-useGetBlogsQuery.fetcher = (variables?: GetBlogsQueryVariables, options?: RequestInit['headers']) => fetcher<GetBlogsQuery, GetBlogsQueryVariables>(GetBlogsDocument, variables, options);
+useGetLatestBlogsQuery.fetcher = (variables?: GetLatestBlogsQueryVariables, options?: RequestInit['headers']) => fetcher<GetLatestBlogsQuery, GetLatestBlogsQueryVariables>(GetLatestBlogsDocument, variables, options);

@@ -14,15 +14,15 @@ import collaborate from '@/content/collaborate';
 import BlogPreviewSection from '@/components/blog-preview-section';
 import {blog} from '@/content/blog';
 import {serverFetch} from '@/remote/client/query-utils';
-import {useGetBlogsQuery} from '@/remote/client/gql-generated';
+import {useGetLatestBlogsQuery} from '@/remote/client/gql-generated';
 
 export default async function LandingPage() {
-  const response = await serverFetch(useGetBlogsQuery, {
+  const response = await serverFetch(useGetLatestBlogsQuery, {
     variables: {},
     next: {revalidate: 5}
-  })
-  console.log(response.Blogs?.docs);
+  });
 
+  const blogs = response.Blogs?.docs??[];
   return (
       <main>
         <Nav {...nav}/>
@@ -30,7 +30,7 @@ export default async function LandingPage() {
         <Passions {...passions}/>
         <Expertise {...experience}/>
         <Skills {...stack}/>
-        <BlogPreviewSection previews={[]} {...blog}/>
+        <BlogPreviewSection blogs={blogs as keyof object} {...blog}/>
         <Collaborate {...collaborate}/>
         <Footer/>
       </main>

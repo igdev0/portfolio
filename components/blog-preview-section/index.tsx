@@ -1,15 +1,21 @@
 import Section from '@/components/section';
-import {BlogSectionType} from '@/content/types';
+import {SectionType} from '@/content/types';
+import {Blog} from '@/remote/client/gql-generated';
+import BlogPreview from '@/components/blog-preview';
 
-export default function BlogPreviewSection(props: BlogSectionType) {
+
+export default function BlogPreviewSection(props: SectionType & { blogs: Blog[] }) {
+
   return (
       <Section title={props.title} comment={props.comment} statement={props.statement}>
         <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3">
-          {/*{*/}
-          {/*  props.previews.map(preview => (*/}
-          {/*      <BlogPreview image={getMediaUrl(preview)} title={} description={} slug={preview.slug}/>*/}
-          {/*  ))*/}
-          {/*}*/}
+          {
+            props.blogs.map((blog, index) => (
+                <BlogPreview key={index}
+                             slug={blog.slug as string}
+                             {...blog.preview}/>
+            ))
+          }
         </div>
       </Section>
   );
