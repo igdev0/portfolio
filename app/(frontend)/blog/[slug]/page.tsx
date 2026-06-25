@@ -1,4 +1,3 @@
-import {getLocalPayload} from '@/utils';
 import {Calendar} from 'lucide-react';
 import Tag from '@/components/tag';
 import Heading from '@/components/heading';
@@ -6,10 +5,12 @@ import Container from '@/components/container';
 import Nav from '@/components/nav';
 import nav from '@/content/nav';
 import Footer from '@/components/footer';
+import {getPayload} from 'payload';
+import payloadConfig from '@payload-config';
 
-const payload = await getLocalPayload();
 
 export default async function BlogPage(props: { params: Promise<{ slug: string }> }) {
+const payload = await getPayload({config: payloadConfig});
   const {params} = props;
   const {slug} = await params;
 
@@ -19,6 +20,13 @@ export default async function BlogPage(props: { params: Promise<{ slug: string }
       slug: {
         equals: slug
       },
+    },
+    select: {
+      updatedAt: true,
+      createdAt: true,
+      title: true,
+      category: true,
+      content: true,
     },
     limit: 1,
   });
