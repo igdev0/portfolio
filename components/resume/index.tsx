@@ -109,7 +109,7 @@ export default function Resume(props: { ref?: RefObject<Document> }) {
                 <Text style={tw('text-2xl text-gray-900 leading-0 my-3 font-bold uppercase')}>Tech Stack</Text>
                 {
                   Object.entries(resume.tech).map(([key, value]) => (
-                      <View style={tw('mb-2')} key={key}>
+                      <View wrap={false} break={false} style={tw('mb-2')} key={key}>
                         <View style={tw('flex flex-row gap-3 mb-1.5 items-center')}>
                           <Image style={linkImageStyle} src={`/resume-icons/${iconMap[key as keyof object]}.svg`}/>
                           <Text style={tw("text-[13px] font-bold text-gray-900")}>{key}</Text>
@@ -151,12 +151,12 @@ export default function Resume(props: { ref?: RefObject<Document> }) {
               <View style={tw("flex")}>
                 {
                   resume.experience.map((item, index) => (
-                      <View style={tw("flex flex-row justify-start w-full")} key={index}>
+                      <View style={tw("flex relative flex-row justify-start w-full")} key={index}>
                         <View
-                            style={tw("w-[32px] ml-[-23px] h-[32px] rounded-md flex justify-center items-center bg-indigo-500")}>
+                            style={tw("absolute w-[32px] ml-[-23px] h-[32px] l-0 rounded-md flex justify-center items-center bg-indigo-500")}>
                           <Text style={tw("text-white font-bold text-[7px]")}>{item.brand}</Text>
                         </View>
-                        <View style={tw("w-full pl-4")}>
+                        <View style={tw("w-full pl-6")}>
                           <Text style={tw("text-xl leading-0")}>
                             {item.title}
                           </Text>
