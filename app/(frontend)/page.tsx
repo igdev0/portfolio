@@ -13,31 +13,15 @@ import passions from '@/content/passions';
 import collaborate from '@/content/collaborate';
 import BlogPreviewSection from '@/components/blog-preview-section';
 import {blog} from '@/content/blog';
-import {query} from '@/app/ApoloClient';
-import gql from 'graphql-tag';
-
-const GET_BLOGS = gql`
-    query getBlogs($limit: Int = 3) {
-        Blogs(limit: $limit) {
-            docs {
-                category {
-                    title
-                },
-                title,
-            },
-            limit
-        }
-    }
-`;
+import {serverFetch} from '@/remote/client/query-utils';
+import {useGetBlogsQuery} from '@/remote/client/gql-generated';
 
 export default async function LandingPage() {
-  const {data} = await query({
-    query: GET_BLOGS,
-    variables: {
-      limit: 3
-    }
-  });
-
+  const response = await serverFetch(useGetBlogsQuery, {
+    variables: {},
+    next: {revalidate: 5}
+  })
+  console.log(response.Blogs?.docs);
 
   return (
       <main>
