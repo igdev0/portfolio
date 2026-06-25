@@ -10,12 +10,13 @@ import NavMenu from '@/components/nav/menu';
 import {Dispatch, SetStateAction, useRef} from 'react';
 import NavProgress from '@/components/nav/progress';
 
-export interface NavProps extends NavType {}
+export interface NavProps extends NavType {
+}
 
 export default function Nav(props: NavProps) {
   const {theme, setTheme} = useTheme();
   const {brand, links} = props;
-  const menuRef = useRef<{setMenuOpen: Dispatch<SetStateAction<boolean>>}>(null);
+  const menuRef = useRef<{ setMenuOpen: Dispatch<SetStateAction<boolean>> }>(null);
 
   return (
       <nav className="nav">
@@ -30,7 +31,6 @@ export default function Nav(props: NavProps) {
               links.map((entry, index) => (
                   <Link className="nav__link"
                         key={index}
-                        draggable={false}
                         href={entry.href}>
                     {entry.text}
                   </Link>

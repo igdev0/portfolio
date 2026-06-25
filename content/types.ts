@@ -51,6 +51,7 @@ export interface ExperiencePinType {
   company: string;
   summary: string;
   contributions: string[];
+  preTitle?: string;
   projects: ProjectType[];
 }
 
@@ -112,6 +113,9 @@ export interface ProjectType {
   imageAlt?: string;
   imageSrc?: string;
   appUrl?: string;
+  tech: string[];
+  stage: "experiment" | "mvp" | "production";
+  status: "active" | "completed" | "archived";
 }
 
 export interface ResumeType {

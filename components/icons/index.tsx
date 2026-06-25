@@ -11,12 +11,14 @@ import {
   DatabaseIcon,
   DownloadIcon,
   ExternalLink,
+  GitBranch,
   LayoutPanelLeft,
   LinkIcon,
   LockIcon,
   LogIn,
   MenuIcon,
   MessageCircleIcon,
+  NetworkIcon,
   Pen,
   Phone,
   SendIcon,
@@ -72,6 +74,8 @@ export const iconsMap = {
   'football': FootballIcon,
   'call': Phone,
   'download': DownloadIcon,
+  'git': GitBranch,
+  'network': NetworkIcon
 };
 
 export type IconNames = keyof typeof iconsMap;
