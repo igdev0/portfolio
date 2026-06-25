@@ -63,9 +63,9 @@ Font.register({
   ],
 });
 
-const linkStyle = tw("flex flex-row items-center gap-3 h-[20px]");
+const linkStyle = tw("flex flex-row items-center gap-3 h-[20px] mb-2");
 const linkTextStyle = tw('font-sans text-sm flex leading-0 text-gray-900');
-const linkImageStyle = tw("w-[15px]");
+const linkImageStyle = tw("w-[15px] rounded-sm");
 
 const experienceItem = tw("flex flex-row items-center gap-2");
 
@@ -194,7 +194,7 @@ export default function Resume(props: { ref?: RefObject<Document> }) {
                           {
                             item.contributions.map((contrib, idx) => (
                                 <View style={tw("flex flex-row gap-2")}>
-                                  <Image style={linkImageStyle} src="/resume-icons/chevron-right.svg"/>
+                                  <Image style={linkImageStyle} src="/resume-icons/check.svg"/>
                                   <Text key={contrib} style={tw(`text-sm mb-3 leading-5 w-full text-gray-800 pr-2`)}>
                                     {contrib}
                                   </Text>

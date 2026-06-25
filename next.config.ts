@@ -6,7 +6,6 @@ const nextConfig: NextConfig = {
   allowedDevOrigins: ['192.168.0.234', '192.168.0.234'],
   images: {
     remotePatterns: [new URL(`${mediaStorageUrl}/**`)],
-
   },
   serverExternalPackages: ['sharp', '@img/sharp-linux-x64'],
 };

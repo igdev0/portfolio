@@ -1,13 +1,6 @@
 "use client";
-import dynamic from 'next/dynamic';
 import Resume, {tw} from '@/components/resume';
-
-const PDFViewer = dynamic(
-    () => import("@react-pdf/renderer").then(m => m.PDFViewer),
-
-    {ssr: false}
-);
-
+import {PDFViewer} from '@react-pdf/renderer';
 
 export default function ResumePage() {
   return (

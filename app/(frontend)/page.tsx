@@ -13,16 +13,21 @@ import passions from '@/content/passions';
 import collaborate from '@/content/collaborate';
 import BlogPreviewSection from '@/components/blog-preview-section';
 import {blog} from '@/content/blog';
-import {serverFetch} from '@/remote/client/query-utils';
-import {useGetLatestBlogsQuery} from '@/remote/client/gql-generated';
+import {getPayload} from 'payload';
+import payloadConfig from '@payload-config';
 
 export default async function LandingPage() {
-  const response = await serverFetch(useGetLatestBlogsQuery, {
-    variables: {},
-    next: {revalidate: 5}
+  const payload = await getPayload({config: payloadConfig});
+  const blogs = await payload.find({
+    collection: "blogs",
+    select: {
+      preview: true,
+      slug: true,
+      updatedAt: true
+    },
+    limit: 3
   });
 
-  const blogs = response.Blogs?.docs??[];
   return (
       <main>
         <Nav {...nav}/>
