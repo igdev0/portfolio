@@ -78,7 +78,7 @@ export default function ExperiencePin(props: ExperiencePinType) {
             </Tag>
           </div>
           <Expandable header={props.summary}>
-            <ul className="mt-3 flex gap-1 flex-col">
+            <ul className="mt-3 flex gap-3 flex-col">
               {
                 props.contributions?.map((contribution, index) => (
                     <li className="flex gap-1 items-center" key={index}>
