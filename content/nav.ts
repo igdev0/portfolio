@@ -23,10 +23,10 @@ const nav: NavType = {
       text: "Colab",
       href: "#message",
     },
-    {
-      text: "Blogs",
-      href: "/blog",
-    }
+    // {
+    //   text: "Blogs",
+    //   href: "/blog",
+    // }
   ],
 };
 
