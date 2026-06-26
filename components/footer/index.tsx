@@ -29,7 +29,7 @@ export default function Footer() {
                       className="w-fit"/>
         </div>
         <div className="flex justify-center items-center w-full mb-12">
-          <LinkButton href="/resume" icon="download" variant="ghost">
+          <LinkButton href="/igdev-resume.pdf" icon="download" variant="ghost">
             Download Resume
           </LinkButton>
         </div>
