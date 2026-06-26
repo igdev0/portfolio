@@ -8,6 +8,7 @@
     "build": "next build",
     "start": "next start",
     "generate:importmap": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap",
+    "generate:resume": "bun ./scripts/generate-resume.tsx",
     "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
     "lint": "next lint"
   },

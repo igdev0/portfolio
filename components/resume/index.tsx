@@ -1,10 +1,10 @@
-import {createTw} from 'react-pdf-tailwind';
-import {Document, Font, Image, Link, Page, Text, View} from "@react-pdf/renderer";
+import {Document, Image, Link, Page, Text, View} from "@react-pdf/renderer";
 import contact from '@/content/contact';
 import resume from '@/content/resume';
 import moment from 'moment';
 import {RefObject} from 'react';
-
+import {tw} from '@/components/resume/assets';
+import useAssets from '@/components/resume/use-assets';
 
 const iconMap = {
   "Languages": "book",
@@ -19,49 +19,6 @@ const iconMap = {
   "DevOps": "blocks",
   "API Integration": "network",
 };
-export const tw = createTw({
-  fontFamily: {
-    sans: ["Inter"],
-  },
-  colors: {
-    accent: 'oklch(58.5% 0.233 277.117)',
-  },
-  theme: {
-    fontFamily: {
-      sans: ["Inter"],
-    },
-  },
-});
-
-Font.register({
-  family: "Inter",
-  fonts: [
-    {
-      src: "/fonts/Inter/static/Inter_18pt-Regular.ttf",
-      fontWeight: "normal",
-    },
-    {
-      src: "/fonts/Inter/static/Inter_18pt-Bold.ttf",
-      fontWeight: "bold",
-    }
-  ],
-
-});
-
-Font.register({
-  family: "BarlowCondensed",
-  body: {
-    fontSize: '10px'
-  },
-  fonts: [
-    {
-
-      src: "/fonts/Barlow_Condensed/BarlowCondensed-Bold.ttf",
-      fontWeight: 700,
-    },
-
-  ],
-});
 
 const linkStyle = tw("flex flex-row items-center gap-3 h-[20px] mb-2");
 const linkTextStyle = tw('font-sans text-sm flex leading-0 text-gray-900');
@@ -70,38 +27,39 @@ const linkImageStyle = tw("w-[15px] rounded-sm");
 const experienceItem = tw("flex flex-row items-center gap-2");
 
 export default function Resume(props: { ref?: RefObject<Document> }) {
+  const assets = useAssets();
   return (
-      <Document ref={props.ref} title="IGDev-Resume" subject="IGDev" creator="IGDev" author="Ianos G Dorultan">
+      <Document title="IGDev-Resume" subject="IGDev" creator="IGDev" author="Ianos G Dorultan">
         <Page size="A4" style={tw("flex flex-row gap-2")}>
           <View>
             <View style={tw("self-center h-[175px] w-[175px] flex justify-center items-center relative")}>
               <View
                   style={tw("z-3 absolute w-[100px] h-[100px] bg-indigo-200 top-auto left-auto bottom-auto right-auto")}/>
-              <Image style={tw("absolute bottom-2 right-2")} src="/resume-icons/corner.svg"/>
-              <Image style={tw("absolute top-2 right-2 -rotate-90")} src="/resume-icons/corner.svg"/>
-              <Image style={tw("absolute top-2 left-2 rotate-180")} src="/resume-icons/corner.svg"/>
-              <Image style={tw("absolute bottom-2 left-2 rotate-90")} src="/resume-icons/corner.svg"/>
-              <Image style={tw('z-1')} src="/images/me.png"/>
+              <Image style={tw("absolute bottom-2 right-2")} src={assets!.corner}/>
+              <Image style={tw("absolute top-2 right-2 -rotate-90")} src={assets!.corner}/>
+              <Image style={tw("absolute top-2 left-2 rotate-180")} src={assets.corner}/>
+              <Image style={tw("absolute bottom-2 left-2 rotate-90")} src={assets.corner}/>
+              <Image style={tw('z-1')} src={assets.me}/>
             </View>
             <View style={tw("bg-gray-100 h-full w-[220px] px-6 pt-3 gap-0")}>
               <View style={linkStyle}>
-                <Image style={linkImageStyle} src="/resume-icons/phone.svg"/>
+                <Image style={linkImageStyle} src={assets.phone}/>
                 <Text style={linkTextStyle}>{contact.phone}</Text>
               </View>
               <View style={linkStyle}>
-                <Image style={linkImageStyle} src="/resume-icons/at-sign.svg"/>
+                <Image style={linkImageStyle} src={assets['at-sign']}/>
                 <Text style={linkTextStyle}>{contact.email}</Text>
               </View>
               <View style={linkStyle}>
-                <Image style={linkImageStyle} src="/resume-icons/map-pin.svg"/>
+                <Image style={linkImageStyle} src={assets['map-pin']}/>
                 <Text style={linkTextStyle}>{contact.location}</Text>
               </View>
               <View style={linkStyle}>
-                <Image style={linkImageStyle} src="/resume-icons/globe.svg"/>
+                <Image style={linkImageStyle} src={assets.globe}/>
                 <Link href={contact.websiteUrl} style={linkTextStyle}>{new URL(contact.websiteUrl).hostname}</Link>
               </View>
               <View style={linkStyle}>
-                <Image style={linkImageStyle} src="/resume-icons/github.svg"/>
+                <Image style={linkImageStyle} src={assets.github}/>
                 <Link href={contact.github}
                       style={linkTextStyle}>{new URL(contact.github).pathname.substring(1)}</Link>
               </View>
@@ -111,7 +69,7 @@ export default function Resume(props: { ref?: RefObject<Document> }) {
                   Object.entries(resume.tech).map(([key, value]) => (
                       <View wrap={false} break={false} style={tw('mb-2')} key={key}>
                         <View style={tw('flex flex-row gap-3 mb-1.5 items-center')}>
-                          <Image style={linkImageStyle} src={`/resume-icons/${iconMap[key as keyof object]}.svg`}/>
+                          <Image style={linkImageStyle} src={assets[iconMap[key as keyof object]]}/>
                           <Text style={tw("text-[13px] font-bold text-gray-900")}>{key}</Text>
                         </View>
                         <Text
@@ -125,11 +83,14 @@ export default function Resume(props: { ref?: RefObject<Document> }) {
                   Languages
                 </Text>
                 {
-                  resume.languages.map((lang) => {
+                  resume.languages.map((lang, index) => {
                     return (
-                        <Text style={tw("text-sm text-gray-900 leading-0")} key={lang}>
-                          - {lang}
-                        </Text>
+                        <View style={tw("flex flex-row items-center")} key={index}>
+                          <Image style={linkImageStyle} src={assets['chevron-right']}/>
+                          <Text style={tw("text-sm text-gray-900 leading-0")}>
+                            {lang}
+                          </Text>
+                        </View>
                     );
                   })
                 }
@@ -153,7 +114,8 @@ export default function Resume(props: { ref?: RefObject<Document> }) {
                   resume.experience.map((item, index) => (
                       <View style={tw("flex relative flex-row justify-start w-full")} key={index}>
                         <View
-                            style={tw("absolute w-[32px] ml-[-23px] h-[32px] l-0 rounded-md flex justify-center items-center bg-indigo-500")}>
+                            key={index}
+                            style={tw("absolute w-[32px] ml-[-23px] h-[32px] rounded-md flex justify-center items-center bg-indigo-500")}>
                           <Text style={tw("text-white font-bold text-[7px]")}>{item.brand}</Text>
                         </View>
                         <View style={tw("w-full pl-6")}>
@@ -163,23 +125,23 @@ export default function Resume(props: { ref?: RefObject<Document> }) {
 
                           <View style={tw('flex flex-row gap-3 my-1')}>
                             <View style={experienceItem}>
-                              <Image style={linkImageStyle} src="/resume-icons/building.svg"/>
+                              <Image style={linkImageStyle} src={assets.building}/>
                               <Text style={linkTextStyle}>
                                 {item.company}
                               </Text>
                             </View>
                             <View style={experienceItem}>
-                              <Image style={linkImageStyle} src="/resume-icons/calendar.svg"/>
+                              <Image style={linkImageStyle} src={assets.calendar}/>
                               <Text style={linkTextStyle}>
                                 {moment(new Date(item.startDate)).format("MMM YYYY")}
                               </Text>
-                              <Image style={linkImageStyle} src="/resume-icons/arrow-right.svg"/>
+                              <Image style={linkImageStyle} src={assets['arrow-right']}/>
                               <Text style={linkTextStyle}>
                                 {item.endDate ? moment(new Date(item.endDate)).format("MMM YYYY") : 'Now'}
                               </Text>
                             </View>
                             <View style={experienceItem}>
-                              <Image style={linkImageStyle} src="/resume-icons/map-pin-black.svg"/>
+                              <Image style={linkImageStyle} src={assets['map-pin']}/>
                               <Text style={linkTextStyle}>
                                 {item.city}, {item.countryShort}
                               </Text>
@@ -193,8 +155,8 @@ export default function Resume(props: { ref?: RefObject<Document> }) {
                           </Text>
                           {
                             item.contributions.map((contrib, idx) => (
-                                <View style={tw("flex flex-row gap-2")}>
-                                  <Image style={linkImageStyle} src="/resume-icons/check.svg"/>
+                                <View style={tw("flex flex-row gap-2")} key={idx}>
+                                  <Image style={linkImageStyle} src={assets.check}/>
                                   <Text key={contrib} style={tw(`text-sm mb-3 leading-5 w-full text-gray-800 pr-2`)}>
                                     {contrib}
                                   </Text>
