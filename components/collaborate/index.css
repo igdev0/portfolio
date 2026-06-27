@@ -26,4 +26,12 @@
             }
         }
     }
+
+    .colab-card {
+        @apply rounded-md border border-(--grid) p-3;
+
+        .colab-card-title {
+            @apply text-xl;
+        }
+    }
 }
