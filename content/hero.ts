@@ -4,7 +4,7 @@ import contact from '@/content/contact';
 const hero: HeroType = {
   comment: "Ianos G Dorultan",
   title: "Frontend Engineer",
-  statement: "Product-focused software engineer turning ideas into fast, scalable, and polished applications.",
+  statement: "Frontend-focused engineer passionate about building modern user experiences.",
   cta0: {
     icon: "chat",
     href: "#message",
