@@ -54,7 +54,7 @@
     }
 
     .nav__drawer-toggler {
-        @apply 3xl:hidden!;
+        @apply 3xl:hidden! cursor-pointer;
         /**Fix this thing, perhaps remove from link-button css the "flex" prop*/
     }
 
