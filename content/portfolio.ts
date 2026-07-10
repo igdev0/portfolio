@@ -1,25 +1,25 @@
 import {ProjectType} from '@/content/types';
 
 export const portfolio: ProjectType[] = [
-  {
-    id: "bee-funded",
-    name: "BeeFunded",
-    owner: "IGDev",
-    imageSrc: "/projects/bee-funded.png",
-    tech: [
-        'TypeScript',
-        'Nest.js',
-        'React',
-        'Vite',
-        'Rest API Integration',
-        'ethers.js',
-        'hardhat',
-    ],
-    stage: "mvp",
-    status: "archived",
-    summary: "Developed a Web3 donation platform on Ethereum during the Chainlink Hackathon, implementing smart contract-based donation flows for on-chain contributions.",
-    repositoryUrl: "https://github.com/igdev0/bee-funded",
-  },
+  // {
+  //   id: "bee-funded",
+  //   name: "BeeFunded",
+  //   owner: "IGDev",
+  //   imageSrc: "/projects/bee-funded.png",
+  //   tech: [
+  //       'TypeScript',
+  //       'Nest.js',
+  //       'React',
+  //       'Vite',
+  //       'Rest API Integration',
+  //       'ethers.js',
+  //       'hardhat',
+  //   ],
+  //   stage: "mvp",
+  //   status: "archived",
+  //   summary: "Developed a Web3 donation platform on Ethereum during the Chainlink Hackathon, implementing smart contract-based donation flows for on-chain contributions.",
+  //   repositoryUrl: "https://github.com/igdev0/bee-funded",
+  // },
   {
     id: "pro-scan-solutions",
     name: "Pro Scan Solutions",

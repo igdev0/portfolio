@@ -105,20 +105,20 @@ const skills: TechType = {
       },
     }
   },
-  "Blockchain": {
-    icon: 'boxes',
-    tabs: {
-      "Solidity": {
-        statement: "Completed the Alchemy bootcamp, gaining hands-on experience writing and developing smart contracts."
-      },
-      "Ethereum": {
-        statement: "Collaborated on delivering a Web3 hackathon MVP (BeeFunded) built on Ethereum testnet."
-      },
-      "Hardhat": {
-        statement: "Used as an Ethereum development environment to compile, test, and deploy smart contracts."
-      }
-    }
-  },
+  // "Blockchain": {
+  //   icon: 'boxes',
+  //   tabs: {
+  //     "Solidity": {
+  //       statement: "Completed the Alchemy bootcamp, gaining hands-on experience writing and developing smart contracts."
+  //     },
+  //     "Ethereum": {
+  //       statement: "Collaborated on delivering a Web3 hackathon MVP (BeeFunded) built on Ethereum testnet."
+  //     },
+  //     "Hardhat": {
+  //       statement: "Used as an Ethereum development environment to compile, test, and deploy smart contracts."
+  //     }
+  //   }
+  // },
   "DevOps": {
     icon: "blocks",
     tabs: {
