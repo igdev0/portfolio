@@ -8,7 +8,7 @@ const experience: ExperienceTimelineType = {
       statement: "More than half-decate in web development",
       roles: [
         {
-          title: "[Freelancer]",
+          title: "[Full-Stack Developer]",
           summary: `Dedicated time to professional development by exploring new technologies and building side projects.`,
           contractType: "Full-Time",
           brand: "IGDev",
