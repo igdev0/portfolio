@@ -23,10 +23,10 @@ const experience: ExperienceTimelineType = {
           contributions: [
             "Redesigned and rebuilt a personal portfolio using Figma, TypeScript, Next.js, and Tailwind CSS, improving performance, maintainability, and overall UI polish.",
             "Delivered a CMS-driven website in collaboration with a UI/UX designer using Strapi and Next.js, enabling structured content management and streamlined updates for the client",
-            // "Built and shipped a Web3 hackathon MVP on Ethereum, contributing to smart contract and frontend integration under tight time constraints.",
+            "Built and shipped a Web3 hackathon MVP on Ethereum, contributing to smart contract and frontend integration under tight time constraints.",
             "Built a reusable résumé-as-code system with react-pdf, centralizing personal content into a single source of truth for consistent, maintainable document generation.",
             "Expanded systems programming expertise by completing structured Rust training through The Rust Programming Language and applying core concepts in practice projects.",
-            // "Completed the Alchemy Ethereum & Solidity Bootcamp, gaining hands-on experience in smart contract development, deployment, and EVM fundamentals.",
+            "Completed the Alchemy Ethereum & Solidity Bootcamp, gaining hands-on experience in smart contract development, deployment, and EVM fundamentals.",
           ],
         },
         {
