@@ -2,11 +2,10 @@ import {ResumeType} from '@/content/types';
 import contact from '@/content/contact';
 import stack from '@/content/stack';
 import experience from '@/content/experience';
-import hero from '@/content/hero';
 
 const resume: ResumeType = {
   name: 'Ianos G Dorultan',
-  bio: hero.statement as string,
+  bio: "Frontend Engineer with 5+ years of experience building scalable React and TypeScript applications with a focus on performance, usability, and maintainable architecture." as string,
   contact: contact,
   tech: stack.skills,
   experience: experience.roles,

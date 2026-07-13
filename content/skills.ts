@@ -21,9 +21,9 @@ const skills: TechType = {
       'CSS3': {
         statement: "Leveraged styling standards alongside frameworks to deliver responsive, cross-browser interfaces from Figma designs."
       },
-      'Rust': {
-        statement: "Built several experimental programs while reading The Rust Book."
-      },
+      // 'Rust': {
+      //   statement: "Built several experimental programs while reading The Rust Book."
+      // },
     }
   },
   "Frontend": {
@@ -37,6 +37,9 @@ const skills: TechType = {
       },
       'Zustand': {
         statement: "Used Zustand for managing global UI state on few medium-sized SPAs utilizing React and vite."
+      },
+      'React Query': {
+        statement: "Used React Query to manage server state, caching, and API synchronization in complex React applications at IOG."
       },
       'Storybook': {
         statement: "Used Storybook to document, showcase, and test components for the shared React component library developed for Atala PRISM."

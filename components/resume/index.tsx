@@ -155,7 +155,7 @@ export default function Resume(props: { ref?: RefObject<Document> }) {
                           </Text>
                           {
                             item.contributions.map((contrib, idx) => (
-                                <View style={tw("flex flex-row gap-2")} key={idx}>
+                                <View wrap={false} break={false} style={tw("flex flex-row gap-2")} key={idx}>
                                   <Image style={linkImageStyle} src={assets.check}/>
                                   <Text key={contrib} style={tw(`text-sm mb-3 leading-5 w-full text-gray-800 pr-2`)}>
                                     {contrib}
