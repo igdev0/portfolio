@@ -5,7 +5,7 @@ import {filterProjectsByOwner} from '@/utils';
 const experience: ExperienceTimelineType = {
       comment: "// Work experience",
       title: "{Experience}",
-      statement: "More than half-decate in web development",
+      statement: "More than half-decate in production-grade app development",
       roles: [
         {
           title: "[Full-Stack Engineer]",
