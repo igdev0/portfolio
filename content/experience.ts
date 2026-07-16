@@ -9,7 +9,7 @@ const experience: ExperienceTimelineType = {
       roles: [
         {
           title: "[Full-Stack Engineer]",
-          summary: `Independent software engineer building modern web applications, improving frontend architecture skills, and delivering client projects using React, Next.js, and TypeScript.`,
+          summary: `Independent software engineer keeping up with latest tech and delivering client projects using React, Next.js, and TypeScript.`,
           contractType: "Full-Time",
           brand: "IGDev",
           company: "Freelance",
@@ -20,7 +20,7 @@ const experience: ExperienceTimelineType = {
           startDate: "March 2025",
           projects: filterProjectsByOwner(portfolio, 'IGDev'),
           contributions: [
-            "Redesigned and rebuilt a personal portfolio using Figma, TypeScript, Next.js, and Tailwind CSS, improving performance, maintainability, and overall UI polish.",
+            "Redesigned and rebuilt my personal portfolio using TypeScript, Next.js, Tailwind CSS and Figma, improving performance, maintainability, and overall UI polish.",
             "Delivered a CMS-driven website in collaboration with a UI/UX designer using Strapi and Next.js, enabling structured content management and streamlined updates for the client.",
             "Built a reusable résumé-as-code system with react-pdf, centralizing personal content into a single source of truth for consistent, maintainable document generation.",
             // "Expanded systems programming expertise by completing structured Rust training through The Rust Programming Language and applying core concepts in practice projects.",
