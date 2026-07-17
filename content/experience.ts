@@ -9,7 +9,7 @@ const experience: ExperienceTimelineType = {
       roles: [
         {
           title: "[Full-Stack Engineer]",
-          summary: `Independent engineer delivering end-to-end solutions for multiple clients while re-establishing my professional brand following a career break.`,
+          summary: `Independent engineer delivering end-to-end solutions for multiple clients while re-establishing my professional brand after a career break.`,
           contractType: "Full-Time",
           brand: "IGDev",
           company: "Freelance",
