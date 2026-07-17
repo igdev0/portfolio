@@ -9,7 +9,7 @@ const experience: ExperienceTimelineType = {
       roles: [
         {
           title: "[Full-Stack Engineer]",
-          summary: `Independent software engineer keeping up with latest tech and delivering client projects using React, Next.js, and TypeScript.`,
+          summary: `Independent engineer delivering end-to-end solutions for multiple clients while re-establishing my professional brand following a career break.`,
           contractType: "Full-Time",
           brand: "IGDev",
           company: "Freelance",
@@ -64,12 +64,12 @@ const experience: ExperienceTimelineType = {
           endDate: "February 2022",
           startDate: "February 2020",
           contributions: [
-            "Built the Collect+ (PayPoint) website from the ground up using modern React-based architecture, delivering a fully responsive, production-ready client web platform.",
-            "Built HSBC e-learning modules for embedded systems using React, TypeScript, and CSS3, delivering interactive enterprise training interfaces.",
-            "Developed symptom-tracking mobile applications for Teva and Antiblanks using React Native, Expo, JavaScript, and TypeScript, focusing on usability and cross-platform reliability.",
-            "Delivered seasonal RSVP-based websites for Sainsbury's and Habitat, supporting campaign-driven event workflows with fast turnaround delivery cycles.",
-            "Owned and maintained legacy web and native applications, ensuring stability, continuous feature delivery, and production issue resolution.",
-            "Built and maintained responsive cross-platform email templates for client campaigns, ensuring consistent rendering across major email clients and devices.",
+            "- Built the Collect+ (PayPoint) website from the ground up using modern React-based architecture, delivering a fully responsive, production-ready client web platform.",
+            "- Built HSBC e-learning modules for embedded systems using React, TypeScript, and CSS3, delivering interactive enterprise training interfaces.",
+            "- Developed symptom-tracking mobile applications for Teva and Antiblanks using React Native, Expo, JavaScript, and TypeScript, focusing on usability and cross-platform reliability.",
+            "- Delivered seasonal RSVP-based websites for Sainsbury's and Habitat, supporting campaign-driven event workflows with fast turnaround delivery cycles.",
+            "- Owned and maintained legacy web and native applications, ensuring stability, continuous feature delivery, and production issue resolution.",
+            "- Built and maintained responsive cross-platform email templates for client campaigns, ensuring consistent rendering across major email clients and devices.",
           ],
           projects: filterProjectsByOwner(portfolio, 'FinerVision'),
         },
