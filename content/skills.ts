@@ -21,9 +21,9 @@ const skills: TechType = {
       'CSS3': {
         statement: "Leveraged styling standards alongside frameworks to deliver responsive, cross-browser interfaces from Figma designs."
       },
-      // 'Rust': {
-      //   statement: "Built several experimental programs while reading The Rust Book."
-      // },
+      'Rust': {
+        statement: "Built several experimental programs while reading The Rust Book."
+      },
     }
   },
   "Frontend": {
