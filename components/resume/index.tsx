@@ -102,7 +102,7 @@ export default function Resume(props: { ref?: RefObject<Document> }) {
               fontFamily: "BarlowCondensed",
               letterSpacing: "3px"
             }]}>{resume.name}</Text>
-            <Text style={tw("text-gray-700 mt-6 mb-6 text-[14px]")}>{resume.bio}</Text>
+            <Text style={tw("text-gray-700 mt-6 mb-6 text-[14px] leading-5")}>{resume.bio}</Text>
             <Text style={tw("text-2xl leading-0 mb-3 text-gray-900 uppercase font-bold")}>
               Work Experience
             </Text>
