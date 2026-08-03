@@ -6,7 +6,7 @@ export interface ConfigType {
 
 export type IconType = IconNames;
 export interface ContactType {
-  location: string;
+  locations: string[];
   websiteUrl: string;
   github: string;
   phone: string;

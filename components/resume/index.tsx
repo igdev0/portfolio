@@ -26,7 +26,12 @@ const linkImageStyle = tw("w-[15px] rounded-sm");
 
 const experienceItem = tw("flex flex-row items-center gap-2");
 
-export default function Resume(props: { ref?: RefObject<Document> }) {
+interface ResumeProps {
+  location: string;
+  ref?: RefObject<Document>
+}
+
+export default function Resume(props: ResumeProps) {
   const assets = useAssets();
   return (
       <Document title="IGDev-Resume" subject="IGDev" creator="IGDev" author="Ianos G Dorultan">
@@ -52,7 +57,7 @@ export default function Resume(props: { ref?: RefObject<Document> }) {
               </View>
               <View style={linkStyle}>
                 <Image style={linkImageStyle} src={assets['map-pin']}/>
-                <Text style={linkTextStyle}>{contact.location}</Text>
+                <Text style={linkTextStyle}>{props.location}</Text>
               </View>
               <View style={linkStyle}>
                 <Image style={linkImageStyle} src={assets.globe}/>

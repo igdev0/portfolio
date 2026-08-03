@@ -2,6 +2,7 @@
 import Resume from '@/components/resume';
 import dynamic from 'next/dynamic';
 import {tw} from '@/components/resume/assets';
+import contact from '@/content/contact';
 
 const PDFViewer = dynamic(
   () => import("@react-pdf/renderer").then((mod) => mod.PDFViewer),
@@ -11,7 +12,7 @@ const PDFViewer = dynamic(
 export default function ResumePage() {
   return (
       <PDFViewer width="100%" style={tw("h-screen")}>
-        <Resume/>
+        <Resume location={contact.locations[0]}/>
       </PDFViewer>
   );
 }
