@@ -8,7 +8,7 @@ const experience: ExperienceTimelineType = {
       statement: "More than half-decate in production-grade app development",
       roles: [
         {
-          title: "[]",
+          title: "[Frontend Engineer]",
           brand: "MPS",
           contractType: "Full-Time",
           company: "Motion Picture Solutions",
