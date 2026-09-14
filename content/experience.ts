@@ -11,7 +11,7 @@ const experience: ExperienceTimelineType = {
           title: "[Frontend Engineer]",
           brand: "MPS",
           contractType: "Full-Time",
-          company: "Motion Picture Solutions",
+          company: "MPS",
           contributions: [],
           jobType: "Hybrid",
           countryShort: "UK",
