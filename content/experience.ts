@@ -8,6 +8,20 @@ const experience: ExperienceTimelineType = {
       statement: "More than half-decate in production-grade app development",
       roles: [
         {
+          title: "[]",
+          brand: "MPS",
+          contractType: "Full-Time",
+          company: "Motion Picture Solutions",
+          contributions: [],
+          jobType: "Hybrid",
+          countryShort: "UK",
+          country: "United Kingdom",
+          startDate: "August 2026",
+          projects: [],
+          city: "London",
+          summary: "Working as a frontend engineer at Motion Picture Solutions, building internal tools that support the delivery of movies using modern technologies and software architecture."
+        },
+        {
           title: "[Full-Stack Engineer]",
           summary: `Independent engineer delivering end-to-end solutions for multiple clients while re-establishing my professional brand after a career break.`,
           contractType: "Full-Time",
@@ -18,14 +32,12 @@ const experience: ExperienceTimelineType = {
           countryShort: "UK",
           country: "United Kingdom",
           startDate: "March 2025",
+          endDate: "August 2026",
           projects: filterProjectsByOwner(portfolio, 'IGDev'),
           contributions: [
             "Redesigned and rebuilt my personal portfolio using TypeScript, Next.js, Tailwind CSS and Figma, improving performance, maintainability, and overall UI polish.",
             "Delivered a CMS-driven website in collaboration with a UI/UX designer using Strapi and Next.js, enabling structured content management and streamlined updates for the client.",
             "Built a reusable résumé-as-code system with react-pdf, centralizing personal content into a single source of truth for consistent, maintainable document generation.",
-            // "Expanded systems programming expertise by completing structured Rust training through The Rust Programming Language and applying core concepts in practice projects.",
-            // "Built and shipped a Web3 hackathon MVP on Ethereum, contributing to smart contract and frontend integration under tight time constraints.",
-            // "Completed the Alchemy Ethereum & Solidity Bootcamp, gaining hands-on experience in smart contract development, deployment, and EVM fundamentals.",
           ],
         },
         {
