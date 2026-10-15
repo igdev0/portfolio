@@ -16,8 +16,8 @@ export default function ExperiencePin(props: ExperiencePinType) {
   const ref = useRef<HTMLDivElement>(null);
   const start = moment(new Date(props.startDate));
   const end = props.endDate ? moment(new Date(props.endDate)) : moment();
-  const months = end.diff(start, 'years');
-  const time = `${months} year${months === 1 ? '' : 's'}`;
+  const months = end.diff(start, 'month');
+  const time = `${months} month${months === 1 ? '' : 's'}`;
 
   const {scrollY} = useScroll();
   const [active, setActive] = useState(false);

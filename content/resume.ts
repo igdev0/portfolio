@@ -5,7 +5,7 @@ import experience from '@/content/experience';
 
 const resume: ResumeType = {
   name: 'Ianos G Dorultan',
-  bio: "Frontend Engineer with 5+ years of experience building modern web and mobile applications using React and React Native, with a strong focus on clean architecture, SOLID principles, and maintainable code.",
+  bio: "Frontend Engineer with 5+ years of experience building web and cross-platform applications using React, TypeScript, and modern frontend technologies. Focused on designing scalable, performant, accessible, and maintainable frontend architecture.",
   contact: contact,
   tech: stack.skills,
   experience: experience.roles,

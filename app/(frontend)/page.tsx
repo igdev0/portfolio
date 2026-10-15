@@ -11,11 +11,9 @@ import experience from '@/content/experience';
 import stack from '@/content/stack';
 import passions from '@/content/passions';
 import collaborate from '@/content/collaborate';
-import {getPayload} from 'payload';
-import payloadConfig from '@payload-config';
 
 export default async function LandingPage() {
-  const payload = await getPayload({config: payloadConfig});
+  // const payload = await getPayload({config: payloadConfig});
   // const blogs = await payload.find({
   //   collection: "blogs",
   //   select: {

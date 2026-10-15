@@ -1,7 +1,7 @@
 import {ContactType} from '@/content/types';
 
 const contact: ContactType = {
-  locations: ["E6 2BS, London, UK", "M6 5GT, Manchester, UK"],
+  locations: ["E6 2BS, London, UK", "M6 5GT, Manchester, UK", "Baia Mare, RO"],
   websiteUrl: "https://igdev.xyz",
   linkedin: "https://www.linkedin.com/in/ianos-dorultan-364235143/",
   github: "https://github.com/igdev0",

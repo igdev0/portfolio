@@ -156,7 +156,7 @@ export default function Resume(props: ResumeProps) {
                             {item.summary}
                           </Text>
                           <Text style={tw("text-sm mb-3 text-gray-900 font-bold w-full")}>
-                            {item.preTitle ?? "Achievements"}:
+                            {item.preTitle ?? (item.contributions.length > 0 && "Achievements:")}
                           </Text>
                           {
                             item.contributions.map((contrib, idx) => (
