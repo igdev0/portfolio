@@ -44,6 +44,7 @@ Copy the example env file and fill in the values:
 cp .env.example .env
 ```
 
+
 Required variables:
 
 | Variable | Description |
