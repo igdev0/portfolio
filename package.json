@@ -7,7 +7,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "generate:resume": "bun ./scripts/generate-resume.tsx",
+    "generate:resume": "npm run ./scripts/generate-resume.tsx",
     "lint": "next lint"
   },
   "dependencies": {
