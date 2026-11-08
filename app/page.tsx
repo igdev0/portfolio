@@ -13,17 +13,6 @@ import passions from '@/content/passions';
 import collaborate from '@/content/collaborate';
 
 export default async function LandingPage() {
-  // const payload = await getPayload({config: payloadConfig});
-  // const blogs = await payload.find({
-  //   collection: "blogs",
-  //   select: {
-  //     preview: true,
-  //     slug: true,
-  //     updatedAt: true
-  //   },
-  //   limit: 3
-  // });
-
   return (
       <main>
         <Nav {...nav}/>
