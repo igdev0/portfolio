@@ -20,7 +20,6 @@ export default async function LandingPage() {
         <Passions {...passions}/>
         <Expertise {...experience}/>
         <Skills {...stack}/>
-        {/*<BlogPreviewSection blogs={blogs as keyof object} {...blog}/>*/}
         <Collaborate {...collaborate}/>
         <Footer/>
       </main>
