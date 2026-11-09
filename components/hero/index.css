@@ -22,7 +22,7 @@
         }
 
         .hero-image img {
-            @apply image-filter transition-[filter] duration-300 ease-out w-full aspect-square object-contain;
+            @apply transition-[filter] duration-300 ease-out w-full aspect-square object-contain;
         }
 
         .hero-image:hover img {
@@ -31,7 +31,6 @@
 
         .square {
             @apply bg-(--surface-1) w-3/5 h-3/5 absolute -z-1 top-0 left-0 right-0 bottom-0 m-auto;
-            @apply shadow-2xl;
         }
 
     }
