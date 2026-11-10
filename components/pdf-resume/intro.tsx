@@ -1,5 +1,5 @@
 import {Text} from "@react-pdf/renderer";
-import {tw} from "@/components/resume/assets";
+import {tw} from "@/components/pdf-resume/assets";
 import resume from "@/content/resume";
 
 export default function ResumeIntro() {

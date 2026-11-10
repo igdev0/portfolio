@@ -1,5 +1,5 @@
 import {View, Image} from "@react-pdf/renderer";
-import {tw} from "@/components/resume/assets";
+import {tw} from "@/components/pdf-resume/assets";
 
 export interface ResumeAvatarProps {
     corner: string;

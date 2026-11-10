@@ -1,7 +1,7 @@
-import {tw} from "@/components/resume/assets";
+import {tw} from "@/components/pdf-resume/assets";
 import {View, Text, Image} from "@react-pdf/renderer";
 import resume from "@/content/resume";
-import useAssets from "@/components/resume/use-assets";
+import useAssets from "@/components/pdf-resume/use-assets";
 
 const linkImageStyle = tw("w-[15px] rounded-sm");
 

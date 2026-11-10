@@ -1,6 +1,6 @@
 import {renderToFile} from '@react-pdf/renderer';
 import path from 'path';
-import Resume from '@/components/resume';
+import Resume from '@/components/pdf-resume';
 import contact from '@/content/contact';
 import * as fs from 'node:fs';
 
@@ -11,5 +11,5 @@ for (const location of contact.locations) {
     fs.mkdirSync(path.resolve("public", "resume", city));
   }
   await renderToFile(<Resume
-      location={location}/>, path.resolve("public", "resume", city, "igdev-resume.pdf"));
+      location={location}/>, path.resolve("public", "resume", city, "igdev-pdf-resume.pdf"));
 }

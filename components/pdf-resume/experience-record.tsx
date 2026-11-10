@@ -1,8 +1,8 @@
 import {Text, View, Image} from "@react-pdf/renderer";
 import moment from "moment";
-import {tw} from "@/components/resume/assets";
+import {tw} from "@/components/pdf-resume/assets";
 import {ExperiencePinType} from "@/content/types";
-import useAssets from "@/components/resume/use-assets";
+import useAssets from "@/components/pdf-resume/use-assets";
 
 const experienceItem = tw("flex flex-row items-center gap-2");
 

@@ -1,7 +1,7 @@
 "use client";
-import Resume from '@/components/resume';
+import Resume from '@/components/pdf-resume';
 import dynamic from 'next/dynamic';
-import {tw} from '@/components/resume/assets';
+import {tw} from '@/components/pdf-resume/assets';
 import contact from '@/content/contact';
 
 const PDFViewer = dynamic(

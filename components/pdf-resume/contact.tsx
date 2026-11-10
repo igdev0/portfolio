@@ -1,10 +1,10 @@
 
-import {tw} from '@/components/resume/assets';
+import {tw} from '@/components/pdf-resume/assets';
 import {Link, View, Image, Text} from "@react-pdf/renderer";
 import contact from "@/content/contact";
-import ResumeTech from "@/components/resume/tech";
-import ResumeLanguages from "@/components/resume/languages";
-import useAssets from "@/components/resume/use-assets";
+import ResumeTech from "@/components/pdf-resume/tech";
+import ResumeLanguages from "@/components/pdf-resume/languages";
+import useAssets from "@/components/pdf-resume/use-assets";
 
 const linkStyle = tw("flex flex-row items-center gap-3 h-[20px] mb-2");
 const linkTextStyle = tw('font-sans text-[10px] flex leading-0 text-gray-900');

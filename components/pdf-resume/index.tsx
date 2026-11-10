@@ -1,11 +1,11 @@
 import {Document, Font, Page, View} from "@react-pdf/renderer";
 import {RefObject} from 'react';
-import {tw} from '@/components/resume/assets';
-import useAssets from '@/components/resume/use-assets';
-import ResumeAvatar from "@/components/resume/avatar";
-import ResumeContact from "@/components/resume/contact";
-import ResumeIntro from "@/components/resume/intro";
-import ResumeExperience from "@/components/resume/experience";
+import {tw} from '@/components/pdf-resume/assets';
+import useAssets from '@/components/pdf-resume/use-assets';
+import ResumeAvatar from "@/components/pdf-resume/avatar";
+import ResumeContact from "@/components/pdf-resume/contact";
+import ResumeIntro from "@/components/pdf-resume/intro";
+import ResumeExperience from "@/components/pdf-resume/experience";
 
 // Keep words intact when they wrap to another line in the PDF.
 Font.registerHyphenationCallback((word) => [word]);

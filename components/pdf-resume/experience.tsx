@@ -1,7 +1,7 @@
 import {View, Text} from "@react-pdf/renderer";
-import {tw} from "@/components/resume/assets";
+import {tw} from "@/components/pdf-resume/assets";
 import resume from "@/content/resume";
-import ExperienceRecord from "@/components/resume/experience-record";
+import ExperienceRecord from "@/components/pdf-resume/experience-record";
 
 export default function ResumeExperience() {
     return (

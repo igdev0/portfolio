@@ -1,4 +1,4 @@
-import {assets, fonts} from '@/components/resume/assets';
+import {assets, fonts} from '@/components/pdf-resume/assets';
 import path from 'path';
 import {Font} from '@react-pdf/renderer';
 
