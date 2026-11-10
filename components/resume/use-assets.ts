@@ -2,6 +2,7 @@ import {assets, fonts} from '@/components/resume/assets';
 import path from 'path';
 import {Font} from '@react-pdf/renderer';
 
+
 export default function useAssets() {
   const resolvedAssets = Object.fromEntries(
       Object.entries(assets).map(([key, value]) => [
