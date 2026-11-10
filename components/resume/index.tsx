@@ -108,7 +108,7 @@ export default function Resume(props: ResumeProps) {
               letterSpacing: "3px"
             }]}>{resume.name}</Text>
             <Text style={tw("text-gray-700 mt-6 mb-6 text-[14px] leading-5")}>{resume.bio}</Text>
-            <Text style={tw("text-2xl leading-0 mb-3 text-gray-900 uppercase font-bold")}>
+            <Text style={tw("text-2xl leading-0 mb-2 text-gray-900 uppercase font-bold")}>
               Work Experience
             </Text>
             <View style={tw("flex flex-row gap-2 ml-6")}>
@@ -152,17 +152,17 @@ export default function Resume(props: ResumeProps) {
                               </Text>
                             </View>
                           </View>
-                          <Text style={tw("text-sm mb-3 text-gray-900 pr-2 leading-5")}>
+                          <Text style={tw("text-sm mb-2 text-gray-900 pr-2 leading-5")}>
                             {item.summary}
                           </Text>
-                          <Text style={tw("text-sm mb-3 text-gray-900 font-bold w-full")}>
+                          <Text style={tw("text-sm mb-2 text-gray-900 font-bold w-full")}>
                             {item.preTitle ?? (item.contributions.length > 0 && "Achievements:")}
                           </Text>
                           {
                             item.contributions.map((contrib, idx) => (
                                 <View wrap={false} break={false} style={tw("flex flex-row gap-2")} key={idx}>
                                   <Image style={linkImageStyle} src={assets.check}/>
-                                  <Text key={contrib} style={tw(`text-sm mb-3 leading-5 w-full text-gray-800 pr-2`)}>
+                                  <Text key={contrib} style={tw(`text-sm mb-2 leading-5 w-full text-gray-800 pr-2`)}>
                                     {contrib}
                                   </Text>
                                 </View>

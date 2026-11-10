@@ -13,10 +13,9 @@ const experience: ExperienceTimelineType = {
           contractType: "Full-Time",
           company: "MPS",
           contributions: [
-              "Designed a feature-driven frontend architecture to improve modularity, maintainability, and scalability.",
-              "Established frontend engineering standards and best practices to improve code quality, consistency, and developer experience.",
-              "Defined a scalable MVVM-inspired frontend architecture using TypeScript, React, Zustand, TanStack Query, and React Router.",
-              "Built and tested reusable UI components based on the provided design system, using Base UI and Tailwind CSS to improve consistency and reduce duplication across projects."
+              "Designed a feature-based frontend architecture to make the codebase easier to maintain and extend.",
+              "Defined an MVVM-inspired architecture with TypeScript, Vite, React, Zustand, TanStack Query, and React Router.",
+              "Built a reusable component library from Figma designs with React and Tailwind CSS, documented in Storybook."
           ],
           jobType: "Hybrid",
           countryShort: "UK",
@@ -24,7 +23,7 @@ const experience: ExperienceTimelineType = {
           startDate: "August 2026",
           projects: [],
           city: "London",
-          summary: "Building frontend tools at Motion Picture Solutions that support the delivery of films to major clients, using modern web technologies and scalable software architecture."
+          summary: "Worked within a cross-functional product team at Motion Picture Solution, translating Figma designs into React components for the next-generation KeyGen platform.",
         },
         {
           title: "[Full-Stack Engineer]",
@@ -48,7 +47,7 @@ const experience: ExperienceTimelineType = {
         {
           title: "[Frontend Engineer]",
           brand: "IOG",
-          summary: "Worked within a cross-functional product team at IOG’s Atala Product Vision, contributing to the ideation, prototyping, and validation of strategic products and initiatives within the Hyperledger Identus ecosystem.",
+          summary: "Worked within a cross-functional team in IOG’s Atala Product Vision group to ideate, prototype, and validate strategic products and initiatives across the Hyperledger Identus ecosystem.",
           contractType: "Full-Time",
           company: "Input-Output",
           jobType: "Remote",
