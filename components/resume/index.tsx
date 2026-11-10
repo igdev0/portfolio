@@ -103,12 +103,12 @@ export default function Resume(props: ResumeProps) {
             </View>
           </View>
           <View style={tw("flex-1 p-2 mr-3")}>
-            <Text style={[tw("text-6xl leading-0 text-indigo-500 text-center mt-6 uppercase font-extrabold"), {
+            <Text style={[tw("text-6xl leading-0 text-indigo-500 text-center uppercase font-extrabold"), {
               fontFamily: "BarlowCondensed",
               letterSpacing: "3px"
             }]}>{resume.name}</Text>
-            <Text style={tw("text-gray-700 mt-6 mb-6 text-[14px] leading-5")}>{resume.bio}</Text>
-            <Text style={tw("text-2xl leading-0 mb-2 text-gray-900 uppercase font-bold")}>
+            <Text style={tw("text-gray-700 mt-2 mb-3 text-[14px] leading-5")}>{resume.bio}</Text>
+            <Text style={tw("text-2xl leading-0 mb-3 text-gray-900 uppercase font-bold")}>
               Work Experience
             </Text>
             <View style={tw("flex flex-row gap-2 ml-6")}>
@@ -155,9 +155,9 @@ export default function Resume(props: ResumeProps) {
                           <Text style={tw("text-sm mb-2 text-gray-900 pr-2 leading-5")}>
                             {item.summary}
                           </Text>
-                          <Text style={tw("text-sm mb-2 text-gray-900 font-bold w-full")}>
-                            {item.preTitle ?? (item.contributions.length > 0 && "Achievements:")}
-                          </Text>
+                          {/*<Text style={tw("text-sm mb-2 text-gray-900 font-bold w-full")}>*/}
+                          {/*  {item.preTitle ?? (item.contributions.length > 0 && "Achievements:")}*/}
+                          {/*</Text>*/}
                           {
                             item.contributions.map((contrib, idx) => (
                                 <View wrap={false} break={false} style={tw("flex flex-row gap-2")} key={idx}>
